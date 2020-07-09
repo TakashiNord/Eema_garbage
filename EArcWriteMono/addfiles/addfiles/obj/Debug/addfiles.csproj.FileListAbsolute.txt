@@ -1,0 +1,9 @@
+C:\Users\gal\Documents\SharpDevelop Projects\addfiles\addfiles\bin\Debug\addfiles.exe.config
+C:\Users\gal\Documents\SharpDevelop Projects\addfiles\addfiles\bin\Debug\addfiles.exe
+C:\Users\gal\Documents\SharpDevelop Projects\addfiles\addfiles\bin\Debug\addfiles.pdb
+C:\Users\gal\Documents\SharpDevelop Projects\addfiles\addfiles\obj\Debug\addfiles.csprojResolveAssemblyReference.cache
+C:\Users\gal\Documents\SharpDevelop Projects\addfiles\addfiles\obj\Debug\addfiles.MainForm.resources
+C:\Users\gal\Documents\SharpDevelop Projects\addfiles\addfiles\obj\Debug\addfiles.csproj.GenerateResource.Cache
+C:\Users\gal\Documents\SharpDevelop Projects\addfiles\addfiles\obj\Debug\addfiles.exe
+C:\Users\gal\Documents\SharpDevelop Projects\addfiles\addfiles\obj\Debug\addfiles.pdb
+C:\Users\gal\Documents\SharpDevelop Projects\addfiles\addfiles\obj\Debug\addfiles.Form1.resources

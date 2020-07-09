@@ -1,0 +1,11 @@
+C:\Users\gal\Documents\SharpDevelop Projects\ArcWrite\ArcWrite\bin\Debug\ArcWrite.exe.config
+C:\Users\gal\Documents\SharpDevelop Projects\ArcWrite\ArcWrite\bin\Debug\ArcWrite.exe
+C:\Users\gal\Documents\SharpDevelop Projects\ArcWrite\ArcWrite\bin\Debug\ArcWrite.pdb
+C:\Users\gal\Documents\SharpDevelop Projects\ArcWrite\ArcWrite\obj\Debug\ArcWrite.csprojResolveAssemblyReference.cache
+C:\Users\gal\Documents\SharpDevelop Projects\ArcWrite\ArcWrite\obj\Debug\ArcWrite.exe
+C:\Users\gal\Documents\SharpDevelop Projects\ArcWrite\ArcWrite\obj\Debug\ArcWrite.pdb
+C:\Users\gal\Documents\SharpDevelop Projects\ArcWrite\ArcWrite\obj\Debug\ArcWrite.MainForm.resources
+C:\Users\gal\Documents\SharpDevelop Projects\ArcWrite\ArcWrite\obj\Debug\ArcWrite.csproj.GenerateResource.Cache
+C:\Users\gal\Documents\SharpDevelop Projects\ArcWrite\ArcWrite\bin\Debug\System.Data.SQLite.dll
+C:\Users\gal\Documents\SharpDevelop Projects\ArcWrite\ArcWrite\bin\Debug\System.Data.SQLite.pdb
+C:\Users\gal\Documents\SharpDevelop Projects\ArcWrite\ArcWrite\bin\Debug\System.Data.SQLite.xml

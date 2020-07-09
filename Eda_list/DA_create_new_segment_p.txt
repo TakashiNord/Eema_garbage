@@ -1,0 +1,497 @@
+CREATE OR REPLACE PROCEDURE RSDUADMIN.DA_create_new_segment_p (pTOP_ID NUMBER)
+ /******************************************************************************
+ Created by Elеna, 07.10.2008
+
+ Процедура создания нового сегмента сбора
+
+	Как параметр передать ID Управляющей ЭВМ - вершины сегмента.
+
+  В процессе исполнения процедуры будет выполнено:
+	1, 2 создание 2-х представлений для сегмента,
+	3. создание триггера для озвучивания на каталог и список,
+	4. создание синонимов,
+	5. предоставление прав,
+	6. регистрация таблиц для сегмента сбора в системных табл. РСДУ,
+	7. добавление новой ветки для сегмента сбора в дерево Навигатора,
+ 	8. добавление допустимых обрабатываемых списков для приложений сбора,
+ 	9. добавления описания портов для dcs в AD_SERVICE если их нет,
+ 	10. регистрация в подсистеме архивов.
+
+  Ограничения: номер сегмента (цифра в DA_V_CAT_x) - следующий от последнего зарегистрированного в SYS_TBLLST
+
+  Этим скриптом можно просто зарегистрировать в системных табл РСДУ уже существующие
+  представления для сегмента сбора (использовать как простой PLSQL-блок)
+
+  Modified:
+  26.01.2009 - Elena: добавлена регистрация в подсистеме архивов
+  24.04.2015 - Elena: добавлено создание триггера на озвучивание для списка
+*******************************************************************************
+*/
+ IS
+---------------------------------------------------------------------------------------------------
+  nSegment   NUMBER; 	-- номер добавляемого сегмента сбора
+  vSqlStr    VARCHAR2 (2000);
+  nRetval    number(11);
+  nCnt       NUMBER (11);
+  nNew_Id    number(11);
+  vDefAlias  VARCHAR2 (63);
+  vListName  VARCHAR2 (63);
+  vDescText  VARCHAR2 (63);
+  vArcOwner  VARCHAR2 (63) := 'RSDU2DAARH';
+    FUNCTION get_new_segment_number RETURN NUMBER IS
+    -- какой номер сегмента можно дать новому создаваемому сегменту
+      nRetval NUMBER(11);
+    BEGIN
+    -- следующий от последнего зарегистрированного
+     SELECT nvl(MAX ( to_number (REPLACE (upper(table_name), 'DA_V_LST_'))), 0)
+       INTO nRetval
+       FROM sys_tbllst
+      WHERE id_type = 1015
+        AND upper(table_name) LIKE 'DA_V_LST_%';
+
+      nRetval := nRetval + 1;
+    RETURN nRetval;
+    END;
+
+    PROCEDURE run_sqlcmd (pSql VARCHAR2, pMsg VARCHAR2, pContinue NUMBER ) IS
+    -- выполнить команду SQL из строки pSQL с сообщением pMsg
+    -- pContinue - признак, что не прерывать по Exception в случае ошибки
+    BEGIN
+      EXECUTE IMMEDIATE pSql;
+      rsdu_exception_p (1, vListName||': '||pMsg, 99999);
+    EXCEPTION  WHEN OTHERS THEN
+      nRetval := SQLCODE;
+      rsdu_exception_p (pContinue, vListName||': '||' ERROR ON: '||pMsg, nRetval);
+    END;
+
+BEGIN
+
+  -- получим доступный номер для нового сегмента
+  nSegment := get_new_segment_number;
+
+  vListName := 'DA_V_LST_'||nSegment;
+  vDescText     := nSegment||'-ого сегм. сбора';
+-----------------------------------------------------------------------------
+-- 1. Создание нового представления для табл каталога сегмента
+vSqlStr :='CREATE OR REPLACE VIEW DA_V_CAT_'||nSegment||' AS
+SELECT
+        DA_CAT.ID,
+        DA_CAT.id_type,
+        DA_CAT.id_parent,
+        DA_CAT.NAME,
+        DA_CAT.alias,
+        DA_CAT.id_reserve,
+        DA_CAT.id_filewav
+ FROM DA_CAT
+START WITH DA_CAT.ID = '||pTOP_ID||'
+CONNECT BY PRIOR DA_CAT.ID = DA_CAT.id_parent';
+
+  run_sqlcmd (vSqlStr, 'Создание представления-каталога для '||vDescText, 0);
+-------------------------------------------------------------------
+--	2. создание нового представления для табл списка сегмента
+vSqlStr :='CREATE OR REPLACE VIEW DA_V_LST_'||nSegment||' AS
+SELECT DA_PARAM.ID ID,
+       DA_PARAM.id_node,
+       DA_DEV_DESC.id_type,
+       DA_PARAM.state AS feature,
+       DA_PARAM.id_filewav,
+       DA_PARAM.id_uclass,
+       DA_PARAM.NAME,
+       DA_PARAM.alias
+  FROM DA_PARAM, DA_DEV_DESC, DA_V_CAT_'||nSegment||' DA_CAT
+ WHERE DA_DEV_DESC.ID = DA_PARAM.id_point
+   AND DA_PARAM.id_node = DA_CAT.ID
+   AND da_param.is_deleted = 0';
+
+  run_sqlcmd (vSqlStr, 'Создание представления-списка для '||vDescText, 0);
+-------------------------------------------------------------------
+--	3. создание триггера для озвучивания на каталог
+vSqlStr :='CREATE OR REPLACE TRIGGER DA_V_CAT_'||nSegment||'_UPDT_ID_FILEWAV_TR
+-- CREATED BY ELENA 27.04.2006
+-- Используется для обновления поля DA_CAT.id_filewav.
+-- Необходим для работы приложения для озвучивания объектов БДТИ.
+INSTEAD OF UPDATE ON DA_V_CAT_'||nSegment||'
+FOR EACH ROW
+DECLARE
+BEGIN
+
+ IF NOT DBMS_REPUTIL.FROM_REMOTE THEN
+  IF :NEW.id = :NEW.id
+    AND nvl(:OLD.id_type,0) = nvl(:NEW.id_type,0)
+    AND nvl(:OLD.id_parent,0) = nvl(:NEW.id_parent,0)
+    AND nvl(:OLD.NAME,''0'') = nvl(:NEW.NAME,''0'')
+    AND nvl(:OLD.alias,''0'') = nvl(:NEW.alias,''0'')
+    AND nvl(:OLD.id_reserve,0) = nvl(:NEW.id_reserve,0)
+    AND nvl(:OLD.id_filewav,0) <> nvl(:NEW.id_filewav,0) THEN
+      -- изменилось только id_filewav
+      update DA_CAT set id_filewav = :NEW.id_filewav where id = :NEW.id;
+  ELSIF :NEW.id = :NEW.id
+    AND nvl(:OLD.id_type,0) = nvl(:NEW.id_type,0)
+    AND nvl(:OLD.id_parent,0) = nvl(:NEW.id_parent,0)
+    AND nvl(:OLD.NAME,''0'') = nvl(:NEW.NAME,''0'')
+    AND nvl(:OLD.alias,''0'') = nvl(:NEW.alias,''0'')
+    AND nvl(:OLD.id_reserve,0) = nvl(:NEW.id_reserve,0)
+    AND nvl(:OLD.id_filewav,0) = nvl(:NEW.id_filewav,0) THEN
+      -- не изменилось ничего - ничего не делаем
+      NULL;
+  ELSE
+      -- изменилось и/или что-то другое - это не надо, это должно делаться непосредственно на табл. DA_CAT
+      raise_application_error (-20501, ''Недопустимое обновление полей представления DA_V_CAT_'||nSegment||''');
+  END IF;
+ END IF;
+END;';
+
+  run_sqlcmd (vSqlStr, 'Создание триггера для озвучивания на представление-каталог', 0);
+
+-------------------------------------------------------------------
+--	3.1. создание триггера для озвучивания на список
+vSqlStr :='CREATE OR REPLACE TRIGGER DA_V_LST_'||nSegment||'_UPDT_ID_FILEWAV_TR
+  -- Created by Elena 26.06.2013
+  -- Используется для обновления поля DA_PARAM.id_filewav.
+  -- Необходим для работы приложения для озвучивания объектов БДТИ.
+  INSTEAD OF UPDATE ON DA_V_LST_'||nSegment||'
+  FOR EACH ROW
+DECLARE
+BEGIN
+
+  IF NOT DBMS_REPUTIL.FROM_REMOTE THEN
+      IF  :NEW.id = :NEW.id
+          AND nvl(:OLD.id_type,0) = nvl(:NEW.id_type,0)
+          AND nvl(:OLD.id_node,0) = nvl(:NEW.id_node,0)
+          AND nvl(:OLD.NAME,''0'') = nvl(:NEW.NAME,''0'')
+          AND nvl(:OLD.alias,''0'') = nvl(:NEW.alias,''0'')
+          AND nvl(:OLD.id_uclass,0) = nvl(:NEW.id_uclass,0)
+          AND nvl(:OLD.feature,0) = nvl(:NEW.feature,0)
+          AND nvl(:OLD.id_filewav,0) <> nvl(:NEW.id_filewav,0) THEN
+        -- изменилось только id_filewav
+        update DA_PARAM set id_filewav = :NEW.id_filewav  where id = :NEW.id;
+      ELSIF :NEW.id = :NEW.id
+          AND nvl(:OLD.id_type,0) = nvl(:NEW.id_type,0)
+          AND nvl(:OLD.id_node,0) = nvl(:NEW.id_node,0)
+          AND nvl(:OLD.NAME,''0'') = nvl(:NEW.NAME,''0'')
+          AND nvl(:OLD.alias,''0'') = nvl(:NEW.alias,''0'')
+          AND nvl(:OLD.id_uclass,0) = nvl(:NEW.id_uclass,0)
+          AND nvl(:OLD.feature,0) = nvl(:NEW.feature,0)
+          AND nvl(:OLD.id_filewav,0) = nvl(:NEW.id_filewav,0) THEN
+       -- не изменилось ничего - ничего не делаем
+       NULL;
+      ELSE
+      -- изменилось и/или что-то другое - это не надо, это должно делаться непосредственно на табл.DA_PARAM
+       raise_application_error (-20502, ''Недопустимое обновление полей представления DA_V_LST_'||nSegment||''');
+      END IF;
+  END IF;
+
+END;';
+
+  run_sqlcmd (vSqlStr, 'Создание триггера для озвучивания на представление-список', 0);
+-------------------------------------------------------------------
+--	4. создание синонимов
+vSqlStr :='create or replace public synonym '||vListName||' for '||vListName;
+run_sqlcmd (vSqlStr, 'Создание синонима на представление-список', 1);
+
+vSqlStr :='create or replace public synonym  DA_V_CAT_'||nSegment||' for DA_V_CAT_'||nSegment ;
+run_sqlcmd (vSqlStr, 'Создание синонима на представление-каталог', 1);
+
+-----------------------------------------------------------------------------
+--    5. Раздача прав на представления  для сегмента сбора
+vSqlStr :='grant select on '||vListName||' to SBOR_STAND_READ';
+run_sqlcmd (vSqlStr, 'Предоставление права чтения на список роли СБОР-Чтение', 1);
+
+vSqlStr :='grant select on DA_V_CAT_'||nSegment||' to SBOR_STAND_READ';
+run_sqlcmd (vSqlStr, 'Предоставление права чтения на каталог роли СБОР-Чтение', 1);
+
+vSqlStr :='grant insert,delete,update on '||vListName||' to SBOR_STAND_ADJ';
+run_sqlcmd (vSqlStr, 'Предоставление права изменения на список роли СБОР-Настройка', 1);
+
+vSqlStr :='grant insert,delete,update on DA_V_CAT_'||nSegment||' to SBOR_STAND_ADJ';
+run_sqlcmd (vSqlStr, 'Предоставление права изменения на каталог роли СБОР-Настройка', 1);
+
+-----------------------------------------------------------------------------
+--    5a. Дача права на чтение списка для владельца схемы хранения архивов
+vSqlStr :='grant select on '||vListName||' to '|| vArcOwner;
+run_sqlcmd (vSqlStr, 'Предоставление права чтения на список владельцу архивов RSDU2DAARH', 1);
+
+-----------------------------------------------------------------------------
+---   6. Регистрация  представлений нового сегмента сбора
+ insert into SYS_DB_PART
+   (ID, ID_PARENT, NAME, ALIAS, ID_FILEWAV,
+    ID_TYPE, ID_ICON, DEFINE_ALIAS, LAST_UPDATE, LAST_RELINK, REINIT_TYPE)
+ select
+   SYS_DB_PART_S.nextval, nod.id, 'Раздел сегмента сбора №'||nSegment, 'DA SEGMENT'||nSegment, NULL,
+    2, 5, 'DA'||nSegment||'_DBPART', to_dt1970 (trunc(sysdate, 'HH')), 0,  0
+   from SYS_DB_PART nod
+   where define_alias like 'DA_SUBSYST'
+     and not exists (select id from SYS_DB_PART where define_alias like 'DA'||nSegment||'_DBPART');
+
+  nCnt := SQL%ROWCOUNT;
+  rsdu_exception_p (1, vListName||(CASE WHEN nCnt>0 THEN ' добавлена' ELSE ' НЕ добавлена (возможно, уже есть)' END)
+                                ||' регистрация в SYS_DB_PART для '||vDescText, 99999);
+
+Insert into SYS_TBLLST
+   (ID, ID_NODE, NAME, TABLE_NAME, ID_TYPE, DEFINE_ALIAS, LAST_UPDATE)
+ select
+   SYS_TBLLST_S.nextval, nod.ID, 'Каталог системы сбора '||nSegment, 'DA_V_CAT_'||nSegment, 1013,
+    'DA_V_CAT_'||nSegment||'_DIR', to_dt1970 (trunc(sysdate, 'HH'))
+  from SYS_DB_PART nod
+ where define_alias like 'DA'||nSegment||'_DBPART'
+     and not exists (select id from SYS_TBLLST  where define_alias like 'DA_V_CAT_'||nSegment||'_DIR');
+
+  nCnt := SQL%ROWCOUNT;
+  rsdu_exception_p (1, vListName||(CASE WHEN nCnt>0 THEN ' добавлена' ELSE ' НЕ добавлена (возможно, уже есть)' END)
+                                ||' регистрация в SYS_TBLLST представления-каталога', 99999);
+
+Insert into SYS_TBLLST
+   (ID, ID_NODE, NAME, TABLE_NAME, ID_TYPE, DEFINE_ALIAS, LAST_UPDATE)
+select
+  SYS_TBLLST_S.nextval, nod.ID, 'Система сбора '||nSegment, 'DA_V_LST_'||nSegment, 1015,
+    'DA_V_LST_'||nSegment||'_LST', to_dt1970 (trunc(sysdate, 'HH'))
+  from SYS_DB_PART nod
+ where define_alias like 'DA'||nSegment||'_DBPART'
+     and not exists (select id from SYS_TBLLST  where define_alias like 'DA_V_LST_'||nSegment||'_LST');
+
+  nCnt := SQL%ROWCOUNT;
+  rsdu_exception_p (1, vListName||(CASE WHEN nCnt>0 THEN ' добавлена' ELSE ' НЕ добавлена (возможно, уже есть)' END)
+                                ||' регистрация в SYS_TBLLST представления-списка', 99999);
+
+-- регистрация картриджей для обработки нового каталога и списка
+  vDefAlias := 'DA_V_CAT_'||nSegment;
+INSERT INTO sys_tblref (id, id_tbl, id_tblref, id_tblrec, id_link)
+ SELECT sys_tblref_s.NEXTVAL, lst.id, tref.id, appl.id, 2
+   FROM sys_tbllst lst, sys_tbllst tref, sys_appl appl
+    WHERE upper(lst.table_name)  like vDefAlias
+      AND upper(tref.table_name) like 'SYS_APPL'
+      AND lower(appl.alias)      like 'dbda.dll'
+      AND NOT EXISTS (SELECT r.ID FROM sys_tblref r, sys_tbllst l
+                      WHERE r.id_tbl=l.ID AND r.id_link = 2
+                        AND l.define_alias LIKE vDefAlias || '_DIR');
+
+  nCnt := SQL%ROWCOUNT;
+  rsdu_exception_p (1, vListName||(CASE WHEN nCnt>0 THEN ' добавлена' ELSE ' НЕ добавлена (возможно, уже есть)' END)
+                                ||' регистрация в SYS_TBLREF картриджа для представления-каталога', 99999);
+
+INSERT INTO sys_tblref (id, id_tbl, id_tblref, id_tblrec, id_link)
+ SELECT sys_tblref_s.NEXTVAL, lst.id, tref.id, appl.id, 2
+   FROM sys_tbllst lst, sys_tbllst tref, sys_appl appl
+    WHERE upper(lst.table_name)  like vListName
+      AND upper(tref.table_name) like 'SYS_APPL'
+      AND lower(appl.alias)      like 'dbda.dll'
+      AND NOT EXISTS (SELECT r.ID FROM sys_tblref r, sys_tbllst l
+                      WHERE r.id_tbl=l.ID AND r.id_link = 2
+                        AND upper(l.table_name) LIKE lst.table_name);
+  nCnt := SQL%ROWCOUNT;
+  rsdu_exception_p (1, vListName||(CASE WHEN nCnt>0 THEN ' добавлена' ELSE ' НЕ добавлена (возможно, уже есть)' END)
+                                ||' регистрация в SYS_TBLREF картриджа для представления-списка', 99999);
+
+INSERT INTO sys_tbllnk (id, id_lsttbl, id_dsttbl)
+ SELECT sys_tbllnk_s.NEXTVAL, lst.id, dst.id
+   FROM sys_tbllst lst, sys_tbllst dst
+    WHERE upper(lst.table_name) LIKE vListName
+      AND upper(dst.table_name) IN (
+'DA_V_CAT_'||nSegment,
+'DA_TYPE',
+'DA_TYPE_V',
+'DA_ARC',
+'DA_PARAM',
+'DA_FAILURE_JRNL',
+'DA_BAUDS',
+'DA_DEV',
+'DA_DEV_OPT',
+'DA_DEV_OPTDESC',
+'DA_DEV_PROTO',
+'DA_DEV_PROFILE',
+'DA_DEV_POINT',
+'DA_IFACE',
+'DA_JSTAT',
+'DA_KTSUSD',
+'DA_MASTER',
+'DA_PC',
+'DA_PORT',
+'DA_PROFDATA',
+'DA_PROFILE',
+'DA_PROTO_DESC',
+'DA_PROTO_PROP',
+'DA_SLAVE',
+'DA_SOURCE',
+'DA_SRC_CHANNEL',
+'DA_SRC_CHANNEL_TUNE',
+'DA_VAL',
+'DA_V_PROTO_DESC',
+'J_DADV')
+      AND dst.id NOT IN (SELECT id_dsttbl FROM sys_tbllnk WHERE id_lsttbl = lst.id )
+;
+  nCnt := SQL%ROWCOUNT;
+  rsdu_exception_p (1, vListName||(CASE WHEN nCnt>0 THEN ' добавлена' ELSE ' НЕ добавлена (возможно, уже есть)' END)
+                                ||' регистрация в SYS_TBLLNK ссылок на таблицы внутри раздела для '||vDescText, 99999);
+
+INSERT INTO sys_tblref (id, id_tbl, id_tblref, id_tblrec, id_link)
+ SELECT sys_tblref_s.NEXTVAL, lst.id, tref.id, trec.id, ttyp.id
+   FROM sys_tbllst lst, sys_tbllst tref, sys_tbllst trec, sys_tlink_type ttyp
+    WHERE upper(lst.table_name)  like 'DA_V_CAT_'||nSegment
+      AND upper(tref.table_name) like 'SYS_TBLLST'
+      AND upper(trec.table_name) like 'DA_CAT'
+      and ttyp.id = 5
+      AND NOT EXISTS (SELECT r.ID FROM sys_tblref r, sys_tbllst l
+                      WHERE r.id_tbl=l.ID AND r.id_link = ttyp.id
+                        AND upper(l.table_name) LIKE lst.table_name);
+
+  nCnt := SQL%ROWCOUNT;
+  rsdu_exception_p (1, vListName||(CASE WHEN nCnt>0 THEN ' добавлена' ELSE ' НЕ добавлена (возможно, уже есть)' END)
+                                ||' регистрация в SYS_TBLREF ссылка на базовую табл.для представления-каталога '||vDescText, 99999);
+
+INSERT INTO sys_tblref (id, id_tbl, id_tblref, id_tblrec, id_link)
+ SELECT sys_tblref_s.NEXTVAL, lst.id, tref.id, trec.id, ttyp.id
+   FROM sys_tbllst lst, sys_tbllst tref, sys_tbllst trec, sys_tlink_type ttyp
+    WHERE upper(lst.table_name)  like vListName
+      AND upper(tref.table_name) like 'SYS_TBLLST'
+      AND upper(trec.table_name) like 'DA_PARAM'
+      and ttyp.id = 5
+      AND NOT EXISTS (SELECT r.ID FROM sys_tblref r, sys_tbllst l
+                      WHERE r.id_tbl=l.ID AND r.id_link = ttyp.id
+                        AND upper(l.table_name) LIKE lst.table_name);
+
+  nCnt := SQL%ROWCOUNT;
+  rsdu_exception_p (1, vListName||(CASE WHEN nCnt>0 THEN ' добавлена' ELSE ' НЕ добавлена (возможно, уже есть)' END)
+                                ||' регистрация в SYS_TBLREF ссылка на базовую табл.для представления-списка '||vDescText, 99999);
+
+-------------------------------------------------------------------------------
+--	7. добавление новой ветки для сегмента сбора в дерево Навигатора
+INSERT INTO sys_tree21 (id, id_parent, id_lsttbl, id_icon, name)
+  SELECT sys_tree21_s.NEXTVAL, tree_nod.id_parent, new_segm.ID, 45 id_icon, 'Сегмент сбора №'||nSegment
+    FROM (SELECT DISTINCT t.id_parent   FROM Sys_Tree21 t, sys_tbllst l
+            WHERE t.id_lsttbl = l.ID AND l.define_alias LIKE 'DA_V%LST' AND ROWNUM = 1) tree_nod,
+         (SELECT ID FROM sys_tbllst l WHERE upper(l.table_name) LIKE vListName ) new_segm
+   WHERE NOT EXISTS(SELECT t.ID FROM Sys_Tree21 t, sys_tbllst l
+            WHERE t.id_lsttbl = l.ID AND l.define_alias LIKE vListName) ;
+
+  nCnt := SQL%ROWCOUNT;
+  rsdu_exception_p (1, vListName||(CASE WHEN nCnt>0 THEN ' добавлена' ELSE ' НЕ добавлена (возможно, уже есть)' END)
+                                ||' регистрация в SYS_TREE21 (ДЕРЕВО НАВИГАТОРА) ветви для '||vDescText, 99999);
+
+
+-------------------------------------------------------------------------------
+--	8. добавление допустимых обрабатываемых списков для приложений сбора
+
+INSERT INTO sys_app_serv_lst (id, id_appl, id_lsttbl)
+ SELECT sys_app_serv_lst_s.nextval, appl.ID, lst.ID
+  FROM sys_appl appl,  sys_tbllst lst
+   WHERE lower(appl.alias)  IN ('dad', 'dcs', 'oicopcservice.exe')
+     AND upper(lst.table_name)  LIKE  vListName
+     AND NOT EXISTS (SELECT 1 FROM sys_app_serv_lst WHERE id_appl = appl.ID AND id_lsttbl=lst.ID);
+
+  nCnt := SQL%ROWCOUNT;
+  rsdu_exception_p (1, vListName||(CASE WHEN nCnt>0 THEN ' добавлена' ELSE ' НЕ добавлена (возможно, уже есть)' END)
+                                ||' регистрация в SYS_APP_SERV_LST нового списка для приложений сбора', 99999);
+  COMMIT;
+-------------------------------------------------------------------------------
+--	9. добавления описания портов для dcs в AD_SERVICE если их нет
+  begin
+    nRetval := 0;
+    select nvl(max(id),2000) into nNew_id from AD_SERVICE where id > 2000;
+
+    vDefAlias := 'ADV_SRVC_DCSADCP_ACCESPORT'||nSegment;
+    select count (1) INTO nCnt from AD_SERVICE where define_alias like vDefAlias;
+    if nCnt = 0 then
+      nNew_id := nNew_id + 1;
+      Insert into AD_SERVICE (id, NAME, define_alias) values
+        ( nNew_id, 'Служба ADCP коммуникационного сервера '||nSegment, 'ADV_SRVC_DCSADCP_ACCESPORT'||nSegment);
+      nRetval := nRetval +1;
+    end if;
+
+    vDefAlias := 'ADV_SRVC_DCSDCP_ACCESPORT'||nSegment;
+    select count (1) INTO nCnt from AD_SERVICE where define_alias like vDefAlias;
+    if nCnt = 0 then
+      nNew_id := nNew_id + 1;
+      Insert into AD_SERVICE (id, NAME, define_alias) values
+        ( nNew_id, 'Служба DCP коммуникационного сервиса '||nSegment, 'ADV_SRVC_DCSDCP_ACCESPORT'||nSegment);
+      nRetval := nRetval +1;
+    end if;
+
+    vDefAlias := 'ADV_SRVC_DCSOIC_ACCESPORT'||nSegment;
+    select count (1) INTO nCnt from AD_SERVICE where define_alias like vDefAlias;
+    if nCnt = 0 then
+      nNew_id := nNew_id + 1;
+      Insert into AD_SERVICE (id, NAME, define_alias) values
+        ( nNew_id, 'Служба OIC коммуникационного сервиса '||nSegment, 'ADV_SRVC_DCSOIC_ACCESPORT'||nSegment);
+      nRetval := nRetval +1;
+    end if;
+
+    vDefAlias := 'ADV_SRVC_DCSOICTCP_ACCESSPORT'||nSegment;
+    select count (1) INTO nCnt  from AD_SERVICE where define_alias like vDefAlias;
+    if nCnt = 0 then
+      nNew_id := nNew_id + 1;
+      Insert into AD_SERVICE (id, NAME, define_alias) values
+        ( nNew_id, 'Служба OIC TCP коммуникационного сервиса '||nSegment, 'ADV_SRVC_DCSOICTCP_ACCESSPORT'||nSegment);
+      nRetval := nRetval +1;
+    end if;
+
+    rsdu_exception_p (1, vListName||(CASE WHEN nCnt>0 THEN ' добавлены ('||nCnt||')' ELSE ' НЕ добавлены (возможно, уже есть)' END)
+                                  ||' в AD_SERVICE порты для dcs для '||vDescText, 99999);
+    commit;
+
+  exception when others then
+    nRetval := SQLCODE;
+    rollback;
+    rsdu_exception_p (1, vListName||': Проблемы при добавлении портов в AD_SERVICE (dcs) для'||vDescText, nRetval);
+  end;
+
+-------------------------------------------------------------------------------
+--	10. регистрация в подсистеме архивов
+
+  INSERT INTO arc_subsyst_profile (id, id_tbllst, id_ginfo, is_writeon, stack_name, last_update)
+  SELECT arc_subsyst_profile_s.NEXTVAL,  lst.id, tab.id_ginfo, tab.is_writeon, 'DA_ARC_'||lst.id||'_'||tab.id_ginfo, 0
+   FROM
+   (SELECT id FROM sys_tbllst WHERE upper(table_name) LIKE vListName) lst,
+   (SELECT t.id_ginfo,  MIN(t.is_writeon) AS is_writeon
+      FROM arc_subsyst_profile t
+     WHERE t.id_tbllst IN (SELECT ID FROM sys_tbllst WHERE define_alias LIKE 'DA_V%')
+     GROUP BY t.id_ginfo ) tab
+    WHERE NOT EXISTS (SELECT 1 FROM arc_subsyst_profile WHERE id_tbllst = lst.id AND  id_ginfo = tab.id_ginfo);
+
+    nCnt := SQL%ROWCOUNT;
+    rsdu_exception_p (1, vListName||(CASE WHEN nCnt>0 THEN ' добавлена ' ELSE ' НЕ добавлена (возможно, уже есть)' END)
+                                  ||' регистрация в ARC_SUBSYST_PROFILE профилей архивов для '||vDescText, 99999);
+    commit;
+
+   INSERT INTO arc_services_tune t (id_sprofile, id_service, priority)
+    SELECT pr.id, tab.id_service, tab.priority
+      FROM arc_subsyst_profile pr, sys_tbllst lst,
+           (SELECT DISTINCT id_service, priority  from arc_services_tune t, arc_subsyst_profile p, sys_tbllst l
+             WHERE t.id_sprofile = p.id AND p.id_tbllst = l.id AND l.define_alias LIKE 'DA_V_LST%') tab
+     WHERE pr.id_tbllst = lst.id AND upper(lst.table_name) LIKE vListName
+       AND NOT EXISTS (SELECT 1 FROM arc_services_tune WHERE id_sprofile = pr.id);
+
+    nCnt := SQL%ROWCOUNT;
+    if nCnt > 0 then
+      rsdu_exception_p (1, vListName||': добавленa регистрация ('||nCnt||') сервиса для архивов в ARC_SERVICES_TUNE для '||vDescText, 99999);
+    else
+
+      INSERT INTO arc_services_tune t (id_sprofile, id_service, priority)
+       SELECT pr.id, tab.id_service, tab.priority
+         FROM arc_subsyst_profile pr, sys_tbllst lst,
+              (SELECT id AS id_service, 1 AS priority  FROM ad_service WHERE define_alias LIKE 'ADV_SRVC_DPLOADADCP_ACCESPORT') tab
+       WHERE pr.id_tbllst = lst.id AND upper(lst.table_name) LIKE vListName
+         AND NOT EXISTS (SELECT 1 FROM arc_services_tune WHERE id_sprofile = pr.id);
+
+      nCnt := SQL%ROWCOUNT;
+      rsdu_exception_p (1, vListName||(CASE WHEN nCnt>0 THEN ' добавлена ('||nCnt||')' ELSE ' НЕ добавлена (возможно, уже есть)' END)
+                                    ||' регистрация в ARC_SERVICES_TUNE сервиса для архивов '||vDescText, 99999);
+    end if;
+
+    INSERT INTO arc_services_info t (id_lsttbl, id_db_schema)
+    SELECT lst.id, tab.id
+      FROM sys_tbllst lst,
+           (SELECT id from arc_db_schema t WHERE upper(t.schema_name)like vArcOwner) tab
+     WHERE upper(lst.table_name) LIKE vListName
+       and not exists (select 1 from arc_services_info where id_lsttbl = lst.id);
+
+      nCnt := SQL%ROWCOUNT;
+      rsdu_exception_p (1, vListName||(CASE WHEN nCnt>0 THEN ' добавлена ('||nCnt||')' ELSE ' НЕ добавлена (возможно, уже есть)' END)
+                                    ||' регистрация в ARC_SERVICES_INFO схемы для архивов '||vDescText, 99999);
+    commit;
+
+EXCEPTION WHEN OTHERS THEN
+    nRetval := SQLCODE;
+    rollback;
+    rsdu_exception_p (1, vListName||': ПРОБЛЕМЫ при создании/регистрации объектов для '||vDescText, nRetval);
+end;
+/
