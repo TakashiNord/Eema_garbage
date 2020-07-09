@@ -1,0 +1,7 @@
+
+select * from tag_list where id in ( select id_tag from tag_position where id_scheme=4000003)
+DELETE FROM TAG_POSITION WHERE id_tag = ;
+DELETE FROM tag_list WHERE id = ;
+
+select * from TAG_POSITION, tag_list where ID_SCHEME=4014 and tag_list.id=TAG_POSITION.id_tag order by id_tag
+
