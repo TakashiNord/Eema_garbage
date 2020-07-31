@@ -1,0 +1,6 @@
+C:\Users\tanuki\Documents\SharpDevelop Projects\read_file1\read_file1\obj\Debug\read_file1.csprojResolveAssemblyReference.cache
+C:\Users\tanuki\Documents\SharpDevelop Projects\read_file1\read_file1\bin\Debug\read_file1.exe.config
+C:\Users\tanuki\Documents\SharpDevelop Projects\read_file1\read_file1\bin\Debug\read_file1.exe
+C:\Users\tanuki\Documents\SharpDevelop Projects\read_file1\read_file1\bin\Debug\read_file1.pdb
+C:\Users\tanuki\Documents\SharpDevelop Projects\read_file1\read_file1\obj\Debug\read_file1.exe
+C:\Users\tanuki\Documents\SharpDevelop Projects\read_file1\read_file1\obj\Debug\read_file1.pdb
