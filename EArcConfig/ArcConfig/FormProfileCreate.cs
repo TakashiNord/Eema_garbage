@@ -112,12 +112,12 @@ namespace ArcConfig
       reader.Close();
 
       string st_name="" ;
-     sl1= "SELECT upper(table_name) , lnk.ID_LSTTBL " +
-      " FROM sys_tbllst lst, sys_tbllnk lnk, sys_otyp t " +
-      " WHERE lnk.id_lsttbl = " + _id_tbl +
-      "  AND lnk.id_dsttbl = lst.ID " +
-      "  AND lst.id_type = t.ID " +
-      "  AND t.define_alias LIKE 'ARH'";
+      sl1= "SELECT upper(table_name) , lnk.ID_LSTTBL " +
+       " FROM sys_tbllst lst, sys_tbllnk lnk, sys_otyp t " +
+       " WHERE lnk.id_lsttbl = " + _id_tbl +
+       "  AND lnk.id_dsttbl = lst.ID " +
+       "  AND lst.id_type = t.ID " +
+       "  AND t.define_alias LIKE 'ARH'";
       cmd0.CommandText=sl1;
       try
       {
@@ -185,9 +185,7 @@ namespace ArcConfig
       if (reader.HasRows) {
         while (reader.Read())
         {
-
           int i = 0;
-
           string sn="";
           if (reader.IsDBNull(i)) {
               ;
@@ -254,7 +252,6 @@ namespace ArcConfig
         //Serv_name="ADV_SRVC_DCSOIC_ACCESPORT";
       }
       //MessageBox.Show(TABLE_NAME + " === " + Serv_name );
-
 
       Dpload.Clear();
       checkedListBoxDpload.Items.Clear();
@@ -444,7 +441,6 @@ namespace ArcConfig
       }
       reader.Close();
     }
-
 
      buttonOk.Enabled=true ;
 

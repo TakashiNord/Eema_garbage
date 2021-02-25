@@ -300,6 +300,7 @@ namespace ArcConfig
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "FormProfileCreate";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Создание профиля архива.";
 			this.Load += new System.EventHandler(this.FormProfileCreateLoad);
 			this.groupBox1.ResumeLayout(false);

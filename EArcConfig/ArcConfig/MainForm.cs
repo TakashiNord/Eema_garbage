@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
 
 using System.Collections;
 using System.ComponentModel;
@@ -21,11 +22,15 @@ using System.Data.Common;
 using System.Globalization;
 using System.Threading;
 
+using System.Reflection;
+using System.Resources;
+
 using System.Text.RegularExpressions;
 
 using PropertyGridTest;
 
 //using FormArcGinfo;
+
 
 namespace ArcConfig
 {
@@ -36,8 +41,15 @@ namespace ArcConfig
   {
     private OdbcConnection _conn;
 
+
+//[DllImport("user32.dll")]
+//public static extern int SendMessage(IntPtr hWnd, Int32 wMsg, bool wParam, Int32 lParam);
+//private int WM_SETREDRAW = 0x000B;
+
+
     // редактируемые данные
       private ARC_SUBSYST_PROFILE _profileData = new ARC_SUBSYST_PROFILE();
+      List<MEAS1> dp = new List<MEAS1>();
 
     public MainForm()
     {
@@ -244,7 +256,7 @@ namespace ArcConfig
 
           if (arr[3]=="") { arr[3]="0" ; }
 
-           if (arr[3]=="0") {
+          if (arr[3]=="0") {
              TreeNode rootNode = new TreeNode();
              rootNode.Name = arr[0]; // arr[0];
              rootNode.Text = arr[2];
@@ -266,7 +278,7 @@ namespace ArcConfig
                 }
 
               } // foreach
-           } // if
+          } // if
 
          } // while
 
@@ -305,7 +317,7 @@ namespace ArcConfig
                if (stmp=="NUMBER") arr[i] = reader3.GetValue(i).ToString(); //GetDecimal(i).ToString();
                if (stmp=="VARCHAR2") arr[i] = reader3.GetString(i);
                if (stmp=="NVARCHAR") arr[i] = reader3.GetString(i);
-                if (stmp=="WVARCHAR") arr[i] = reader3.GetString(i);
+               if (stmp=="WVARCHAR") arr[i] = reader3.GetString(i);
                if (stmp=="TEXT") arr[i] = reader3.GetString(i);
                if (stmp=="INTEGER") arr[i] = reader3.GetValue(i).ToString();
              }
@@ -401,14 +413,14 @@ namespace ArcConfig
     }
     void ToolStripButton2Click(object sender, EventArgs e)
     {
-      //
-      Button1Click(sender,e);
+       // save to xls
+       Button1Click(sender,e);
     }
     void RadioButton2CheckedChanged(object sender, EventArgs e)
     {
        try
        {
-        if (radioButton2.Checked == true) _getDBv1("arc_stat_current_v");
+          if (radioButton2.Checked == true) _getDBv1("arc_stat_current_v");
        }
        catch (Exception ex1)
        {
@@ -456,6 +468,10 @@ namespace ArcConfig
        tabControl1.Enabled=false;
        tabControl1.SelectedIndex=0;
 
+
+       dp.Capacity=150000;
+       typeof(Control).GetProperty("DoubleBuffered", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.SetProperty).SetValue(dataGridViewP, true, null);
+
        DataGridViewCheckBoxColumn checkBoxColumn = new DataGridViewCheckBoxColumn();
        checkBoxColumn.HeaderText = "";
        checkBoxColumn.Width = 30;
@@ -492,132 +508,445 @@ namespace ArcConfig
       //dataGridViewA.Rows.Clear();
       Application.DoEvents();
 
-      dataSetA.Clear();
+      ResourceManager r = new ResourceManager("ArcConfig.ArcResource", Assembly.GetExecutingAssembly());
 
-      if (id_index=="0" || id_index=="") return;
-      // полный путь
+      if (1==tabControlAP.SelectedIndex) {
 
-      // "select * from ARC_GINFO";
-      cmd0.CommandText="" +
-"SELECT  " +
-"    ARC_GINFO.ID as ID,  " +
-"    sys_gtopt.NAME as VIEW_ARCHIVE, " +
-"    ARC_GINFO.ID_GTOPT ,  " +
-"    ARC_TYPE.NAME as TYPE_ARCHIVE, " +
-"    ARC_GINFO.ID_TYPE as ID_TYPE, " +
-"    ARC_GINFO.DEPTH , " +
-"    ARC_GINFO.DEPTH_LOCAL , " +
-"    ARC_GINFO.CACHE_SIZE , " +
-"    ARC_GINFO.CACHE_TIMEOUT , " +
-"    ARC_GINFO.FLUSH_INTERVAL , " +
-"    ARC_GINFO.RESTORE_INTERVAL , " +
-"    ARC_GINFO.STACK_INTERVAL , " +
-"    ARC_GINFO.WRITE_MINMAX  , " +
-"    ARC_GINFO.RESTORE_TIME , " +
-"    ARC_GINFO.NAME  , " +
-"    ARC_GINFO.STATE  , " +
-"    ARC_GINFO.DEPTH_PARTITION  , " +
-"    ARC_GINFO.RESTORE_TIME_LOCAL " +
-" FROM ARC_GINFO , sys_gtopt, ARC_TYPE " +
-" WHERE sys_gtopt.ID=ARC_GINFO.ID_GTOPT " +
-"AND ARC_GINFO.ID_TYPE=ARC_TYPE.ID" ;
-
-      // Указываем запрос для выполнения
-      adapter.SelectCommand = cmd0;
-      // Заполняем объект источника данных
-      //adapter.Fill(dataSetA,"ARC_GINFO");
-      adapter.Fill(dataSetA);
-
-      // Запрет удаления данных
-      dataSetA.Tables[0].DefaultView.AllowDelete = false;
-      // Запрет модификации данных
-      dataSetA.Tables[0].DefaultView.AllowEdit = false;
-      // Запрет добавления данных
-      dataSetA.Tables[0].DefaultView.AllowNew = false;
-
-      // (с этого момента она будет отображать его содержимое)
-      dataGridViewA.DataSource = dataSetA.Tables[0].DefaultView;;
-      //dataGridViewA.Columns["ID"].ReadOnly = true;
-      //dataGridViewA.Columns["ID_NODE"].ReadOnly = true;
-
-      // Resize the master DataGridView columns to fit the newly loaded data.
-      dataGridViewA.AutoResizeColumns();
-
-      // Configure the details DataGridView so that its columns automatically
-      // adjust their widths when the data changes.
-      dataGridViewA.AutoSizeColumnsMode =
-          DataGridViewAutoSizeColumnsMode.AllCells;
-
-      for (int ii = 0; ii < dataGridViewA.RowCount ; ii++) {
-        dataGridViewA.Rows[ii].Cells[0].Value = false ;
-        dataGridViewA.Rows[ii].HeaderCell.Style.BackColor = Color.White ;
-        dataGridViewA.Rows[ii].DefaultCellStyle.BackColor = Color.White ;
-      }
-
-      dataGridViewA.EnableHeadersVisualStyles = false;
-      dataGridViewA.AlternatingRowsDefaultCellStyle.BackColor =Color.LightGray;
-      dataGridViewA.Columns[0].HeaderCell.Style.BackColor = Color.Blue ;
-
-      //dataGridViewA.Columns[0].HeaderCell.ToolTipText = "Подсказка11";
-
-      dataGridViewA.Update();
-
-string sl1="SELECT  ARC_SUBSYST_PROFILE.ID,ARC_SUBSYST_PROFILE.ID_TBLLST,ARC_SUBSYST_PROFILE.ID_GINFO," +
-  "ARC_SUBSYST_PROFILE.IS_WRITEON, ARC_SUBSYST_PROFILE.STACK_NAME,ARC_SUBSYST_PROFILE.LAST_UPDATE,ARC_SUBSYST_PROFILE.IS_VIEWABLE  " +
-"FROM  ARC_SUBSYST_PROFILE " +
-//"FROM sys_tree21, ARC_SUBSYST_PROFILE " +
-"WHERE " + id_parent + "=ARC_SUBSYST_PROFILE.ID_TBLLST" ;
-//"WHERE sys_tree21.id=" + id_parent + " AND sys_tree21.id_lsttbl=ARC_SUBSYST_PROFILE.ID_TBLLST" ;
-
-      cmd1.CommandText=sl1;
-      try
-      {
-        reader = cmd1.ExecuteReader();
-      }
-      catch (Exception ex1)
-      {
-        AddLogString(" выполнение алгоритма  - прервано.. = " + cmd1.CommandText + " " + ex1.Message);
-        return ;
-      }
-
-      if (reader.HasRows==false) {
-        reader.Close();
-        //dataGridViewA.Enabled=false;
-        return;
-      }
-      //dataGridViewA.Enabled=true;
-
-      string[] arr = new string[7];
-
-      while (reader.Read())
-      {
-        for ( int i = 0; i<7; i++)
+        try {
+          dataGridViewP.DataSource = null ;
+          dataGridViewP.Rows.Clear();
+          Application.DoEvents();
+          dataGridViewP.Columns.Clear();
+        }
+        catch (Exception ex1)
         {
-          arr[i]="";
-          if (reader.IsDBNull(i)) {
-            arr[i]="";
-          } else {
-            arr[i]= reader.GetDataTypeName(i);
-            string stmp = arr[i].ToUpper();
-            if (stmp=="DECIMAL") arr[i] = reader.GetValue(i).ToString();
-            if (stmp=="NUMBER") arr[i] = reader.GetValue(i).ToString(); //GetDecimal(i).ToString();
-            if (stmp=="VARCHAR2") arr[i] = reader.GetString(i);
-            if (stmp=="NVARCHAR") arr[i] = reader.GetString(i);
-             if (stmp=="WVARCHAR") arr[i] = reader.GetString(i);
-            if (stmp=="TEXT") arr[i] = reader.GetString(i);
-            if (stmp=="INTEGER") arr[i] = reader.GetValue(i).ToString();
-          }
+          AddLogString("Error ="+ex1.Message);
+        }
+        // dataGridViewP.DataSource = new object();
+        Application.DoEvents();
+
+        if (id_index=="0" || id_index=="") return;
+        // полный путь
+
+        var column0 = new DataGridViewColumn();
+        column0.HeaderText = "Группа";
+        column0.Name = "Group";
+        column0.ReadOnly = true;
+        column0.CellTemplate = new DataGridViewTextBoxCell();
+
+        var column1 = new DataGridViewColumn();
+        column1.HeaderText = "id"; //текст в шапке
+        //column1.Width = 100; //ширина колонки
+        column1.ReadOnly = true; //значение в этой колонке нельзя править
+        column1.Name = "id"; //текстовое имя колонки, его можно использовать вместо обращений по индексу
+        //column1.Frozen = true; //флаг, что данная колонка всегда отображается на своем месте
+        column1.CellTemplate = new DataGridViewTextBoxCell(); //тип нашей колонки
+
+        var column2 = new DataGridViewColumn();
+        column2.HeaderText = "Наименование";
+        column2.Name = "Name";
+        column2.CellTemplate = new DataGridViewTextBoxCell();
+
+        var column3 = new DataGridViewColumn();
+        column3.HeaderText = "Тип";
+        column3.Name = "type";
+        column3.CellTemplate = new DataGridViewTextBoxCell();
+
+        dataGridViewP.Columns.Add(column0);
+        dataGridViewP.Columns.Add(column1);
+        dataGridViewP.Columns.Add(column2);
+        dataGridViewP.Columns.Add(column3);
+
+        dataGridViewP.AllowUserToAddRows = false; //запрешаем пользователю самому добавлять строки
+
+
+        List<ARCSUM1> sum = new List<ARCSUM1>();
+
+        string sl1= r.GetString("ARC_SUBSYST_PROFILE2");
+        sl1 = String.Format(sl1,id_parent);
+
+        cmd1.CommandText=sl1;
+        try
+        {
+          reader = cmd1.ExecuteReader();
+        }
+        catch (Exception ex1)
+        {
+          AddLogString(" выполнение алгоритма  - прервано.. = " + cmd1.CommandText + " " + ex1.Message);
+          return ;
         }
 
-         for (int ii = 0; ii < dataGridViewA.RowCount ; ii++)
-          if (dataGridViewA.Rows[ii].Cells[1].Value.ToString()==arr[2]) {
-            dataGridViewA.Rows[ii].Cells[0].Value =true ;
-            dataGridViewA.Rows[ii].HeaderCell.Style.BackColor = Color.LightGreen ;
-            dataGridViewA.Rows[ii].DefaultCellStyle.BackColor = Color.LightGreen ;
+        if (reader.HasRows==false) {
+          reader.Close();
+          return;
+        }
+
+        string[] arr = new string[4];
+
+        while (reader.Read())
+        {
+          for ( int i = 0; i<4; i++)
+          {
+            arr[i]="";
+            if (reader.IsDBNull(i)) {
+              arr[i]="";
+            } else {
+              arr[i]= reader.GetDataTypeName(i);
+              string stmp = arr[i].ToUpper();
+              if (stmp=="DECIMAL") arr[i] = reader.GetValue(i).ToString();
+              if (stmp=="NUMBER") arr[i] = reader.GetValue(i).ToString(); //GetDecimal(i).ToString();
+              if (stmp=="VARCHAR2") arr[i] = reader.GetString(i);
+              if (stmp=="NVARCHAR") arr[i] = reader.GetString(i);
+               if (stmp=="WVARCHAR") arr[i] = reader.GetString(i);
+              if (stmp=="TEXT") arr[i] = reader.GetString(i);
+              if (stmp=="INTEGER") arr[i] = reader.GetValue(i).ToString();
+            }
           }
 
-       } // while
-       reader.Close();
+         /*var column4 = new DataGridViewColumn();
+           column4.HeaderText = arr[2] + ", " + arr[3];
+           column4.Name = arr[1];
+           column4.CellTemplate = new DataGridViewCheckBoxCell();   */
+
+          DataGridViewCheckBoxColumn column4 = new DataGridViewCheckBoxColumn();
+          column4.HeaderText = arr[2] + ", " + arr[3];
+          column4.TrueValue = true;
+          column4.FalseValue = false;
+          column4.Name = arr[1];
+
+          dataGridViewP.Columns.Add(column4);
+
+          ARCSUM1 item2 = new ARCSUM1(arr[2] + ", " + arr[3],arr[1],0);
+          sum.Add(item2);
+
+        } // while
+        reader.Close();
+
+        //Получить Имя выделенного элемента
+        string _id_tbl =Convert.ToString(treeViewA.SelectedNode.Tag) ;
+        AddLogString("id_tbl=" + _id_tbl);
+        if (_id_tbl=="0" || _id_tbl=="") return ;
+
+        // get table
+        string TABLE_NAME = "" ;
+
+        sl1= "SELECT upper(lst.TABLE_NAME) FROM sys_tbllst lst WHERE lst.ID=" + _id_tbl;
+        cmd0.CommandText=sl1;
+        try
+        {
+          reader = cmd0.ExecuteReader();
+        }
+        catch (Exception ex1)
+        {
+          AddLogString(ex1.ToString());
+          MessageBox.Show(ex1.ToString() );
+          return ;
+        }
+
+        if (reader.HasRows) {
+          while (reader.Read())
+          {
+            int i = 0;
+            string sn="";
+            if (reader.IsDBNull(i)) {
+                ;
+            } else {
+                sn= reader.GetDataTypeName(i);
+                string stmp = sn.ToUpper();
+                if (stmp=="DECIMAL") sn = reader.GetValue(i).ToString();
+                if (stmp=="NUMBER") sn = reader.GetValue(i).ToString(); //GetDecimal(i).ToString();
+                if (stmp=="VARCHAR2") sn = reader.GetString(i);
+                if (stmp=="NVARCHAR") sn = reader.GetString(i);
+                if (stmp=="WVARCHAR") sn = reader.GetString(i);
+                if (stmp=="TEXT") sn = reader.GetString(i);
+                if (stmp=="INTEGER") sn = reader.GetValue(i).ToString();
+            }
+            TABLE_NAME = sn.ToUpper() ;
+            break ;
+          } // while
+        }
+        reader.Close();
+
+        dp.Clear();
+        Application.DoEvents();
+
+        sl1="SELECT 0,0,0,0,0,0,0 FROM DUAL" ;
+
+        if (TABLE_NAME.IndexOf("PHREG_LIST_V")>=0) {
+          sl1 = r.GetString("PHREG_LIST_V");;
+        }
+        if (TABLE_NAME.IndexOf("ELREG_LIST_V")>=0) {
+            sl1 = r.GetString("ELREG_LIST_V");
+        }
+        if (TABLE_NAME.IndexOf("PSWT_LIST_V")>=0) {
+            sl1 = r.GetString("PSWT_LIST_V");
+        }
+        if (TABLE_NAME.IndexOf("AUTO_LIST_V")>=0) {
+            sl1 = r.GetString("AUTO_LIST_V");
+        }
+        if (TABLE_NAME.IndexOf("EA_CHANNELS")>=0) {
+            sl1 = r.GetString("EA_CHANNELS");
+        }
+        if (TABLE_NAME.IndexOf("EA_V_CONSUMER_POINTS")>=0) {
+            sl1 = r.GetString("EA_V_CONSUMER_POINTS");
+        }
+        if (TABLE_NAME.IndexOf("CALC_LIST")>=0) {
+            sl1 = r.GetString("CALC_LIST");
+        }
+        if (TABLE_NAME.IndexOf("DG_LIST")>=0) {
+            sl1 = r.GetString("DG_LIST");
+        }
+        if (TABLE_NAME.IndexOf("EXDATA_LIST_V")>=0) {
+            sl1 = r.GetString("EXDATA_LIST_V");     ;
+        }
+        if (TABLE_NAME.IndexOf("DA_V_LST")>=0) {
+            sl1 = r.GetString("DA_V_LST");
+            sl1 = String.Format(sl1,TABLE_NAME);
+        }
+
+        AddLogString(" TABLE_NAME = " + TABLE_NAME );
+        if  (TABLE_NAME.Length<=1) {
+          AddLogString(" |TABLE_NAME| = 0"  );
+          return ;
+        }
+
+
+        cmd1.CommandText=sl1;
+        try
+        {
+          reader = cmd1.ExecuteReader();
+        }
+        catch (Exception ex1)
+        {
+          AddLogString(" выполнение алгоритма  - прервано.. = " + cmd1.CommandText + " " + ex1.Message);
+          return ;
+        }
+
+        if (reader.HasRows==false) {
+          reader.Close();
+          return;
+        }
+
+        //string[]
+        arr = new string[6];
+
+        while (reader.Read())
+        {
+          for ( int i = 0; i<6; i++)
+          {
+            arr[i]="";
+            if (reader.IsDBNull(i)) {
+              arr[i]="";
+            } else {
+              arr[i]= reader.GetDataTypeName(i);
+              string stmp = arr[i].ToUpper();
+              if (stmp=="DECIMAL") arr[i] = reader.GetValue(i).ToString();
+              if (stmp=="NUMBER") arr[i] = reader.GetValue(i).ToString(); //GetDecimal(i).ToString();
+              if (stmp=="VARCHAR2") arr[i] = reader.GetString(i);
+              if (stmp=="NVARCHAR") arr[i] = reader.GetString(i);
+               if (stmp=="WVARCHAR") arr[i] = reader.GetString(i);
+              if (stmp=="TEXT") arr[i] = reader.GetString(i);
+              if (stmp=="INTEGER") arr[i] = reader.GetValue(i).ToString();
+            }
+          }
+
+          //  .ID_NODE, DA_CAT.NAME, .ID, .ID_TYPE, DA_V_LST_1.NAME, ID_GINFO
+          if (TABLE_NAME.IndexOf("DA_V_LST")>=0) {
+             int _id = Convert.ToInt32(arr[2]);
+             int _idn = Convert.ToInt32(arr[0]);
+             int _idt = Convert.ToInt32(arr[3]);
+             int _ginfo = Convert.ToInt32(arr[5]);
+             MEAS1 item1 = new MEAS1(_id,_idn,_idt,arr[4],arr[1],_ginfo);
+             dp.Add(item1);
+           } else {
+             //SELECT ID, id_obj, id_meas_type, NAME, alias , ID_GINFO
+             int _id = Convert.ToInt32(arr[0]);
+             int _idn = Convert.ToInt32(arr[1]);
+             int _idt = Convert.ToInt32(arr[2]);
+             int _ginfo = Convert.ToInt32(arr[5]);
+             MEAS1 item1 = new MEAS1(_id,_idn, _idt,arr[3],arr[4],_ginfo);
+             dp.Add(item1);
+          }
+
+        } // while
+        reader.Close();
+
+        AddLogString(" Capacity=" + dp.Capacity.ToString() + "  Cnt =" + dp.Count.ToString() );
+
+        //SendMessage(dataGridViewP.Handle, WM_SETREDRAW, false, 0);
+
+       int iFindNo =-1;
+       int iRowIndex = 0;
+       int prevFindNo = -1;
+       foreach (MEAS1 p in dp)
+       {
+         iFindNo = p.ID;
+         if (prevFindNo != iFindNo ) {
+           iRowIndex=dataGridViewP.Rows.Add();
+           if (TABLE_NAME.IndexOf("DA_V_LST")>=0) {
+              dataGridViewP.Rows[iRowIndex].Cells[0].Value = p.NAME2;
+           } else {
+              dataGridViewP.Rows[iRowIndex].Cells[0].Value = "";
+           }
+           dataGridViewP.Rows[iRowIndex].Cells[1].Value = p.ID.ToString();
+           dataGridViewP.Rows[iRowIndex].Cells[2].Value = p.NAME1;
+           dataGridViewP.Rows[iRowIndex].Cells[3].Value = p.ID_TYPE.ToString();
+           // dataGridViewP.Rows[iRowIndex].HeaderCell.Value = iRowIndex.ToString();
+           for (int jj = 4; jj < dataGridViewP.Columns.Count; ++jj)
+           {
+              dataGridViewP.Rows[iRowIndex].Cells[jj].Value = CheckState.Unchecked ;
+              if ( dataGridViewP.Columns[jj].Name==p.ID_GINFO.ToString() )
+              {
+              	 dataGridViewP.Rows[iRowIndex].Cells[jj].Value = CheckState.Checked;
+                foreach (ARCSUM1 vq in sum)
+                {
+                   if (vq.ID_GINFO==p.ID_GINFO.ToString() ) vq.SUM+=1;
+                }
+              }
+            }
+
+         } else {
+            for (int jj = 4; jj < dataGridViewP.Columns.Count; ++jj)
+            {
+              if ( dataGridViewP.Columns[jj].Name==p.ID_GINFO.ToString() )
+              {
+              	 dataGridViewP.Rows[iRowIndex].Cells[jj].Value = CheckState.Checked;
+                foreach (ARCSUM1 vq in sum)
+                {
+                  if (vq.ID_GINFO==p.ID_GINFO.ToString() ) vq.SUM+=1;
+                }
+              }
+            }
+
+          }
+         prevFindNo = iFindNo ;
+       }
+
+       //SendMessage(dataGridViewP.Handle, WM_SETREDRAW, true, 0);
+       // dp.Clear();
+
+       foreach (ARCSUM1 vq in sum)
+       {
+         AddLogString(" Архив = " + vq.NAME1 + " (" + vq.ID_GINFO + ")  = " + vq.SUM  );
+       }
+
+       dataGridViewP.AllowUserToAddRows = false; //запрешаем пользователю самому добавлять строки
+
+       // Resize the master DataGridView columns to fit the newly loaded data.
+       dataGridViewP.AutoResizeColumns();
+
+       // вызывает зависание
+       //dataGridViewP.AutoSizeColumnsMode =
+       //    DataGridViewAutoSizeColumnsMode.AllCells;
+       //dataGridViewP.AutoGenerateColumns = true;
+
+       //dataGridViewP.Update();
+
+
+      } else {
+
+        dataSetA.Clear();
+
+        if (id_index=="0" || id_index=="") return;
+        // полный путь
+
+        // "select * from ARC_GINFO";
+        cmd0.CommandText= r.GetString("ARC_GINFO1");
+
+        // Указываем запрос для выполнения
+        adapter.SelectCommand = cmd0;
+        // Заполняем объект источника данных
+        //adapter.Fill(dataSetA,"ARC_GINFO");
+        adapter.Fill(dataSetA);
+
+        // Запрет удаления данных
+        dataSetA.Tables[0].DefaultView.AllowDelete = false;
+        // Запрет модификации данных
+        dataSetA.Tables[0].DefaultView.AllowEdit = false;
+        // Запрет добавления данных
+        dataSetA.Tables[0].DefaultView.AllowNew = false;
+
+        // (с этого момента она будет отображать его содержимое)
+        dataGridViewA.DataSource = dataSetA.Tables[0].DefaultView;;
+        //dataGridViewA.Columns["ID"].ReadOnly = true;
+        //dataGridViewA.Columns["ID_NODE"].ReadOnly = true;
+
+        // Resize the master DataGridView columns to fit the newly loaded data.
+        dataGridViewA.AutoResizeColumns();
+
+        // Configure the details DataGridView so that its columns automatically
+        // adjust their widths when the data changes.
+        dataGridViewA.AutoSizeColumnsMode =
+            DataGridViewAutoSizeColumnsMode.AllCells;
+
+        for (int ii = 0; ii < dataGridViewA.RowCount ; ii++) {
+          dataGridViewA.Rows[ii].Cells[0].Value = false ;
+          dataGridViewA.Rows[ii].HeaderCell.Style.BackColor = Color.White ;
+          dataGridViewA.Rows[ii].DefaultCellStyle.BackColor = Color.White ;
+        }
+
+        dataGridViewA.EnableHeadersVisualStyles = false;
+        dataGridViewA.AlternatingRowsDefaultCellStyle.BackColor =Color.LightGray;
+        dataGridViewA.Columns[0].HeaderCell.Style.BackColor = Color.Blue ;
+
+        //dataGridViewA.Columns[0].HeaderCell.ToolTipText = "Подсказка11";
+
+        dataGridViewA.Update();
+
+        string sl1=r.GetString("ARC_SUBSYST_PROFILE1");
+        sl1 = String.Format(sl1,id_parent) ;
+
+        cmd1.CommandText=sl1;
+        try
+        {
+          reader = cmd1.ExecuteReader();
+        }
+        catch (Exception ex1)
+        {
+          AddLogString(" выполнение алгоритма  - прервано.. = " + cmd1.CommandText + " " + ex1.Message);
+          return ;
+        }
+
+        if (reader.HasRows==false) {
+          reader.Close();
+          //dataGridViewA.Enabled=false;
+          return;
+        }
+        //dataGridViewA.Enabled=true;
+
+        string[] arr = new string[7];
+
+        while (reader.Read())
+        {
+          for ( int i = 0; i<7; i++)
+          {
+            arr[i]="";
+            if (reader.IsDBNull(i)) {
+              arr[i]="";
+            } else {
+              arr[i]= reader.GetDataTypeName(i);
+              string stmp = arr[i].ToUpper();
+              if (stmp=="DECIMAL") arr[i] = reader.GetValue(i).ToString();
+              if (stmp=="NUMBER") arr[i] = reader.GetValue(i).ToString(); //GetDecimal(i).ToString();
+              if (stmp=="VARCHAR2") arr[i] = reader.GetString(i);
+              if (stmp=="NVARCHAR") arr[i] = reader.GetString(i);
+               if (stmp=="WVARCHAR") arr[i] = reader.GetString(i);
+              if (stmp=="TEXT") arr[i] = reader.GetString(i);
+              if (stmp=="INTEGER") arr[i] = reader.GetValue(i).ToString();
+            }
+          }
+
+           for (int ii = 0; ii < dataGridViewA.RowCount ; ii++)
+            if (dataGridViewA.Rows[ii].Cells[1].Value.ToString()==arr[2]) {
+              dataGridViewA.Rows[ii].Cells[0].Value =true ;
+              dataGridViewA.Rows[ii].HeaderCell.Style.BackColor = Color.LightGreen ;
+              dataGridViewA.Rows[ii].DefaultCellStyle.BackColor = Color.LightGreen ;
+            }
+
+         } // while
+        reader.Close();
+
+      } // change tab
 
     }
 
@@ -801,7 +1130,6 @@ string sl1="SELECT  ARC_SUBSYST_PROFILE.ID,ARC_SUBSYST_PROFILE.ID_TBLLST,ARC_SUB
        Nd25.Text = "Описание таблиц хранения архивов универсального дорасчета (CALC_ARC)";
        rootNode5.Nodes.Add(Nd25);
 
-
        treeViewA.EndUpdate(); //добавить
 
     }
@@ -870,7 +1198,9 @@ string sl1="SELECT  ARC_SUBSYST_PROFILE.ID,ARC_SUBSYST_PROFILE.ID_TBLLST,ARC_SUB
     }
     void Button1Click(object sender, EventArgs e)
     {
-      if (dataGridView1.DataSource==null || dataGridView1.DataSource=="" ) return ;
+
+      var dataGridView = (DataGridView)sender;
+      //if (dataGridView.DataSource==null || dataGridView.DataSource=="" ) return ;
 
       //SaveFileDialog saveFileDialog1 = new SaveFileDialog();
       saveFileDialog1.Filter = "CSV|*.csv|Text|*.txt";
@@ -888,8 +1218,8 @@ string sl1="SELECT  ARC_SUBSYST_PROFILE.ID,ARC_SUBSYST_PROFILE.ID_TBLLST,ARC_SUB
       {
          case 2 :
             IDataObject objectSave = Clipboard.GetDataObject();
-            dataGridView1.ClipboardCopyMode = DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText;
-            dataGridView1.SelectAll();
+            dataGridView.ClipboardCopyMode = DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText;
+            dataGridView.SelectAll();
             Clipboard.SetDataObject(dataGridView1.GetClipboardContent());
             string pattern = @"^;(.*)$";
             string str = (Clipboard.GetText(TextDataFormat.Text)).Replace(" ", ";");
@@ -899,17 +1229,17 @@ string sl1="SELECT  ARC_SUBSYST_PROFILE.ID,ARC_SUBSYST_PROFILE.ID_TBLLST,ARC_SUB
             {
                 Clipboard.SetDataObject(objectSave);
             }
-            dataGridView1.ClearSelection();
+            dataGridView.ClearSelection();
          break;
          default :
                 string fileCSV = "";
-                for (int f = 0; f < dataGridView1.ColumnCount; f++)
-                    fileCSV += (dataGridView1.Columns[f].HeaderText + ";");
+                for (int f = 0; f < dataGridView.ColumnCount; f++)
+                    fileCSV += (dataGridView.Columns[f].HeaderText + ";");
                 fileCSV += "\t\n";
-                for (int i = 0; i < dataGridView1.RowCount -1; i++)
+                for (int i = 0; i < dataGridView.RowCount -1; i++)
                 {
-                    for (int j = 0; j < dataGridView1.ColumnCount; j++)
-                        fileCSV += ( dataGridView1[j, i].Value).ToString() + ";";
+                    for (int j = 0; j < dataGridView.ColumnCount; j++)
+                        fileCSV += ( dataGridView[j, i].Value).ToString() + ";";
                     fileCSV += "\t\n";
                 }
                 StreamWriter wr = new StreamWriter(filename, false, Encoding.UTF8); // Encoding.GetEncoding("windows-1251")
@@ -1476,6 +1806,11 @@ string sl1="SELECT  ARC_SUBSYST_PROFILE.ID,ARC_SUBSYST_PROFILE.ID_TBLLST,ARC_SUB
         //}
       }
 
+    }
+    void TabControlAPSelectedIndexChanged(object sender, EventArgs e)
+    {
+          //
+          TreeViewAAfterSelect(sender, null) ;
     }
 
 

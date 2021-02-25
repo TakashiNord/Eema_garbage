@@ -3,7 +3,7 @@
  * User: tanuki
  * Date: 07.01.2021
  * Time: 22:13
- * 
+ *
  * To change this template use Tools | Options | Coding | Edit Standard Headers.
  */
 using System;
@@ -48,5 +48,39 @@ public class ARCFTR
     public string DEFINE_ALIAS { get; set; }
     public int MASK { get; set; }
 }
+
+
+public class MEAS1
+{
+    public MEAS1(int _id, int _idn, int _idt, string _nm, string _al, int _ginfo )
+    {
+    	ID = _id ;
+    	ID_NODE = _idn ;
+    	ID_TYPE = _idt ;
+    	NAME1 = _nm;
+    	NAME2 = _al ;
+    	ID_GINFO = _ginfo ;
+    }
+    public int ID { get; set; }
+    public int ID_NODE { get; set; }
+    public int ID_TYPE { get; set; }
+    public string NAME1 { get; set; }
+    public string NAME2 { get; set; }
+    public int ID_GINFO { get; set; }
+}
+
+public class ARCSUM1
+{
+    public ARCSUM1(string _nm, string _ginfo , int _sum)
+    {
+    	NAME1 = _nm;
+    	ID_GINFO = _ginfo ;
+    	SUM = _sum ;
+    } 
+    public int SUM { get; set; }
+    public string NAME1 { get; set; }
+    public string ID_GINFO { get; set; }
+}
+
 
 }

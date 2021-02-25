@@ -60,9 +60,9 @@ namespace ArcConfig
 		private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
 		private System.Windows.Forms.Timer timer1;
 		private System.Windows.Forms.ToolStripButton toolStripButtonCommit;
-		private System.Windows.Forms.TabControl tabControl2;
-		private System.Windows.Forms.TabPage tabPage4;
-		private System.Windows.Forms.TabPage tabPage6;
+		private System.Windows.Forms.TabControl tabControlAP;
+		private System.Windows.Forms.TabPage tabPageA;
+		private System.Windows.Forms.TabPage tabPageParam;
 		private System.Windows.Forms.SplitContainer splitContainer1;
 		private System.Windows.Forms.PropertyGrid propertyGridA;
 		private System.Windows.Forms.SplitContainer splitContainer3;
@@ -73,6 +73,7 @@ namespace ArcConfig
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
 		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
 		private System.Windows.Forms.Button buttonSave;
+		private System.Windows.Forms.DataGridView dataGridViewP;
 		
 		/// <summary>
 		/// Disposes resources used by the form.
@@ -118,8 +119,8 @@ namespace ArcConfig
 			this.tabPage2 = new System.Windows.Forms.TabPage();
 			this.splitContainer2 = new System.Windows.Forms.SplitContainer();
 			this.treeViewA = new System.Windows.Forms.TreeView();
-			this.tabControl2 = new System.Windows.Forms.TabControl();
-			this.tabPage4 = new System.Windows.Forms.TabPage();
+			this.tabControlAP = new System.Windows.Forms.TabControl();
+			this.tabPageA = new System.Windows.Forms.TabPage();
 			this.splitContainer1 = new System.Windows.Forms.SplitContainer();
 			this.splitContainer3 = new System.Windows.Forms.SplitContainer();
 			this.dataGridViewA = new System.Windows.Forms.DataGridView();
@@ -131,7 +132,8 @@ namespace ArcConfig
 			this.richTextBox2 = new System.Windows.Forms.RichTextBox();
 			this.buttonSave = new System.Windows.Forms.Button();
 			this.propertyGridA = new System.Windows.Forms.PropertyGrid();
-			this.tabPage6 = new System.Windows.Forms.TabPage();
+			this.tabPageParam = new System.Windows.Forms.TabPage();
+			this.dataGridViewP = new System.Windows.Forms.DataGridView();
 			this.tabPage3 = new System.Windows.Forms.TabPage();
 			this.splitContainer4 = new System.Windows.Forms.SplitContainer();
 			this.treeViewS = new System.Windows.Forms.TreeView();
@@ -168,8 +170,8 @@ namespace ArcConfig
 			this.splitContainer2.Panel1.SuspendLayout();
 			this.splitContainer2.Panel2.SuspendLayout();
 			this.splitContainer2.SuspendLayout();
-			this.tabControl2.SuspendLayout();
-			this.tabPage4.SuspendLayout();
+			this.tabControlAP.SuspendLayout();
+			this.tabPageA.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
 			this.splitContainer1.Panel1.SuspendLayout();
 			this.splitContainer1.Panel2.SuspendLayout();
@@ -180,6 +182,8 @@ namespace ArcConfig
 			this.splitContainer3.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridViewA)).BeginInit();
 			this.contextMenuStripA.SuspendLayout();
+			this.tabPageParam.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.dataGridViewP)).BeginInit();
 			this.tabPage3.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).BeginInit();
 			this.splitContainer4.Panel1.SuspendLayout();
@@ -401,7 +405,7 @@ namespace ArcConfig
 			// 
 			// splitContainer2.Panel2
 			// 
-			this.splitContainer2.Panel2.Controls.Add(this.tabControl2);
+			this.splitContainer2.Panel2.Controls.Add(this.tabControlAP);
 			this.splitContainer2.Size = new System.Drawing.Size(1176, 544);
 			this.splitContainer2.SplitterDistance = 209;
 			this.splitContainer2.TabIndex = 0;
@@ -416,28 +420,30 @@ namespace ArcConfig
 			this.treeViewA.TabIndex = 0;
 			this.treeViewA.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.TreeViewAAfterSelect);
 			// 
-			// tabControl2
+			// tabControlAP
 			// 
-			this.tabControl2.Controls.Add(this.tabPage4);
-			this.tabControl2.Controls.Add(this.tabPage6);
-			this.tabControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.tabControl2.ItemSize = new System.Drawing.Size(102, 18);
-			this.tabControl2.Location = new System.Drawing.Point(0, 0);
-			this.tabControl2.Name = "tabControl2";
-			this.tabControl2.SelectedIndex = 0;
-			this.tabControl2.Size = new System.Drawing.Size(963, 544);
-			this.tabControl2.TabIndex = 1;
+			this.tabControlAP.Controls.Add(this.tabPageA);
+			this.tabControlAP.Controls.Add(this.tabPageParam);
+			this.tabControlAP.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.tabControlAP.ItemSize = new System.Drawing.Size(102, 18);
+			this.tabControlAP.Location = new System.Drawing.Point(0, 0);
+			this.tabControlAP.Name = "tabControlAP";
+			this.tabControlAP.SelectedIndex = 0;
+			this.tabControlAP.Size = new System.Drawing.Size(963, 544);
+			this.tabControlAP.TabIndex = 1;
+			this.tabControlAP.SelectedIndexChanged += new System.EventHandler(this.TabControlAPSelectedIndexChanged);
 			// 
-			// tabPage4
+			// tabPageA
 			// 
-			this.tabPage4.Controls.Add(this.splitContainer1);
-			this.tabPage4.Location = new System.Drawing.Point(4, 22);
-			this.tabPage4.Name = "tabPage4";
-			this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPage4.Size = new System.Drawing.Size(955, 518);
-			this.tabPage4.TabIndex = 0;
-			this.tabPage4.Text = "Профили архивов";
-			this.tabPage4.UseVisualStyleBackColor = true;
+			this.tabPageA.Controls.Add(this.splitContainer1);
+			this.tabPageA.Location = new System.Drawing.Point(4, 22);
+			this.tabPageA.Name = "tabPageA";
+			this.tabPageA.Padding = new System.Windows.Forms.Padding(3);
+			this.tabPageA.Size = new System.Drawing.Size(955, 518);
+			this.tabPageA.TabIndex = 0;
+			this.tabPageA.Tag = "0";
+			this.tabPageA.Text = "Профили архивов";
+			this.tabPageA.UseVisualStyleBackColor = true;
 			// 
 			// splitContainer1
 			// 
@@ -555,15 +561,26 @@ namespace ArcConfig
 			this.propertyGridA.Size = new System.Drawing.Size(237, 297);
 			this.propertyGridA.TabIndex = 0;
 			// 
-			// tabPage6
+			// tabPageParam
 			// 
-			this.tabPage6.Location = new System.Drawing.Point(4, 22);
-			this.tabPage6.Name = "tabPage6";
-			this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPage6.Size = new System.Drawing.Size(955, 518);
-			this.tabPage6.TabIndex = 1;
-			this.tabPage6.Text = "Параметры";
-			this.tabPage6.UseVisualStyleBackColor = true;
+			this.tabPageParam.Controls.Add(this.dataGridViewP);
+			this.tabPageParam.Location = new System.Drawing.Point(4, 22);
+			this.tabPageParam.Name = "tabPageParam";
+			this.tabPageParam.Padding = new System.Windows.Forms.Padding(3);
+			this.tabPageParam.Size = new System.Drawing.Size(955, 518);
+			this.tabPageParam.TabIndex = 1;
+			this.tabPageParam.Tag = "1";
+			this.tabPageParam.Text = "Параметры";
+			this.tabPageParam.UseVisualStyleBackColor = true;
+			// 
+			// dataGridViewP
+			// 
+			this.dataGridViewP.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dataGridViewP.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.dataGridViewP.Location = new System.Drawing.Point(3, 3);
+			this.dataGridViewP.Name = "dataGridViewP";
+			this.dataGridViewP.Size = new System.Drawing.Size(949, 512);
+			this.dataGridViewP.TabIndex = 0;
 			// 
 			// tabPage3
 			// 
@@ -804,8 +821,8 @@ namespace ArcConfig
 			this.splitContainer2.Panel2.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
 			this.splitContainer2.ResumeLayout(false);
-			this.tabControl2.ResumeLayout(false);
-			this.tabPage4.ResumeLayout(false);
+			this.tabControlAP.ResumeLayout(false);
+			this.tabPageA.ResumeLayout(false);
 			this.splitContainer1.Panel1.ResumeLayout(false);
 			this.splitContainer1.Panel2.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
@@ -816,6 +833,8 @@ namespace ArcConfig
 			this.splitContainer3.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.dataGridViewA)).EndInit();
 			this.contextMenuStripA.ResumeLayout(false);
+			this.tabPageParam.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.dataGridViewP)).EndInit();
 			this.tabPage3.ResumeLayout(false);
 			this.splitContainer4.Panel1.ResumeLayout(false);
 			this.splitContainer4.Panel2.ResumeLayout(false);

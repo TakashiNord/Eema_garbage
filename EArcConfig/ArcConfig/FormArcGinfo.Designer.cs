@@ -690,6 +690,7 @@ namespace ArcConfig
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "FormArcGinfo";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Опции архива..";
 			this.Load += new System.EventHandler(this.FormArcGinfoLoad);
 			this.groupBox1.ResumeLayout(false);
