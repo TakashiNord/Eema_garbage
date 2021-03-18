@@ -74,6 +74,8 @@ namespace ArcConfig
 		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
 		private System.Windows.Forms.Button buttonSave;
 		private System.Windows.Forms.DataGridView dataGridViewP;
+		private System.Windows.Forms.ContextMenuStrip contextMenuStripP;
+		private System.Windows.Forms.ToolStripMenuItem graphicsToolStripMenuItem;
 		
 		/// <summary>
 		/// Disposes resources used by the form.
@@ -134,6 +136,8 @@ namespace ArcConfig
 			this.propertyGridA = new System.Windows.Forms.PropertyGrid();
 			this.tabPageParam = new System.Windows.Forms.TabPage();
 			this.dataGridViewP = new System.Windows.Forms.DataGridView();
+			this.contextMenuStripP = new System.Windows.Forms.ContextMenuStrip(this.components);
+			this.graphicsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.tabPage3 = new System.Windows.Forms.TabPage();
 			this.splitContainer4 = new System.Windows.Forms.SplitContainer();
 			this.treeViewS = new System.Windows.Forms.TreeView();
@@ -184,6 +188,7 @@ namespace ArcConfig
 			this.contextMenuStripA.SuspendLayout();
 			this.tabPageParam.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridViewP)).BeginInit();
+			this.contextMenuStripP.SuspendLayout();
 			this.tabPage3.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).BeginInit();
 			this.splitContainer4.Panel1.SuspendLayout();
@@ -497,6 +502,7 @@ namespace ArcConfig
 			this.dataGridViewA.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewACellClick);
 			this.dataGridViewA.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewACellContentClick);
 			this.dataGridViewA.SelectionChanged += new System.EventHandler(this.DataGridViewASelectionChanged);
+			this.dataGridViewA.Sorted += new System.EventHandler(this.DataGridViewASorted);
 			// 
 			// contextMenuStripA
 			// 
@@ -575,12 +581,33 @@ namespace ArcConfig
 			// 
 			// dataGridViewP
 			// 
+			this.dataGridViewP.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
 			this.dataGridViewP.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dataGridViewP.ContextMenuStrip = this.contextMenuStripP;
 			this.dataGridViewP.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.dataGridViewP.Location = new System.Drawing.Point(3, 3);
 			this.dataGridViewP.Name = "dataGridViewP";
 			this.dataGridViewP.Size = new System.Drawing.Size(949, 512);
 			this.dataGridViewP.TabIndex = 0;
+			this.dataGridViewP.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewPCellContentClick);
+			this.dataGridViewP.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DataGridViewPCellMouseDown);
+			this.dataGridViewP.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DataGridViewPCellMouseUp);
+			this.dataGridViewP.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewPCellValueChanged);
+			this.dataGridViewP.CurrentCellDirtyStateChanged += new System.EventHandler(this.DataGridViewPCurrentCellDirtyStateChanged);
+			// 
+			// contextMenuStripP
+			// 
+			this.contextMenuStripP.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+			this.graphicsToolStripMenuItem});
+			this.contextMenuStripP.Name = "contextMenuStripP";
+			this.contextMenuStripP.Size = new System.Drawing.Size(121, 26);
+			// 
+			// graphicsToolStripMenuItem
+			// 
+			this.graphicsToolStripMenuItem.Name = "graphicsToolStripMenuItem";
+			this.graphicsToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
+			this.graphicsToolStripMenuItem.Text = "Graphics";
+			this.graphicsToolStripMenuItem.Click += new System.EventHandler(this.GraphicsToolStripMenuItemClick);
 			// 
 			// tabPage3
 			// 
@@ -835,6 +862,7 @@ namespace ArcConfig
 			this.contextMenuStripA.ResumeLayout(false);
 			this.tabPageParam.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.dataGridViewP)).EndInit();
+			this.contextMenuStripP.ResumeLayout(false);
 			this.tabPage3.ResumeLayout(false);
 			this.splitContainer4.Panel1.ResumeLayout(false);
 			this.splitContainer4.Panel2.ResumeLayout(false);

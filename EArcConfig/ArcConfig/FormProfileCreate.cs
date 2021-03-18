@@ -14,6 +14,9 @@ using System.ComponentModel;
 using System.Data.Odbc;
 using System.Collections.Generic ;
 
+using System.Reflection;
+using System.Resources;
+
 namespace ArcConfig
 {
   /// <summary>
@@ -35,7 +38,29 @@ namespace ArcConfig
 
     }
 
-  public FormProfileCreate(OdbcConnection conn, String id_gt, String id_tbl)
+
+   public string GetTypeValue(ref OdbcDataReader reader, int i)
+   {
+      string ret="";
+      if (reader.IsDBNull(i)) {
+          ;
+      } else {
+          string stype= reader.GetDataTypeName(i).ToUpper();
+          //AddLogString("reader.GetDataTypeName = " + stype);
+          if (stype=="DECIMAL") ret = reader.GetValue(i).ToString();
+          if (stype=="NUMBER") ret = reader.GetValue(i).ToString(); //GetDecimal(i).ToString();
+          if (stype=="VARCHAR2") ret = reader.GetString(i);
+          if (stype=="NVARCHAR") ret = reader.GetString(i);
+          if (stype=="WVARCHAR") ret = reader.GetString(i);
+          if (stype=="TEXT") ret = reader.GetString(i);
+          if (stype=="INTEGER") ret = reader.GetValue(i).ToString();
+          if (stype=="CHAR") ret = reader.GetString(i);
+          if (stype=="NCHAR") ret = reader.GetString(i);
+      }
+      return(ret);
+    }
+
+    public FormProfileCreate(OdbcConnection conn, String id_gt, String id_tbl)
     {
       //
       // The InitializeComponent() call is required for Windows Forms designer support.
@@ -69,6 +94,8 @@ namespace ArcConfig
 
       buttonOk.Enabled=false ;
 
+      ResourceManager r = new ResourceManager("ArcConfig.ArcResource", Assembly.GetExecutingAssembly());
+
       // Объект для выполнения запросов к базе данных
       OdbcCommand cmd0 = new OdbcCommand();
       OdbcDataReader reader = null ;
@@ -76,7 +103,8 @@ namespace ArcConfig
       cmd0.Connection=this._conn;
 
       string id_dest = "" ;
-      string sl1= "SELECT ID+1 FROM ARC_SUBSYST_PROFILE WHERE ID+1 NOT IN (SELECT ID FROM ARC_SUBSYST_PROFILE )" ; //  AND id > 3
+      string sl1 = r.GetString("ARC_SUBSYST_PROFILE_ID");
+
       cmd0.CommandText=sl1;
       try
       {
@@ -85,39 +113,23 @@ namespace ArcConfig
       catch (Exception ex1)
       {
         MessageBox.Show(ex1.ToString() );
-      	return ;
+        return ;
       }
 
       if (reader.HasRows) {
         while (reader.Read())
         {
-          int i = 0 ;
-          string sn="";
-          if (reader.IsDBNull(i)) {
-              ;
-          } else {
-              sn= reader.GetDataTypeName(i);
-              string stmp = sn.ToUpper();
-              if (stmp=="DECIMAL") sn = reader.GetValue(i).ToString();
-              if (stmp=="NUMBER") sn = reader.GetValue(i).ToString(); //GetDecimal(i).ToString();
-              if (stmp=="VARCHAR2") sn = reader.GetString(i);
-              if (stmp=="NVARCHAR") sn = reader.GetString(i);
-              if (stmp=="TEXT") sn = reader.GetString(i);
-              if (stmp=="INTEGER") sn = reader.GetValue(i).ToString();
-          }
-          id_dest = sn ;
+          id_dest = GetTypeValue(ref reader, 0);
           break ;
         } // while
       }
       reader.Close();
 
       string st_name="" ;
-      sl1= "SELECT upper(table_name) , lnk.ID_LSTTBL " +
-       " FROM sys_tbllst lst, sys_tbllnk lnk, sys_otyp t " +
-       " WHERE lnk.id_lsttbl = " + _id_tbl +
-       "  AND lnk.id_dsttbl = lst.ID " +
-       "  AND lst.id_type = t.ID " +
-       "  AND t.define_alias LIKE 'ARH'";
+
+      sl1 = r.GetString("ARH_SYSTBLLST1");
+      sl1 = String.Format(sl1,_id_tbl);
+
       cmd0.CommandText=sl1;
       try
       {
@@ -126,28 +138,13 @@ namespace ArcConfig
       catch (Exception ex1)
       {
         MessageBox.Show(ex1.ToString() );
-      	return ;
+        return ;
       }
 
       if (reader.HasRows) {
         while (reader.Read())
         {
-          int i = 0 ;
-          string sn="";
-          if (reader.IsDBNull(i)) {
-              ;
-          } else {
-              sn= reader.GetDataTypeName(i);
-              string stmp = sn.ToUpper();
-              if (stmp=="DECIMAL") sn = reader.GetValue(i).ToString();
-              if (stmp=="NUMBER") sn = reader.GetValue(i).ToString(); //GetDecimal(i).ToString();
-              if (stmp=="VARCHAR2") sn = reader.GetString(i);
-              if (stmp=="NVARCHAR") sn = reader.GetString(i);
-              if (stmp=="WVARCHAR") sn = reader.GetString(i);
-              if (stmp=="TEXT") sn = reader.GetString(i);
-              if (stmp=="INTEGER") sn = reader.GetValue(i).ToString();
-          }
-          st_name = sn ;
+          st_name = GetTypeValue(ref reader, 0);
           break ;
         } // while
       }
@@ -179,28 +176,13 @@ namespace ArcConfig
       catch (Exception ex1)
       {
         MessageBox.Show(ex1.ToString() );
-      	return ;
+        return ;
       }
 
       if (reader.HasRows) {
         while (reader.Read())
         {
-          int i = 0;
-          string sn="";
-          if (reader.IsDBNull(i)) {
-              ;
-          } else {
-              sn= reader.GetDataTypeName(i);
-              string stmp = sn.ToUpper();
-              if (stmp=="DECIMAL") sn = reader.GetValue(i).ToString();
-              if (stmp=="NUMBER") sn = reader.GetValue(i).ToString(); //GetDecimal(i).ToString();
-              if (stmp=="VARCHAR2") sn = reader.GetString(i);
-              if (stmp=="NVARCHAR") sn = reader.GetString(i);
-              if (stmp=="WVARCHAR") sn = reader.GetString(i);
-              if (stmp=="TEXT") sn = reader.GetString(i);
-              if (stmp=="INTEGER") sn = reader.GetValue(i).ToString();
-          }
-          TABLE_NAME = sn.ToUpper() ;
+          TABLE_NAME = GetTypeValue(ref reader, 0).ToUpper() ;
           break ;
 
         } // while
@@ -264,7 +246,7 @@ namespace ArcConfig
       catch (Exception ex1)
       {
         MessageBox.Show(ex1.ToString() );
-      	return ;
+        return ;
       }
 
       if (reader.HasRows) {
@@ -274,20 +256,7 @@ namespace ArcConfig
           string id_sn="";
           for ( int i = 0; i<2; i++)
           {
-            string sn="";
-            if (reader.IsDBNull(i)) {
-                ;
-            } else {
-                sn= reader.GetDataTypeName(i);
-                string stmp = sn.ToUpper();
-                if (stmp=="DECIMAL") sn = reader.GetValue(i).ToString();
-                if (stmp=="NUMBER") sn = reader.GetValue(i).ToString(); //GetDecimal(i).ToString();
-                if (stmp=="VARCHAR2") sn = reader.GetString(i);
-                if (stmp=="NVARCHAR") sn = reader.GetString(i);
-                if (stmp=="WVARCHAR") sn = reader.GetString(i);
-                if (stmp=="TEXT") sn = reader.GetString(i);
-                if (stmp=="INTEGER") sn = reader.GetValue(i).ToString();
-            }
+            string sn=GetTypeValue(ref reader, i);
             if (i==0) { Dpload.Add(sn); }
             id_sn = id_sn + " " + sn ;
           }
@@ -309,37 +278,8 @@ namespace ArcConfig
 
       if (Serv_name.Equals("")==false ) {
 
-       sl1= " SELECT "+
-"  ad_pinfo.portnumber,ad_pinfo.id_proto,ad_sinfo.id_lsttbl,ad_list.id_type,"+
-"  sys_otyp.alias,ad_service.NAME,ad_service.define_alias "+
-" FROM ad_dir,ad_dir dir1,ad_list,ad_pinfo,ad_ncard,ad_sinfo,sys_otyp,ad_service,ad_hosts "+
-" WHERE ad_sinfo.id_server_node = ad_dir.ID "+
-" AND ad_list.id_node = ad_dir.ID "+
-" AND ad_pinfo.id_param = ad_list.ID "+
-" AND ad_pinfo.id_intrface_node = ad_ncard.id_node "+
-" AND ad_list.id_type = sys_otyp.ID "+
-" AND ad_pinfo.portnumber = ad_service.ID "+
-" AND ad_pinfo.id_intrface_node = dir1.ID "+
-" AND dir1.id_parent = ad_hosts.id_host_node "+
-" AND ad_pinfo.id_proto > 2 AND ad_pinfo.id_proto <> 9 "+
-" AND ad_dir.ID IN (SELECT ad_dir.ID FROM ad_dir WHERE ad_dir.id_type > 1000) "+
-" AND ad_sinfo.ID_LSTTBL=" + _id_tbl +
-"  UNION "+
-" SELECT "+
-"   ad_pinfo.portnumber,ad_pinfo.id_proto,ad_sinfo.id_lsttbl,ad_list.id_type,"+
-"   sys_otyp.alias,ad_service.NAME,ad_service.define_alias "+
-"  FROM ad_dir,ad_dir dir1,ad_list,ad_pinfo,ad_ipinfo,ad_sinfo,sys_otyp,ad_service,ad_hosts "+
-"  WHERE ad_sinfo.id_server_node = ad_dir.ID "+
-" AND ad_list.id_node = ad_dir.ID "+
-" AND ad_pinfo.id_param = ad_list.ID "+
-" AND ad_pinfo.id_intrface_node = ad_ipinfo.id_node "+
-" AND ad_list.id_type = sys_otyp.ID "+
-" AND ad_pinfo.portnumber = ad_service.ID "+
-" AND ad_pinfo.id_intrface_node = dir1.ID "+
-" AND dir1.id_parent = ad_hosts.id_host_node "+
-" AND ((ad_pinfo.id_proto <= 2) OR (ad_pinfo.id_proto = 9)) "+
-" AND ad_dir.ID IN (SELECT ad_dir.ID FROM ad_dir WHERE ad_dir.id_type > 1000) "+
-" AND ad_sinfo.ID_LSTTBL="+ _id_tbl ;
+      sl1 = r.GetString("AD_SERVICE1");
+      sl1 = String.Format(sl1,_id_tbl);
 
       cmd0.CommandText=sl1;
       try
@@ -348,8 +288,8 @@ namespace ArcConfig
       }
       catch (Exception ex1)
       {
-      	MessageBox.Show(ex1.ToString() );
-      	return ;
+        MessageBox.Show(ex1.ToString() );
+        return ;
       }
 
       if (reader.HasRows) {
@@ -358,26 +298,12 @@ namespace ArcConfig
           string[] arr = new string[7];
           for ( int i = 0; i<7; i++)
           {
-            string sn="";
-            if (reader.IsDBNull(i)) {
-              ;
-            } else {
-              sn= reader.GetDataTypeName(i);
-              string stmp = sn.ToUpper();
-              if (stmp=="DECIMAL") sn = reader.GetValue(i).ToString();
-              if (stmp=="NUMBER") sn = reader.GetValue(i).ToString(); //GetDecimal(i).ToString();
-              if (stmp=="VARCHAR2") sn = reader.GetString(i);
-              if (stmp=="NVARCHAR") sn = reader.GetString(i);
-              if (stmp=="WVARCHAR") sn = reader.GetString(i);
-              if (stmp=="TEXT") sn = reader.GetString(i);
-              if (stmp=="INTEGER") sn = reader.GetValue(i).ToString();
-           }
-           arr[i]=sn;
+             arr[i]=GetTypeValue(ref reader, i);
           }
 
           //arr[6] -- define_alias
           //
-          //MessageBox.Show(arr[6] + " " + Serv_name );
+          //MessageBox.Show(arr[6] + "  \n   " + Serv_name );
 
           if (arr[6].IndexOf(Serv_name)>=0) {
             //arr[1] -- id_proto=
@@ -396,6 +322,11 @@ namespace ArcConfig
     }
 
 
+    if (Tech.Count<=0 && Serv_name.Equals("")==false ) {
+        FL_rdp = 1 ; // if no oictcp service + rdaadcp
+    }
+
+
     if (FL_rdp == 1) {
 
       sl1= "SELECT id, name FROM ad_service WHERE define_alias LIKE 'ADV_SRVC_RDAADCP_ACCESPORT%' ORDER BY id ASC" ;
@@ -407,7 +338,7 @@ namespace ArcConfig
       catch (Exception ex1)
       {
         MessageBox.Show(ex1.ToString() );
-      	return ;
+        return ;
       }
 
       if (reader.HasRows) {
@@ -417,20 +348,7 @@ namespace ArcConfig
           string id_sn="";
           for ( int i = 0; i<2; i++)
           {
-            string sn="";
-            if (reader.IsDBNull(i)) {
-                ;
-            } else {
-                sn= reader.GetDataTypeName(i);
-                string stmp = sn.ToUpper();
-                if (stmp=="DECIMAL") sn = reader.GetValue(i).ToString();
-                if (stmp=="NUMBER") sn = reader.GetValue(i).ToString(); //GetDecimal(i).ToString();
-                if (stmp=="VARCHAR2") sn = reader.GetString(i);
-                if (stmp=="NVARCHAR") sn = reader.GetString(i);
-                if (stmp=="WVARCHAR") sn = reader.GetString(i);
-                if (stmp=="TEXT") sn = reader.GetString(i);
-                if (stmp=="INTEGER") sn = reader.GetValue(i).ToString();
-            }
+            string sn=GetTypeValue(ref reader, i);
             if (i==0) { Tech.Add(sn); }
             id_sn = id_sn + " " + sn ;
           }
@@ -443,6 +361,7 @@ namespace ArcConfig
     }
 
      buttonOk.Enabled=true ;
+     buttonCancel.Focus();
 
     }
     void ButtonCancelClick(object sender, EventArgs e)
@@ -491,7 +410,8 @@ namespace ArcConfig
       catch (Exception ex1)
       {
         MessageBox.Show(ex1.ToString() );
-      	return ;
+        reader.Close();
+        return ;
       }
       reader.Close();
 
@@ -500,9 +420,9 @@ namespace ArcConfig
       int nID_PRIORITY = 1 ;
       for (int i = 0; i < checkedListBoxDpload.Items.Count; i++)
       {
-      	if (checkedListBoxDpload.GetItemChecked(i)) {
-      		string rec_id=Dpload[i] ;
-      		sl1= ""+
+        if (checkedListBoxDpload.GetItemChecked(i)) {
+          string rec_id=Dpload[i] ;
+          sl1= ""+
            "Insert into ARC_SERVICES_TUNE(ID_SPROFILE, ID_SERVICE, PRIORITY) " +
            " Values ("+id_dest+","+rec_id+","+nID_PRIORITY+")";
           cmd0.CommandText=sl1;
@@ -513,21 +433,21 @@ namespace ArcConfig
           catch (Exception ex1)
           {
             MessageBox.Show(ex1.ToString() );
-          	return ;
+            return ;
           }
           reader.Close();
-          		
+
           nID_PRIORITY++;
-      	}
-      } 
-      
+        }
+      }
+
       //Вставка в ARC_SERVICES_ACCESS настроек для чтения нового профиля архивов:');
       string Period = textBoxPeriod.Text.Trim() ;
       for (int i = 0; i < checkedListBoxTech.Items.Count; i++)
       {
-      	if (checkedListBoxTech.GetItemChecked(i)) {
-      		string rec_id=Tech[i] ;
-      		sl1= ""+
+        if (checkedListBoxTech.GetItemChecked(i)) {
+          string rec_id=Tech[i] ;
+          sl1= ""+
            "Insert into ARC_SERVICES_ACCESS(ID_SPROFILE, ID_SERVICE, RETRO_DEPTH) " +
            " Values ("+id_dest+","+rec_id+","+Period+")";
           cmd0.CommandText=sl1;
@@ -538,19 +458,15 @@ namespace ArcConfig
           catch (Exception ex1)
           {
             MessageBox.Show(ex1.ToString() );
-          	return ;
+            reader.Close();
+            return ;
           }
-          reader.Close();	
-      	}
-      } 
+          reader.Close();
+        }
+      }
 
       Close();
-         
     }
-
-
-
-
 
   }
 }

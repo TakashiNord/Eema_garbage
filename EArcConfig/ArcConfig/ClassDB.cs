@@ -10,14 +10,14 @@ using System;
 
 namespace ArcConfig
 {
-	/// <summary>
-	/// Description of .
-	/// </summary>
+  /// <summary>
+  /// Description of .
+  /// </summary>
 public class ArcGinfo
 {
     public ArcGinfo( )
     {
-    	;
+      ;
     }
     public int ID { get;  set; }
     public int ID_GTOPT { get;  set; }
@@ -41,7 +41,7 @@ public class ARCFTR
 {
     public ARCFTR( )
     {
-    	;
+      ;
     }
     public int ID { get; set; }
     public string NAME { get; set; }
@@ -54,12 +54,12 @@ public class MEAS1
 {
     public MEAS1(int _id, int _idn, int _idt, string _nm, string _al, int _ginfo )
     {
-    	ID = _id ;
-    	ID_NODE = _idn ;
-    	ID_TYPE = _idt ;
-    	NAME1 = _nm;
-    	NAME2 = _al ;
-    	ID_GINFO = _ginfo ;
+      ID = _id ;
+      ID_NODE = _idn ;
+      ID_TYPE = _idt ;
+      NAME1 = _nm;
+      NAME2 = _al ;
+      ID_GINFO = _ginfo ;
     }
     public int ID { get; set; }
     public int ID_NODE { get; set; }
@@ -73,13 +73,27 @@ public class ARCSUM1
 {
     public ARCSUM1(string _nm, string _ginfo , int _sum)
     {
-    	NAME1 = _nm;
-    	ID_GINFO = _ginfo ;
-    	SUM = _sum ;
-    } 
+      NAME1 = _nm;
+      ID_GINFO = _ginfo ;
+      SUM = _sum ;
+    }
     public int SUM { get; set; }
     public string NAME1 { get; set; }
     public string ID_GINFO { get; set; }
+}
+
+
+public class EXT
+{
+    public EXT(int _cnt, int _min , int _max)
+    {
+      MAX = _max;
+      MIN = _min ;
+      CNT = _cnt ;
+    }
+    public int CNT { get; set; }
+    public int MIN { get; set; }
+    public int MAX { get; set; }
 }
 
 

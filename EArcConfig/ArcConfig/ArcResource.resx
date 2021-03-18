@@ -1,17 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
-  <!-- 
-    Microsoft ResX Schema 
-    
+  <!--
+    Microsoft ResX Schema
+
     Version 2.0
-    
-    The primary goals of this format is to allow a simple XML format 
-    that is mostly human readable. The generation and parsing of the 
-    various data types are done through the TypeConverter classes 
+
+    The primary goals of this format is to allow a simple XML format
+    that is mostly human readable. The generation and parsing of the
+    various data types are done through the TypeConverter classes
     associated with the data types.
-    
+
     Example:
-    
+
     ... ado.net/XML headers & schema ...
     <resheader name="resmimetype">text/microsoft-resx</resheader>
     <resheader name="version">2.0</resheader>
@@ -26,36 +26,36 @@
         <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
         <comment>This is a comment</comment>
     </data>
-                
-    There are any number of "resheader" rows that contain simple 
+
+    There are any number of "resheader" rows that contain simple
     name/value pairs.
-    
-    Each data row contains a name, and value. The row also contains a 
-    type or mimetype. Type corresponds to a .NET class that support 
-    text/value conversion through the TypeConverter architecture. 
-    Classes that don't support this are serialized and stored with the 
+
+    Each data row contains a name, and value. The row also contains a
+    type or mimetype. Type corresponds to a .NET class that support
+    text/value conversion through the TypeConverter architecture.
+    Classes that don't support this are serialized and stored with the
     mimetype set.
-    
-    The mimetype is used for serialized objects, and tells the 
-    ResXResourceReader how to depersist the object. This is currently not 
+
+    The mimetype is used for serialized objects, and tells the
+    ResXResourceReader how to depersist the object. This is currently not
     extensible. For a given mimetype the value must be set accordingly:
-    
-    Note - application/x-microsoft.net.object.binary.base64 is the format 
-    that the ResXResourceWriter will generate, however the reader can 
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format
+    that the ResXResourceWriter will generate, however the reader can
     read any of the formats listed below.
-    
+
     mimetype: application/x-microsoft.net.object.binary.base64
-    value   : The object must be serialized with 
+    value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
             : and then encoded with base64 encoding.
-    
+
     mimetype: application/x-microsoft.net.object.soap.base64
-    value   : The object must be serialized with 
+    value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
             : and then encoded with base64 encoding.
 
     mimetype: application/x-microsoft.net.object.bytearray.base64
-    value   : The object must be serialized into a byte array 
+    value   : The object must be serialized into a byte array
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
@@ -131,14 +131,14 @@ WHERE  is_exdata = 1
   </data>
   <data name="ELREG_LIST_V" xml:space="preserve">
     <value>SELECT ID, id_obj, id_meas_type, NAME, alias , 0 as  ID_GINFO
-FROM meas_list 
-WHERE id_meas_type IN (                       
+FROM meas_list
+WHERE id_meas_type IN (
  SELECT m.ID FROM sys_meas_types m, sys_ptyp t WHERE m.id_type = t.ID AND t.id_node = 1
 ) AND is_exdata = 0
 UNION
 SELECT ID, id_obj, id_meas_type, NAME, alias , MEAS_ARC.ID_GINFO  as  ID_GINFO
 FROM meas_list , MEAS_ARC
-WHERE id_meas_type IN (                       
+WHERE id_meas_type IN (
   SELECT m.ID FROM sys_meas_types m, sys_ptyp t WHERE m.id_type = t.ID AND t.id_node = 1
 ) AND is_exdata = 0
  AND MEAS_LIST.ID=MEAS_ARC.ID_PARAM
@@ -149,7 +149,7 @@ WHERE id_meas_type IN (
      FROM meas_list
     WHERE id_meas_type IN (
    SELECT m.ID FROM sys_meas_types m, sys_ptyp t
-    WHERE m.id_type = t.ID 
+    WHERE m.id_type = t.ID
       AND t.id_node &lt;&gt; 1
       AND m.define_alias NOT LIKE ('MEAS_SWITCH_STATE%')
       AND m.define_alias NOT LIKE ('MEAS_SIGNAL_STATE%')
@@ -161,7 +161,7 @@ WHERE id_meas_type IN (
      FROM meas_list, MEAS_ARC
     WHERE id_meas_type IN (
    SELECT m.ID FROM sys_meas_types m, sys_ptyp t
-    WHERE m.id_type = t.ID 
+    WHERE m.id_type = t.ID
       AND t.id_node &lt;&gt; 1
       AND m.define_alias NOT LIKE ('MEAS_SWITCH_STATE%')
       AND m.define_alias NOT LIKE ('MEAS_SIGNAL_STATE%')
@@ -189,21 +189,17 @@ WHERE id_meas_type IN (
   ORDER BY ID ASC</value>
   </data>
   <data name="PSWT_LIST_V" xml:space="preserve">
-    <value>   SELECT ID, id_obj, id_meas_type, NAME, alias, '0' as ID_GINFO
-     FROM meas_list
-    WHERE id_meas_type IN (SELECT ID
-                             FROM sys_meas_types
-                            WHERE define_alias LIKE 'MEAS_SWITCH_STATE%')
-      AND is_exdata = 0
-  UNION
-   SELECT ID, id_obj, id_meas_type, NAME, alias, MEAS_ARC.ID_GINFO as ID_GINFO
-     FROM meas_list, MEAS_ARC
-    WHERE id_meas_type IN (SELECT ID
-                             FROM sys_meas_types
-                            WHERE define_alias LIKE 'MEAS_SWITCH_STATE%')
-      AND is_exdata = 0
-  AND MEAS_LIST.ID=MEAS_ARC.ID_PARAM
-  ORDER BY ID ASC </value>
+    <value>SELECT ID, id_obj, id_meas_type, NAME, alias, 0 as ID_GINFO
+FROM meas_list
+WHERE id_meas_type IN (SELECT ID FROM sys_meas_types WHERE define_alias LIKE 'MEAS_SWITCH_STATE%')
+AND is_exdata = 0
+UNION
+SELECT ID, id_obj, id_meas_type, NAME, alias, MEAS_ARC.ID_GINFO as ID_GINFO
+FROM meas_list, MEAS_ARC
+WHERE id_meas_type IN (SELECT ID FROM sys_meas_types WHERE define_alias LIKE 'MEAS_SWITCH_STATE%')
+ AND is_exdata = 0
+ AND MEAS_LIST.ID=MEAS_ARC.ID_PARAM
+ORDER BY ID ASC </value>
   </data>
   <data name="EA_CHANNELS" xml:space="preserve">
     <value>   SELECT ID, id_node,  0 as ID_TYPE, NAME, alias , 0 as ID_GINFO
@@ -211,7 +207,7 @@ WHERE id_meas_type IN (
    UNION
    SELECT ID, id_node,  0 as ID_TYPE, NAME, alias , EA_ARC.ID_GINFO as ID_GINFO
      FROM EA_CHANNELS, EA_ARC
-   WHERE 
+   WHERE
    EA_CHANNELS.ID=EA_ARC.ID_PARAM
   ORDER BY ID ASC</value>
   </data>
@@ -221,7 +217,7 @@ WHERE id_meas_type IN (
    UNION
    SELECT ID, id_node,  0 as ID_TYPE, NAME, alias , CALC_ARC.ID_GINFO as ID_GINFO
      FROM CALC_LIST , CALC_ARC
-   WHERE 
+   WHERE
    CALC_LIST.ID=CALC_ARC.ID_PARAM
   ORDER BY ID ASC</value>
   </data>
@@ -231,7 +227,7 @@ WHERE id_meas_type IN (
    UNION
    SELECT ID, id_node,  0 as ID_TYPE, NAME, alias , DG_ARC.ID_GINFO as ID_GINFO
      FROM DG_LIST , DG_ARC
-   WHERE 
+   WHERE
    DG_LIST.ID=DG_ARC.ID_PARAM
   ORDER BY ID ASC</value>
   </data>
@@ -240,7 +236,7 @@ WHERE id_meas_type IN (
           ea_points.id_type, ea_points.NAME,
           ea_points.alias, 0 as ID_GINFO
      FROM ea_channels ea_points, ea_consumer_link
-    WHERE ea_points.ID = ea_consumer_link.id_point(+) 
+    WHERE ea_points.ID = ea_consumer_link.id_point(+)
     UNION
    SELECT ea_points.ID, ea_points.id_node,
           ea_points.id_type, ea_points.NAME,
@@ -253,7 +249,7 @@ WHERE id_meas_type IN (
   <data name="DA_V_LST" xml:space="preserve">
     <value>SELECT {0}.ID_NODE, DA_CAT.NAME, {0}.ID, {0}.ID_TYPE, {0}.NAME, 0 as ID_GINFO
 FROM {0}, DA_CAT
-WHERE 
+WHERE
  DA_CAT.ID={0}.ID_NODE
 UNION
 SELECT {0}.ID_NODE, DA_CAT.NAME, {0}.ID, {0}.ID_TYPE, {0}.NAME, DA_ARC.ID_GINFO as ID_GINFO
@@ -263,40 +259,99 @@ and DA_CAT.ID={0}.ID_NODE
 ORDER BY ID_NODE, ID </value>
   </data>
   <data name="ARC_GINFO1" xml:space="preserve">
-    <value>SELECT 
-    ARC_GINFO.ID as ID, 
+    <value>SELECT
+    ARC_GINFO.ID as ID,
     sys_gtopt.NAME as VIEW_ARCHIVE,
-    ARC_GINFO.ID_GTOPT , 
-    ARC_TYPE.NAME as TYPE_ARCHIVE, 
-    ARC_GINFO.ID_TYPE as ID_TYPE, 
-    ARC_GINFO.DEPTH , 
-    ARC_GINFO.DEPTH_LOCAL , 
-    ARC_GINFO.CACHE_SIZE , 
+    ARC_GINFO.ID_GTOPT ,
+    ARC_TYPE.NAME as TYPE_ARCHIVE,
+    ARC_GINFO.ID_TYPE as ID_TYPE,
+    ARC_GINFO.DEPTH ,
+    ARC_GINFO.DEPTH_LOCAL ,
+    ARC_GINFO.CACHE_SIZE ,
     ARC_GINFO.CACHE_TIMEOUT ,
     ARC_GINFO.FLUSH_INTERVAL ,
     ARC_GINFO.RESTORE_INTERVAL ,
-    ARC_GINFO.STACK_INTERVAL , 
-    ARC_GINFO.WRITE_MINMAX  , 
-    ARC_GINFO.RESTORE_TIME , 
-    ARC_GINFO.NAME  , 
-    ARC_GINFO.STATE  , 
-    ARC_GINFO.DEPTH_PARTITION  , 
-    ARC_GINFO.RESTORE_TIME_LOCAL 
+    ARC_GINFO.STACK_INTERVAL ,
+    ARC_GINFO.WRITE_MINMAX  ,
+    ARC_GINFO.RESTORE_TIME ,
+    ARC_GINFO.NAME  ,
+    ARC_GINFO.STATE  ,
+    ARC_GINFO.DEPTH_PARTITION  ,
+    ARC_GINFO.RESTORE_TIME_LOCAL
  FROM ARC_GINFO , sys_gtopt, ARC_TYPE
- WHERE sys_gtopt.ID=ARC_GINFO.ID_GTOPT 
-AND ARC_GINFO.ID_TYPE=ARC_TYPE.ID</value>
+ WHERE sys_gtopt.ID=ARC_GINFO.ID_GTOPT
+AND ARC_GINFO.ID_TYPE=ARC_TYPE.ID
+ORDER BY ARC_GINFO.ID ASC</value>
   </data>
   <data name="ARC_SUBSYST_PROFILE1" xml:space="preserve">
-    <value>SELECT  ARC_SUBSYST_PROFILE.ID,ARC_SUBSYST_PROFILE.ID_TBLLST,ARC_SUBSYST_PROFILE.ID_GINFO, 
-  ARC_SUBSYST_PROFILE.IS_WRITEON, ARC_SUBSYST_PROFILE.STACK_NAME,ARC_SUBSYST_PROFILE.LAST_UPDATE,ARC_SUBSYST_PROFILE.IS_VIEWABLE 
-FROM  ARC_SUBSYST_PROFILE 
+    <value>SELECT  ARC_SUBSYST_PROFILE.ID,ARC_SUBSYST_PROFILE.ID_TBLLST,ARC_SUBSYST_PROFILE.ID_GINFO,
+  ARC_SUBSYST_PROFILE.IS_WRITEON, ARC_SUBSYST_PROFILE.STACK_NAME,ARC_SUBSYST_PROFILE.LAST_UPDATE,ARC_SUBSYST_PROFILE.IS_VIEWABLE
+FROM  ARC_SUBSYST_PROFILE
 WHERE  {0}=ARC_SUBSYST_PROFILE.ID_TBLLST</value>
   </data>
   <data name="ARC_SUBSYST_PROFILE2" xml:space="preserve">
-    <value>SELECT  ARC_SUBSYST_PROFILE.ID, ARC_SUBSYST_PROFILE.ID_GINFO, ARC_GINFO.NAME, SYS_GTOPT.NAME 
-FROM  ARC_SUBSYST_PROFILE , ARC_GINFO, SYS_GTOPT 
-WHERE {0}=ARC_SUBSYST_PROFILE.ID_TBLLST  
-AND ARC_SUBSYST_PROFILE.ID_GINFO=ARC_GINFO.ID 
+    <value>SELECT  ARC_SUBSYST_PROFILE.ID, ARC_SUBSYST_PROFILE.ID_GINFO, ARC_SUBSYST_PROFILE.IS_WRITEON, ARC_GINFO.NAME, SYS_GTOPT.NAME
+FROM  ARC_SUBSYST_PROFILE , ARC_GINFO, SYS_GTOPT
+WHERE {0}=ARC_SUBSYST_PROFILE.ID_TBLLST
+AND ARC_SUBSYST_PROFILE.ID_GINFO=ARC_GINFO.ID
 AND SYS_GTOPT.ID=ARC_GINFO.ID_GTOPT </value>
+  </data>
+  <data name="ARH_SYSTBLLST1" xml:space="preserve">
+    <value>SELECT upper(table_name) , lnk.ID_LSTTBL
+FROM sys_tbllst lst, sys_tbllnk lnk, sys_otyp t
+WHERE lnk.id_lsttbl ={0}
+ AND lnk.id_dsttbl = lst.ID  AND lst.id_type = t.ID AND t.define_alias LIKE 'ARH'</value>
+  </data>
+  <data name="TABLEOPTION" xml:space="preserve">
+    <value>SELECT 'min' as num, TIME1970 as T FROM {0} WHERE TIME1970 = (SELECT MIN(TIME1970) FROM {0} )
+union
+SELECT 'max' as num, TIME1970 as T FROM {0}  WHERE TIME1970 = (SELECT MAX(TIME1970) FROM {0} )
+union
+SELECT 'cnt' as num, count(*) as T FROM {0}</value>
+  </data>
+  <data name="ARC_SUBSYST_PROFILE_ID" xml:space="preserve">
+    <value>SELECT ID+1 FROM ARC_SUBSYST_PROFILE WHERE ID+1 NOT IN (SELECT ID FROM ARC_SUBSYST_PROFILE )</value>
+  </data>
+  <data name="AD_SERVICE1" xml:space="preserve">
+    <value>SELECT  ad_pinfo.portnumber,ad_pinfo.id_proto,ad_sinfo.id_lsttbl,ad_list.id_type, sys_otyp.alias,ad_service.NAME,ad_service.define_alias
+ FROM ad_dir,ad_dir dir1,ad_list,ad_pinfo,ad_ncard,ad_sinfo,sys_otyp,ad_service,ad_hosts
+ WHERE ad_sinfo.id_server_node = ad_dir.ID
+ AND ad_list.id_node = ad_dir.ID
+ AND ad_pinfo.id_param = ad_list.ID
+ AND ad_pinfo.id_intrface_node = ad_ncard.id_node
+ AND ad_list.id_type = sys_otyp.ID
+ AND ad_pinfo.portnumber = ad_service.ID
+ AND ad_pinfo.id_intrface_node = dir1.ID
+ AND dir1.id_parent = ad_hosts.id_host_node
+ AND ad_pinfo.id_proto &gt; 2 AND ad_pinfo.id_proto &lt;&gt; 9
+ AND ad_dir.ID IN (SELECT ad_dir.ID FROM ad_dir WHERE ad_dir.id_type &gt; 1000)
+ AND ad_sinfo.ID_LSTTBL= {0}
+  UNION
+ SELECT  ad_pinfo.portnumber,ad_pinfo.id_proto,ad_sinfo.id_lsttbl,ad_list.id_type, sys_otyp.alias,ad_service.NAME,ad_service.define_alias
+ FROM ad_dir,ad_dir dir1,ad_list,ad_pinfo,ad_ipinfo,ad_sinfo,sys_otyp,ad_service,ad_hosts
+  WHERE ad_sinfo.id_server_node = ad_dir.ID
+ AND ad_list.id_node = ad_dir.ID
+ AND ad_pinfo.id_param = ad_list.ID
+ AND ad_pinfo.id_intrface_node = ad_ipinfo.id_node
+ AND ad_list.id_type = sys_otyp.ID
+ AND ad_pinfo.portnumber = ad_service.ID
+ AND ad_pinfo.id_intrface_node = dir1.ID
+ AND dir1.id_parent = ad_hosts.id_host_node
+ AND ((ad_pinfo.id_proto &lt;= 2) OR (ad_pinfo.id_proto = 9))
+ AND ad_dir.ID IN (SELECT ad_dir.ID FROM ad_dir WHERE ad_dir.id_type &gt; 1000)
+ AND ad_sinfo.ID_LSTTBL={0} </value>
+  </data>
+  <data name="SCHEMA_NAME" xml:space="preserve">
+    <value>SELECT DISTINCT a.id ,  sch.schema_name
+FROM  arc_db_schema sch, arc_services_info si,  sys_tbllst a
+WHERE a.ID = si.id_lsttbl AND si.id_db_schema = sch.ID and a.ID ={0}</value>
+  </data>
+  <data name="TABLE_ARC" xml:space="preserve">
+    <value>SELECT  a.table_name
+FROM   sys_tbllst a, SYS_TBLLNK b
+WHERE  b.ID_DSTTBL=a.id and a.DEFINE_ALIAS like '%ARH%' and b.ID_LSTTBL={0}</value>
+  </data>
+  <data name="ARC_GINFO2" xml:space="preserve">
+    <value>SELECT ID_GTOPT  FROM ARC_GINFO WHERE ID={0}</value>
   </data>
 </root>

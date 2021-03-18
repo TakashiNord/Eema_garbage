@@ -48,8 +48,11 @@ namespace ArcConfig
 
 
     // редактируемые данные
-      private ARC_SUBSYST_PROFILE _profileData = new ARC_SUBSYST_PROFILE();
-      List<MEAS1> dp = new List<MEAS1>();
+    private ARC_SUBSYST_PROFILE _profileData = new ARC_SUBSYST_PROFILE();
+    List<MEAS1> dp = new List<MEAS1>();
+    public DataGridViewCellMouseEventArgs /*DataGridViewCellEventArgs*/ mouseLocation;
+    public int PCellValueChanged = 0;
+
 
     public MainForm()
     {
@@ -93,6 +96,29 @@ namespace ArcConfig
          }
        Application.DoEvents();
     }
+
+
+   public string GetTypeValue(ref OdbcDataReader reader, int i)
+   {
+      string ret="";
+      if (reader.IsDBNull(i)) {
+          ;
+      } else {
+          string stype= reader.GetDataTypeName(i).ToUpper();
+          //AddLogString("reader.GetDataTypeName = " + stype);
+          if (stype=="DECIMAL") ret = reader.GetValue(i).ToString();
+          if (stype=="NUMBER") ret = reader.GetValue(i).ToString(); //GetDecimal(i).ToString();
+          if (stype=="VARCHAR2") ret = reader.GetString(i);
+          if (stype=="NVARCHAR") ret = reader.GetString(i);
+          if (stype=="WVARCHAR") ret = reader.GetString(i);
+          if (stype=="TEXT") ret = reader.GetString(i);
+          if (stype=="INTEGER") ret = reader.GetValue(i).ToString();
+          if (stype=="CHAR") ret = reader.GetString(i);
+          if (stype=="NCHAR") ret = reader.GetString(i);
+      }
+      return(ret);
+    }
+
 
     private OdbcConnection _getDBConnection()
     {
@@ -190,17 +216,8 @@ namespace ArcConfig
        {
         while (reader1.Read())
         {
-          int i = 0 ;
-          string arrtype = reader1.GetDataTypeName(i);
-          //AddLogString(" arrtype = " + arrtype);
-          string stmp = arrtype.ToUpper();
-          if (stmp=="DECIMAL") id_parents.Add( reader1.GetValue(i).ToString() );
-          if (stmp=="NUMBER") id_parents.Add( reader1.GetValue(i).ToString()); //GetDecimal(i).ToString();
-          if (stmp=="VARCHAR2") id_parents.Add( reader1.GetString(i) );
-          if (stmp=="NVARCHAR") id_parents.Add( reader1.GetString(i) );
-          if (stmp=="WVARCHAR") id_parents.Add( reader1.GetString(i) );
-          if (stmp=="TEXT") id_parents.Add( reader1.GetString(i) );
-          if (stmp=="INTEGER") id_parents.Add( reader1.GetValue(i).ToString() );
+          string arrs = GetTypeValue(ref reader1, 0);
+          id_parents.Add(arrs);
         }
        }
        reader1.Close();
@@ -237,21 +254,7 @@ namespace ArcConfig
         while (reader2.Read())
          {
            for ( int i = 0; i<4; i++) {
-             arr[i]="";
-             if (reader2.IsDBNull(i)) {
-               arr[i]="";
-             } else {
-               arr[i]= reader2.GetDataTypeName(i);
-               //AddLogString(" arrtype2 = " + arr[i]);
-               string stmp = arr[i].ToUpper();
-               if (stmp=="DECIMAL") arr[i] = reader2.GetValue(i).ToString();
-               if (stmp=="NUMBER") arr[i] = reader2.GetValue(i).ToString(); //GetDecimal(i).ToString();
-               if (stmp=="VARCHAR2") arr[i] = reader2.GetString(i);
-               if (stmp=="NVARCHAR") arr[i] = reader2.GetString(i);
-               if (stmp=="WVARCHAR") arr[i] = reader2.GetString(i);
-               if (stmp=="TEXT") arr[i] = reader2.GetString(i);
-               if (stmp=="INTEGER") arr[i] = reader2.GetValue(i).ToString();
-             }
+             arr[i]= GetTypeValue(ref reader2, i);
            }
 
           if (arr[3]=="") { arr[3]="0" ; }
@@ -306,21 +309,7 @@ namespace ArcConfig
         while (reader3.Read())
          {
            for ( int i = 0; i<4; i++) {
-             arr[i]="";
-             if (reader3.IsDBNull(i)) {
-               arr[i]="";
-             } else {
-               arr[i]= reader3.GetDataTypeName(i);
-               //AddLogString(" arrtype3 = " + arr[i]);
-               string stmp = arr[i].ToUpper();
-               if (stmp=="DECIMAL") arr[i] = reader3.GetValue(i).ToString();
-               if (stmp=="NUMBER") arr[i] = reader3.GetValue(i).ToString(); //GetDecimal(i).ToString();
-               if (stmp=="VARCHAR2") arr[i] = reader3.GetString(i);
-               if (stmp=="NVARCHAR") arr[i] = reader3.GetString(i);
-               if (stmp=="WVARCHAR") arr[i] = reader3.GetString(i);
-               if (stmp=="TEXT") arr[i] = reader3.GetString(i);
-               if (stmp=="INTEGER") arr[i] = reader3.GetValue(i).ToString();
-             }
+             arr[i]= GetTypeValue(ref reader3, i);
            }
 
            if (arr[3]=="0") {
@@ -409,6 +398,8 @@ namespace ArcConfig
 
        //this._conn.Close();
 
+       toolStripStatusLabel2.Text = sObj;
+
        return ;
     }
     void ToolStripButton2Click(object sender, EventArgs e)
@@ -469,7 +460,7 @@ namespace ArcConfig
        tabControl1.SelectedIndex=0;
 
 
-       dp.Capacity=150000;
+       dp.Capacity=250000;
        typeof(Control).GetProperty("DoubleBuffered", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.SetProperty).SetValue(dataGridViewP, true, null);
 
        DataGridViewCheckBoxColumn checkBoxColumn = new DataGridViewCheckBoxColumn();
@@ -511,6 +502,8 @@ namespace ArcConfig
       ResourceManager r = new ResourceManager("ArcConfig.ArcResource", Assembly.GetExecutingAssembly());
 
       if (1==tabControlAP.SelectedIndex) {
+
+        PCellValueChanged = 0;
 
         try {
           dataGridViewP.DataSource = null ;
@@ -581,42 +574,41 @@ namespace ArcConfig
           return;
         }
 
-        string[] arr = new string[4];
+        string[] arr = new string[5];
 
         while (reader.Read())
         {
-          for ( int i = 0; i<4; i++)
+          for ( int i = 0; i<5; i++)
           {
-            arr[i]="";
-            if (reader.IsDBNull(i)) {
-              arr[i]="";
-            } else {
-              arr[i]= reader.GetDataTypeName(i);
-              string stmp = arr[i].ToUpper();
-              if (stmp=="DECIMAL") arr[i] = reader.GetValue(i).ToString();
-              if (stmp=="NUMBER") arr[i] = reader.GetValue(i).ToString(); //GetDecimal(i).ToString();
-              if (stmp=="VARCHAR2") arr[i] = reader.GetString(i);
-              if (stmp=="NVARCHAR") arr[i] = reader.GetString(i);
-               if (stmp=="WVARCHAR") arr[i] = reader.GetString(i);
-              if (stmp=="TEXT") arr[i] = reader.GetString(i);
-              if (stmp=="INTEGER") arr[i] = reader.GetValue(i).ToString();
-            }
+             arr[i]= GetTypeValue(ref reader, i);
           }
 
+         //ARC_SUBSYST_PROFILE.ID, ARC_SUBSYST_PROFILE.ID_GINFO, ARC_SUBSYST_PROFILE.IS_WRITEON,
+         //    ARC_GINFO.NAME, SYS_GTOPT.NAME
+
          /*var column4 = new DataGridViewColumn();
-           column4.HeaderText = arr[2] + ", " + arr[3];
+           column4.HeaderText = arr[3] + ", " + arr[4];
            column4.Name = arr[1];
            column4.CellTemplate = new DataGridViewCheckBoxCell();   */
 
           DataGridViewCheckBoxColumn column4 = new DataGridViewCheckBoxColumn();
-          column4.HeaderText = arr[2] + ", " + arr[3];
+          column4.HeaderText = arr[3] + ", " + arr[4];
           column4.TrueValue = true;
           column4.FalseValue = false;
           column4.Name = arr[1];
+          DataGridViewCellStyle cellStyle = new DataGridViewCellStyle();
+          // auto profile select  another color
+          if (arr[2]!="0") {
+             cellStyle.BackColor = Color.LightGray;
+             //cellStyle.SelectionBackColor = Color.Red;
+          }
+          cellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+          column4.DefaultCellStyle = cellStyle;
 
           dataGridViewP.Columns.Add(column4);
 
-          ARCSUM1 item2 = new ARCSUM1(arr[2] + ", " + arr[3],arr[1],0);
+          // обнуляем сумму для каждого архива
+          ARCSUM1 item2 = new ARCSUM1(arr[3] + ", " + arr[4],arr[1],0);
           sum.Add(item2);
 
         } // while
@@ -646,22 +638,8 @@ namespace ArcConfig
         if (reader.HasRows) {
           while (reader.Read())
           {
-            int i = 0;
-            string sn="";
-            if (reader.IsDBNull(i)) {
-                ;
-            } else {
-                sn= reader.GetDataTypeName(i);
-                string stmp = sn.ToUpper();
-                if (stmp=="DECIMAL") sn = reader.GetValue(i).ToString();
-                if (stmp=="NUMBER") sn = reader.GetValue(i).ToString(); //GetDecimal(i).ToString();
-                if (stmp=="VARCHAR2") sn = reader.GetString(i);
-                if (stmp=="NVARCHAR") sn = reader.GetString(i);
-                if (stmp=="WVARCHAR") sn = reader.GetString(i);
-                if (stmp=="TEXT") sn = reader.GetString(i);
-                if (stmp=="INTEGER") sn = reader.GetValue(i).ToString();
-            }
-            TABLE_NAME = sn.ToUpper() ;
+            TABLE_NAME = GetTypeValue(ref reader, 0);
+            TABLE_NAME = TABLE_NAME.ToUpper() ;
             break ;
           } // while
         }
@@ -734,20 +712,7 @@ namespace ArcConfig
         {
           for ( int i = 0; i<6; i++)
           {
-            arr[i]="";
-            if (reader.IsDBNull(i)) {
-              arr[i]="";
-            } else {
-              arr[i]= reader.GetDataTypeName(i);
-              string stmp = arr[i].ToUpper();
-              if (stmp=="DECIMAL") arr[i] = reader.GetValue(i).ToString();
-              if (stmp=="NUMBER") arr[i] = reader.GetValue(i).ToString(); //GetDecimal(i).ToString();
-              if (stmp=="VARCHAR2") arr[i] = reader.GetString(i);
-              if (stmp=="NVARCHAR") arr[i] = reader.GetString(i);
-               if (stmp=="WVARCHAR") arr[i] = reader.GetString(i);
-              if (stmp=="TEXT") arr[i] = reader.GetString(i);
-              if (stmp=="INTEGER") arr[i] = reader.GetValue(i).ToString();
-            }
+            arr[i]= GetTypeValue(ref reader, i);
           }
 
           //  .ID_NODE, DA_CAT.NAME, .ID, .ID_TYPE, DA_V_LST_1.NAME, ID_GINFO
@@ -775,11 +740,13 @@ namespace ArcConfig
 
         //SendMessage(dataGridViewP.Handle, WM_SETREDRAW, false, 0);
 
-       int iFindNo =-1;
-       int iRowIndex = 0;
-       int prevFindNo = -1;
-       foreach (MEAS1 p in dp)
-       {
+        toolStripStatusLabel2.Text = "Buiding lists ..";
+
+        int iFindNo =-1;
+        int iRowIndex = 0;
+        int prevFindNo = -1;
+        foreach (MEAS1 p in dp)
+        {
          iFindNo = p.ID;
          if (prevFindNo != iFindNo ) {
            iRowIndex=dataGridViewP.Rows.Add();
@@ -797,7 +764,7 @@ namespace ArcConfig
               dataGridViewP.Rows[iRowIndex].Cells[jj].Value = CheckState.Unchecked ;
               if ( dataGridViewP.Columns[jj].Name==p.ID_GINFO.ToString() )
               {
-              	 dataGridViewP.Rows[iRowIndex].Cells[jj].Value = CheckState.Checked;
+                 dataGridViewP.Rows[iRowIndex].Cells[jj].Value = CheckState.Checked;
                 foreach (ARCSUM1 vq in sum)
                 {
                    if (vq.ID_GINFO==p.ID_GINFO.ToString() ) vq.SUM+=1;
@@ -810,7 +777,7 @@ namespace ArcConfig
             {
               if ( dataGridViewP.Columns[jj].Name==p.ID_GINFO.ToString() )
               {
-              	 dataGridViewP.Rows[iRowIndex].Cells[jj].Value = CheckState.Checked;
+                dataGridViewP.Rows[iRowIndex].Cells[jj].Value = CheckState.Checked;
                 foreach (ARCSUM1 vq in sum)
                 {
                   if (vq.ID_GINFO==p.ID_GINFO.ToString() ) vq.SUM+=1;
@@ -820,28 +787,33 @@ namespace ArcConfig
 
           }
          prevFindNo = iFindNo ;
-       }
+        }
 
-       //SendMessage(dataGridViewP.Handle, WM_SETREDRAW, true, 0);
-       // dp.Clear();
+        //SendMessage(dataGridViewP.Handle, WM_SETREDRAW, true, 0);
+        // dp.Clear();
 
-       foreach (ARCSUM1 vq in sum)
-       {
-         AddLogString(" Архив = " + vq.NAME1 + " (" + vq.ID_GINFO + ")  = " + vq.SUM  );
-       }
+        foreach (ARCSUM1 vq in sum)
+        {
+          AddLogString(" Архив = " + vq.NAME1 + " (" + vq.ID_GINFO + ")  = " + vq.SUM  );
+        }
 
-       dataGridViewP.AllowUserToAddRows = false; //запрешаем пользователю самому добавлять строки
+        // отключаем сортировку для каждого столбца
+        foreach (DataGridViewColumn col in dataGridViewP.Columns)
+          col.SortMode = DataGridViewColumnSortMode.NotSortable;
 
-       // Resize the master DataGridView columns to fit the newly loaded data.
-       dataGridViewP.AutoResizeColumns();
+        // Resize the master DataGridView columns to fit the newly loaded data.
+        dataGridViewP.AutoResizeColumns();
 
-       // вызывает зависание
-       //dataGridViewP.AutoSizeColumnsMode =
-       //    DataGridViewAutoSizeColumnsMode.AllCells;
-       //dataGridViewP.AutoGenerateColumns = true;
+        // вызывает зависание
+        //dataGridViewP.AutoSizeColumnsMode =
+        //    DataGridViewAutoSizeColumnsMode.AllCells;
+        //dataGridViewP.AutoGenerateColumns = true;
 
-       //dataGridViewP.Update();
+        //dataGridViewP.Update();
 
+        toolStripStatusLabel2.Text = "Building Ready..done";
+
+        PCellValueChanged = 1;
 
       } else {
 
@@ -879,72 +851,7 @@ namespace ArcConfig
         dataGridViewA.AutoSizeColumnsMode =
             DataGridViewAutoSizeColumnsMode.AllCells;
 
-        for (int ii = 0; ii < dataGridViewA.RowCount ; ii++) {
-          dataGridViewA.Rows[ii].Cells[0].Value = false ;
-          dataGridViewA.Rows[ii].HeaderCell.Style.BackColor = Color.White ;
-          dataGridViewA.Rows[ii].DefaultCellStyle.BackColor = Color.White ;
-        }
-
-        dataGridViewA.EnableHeadersVisualStyles = false;
-        dataGridViewA.AlternatingRowsDefaultCellStyle.BackColor =Color.LightGray;
-        dataGridViewA.Columns[0].HeaderCell.Style.BackColor = Color.Blue ;
-
-        //dataGridViewA.Columns[0].HeaderCell.ToolTipText = "Подсказка11";
-
-        dataGridViewA.Update();
-
-        string sl1=r.GetString("ARC_SUBSYST_PROFILE1");
-        sl1 = String.Format(sl1,id_parent) ;
-
-        cmd1.CommandText=sl1;
-        try
-        {
-          reader = cmd1.ExecuteReader();
-        }
-        catch (Exception ex1)
-        {
-          AddLogString(" выполнение алгоритма  - прервано.. = " + cmd1.CommandText + " " + ex1.Message);
-          return ;
-        }
-
-        if (reader.HasRows==false) {
-          reader.Close();
-          //dataGridViewA.Enabled=false;
-          return;
-        }
-        //dataGridViewA.Enabled=true;
-
-        string[] arr = new string[7];
-
-        while (reader.Read())
-        {
-          for ( int i = 0; i<7; i++)
-          {
-            arr[i]="";
-            if (reader.IsDBNull(i)) {
-              arr[i]="";
-            } else {
-              arr[i]= reader.GetDataTypeName(i);
-              string stmp = arr[i].ToUpper();
-              if (stmp=="DECIMAL") arr[i] = reader.GetValue(i).ToString();
-              if (stmp=="NUMBER") arr[i] = reader.GetValue(i).ToString(); //GetDecimal(i).ToString();
-              if (stmp=="VARCHAR2") arr[i] = reader.GetString(i);
-              if (stmp=="NVARCHAR") arr[i] = reader.GetString(i);
-               if (stmp=="WVARCHAR") arr[i] = reader.GetString(i);
-              if (stmp=="TEXT") arr[i] = reader.GetString(i);
-              if (stmp=="INTEGER") arr[i] = reader.GetValue(i).ToString();
-            }
-          }
-
-           for (int ii = 0; ii < dataGridViewA.RowCount ; ii++)
-            if (dataGridViewA.Rows[ii].Cells[1].Value.ToString()==arr[2]) {
-              dataGridViewA.Rows[ii].Cells[0].Value =true ;
-              dataGridViewA.Rows[ii].HeaderCell.Style.BackColor = Color.LightGreen ;
-              dataGridViewA.Rows[ii].DefaultCellStyle.BackColor = Color.LightGreen ;
-            }
-
-         } // while
-        reader.Close();
+        DataGridViewASorted(sender,  e);
 
       } // change tab
 
@@ -1198,8 +1105,22 @@ namespace ArcConfig
     }
     void Button1Click(object sender, EventArgs e)
     {
+      var  dataGridView = (DataGridView)null ;
+      //dataGridView1
+      if (tabControl1.SelectedIndex==0) {
+        dataGridView = (DataGridView)dataGridView1;
+      }
+      if (tabControl1.SelectedIndex==1) {
+        if (tabControlAP.SelectedIndex==0)
+        dataGridView = (DataGridView)dataGridViewA;
+        else dataGridView = (DataGridView)dataGridViewP;
+      }
+      if (tabControl1.SelectedIndex==2) {
+        dataGridView = (DataGridView)dataGridViewS;
+      }
 
-      var dataGridView = (DataGridView)sender;
+      if (dataGridView==null) return ;
+
       //if (dataGridView.DataSource==null || dataGridView.DataSource=="" ) return ;
 
       //SaveFileDialog saveFileDialog1 = new SaveFileDialog();
@@ -1236,10 +1157,19 @@ namespace ArcConfig
                 for (int f = 0; f < dataGridView.ColumnCount; f++)
                     fileCSV += (dataGridView.Columns[f].HeaderText + ";");
                 fileCSV += "\t\n";
-                for (int i = 0; i < dataGridView.RowCount -1; i++)
+                for (int i = 0; i < dataGridView.RowCount ; i++)
                 {
                     for (int j = 0; j < dataGridView.ColumnCount; j++)
-                        fileCSV += ( dataGridView[j, i].Value).ToString() + ";";
+                    {
+                      string st = (dataGridView[j, i].Value).ToString() ;
+                      if ("System.Windows.Forms.CheckState"==dataGridView[j, i].Value.GetType().ToString()) {
+                        //Checked Unchecked
+                        if (st=="Checked") st="1";
+                        if (st=="Unchecked") st="0";
+                      }
+                      fileCSV += st + ";";
+                        //fileCSV += ( dataGridView[j, i].Value).ToString() + ";";
+                    }
                     fileCSV += "\t\n";
                 }
                 StreamWriter wr = new StreamWriter(filename, false, Encoding.UTF8); // Encoding.GetEncoding("windows-1251")
@@ -1248,7 +1178,8 @@ namespace ArcConfig
           break ;
       }
       String s1="filename="+filename + " -> Save";
-      AddLogString(s1); toolStripStatusLabel2.Text = s1;
+      AddLogString(s1);
+      toolStripStatusLabel2.Text = s1;
       //MessageBox.Show("Export to \n " + filename + " \n done");
     }
     void Timer1Tick(object sender, EventArgs e)
@@ -1334,10 +1265,10 @@ namespace ArcConfig
       string ID_TBLLST=treeViewA.SelectedNode.Name;
       AddLogString("DataGridViewACellContentClick-> ID_TBLLST=" + ID_TBLLST + "  ID_GINFO=" + ID_GINFO);
 
-string sl1="SELECT  ARC_SUBSYST_PROFILE.ID,ARC_SUBSYST_PROFILE.ID_TBLLST,ARC_SUBSYST_PROFILE.ID_GINFO," +
-"ARC_SUBSYST_PROFILE.IS_WRITEON, ARC_SUBSYST_PROFILE.STACK_NAME,ARC_SUBSYST_PROFILE.LAST_UPDATE,ARC_SUBSYST_PROFILE.IS_VIEWABLE  " +
-"FROM ARC_SUBSYST_PROFILE " +
-"WHERE ARC_SUBSYST_PROFILE.ID_TBLLST=" + ID_TBLLST + " AND ARC_SUBSYST_PROFILE.ID_GINFO="+ID_GINFO ;
+      string sl1="SELECT  ARC_SUBSYST_PROFILE.ID,ARC_SUBSYST_PROFILE.ID_TBLLST,ARC_SUBSYST_PROFILE.ID_GINFO," +
+      "ARC_SUBSYST_PROFILE.IS_WRITEON, ARC_SUBSYST_PROFILE.STACK_NAME,ARC_SUBSYST_PROFILE.LAST_UPDATE,ARC_SUBSYST_PROFILE.IS_VIEWABLE  " +
+      "FROM ARC_SUBSYST_PROFILE " +
+      "WHERE ARC_SUBSYST_PROFILE.ID_TBLLST=" + ID_TBLLST + " AND ARC_SUBSYST_PROFILE.ID_GINFO="+ID_GINFO ;
 
       cmd0.CommandText=sl1;
       try
@@ -1368,20 +1299,7 @@ string sl1="SELECT  ARC_SUBSYST_PROFILE.ID,ARC_SUBSYST_PROFILE.ID_TBLLST,ARC_SUB
         {
           for ( int i = 0; i<7; i++)
           {
-            arr[i]="";
-            if (reader.IsDBNull(i)) {
-              arr[i]="";
-            } else {
-              arr[i]= reader.GetDataTypeName(i);
-              string stmp = arr[i].ToUpper();
-              if (stmp=="DECIMAL") arr[i] = reader.GetValue(i).ToString();
-              if (stmp=="NUMBER") arr[i] = reader.GetValue(i).ToString(); //GetDecimal(i).ToString();
-              if (stmp=="VARCHAR2") arr[i] = reader.GetString(i);
-              if (stmp=="NVARCHAR") arr[i] = reader.GetString(i);
-              if (stmp=="WVARCHAR") arr[i] = reader.GetString(i);
-              if (stmp=="TEXT") arr[i] = reader.GetString(i);
-              if (stmp=="INTEGER") arr[i] = reader.GetValue(i).ToString();
-            }
+            arr[i]= GetTypeValue(ref reader, i);
           }
         } // while
 
@@ -1452,22 +1370,7 @@ string sl1="SELECT  ARC_SUBSYST_PROFILE.ID,ARC_SUBSYST_PROFILE.ID_TBLLST,ARC_SUB
       if (reader.HasRows) {
         while (reader.Read())
         {
-          int i = 0 ;
-          string sn="";
-          if (reader.IsDBNull(i)) {
-              ;
-          } else {
-              sn= reader.GetDataTypeName(i);
-              string stmp = sn.ToUpper();
-              if (stmp=="DECIMAL") sn = reader.GetValue(i).ToString();
-              if (stmp=="NUMBER") sn = reader.GetValue(i).ToString(); //GetDecimal(i).ToString();
-              if (stmp=="VARCHAR2") sn = reader.GetString(i);
-              if (stmp=="NVARCHAR") sn = reader.GetString(i);
-              if (stmp=="WVARCHAR") sn = reader.GetString(i);
-              if (stmp=="TEXT") sn = reader.GetString(i);
-              if (stmp=="INTEGER") sn = reader.GetValue(i).ToString();
-          }
-          id_dest = sn ;
+          id_dest = GetTypeValue(ref reader, 0);
           break ;
         } // while
       }
@@ -1563,24 +1466,8 @@ string sl1="SELECT  ARC_SUBSYST_PROFILE.ID,ARC_SUBSYST_PROFILE.ID_TBLLST,ARC_SUB
       if (reader.HasRows) {
         while (reader.Read())
         {
-          string sn = "";
-          int i = 0 ;
-          if (reader.IsDBNull(i)) {
-              sn="";
-            } else {
-              sn= reader.GetDataTypeName(i);
-              string stmp = sn.ToUpper();
-              if (stmp=="DECIMAL") sn = reader.GetValue(i).ToString();
-              if (stmp=="NUMBER") sn = reader.GetValue(i).ToString(); //GetDecimal(i).ToString();
-              if (stmp=="VARCHAR2") sn = reader.GetString(i);
-              if (stmp=="NVARCHAR") sn = reader.GetString(i);
-              if (stmp=="WVARCHAR") sn = reader.GetString(i);
-              if (stmp=="TEXT") sn = reader.GetString(i);
-              if (stmp=="INTEGER") sn = reader.GetValue(i).ToString();
-            }
-
-          cnt = Convert.ToInt32(sn);
-       } // while
+          cnt = Convert.ToInt32(GetTypeValue(ref reader, 0));
+        } // while
       }
       reader.Close();
 
@@ -1610,7 +1497,7 @@ string sl1="SELECT  ARC_SUBSYST_PROFILE.ID,ARC_SUBSYST_PROFILE.ID_TBLLST,ARC_SUB
     }
     void DataGridViewACellContentClick(object sender, DataGridViewCellEventArgs e)
     {
-
+      // отработка нажатия галочки
       // Объект для выполнения запросов к базе данных
       OdbcCommand cmd0 = new OdbcCommand();
       OdbcDataReader reader = null ;
@@ -1700,7 +1587,7 @@ string sl1="SELECT  ARC_SUBSYST_PROFILE.ID,ARC_SUBSYST_PROFILE.ID_TBLLST,ARC_SUB
           }
 
          } else {
-           DialogResult result = MessageBox.Show ("Создать новый профиль для id = " + ID_GINFO + " ?" ,"Активация профиля", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation );
+           DialogResult result = MessageBox.Show ("Создать новый профиль для id = " + ID_GINFO + " ?" ,"Активация профиля", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2 );
            if (result == DialogResult.Yes)
            {
               // new create
@@ -1715,13 +1602,11 @@ string sl1="SELECT  ARC_SUBSYST_PROFILE.ID,ARC_SUBSYST_PROFILE.ID_TBLLST,ARC_SUB
               if (id_tbl=="0" || id_tbl=="") return ;
 
               DialogResult result1;
-
               Form ifrmC = new FormProfileCreate(this._conn, ID_GINFO, id_tbl);
               result1=ifrmC.ShowDialog();
 
               //if(result1 == DialogResult.Yes)
               //{
-
                 AddLogString("new create = Ok");
 
                 TreeViewAAfterSelect(treeViewA, null);
@@ -1792,6 +1677,8 @@ string sl1="SELECT  ARC_SUBSYST_PROFILE.ID,ARC_SUBSYST_PROFILE.ID_TBLLST,ARC_SUB
     }
     void DataGridViewACellClick(object sender, DataGridViewCellEventArgs e)
     {
+      // работает в паре с DataGridViewACellContentClick
+      // не дает поставить\удалить галочку - сначала получить подтверждение.
       int chkBoxColumnIndex = 0;
       var dataGridView = (DataGridView)sender;
       if (e.ColumnIndex == chkBoxColumnIndex)
@@ -1812,6 +1699,588 @@ string sl1="SELECT  ARC_SUBSYST_PROFILE.ID,ARC_SUBSYST_PROFILE.ID_TBLLST,ARC_SUB
           //
           TreeViewAAfterSelect(sender, null) ;
     }
+    void GraphicsToolStripMenuItemClick(object sender, EventArgs e)
+    {
+       // вызов формы для построения графика через контекстное меню
+
+
+       // string msg = String.Format("Row: {0}, Column: {1}",
+       //   dataGridViewP.CurrentCell.RowIndex,
+       //   dataGridViewP.CurrentCell.ColumnIndex);
+       // MessageBox.Show(msg, "Current Cell");
+
+       int selRowNum , selColNum ; // = dataGridViewP.CurrentCell.RowIndex;
+       selRowNum = dataGridViewP.CurrentCell.RowIndex; //mouseLocation.RowIndex ;
+       selColNum = dataGridViewP.CurrentCell.ColumnIndex ; //mouseLocation.ColumnIndex ;
+
+       AddLogString(" GraphicsTool -> selRowNum=" + selRowNum.ToString() + " selColNum=" + selColNum.ToString());
+
+       if (selRowNum<0) return ;
+       // group id name type {}
+       if (selColNum<=3) return ;
+
+       string ID = dataGridViewP.Rows[selRowNum].Cells[1].Value.ToString() ;
+       string IDNAME = dataGridViewP.Rows[selRowNum].Cells[2].Value.ToString() ;
+       string IDGINFO = dataGridViewP.Columns[selColNum].Name ;
+       string NAMEHEADER = dataGridViewP.Columns[selColNum].HeaderText ;
+
+       // если ячейка Unchecked - покидаем алгоритм
+       if ((System.Windows.Forms.CheckState)dataGridViewP.Rows[selRowNum].Cells[selColNum].Value
+                        ==CheckState.Unchecked) { return ; }
+
+       //Получить Имя выделенного элемента
+       string id_parent=treeViewA.SelectedNode.Name;
+       if (id_parent=="0") return ;
+       string id_tbl =Convert.ToString(treeViewA.SelectedNode.Tag) ;
+       AddLogString("GraphicsTool=id_tbl=" + id_tbl);
+       string id_name=treeViewA.SelectedNode.Text ;
+       AddLogString("GraphicsTool=" + id_parent + " " + id_name);
+       if (id_tbl=="0" || id_tbl=="") return ;
+
+       dataGridViewP.Rows[selRowNum].Cells[selColNum].Style.ForeColor
+         = Color.Cyan ;
+
+       //DialogResult result1;
+       Form ifrgr = new FormGr(_conn, ID, IDNAME, IDGINFO, NAMEHEADER, id_tbl);
+       //ifrgr.StartPosition=Start​Position.CenterParent;
+       ifrgr.Show();
+
+    }
+
+    void DataGridViewASorted(object sender, EventArgs e)
+    {
+      // После сортировки, заново проставляем галочки у нужных архивов.
+
+      // Объект для связи между базой данных и источником данных
+      OdbcDataAdapter adapter = new OdbcDataAdapter();
+
+      // Объект для выполнения запросов к базе данных
+      OdbcCommand cmd1 = new OdbcCommand();
+      OdbcDataReader reader = null ;
+
+      cmd1.Connection=this._conn;
+
+      //Получить Имя выделенного элемента
+      string id_parent = treeViewA.SelectedNode.Name;
+      string id_index = Convert.ToString ( treeViewA.SelectedNode.Tag ) ;
+      AddLogString("DataGridViewASorted id_parent=" + id_parent + "  id_index=" + id_index);
+
+      // re-read
+      //dataGridViewA.Rows.Clear();
+      Application.DoEvents();
+
+      ResourceManager r = new ResourceManager("ArcConfig.ArcResource", Assembly.GetExecutingAssembly());
+
+      if (dataGridViewA.RowCount<=0) return ;
+
+      for (int ii = 0; ii < dataGridViewA.RowCount ; ii++) {
+        dataGridViewA.Rows[ii].Cells[0].Value = false ;
+        //dataGridViewA.Rows[ii].HeaderCell.Style.BackColor = Color.White ;
+        //dataGridViewA.Rows[ii].DefaultCellStyle.BackColor = Color.White ;
+      }
+
+      string sl1=r.GetString("ARC_SUBSYST_PROFILE1");
+      sl1 = String.Format(sl1,id_parent) ;
+
+      cmd1.CommandText=sl1;
+      try
+      {
+        reader = cmd1.ExecuteReader();
+      }
+      catch (Exception ex1)
+      {
+        AddLogString(" выполнение алгоритма  - прервано.. = " + cmd1.CommandText + " " + ex1.Message);
+        reader.Close();
+        return ;
+      }
+
+      if (reader.HasRows==false) {
+        reader.Close();
+        return;
+      }
+
+      string[] arr = new string[7];
+
+      while (reader.Read())
+      {
+        for ( int i = 0; i<7; i++)
+        {
+          arr[i]=GetTypeValue(ref reader, i) ;
+        }
+
+        for (int ii = 0; ii < dataGridViewA.RowCount ; ii++)
+         if (dataGridViewA.Rows[ii].Cells[1].Value.ToString()==arr[2]) {
+           dataGridViewA.Rows[ii].Cells[0].Value =true ;
+           dataGridViewA.Rows[ii].HeaderCell.Style.BackColor = Color.LightGreen ;
+           dataGridViewA.Rows[ii].DefaultCellStyle.BackColor = Color.LightGreen ;
+         }
+
+      } // while
+      reader.Close();
+
+    }
+
+
+    void DataGridViewPCurrentCellDirtyStateChanged(object sender, EventArgs e)
+    {
+      /* if (dataGridViewP.IsCurrentCellDirty)
+      {
+          dataGridViewP.CommitEdit(DataGridViewDataErrorContexts.Commit);
+      }*/
+
+      if (this.dataGridViewP.IsCurrentCellDirty && this.dataGridViewP.CurrentCell is DataGridViewCheckBoxCell)
+      {
+        this.dataGridViewP.EndEdit();
+
+        var dataGridView = (DataGridView)sender;
+        DataGridViewCell currentCell = dataGridView.CurrentCell;
+        DataGridViewCheckBoxCell checkCell =
+           (DataGridViewCheckBoxCell)dataGridView.CurrentCell;
+        DataGridViewColumn OwnCol = dataGridView.CurrentCell.OwningColumn ;
+        object obj1 = checkCell.Value;
+        AddLogString("Выкл\\вкл архив = before status =" + checkCell.Value.ToString());
+        if (Convert.ToBoolean(checkCell.Value)==false) {
+            if (OwnCol.DefaultCellStyle.BackColor==Color.LightGray) {
+              checkCell.Value=true;
+            }
+        }
+        object obj2 = checkCell.Value ;
+
+// before status =False = turn on = True - ничего
+// before status =True = turn on = True  - включаем
+// before status =False = delete = False - удаляем
+
+        if (obj1==obj2) {
+
+          // получаем ячейку
+          int selRowNum , selColNum ;
+          selRowNum = currentCell.RowIndex ;
+          selColNum = currentCell.ColumnIndex ;
+
+          if (selRowNum>=0 && selColNum>3) {
+            if (Convert.ToBoolean(obj1)==false) {
+              AddLogString("Выкл\\вкл архив = delete = " + checkCell.Value.ToString());
+              int ret1 =  ArcDel( sender, selRowNum , selColNum) ;
+              if (ret1!=0) { checkCell.Value=true; }
+              AddLogString( "Выкл\\вкл архив Алг удаления завершен." );
+            } else {
+                  //if (Convert.ToBoolean(obj1)==true) {
+                  AddLogString("Выкл\\вкл архив = turn on = " + checkCell.Value.ToString());
+                  int ret2 = ArcAdd( sender, selRowNum , selColNum) ;
+                  if (ret2!=0) { checkCell.Value=false; }
+                  AddLogString( " Алг добавления завершен." );
+                }
+          }
+
+        }
+
+        dataGridView.CurrentCell = checkCell;
+
+      }
+    }
+    void DataGridViewPCellValueChanged(object sender, DataGridViewCellEventArgs e)
+    {
+       if (PCellValueChanged <= 0) return;
+    }
+    void DataGridViewPCellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+    {
+        // записывает в структуру местоположения курсора
+        //mouseLocation = e;
+    }
+    void DataGridViewPCellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
+    {
+       // End of edition on each click on column of checkbox
+       if (e.ColumnIndex >=4 && e.RowIndex != -1)
+       {
+           dataGridViewP.EndEdit();
+       }
+    }
+    void DataGridViewPCellContentClick(object sender, DataGridViewCellEventArgs e)
+    {
+
+
+    }
+
+
+int ArcAdd(object sender, int selRowNum , int selColNum)
+{
+   var dataGridView = (DataGridView)sender;
+
+   // Объект для выполнения запросов к базе данных
+   OdbcCommand cmd0 = new OdbcCommand();
+   OdbcDataReader reader = null ;
+   cmd0.Connection=this._conn;
+
+   string vRetVal = "";
+   string retname = "" ;
+   string sname = "" ;
+
+   string ID = dataGridView.Rows[selRowNum].Cells[1].Value.ToString() ;
+   string IDGINFO = dataGridView.Columns[selColNum].Name ;
+
+   //Получить Имя выделенного элемента
+   string id_tbl =Convert.ToString(treeViewA.SelectedNode.Tag) ;
+   AddLogString("ArcAdd =id_tbl=" + id_tbl);
+
+   ResourceManager r = new ResourceManager("ArcConfig.ArcResource", Assembly.GetExecutingAssembly());
+
+
+   // 1. получаем имя схемы
+   string SCHEMA_NAME = "";
+   string sl1=r.GetString("SCHEMA_NAME");
+   sl1 = String.Format(sl1, id_tbl) ;
+   cmd0.CommandText=sl1;
+   try
+   {
+      reader = cmd0.ExecuteReader();
+   }
+   catch (Exception ex1)
+   {
+      AddLogString("Выкл\\вкл архив выполнение алгоритма  - прервано.. = " + cmd0.CommandText + " " + ex1.Message);
+      return(-1) ;
+   }
+   if (reader.HasRows==false) {
+      AddLogString(" Выкл\\вкл архив табл. ARC_SERVICES_INFO не заполнена для id_tbl =" + id_tbl );
+      reader.Close();
+      return(-1);
+   }
+   string[] arr = new string[2];
+   while (reader.Read())
+   {
+      for ( int i = 0; i<2; i++)
+      {
+        arr[i]=GetTypeValue(ref reader, i);
+      }
+      SCHEMA_NAME = arr[1];
+      break ;
+    } // while
+   reader.Close();
+   AddLogString("ArcAdd SCHEMA_NAME=" + SCHEMA_NAME );
+
+
+   // 2. получаем название архивной таблицы
+   string TABLE_NAME = "";
+   sl1 = r.GetString("TABLE_ARC");
+   sl1 = String.Format(sl1, id_tbl) ;
+   cmd0.CommandText=sl1;
+   try
+   {
+     reader = cmd0.ExecuteReader();
+   }
+   catch (Exception ex1)
+   {
+     AddLogString("ArcAdd выполнение алгоритма  - прервано.. = " + cmd0.CommandText + " " + ex1.Message);
+     return(-2) ;
+   }
+   if (reader.HasRows==false) {
+     AddLogString("ArcAdd табл. для id_tbl =" + id_tbl + " не обнаружена" );
+     reader.Close();
+     return(-2);
+   }
+   while (reader.Read())
+   {
+     TABLE_NAME = GetTypeValue(ref reader, 0);
+     break ;
+   } // while
+   reader.Close();
+   AddLogString("ArcAdd TABLE_NAME=" + TABLE_NAME );
+
+   // 5. устанавливаем роли
+   cmd0.CommandType = System.Data.CommandType.StoredProcedure;
+   cmd0.Parameters.Clear();
+   cmd0.CommandText="SET ROLE BASE_EXT_CONNECT_OIK , ARC_STAND_ADJ";
+   try
+   {
+      cmd0.ExecuteNonQuery();
+      AddLogString("ArcAdd Установка роли = Ok -> " + cmd0.CommandText);
+   }
+   catch (Exception ex7)
+   {
+      AddLogString("ArcAdd Ошибка установки Ролей ="+ex7.Message);
+   }
+
+
+   // 3. проверяем что в таблице архивов есть колонка ID_GTOPT
+   string idgopt = "";
+   int exists_idgopt = 1;
+   sl1 = "SELECT COUNT(ID_GTOPT) FROM " + TABLE_NAME ;
+   cmd0.CommandText=sl1;
+   try
+   {
+      reader = cmd0.ExecuteReader();
+   }
+   catch (Exception ex1)
+   {
+      exists_idgopt = 0;
+      AddLogString("ArcAdd - столбца ID_GTOPT - нет = " + cmd0.CommandText + " " + ex1.Message);
+   }
+   reader.Close();
+
+   // 4. если колонка ID_GTOPT в табл архивов есть - запращиваем значение из ARC_GINFO
+   if (exists_idgopt==1) {
+      sl1 = r.GetString("ARC_GINFO2");
+      sl1 = String.Format(sl1, IDGINFO) ;
+      cmd0.CommandText=sl1;
+      try
+      {
+        reader = cmd0.ExecuteReader();
+      }
+      catch (Exception ex1)
+      {
+        AddLogString("ArcAdd выполнение алгоритма  - прервано.. = " + cmd0.CommandText + " " + ex1.Message);
+        return(-3) ;
+      }
+      if (reader.HasRows==false) {
+        AddLogString("ArcAdd ID_GTOPT =" + idgopt + " не обнаружена" );
+        reader.Close();
+        return(-4) ;
+      }
+      while (reader.Read())
+      {
+        idgopt = GetTypeValue(ref reader, 0);
+        break ;
+      } // while
+      reader.Close();
+   }
+
+   AddLogString("ArcAdd IDGINFO=" + IDGINFO + " idgopt=" + idgopt );
+
+   AddLogString("ArcAdd Вызов процедуры arc_arh_pkg.create_arh (parnum,gtype,retname,sname) ..");
+
+   cmd0.CommandType = System.Data.CommandType.StoredProcedure;
+   cmd0.Parameters.Clear();
+
+   //da_arh_pkg.create_arh
+   //dg_arh_pkg.create_arh
+   //ea_arh_pkg.create_arh
+   //elreg_arh_pkg.create_arh
+   //ex_arh_pkg.create_arh
+   //phreg_arh_pkg.create_arh
+   //ps_arh_pkg.create_arh
+   //au_arh_pkg.create_arh
+   //calc_arh_pkg.create_arh
+
+   // i:=RSDU2ELARH.arc_arh_pkg.create_arh (parnum,  gtype,retname, sname);
+   sl1 = SCHEMA_NAME+".arc_arh_pkg.create_arh(?,?,?,?)" ;
+   cmd0.CommandText = "{ ? = call "+sl1+" }";
+
+   OdbcParameter parOut = new OdbcParameter();
+   parOut.Direction = System.Data.ParameterDirection.ReturnValue;
+   parOut.OdbcType = OdbcType.Decimal;
+   parOut.ParameterName = "i";
+
+   cmd0.Parameters.Add(parOut);
+
+   OdbcParameter param1 = new OdbcParameter();
+   param1.Direction = System.Data.ParameterDirection.Input;
+   param1.OdbcType = OdbcType.Decimal;
+   param1.ParameterName = "parnum";
+   param1.Value = Convert.ToDecimal(ID);
+
+   cmd0.Parameters.Add(param1);
+
+   OdbcParameter param2 = new OdbcParameter();
+   param2.Direction = System.Data.ParameterDirection.Input;
+   param2.OdbcType = OdbcType.Decimal;
+   param2.ParameterName = "gtype";
+   param2.Value = Convert.ToDecimal(IDGINFO);
+
+   cmd0.Parameters.Add(param2);
+
+   OdbcParameter param3 = new OdbcParameter();
+   param3.Direction = System.Data.ParameterDirection.Output;
+   param3.OdbcType = OdbcType.NText;
+   param3.ParameterName = "retname";
+   param3.Size = 64 ;
+
+   cmd0.Parameters.Add(param3);
+
+   OdbcParameter param4 = new OdbcParameter();
+   param4.Direction = System.Data.ParameterDirection.InputOutput;
+   param4.OdbcType = OdbcType.NText;
+   param4.ParameterName = "sname";
+   param4.Value = "";
+   param4.Size = 2048;
+
+   cmd0.Parameters.Add(param4);
+
+   cmd0.CommandTimeout = 120;
+
+   try
+   {
+      cmd0.ExecuteNonQuery();
+      vRetVal = cmd0.Parameters["i"].Value.ToString() ;
+      retname = cmd0.Parameters["retname"].Value.ToString() ;
+      sname = cmd0.Parameters["sname"].Value.ToString() ;
+   }
+   catch (Exception ex8)
+   {
+      AddLogString("ArcAdd Не удалось вызвать процедуру arc_arh_pkg.create_arh");
+      AddLogString("ArcAdd Ошибка вызова процедуры ="+ex8.Message);
+      //MessageBox.Show("Не удалось вызвать процедуру arc_arh_pkg.create_arh","arc_arh_pkg.create_arh","ArcAdd",MessageBoxButtons.OK, MessageBoxIcon.Error);
+      return(-5) ;
+   }
+
+/*
+--   ПЕРЕЧЕНЬ ВОЗВРАЩАЕМЫХ ОШИБОК:
+--            Прим.: еще всегда возвращается строка расшифровки!
+--   функция create_arh
+--           0 - все хорошо
+--           16384  - НЕ задан номер параметра
+--            < 0   - проч ошибка ORACLE
+*/
+
+
+   if (vRetVal!="0") {
+     AddLogString("ArcAdd Ошибка при работе процедуры (arc_arh_pkg.create_arh) ="+vRetVal+"  sname="+sname );
+     return(-6) ;
+   }
+   AddLogString( "ArcAdd retname=" + retname + "; vRetVal="+vRetVal );
+
+   if (vRetVal=="0") {
+     if (exists_idgopt==1) {
+       sl1="INSERT INTO " + TABLE_NAME + " (ID_PARAM, ID_GTOPT, RETFNAME, ID_GINFO) VALUES " +
+           " (" + ID + "," + idgopt + ",'" + retname + "'," + IDGINFO +");" ;
+     } else {
+       sl1="INSERT INTO " + TABLE_NAME + " (ID_PARAM, RETFNAME, ID_GINFO) VALUES " +
+           " (" + ID +  ",'" + retname + "'," + IDGINFO +");" ;
+     }
+
+     cmd0.CommandText=sl1;
+     try
+     {
+       reader = cmd0.ExecuteReader();
+     }
+     catch (Exception ex1)
+     {
+       AddLogString("ArcAdd выполнение алгоритма  - прервано.. = " + cmd0.CommandText + " " + ex1.Message);
+       return(-7) ;
+     }
+     reader.Close();
+   }
+
+   return(0);
+}
+
+
+int ArcDel(object sender, int selRowNum , int selColNum)
+{
+    var dataGridView = (DataGridView)sender;
+
+    // Объект для выполнения запросов к базе данных
+    OdbcCommand cmd0 = new OdbcCommand();
+    OdbcDataReader reader = null ;
+    cmd0.Connection=this._conn;
+
+    string ID = dataGridView.Rows[selRowNum].Cells[1].Value.ToString() ;
+    string IDGINFO = dataGridView.Columns[selColNum].Name ;
+
+    //Получить Имя выделенного элемента
+    string id_tbl =Convert.ToString(treeViewA.SelectedNode.Tag) ;
+    AddLogString("ArcDel =id_tbl=" + id_tbl);
+
+    ResourceManager r = new ResourceManager("ArcConfig.ArcResource", Assembly.GetExecutingAssembly());
+
+    // 1. получаем имя схемы
+    string SCHEMA_NAME = "";
+    string sl1=r.GetString("SCHEMA_NAME");
+    sl1 = String.Format(sl1, id_tbl) ;
+    cmd0.CommandText=sl1;
+    try
+    {
+       reader = cmd0.ExecuteReader();
+    }
+    catch (Exception ex1)
+    {
+       AddLogString("ArcDel выполнение алгоритма  - прервано.. = " + cmd0.CommandText + " " + ex1.Message);
+       return(-3);
+    }
+    if (reader.HasRows==false) {
+       AddLogString("ArcDel табл. ARC_SERVICES_INFO не заполнена для id_tbl =" + id_tbl );
+       reader.Close();
+       return(-4);
+    }
+    string[] arr = new string[2];
+    while (reader.Read())
+    {
+       for ( int i = 0; i<2; i++)
+       {
+         arr[i]=GetTypeValue(ref reader, i);
+       }
+       SCHEMA_NAME = arr[1];
+       break ;
+     } // while
+    reader.Close();
+    AddLogString("ArcDel SCHEMA_NAME=" + SCHEMA_NAME );
+
+    // 2. получаем название архивной таблицы
+    string TABLE_NAME = "";
+    sl1 = r.GetString("TABLE_ARC");
+    sl1 = String.Format(sl1, id_tbl) ;
+    cmd0.CommandText=sl1;
+    try
+    {
+      reader = cmd0.ExecuteReader();
+    }
+    catch (Exception ex1)
+    {
+      AddLogString("ArcDel выполнение алгоритма  - прервано.. = " + cmd0.CommandText + " " + ex1.Message);
+      return(-5);
+    }
+    if (reader.HasRows==false) {
+      AddLogString("ArcDel табл. для id_tbl =" + id_tbl + " не обнаружена" );
+      reader.Close();
+      return(-6);
+    }
+    while (reader.Read())
+    {
+      TABLE_NAME = GetTypeValue(ref reader, 0);
+      break ;
+    } // while
+    reader.Close();
+    AddLogString("ArcDel TABLE_NAME=" + TABLE_NAME );
+
+    // 5. устанавливаем роли
+    cmd0.CommandType = System.Data.CommandType.StoredProcedure;
+    cmd0.Parameters.Clear();
+    cmd0.CommandText="SET ROLE BASE_EXT_CONNECT_OIK , ARC_STAND_ADJ";
+    try
+    {
+       cmd0.ExecuteNonQuery();
+       AddLogString("ArcDel Установка роли = Ok -> " + cmd0.CommandText);
+    }
+    catch (Exception ex7)
+    {
+       AddLogString("ArcDel Ошибка установки Ролей ="+ex7.Message);
+    }
+
+
+    AddLogString("ArcDel Вызов процедуры arc_arh_pkg.drop_arh (parnum,sname) ..");
+/*
+--   функция drop_arh
+--           0 - все хорошо
+--           1 - не найдены арх.таблица параметра - неправ. задано имя табл списка
+--            < 0   - проч ошибка ORACLE
+*/
+    sl1="DELETE FROM " + TABLE_NAME +
+        " WHERE ID_PARAM=" + ID + " AND " + " ID_GINFO=" + IDGINFO +" ;" ;
+    cmd0.CommandText=sl1;
+    try
+    {
+      reader = cmd0.ExecuteReader();
+    }
+    catch (Exception ex1)
+    {
+      AddLogString("ArcDel Тип архива для параметра не удален = " + cmd0.CommandText + " " + ex1.Message);
+      reader.Close();
+      return(-7);
+    }
+    reader.Close();
+
+    return(0);
+}
+
+
 
 
 

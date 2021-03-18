@@ -51,6 +51,26 @@ namespace ArcConfig
       //
     }
 
+   public string GetTypeValue(ref OdbcDataReader reader, int i)
+   {
+      string ret="";
+      if (reader.IsDBNull(i)) {
+          ;
+      } else {
+          string stype= reader.GetDataTypeName(i).ToUpper();
+          //AddLogString("reader.GetDataTypeName = " + stype);
+          if (stype=="DECIMAL") ret = reader.GetValue(i).ToString();
+          if (stype=="NUMBER") ret = reader.GetValue(i).ToString(); //GetDecimal(i).ToString();
+          if (stype=="VARCHAR2") ret = reader.GetString(i);
+          if (stype=="NVARCHAR") ret = reader.GetString(i);
+          if (stype=="WVARCHAR") ret = reader.GetString(i);
+          if (stype=="TEXT") ret = reader.GetString(i);
+          if (stype=="INTEGER") ret = reader.GetValue(i).ToString();
+          if (stype=="CHAR") ret = reader.GetString(i);
+          if (stype=="NCHAR") ret = reader.GetString(i);
+      }
+      return(ret);
+    }
 
     public OdbcConnection _conn;
     public String id_arcginfo;
@@ -90,7 +110,7 @@ namespace ArcConfig
       catch (Exception ex1)
       {
         MessageBox.Show(ex1.ToString() );
-      	return ;
+        return ;
       }
 
       if (reader.HasRows) {
@@ -99,21 +119,7 @@ namespace ArcConfig
           string[] arr = new string[4];
           for ( int i = 0; i<4; i++)
           {
-            string sa="";
-            if (reader.IsDBNull(i)) {
-              sa="";
-            } else {
-              sa= reader.GetDataTypeName(i);
-              string stmp =sa.ToUpper();
-              if (stmp=="DECIMAL") sa = reader.GetValue(i).ToString();
-              if (stmp=="NUMBER") sa = reader.GetValue(i).ToString(); //GetDecimal(i).ToString();
-              if (stmp=="VARCHAR2") sa = reader.GetString(i);
-              if (stmp=="NVARCHAR") sa = reader.GetString(i);
-              if (stmp=="WVARCHAR") sa = reader.GetString(i);
-              if (stmp=="TEXT") sa = reader.GetString(i);
-              if (stmp=="INTEGER") sa = reader.GetValue(i).ToString();
-            }
-            arr[i]=sa;
+            arr[i]= GetTypeValue(ref reader, i);
           }
           checkedListBoxSTATE.Items.Add(arr[1]+" ("+arr[3]+")",CheckState.Unchecked);
         } // while
@@ -151,7 +157,7 @@ namespace ArcConfig
       catch (Exception ex1)
       {
         MessageBox.Show(ex1.ToString() );
-      	return ;
+        return ;
       }
 
       // default value
@@ -179,21 +185,7 @@ namespace ArcConfig
         //string[] arr = new string[16];
         for ( int i = 0; i<16; i++)
         {
-          string sa="";
-          if (reader.IsDBNull(i)) {
-            sa="";
-          } else {
-            sa= reader.GetDataTypeName(i);
-            string stmp =sa.ToUpper();
-            if (stmp=="DECIMAL") sa = reader.GetValue(i).ToString();
-            if (stmp=="NUMBER") sa = reader.GetValue(i).ToString(); //GetDecimal(i).ToString();
-            if (stmp=="VARCHAR2") sa = reader.GetString(i);
-            if (stmp=="NVARCHAR") sa = reader.GetString(i);
-            if (stmp=="WVARCHAR") sa = reader.GetString(i);
-            if (stmp=="TEXT") sa = reader.GetString(i);
-            if (stmp=="INTEGER") sa = reader.GetValue(i).ToString();
-          }
-          VL[i]=sa;
+           VL[i]= GetTypeValue(ref reader, i);
         }
 
         textBoxID.Text=VL[0] ;

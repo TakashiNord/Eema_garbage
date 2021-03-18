@@ -46,6 +46,7 @@
     </Reference>
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Forms.DataVisualization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -64,6 +65,10 @@
     <Compile Include="FormArcGinfo.cs" />
     <Compile Include="FormArcGinfo.Designer.cs">
       <DependentUpon>FormArcGinfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormGr.cs" />
+    <Compile Include="FormGr.Designer.cs">
+      <DependentUpon>FormGr.cs</DependentUpon>
     </Compile>
     <Compile Include="FormProfileCreate.cs" />
     <Compile Include="FormProfileCreate.Designer.cs">
@@ -91,6 +96,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormArcGinfo.resx">
       <DependentUpon>FormArcGinfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormGr.resx">
+      <DependentUpon>FormGr.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormProfileCreate.resx">
       <DependentUpon>FormProfileCreate.cs</DependentUpon>
