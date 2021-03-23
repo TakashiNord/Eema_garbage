@@ -52,7 +52,7 @@ public class ARCFTR
 
 public class MEAS1
 {
-    public MEAS1(int _id, int _idn, int _idt, string _nm, string _al, int _ginfo )
+    public MEAS1(int _id, int _idn, string _idt, string _nm, string _al, int _ginfo )
     {
       ID = _id ;
       ID_NODE = _idn ;
@@ -63,7 +63,7 @@ public class MEAS1
     }
     public int ID { get; set; }
     public int ID_NODE { get; set; }
-    public int ID_TYPE { get; set; }
+    public string ID_TYPE { get; set; }
     public string NAME1 { get; set; }
     public string NAME2 { get; set; }
     public int ID_GINFO { get; set; }

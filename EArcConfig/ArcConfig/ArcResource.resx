@@ -1,17 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
-  <!--
-    Microsoft ResX Schema
-
+  <!-- 
+    Microsoft ResX Schema 
+    
     Version 2.0
-
-    The primary goals of this format is to allow a simple XML format
-    that is mostly human readable. The generation and parsing of the
-    various data types are done through the TypeConverter classes
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
     associated with the data types.
-
+    
     Example:
-
+    
     ... ado.net/XML headers & schema ...
     <resheader name="resmimetype">text/microsoft-resx</resheader>
     <resheader name="version">2.0</resheader>
@@ -26,36 +26,36 @@
         <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
         <comment>This is a comment</comment>
     </data>
-
-    There are any number of "resheader" rows that contain simple
+                
+    There are any number of "resheader" rows that contain simple 
     name/value pairs.
-
-    Each data row contains a name, and value. The row also contains a
-    type or mimetype. Type corresponds to a .NET class that support
-    text/value conversion through the TypeConverter architecture.
-    Classes that don't support this are serialized and stored with the
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
     mimetype set.
-
-    The mimetype is used for serialized objects, and tells the
-    ResXResourceReader how to depersist the object. This is currently not
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
     extensible. For a given mimetype the value must be set accordingly:
-
-    Note - application/x-microsoft.net.object.binary.base64 is the format
-    that the ResXResourceWriter will generate, however the reader can
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
     read any of the formats listed below.
-
+    
     mimetype: application/x-microsoft.net.object.binary.base64
-    value   : The object must be serialized with
+    value   : The object must be serialized with 
             : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
             : and then encoded with base64 encoding.
-
+    
     mimetype: application/x-microsoft.net.object.soap.base64
-    value   : The object must be serialized with
+    value   : The object must be serialized with 
             : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
             : and then encoded with base64 encoding.
 
     mimetype: application/x-microsoft.net.object.bytearray.base64
-    value   : The object must be serialized into a byte array
+    value   : The object must be serialized into a byte array 
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
@@ -247,16 +247,45 @@ ORDER BY ID ASC </value>
   ORDER BY ID ASC </value>
   </data>
   <data name="DA_V_LST" xml:space="preserve">
-    <value>SELECT {0}.ID_NODE, DA_CAT.NAME, {0}.ID, {0}.ID_TYPE, {0}.NAME, 0 as ID_GINFO
-FROM {0}, DA_CAT
-WHERE
- DA_CAT.ID={0}.ID_NODE
+    <value>   SELECT {0}.ID_NODE, DA_CAT.NAME, {0}.ID,
+          (CASE
+              WHEN REGEXP_LIKE (gt.define_alias, 'ANALOG')
+                 THEN 'ТИ'
+              WHEN REGEXP_LIKE (gt.define_alias, 'TELECONTROL')
+                 THEN 'ТУ'
+              WHEN REGEXP_LIKE (gt.define_alias, 'BOOL')
+                 THEN 'ТС'
+              ELSE '??'
+           END
+          ) AS ID_TYPE,
+          {0}.NAME,
+          0 as ID_GINFO
+     FROM DA_CAT 
+     JOIN {0} ON DA_CAT.ID = {0}.ID_NODE
+     JOIN da_param da ON da.ID =  {0}.ID  
+     JOIN da_dev_desc dd ON dd.ID = da.id_point
+     LEFT JOIN sys_gtopt gt ON gt.ID = dd.id_gtopt
 UNION
-SELECT {0}.ID_NODE, DA_CAT.NAME, {0}.ID, {0}.ID_TYPE, {0}.NAME, DA_ARC.ID_GINFO as ID_GINFO
-FROM {0}, DA_CAT, DA_ARC
-WHERE {0}.ID=DA_ARC.ID_PARAM
-and DA_CAT.ID={0}.ID_NODE
-ORDER BY ID_NODE, ID </value>
+   SELECT {0}.ID_NODE, DA_CAT.NAME, {0}.ID,
+          (CASE
+              WHEN REGEXP_LIKE (gt.define_alias, 'ANALOG')
+                 THEN 'ТИ'
+              WHEN REGEXP_LIKE (gt.define_alias, 'TELECONTROL')
+                 THEN 'ТУ'
+              WHEN REGEXP_LIKE (gt.define_alias, 'BOOL')
+                 THEN 'ТС'
+              ELSE '??'
+           END
+          ) AS ID_TYPE,
+          {0}.NAME,
+          DA_ARC.ID_GINFO as ID_GINFO
+     FROM DA_CAT 
+     JOIN {0} ON DA_CAT.ID = {0}.ID_NODE
+     JOIN DA_ARC ON {0}.ID = DA_ARC.ID_PARAM
+     JOIN da_param da ON da.ID = {0}.ID  
+     JOIN da_dev_desc dd ON dd.ID = da.id_point
+     LEFT JOIN sys_gtopt gt ON gt.ID = dd.id_gtopt
+ORDER BY ID_NODE, ID</value>
   </data>
   <data name="ARC_GINFO1" xml:space="preserve">
     <value>SELECT
@@ -353,5 +382,66 @@ WHERE  b.ID_DSTTBL=a.id and a.DEFINE_ALIAS like '%ARH%' and b.ID_LSTTBL={0}</val
   </data>
   <data name="ARC_GINFO2" xml:space="preserve">
     <value>SELECT ID_GTOPT  FROM ARC_GINFO WHERE ID={0}</value>
+  </data>
+  <data name="arc_stat_avg_v" xml:space="preserve">
+    <value>   SELECT   from_dt1970 (arc_subsyst_profile.last_update) last_update,
+            arc_stat.avg_process, arc_stat.avg_insert, arc_stat.avg_row,
+            arc_stat.avg_error, sys_gtopt.alias opt_alias,
+            sys_tbllst.table_name tbl_name
+       FROM sys_tbllst, sys_gtopt, arc_stat, arc_ginfo, arc_subsyst_profile
+      WHERE sys_tbllst.ID = arc_stat.id_tbllst
+        AND sys_gtopt.ID = arc_ginfo.id_gtopt
+        AND arc_stat.id_ginfo = arc_ginfo.ID
+        AND arc_subsyst_profile.id_tbllst = arc_stat.id_tbllst
+        AND arc_subsyst_profile.id_ginfo = arc_stat.id_ginfo
+   ORDER BY arc_stat.id_tbllst, arc_stat.id_ginfo</value>
+  </data>
+  <data name="arc_stat_current_v" xml:space="preserve">
+    <value>  SELECT   from_dt1970 (arc_subsyst_profile.last_update) last_update,
+            arc_stat.cur_process, arc_stat.cur_insert, arc_stat.cur_row,
+            arc_stat.cur_error, sys_gtopt.alias opt_alias,
+            sys_tbllst.table_name tbl_name
+       FROM sys_tbllst, sys_gtopt, arc_stat, arc_ginfo, arc_subsyst_profile
+      WHERE sys_tbllst.ID = arc_stat.id_tbllst
+        AND sys_gtopt.ID = arc_ginfo.id_gtopt
+        AND arc_stat.id_ginfo = arc_ginfo.ID
+        AND arc_subsyst_profile.id_tbllst = arc_stat.id_tbllst
+        AND arc_subsyst_profile.id_ginfo = arc_stat.id_ginfo
+   ORDER BY arc_stat.id_tbllst, arc_stat.id_ginfo</value>
+  </data>
+  <data name="arc_retroviewable_v" xml:space="preserve">
+    <value>   SELECT p.id_tbllst, db.NAME AS tbllst_name, t.NAME AS tbllst_tblname,
+          ta.NAME AS arc_tblname, ag.id_gtopt, gt.NAME AS gtopt_name,
+          gt.alias AS gtopt_alias, gt.INTERVAL AS gtopt_interval, p.id_ginfo,
+          ag.NAME AS ginfo_name, acc.retro_depth
+     FROM arc_subsyst_profile p,
+          sys_db_part db,
+          sys_tbllst t,
+          sys_tbllst ta,
+          sys_tbllnk tlnk,
+          arc_ginfo ag,
+          sys_gtopt gt,
+          arc_services_access acc
+    WHERE t.ID = p.id_tbllst
+      AND db.ID = t.id_node
+      AND tlnk.id_lsttbl = p.id_tbllst
+      AND ta.ID = tlnk.id_dsttbl
+      AND ta.id_type = 1021
+      AND ag.ID = p.id_ginfo
+      AND gt.ID = ag.id_gtopt
+      AND p.ID = acc.id_sprofile(+)
+      AND is_viewable = 1</value>
+  </data>
+  <data name="DA_V_LST_TMP" xml:space="preserve">
+    <value>SELECT {0}.ID_NODE, DA_CAT.NAME, {0}.ID, {0}.ID_TYPE, {0}.NAME, 0 as ID_GINFO
+FROM {0}, DA_CAT
+WHERE
+ DA_CAT.ID={0}.ID_NODE
+UNION
+SELECT {0}.ID_NODE, DA_CAT.NAME, {0}.ID, {0}.ID_TYPE, {0}.NAME, DA_ARC.ID_GINFO as ID_GINFO
+FROM {0}, DA_CAT, DA_ARC
+WHERE {0}.ID=DA_ARC.ID_PARAM
+and DA_CAT.ID={0}.ID_NODE
+ORDER BY ID_NODE, ID </value>
   </data>
 </root>

@@ -1,0 +1,337 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="DA_COLUMN_DATA_V" xml:space="preserve">
+    <value>select count (*) from DA_COLUMN_DATA_V</value>
+  </data>
+  <data name="elreg_list_v" xml:space="preserve">
+    <value>select count (*) from elreg_list_v</value>
+  </data>
+  <data name="phreg_list_v" xml:space="preserve">
+    <value>select count (*) from phreg_list_v</value>
+  </data>
+  <data name="pswt_list_v" xml:space="preserve">
+    <value>select count (*) from pswt_list_v</value>
+  </data>
+  <data name="auto_list_v" xml:space="preserve">
+    <value>select count (*) from auto_list_v</value>
+  </data>
+  <data name="RECOVERY_FILE_DEST" xml:space="preserve">
+    <value>SELECT name, 
+    TO_CHAR(SPACE_USED, '999,999,999,999') AS "Used", 
+    TO_CHAR(SPACE_RECLAIMABLE, '999,999,999,999') as "SPACE_RECLAIMABLE" , 
+    TO_CHAR(SPACE_LIMIT, '999,999,999,999') as "SPACE_LIMIT" , 
+    TO_CHAR(SPACE_LIMIT - SPACE_USED + SPACE_RECLAIMABLE, '999,999,999,999')  AS "Free",
+    ROUND((SPACE_USED - SPACE_RECLAIMABLE)/SPACE_LIMIT * 100, 1) AS "Persent Used" , 
+    number_of_files 
+    FROM V$RECOVERY_FILE_DEST</value>
+  </data>
+  <data name="parameter" xml:space="preserve">
+    <value>select num , name , value , description from v$parameter</value>
+  </data>
+  <data name="RSDU_UPDATE" xml:space="preserve">
+    <value>SELECT id, dt1970, define_alias, state FROM RSDU_UPDATE ORDER BY define_alias Desc </value>
+  </data>
+  <data name="tablespace size" xml:space="preserve">
+    <value>SELECT t.tablespace_name, file_name,file_id, autoextensible "AutoExtend", 
+       bytes /1024/1024 "Current Size, Mb", t.status, 
+       t.increment_by* d.block_size /1024/1024 "Increment, Mb", 
+        maxbytes /1024/1024 "Max Size, Mb"  
+  FROM Dba_Data_Files t, dba_tablespaces d 
+  WHERE d.tablespace_name =  t.tablespace_name</value>
+  </data>
+  <data name="version" xml:space="preserve">
+    <value>select * from v$version</value>
+  </data>
+  <data name="nls_session_parameters" xml:space="preserve">
+    <value>select * from nls_session_parameters</value>
+  </data>
+  <data name="datafile1" xml:space="preserve">
+    <value>select name||' = '||value name, null MB from v$parameter 
+where name like '%undo_tablespace' or name like 'instance_name' or name like 'instance_number' or name like 'cluster_database_instances'
+union all  
+select 'ASM disc '||rpad (name, 10) || TOTAL_MB || ' MB ('|| FREE_MB||' free)', null MB from v$asm_diskgroup_stat 
+union all 
+select 'DB Files Total SIZE:' filename, sum (mb) MB from (select round (sum (f.bytes)/1024/1024) mb from v$datafile f 
+union all 
+select round (sum (t.bytes)/1024/1024) mb from v$tempfile t) 
+union all 
+select name, round (bytes/1024/1024) mb from v$tempfile 
+union all 
+select name, round (bytes/1024/1024) mb from v$datafile 
+order by mb desc</value>
+  </data>
+  <data name="sysstat" xml:space="preserve">
+    <value>select * from v$sysstat</value>
+  </data>
+  <data name="UsersServ" xml:space="preserve">
+    <value>SELECT  
+   dir.id dir, 
+   users.id id,
+   dir2.NAME parname,
+   dir.NAME servname, 
+   appl.NAME appl, 
+   appl.ALIAS applalias,
+   users.login login , 
+   users.NAME users  
+FROM  AD_DIR dir, AD_DIR dir1, AD_DIR dir2, AD_DTYP dtyp, AD_SINFO sinfo, 
+ S_USERS users,  SYS_APPL appl 
+WHERE  
+ dtyp.ID = dir1.ID_TYPE AND  
+ dir1.ID = dir.ID_PARENT AND  
+ dir1.ID_PARENT = dir2.ID AND 
+ dtyp.DEFINE_ALIAS = 'ADV_APPLICATION' AND  
+ sinfo.ID_SERVER_NODe = dir.ID AND 
+ sinfo.ID_USER = users.ID AND  
+ sinfo.ID_APPL = appl.ID</value>
+  </data>
+  <data name="openedcursorscurrent" xml:space="preserve">
+    <value>select a.value  total_cur, 
+      s.program, s.username, s.sid, s.serial#, s.client_identifier 
+from v$sesstat  a, v$statname b, v$session  s  
+where a.statistic# = b.statistic# 
+      and s.sid = a.sid 
+      and b.name = 'opened cursors current'  
+union select sum(a.value), NULL, NULL, NULL, NULL, NULL 
+       from v$sesstat a, v$statname b 
+ where a.statistic# = b.statistic# and b.name = 'opened cursors current' </value>
+  </data>
+  <data name="sga_dynamic_components" xml:space="preserve">
+    <value>SELECT component, current_size, min_size, max_size FROM v$sga_dynamic_components</value>
+  </data>
+  <data name="pgastat" xml:space="preserve">
+    <value>SELECT name, value FROM v$pgastat</value>
+  </data>
+  <data name="UNDO" xml:space="preserve">
+    <value>SELECT d.undo_size/(1024*1024) "ACTUAL UNDO SIZE [MByte]" 
+     , SUBSTR(e.value,1,25) "UNDO RETENTION [Sec]" 
+     , (TO_NUMBER(e.value) * TO_NUMBER(f.value) * g.undo_block_per_sec) / (1024*1024) "NEEDED UNDO SIZE [MByte]" 
+     , ROUND((d.undo_size / (to_number(f.value) * g.undo_block_per_sec))) "OPTIMAL UNDO RETENTION [Sec]" 
+FROM (SELECT SUM(a.bytes) undo_size 
+      FROM v$datafile a 
+        , v$tablespace b 
+         , dba_tablespaces c 
+      WHERE c.contents = 'UNDO' 
+        AND c.status = 'ONLINE'  
+        AND b.name = c.tablespace_name 
+        AND a.ts# = b.ts# 
+     ) d 
+   , v$parameter e 
+   , v$parameter f 
+   , (SELECT MAX(undoblks/((end_time-begin_time)*3600*24)) undo_block_per_sec  FROM v$undostat  ) g  
+WHERE e.name = 'undo_retention' 
+  AND f.name = 'db_block_size' </value>
+  </data>
+  <data name="process" xml:space="preserve">
+    <value>select * from v$process</value>
+  </data>
+  <data name="GPU" xml:space="preserve">
+    <value>SELECT s.value, n.SID, n.SERIAL#, n.osuser , n.username ,  n.MACHINE , n.PROGRAM 
+FROM v$session n , v$sesstat s, v$statname t 
+WHERE s.statistic# = t.statistic# 
+AND n.sid = s.sid 
+AND t.name='CPU used by this session' 
+ORDER BY s.value desc </value>
+  </data>
+  <data name="open_cursor" xml:space="preserve">
+    <value>SELECT v$session.sid,
+          user_name,
+        program,
+       v$session.action,
+   loaded_versions, 
+   open_versions, 
+   users_opening, 
+    v$sqlarea.sql_text 
+ FROM v$open_cursor, v$sqlarea, v$session 
+ WHERE v$open_cursor.sid = v$session.sid AND  
+   v$open_cursor.address = v$sqlarea.address AND 
+   v$open_cursor.hash_value = v$sqlarea.hash_value  
+ ORDER BY 1</value>
+  </data>
+  <data name="open_cursor1" xml:space="preserve">
+    <value>select count(*) from v$open_cursor</value>
+  </data>
+  <data name="dba_tab_privs" xml:space="preserve">
+    <value>select owner ,  privilege,  table_name ,  grantee 
+from dba_tab_privs 
+where lower(owner) = lower('RSDUADMIN')
+order by grantee</value>
+  </data>
+  <data name="dba_db_links" xml:space="preserve">
+    <value>select * from dba_db_links</value>
+  </data>
+  <data name="dba_directories" xml:space="preserve">
+    <value>select * from  dba_directories</value>
+  </data>
+  <data name="locked_object" xml:space="preserve">
+    <value>select vo.session_id sid , vo.os_user_name , vo.oracle_username 
+     , do.owner||'.'||do.object_name object , do.subobject_name 
+    , decode(vo.locked_mode, 
+     1, 'No Lock',  
+      2, 'Row Share',  
+      3, 'Row Exclusive', 
+       4, 'Shared Table', 
+      5, 'Shared Row Exclusive', 
+       6, 'Exclusive') locked_mode  
+from v$locked_object vo , dba_objects do where vo.object_id=do.object_id 
+order by do.owner , do.object_name</value>
+  </data>
+  <data name="session1" xml:space="preserve">
+    <value>select null "state", null "count" from dual 
+ union 
+select 'INACTIVE', count(*) from v$session where status = 'INACTIVE' 
+ union 
+select 'ACTIVE', count(*) from v$session where status = 'ACTIVE'</value>
+  </data>
+  <data name="dba_recyclebin" xml:space="preserve">
+    <value>SELECT * FROM SYS.dba_recyclebin WHERE owner like 'RSDU%'</value>
+  </data>
+  <data name="database" xml:space="preserve">
+    <value>SELECT * FROM gv$database</value>
+  </data>
+  <data name="asm_diskgroup" xml:space="preserve">
+    <value>SELECT * FROM gv$asm_diskgroup</value>
+  </data>
+  <data name="resource_limit" xml:space="preserve">
+    <value>select * from v$resource_limit order by resource_name</value>
+  </data>
+  <data name="dbtimezone" xml:space="preserve">
+    <value>select dbtimezone from dual</value>
+  </data>
+  <data name="session2" xml:space="preserve">
+    <value>SELECT inst_id, username, module, machine 
+ FROM gv$session 
+ WHERE username NOT IN ('SYS', 'SYSMAN', 'DBSNMP')</value>
+  </data>
+  <data name="Status0" xml:space="preserve">
+    <value>select host_name, instance_name, startup_time, status, version, archiver, logins from gv$instance</value>
+  </data>
+  <data name="EXDATA_LIST_V" xml:space="preserve">
+    <value>select count (*) from EXDATA_LIST_V</value>
+  </data>
+  <data name="RPT_LST_V" xml:space="preserve">
+    <value>select count (*) from RPT_LST_V</value>
+  </data>
+  <data name="RPT_LST_WWW_V" xml:space="preserve">
+    <value>select count (*) from RPT_LST_WWW_V</value>
+  </data>
+  <data name="DG_LIST" xml:space="preserve">
+    <value>select count (*) from DG_LIST</value>
+  </data>
+</root>

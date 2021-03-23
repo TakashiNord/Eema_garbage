@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using System.Threading.Tasks ;
 
 using System.Collections;
 using System.ComponentModel;
@@ -79,6 +80,8 @@ namespace ArcConfig
        this._conn = this._getDBConnection();
        if (this._conn == null) return;
        toolStripButton1.Enabled=false;
+       toolStripButton2.Enabled=true;
+       toolStripButton3.Enabled=true;
        tabControl1.Enabled=true;
        _setDBarc();
     }
@@ -475,6 +478,9 @@ namespace ArcConfig
        propertyGridA.SelectedObject = _profileData;
        buttonSave.Enabled=false ;
 
+       toolStripButton2.Enabled=false;
+       toolStripButton3.Enabled=false;
+
        _setDBS();
     }
     void TreeViewAAfterSelect(object sender, TreeViewEventArgs e)
@@ -719,7 +725,7 @@ namespace ArcConfig
           if (TABLE_NAME.IndexOf("DA_V_LST")>=0) {
              int _id = Convert.ToInt32(arr[2]);
              int _idn = Convert.ToInt32(arr[0]);
-             int _idt = Convert.ToInt32(arr[3]);
+             string _idt = arr[3].ToString();
              int _ginfo = Convert.ToInt32(arr[5]);
              MEAS1 item1 = new MEAS1(_id,_idn,_idt,arr[4],arr[1],_ginfo);
              dp.Add(item1);
@@ -727,7 +733,7 @@ namespace ArcConfig
              //SELECT ID, id_obj, id_meas_type, NAME, alias , ID_GINFO
              int _id = Convert.ToInt32(arr[0]);
              int _idn = Convert.ToInt32(arr[1]);
-             int _idt = Convert.ToInt32(arr[2]);
+             string _idt = arr[2].ToString();
              int _ginfo = Convert.ToInt32(arr[5]);
              MEAS1 item1 = new MEAS1(_id,_idn, _idt,arr[3],arr[4],_ginfo);
              dp.Add(item1);
@@ -2280,7 +2286,173 @@ int ArcDel(object sender, int selRowNum , int selColNum)
     return(0);
 }
 
+    void ToolStripButton3Click(object sender, EventArgs e)
+    {
+      // Output Stat to Logs
+      toolStripStatusLabel2.Text = "Output Stat to Logs - Start";
+      Action th = new Action( OracleStat ) ;
+      Task tsk = new Task(th);
+      tsk.Start();
+    }
 
+    string ReadData(string st )
+    {
+      // Объект для выполнения запросов к базе данных
+      OdbcCommand cmd0 = new OdbcCommand();
+      OdbcDataReader reader = null ;
+      cmd0.Connection=this._conn;
+      string strQry = "";
+
+      ResourceManager ro = new ResourceManager("ArcConfig.StatOracle", Assembly.GetExecutingAssembly());
+
+      string tmpName = ro.GetString(st);
+      if (tmpName == null || tmpName.Trim().Length == 0)
+      {
+         AddLogString("ReadData = variable '" + st + "' not set" );
+         return (strQry);
+      }
+
+      cmd0.CommandText=tmpName;
+      try
+      {
+        reader = cmd0.ExecuteReader();
+      }
+      catch (Exception ex1)
+      {
+        AddLogString("ReadData =" + cmd0.CommandText + "=" + ex1.Message);
+        return (strQry);
+      }
+
+      while (reader.Read())
+      {
+         strQry = ";" ;
+         for ( int i = 0; i<reader.FieldCount; i++)
+         {
+           strQry+=GetTypeValue(ref reader, i) +  ";";
+         }
+         if (reader.FieldCount>1) AddLogString(strQry);
+      } // while
+      reader.Close();
+
+      return (strQry);
+    }
+
+
+
+void OracleStat ( )
+{
+    //=========================================================
+    AddLogString("========================");
+    AddLogString(">> RSDU <<");
+    AddLogString("========================");
+    AddLogString(";Число параметров:;;");
+    AddLogString(";  Параметры Сбора = " + ReadData( "DA_COLUMN_DATA_V" ));
+    AddLogString(";  Электрические параметры = " + ReadData( "elreg_list_v" ));
+    AddLogString(";  Прочие параметры = " + ReadData( "phreg_list_v" ));
+    AddLogString(";  Коммутационные аппараты = " + ReadData( "pswt_list_v" ));
+    AddLogString(";  Дополнительные параметры = " + ReadData( "EXDATA_LIST_V" ));
+    AddLogString(";  Диспетчерские графики = " + ReadData( "DG_LIST" ));
+    AddLogString(";  Количество отчетов = " + ReadData( "RPT_LST_V" ));
+    AddLogString(";  Количество отчетов веб-сервера = " + ReadData( "RPT_LST_WWW_V" ));
+    AddLogString("========================");
+    AddLogString(">>RSDU_UPDATE");
+    ReadData( "RSDU_UPDATE" );
+    AddLogString("========================");
+    //AddLogString(">>dba_tab_privs-RSDUADMIN");
+    //ReadData( "dba_tab_privs" ) ;
+    //AddLogString(">>Users Serv");
+    //ReadData( "UsersServ" ) ;
+
+    //=========================================================
+    AddLogString("========================");
+    AddLogString(">> Instance <<");
+    AddLogString("========================");
+    AddLogString(">>Status");
+    ReadData( "Status0" ) ;
+    AddLogString("========================");
+    AddLogString(">>dbtimezone");
+    ReadData( "dbtimezone" ) ;
+    AddLogString("========================");
+    AddLogString(">>v$version");
+    ReadData( "version" ) ;
+    AddLogString("========================");
+    AddLogString(">>Размер и свободное место");
+    ReadData( "datafile1" ) ;
+    AddLogString("========================");
+    AddLogString(">>tablespace size");
+    ReadData( "tablespace size" ) ;
+    AddLogString("========================");
+    AddLogString(">>gv$database");
+    ReadData( "database" ) ;
+    AddLogString("========================");
+    AddLogString(">>gv$asm_diskgroup");
+    ReadData( "asm_diskgroup" ) ;
+    AddLogString("========================");
+    AddLogString(">>dba_directories - информацию о Oracle-directories: владелец, имя, путь в файловой системе ОС");
+    ReadData( "dba_directories" ) ;
+    AddLogString("========================");
+    AddLogString(">>dba_db_links - о database links: владелец, имя линка, имя схемы....");
+    ReadData( "dba_db_links" ) ;
+    AddLogString("========================");
+    AddLogString(">>v$resource_limit");
+    ReadData( "resource_limit" ) ;
+    AddLogString("========================");
+    AddLogString(">>v$parameter");
+    ReadData( "parameter" ) ;
+    AddLogString("========================");
+    AddLogString(">>nls_session_parameters");
+    ReadData( "nls_session_parameters" ) ;
+    AddLogString("========================");
+    AddLogString(">>Процент использования FRA:");
+    ReadData( "RECOVERY_FILE_DEST" ) ;
+    AddLogString("========================");
+    AddLogString(">>UNDO");
+    ReadData( "UNDO" ) ;
+    AddLogString("========================");
+    //=========================================================
+
+    AddLogString(">>v$sga_dynamic_components");
+    ReadData( "sga_dynamic_components" ) ;
+    AddLogString("========================");
+    AddLogString(">>v$pgastat");
+    ReadData( "pgastat" ) ;
+    AddLogString("========================");
+    //=========================================================
+
+    AddLogString(">>v$locked_object");
+    ReadData( "locked_object" ) ;
+    AddLogString("========================");
+    AddLogString(">>dba_recyclebin");
+    ReadData( "dba_recyclebin" ) ;
+    AddLogString("========================");
+    AddLogString(">>v$session");
+    ReadData( "session1" ) ;
+    AddLogString("========================");
+    AddLogString(">>gv$session");
+    ReadData( "session2" ) ;
+    AddLogString("========================");
+    AddLogString(">>v$process");
+    ReadData( "process" ) ;
+    AddLogString("========================");
+    AddLogString(">>Количество открытых курсоров = "+ ReadData( "open_cursor" )) ;
+    AddLogString(">>v$open_cursor");
+    ReadData( "open_cursor1" ) ;
+    AddLogString("========================");
+    AddLogString(">>opened cursors current");
+    ReadData( "openedcursorscurrent" ) ;
+    AddLogString("========================");
+    AddLogString(">>v$sysstat");
+    ReadData( "sysstat" ) ;
+    AddLogString("========================");
+    AddLogString(">>Сессии - CPU used by this session");
+    ReadData( "GPU" ) ;
+    AddLogString("========================");
+    //=========================================================
+
+    toolStripStatusLabel2.Text = "Output Stat to Logs - End";
+
+    return ;
+}
 
 
 
