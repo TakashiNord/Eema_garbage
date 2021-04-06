@@ -33,6 +33,7 @@ namespace ArcConfig
 		private System.Windows.Forms.BindingSource bindingSource1;
 		private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
 		private System.Windows.Forms.ComboBox comboBox1;
+		private System.Windows.Forms.Button button2;
 		
 		/// <summary>
 		/// Disposes resources used by the form.
@@ -59,7 +60,9 @@ namespace ArcConfig
 			System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
 			System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
 			System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormGr));
 			this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+			this.button2 = new System.Windows.Forms.Button();
 			this.comboBox1 = new System.Windows.Forms.ComboBox();
 			this.button1 = new System.Windows.Forms.Button();
 			this.label3 = new System.Windows.Forms.Label();
@@ -106,6 +109,7 @@ namespace ArcConfig
 			// 
 			// splitContainer2.Panel1
 			// 
+			this.splitContainer2.Panel1.Controls.Add(this.button2);
 			this.splitContainer2.Panel1.Controls.Add(this.comboBox1);
 			this.splitContainer2.Panel1.Controls.Add(this.button1);
 			this.splitContainer2.Panel1.Controls.Add(this.label3);
@@ -120,6 +124,16 @@ namespace ArcConfig
 			this.splitContainer2.Size = new System.Drawing.Size(769, 387);
 			this.splitContainer2.SplitterDistance = 88;
 			this.splitContainer2.TabIndex = 1;
+			// 
+			// button2
+			// 
+			this.button2.Location = new System.Drawing.Point(712, 7);
+			this.button2.Name = "button2";
+			this.button2.Size = new System.Drawing.Size(50, 37);
+			this.button2.TabIndex = 9;
+			this.button2.Text = "Delete Data";
+			this.button2.UseVisualStyleBackColor = true;
+			this.button2.Click += new System.EventHandler(this.Button2Click);
 			// 
 			// comboBox1
 			// 
@@ -170,9 +184,9 @@ namespace ArcConfig
 			// 
 			this.button1.Location = new System.Drawing.Point(577, 5);
 			this.button1.Name = "button1";
-			this.button1.Size = new System.Drawing.Size(75, 39);
+			this.button1.Size = new System.Drawing.Size(91, 39);
 			this.button1.TabIndex = 7;
-			this.button1.Text = "Load data..";
+			this.button1.Text = "Load data and Graphics..";
 			this.button1.UseVisualStyleBackColor = true;
 			this.button1.Click += new System.EventHandler(this.Button1Click);
 			// 
@@ -321,6 +335,7 @@ namespace ArcConfig
 			this.ClientSize = new System.Drawing.Size(769, 387);
 			this.Controls.Add(this.statusStrip1);
 			this.Controls.Add(this.splitContainer2);
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "FormGr";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Graphics";

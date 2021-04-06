@@ -168,12 +168,17 @@ namespace ArcConfig
         dataGridView1.Update();
 
         DateTime t0 ;
+        double minV = 0 ;
+        double vl1 = 0 , vl2 = 0;
         for (int ii = 0; ii < dataGridView1.RowCount ; ii++) {
            //Unix -> DateTime
-           t0 = UnixTimestampToDateTime(Convert.ToDouble(dataGridView1.Rows[ii].Cells[0].Value)) ;
+           vl1 = Convert.ToDouble(dataGridView1.Rows[ii].Cells[0].Value);
+           if (Math.Abs(vl2-vl1)> minV) minV = Math.Abs(vl2-vl1) ;
+           t0 = UnixTimestampToDateTime(vl1) ;
            //t0=t0.ToUniversalTime() ;
            t0=t0.ToLocalTime();
            dataGridView1.Rows[ii].Cells[0].Value=t0.ToString("u"); // u s o
+           vl2 = vl1 ;
         }
 
         myChart.Series.Clear();
@@ -231,6 +236,9 @@ namespace ArcConfig
         //mySeriesOfPoint.MarkerStyle = MarkerStyle.None;
         mySeriesOfPoint.ChartArea = TABLE_NAME;
         mySeriesOfPoint.XValueType = ChartValueType.DateTime;
+        mySeriesOfPoint.IsXValueIndexed = true ;
+        //myChart.ChartAreas[0].AxisX.IntervalType = DateTimeIntervalType.Months;
+        //myChart.ChartAreas[0].AxisX.Interval = minV ;
         myChart.ChartAreas[0].AxisX.LabelStyle.Format = "yyyy-MM-dd HH:mm:ss";
         mySeriesOfPoint.XValueMember = dataGridView1.Columns[0].DataPropertyName;
         mySeriesOfPoint.YValueMembers = dataGridView1.Columns[1].DataPropertyName;
@@ -375,7 +383,7 @@ namespace ArcConfig
        {
           ;
        }
-       
+
       }
     void Button1Click(object sender, EventArgs e)
     {
@@ -395,10 +403,10 @@ namespace ArcConfig
     }
     void TrackBar1Scroll(object sender, EventArgs e)
     {
-      DateTime dt = DateTime.Now;
-      int hr = 0 ;
+        DateTime dt = DateTime.Now;
+        int hr = 0 ;
 
-      // уменьшаем
+        // уменьшаем
         if (trackBar1.Value < valueBefore)
         {
             hr = -24 ;
@@ -415,6 +423,49 @@ namespace ArcConfig
 
         Button1Click(null,  e) ;
     }
+		void Button2Click(object sender, EventArgs e)
+		{
+			 // delete media
+
+             // Объект для выполнения запросов к базе данных
+             OdbcCommand cmd0 = new OdbcCommand();
+             int res1 = 0 ;
+
+             cmd0.Connection=this._conn;
+
+             if (TABLE_NAME=="") return ;
+             Application.DoEvents();
+
+			 int i1 = Convert.ToInt32( DateTimeToUnixTimestamp(dateTimePicker1.Value) );
+             int i2 = Convert.ToInt32( DateTimeToUnixTimestamp(dateTimePicker2.Value) );
+             if (i1>=i2) {
+               MessageBox.Show(" Период установлен не верно! Ничего не удалено");
+               return ;
+             }
+
+             DialogResult result = MessageBox.Show ("Удалить значения из таблицы?\n\n\n" +
+                " TABLE_NAME = " + TABLE_NAME + "\n" +
+                "  from = "+dateTimePicker1.Value.ToString() +"\n" +
+                "    to = "+dateTimePicker2.Value.ToString() +"\n" ,
+               "Удалить значения..", MessageBoxButtons.YesNo,MessageBoxIcon.Exclamation,
+               MessageBoxDefaultButton.Button2);
+             if (result == DialogResult.Yes)
+             {
+                 cmd0.CommandText="DELETE FROM " + TABLE_NAME +
+             	     " WHERE time1970 BETWEEN " + i1.ToString() + " AND "+ i2.ToString() ;
+                 try
+                 {
+                     res1 = cmd0.ExecuteNonQuery();
+                 }
+                 catch (Exception ex1)
+                 {
+                     MessageBox.Show(ex1.Message);
+                     return ;
+                 }
+                 MessageBox.Show("Операция удаления прошла успешно\n Удалено (записей) = " + res1.ToString() );
+              }
+
+		 }
 
   }
 

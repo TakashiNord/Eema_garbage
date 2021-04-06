@@ -428,7 +428,8 @@ sl1="" +
     }
     void CheckedListBoxSTATESelectedIndexChanged(object sender, EventArgs e)
     {
-       // Get the currently selected item in the ListBox.
+       // Old variant
+     /*
        string curItem = checkedListBoxSTATE.SelectedItem.ToString();
        int i = checkedListBoxSTATE.SelectedIndex ;
        int ip1 = curItem.IndexOf('(');
@@ -450,6 +451,7 @@ sl1="" +
        }
 
        textBoxSTATE.Text=val1.ToString();
+     */
     }
     void CheckBoxWRITE_MINMAXCheckedChanged(object sender, EventArgs e)
     {
@@ -656,6 +658,53 @@ sl1="" +
 
     }
 
+    void CheckedListBoxSTATEItemCheck(object sender, ItemCheckEventArgs e)
+    {
+
+       /*if (e.NewValue == CheckState.Checked)
+            for (int ix = 0; ix < checkedListBoxSTATE.Items.Count; ++ix)
+             if (e.Index != ix) checkedListBoxSTATE.SetItemChecked(ix, false);
+       */
+
+       BeginInvoke((MethodInvoker)(() => CheckedItemsChanged(sender, e)));
+       /*if (e.NewValue == CheckState.Checked)
+         {
+            checkedListBoxSTATE.SetItemChecked(e.Index, true);
+         }
+         else
+         {
+            checkedListBoxSTATE.SetItemChecked(e.Index, false);
+         }
+        */
+     }
+
+    void CheckedItemsChanged(object sender, ItemCheckEventArgs e)
+    {
+       int val1 = 0 ;
+       for (int jj = 0; jj<checkedListBoxSTATE.Items.Count ; jj++ )
+       {
+          bool chk = checkedListBoxSTATE.GetItemChecked(jj);
+
+          string curItem = checkedListBoxSTATE.Items[jj].ToString();
+          int ip1 = curItem.IndexOf('(');
+          string text1 = curItem.Substring(ip1+1) ;
+          int ip2 = text1.IndexOf(')');
+          text1 = text1.Substring(0,ip2) ;
+          int val2 = Convert.ToInt32(text1);
+
+          if (chk==true) {
+            val1=val1+val2;
+          }
+
+          if (text1=="2") {
+            if (chk==true) checkBoxWRITE_MINMAX.Checked=true;
+            else checkBoxWRITE_MINMAX.Checked=false;
+          }
+
+       }
+
+       textBoxSTATE.Text=val1.ToString();
+    }
 
   }
 }

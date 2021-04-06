@@ -54,6 +54,8 @@ namespace ArcConfig
     public DataGridViewCellMouseEventArgs /*DataGridViewCellEventArgs*/ mouseLocation;
     public int PCellValueChanged = 0;
 
+    public int OptionFullDelete = 0;
+    public int OptionWriteOnDelete = 0 ;
 
     public MainForm()
     {
@@ -69,7 +71,7 @@ namespace ArcConfig
     void TabControl1SelectedIndexChanged(object sender, EventArgs e)
     {
        int i =tabControl1.SelectedIndex ;
-       AddLogString("tabControl1="+i);
+       //AddLogString("tabControl1="+i);
     }
 
     const string toolStripButton = "ToolStripButton1";
@@ -82,6 +84,7 @@ namespace ArcConfig
        toolStripButton1.Enabled=false;
        toolStripButton2.Enabled=true;
        toolStripButton3.Enabled=true;
+       toolStripButton4.Enabled=true;
        tabControl1.Enabled=true;
        _setDBarc();
     }
@@ -118,6 +121,8 @@ namespace ArcConfig
           if (stype=="INTEGER") ret = reader.GetValue(i).ToString();
           if (stype=="CHAR") ret = reader.GetString(i);
           if (stype=="NCHAR") ret = reader.GetString(i);
+          if (stype=="DATE") ret = reader.GetString(i);
+          if (stype=="TIME") ret = reader.GetString(i);
       }
       return(ret);
     }
@@ -153,7 +158,7 @@ namespace ArcConfig
        command.Connection = this._conn; // уже созданное и открытое соединение
        command.CommandType = System.Data.CommandType.StoredProcedure;
        command.Parameters.Clear();
-       command.CommandText="SET ROLE BASE_EXT_CONNECT_OIK , ARC_STAND_ADMIN";
+       command.CommandText="SET ROLE BASE_EXT_CONNECT_OIK , ARC_STAND_ADMIN, ARC_STAND_ADJ, ARC_STAND_READ";
 
        try
        {
@@ -480,6 +485,7 @@ namespace ArcConfig
 
        toolStripButton2.Enabled=false;
        toolStripButton3.Enabled=false;
+       toolStripButton4.Enabled=false;
 
        _setDBS();
     }
@@ -499,7 +505,7 @@ namespace ArcConfig
       //Получить Имя выделенного элемента
       string id_parent=treeViewA.SelectedNode.Name;
       string id_index = Convert.ToString ( treeViewA.SelectedNode.Tag ) ;
-      AddLogString(" id_parent=" + id_parent + "  id_index=" + id_index);
+      //AddLogString(" id_parent=" + id_parent + "  id_index=" + id_index);
 
       // re-read
       //dataGridViewA.Rows.Clear();
@@ -805,7 +811,9 @@ namespace ArcConfig
 
         // отключаем сортировку для каждого столбца
         foreach (DataGridViewColumn col in dataGridViewP.Columns)
-          col.SortMode = DataGridViewColumnSortMode.NotSortable;
+        {  // DataGridViewColumnSortMode.NotSortable;
+        	col.SortMode = DataGridViewColumnSortMode.Automatic ;
+        }
 
         // Resize the master DataGridView columns to fit the newly loaded data.
         dataGridViewP.AutoResizeColumns();
@@ -1065,7 +1073,7 @@ namespace ArcConfig
        string id_parent=treeViewS.SelectedNode.Name;
        if (id_parent=="0") return ;
 
-       AddLogString("Tb=" + id_parent);
+       //AddLogString("Tb=" + id_parent);
 
        //удалим все строки из dataGridView1
        //while (0 != dataGridViewS.Columns.Count)
@@ -1248,13 +1256,13 @@ namespace ArcConfig
     void DataGridViewASelectionChanged(object sender, EventArgs e)
     {
       if (dataGridViewA.SelectedRows.Count==0) {
-        AddLogString(" DataGridViewASelectionChanged-> = 0"   );
+        //AddLogString(" DataGridViewASelectionChanged-> = 0"   );
         return  ;
       }
 
       int selRowNum = dataGridViewA.CurrentCell.RowIndex;
       if (selRowNum<0) {
-        AddLogString(" DataGridViewASelectionChanged-> = " + selRowNum.ToString()  );
+        //AddLogString(" DataGridViewASelectionChanged-> = " + selRowNum.ToString()  );
         return  ;
       }
 
@@ -1269,7 +1277,8 @@ namespace ArcConfig
 
       //Получить Имя выделенного элемента
       string ID_TBLLST=treeViewA.SelectedNode.Name;
-      AddLogString("DataGridViewACellContentClick-> ID_TBLLST=" + ID_TBLLST + "  ID_GINFO=" + ID_GINFO);
+
+      //AddLogString("DataGridViewACellContentClick-> ID_TBLLST=" + ID_TBLLST + "  ID_GINFO=" + ID_GINFO);
 
       string sl1="SELECT  ARC_SUBSYST_PROFILE.ID,ARC_SUBSYST_PROFILE.ID_TBLLST,ARC_SUBSYST_PROFILE.ID_GINFO," +
       "ARC_SUBSYST_PROFILE.IS_WRITEON, ARC_SUBSYST_PROFILE.STACK_NAME,ARC_SUBSYST_PROFILE.LAST_UPDATE,ARC_SUBSYST_PROFILE.IS_VIEWABLE  " +
@@ -1719,7 +1728,7 @@ namespace ArcConfig
        selRowNum = dataGridViewP.CurrentCell.RowIndex; //mouseLocation.RowIndex ;
        selColNum = dataGridViewP.CurrentCell.ColumnIndex ; //mouseLocation.ColumnIndex ;
 
-       AddLogString(" GraphicsTool -> selRowNum=" + selRowNum.ToString() + " selColNum=" + selColNum.ToString());
+       //AddLogString(" GraphicsTool -> selRowNum=" + selRowNum.ToString() + " selColNum=" + selColNum.ToString());
 
        if (selRowNum<0) return ;
        // group id name type {}
@@ -1738,9 +1747,9 @@ namespace ArcConfig
        string id_parent=treeViewA.SelectedNode.Name;
        if (id_parent=="0") return ;
        string id_tbl =Convert.ToString(treeViewA.SelectedNode.Tag) ;
-       AddLogString("GraphicsTool=id_tbl=" + id_tbl);
+       //AddLogString("GraphicsTool=id_tbl=" + id_tbl);
        string id_name=treeViewA.SelectedNode.Text ;
-       AddLogString("GraphicsTool=" + id_parent + " " + id_name);
+       //AddLogString("GraphicsTool=" + id_parent + " " + id_name);
        if (id_tbl=="0" || id_tbl=="") return ;
 
        dataGridViewP.Rows[selRowNum].Cells[selColNum].Style.ForeColor
@@ -1769,7 +1778,7 @@ namespace ArcConfig
       //Получить Имя выделенного элемента
       string id_parent = treeViewA.SelectedNode.Name;
       string id_index = Convert.ToString ( treeViewA.SelectedNode.Tag ) ;
-      AddLogString("DataGridViewASorted id_parent=" + id_parent + "  id_index=" + id_index);
+      //AddLogString("DataGridViewASorted id_parent=" + id_parent + "  id_index=" + id_index);
 
       // re-read
       //dataGridViewA.Rows.Clear();
@@ -1847,7 +1856,8 @@ namespace ArcConfig
         AddLogString("Выкл\\вкл архив = before status =" + checkCell.Value.ToString());
         if (Convert.ToBoolean(checkCell.Value)==false) {
             if (OwnCol.DefaultCellStyle.BackColor==Color.LightGray) {
-              checkCell.Value=true;
+        		if (OptionWriteOnDelete == 0)
+        			 checkCell.Value=true;
             }
         }
         object obj2 = checkCell.Value ;
@@ -1926,7 +1936,7 @@ int ArcAdd(object sender, int selRowNum , int selColNum)
 
    //Получить Имя выделенного элемента
    string id_tbl =Convert.ToString(treeViewA.SelectedNode.Tag) ;
-   AddLogString("ArcAdd =id_tbl=" + id_tbl);
+   // AddLogString("ArcAdd =id_tbl=" + id_tbl);
 
    ResourceManager r = new ResourceManager("ArcConfig.ArcResource", Assembly.GetExecutingAssembly());
 
@@ -2178,12 +2188,16 @@ int ArcDel(object sender, int selRowNum , int selColNum)
     OdbcDataReader reader = null ;
     cmd0.Connection=this._conn;
 
+    string vRetVal = "";
+    string retname = "" ;
+    string sname = "" ;
+
     string ID = dataGridView.Rows[selRowNum].Cells[1].Value.ToString() ;
     string IDGINFO = dataGridView.Columns[selColNum].Name ;
 
     //Получить Имя выделенного элемента
     string id_tbl =Convert.ToString(treeViewA.SelectedNode.Tag) ;
-    AddLogString("ArcDel =id_tbl=" + id_tbl);
+    //AddLogString("ArcDel =id_tbl=" + id_tbl);
 
     ResourceManager r = new ResourceManager("ArcConfig.ArcResource", Assembly.GetExecutingAssembly());
 
@@ -2261,27 +2275,83 @@ int ArcDel(object sender, int selRowNum , int selColNum)
     }
 
 
-    AddLogString("ArcDel Вызов процедуры arc_arh_pkg.drop_arh (parnum,sname) ..");
+
+    if (OptionFullDelete == 1) {
+
+      sl1 = SCHEMA_NAME+".arc_arh_pkg.drop_arh(?,?)" ;
+      cmd0.CommandText = "{ ? = call "+sl1+" }";
+
+      cmd0.CommandType = System.Data.CommandType.StoredProcedure;
+      cmd0.Parameters.Clear();
+
+      OdbcParameter parOut = new OdbcParameter();
+      parOut.Direction = System.Data.ParameterDirection.ReturnValue;
+      parOut.OdbcType = OdbcType.Decimal;
+      parOut.ParameterName = "i";
+
+      cmd0.Parameters.Add(parOut);
+
+      OdbcParameter param1 = new OdbcParameter();
+      param1.Direction = System.Data.ParameterDirection.Input;
+      param1.OdbcType = OdbcType.Decimal;
+      param1.ParameterName = "parnum";
+      param1.Value = Convert.ToDecimal(ID);
+
+      cmd0.Parameters.Add(param1);
+
+      OdbcParameter param4 = new OdbcParameter();
+      param4.Direction = System.Data.ParameterDirection.InputOutput;
+      param4.OdbcType = OdbcType.NText;
+      param4.ParameterName = "sname";
+      param4.Value = "";
+      param4.Size = 2048;
+
+      cmd0.Parameters.Add(param4);
+
+      AddLogString("ArcDel Вызов процедуры arc_arh_pkg.drop_arh (parnum,sname) ..");
+
+      cmd0.CommandTimeout = 320;
+/*
+      try
+      {
+         cmd0.ExecuteNonQuery();
+         vRetVal = cmd0.Parameters["i"].Value.ToString() ;
+         retname = cmd0.Parameters["parnum"].Value.ToString() ;
+         sname = cmd0.Parameters["sname"].Value.ToString() ;
+      }
+      catch (Exception ex8)
+      {
+         AddLogString("ArcDel Не удалось вызвать процедуру arc_arh_pkg.drop_arh");
+         AddLogString("ArcDel Ошибка вызова процедуры ="+ex8.Message);
+      }
+      AddLogString("ArcDel vRetVal ="+vRetVal +  " sname="+sname);
+*/
+    }
+
 /*
 --   функция drop_arh
 --           0 - все хорошо
 --           1 - не найдены арх.таблица параметра - неправ. задано имя табл списка
 --            < 0   - проч ошибка ORACLE
 */
-    sl1="DELETE FROM " + TABLE_NAME +
-        " WHERE ID_PARAM=" + ID + " AND " + " ID_GINFO=" + IDGINFO +" ;" ;
-    cmd0.CommandText=sl1;
-    try
-    {
-      reader = cmd0.ExecuteReader();
+    vRetVal="0";
+
+    if (vRetVal=="0") {
+      sl1="DELETE FROM " + TABLE_NAME +
+          " WHERE ID_PARAM=" + ID + " AND " + " ID_GINFO=" + IDGINFO +" ;" ;
+      cmd0.CommandText=sl1;
+      int res1 = 0 ;
+      try
+      {
+        res1 = cmd0.ExecuteNonQuery();
+      }
+      catch (Exception ex1)
+      {
+        AddLogString("ArcDel Тип архива для параметра не удален = " + cmd0.CommandText + " " + ex1.Message);
+        return(-7);
+      }
+
     }
-    catch (Exception ex1)
-    {
-      AddLogString("ArcDel Тип архива для параметра не удален = " + cmd0.CommandText + " " + ex1.Message);
-      reader.Close();
-      return(-7);
-    }
-    reader.Close();
 
     return(0);
 }
@@ -2290,6 +2360,7 @@ int ArcDel(object sender, int selRowNum , int selColNum)
     {
       // Output Stat to Logs
       toolStripStatusLabel2.Text = "Output Stat to Logs - Start";
+      MessageBox.Show(" Задача вывода в Лог Статистистики по БД - запущена...",toolStripStatusLabel2.Text,MessageBoxButtons.OK , MessageBoxIcon.Information);
       Action th = new Action( OracleStat ) ;
       Task tsk = new Task(th);
       tsk.Start();
@@ -2453,8 +2524,67 @@ void OracleStat ( )
 
     return ;
 }
+    void DeleteDataToolStripMenuItemClick(object sender, EventArgs e)
+    {
+       // delete data media
 
+       // получаем ячейку
+       int selRowNum ;
+       selRowNum = dataGridViewA.CurrentCell.RowIndex; //mouseLocation.RowIndex ;
 
+       if (selRowNum<0) return ;
+
+       object obj1 = dataGridViewA.Rows[selRowNum].Cells[0].Value ;
+
+       //DataGridViewCheckBoxColumn
+
+       DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell) dataGridViewA.Rows[selRowNum].Cells[0] ;
+
+       //AddLogString("chk.Value="+chk.Value.ToString() );
+
+       // если ячейка Unchecked - покидаем алгоритм
+       if (Convert.ToBoolean(chk.Value) == false || chk.Value == null)
+       {
+          return ;
+       }
+
+       //Получить Имя выделенного элемента
+       string id_parent=treeViewA.SelectedNode.Name;
+       if (id_parent=="0") return ;
+
+       string id_tbl =Convert.ToString(treeViewA.SelectedNode.Tag) ;
+       if (id_tbl=="0" || id_tbl=="") return ;
+
+       string ID = dataGridViewA.Rows[selRowNum].Cells[1].Value.ToString() ;
+       string IDNAME = dataGridViewA.Rows[selRowNum].Cells[2].Value.ToString() ;
+       string IDGTOPT = dataGridViewA.Rows[selRowNum].Cells[3].Value.ToString() ;
+       string NAMEHEADER = dataGridViewA.Rows[selRowNum].Cells[15].Value.ToString() ;
+
+       //DialogResult result1;
+       //
+       Form ifdel = new FormDel(_conn, ID, IDNAME, IDGTOPT, NAMEHEADER, id_tbl);
+       ifdel.StartPosition=FormStartPosition.CenterParent ;
+       ifdel.Show();
+    }
+    void ToolStripButton4Click(object sender, EventArgs e)
+    {
+       FormOption ofrm = new FormOption();
+
+       if (OptionFullDelete==0) ofrm._OptionFullDelete = false ;
+       else  ofrm._OptionFullDelete = true ;
+       if (OptionWriteOnDelete==0) ofrm._OptionWriteOnDelete = false ;
+       else  ofrm._OptionWriteOnDelete = true ;
+
+       ofrm.ShowDialog();
+
+       OptionFullDelete=0 ;
+       if (ofrm._OptionFullDelete) OptionFullDelete=1 ;
+       OptionWriteOnDelete=0 ;
+       if (ofrm._OptionWriteOnDelete) OptionWriteOnDelete=1 ;
+
+       ofrm.Dispose();
+    }
 
   }
+
 }

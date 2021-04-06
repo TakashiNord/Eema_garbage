@@ -92,6 +92,7 @@ namespace ArcConfig
 		private void InitializeComponent()
 		{
 			this.components = new System.ComponentModel.Container();
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormArcGinfo));
 			this.textBoxID = new System.Windows.Forms.TextBox();
 			this.label1 = new System.Windows.Forms.Label();
 			this.label3 = new System.Windows.Forms.Label();
@@ -227,7 +228,7 @@ namespace ArcConfig
 			this.groupBox1.Controls.Add(this.textBoxDEPTH_LOCAL);
 			this.groupBox1.Controls.Add(this.textBoxDEPTH);
 			this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.groupBox1.Location = new System.Drawing.Point(11, 177);
+			this.groupBox1.Location = new System.Drawing.Point(11, 294);
 			this.groupBox1.Name = "groupBox1";
 			this.groupBox1.Size = new System.Drawing.Size(259, 176);
 			this.groupBox1.TabIndex = 33;
@@ -269,7 +270,7 @@ namespace ArcConfig
 			// 
 			// label11
 			// 
-			this.label11.Location = new System.Drawing.Point(138, 16);
+			this.label11.Location = new System.Drawing.Point(138, 18);
 			this.label11.Name = "label11";
 			this.label11.Size = new System.Drawing.Size(115, 29);
 			this.label11.TabIndex = 40;
@@ -385,7 +386,7 @@ namespace ArcConfig
 			this.groupBox2.Controls.Add(this.label9);
 			this.groupBox2.Controls.Add(this.textBoxRESTORE_TIME);
 			this.groupBox2.Controls.Add(this.textBoxRESTORE_INTERVAL);
-			this.groupBox2.Location = new System.Drawing.Point(11, 369);
+			this.groupBox2.Location = new System.Drawing.Point(11, 486);
 			this.groupBox2.Name = "groupBox2";
 			this.groupBox2.Size = new System.Drawing.Size(245, 101);
 			this.groupBox2.TabIndex = 34;
@@ -473,9 +474,9 @@ namespace ArcConfig
 			this.groupBox3.Controls.Add(this.checkBoxWRITE_MINMAX);
 			this.groupBox3.Controls.Add(this.label14);
 			this.groupBox3.Controls.Add(this.checkedListBoxSTATE);
-			this.groupBox3.Location = new System.Drawing.Point(276, 185);
+			this.groupBox3.Location = new System.Drawing.Point(276, 294);
 			this.groupBox3.Name = "groupBox3";
-			this.groupBox3.Size = new System.Drawing.Size(383, 168);
+			this.groupBox3.Size = new System.Drawing.Size(383, 176);
 			this.groupBox3.TabIndex = 35;
 			this.groupBox3.TabStop = false;
 			this.groupBox3.Text = "Дополнительные";
@@ -490,9 +491,9 @@ namespace ArcConfig
 			// 
 			// checkBoxWRITE_MINMAX
 			// 
-			this.checkBoxWRITE_MINMAX.Location = new System.Drawing.Point(6, 144);
+			this.checkBoxWRITE_MINMAX.Location = new System.Drawing.Point(6, 155);
 			this.checkBoxWRITE_MINMAX.Name = "checkBoxWRITE_MINMAX";
-			this.checkBoxWRITE_MINMAX.Size = new System.Drawing.Size(254, 18);
+			this.checkBoxWRITE_MINMAX.Size = new System.Drawing.Size(254, 15);
 			this.checkBoxWRITE_MINMAX.TabIndex = 33;
 			this.checkBoxWRITE_MINMAX.Text = "Записывать минимальное и максимальное значение на интервале";
 			this.checkBoxWRITE_MINMAX.UseVisualStyleBackColor = true;
@@ -509,14 +510,16 @@ namespace ArcConfig
 			// 
 			// checkedListBoxSTATE
 			// 
-			this.checkedListBoxSTATE.CheckOnClick = true;
+			this.checkedListBoxSTATE.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+			| System.Windows.Forms.AnchorStyles.Left)));
 			this.checkedListBoxSTATE.FormattingEnabled = true;
 			this.checkedListBoxSTATE.Items.AddRange(new object[] {
 			"1"});
 			this.checkedListBoxSTATE.Location = new System.Drawing.Point(6, 42);
 			this.checkedListBoxSTATE.Name = "checkedListBoxSTATE";
-			this.checkedListBoxSTATE.Size = new System.Drawing.Size(371, 94);
+			this.checkedListBoxSTATE.Size = new System.Drawing.Size(371, 109);
 			this.checkedListBoxSTATE.TabIndex = 30;
+			this.checkedListBoxSTATE.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.CheckedListBoxSTATEItemCheck);
 			this.checkedListBoxSTATE.SelectedIndexChanged += new System.EventHandler(this.CheckedListBoxSTATESelectedIndexChanged);
 			// 
 			// label2
@@ -547,7 +550,7 @@ namespace ArcConfig
 			this.groupBox5.Controls.Add(this.textBoxFLUSH_INTERVAL);
 			this.groupBox5.Controls.Add(this.textBoxCACHE_TIMEOUT);
 			this.groupBox5.Controls.Add(this.textBoxCACHE_SIZE);
-			this.groupBox5.Location = new System.Drawing.Point(276, 369);
+			this.groupBox5.Location = new System.Drawing.Point(276, 486);
 			this.groupBox5.Name = "groupBox5";
 			this.groupBox5.Size = new System.Drawing.Size(270, 101);
 			this.groupBox5.TabIndex = 40;
@@ -574,7 +577,7 @@ namespace ArcConfig
 			// 
 			this.label8.Location = new System.Drawing.Point(10, 68);
 			this.label8.Name = "label8";
-			this.label8.Size = new System.Drawing.Size(155, 33);
+			this.label8.Size = new System.Drawing.Size(155, 28);
 			this.label8.TabIndex = 40;
 			this.label8.Text = "Период чистки устаревших данных";
 			// 
@@ -620,7 +623,7 @@ namespace ArcConfig
 			// 
 			// button2
 			// 
-			this.button2.Location = new System.Drawing.Point(584, 359);
+			this.button2.Location = new System.Drawing.Point(584, 476);
 			this.button2.Name = "button2";
 			this.button2.Size = new System.Drawing.Size(75, 49);
 			this.button2.TabIndex = 41;
@@ -631,7 +634,7 @@ namespace ArcConfig
 			// button3
 			// 
 			this.button3.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-			this.button3.Location = new System.Drawing.Point(584, 437);
+			this.button3.Location = new System.Drawing.Point(584, 554);
 			this.button3.Name = "button3";
 			this.button3.Size = new System.Drawing.Size(75, 33);
 			this.button3.TabIndex = 42;
@@ -657,7 +660,7 @@ namespace ArcConfig
 			this.dataGridView1.Name = "dataGridView1";
 			this.dataGridView1.RowHeadersVisible = false;
 			this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-			this.dataGridView1.Size = new System.Drawing.Size(626, 113);
+			this.dataGridView1.Size = new System.Drawing.Size(626, 217);
 			this.dataGridView1.TabIndex = 44;
 			this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1CellContentClick);
 			// 
@@ -670,7 +673,7 @@ namespace ArcConfig
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.CancelButton = this.button3;
-			this.ClientSize = new System.Drawing.Size(664, 481);
+			this.ClientSize = new System.Drawing.Size(671, 599);
 			this.Controls.Add(this.dataGridView1);
 			this.Controls.Add(this.button4);
 			this.Controls.Add(this.button3);
@@ -687,6 +690,7 @@ namespace ArcConfig
 			this.Controls.Add(this.label3);
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.textBoxID);
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "FormArcGinfo";

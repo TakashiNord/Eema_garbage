@@ -78,6 +78,12 @@ namespace ArcConfig
 		private System.Windows.Forms.ToolStripMenuItem graphicsToolStripMenuItem;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
 		private System.Windows.Forms.ToolStripButton toolStripButton3;
+		private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+		private System.Windows.Forms.ToolStripMenuItem deleteDataToolStripMenuItem;
+		private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
+		private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
+		private System.Windows.Forms.ToolStripButton toolStripButton4;
+		private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
 		
 		/// <summary>
 		/// Disposes resources used by the form.
@@ -102,8 +108,8 @@ namespace ArcConfig
 		{
 			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.statusStrip1 = new System.Windows.Forms.StatusStrip();
 			this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
 			this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -114,6 +120,9 @@ namespace ArcConfig
 			this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
 			this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
 			this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
+			this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
+			this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
+			this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
 			this.tabControl1 = new System.Windows.Forms.TabControl();
 			this.tabPage1 = new System.Windows.Forms.TabPage();
 			this.button1 = new System.Windows.Forms.Button();
@@ -135,6 +144,8 @@ namespace ArcConfig
 			this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
 			this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+			this.deleteDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.richTextBox2 = new System.Windows.Forms.RichTextBox();
 			this.buttonSave = new System.Windows.Forms.Button();
 			this.propertyGridA = new System.Windows.Forms.PropertyGrid();
@@ -142,6 +153,7 @@ namespace ArcConfig
 			this.dataGridViewP = new System.Windows.Forms.DataGridView();
 			this.contextMenuStripP = new System.Windows.Forms.ContextMenuStrip(this.components);
 			this.graphicsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
 			this.tabPage3 = new System.Windows.Forms.TabPage();
 			this.splitContainer4 = new System.Windows.Forms.SplitContainer();
 			this.treeViewS = new System.Windows.Forms.TreeView();
@@ -249,7 +261,10 @@ namespace ArcConfig
 			this.toolStripSeparator1,
 			this.toolStripButton2,
 			this.toolStripSeparator3,
-			this.toolStripButton3});
+			this.toolStripButton3,
+			this.toolStripSeparator6,
+			this.toolStripButton4,
+			this.toolStripSeparator7});
 			this.toolStrip1.Location = new System.Drawing.Point(0, 0);
 			this.toolStrip1.Name = "toolStrip1";
 			this.toolStrip1.Size = new System.Drawing.Size(1190, 25);
@@ -278,7 +293,7 @@ namespace ArcConfig
 			this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.toolStripButton2.Name = "toolStripButton2";
 			this.toolStripButton2.Size = new System.Drawing.Size(23, 22);
-			this.toolStripButton2.Text = "toolStripButton2";
+			this.toolStripButton2.Text = "Export";
 			this.toolStripButton2.Click += new System.EventHandler(this.ToolStripButton2Click);
 			// 
 			// toolStripSeparator3
@@ -295,6 +310,26 @@ namespace ArcConfig
 			this.toolStripButton3.Size = new System.Drawing.Size(23, 22);
 			this.toolStripButton3.Text = "Oracle :Статистика в Лог";
 			this.toolStripButton3.Click += new System.EventHandler(this.ToolStripButton3Click);
+			// 
+			// toolStripSeparator6
+			// 
+			this.toolStripSeparator6.Name = "toolStripSeparator6";
+			this.toolStripSeparator6.Size = new System.Drawing.Size(6, 25);
+			// 
+			// toolStripButton4
+			// 
+			this.toolStripButton4.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+			this.toolStripButton4.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton4.Image")));
+			this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.toolStripButton4.Name = "toolStripButton4";
+			this.toolStripButton4.Size = new System.Drawing.Size(23, 22);
+			this.toolStripButton4.Text = "Option";
+			this.toolStripButton4.Click += new System.EventHandler(this.ToolStripButton4Click);
+			// 
+			// toolStripSeparator7
+			// 
+			this.toolStripSeparator7.Name = "toolStripSeparator7";
+			this.toolStripSeparator7.Size = new System.Drawing.Size(6, 25);
 			// 
 			// tabControl1
 			// 
@@ -330,7 +365,7 @@ namespace ArcConfig
 			// 
 			this.button1.Location = new System.Drawing.Point(493, 6);
 			this.button1.Name = "button1";
-			this.button1.Size = new System.Drawing.Size(75, 23);
+			this.button1.Size = new System.Drawing.Size(85, 23);
 			this.button1.TabIndex = 5;
 			this.button1.Text = "Export ->xls";
 			this.button1.UseVisualStyleBackColor = true;
@@ -386,23 +421,23 @@ namespace ArcConfig
 			| System.Windows.Forms.AnchorStyles.Left) 
 			| System.Windows.Forms.AnchorStyles.Right)));
 			this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-			dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-			dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-			dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+			dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+			dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+			dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
 			this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-			dataGridViewCellStyle4.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-			dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-			this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle4;
+			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+			dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+			dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+			this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
 			this.dataGridView1.Location = new System.Drawing.Point(6, 36);
 			this.dataGridView1.Name = "dataGridView1";
 			this.dataGridView1.Size = new System.Drawing.Size(1168, 508);
@@ -531,35 +566,53 @@ namespace ArcConfig
 			this.toolStripMenuItem1,
 			this.toolStripMenuItem2,
 			this.toolStripSeparator2,
-			this.toolStripMenuItem3});
+			this.toolStripMenuItem3,
+			this.toolStripSeparator4,
+			this.deleteDataToolStripMenuItem});
 			this.contextMenuStripA.Name = "contextMenuStripA";
-			this.contextMenuStripA.Size = new System.Drawing.Size(113, 76);
+			this.contextMenuStripA.Size = new System.Drawing.Size(156, 104);
 			// 
 			// toolStripMenuItem1
 			// 
+			this.toolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItem1.Image")));
 			this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-			this.toolStripMenuItem1.Size = new System.Drawing.Size(112, 22);
-			this.toolStripMenuItem1.Text = "Modify";
+			this.toolStripMenuItem1.Size = new System.Drawing.Size(155, 22);
+			this.toolStripMenuItem1.Text = "Modify Archive";
 			this.toolStripMenuItem1.Click += new System.EventHandler(this.ToolStripMenuItem1Click);
 			// 
 			// toolStripMenuItem2
 			// 
+			this.toolStripMenuItem2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItem2.Image")));
 			this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-			this.toolStripMenuItem2.Size = new System.Drawing.Size(112, 22);
-			this.toolStripMenuItem2.Text = "Copy";
+			this.toolStripMenuItem2.Size = new System.Drawing.Size(155, 22);
+			this.toolStripMenuItem2.Text = "Copy string";
 			this.toolStripMenuItem2.Click += new System.EventHandler(this.ToolStripMenuItem2Click);
 			// 
 			// toolStripSeparator2
 			// 
 			this.toolStripSeparator2.Name = "toolStripSeparator2";
-			this.toolStripSeparator2.Size = new System.Drawing.Size(109, 6);
+			this.toolStripSeparator2.Size = new System.Drawing.Size(152, 6);
 			// 
 			// toolStripMenuItem3
 			// 
+			this.toolStripMenuItem3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItem3.Image")));
 			this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-			this.toolStripMenuItem3.Size = new System.Drawing.Size(112, 22);
-			this.toolStripMenuItem3.Text = "Delete";
+			this.toolStripMenuItem3.Size = new System.Drawing.Size(155, 22);
+			this.toolStripMenuItem3.Text = "Delete string";
 			this.toolStripMenuItem3.Click += new System.EventHandler(this.ToolStripMenuItem3Click);
+			// 
+			// toolStripSeparator4
+			// 
+			this.toolStripSeparator4.Name = "toolStripSeparator4";
+			this.toolStripSeparator4.Size = new System.Drawing.Size(152, 6);
+			// 
+			// deleteDataToolStripMenuItem
+			// 
+			this.deleteDataToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("deleteDataToolStripMenuItem.Image")));
+			this.deleteDataToolStripMenuItem.Name = "deleteDataToolStripMenuItem";
+			this.deleteDataToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+			this.deleteDataToolStripMenuItem.Text = "Delete media";
+			this.deleteDataToolStripMenuItem.Click += new System.EventHandler(this.DeleteDataToolStripMenuItemClick);
 			// 
 			// richTextBox2
 			// 
@@ -619,16 +672,23 @@ namespace ArcConfig
 			// contextMenuStripP
 			// 
 			this.contextMenuStripP.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-			this.graphicsToolStripMenuItem});
+			this.graphicsToolStripMenuItem,
+			this.toolStripSeparator5});
 			this.contextMenuStripP.Name = "contextMenuStripP";
-			this.contextMenuStripP.Size = new System.Drawing.Size(121, 26);
+			this.contextMenuStripP.Size = new System.Drawing.Size(121, 32);
 			// 
 			// graphicsToolStripMenuItem
 			// 
+			this.graphicsToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("graphicsToolStripMenuItem.Image")));
 			this.graphicsToolStripMenuItem.Name = "graphicsToolStripMenuItem";
 			this.graphicsToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
 			this.graphicsToolStripMenuItem.Text = "Graphics";
 			this.graphicsToolStripMenuItem.Click += new System.EventHandler(this.GraphicsToolStripMenuItemClick);
+			// 
+			// toolStripSeparator5
+			// 
+			this.toolStripSeparator5.Name = "toolStripSeparator5";
+			this.toolStripSeparator5.Size = new System.Drawing.Size(117, 6);
 			// 
 			// tabPage3
 			// 
