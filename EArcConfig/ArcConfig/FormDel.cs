@@ -16,6 +16,8 @@ using System.Resources;
 using System.Text.RegularExpressions;
 using System.IO;
 using System.Text;
+using System.Threading.Tasks ;
+
 
 namespace ArcConfig
 {
@@ -36,28 +38,35 @@ namespace ArcConfig
       //
     }
 
-   public string GetTypeValue(ref OdbcDataReader reader, int i)
+    public string GetTypeValue(ref OdbcDataReader reader, int i)
    {
-      string ret="";
-      if (reader.IsDBNull(i)) {
+   	 object obj ;
+   	 string ret="";
+     if (reader.IsDBNull(i)) {
           ;
-      } else {
-          string stype= reader.GetDataTypeName(i).ToUpper();
-          //AddLogString("reader.GetDataTypeName = " + stype);
-          if (stype=="DECIMAL") ret = reader.GetValue(i).ToString();
-          if (stype=="NUMBER") ret = reader.GetValue(i).ToString(); //GetDecimal(i).ToString();
-          if (stype=="VARCHAR2") ret = reader.GetString(i);
-          if (stype=="NVARCHAR") ret = reader.GetString(i);
-          if (stype=="WVARCHAR") ret = reader.GetString(i);
-          if (stype=="TEXT") ret = reader.GetString(i);
-          if (stype=="INTEGER") ret = reader.GetValue(i).ToString();
-          if (stype=="CHAR") ret = reader.GetString(i);
-          if (stype=="NCHAR") ret = reader.GetString(i);
-          if (stype=="DATE") ret = reader.GetString(i);
-          if (stype=="TIME") ret = reader.GetString(i);
-      }
-      return(ret);
-    }
+     } else {
+   	 	obj = reader.GetValue(i) ;
+   	 	string stype= reader.GetDataTypeName(i).ToUpper();
+        //AddLogString("reader.GetDataTypeName = " + stype);
+        ret = obj.ToString();
+                  
+    /*  if (stype=="DECIMAL") ret = reader.GetValue(i).ToString(); 
+        if (stype=="NUMBER") ret = reader.GetValue(i).ToString(); //GetDecimal(i).ToString();
+        if (stype=="VARCHAR2") ret = reader.GetString(i);
+        if (stype=="NVARCHAR") ret = reader.GetString(i);
+        if (stype=="WVARCHAR") ret = reader.GetString(i);
+        if (stype=="TEXT") ret = reader.GetString(i);
+        if (stype=="INTEGER") ret = reader.GetValue(i).ToString();
+        if (stype=="CHAR") ret = reader.GetString(i);
+        if (stype=="NCHAR") ret = reader.GetString(i);
+        if (stype=="DATE") ret = reader.GetString(i);
+        if (stype=="TIME") ret = reader.GetString(i); 
+        if (stype=="DOUBLE PRECISION") ret = reader.GetValue(i).ToString(); 
+     */
+       
+     }
+     return(ret);
+   }
 
 
     List<MEAS1> dp = new List<MEAS1>();
@@ -715,7 +724,8 @@ namespace ArcConfig
         dateTimePicker1.Value = t11 ;
 
     }
-
+    
+ 
     public void DelProcess(object sender)
     {
 
@@ -829,6 +839,7 @@ namespace ArcConfig
        button3.Enabled=false ;
        button1.Enabled=false ;
 
+       //DelCreateAsync().GetAwaiter();
        DelCreate( sender ) ;
        // Resize the master DataGridView columns to fit the newly loaded data.
        dataGridView1.AutoResizeColumns();
