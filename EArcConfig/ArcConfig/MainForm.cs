@@ -137,6 +137,21 @@ namespace ArcConfig
      return(ret);
    }
 
+    //Unix -> DateTime
+    public  DateTime UnixTimestampToDateTime(double unixTime)
+    {
+        DateTime unixStart = new DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Utc);
+        long unixTimeStampInTicks = (long) (unixTime * TimeSpan.TicksPerSecond);
+        return new DateTime(unixStart.Ticks + unixTimeStampInTicks, System.DateTimeKind.Utc);
+    }
+
+    //DateTime -> Unix
+    public  double DateTimeToUnixTimestamp(DateTime dateTime)
+    {
+        DateTime unixStart = new DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Utc);
+        long unixTimeStampInTicks = (dateTime.ToUniversalTime() - unixStart).Ticks;
+        return (double) unixTimeStampInTicks / TimeSpan.TicksPerSecond;
+    }
 
 
     private OdbcConnection _getDBConnection()
@@ -1337,7 +1352,12 @@ namespace ArcConfig
         if (arr[3]=="0") v1 = false ;
         _profileData.IS_WRITEON=v1 ;
         _profileData.STACK_NAME=arr[4];
-        _profileData.LAST_UPDATE=arr[5];
+        if (arr[5]!="" && arr[5]!="0") {
+           DateTime t1 = UnixTimestampToDateTime(Convert.ToDouble(arr[5]));
+           _profileData.LAST_UPDATE=t1.ToString();
+        } else {
+           _profileData.LAST_UPDATE=arr[5];
+        }
         bool v2 = true ;
         if (arr[6]=="0") v2 = false ;
         _profileData.IS_VIEWABLE=v2 ;
