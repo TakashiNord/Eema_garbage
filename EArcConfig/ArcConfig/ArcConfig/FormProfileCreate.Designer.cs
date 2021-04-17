@@ -33,8 +33,9 @@ namespace ArcConfig
 		private System.Windows.Forms.Button buttonCancel;
 		private System.Windows.Forms.Button buttonOk;
 		private System.Windows.Forms.Label label7;
-		private System.Windows.Forms.TextBox textBoxPeriod;
 		private System.Windows.Forms.CheckedListBox checkedListBoxTech;
+		private System.Windows.Forms.Label label8;
+		private System.Windows.Forms.ComboBox BoxPeriod;
 		
 		/// <summary>
 		/// Disposes resources used by the form.
@@ -57,6 +58,7 @@ namespace ArcConfig
 		/// </summary>
 		private void InitializeComponent()
 		{
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormProfileCreate));
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
 			this.label6 = new System.Windows.Forms.Label();
 			this.label5 = new System.Windows.Forms.Label();
@@ -73,8 +75,9 @@ namespace ArcConfig
 			this.groupBox2 = new System.Windows.Forms.GroupBox();
 			this.checkedListBoxDpload = new System.Windows.Forms.CheckedListBox();
 			this.groupBox3 = new System.Windows.Forms.GroupBox();
+			this.BoxPeriod = new System.Windows.Forms.ComboBox();
+			this.label8 = new System.Windows.Forms.Label();
 			this.label7 = new System.Windows.Forms.Label();
-			this.textBoxPeriod = new System.Windows.Forms.TextBox();
 			this.checkedListBoxTech = new System.Windows.Forms.CheckedListBox();
 			this.buttonCancel = new System.Windows.Forms.Button();
 			this.buttonOk = new System.Windows.Forms.Button();
@@ -114,11 +117,11 @@ namespace ArcConfig
 			// 
 			// label5
 			// 
-			this.label5.Location = new System.Drawing.Point(284, 17);
+			this.label5.Location = new System.Drawing.Point(284, 13);
 			this.label5.Name = "label5";
-			this.label5.Size = new System.Drawing.Size(128, 16);
+			this.label5.Size = new System.Drawing.Size(113, 28);
 			this.label5.TabIndex = 22;
-			this.label5.Text = "= Для всех параметров";
+			this.label5.Text = "= Для всех НОВЫХ параметров";
 			// 
 			// textBoxSTACK_NAME
 			// 
@@ -129,7 +132,7 @@ namespace ArcConfig
 			// 
 			// label4
 			// 
-			this.label4.Location = new System.Drawing.Point(347, 66);
+			this.label4.Location = new System.Drawing.Point(341, 68);
 			this.label4.Name = "label4";
 			this.label4.Size = new System.Drawing.Size(65, 16);
 			this.label4.TabIndex = 20;
@@ -227,31 +230,46 @@ namespace ArcConfig
 			// 
 			// groupBox3
 			// 
+			this.groupBox3.Controls.Add(this.BoxPeriod);
+			this.groupBox3.Controls.Add(this.label8);
 			this.groupBox3.Controls.Add(this.label7);
-			this.groupBox3.Controls.Add(this.textBoxPeriod);
 			this.groupBox3.Controls.Add(this.checkedListBoxTech);
 			this.groupBox3.Location = new System.Drawing.Point(3, 199);
 			this.groupBox3.Name = "groupBox3";
-			this.groupBox3.Size = new System.Drawing.Size(427, 98);
+			this.groupBox3.Size = new System.Drawing.Size(427, 144);
 			this.groupBox3.TabIndex = 14;
 			this.groupBox3.TabStop = false;
-			this.groupBox3.Text = "Технологический сервер";
+			this.groupBox3.Text = "Технологический сервер -- ( если несколько - выбирать протокол TCP )";
+			// 
+			// BoxPeriod
+			// 
+			this.BoxPeriod.FormattingEnabled = true;
+			this.BoxPeriod.Items.AddRange(new object[] {
+			"3660",
+			"43200",
+			"86400"});
+			this.BoxPeriod.Location = new System.Drawing.Point(341, 89);
+			this.BoxPeriod.Name = "BoxPeriod";
+			this.BoxPeriod.Size = new System.Drawing.Size(78, 21);
+			this.BoxPeriod.TabIndex = 4;
+			// 
+			// label8
+			// 
+			this.label8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.label8.Location = new System.Drawing.Point(5, 86);
+			this.label8.Name = "label8";
+			this.label8.Size = new System.Drawing.Size(223, 53);
+			this.label8.TabIndex = 3;
+			this.label8.Text = "! Для серверов Сбора\\Передачи - список Техн серверов - не должен быть пустой. Ина" +
+	"че, необходимо исправить описание серверов в Навигаторе БД";
 			// 
 			// label7
 			// 
-			this.label7.Location = new System.Drawing.Point(233, 71);
+			this.label7.Location = new System.Drawing.Point(269, 89);
 			this.label7.Name = "label7";
-			this.label7.Size = new System.Drawing.Size(126, 20);
+			this.label7.Size = new System.Drawing.Size(66, 28);
 			this.label7.TabIndex = 2;
 			this.label7.Text = "Период для кэша (сек):";
-			// 
-			// textBoxPeriod
-			// 
-			this.textBoxPeriod.Location = new System.Drawing.Point(365, 71);
-			this.textBoxPeriod.Name = "textBoxPeriod";
-			this.textBoxPeriod.Size = new System.Drawing.Size(54, 20);
-			this.textBoxPeriod.TabIndex = 1;
-			this.textBoxPeriod.Text = "0";
 			// 
 			// checkedListBoxTech
 			// 
@@ -259,13 +277,13 @@ namespace ArcConfig
 			this.checkedListBoxTech.Location = new System.Drawing.Point(5, 19);
 			this.checkedListBoxTech.Name = "checkedListBoxTech";
 			this.checkedListBoxTech.ScrollAlwaysVisible = true;
-			this.checkedListBoxTech.Size = new System.Drawing.Size(414, 49);
+			this.checkedListBoxTech.Size = new System.Drawing.Size(414, 64);
 			this.checkedListBoxTech.TabIndex = 0;
 			// 
 			// buttonCancel
 			// 
 			this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-			this.buttonCancel.Location = new System.Drawing.Point(263, 303);
+			this.buttonCancel.Location = new System.Drawing.Point(263, 349);
 			this.buttonCancel.Name = "buttonCancel";
 			this.buttonCancel.Size = new System.Drawing.Size(75, 23);
 			this.buttonCancel.TabIndex = 15;
@@ -276,7 +294,7 @@ namespace ArcConfig
 			// buttonOk
 			// 
 			this.buttonOk.DialogResult = System.Windows.Forms.DialogResult.OK;
-			this.buttonOk.Location = new System.Drawing.Point(359, 303);
+			this.buttonOk.Location = new System.Drawing.Point(359, 349);
 			this.buttonOk.Name = "buttonOk";
 			this.buttonOk.Size = new System.Drawing.Size(71, 23);
 			this.buttonOk.TabIndex = 16;
@@ -290,13 +308,14 @@ namespace ArcConfig
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.CancelButton = this.buttonCancel;
-			this.ClientSize = new System.Drawing.Size(436, 335);
+			this.ClientSize = new System.Drawing.Size(436, 384);
 			this.Controls.Add(this.buttonOk);
 			this.Controls.Add(this.buttonCancel);
 			this.Controls.Add(this.groupBox3);
 			this.Controls.Add(this.groupBox2);
 			this.Controls.Add(this.groupBox1);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "FormProfileCreate";
@@ -307,7 +326,6 @@ namespace ArcConfig
 			this.groupBox1.PerformLayout();
 			this.groupBox2.ResumeLayout(false);
 			this.groupBox3.ResumeLayout(false);
-			this.groupBox3.PerformLayout();
 			this.ResumeLayout(false);
 
 		}

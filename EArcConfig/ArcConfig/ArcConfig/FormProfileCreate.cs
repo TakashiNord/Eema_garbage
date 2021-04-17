@@ -281,7 +281,7 @@ namespace ArcConfig
       reader.Close();
 
 
-      textBoxPeriod.Text="3660" ;
+      BoxPeriod.Text="3660" ;
       checkedListBoxTech.Items.Clear();
       Tech.Clear();
 
@@ -320,9 +320,15 @@ namespace ArcConfig
             if (ci==1) {
               // arr[0] -- portnumber
               Tech.Add(arr[0]);
-              string id_sn = arr[0] + " " + arr[5] ;
+              string id_sn = arr[0] + " (TCP) " + arr[5] ;
               checkedListBoxTech.Items.Add(id_sn,CheckState.Checked );
             }
+            if (ci==2) {
+              // arr[0] -- portnumber
+              Tech.Add(arr[0]);
+              string id_sn = arr[0] + " (UDP) " + arr[5] ;
+              checkedListBoxTech.Items.Add(id_sn,CheckState.Unchecked );
+            }            
           }
 
         } // while
@@ -450,8 +456,17 @@ namespace ArcConfig
         }
       }
 
+      
       //Вставка в ARC_SERVICES_ACCESS настроек для чтения нового профиля архивов:');
-      string Period = textBoxPeriod.Text.Trim() ;
+      
+      string Period = BoxPeriod.Text.Trim() ;
+      int tParam1 = 0 ;
+      if (!Int32.TryParse(Period, out tParam1)) {
+      	tParam1 = 3660 ;
+      }
+      tParam1 = Math.Abs(tParam1);
+      Period = tParam1.ToString();
+      
       for (int i = 0; i < checkedListBoxTech.Items.Count; i++)
       {
         if (checkedListBoxTech.GetItemChecked(i)) {
@@ -466,8 +481,8 @@ namespace ArcConfig
           }
           catch (Exception ex1)
           {
-            MessageBox.Show(ex1.ToString() );
             reader.Close();
+          	MessageBox.Show(ex1.ToString() );
             return ;
           }
           reader.Close();

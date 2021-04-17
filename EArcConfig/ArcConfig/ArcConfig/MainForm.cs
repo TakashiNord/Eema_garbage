@@ -221,6 +221,7 @@ namespace ArcConfig
        propertyGridA.Update();
 
        buttonSave.Enabled=false ;
+       buttonService.Enabled = false ;
 
        treeViewA.BeginUpdate(); //добавить
        treeViewA.Nodes.Clear();
@@ -508,6 +509,7 @@ namespace ArcConfig
        //устанавливаем редактируемый объект
        propertyGridA.SelectedObject = _profileData;
        buttonSave.Enabled=false ;
+       buttonService.Enabled = false ;
 
        toolStripButton2.Enabled=false;
        toolStripButton3.Enabled=false;
@@ -1332,6 +1334,7 @@ namespace ArcConfig
       _profileData.IS_VIEWABLE=false ;
 
       buttonSave.Enabled=false ;
+      buttonService.Enabled = false ;
 
       string[] arr = new string[7];
 
@@ -1354,6 +1357,9 @@ namespace ArcConfig
         _profileData.STACK_NAME=arr[4];
         if (arr[5]!="" && arr[5]!="0") {
            DateTime t1 = UnixTimestampToDateTime(Convert.ToDouble(arr[5]));
+
+           t1=t1.ToLocalTime();
+
            _profileData.LAST_UPDATE=t1.ToString();
         } else {
            _profileData.LAST_UPDATE=arr[5];
@@ -1363,6 +1369,7 @@ namespace ArcConfig
         _profileData.IS_VIEWABLE=v2 ;
 
         buttonSave.Enabled=true ;
+        buttonService.Enabled = true ;
       }
 
       reader.Close();
@@ -1573,8 +1580,8 @@ namespace ArcConfig
           }
 
           DialogResult result = MessageBox.Show ("Деактивировать профиль?\n\n\n" +
-          " id = " + ID + " '" + nm2 + "'\n" +
-          " ("+ID_GINFO +"),'"  + nm1 + "'\n"  ,
+          " id = " + ID + ", '" + nm2 + "'\n" +
+          " id = " + ID_GINFO + ", '"+ nm1 + "'\n"  ,
            "Деактивация..", MessageBoxButtons.YesNo,MessageBoxIcon.Warning,
            MessageBoxDefaultButton.Button2);
           if (result == DialogResult.Yes)
@@ -1652,7 +1659,8 @@ namespace ArcConfig
               result1=ifrmC.ShowDialog();
 
               //if(result1 == DialogResult.Yes)
-              //{
+              if (result1.ToString()=="OK")
+              {
                 AddLogString("new create = Ok");
 
                 TreeViewAAfterSelect(treeViewA, null);
@@ -1663,7 +1671,7 @@ namespace ArcConfig
                 DataGridViewASelectionChanged(dataGridViewA, null);
 
                 //dataGridViewA.Update();
-              //}
+              }
 
               ifrmC.Dispose();
 
@@ -1714,6 +1722,7 @@ namespace ArcConfig
        catch (Exception ex1)
        {
          AddLogString(" SAVE -> выполнение алгоритма  - прервано." + ex1.Message);
+         reader.Close();
          return ;
        }
        reader.Close();
@@ -2615,6 +2624,29 @@ void OracleStat ( )
 
        ofrm.Dispose();
     }
+		void ButtonServiceClick(object sender, EventArgs e)
+		{
+              ;
+              //Получить Имя выделенного элемента
+              string id_parent=treeViewA.SelectedNode.Name;
+              if (id_parent=="0") return ;
+              string id_tbl =Convert.ToString(treeViewA.SelectedNode.Tag) ;
+              AddLogString("Service=id_tbl=" + id_tbl);
+              string id_name=treeViewA.SelectedNode.Text ;
+              AddLogString("Service=" + id_parent + " " + id_name);
+              if (id_tbl=="0" || id_tbl=="") return ;
+
+       _profileData=(ARC_SUBSYST_PROFILE)propertyGridA.SelectedObject;
+       String ID= _profileData.ID ;              
+              
+            //DialogResult result1;
+			FormService frmServ = new FormService(this._conn, ID, id_tbl);
+			frmServ.ShowDialog();
+			
+			frmServ.Dispose();
+ 
+			
+		}
 
   }
 

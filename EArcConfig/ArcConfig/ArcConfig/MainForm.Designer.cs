@@ -84,6 +84,7 @@ namespace ArcConfig
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
 		private System.Windows.Forms.ToolStripButton toolStripButton4;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
+		private System.Windows.Forms.Button buttonService;
 		
 		/// <summary>
 		/// Disposes resources used by the form.
@@ -147,6 +148,7 @@ namespace ArcConfig
 			this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
 			this.deleteDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.richTextBox2 = new System.Windows.Forms.RichTextBox();
+			this.buttonService = new System.Windows.Forms.Button();
 			this.buttonSave = new System.Windows.Forms.Button();
 			this.propertyGridA = new System.Windows.Forms.PropertyGrid();
 			this.tabPageParam = new System.Windows.Forms.TabPage();
@@ -468,7 +470,7 @@ namespace ArcConfig
 			// 
 			this.splitContainer2.Panel2.Controls.Add(this.tabControlAP);
 			this.splitContainer2.Size = new System.Drawing.Size(1176, 544);
-			this.splitContainer2.SplitterDistance = 209;
+			this.splitContainer2.SplitterDistance = 290;
 			this.splitContainer2.TabIndex = 0;
 			// 
 			// treeViewA
@@ -477,7 +479,7 @@ namespace ArcConfig
 			this.treeViewA.HideSelection = false;
 			this.treeViewA.Location = new System.Drawing.Point(0, 0);
 			this.treeViewA.Name = "treeViewA";
-			this.treeViewA.Size = new System.Drawing.Size(209, 544);
+			this.treeViewA.Size = new System.Drawing.Size(290, 544);
 			this.treeViewA.TabIndex = 0;
 			this.treeViewA.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.TreeViewAAfterSelect);
 			// 
@@ -490,7 +492,7 @@ namespace ArcConfig
 			this.tabControlAP.Location = new System.Drawing.Point(0, 0);
 			this.tabControlAP.Name = "tabControlAP";
 			this.tabControlAP.SelectedIndex = 0;
-			this.tabControlAP.Size = new System.Drawing.Size(963, 544);
+			this.tabControlAP.Size = new System.Drawing.Size(882, 544);
 			this.tabControlAP.TabIndex = 1;
 			this.tabControlAP.SelectedIndexChanged += new System.EventHandler(this.TabControlAPSelectedIndexChanged);
 			// 
@@ -500,7 +502,7 @@ namespace ArcConfig
 			this.tabPageA.Location = new System.Drawing.Point(4, 22);
 			this.tabPageA.Name = "tabPageA";
 			this.tabPageA.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPageA.Size = new System.Drawing.Size(955, 518);
+			this.tabPageA.Size = new System.Drawing.Size(874, 518);
 			this.tabPageA.TabIndex = 0;
 			this.tabPageA.Tag = "0";
 			this.tabPageA.Text = "Профили архивов";
@@ -518,10 +520,11 @@ namespace ArcConfig
 			// 
 			// splitContainer1.Panel2
 			// 
+			this.splitContainer1.Panel2.Controls.Add(this.buttonService);
 			this.splitContainer1.Panel2.Controls.Add(this.buttonSave);
 			this.splitContainer1.Panel2.Controls.Add(this.propertyGridA);
-			this.splitContainer1.Size = new System.Drawing.Size(949, 512);
-			this.splitContainer1.SplitterDistance = 708;
+			this.splitContainer1.Size = new System.Drawing.Size(868, 512);
+			this.splitContainer1.SplitterDistance = 647;
 			this.splitContainer1.TabIndex = 1;
 			// 
 			// splitContainer3
@@ -538,7 +541,7 @@ namespace ArcConfig
 			// splitContainer3.Panel2
 			// 
 			this.splitContainer3.Panel2.Controls.Add(this.richTextBox2);
-			this.splitContainer3.Size = new System.Drawing.Size(708, 512);
+			this.splitContainer3.Size = new System.Drawing.Size(647, 512);
 			this.splitContainer3.SplitterDistance = 363;
 			this.splitContainer3.TabIndex = 1;
 			// 
@@ -553,7 +556,7 @@ namespace ArcConfig
 			this.dataGridViewA.MultiSelect = false;
 			this.dataGridViewA.Name = "dataGridViewA";
 			this.dataGridViewA.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-			this.dataGridViewA.Size = new System.Drawing.Size(708, 363);
+			this.dataGridViewA.Size = new System.Drawing.Size(647, 363);
 			this.dataGridViewA.TabIndex = 1;
 			this.dataGridViewA.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewACellClick);
 			this.dataGridViewA.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewACellContentClick);
@@ -619,9 +622,19 @@ namespace ArcConfig
 			this.richTextBox2.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.richTextBox2.Location = new System.Drawing.Point(0, 0);
 			this.richTextBox2.Name = "richTextBox2";
-			this.richTextBox2.Size = new System.Drawing.Size(708, 145);
+			this.richTextBox2.Size = new System.Drawing.Size(647, 145);
 			this.richTextBox2.TabIndex = 0;
 			this.richTextBox2.Text = resources.GetString("richTextBox2.Text");
+			// 
+			// buttonService
+			// 
+			this.buttonService.Location = new System.Drawing.Point(129, 303);
+			this.buttonService.Name = "buttonService";
+			this.buttonService.Size = new System.Drawing.Size(96, 31);
+			this.buttonService.TabIndex = 2;
+			this.buttonService.Text = "Сервисы..";
+			this.buttonService.UseVisualStyleBackColor = true;
+			this.buttonService.Click += new System.EventHandler(this.ButtonServiceClick);
 			// 
 			// buttonSave
 			// 
@@ -638,7 +651,7 @@ namespace ArcConfig
 			this.propertyGridA.Dock = System.Windows.Forms.DockStyle.Top;
 			this.propertyGridA.Location = new System.Drawing.Point(0, 0);
 			this.propertyGridA.Name = "propertyGridA";
-			this.propertyGridA.Size = new System.Drawing.Size(237, 297);
+			this.propertyGridA.Size = new System.Drawing.Size(217, 297);
 			this.propertyGridA.TabIndex = 0;
 			// 
 			// tabPageParam
@@ -647,7 +660,7 @@ namespace ArcConfig
 			this.tabPageParam.Location = new System.Drawing.Point(4, 22);
 			this.tabPageParam.Name = "tabPageParam";
 			this.tabPageParam.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPageParam.Size = new System.Drawing.Size(955, 518);
+			this.tabPageParam.Size = new System.Drawing.Size(831, 518);
 			this.tabPageParam.TabIndex = 1;
 			this.tabPageParam.Tag = "1";
 			this.tabPageParam.Text = "Параметры";
@@ -661,7 +674,7 @@ namespace ArcConfig
 			this.dataGridViewP.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.dataGridViewP.Location = new System.Drawing.Point(3, 3);
 			this.dataGridViewP.Name = "dataGridViewP";
-			this.dataGridViewP.Size = new System.Drawing.Size(949, 512);
+			this.dataGridViewP.Size = new System.Drawing.Size(825, 512);
 			this.dataGridViewP.TabIndex = 0;
 			this.dataGridViewP.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewPCellContentClick);
 			this.dataGridViewP.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DataGridViewPCellMouseDown);

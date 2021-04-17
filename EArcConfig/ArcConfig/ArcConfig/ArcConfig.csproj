@@ -82,6 +82,10 @@
     <Compile Include="FormProfileCreate.Designer.cs">
       <DependentUpon>FormProfileCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormService.cs" />
+    <Compile Include="FormService.Designer.cs">
+      <DependentUpon>FormService.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs" />
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -113,6 +117,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormProfileCreate.resx">
       <DependentUpon>FormProfileCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormService.resx">
+      <DependentUpon>FormService.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
