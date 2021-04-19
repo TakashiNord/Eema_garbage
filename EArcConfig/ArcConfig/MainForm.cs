@@ -78,7 +78,7 @@ namespace ArcConfig
 
     void ToolStripButton1Click(object sender, EventArgs e)
     {
-       AddLogString(toolStripButton);
+       AddLogString("Start");
        this._conn = this._getDBConnection();
        if (this._conn == null) return;
        toolStripButton1.Enabled=false;
@@ -86,7 +86,9 @@ namespace ArcConfig
        toolStripButton3.Enabled=true;
        toolStripButton4.Enabled=true;
        tabControl1.Enabled=true;
+       _tree21();
        _setDBarc();
+       
     }
 
    public void AddLogString(string s)
@@ -516,6 +518,7 @@ namespace ArcConfig
        toolStripButton4.Enabled=false;
 
        _setDBS();
+       
     }
     void TreeViewAAfterSelect(object sender, TreeViewEventArgs e)
     {
@@ -899,6 +902,55 @@ namespace ArcConfig
 
     }
 
+    void _tree21()
+    {
+
+      // Объект для связи между базой данных и источником данных
+      OdbcDataAdapter adapter = new OdbcDataAdapter();
+
+      // Объект для выполнения запросов к базе данных
+      OdbcCommand cmd0 = new OdbcCommand();
+      OdbcDataReader reader = null ;
+
+      cmd0.Connection=this._conn;
+
+      //AddLogString(" id_parent=" + id_parent + "  id_index=" + id_index);
+
+      Application.DoEvents();
+
+      //ResourceManager r = new ResourceManager("ArcConfig.ArcResource", Assembly.GetExecutingAssembly());
+
+      string DB_NAME = "" ;
+      // 1. получаем имя 
+   cmd0.CommandText="SELECT id, name FROM SYS_TREE21 WHERE COALESCE(id_parent,0,0)=0 and COALESCE(ID_LSTTBL,0,0)=0" ;
+   try
+   {
+      reader = cmd0.ExecuteReader();
+   }
+   catch (Exception ex1)
+   {
+      AddLogString("NAME Empty = " + cmd0.CommandText + " " + ex1.Message);
+      return ;
+   }
+   if (reader.HasRows) {
+   string[] arr = new string[2];
+   while (reader.Read())
+   {
+      for ( int i = 0; i<2; i++)
+      {
+        arr[i]=GetTypeValue(ref reader, i);
+      }
+      DB_NAME = arr[1];
+      break ;
+    } // while
+   reader.Close();
+   AddLogString("DB_NAME=" + DB_NAME );
+    this.Text = this.Text + "  :  " + DB_NAME ;
+   }
+
+      
+    	
+    }
 
 
     void _setDBS()

@@ -454,7 +454,7 @@ WHERE {0}=ARC_SUBSYST_PROFILE.ID_TBLLST AND ARC_SUBSYST_PROFILE.ID_GINFO={1}</va
 FROM ARC_SERVICES_TUNE arcs, AD_SERVICE ads 
 WHERE ads.ID=arcs.ID_SERVICE and arcs.ID_SPROFILE={0}
 union
-SELECT arcs.ID_SERVICE, "?????????????????" as NAME 
+SELECT arcs.ID_SERVICE, '?????????????????' as NAME 
 FROM ARC_SERVICES_TUNE arcs, AD_SERVICE ads 
 WHERE arcs.ID_SERVICE not in (SELECT id FROM AD_SERVICE)
 and arcs.ID_SPROFILE={0}</value>
@@ -464,7 +464,7 @@ and arcs.ID_SPROFILE={0}</value>
 FROM ARC_SERVICES_ACCESS arcs, AD_SERVICE ads 
 WHERE ads.ID=arcs.ID_SERVICE and arcs.ID_SPROFILE={0}
 union
-SELECT arcs.ID_SERVICE, "?????????????????" as NAME , 0 as RETRO_DEPTH
+SELECT arcs.ID_SERVICE, '?????????????????' as NAME , 0 as RETRO_DEPTH
 FROM ARC_SERVICES_ACCESS arcs, AD_SERVICE ads 
 WHERE arcs.ID_SERVICE not in (SELECT id FROM AD_SERVICE)
 and arcs.ID_SPROFILE={0}</value>
