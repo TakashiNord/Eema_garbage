@@ -86,6 +86,14 @@
     <Compile Include="FormService.Designer.cs">
       <DependentUpon>FormService.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormSource.cs" />
+    <Compile Include="FormSource.Designer.cs">
+      <DependentUpon>FormSource.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormStatus.cs" />
+    <Compile Include="FormStatus.Designer.cs">
+      <DependentUpon>FormStatus.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs" />
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -120,6 +128,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormService.resx">
       <DependentUpon>FormService.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormSource.resx">
+      <DependentUpon>FormSource.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormStatus.resx">
+      <DependentUpon>FormStatus.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

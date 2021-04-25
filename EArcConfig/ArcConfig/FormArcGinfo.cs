@@ -50,7 +50,22 @@ namespace ArcConfig
       id_arcginfo = id ;
       //
     }
-
+    
+    int ErrInput ;
+    public string StrToIntVal (string text)
+    {
+       ErrInput = -1;
+       int number = 0 ;
+       String ret = number.ToString();
+       text = text.Trim();
+       if (int.TryParse(text, out number))
+       {
+       	  ret = number.ToString();
+       	  ErrInput = 0 ;
+       }
+       return (ret);
+    }
+    
    public string GetTypeValue(ref OdbcDataReader reader, int i)
    {
    	 object obj ;
@@ -502,6 +517,8 @@ sl1="" +
         // WHERE ID=" + id_arcginfo;
 
         Application.DoEvents();
+        
+        ErrInput = 0 ;
 
         //textBoxID.Text=VL[0] ;
 
@@ -525,31 +542,72 @@ sl1="" +
             if (strS!="") { strS += " , " ; }
             strS = strS + "ID_TYPE =" + s0 ;
         }
-
+        
+        textBoxDEPTH.Text = StrToIntVal(textBoxDEPTH.Text) ;
+        if (ErrInput<0) {
+        	MessageBox.Show("Ошибка ввода данных!\n Сохранение прервано.","Ошибка ввода...",MessageBoxButtons.OK, MessageBoxIcon.Error);
+        	return ;
+        }
         if (textBoxDEPTH.Text!=VL[3]) {
           if (strS!="") { strS += " , " ; }
           strS = strS + "DEPTH =" + textBoxDEPTH.Text;
         }
+        
+        textBoxDEPTH_LOCAL.Text = StrToIntVal(textBoxDEPTH_LOCAL.Text) ;
+        if (ErrInput<0) {
+        	MessageBox.Show("Ошибка ввода данных!\n Сохранение прервано.","Ошибка ввода...",MessageBoxButtons.OK, MessageBoxIcon.Error);
+        	return ;
+        }       
         if (textBoxDEPTH_LOCAL.Text!=VL[4]) {
           if (strS!="") { strS += " , " ; }
           strS = strS + "DEPTH_LOCAL =" + textBoxDEPTH_LOCAL.Text;
         }
+        
+        textBoxCACHE_SIZE.Text = StrToIntVal(textBoxCACHE_SIZE.Text) ;
+        if (ErrInput<0) {
+        	MessageBox.Show("Ошибка ввода данных!\n Сохранение прервано.","Ошибка ввода...",MessageBoxButtons.OK, MessageBoxIcon.Error);
+        	return ;
+        }       
         if (textBoxCACHE_SIZE.Text!=VL[5]) {
           if (strS!="") { strS += " , " ; }
           strS = strS + "CACHE_SIZE =" + textBoxCACHE_SIZE.Text;
         }
+        
+        textBoxCACHE_TIMEOUT.Text = StrToIntVal(textBoxCACHE_TIMEOUT.Text) ;
+        if (ErrInput<0) {
+        	MessageBox.Show("Ошибка ввода данных!\n Сохранение прервано.","Ошибка ввода...",MessageBoxButtons.OK, MessageBoxIcon.Error);
+        	return ;
+        }        
         if (textBoxCACHE_TIMEOUT.Text!=VL[6]) {
           if (strS!="") { strS += " , " ; }
           strS = strS + "CACHE_TIMEOUT =" + textBoxCACHE_TIMEOUT.Text;
         }
+        
+        textBoxFLUSH_INTERVAL.Text = StrToIntVal(textBoxFLUSH_INTERVAL.Text) ;
+        if (ErrInput<0) {
+        	MessageBox.Show("Ошибка ввода данных!\n Сохранение прервано.","Ошибка ввода...",MessageBoxButtons.OK, MessageBoxIcon.Error);
+        	return ;
+        }        
         if (textBoxFLUSH_INTERVAL.Text!=VL[7]) {
           if (strS!="") { strS += " , " ; }
           strS = strS + "FLUSH_INTERVAL =" + textBoxFLUSH_INTERVAL.Text;
         }
+        
+        textBoxRESTORE_INTERVAL.Text = StrToIntVal(textBoxRESTORE_INTERVAL.Text) ;
+        if (ErrInput<0) {
+        	MessageBox.Show("Ошибка ввода данных!\n Сохранение прервано.","Ошибка ввода...",MessageBoxButtons.OK, MessageBoxIcon.Error);
+        	return ;
+        }        
         if (textBoxRESTORE_INTERVAL.Text!=VL[8]) {
           if (strS!="") { strS += " , " ; }
           strS = strS + "RESTORE_INTERVAL =" + textBoxRESTORE_INTERVAL.Text;
         }
+        
+        textBoxSTACK_INTERVAL.Text = StrToIntVal(textBoxSTACK_INTERVAL.Text) ;
+        if (ErrInput<0) {
+        	MessageBox.Show("Ошибка ввода данных!\n Сохранение прервано.","Ошибка ввода...",MessageBoxButtons.OK, MessageBoxIcon.Error);
+        	return ;
+        }       
         if (textBoxSTACK_INTERVAL.Text!=VL[9]) {
           if (strS!="") { strS += " , " ; }
           strS = strS + "STACK_INTERVAL =" + textBoxSTACK_INTERVAL.Text;
@@ -566,19 +624,38 @@ sl1="" +
           if (strS!="") { strS += " , " ; }
           strS = strS + "STATE =" + textBoxSTATE.Text;
         }
+        
+        textBoxRESTORE_TIME.Text = StrToIntVal(textBoxRESTORE_TIME.Text) ;
+        if (ErrInput<0) {
+        	MessageBox.Show("Ошибка ввода данных!\n Сохранение прервано.","Ошибка ввода...",MessageBoxButtons.OK, MessageBoxIcon.Error);
+        	return ;
+        }        
         if (textBoxRESTORE_TIME.Text!=VL[11]) {
           if (strS!="") { strS += " , " ; }
           strS = strS + "RESTORE_TIME =" + textBoxRESTORE_TIME.Text;
         }
+
         textBoxName.Text=textBoxName.Text.Trim();
         if (textBoxName.Text!=VL[12]) {
           if (strS!="") { strS += " , " ; }
           strS = strS + "Name ='" + textBoxName.Text +"'";
         }
+        
+        textBoxDEPTH_PARTITION.Text = StrToIntVal(textBoxDEPTH_PARTITION.Text) ;
+        if (ErrInput<0) {
+        	MessageBox.Show("Ошибка ввода данных!\n Сохранение прервано.","Ошибка ввода...",MessageBoxButtons.OK, MessageBoxIcon.Error);
+        	return ;
+        }        
         if (textBoxDEPTH_PARTITION.Text!=VL[14]) {
           if (strS!="") { strS += " , " ; }
           strS = strS + "DEPTH_PARTITION =" + textBoxDEPTH_PARTITION.Text;
         }
+        
+        textBoxRESTORE_TIME_LOCAL.Text = StrToIntVal(textBoxRESTORE_TIME_LOCAL.Text) ;
+        if (ErrInput<0) {
+        	MessageBox.Show("Ошибка ввода данных!\n Сохранение прервано.","Ошибка ввода...",MessageBoxButtons.OK, MessageBoxIcon.Error);
+        	return ;
+        }        
         if (textBoxRESTORE_TIME_LOCAL.Text!=VL[15]) {
           if (strS!="") { strS += " , " ; }
           strS = strS + "RESTORE_TIME_LOCAL =" + textBoxRESTORE_TIME_LOCAL.Text;

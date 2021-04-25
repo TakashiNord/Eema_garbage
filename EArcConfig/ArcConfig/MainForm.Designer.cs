@@ -85,6 +85,8 @@ namespace ArcConfig
 		private System.Windows.Forms.ToolStripButton toolStripButton4;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
 		private System.Windows.Forms.Button buttonService;
+		private System.Windows.Forms.ToolStripButton toolStripButton5;
+		private System.Windows.Forms.ToolStripButton toolStripButton6;
 		
 		/// <summary>
 		/// Disposes resources used by the form.
@@ -109,8 +111,8 @@ namespace ArcConfig
 		{
 			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.statusStrip1 = new System.Windows.Forms.StatusStrip();
 			this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
 			this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -124,6 +126,8 @@ namespace ArcConfig
 			this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
 			this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
 			this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
+			this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
+			this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
 			this.tabControl1 = new System.Windows.Forms.TabControl();
 			this.tabPage1 = new System.Windows.Forms.TabPage();
 			this.button1 = new System.Windows.Forms.Button();
@@ -266,7 +270,9 @@ namespace ArcConfig
 			this.toolStripButton3,
 			this.toolStripSeparator6,
 			this.toolStripButton4,
-			this.toolStripSeparator7});
+			this.toolStripSeparator7,
+			this.toolStripButton5,
+			this.toolStripButton6});
 			this.toolStrip1.Location = new System.Drawing.Point(0, 0);
 			this.toolStrip1.Name = "toolStrip1";
 			this.toolStrip1.Size = new System.Drawing.Size(1190, 25);
@@ -333,6 +339,28 @@ namespace ArcConfig
 			this.toolStripSeparator7.Name = "toolStripSeparator7";
 			this.toolStripSeparator7.Size = new System.Drawing.Size(6, 25);
 			// 
+			// toolStripButton5
+			// 
+			this.toolStripButton5.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+			this.toolStripButton5.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton5.Image")));
+			this.toolStripButton5.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.toolStripButton5.Name = "toolStripButton5";
+			this.toolStripButton5.Size = new System.Drawing.Size(23, 22);
+			this.toolStripButton5.Text = "Статус";
+			this.toolStripButton5.ToolTipText = "Статус технологических серверов";
+			this.toolStripButton5.Click += new System.EventHandler(this.ToolStripButton5Click);
+			// 
+			// toolStripButton6
+			// 
+			this.toolStripButton6.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+			this.toolStripButton6.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton6.Image")));
+			this.toolStripButton6.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.toolStripButton6.Name = "toolStripButton6";
+			this.toolStripButton6.Size = new System.Drawing.Size(23, 22);
+			this.toolStripButton6.Text = "Источники";
+			this.toolStripButton6.ToolTipText = "Источники серверов";
+			this.toolStripButton6.Click += new System.EventHandler(this.ToolStripButton6Click);
+			// 
 			// tabControl1
 			// 
 			this.tabControl1.Controls.Add(this.tabPage1);
@@ -377,7 +405,7 @@ namespace ArcConfig
 			// 
 			this.radioButton4.Location = new System.Drawing.Point(353, 6);
 			this.radioButton4.Name = "radioButton4";
-			this.radioButton4.Size = new System.Drawing.Size(104, 24);
+			this.radioButton4.Size = new System.Drawing.Size(83, 24);
 			this.radioButton4.TabIndex = 4;
 			this.radioButton4.TabStop = true;
 			this.radioButton4.Text = "Retro-Table";
@@ -388,7 +416,7 @@ namespace ArcConfig
 			// 
 			this.radioButton3.Location = new System.Drawing.Point(228, 6);
 			this.radioButton3.Name = "radioButton3";
-			this.radioButton3.Size = new System.Drawing.Size(104, 24);
+			this.radioButton3.Size = new System.Drawing.Size(68, 24);
 			this.radioButton3.TabIndex = 3;
 			this.radioButton3.TabStop = true;
 			this.radioButton3.Text = "Average";
@@ -399,7 +427,7 @@ namespace ArcConfig
 			// 
 			this.radioButton2.Location = new System.Drawing.Point(118, 6);
 			this.radioButton2.Name = "radioButton2";
-			this.radioButton2.Size = new System.Drawing.Size(104, 24);
+			this.radioButton2.Size = new System.Drawing.Size(60, 24);
 			this.radioButton2.TabIndex = 2;
 			this.radioButton2.TabStop = true;
 			this.radioButton2.Text = "Current";
@@ -410,7 +438,7 @@ namespace ArcConfig
 			// 
 			this.radioButton1.Location = new System.Drawing.Point(8, 6);
 			this.radioButton1.Name = "radioButton1";
-			this.radioButton1.Size = new System.Drawing.Size(104, 24);
+			this.radioButton1.Size = new System.Drawing.Size(55, 24);
 			this.radioButton1.TabIndex = 1;
 			this.radioButton1.TabStop = true;
 			this.radioButton1.Text = "Full";
@@ -423,23 +451,23 @@ namespace ArcConfig
 			| System.Windows.Forms.AnchorStyles.Left) 
 			| System.Windows.Forms.AnchorStyles.Right)));
 			this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-			dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-			dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-			dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+			dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+			dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+			dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
 			this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-			dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-			dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-			this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
+			dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+			dataGridViewCellStyle4.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+			dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+			this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle4;
 			this.dataGridView1.Location = new System.Drawing.Point(6, 36);
 			this.dataGridView1.Name = "dataGridView1";
 			this.dataGridView1.Size = new System.Drawing.Size(1168, 508);
@@ -660,7 +688,7 @@ namespace ArcConfig
 			this.tabPageParam.Location = new System.Drawing.Point(4, 22);
 			this.tabPageParam.Name = "tabPageParam";
 			this.tabPageParam.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPageParam.Size = new System.Drawing.Size(831, 518);
+			this.tabPageParam.Size = new System.Drawing.Size(874, 518);
 			this.tabPageParam.TabIndex = 1;
 			this.tabPageParam.Tag = "1";
 			this.tabPageParam.Text = "Параметры";
@@ -674,7 +702,7 @@ namespace ArcConfig
 			this.dataGridViewP.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.dataGridViewP.Location = new System.Drawing.Point(3, 3);
 			this.dataGridViewP.Name = "dataGridViewP";
-			this.dataGridViewP.Size = new System.Drawing.Size(825, 512);
+			this.dataGridViewP.Size = new System.Drawing.Size(868, 512);
 			this.dataGridViewP.TabIndex = 0;
 			this.dataGridViewP.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewPCellContentClick);
 			this.dataGridViewP.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DataGridViewPCellMouseDown);

@@ -85,6 +85,10 @@ namespace ArcConfig
        toolStripButton2.Enabled=true;
        toolStripButton3.Enabled=true;
        toolStripButton4.Enabled=true;
+       
+       toolStripButton5.Enabled=true;
+       toolStripButton6.Enabled=true;
+       
        tabControl1.Enabled=true;
        _tree21();
        _setDBarc();
@@ -516,6 +520,9 @@ namespace ArcConfig
        toolStripButton2.Enabled=false;
        toolStripButton3.Enabled=false;
        toolStripButton4.Enabled=false;
+       
+       toolStripButton5.Enabled=false;
+       toolStripButton6.Enabled=false;
 
        _setDBS();
        
@@ -1130,7 +1137,47 @@ namespace ArcConfig
        Nd25.Name = "CALC_ARC";
        Nd25.Text = "Описание таблиц хранения архивов универсального дорасчета (CALC_ARC)";
        rootNode5.Nodes.Add(Nd25);
+       
+       
+       
+       TreeNode Nd30 = new TreeNode();
+       Nd30.Name = "SYS_DB_PART";
+       Nd30.Text = "Каталог разделов БД и подсистем комплекса РСДУ2";
+       rootNode2.Nodes.Add(Nd30);       
 
+       
+       
+       TreeNode rootNode6 = new TreeNode();
+       rootNode6.Name = "0";
+       rootNode6.Text = "Источники";
+       treeViewS.Nodes.Add(rootNode6);     
+
+       TreeNode rootNode61 = new TreeNode();
+       rootNode61.Name = "CALC_SOURCE";
+       rootNode61.Text = "Таблица источников получения значений параметров (CALC_SOURCE)";
+       rootNode6.Nodes.Add(rootNode61); 
+
+       TreeNode rootNode62 = new TreeNode();
+       rootNode62.Name = "DA_SOURCE";
+       rootNode62.Text = "Таблица источников для рапределенной системы сбора (DA_SOURCE)";
+       rootNode6.Nodes.Add(rootNode62);        
+
+       TreeNode rootNode63 = new TreeNode();
+       rootNode63.Name = "DG_SOURCE";
+       rootNode63.Text = "Таблица источников получения значений параметров ДГ (DG_SOURCE)";
+       rootNode6.Nodes.Add(rootNode63); 
+
+       TreeNode rootNode64 = new TreeNode();
+       rootNode64.Name = "EA_SOURCE";
+       rootNode64.Text = "Таблица источников для параметров учета электроэнергии (EA_SOURCE)";
+       rootNode6.Nodes.Add(rootNode64); 
+
+       TreeNode rootNode65 = new TreeNode();
+       rootNode65.Name = "MEAS_SOURCE";
+       rootNode65.Text = "Таблица источников получения значений параметров (MEAS_SOURCE)";
+       rootNode6.Nodes.Add(rootNode65); 
+       
+       
        treeViewA.EndUpdate(); //добавить
 
     }
@@ -2699,6 +2746,19 @@ void OracleStat ( )
 
 
     }
+		void ToolStripButton5Click(object sender, EventArgs e)
+		{
+			FormStatus frmSt = new FormStatus(this._conn); //(this._conn);
+            frmSt.Show();
+            //frmSt.Dispose();
+		}
+		void ToolStripButton6Click(object sender, EventArgs e)
+		{
+			return ;
+			FormSource frmSo = new FormSource(this._conn); //(this._conn);
+            frmSo.ShowDialog();
+            frmSo.Dispose();	
+		}
 
   }
 

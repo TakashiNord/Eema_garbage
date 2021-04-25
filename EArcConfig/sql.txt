@@ -312,3 +312,29 @@ for rec in (
         Insert into RSDUADMIN.ARC_SERVICES_ACCESS(ID_SPROFILE, ID_SERVICE, RETRO_DEPTH)
            Values (nID_SPROFILE, rec.id, 86400);
   end loop;
+
+#define SRV_ITEGRITY_INFO_SQL  "select sbs.LAST_UPDATE, sbs.LAST_RELINK, sbs.REINIT_TYPE \
+    from sys_db_part sbs, sys_tbllst lst \
+    where lst.ID_NODE = sbs.ID AND lst.ID = %u"
+
+ /* Достаточно выслать только ОДИН сигнал о нарушении БДРВ, то есть если есть критическое нарушение, то сообщаем только о нем */
+            if (db_last_relink_time > (*SEnv).db_last_relink_time)
+            {
+                /* Критическое нарушение целостности БДРВ */
+                sprintf((char *)qr,"WARNING! Real-time DB integrity CRITICAL error! You must rebuild and reload this job.");
+                RSDURTGUtils_UnilogMessage(LOG_ERR, LogFile,"%s", qr);
+                RSDURTGUtils_SS_SendTaskState(msg_port, (uint32_t)SS_INTEGRITY_A, SS_ALARM, LogFile, SEnv->FullPathName);
+            }
+            else
+            {
+                if (db_last_update_time > (*SEnv).db_last_update_time)
+                {
+                    /* Нарушение целостности БДРВ */
+                    sprintf((char *)qr,"WARNING! Real-time DB integrity warning! You must reload this job.");
+                    RSDURTGUtils_UnilogMessage(LOG_WARNING, LogFile,"%s", qr);
+                    RSDURTGUtils_SS_SendTaskState(msg_port, (uint32_t)SS_INTEGRITY_W, SS_WARNING, LogFile, SEnv->FullPathName);
+                }
+            }
+			
+			
+
