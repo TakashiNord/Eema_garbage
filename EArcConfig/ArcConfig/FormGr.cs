@@ -36,17 +36,17 @@ namespace ArcConfig
 
     public string GetTypeValue(ref OdbcDataReader reader, int i)
    {
-   	 object obj ;
-   	 string ret="";
+     object obj ;
+     string ret="";
      if (reader.IsDBNull(i)) {
           ;
      } else {
-   	 	obj = reader.GetValue(i) ;
-   	 	string stype= reader.GetDataTypeName(i).ToUpper();
+      obj = reader.GetValue(i) ;
+      string stype= reader.GetDataTypeName(i).ToUpper();
         //AddLogString("reader.GetDataTypeName = " + stype);
         ret = obj.ToString();
-                  
-    /*  if (stype=="DECIMAL") ret = reader.GetValue(i).ToString(); 
+
+    /*  if (stype=="DECIMAL") ret = reader.GetValue(i).ToString();
         if (stype=="NUMBER") ret = reader.GetValue(i).ToString(); //GetDecimal(i).ToString();
         if (stype=="VARCHAR2") ret = reader.GetString(i);
         if (stype=="NVARCHAR") ret = reader.GetString(i);
@@ -56,10 +56,10 @@ namespace ArcConfig
         if (stype=="CHAR") ret = reader.GetString(i);
         if (stype=="NCHAR") ret = reader.GetString(i);
         if (stype=="DATE") ret = reader.GetString(i);
-        if (stype=="TIME") ret = reader.GetString(i); 
-        if (stype=="DOUBLE PRECISION") ret = reader.GetValue(i).ToString(); 
+        if (stype=="TIME") ret = reader.GetString(i);
+        if (stype=="DOUBLE PRECISION") ret = reader.GetValue(i).ToString();
      */
-       
+
      }
      return(ret);
    }
@@ -129,8 +129,11 @@ namespace ArcConfig
 
         cmd0.Connection=this._conn;
 
+        string sl1 = "SELECT count(*) FROM " + TABLE_NAME +
+            " WHERE TIME1970 BETWEEN " +from.ToString() + " AND " + to.ToString()  ;
+
         //TIME1970, TIME_MKS, VAL, STATE
-        string sl1 = "SELECT CAST(TIME1970 AS CHAR(12)) AS TIME1970, VAL, STATE FROM " + TABLE_NAME +
+        sl1 = "SELECT CAST(TIME1970 AS CHAR(12)) AS TIME1970, VAL, STATE FROM " + TABLE_NAME +
             " WHERE TIME1970 BETWEEN " +from.ToString() + " AND " + to.ToString() +
             " ORDER BY TIME1970 ASC " ;
         cmd0.CommandText=sl1;
@@ -432,49 +435,58 @@ namespace ArcConfig
 
         Button1Click(null,  e) ;
     }
-		void Button2Click(object sender, EventArgs e)
-		{
-			 // delete media
 
-             // Объект для выполнения запросов к базе данных
-             OdbcCommand cmd0 = new OdbcCommand();
-             int res1 = 0 ;
+    void ToolStripButton1Click(object sender, EventArgs e)
+    {
+      // delete media
 
-             cmd0.Connection=this._conn;
+      // Объект для выполнения запросов к базе данных
+      OdbcCommand cmd0 = new OdbcCommand();
+      int res1 = 0 ;
 
-             if (TABLE_NAME=="") return ;
-             Application.DoEvents();
+      cmd0.Connection=this._conn;
 
-			 int i1 = Convert.ToInt32( DateTimeToUnixTimestamp(dateTimePicker1.Value) );
-             int i2 = Convert.ToInt32( DateTimeToUnixTimestamp(dateTimePicker2.Value) );
-             if (i1>=i2) {
-               MessageBox.Show(" Период установлен не верно! Ничего не удалено");
-               return ;
-             }
+      if (TABLE_NAME=="") return ;
+      Application.DoEvents();
 
-             DialogResult result = MessageBox.Show ("Удалить значения из таблицы?\n\n\n" +
+      int i1 = Convert.ToInt32( DateTimeToUnixTimestamp(dateTimePicker1.Value) );
+      int i2 = Convert.ToInt32( DateTimeToUnixTimestamp(dateTimePicker2.Value) );
+      if (i1>=i2) {
+          MessageBox.Show(" Период установлен не верно!\n Ничего не удалено");
+          return ;
+      }
+
+      DialogResult result = MessageBox.Show ("Удалить значения из таблицы?\n\n\n" +
                 " TABLE_NAME = " + TABLE_NAME + "\n" +
                 "  from = "+dateTimePicker1.Value.ToString() +"\n" +
                 "    to = "+dateTimePicker2.Value.ToString() +"\n" ,
                "Удалить значения..", MessageBoxButtons.YesNo,MessageBoxIcon.Exclamation,
                MessageBoxDefaultButton.Button2);
-             if (result == DialogResult.Yes)
-             {
-                 cmd0.CommandText="DELETE FROM " + TABLE_NAME +
-             	     " WHERE time1970 BETWEEN " + i1.ToString() + " AND "+ i2.ToString() ;
-                 try
-                 {
-                     res1 = cmd0.ExecuteNonQuery();
-                 }
-                 catch (Exception ex1)
-                 {
-                     MessageBox.Show(ex1.Message);
-                     return ;
-                 }
-                 MessageBox.Show("Операция удаления прошла успешно\n Удалено (записей) = " + res1.ToString() );
-              }
+      if (result == DialogResult.Yes)
+      {
+           cmd0.CommandText="DELETE FROM " + TABLE_NAME +
+             " WHERE time1970 BETWEEN " + i1.ToString() + " AND "+ i2.ToString() ;
+           try
+           {
+               res1 = cmd0.ExecuteNonQuery();
+           }
+           catch (Exception ex1)
+           {
+               MessageBox.Show(ex1.Message);
+               return ;
+           }
+           MessageBox.Show("Операция удаления прошла успешно\n Удалено (записей) = " + res1.ToString() );
+      }
+    }
+    void ToolStripButton2Click(object sender, EventArgs e)
+    {
+       // export data
+       if (TABLE_NAME=="") return ;
+       Application.DoEvents();
 
-		 }
+       FormExport fe = new FormExport(_conn, _id, _name, _id_gpt, _id_tbl) ;
+       fe.ShowDialog();
+    }
 
   }
 

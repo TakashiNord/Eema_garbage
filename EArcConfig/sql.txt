@@ -224,6 +224,34 @@ DA_ARC  57
 DA_ARC  59
 
 
+ --
+ -- номер табл = табл=им€ архивной табл=название схемы
+ --
+select DISTINCT y.ID id_tbllst, y.table_name lst_tblname, x.table_name arc_tblname, sch.SCHEMA_NAME
+               from sys_tbllst x, sys_tbllst y, sys_tbllnk st, sys_otyp ot, arc_db_schema sch, arc_services_info si
+              where y.ID = st.id_lsttbl
+                and x.ID = st.id_dsttbl
+                and x.id_type = ot.id
+                and ot.define_alias = 'ARH'
+                and si.ID_DB_SCHEMA = sch.ID--(+)
+                and si.ID_LSTTBL(+) = y.ID
+              order by y.id
+
+
+
+select DISTINCT y.ID id_tbllst, y.table_name lst_tblname, x.table_name arc_tblname, sch.SCHEMA_NAME
+               from sys_tbllst x, sys_tbllst y, sys_tbllnk st, sys_otyp ot, arc_db_schema sch, arc_services_info si
+              where y.ID = st.id_lsttbl
+                and x.ID = st.id_dsttbl
+                and x.id_type = ot.id
+                and ot.define_alias = 'ARH'
+                and si.ID_DB_SCHEMA = sch.ID
+                and si.ID_LSTTBL = y.ID
+              order by y.id
+
+
+
+
 
 SELECT 
    ad_pinfo.portnumber,ad_pinfo.id_proto,ad_sinfo.id_lsttbl,ad_list.id_type,

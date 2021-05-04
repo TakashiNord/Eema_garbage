@@ -85,14 +85,14 @@ namespace ArcConfig
        toolStripButton2.Enabled=true;
        toolStripButton3.Enabled=true;
        toolStripButton4.Enabled=true;
-       
+
        toolStripButton5.Enabled=true;
        toolStripButton6.Enabled=true;
-       
+
        tabControl1.Enabled=true;
        _tree21();
        _setDBarc();
-       
+
     }
 
    public void AddLogString(string s)
@@ -520,12 +520,12 @@ namespace ArcConfig
        toolStripButton2.Enabled=false;
        toolStripButton3.Enabled=false;
        toolStripButton4.Enabled=false;
-       
+
        toolStripButton5.Enabled=false;
        toolStripButton6.Enabled=false;
 
        _setDBS();
-       
+
     }
     void TreeViewAAfterSelect(object sender, TreeViewEventArgs e)
     {
@@ -928,7 +928,7 @@ namespace ArcConfig
       //ResourceManager r = new ResourceManager("ArcConfig.ArcResource", Assembly.GetExecutingAssembly());
 
       string DB_NAME = "" ;
-      // 1. получаем имя 
+      // 1. получаем имя
    cmd0.CommandText="SELECT id, name FROM SYS_TREE21 WHERE COALESCE(id_parent,0,0)=0 and COALESCE(ID_LSTTBL,0,0)=0" ;
    try
    {
@@ -955,8 +955,8 @@ namespace ArcConfig
     this.Text = this.Text + "  :  " + DB_NAME ;
    }
 
-      
-    	
+
+
     }
 
 
@@ -1137,47 +1137,47 @@ namespace ArcConfig
        Nd25.Name = "CALC_ARC";
        Nd25.Text = "Описание таблиц хранения архивов универсального дорасчета (CALC_ARC)";
        rootNode5.Nodes.Add(Nd25);
-       
-       
-       
+
+
+
        TreeNode Nd30 = new TreeNode();
        Nd30.Name = "SYS_DB_PART";
        Nd30.Text = "Каталог разделов БД и подсистем комплекса РСДУ2";
-       rootNode2.Nodes.Add(Nd30);       
+       rootNode2.Nodes.Add(Nd30);
 
-       
-       
+
+
        TreeNode rootNode6 = new TreeNode();
        rootNode6.Name = "0";
        rootNode6.Text = "Источники";
-       treeViewS.Nodes.Add(rootNode6);     
+       treeViewS.Nodes.Add(rootNode6);
 
        TreeNode rootNode61 = new TreeNode();
        rootNode61.Name = "CALC_SOURCE";
        rootNode61.Text = "Таблица источников получения значений параметров (CALC_SOURCE)";
-       rootNode6.Nodes.Add(rootNode61); 
+       rootNode6.Nodes.Add(rootNode61);
 
        TreeNode rootNode62 = new TreeNode();
        rootNode62.Name = "DA_SOURCE";
        rootNode62.Text = "Таблица источников для рапределенной системы сбора (DA_SOURCE)";
-       rootNode6.Nodes.Add(rootNode62);        
+       rootNode6.Nodes.Add(rootNode62);
 
        TreeNode rootNode63 = new TreeNode();
        rootNode63.Name = "DG_SOURCE";
        rootNode63.Text = "Таблица источников получения значений параметров ДГ (DG_SOURCE)";
-       rootNode6.Nodes.Add(rootNode63); 
+       rootNode6.Nodes.Add(rootNode63);
 
        TreeNode rootNode64 = new TreeNode();
        rootNode64.Name = "EA_SOURCE";
        rootNode64.Text = "Таблица источников для параметров учета электроэнергии (EA_SOURCE)";
-       rootNode6.Nodes.Add(rootNode64); 
+       rootNode6.Nodes.Add(rootNode64);
 
        TreeNode rootNode65 = new TreeNode();
        rootNode65.Name = "MEAS_SOURCE";
        rootNode65.Text = "Таблица источников получения значений параметров (MEAS_SOURCE)";
-       rootNode6.Nodes.Add(rootNode65); 
-       
-       
+       rootNode6.Nodes.Add(rootNode65);
+
+
        treeViewA.EndUpdate(); //добавить
 
     }
@@ -1297,7 +1297,7 @@ namespace ArcConfig
                 string fileCSV = "";
                 for (int f = 0; f < dataGridView.ColumnCount; f++)
                     fileCSV += (dataGridView.Columns[f].HeaderText + ";");
-                fileCSV += "\t\n";
+                fileCSV += "\t" + Environment.NewLine;
                 for (int i = 0; i < dataGridView.RowCount ; i++)
                 {
                     for (int j = 0; j < dataGridView.ColumnCount; j++)
@@ -1311,7 +1311,7 @@ namespace ArcConfig
                       fileCSV += st + ";";
                         //fileCSV += ( dataGridView[j, i].Value).ToString() + ";";
                     }
-                    fileCSV += "\t\n";
+                    fileCSV += "\t" + Environment.NewLine;
                 }
                 StreamWriter wr = new StreamWriter(filename, false, Encoding.UTF8); // Encoding.GetEncoding("windows-1251")
                 wr.Write(fileCSV);
@@ -2757,7 +2757,54 @@ void OracleStat ( )
 			return ;
 			FormSource frmSo = new FormSource(this._conn); //(this._conn);
             frmSo.ShowDialog();
-            frmSo.Dispose();	
+            frmSo.Dispose();
+		}
+		void ExportDataToolStripMenuItemClick(object sender, EventArgs e)
+		{
+			// ExportData
+       // вызов формы для построения графика через контекстное меню
+
+
+       // string msg = String.Format("Row: {0}, Column: {1}",
+       //   dataGridViewP.CurrentCell.RowIndex,
+       //   dataGridViewP.CurrentCell.ColumnIndex);
+       // MessageBox.Show(msg, "Current Cell");
+
+       int selRowNum , selColNum ; // = dataGridViewP.CurrentCell.RowIndex;
+       selRowNum = dataGridViewP.CurrentCell.RowIndex; //mouseLocation.RowIndex ;
+       selColNum = dataGridViewP.CurrentCell.ColumnIndex ; //mouseLocation.ColumnIndex ;
+
+       //AddLogString(" ExportData -> selRowNum=" + selRowNum.ToString() + " selColNum=" + selColNum.ToString());
+
+       if (selRowNum<0) return ;
+       // group id name type {}
+       if (selColNum<=3) return ;
+
+       string ID = dataGridViewP.Rows[selRowNum].Cells[1].Value.ToString() ;
+       string IDNAME = dataGridViewP.Rows[selRowNum].Cells[2].Value.ToString() ;
+       string IDGINFO = dataGridViewP.Columns[selColNum].Name ;
+       //string NAMEHEADER = dataGridViewP.Columns[selColNum].HeaderText ;
+
+       // если ячейка Unchecked - покидаем алгоритм
+       if ((System.Windows.Forms.CheckState)dataGridViewP.Rows[selRowNum].Cells[selColNum].Value
+                        ==CheckState.Unchecked) { return ; }
+
+       //Получить Имя выделенного элемента
+       string id_parent=treeViewA.SelectedNode.Name;
+       if (id_parent=="0") return ;
+       string id_tbl =Convert.ToString(treeViewA.SelectedNode.Tag) ;
+       //AddLogString("ExportData=id_tbl=" + id_tbl);
+       string id_name=treeViewA.SelectedNode.Text ;
+       //AddLogString("ExportData=" + id_parent + " " + id_name);
+       if (id_tbl=="0" || id_tbl=="") return ;
+
+       dataGridViewP.Rows[selRowNum].Cells[selColNum].Style.ForeColor
+         = Color.Cyan ;
+
+       //DialogResult result1;
+       FormExport ifex = new FormExport(_conn, ID, IDNAME, IDGINFO, id_tbl);
+       ifex.Show();
+
 		}
 
   }

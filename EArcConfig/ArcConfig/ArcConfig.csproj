@@ -70,6 +70,10 @@
     <Compile Include="FormDel.Designer.cs">
       <DependentUpon>FormDel.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormExport.cs" />
+    <Compile Include="FormExport.Designer.cs">
+      <DependentUpon>FormExport.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormGr.cs" />
     <Compile Include="FormGr.Designer.cs">
       <DependentUpon>FormGr.cs</DependentUpon>

@@ -14,6 +14,11 @@ namespace ArcConfig
 		/// Designer variable used to keep track of non-visual components.
 		/// </summary>
 		private System.ComponentModel.IContainer components = null;
+		private System.Windows.Forms.ToolStrip toolStrip1;
+		private System.Windows.Forms.ToolStripButton toolStripButton1;
+		private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+		private System.Windows.Forms.ToolStripButton toolStripButton2;
+		private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
 		private System.Windows.Forms.TabControl tabControl1;
 		private System.Windows.Forms.TabPage tabPage1;
 		private System.Windows.Forms.SplitContainer splitContainer1;
@@ -33,7 +38,6 @@ namespace ArcConfig
 		private System.Windows.Forms.BindingSource bindingSource1;
 		private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
 		private System.Windows.Forms.ComboBox comboBox1;
-		private System.Windows.Forms.Button button2;
 		
 		/// <summary>
 		/// Disposes resources used by the form.
@@ -57,12 +61,16 @@ namespace ArcConfig
 		private void InitializeComponent()
 		{
 			this.components = new System.ComponentModel.Container();
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormGr));
 			System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
 			System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
 			System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormGr));
+			this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+			this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+			this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+			this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
 			this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-			this.button2 = new System.Windows.Forms.Button();
 			this.comboBox1 = new System.Windows.Forms.ComboBox();
 			this.button1 = new System.Windows.Forms.Button();
 			this.label3 = new System.Windows.Forms.Label();
@@ -81,6 +89,7 @@ namespace ArcConfig
 			this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
 			this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
 			this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+			this.toolStrip1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
 			this.splitContainer2.Panel1.SuspendLayout();
 			this.splitContainer2.Panel2.SuspendLayout();
@@ -99,17 +108,59 @@ namespace ArcConfig
 			((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
 			this.SuspendLayout();
 			// 
+			// toolStrip1
+			// 
+			this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+			this.toolStripButton1,
+			this.toolStripSeparator1,
+			this.toolStripButton2,
+			this.toolStripSeparator2});
+			this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+			this.toolStrip1.Name = "toolStrip1";
+			this.toolStrip1.Size = new System.Drawing.Size(769, 25);
+			this.toolStrip1.TabIndex = 11;
+			this.toolStrip1.Text = "toolStrip1";
+			// 
+			// toolStripButton1
+			// 
+			this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+			this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+			this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.toolStripButton1.Name = "toolStripButton1";
+			this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
+			this.toolStripButton1.Text = "Delete data";
+			this.toolStripButton1.Click += new System.EventHandler(this.ToolStripButton1Click);
+			// 
+			// toolStripSeparator1
+			// 
+			this.toolStripSeparator1.Name = "toolStripSeparator1";
+			this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+			// 
+			// toolStripButton2
+			// 
+			this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+			this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
+			this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.toolStripButton2.Name = "toolStripButton2";
+			this.toolStripButton2.Size = new System.Drawing.Size(23, 22);
+			this.toolStripButton2.Text = "Dataset export";
+			this.toolStripButton2.Click += new System.EventHandler(this.ToolStripButton2Click);
+			// 
+			// toolStripSeparator2
+			// 
+			this.toolStripSeparator2.Name = "toolStripSeparator2";
+			this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+			// 
 			// splitContainer2
 			// 
 			this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.splitContainer2.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-			this.splitContainer2.Location = new System.Drawing.Point(0, 0);
+			this.splitContainer2.Location = new System.Drawing.Point(0, 25);
 			this.splitContainer2.Name = "splitContainer2";
 			this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
 			// 
 			// splitContainer2.Panel1
 			// 
-			this.splitContainer2.Panel1.Controls.Add(this.button2);
 			this.splitContainer2.Panel1.Controls.Add(this.comboBox1);
 			this.splitContainer2.Panel1.Controls.Add(this.button1);
 			this.splitContainer2.Panel1.Controls.Add(this.label3);
@@ -121,19 +172,9 @@ namespace ArcConfig
 			// splitContainer2.Panel2
 			// 
 			this.splitContainer2.Panel2.Controls.Add(this.tabControl1);
-			this.splitContainer2.Size = new System.Drawing.Size(769, 387);
+			this.splitContainer2.Size = new System.Drawing.Size(769, 362);
 			this.splitContainer2.SplitterDistance = 88;
 			this.splitContainer2.TabIndex = 1;
-			// 
-			// button2
-			// 
-			this.button2.Location = new System.Drawing.Point(712, 7);
-			this.button2.Name = "button2";
-			this.button2.Size = new System.Drawing.Size(50, 37);
-			this.button2.TabIndex = 9;
-			this.button2.Text = "Delete Data";
-			this.button2.UseVisualStyleBackColor = true;
-			this.button2.Click += new System.EventHandler(this.Button2Click);
 			// 
 			// comboBox1
 			// 
@@ -237,7 +278,7 @@ namespace ArcConfig
 			this.tabControl1.Location = new System.Drawing.Point(0, 0);
 			this.tabControl1.Name = "tabControl1";
 			this.tabControl1.SelectedIndex = 0;
-			this.tabControl1.Size = new System.Drawing.Size(769, 295);
+			this.tabControl1.Size = new System.Drawing.Size(769, 270);
 			this.tabControl1.TabIndex = 1;
 			// 
 			// tabPage1
@@ -246,7 +287,7 @@ namespace ArcConfig
 			this.tabPage1.Location = new System.Drawing.Point(4, 22);
 			this.tabPage1.Name = "tabPage1";
 			this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPage1.Size = new System.Drawing.Size(761, 269);
+			this.tabPage1.Size = new System.Drawing.Size(761, 244);
 			this.tabPage1.TabIndex = 0;
 			this.tabPage1.Text = "tabPage1";
 			this.tabPage1.UseVisualStyleBackColor = true;
@@ -264,8 +305,8 @@ namespace ArcConfig
 			// splitContainer1.Panel2
 			// 
 			this.splitContainer1.Panel2.Controls.Add(this.dataGridView1);
-			this.splitContainer1.Size = new System.Drawing.Size(755, 263);
-			this.splitContainer1.SplitterDistance = 532;
+			this.splitContainer1.Size = new System.Drawing.Size(755, 238);
+			this.splitContainer1.SplitterDistance = 484;
 			this.splitContainer1.TabIndex = 2;
 			// 
 			// myChart
@@ -281,7 +322,7 @@ namespace ArcConfig
 			series1.Legend = "Legend1";
 			series1.Name = "Series1";
 			this.myChart.Series.Add(series1);
-			this.myChart.Size = new System.Drawing.Size(532, 263);
+			this.myChart.Size = new System.Drawing.Size(484, 238);
 			this.myChart.TabIndex = 0;
 			this.myChart.Text = "chart1";
 			// 
@@ -291,7 +332,7 @@ namespace ArcConfig
 			this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.dataGridView1.Location = new System.Drawing.Point(0, 0);
 			this.dataGridView1.Name = "dataGridView1";
-			this.dataGridView1.Size = new System.Drawing.Size(219, 263);
+			this.dataGridView1.Size = new System.Drawing.Size(267, 238);
 			this.dataGridView1.TabIndex = 1;
 			// 
 			// dataSet1
@@ -335,11 +376,14 @@ namespace ArcConfig
 			this.ClientSize = new System.Drawing.Size(769, 387);
 			this.Controls.Add(this.statusStrip1);
 			this.Controls.Add(this.splitContainer2);
+			this.Controls.Add(this.toolStrip1);
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "FormGr";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Graphics";
 			this.Load += new System.EventHandler(this.FormGrLoad);
+			this.toolStrip1.ResumeLayout(false);
+			this.toolStrip1.PerformLayout();
 			this.splitContainer2.Panel1.ResumeLayout(false);
 			this.splitContainer2.Panel1.PerformLayout();
 			this.splitContainer2.Panel2.ResumeLayout(false);

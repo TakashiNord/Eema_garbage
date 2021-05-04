@@ -16,6 +16,7 @@ namespace ArcConfig
 		private System.ComponentModel.IContainer components = null;
 		private System.Windows.Forms.CheckBox checkBox1;
 		private System.Windows.Forms.CheckBox checkBox2;
+		private System.Windows.Forms.Label label1;
 		
 		/// <summary>
 		/// Disposes resources used by the form.
@@ -40,6 +41,7 @@ namespace ArcConfig
 		{
 			this.checkBox1 = new System.Windows.Forms.CheckBox();
 			this.checkBox2 = new System.Windows.Forms.CheckBox();
+			this.label1 = new System.Windows.Forms.Label();
 			this.SuspendLayout();
 			// 
 			// checkBox1
@@ -53,20 +55,33 @@ namespace ArcConfig
 			// 
 			// checkBox2
 			// 
-			this.checkBox2.Location = new System.Drawing.Point(13, 43);
+			this.checkBox2.Location = new System.Drawing.Point(12, 63);
 			this.checkBox2.Name = "checkBox2";
 			this.checkBox2.Size = new System.Drawing.Size(246, 33);
 			this.checkBox2.TabIndex = 1;
 			this.checkBox2.Text = "Удаление даже обязательных архивов";
 			this.checkBox2.UseVisualStyleBackColor = true;
 			// 
+			// label1
+			// 
+			this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.label1.Location = new System.Drawing.Point(12, 31);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(157, 19);
+			this.label1.TabIndex = 2;
+			this.label1.Text = "закомментировано";
+			// 
 			// FormOption
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(281, 264);
+			this.ClientSize = new System.Drawing.Size(263, 264);
+			this.Controls.Add(this.label1);
 			this.Controls.Add(this.checkBox2);
 			this.Controls.Add(this.checkBox1);
+			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+			this.MaximizeBox = false;
+			this.MinimizeBox = false;
 			this.Name = "FormOption";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Настройка";

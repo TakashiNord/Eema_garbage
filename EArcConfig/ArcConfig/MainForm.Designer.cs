@@ -87,6 +87,7 @@ namespace ArcConfig
 		private System.Windows.Forms.Button buttonService;
 		private System.Windows.Forms.ToolStripButton toolStripButton5;
 		private System.Windows.Forms.ToolStripButton toolStripButton6;
+		private System.Windows.Forms.ToolStripMenuItem exportDataToolStripMenuItem;
 		
 		/// <summary>
 		/// Disposes resources used by the form.
@@ -111,8 +112,8 @@ namespace ArcConfig
 		{
 			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.statusStrip1 = new System.Windows.Forms.StatusStrip();
 			this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
 			this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -160,6 +161,7 @@ namespace ArcConfig
 			this.contextMenuStripP = new System.Windows.Forms.ContextMenuStrip(this.components);
 			this.graphicsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+			this.exportDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.tabPage3 = new System.Windows.Forms.TabPage();
 			this.splitContainer4 = new System.Windows.Forms.SplitContainer();
 			this.treeViewS = new System.Windows.Forms.TreeView();
@@ -451,23 +453,23 @@ namespace ArcConfig
 			| System.Windows.Forms.AnchorStyles.Left) 
 			| System.Windows.Forms.AnchorStyles.Right)));
 			this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-			dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-			dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-			dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+			dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+			dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+			dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
 			this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-			dataGridViewCellStyle4.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-			dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-			this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle4;
+			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+			dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+			dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+			this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
 			this.dataGridView1.Location = new System.Drawing.Point(6, 36);
 			this.dataGridView1.Name = "dataGridView1";
 			this.dataGridView1.Size = new System.Drawing.Size(1168, 508);
@@ -714,22 +716,31 @@ namespace ArcConfig
 			// 
 			this.contextMenuStripP.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
 			this.graphicsToolStripMenuItem,
-			this.toolStripSeparator5});
+			this.toolStripSeparator5,
+			this.exportDataToolStripMenuItem});
 			this.contextMenuStripP.Name = "contextMenuStripP";
-			this.contextMenuStripP.Size = new System.Drawing.Size(121, 32);
+			this.contextMenuStripP.Size = new System.Drawing.Size(153, 76);
 			// 
 			// graphicsToolStripMenuItem
 			// 
 			this.graphicsToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("graphicsToolStripMenuItem.Image")));
 			this.graphicsToolStripMenuItem.Name = "graphicsToolStripMenuItem";
-			this.graphicsToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
+			this.graphicsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
 			this.graphicsToolStripMenuItem.Text = "Graphics";
 			this.graphicsToolStripMenuItem.Click += new System.EventHandler(this.GraphicsToolStripMenuItemClick);
 			// 
 			// toolStripSeparator5
 			// 
 			this.toolStripSeparator5.Name = "toolStripSeparator5";
-			this.toolStripSeparator5.Size = new System.Drawing.Size(117, 6);
+			this.toolStripSeparator5.Size = new System.Drawing.Size(149, 6);
+			// 
+			// exportDataToolStripMenuItem
+			// 
+			this.exportDataToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("exportDataToolStripMenuItem.Image")));
+			this.exportDataToolStripMenuItem.Name = "exportDataToolStripMenuItem";
+			this.exportDataToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.exportDataToolStripMenuItem.Text = "Export Data";
+			this.exportDataToolStripMenuItem.Click += new System.EventHandler(this.ExportDataToolStripMenuItemClick);
 			// 
 			// tabPage3
 			// 
