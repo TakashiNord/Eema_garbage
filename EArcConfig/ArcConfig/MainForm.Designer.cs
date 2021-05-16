@@ -658,9 +658,9 @@ namespace ArcConfig
 			// 
 			// buttonService
 			// 
-			this.buttonService.Location = new System.Drawing.Point(129, 303);
+			this.buttonService.Location = new System.Drawing.Point(115, 303);
 			this.buttonService.Name = "buttonService";
-			this.buttonService.Size = new System.Drawing.Size(96, 31);
+			this.buttonService.Size = new System.Drawing.Size(85, 31);
 			this.buttonService.TabIndex = 2;
 			this.buttonService.Text = "Сервисы..";
 			this.buttonService.UseVisualStyleBackColor = true;
@@ -670,7 +670,7 @@ namespace ArcConfig
 			// 
 			this.buttonSave.Location = new System.Drawing.Point(14, 303);
 			this.buttonSave.Name = "buttonSave";
-			this.buttonSave.Size = new System.Drawing.Size(95, 31);
+			this.buttonSave.Size = new System.Drawing.Size(81, 31);
 			this.buttonSave.TabIndex = 1;
 			this.buttonSave.Text = "Сохранить ..";
 			this.buttonSave.UseVisualStyleBackColor = true;
@@ -719,26 +719,26 @@ namespace ArcConfig
 			this.toolStripSeparator5,
 			this.exportDataToolStripMenuItem});
 			this.contextMenuStripP.Name = "contextMenuStripP";
-			this.contextMenuStripP.Size = new System.Drawing.Size(153, 76);
+			this.contextMenuStripP.Size = new System.Drawing.Size(135, 54);
 			// 
 			// graphicsToolStripMenuItem
 			// 
 			this.graphicsToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("graphicsToolStripMenuItem.Image")));
 			this.graphicsToolStripMenuItem.Name = "graphicsToolStripMenuItem";
-			this.graphicsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.graphicsToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
 			this.graphicsToolStripMenuItem.Text = "Graphics";
 			this.graphicsToolStripMenuItem.Click += new System.EventHandler(this.GraphicsToolStripMenuItemClick);
 			// 
 			// toolStripSeparator5
 			// 
 			this.toolStripSeparator5.Name = "toolStripSeparator5";
-			this.toolStripSeparator5.Size = new System.Drawing.Size(149, 6);
+			this.toolStripSeparator5.Size = new System.Drawing.Size(131, 6);
 			// 
 			// exportDataToolStripMenuItem
 			// 
 			this.exportDataToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("exportDataToolStripMenuItem.Image")));
 			this.exportDataToolStripMenuItem.Name = "exportDataToolStripMenuItem";
-			this.exportDataToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.exportDataToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
 			this.exportDataToolStripMenuItem.Text = "Export Data";
 			this.exportDataToolStripMenuItem.Click += new System.EventHandler(this.ExportDataToolStripMenuItemClick);
 			// 

@@ -1,0 +1,8 @@
+C:\Users\tanuki\Documents\SharpDevelop Projects\PropertyGridUnit\PropertyGridUnit\obj\Debug\PropertyGridUnit.csprojResolveAssemblyReference.cache
+C:\Users\tanuki\Documents\SharpDevelop Projects\PropertyGridUnit\PropertyGridUnit\obj\Debug\PropertyGridUnit.MainForm.resources
+C:\Users\tanuki\Documents\SharpDevelop Projects\PropertyGridUnit\PropertyGridUnit\obj\Debug\PropertyGridUnit.csproj.GenerateResource.Cache
+C:\Users\tanuki\Documents\SharpDevelop Projects\PropertyGridUnit\PropertyGridUnit\bin\Debug\PropertyGridUnit.exe.config
+C:\Users\tanuki\Documents\SharpDevelop Projects\PropertyGridUnit\PropertyGridUnit\bin\Debug\PropertyGridUnit.exe
+C:\Users\tanuki\Documents\SharpDevelop Projects\PropertyGridUnit\PropertyGridUnit\bin\Debug\PropertyGridUnit.pdb
+C:\Users\tanuki\Documents\SharpDevelop Projects\PropertyGridUnit\PropertyGridUnit\obj\Debug\PropertyGridUnit.exe
+C:\Users\tanuki\Documents\SharpDevelop Projects\PropertyGridUnit\PropertyGridUnit\obj\Debug\PropertyGridUnit.pdb

@@ -40,17 +40,17 @@ namespace ArcConfig
 
     public string GetTypeValue(ref OdbcDataReader reader, int i)
    {
-   	 object obj ;
-   	 string ret="";
+     object obj ;
+     string ret="";
      if (reader.IsDBNull(i)) {
           ;
      } else {
-   	 	obj = reader.GetValue(i) ;
-   	 	string stype= reader.GetDataTypeName(i).ToUpper();
+      obj = reader.GetValue(i) ;
+      string stype= reader.GetDataTypeName(i).ToUpper();
         //AddLogString("reader.GetDataTypeName = " + stype);
         ret = obj.ToString();
-                  
-    /*  if (stype=="DECIMAL") ret = reader.GetValue(i).ToString(); 
+
+    /*  if (stype=="DECIMAL") ret = reader.GetValue(i).ToString();
         if (stype=="NUMBER") ret = reader.GetValue(i).ToString(); //GetDecimal(i).ToString();
         if (stype=="VARCHAR2") ret = reader.GetString(i);
         if (stype=="NVARCHAR") ret = reader.GetString(i);
@@ -60,12 +60,68 @@ namespace ArcConfig
         if (stype=="CHAR") ret = reader.GetString(i);
         if (stype=="NCHAR") ret = reader.GetString(i);
         if (stype=="DATE") ret = reader.GetString(i);
-        if (stype=="TIME") ret = reader.GetString(i); 
-        if (stype=="DOUBLE PRECISION") ret = reader.GetValue(i).ToString(); 
+        if (stype=="TIME") ret = reader.GetString(i);
+        if (stype=="DOUBLE PRECISION") ret = reader.GetValue(i).ToString();
      */
-       
+
      }
      return(ret);
+   }
+
+   public string GetFullName(String id,  String TableTree )
+   {
+     // Объект для выполнения запросов к базе данных
+     OdbcCommand cmd0 = new OdbcCommand();
+     cmd0.Connection=this._conn;
+     OdbcDataReader reader=null ;
+     String NAME = "";
+     String ID = id ;
+
+     string[] arr = new string[3];
+     int fl = 0;
+     while (fl==0)
+     {
+       // ORA 1000 !!!!!!
+       cmd0.CommandText="SELECT ID, ID_PARENT, NAME FROM " + TableTree + " WHERE ID="+ID ;
+       try
+       {
+         reader = cmd0.ExecuteReader();
+       }
+       catch (Exception ex1)
+       {
+        fl=1;
+        reader.Close();
+        //MessageBox.Show("Error ="+ex1.Message + "  id=" + id);
+        continue ;
+       }
+
+       if (reader.HasRows) {
+         while (reader.Read())
+         {
+           for ( int i = 0; i<reader.FieldCount; i++)
+           {
+             if (reader.IsDBNull(i)) {
+                 arr[i]="" ;
+             } else {
+                object obj = reader.GetValue(i) ;
+                arr[i] = obj.ToString();
+             }
+           }
+         }
+
+         ID = arr[1]; // ID_PARENT
+         if (ID=="") fl = 1 ;
+
+         NAME=arr[2]+ "\\" + NAME ;
+       }
+       reader.Close();
+
+     } // while
+
+     reader=null ;
+     cmd0.Dispose(); // ORA 1000 !!!!!!
+
+     return(NAME);
    }
 
 
@@ -80,6 +136,7 @@ namespace ArcConfig
     public String _gpt_name;
     public String _id_tbl;
     public String TABLE_NAME ;
+    public int OptionFullName ;
 
     public int valueBefore = 0;
 
@@ -91,7 +148,7 @@ namespace ArcConfig
       }
     }
 
-    public FormDel(OdbcConnection conn, String id, String name, String ginfo,String gpt_name, String tbl)
+    public FormDel(OdbcConnection conn, String id, String name, String ginfo,String gpt_name, String tbl, int FullName)
     {
       //
       // The InitializeComponent() call is required for Windows Forms designer support.
@@ -108,6 +165,7 @@ namespace ArcConfig
       _gpt_name = gpt_name ;
       _id_tbl = tbl ;
       TABLE_NAME = "" ;
+      OptionFullName = FullName ;
     }
 
     //Unix -> DateTime
@@ -421,6 +479,8 @@ namespace ArcConfig
 
         sl1="SELECT 0,0,0,0,0,0,0 FROM DUAL" ;
 
+        string TableTree = "OBJ_TREE" ;
+
         if (TABLE_NAME.IndexOf("PHREG_LIST_V")>=0) {
           sl1 = r.GetString("PHREG_LIST_V");;
         }
@@ -444,6 +504,7 @@ namespace ArcConfig
         }
         if (TABLE_NAME.IndexOf("DG_LIST")>=0) {
             sl1 = r.GetString("DG_LIST");
+            TableTree = "DG_GROUPS" ;
         }
         if (TABLE_NAME.IndexOf("EXDATA_LIST_V")>=0) {
             sl1 = r.GetString("EXDATA_LIST_V");     ;
@@ -517,7 +578,9 @@ namespace ArcConfig
            if (TABLE_NAME.IndexOf("DA_V_LST")>=0) {
               dataGridView1.Rows[iRowIndex].Cells[0].Value = p.NAME2;
            } else {
-              dataGridView1.Rows[iRowIndex].Cells[0].Value = "";
+            String nd = "" ;
+            if (OptionFullName>0) nd=GetFullName(p.ID_NODE.ToString(),TableTree) ;
+            dataGridView1.Rows[iRowIndex].Cells[0].Value = nd;
            }
            dataGridView1.Rows[iRowIndex].Cells[1].Value = p.ID.ToString();
            dataGridView1.Rows[iRowIndex].Cells[2].Value = p.NAME1;
@@ -724,8 +787,8 @@ namespace ArcConfig
         dateTimePicker1.Value = t11 ;
 
     }
-    
- 
+
+
     public void DelProcess(object sender)
     {
 
@@ -840,9 +903,16 @@ namespace ArcConfig
        button1.Enabled=false ;
 
        //DelCreateAsync().GetAwaiter();
-       DelCreate( sender ) ;
-       // Resize the master DataGridView columns to fit the newly loaded data.
-       dataGridView1.AutoResizeColumns();
+       try
+       {
+         DelCreate( sender ) ;
+         // Resize the master DataGridView columns to fit the newly loaded data.
+         dataGridView1.AutoResizeColumns();
+       }
+       catch (Exception ex1)
+       {
+        ;
+       }
 
        button11.Enabled=true ;
        button12.Enabled=true ;

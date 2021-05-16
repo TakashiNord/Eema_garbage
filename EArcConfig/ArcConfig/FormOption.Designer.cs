@@ -17,6 +17,7 @@ namespace ArcConfig
 		private System.Windows.Forms.CheckBox checkBox1;
 		private System.Windows.Forms.CheckBox checkBox2;
 		private System.Windows.Forms.Label label1;
+		private System.Windows.Forms.CheckBox checkBox3;
 		
 		/// <summary>
 		/// Disposes resources used by the form.
@@ -42,6 +43,7 @@ namespace ArcConfig
 			this.checkBox1 = new System.Windows.Forms.CheckBox();
 			this.checkBox2 = new System.Windows.Forms.CheckBox();
 			this.label1 = new System.Windows.Forms.Label();
+			this.checkBox3 = new System.Windows.Forms.CheckBox();
 			this.SuspendLayout();
 			// 
 			// checkBox1
@@ -71,11 +73,21 @@ namespace ArcConfig
 			this.label1.TabIndex = 2;
 			this.label1.Text = "закомментировано";
 			// 
+			// checkBox3
+			// 
+			this.checkBox3.Location = new System.Drawing.Point(12, 102);
+			this.checkBox3.Name = "checkBox3";
+			this.checkBox3.Size = new System.Drawing.Size(246, 24);
+			this.checkBox3.TabIndex = 3;
+			this.checkBox3.Text = "Формировать полный путь до параметра";
+			this.checkBox3.UseVisualStyleBackColor = true;
+			// 
 			// FormOption
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(263, 264);
+			this.Controls.Add(this.checkBox3);
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.checkBox2);
 			this.Controls.Add(this.checkBox1);

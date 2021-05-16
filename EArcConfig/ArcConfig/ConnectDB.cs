@@ -44,7 +44,7 @@ namespace ArcConfig
 
     private OdbcConnection _DB_Connect()
     {
-      OdbcConnection odbcConnection = new OdbcConnection("DSN=" + this._txDsn.Text + ";UID=" + this._txLogin.Text + ";PWD=" + this._txPassword.Text + ";");
+      OdbcConnection odbcConnection = new OdbcConnection("DSN=" + this._txDsn.Text + ";UID=" + this._txLogin.Text + ";PWD=" + this._txPassword.Text + "; Pooling=False;");
       if (odbcConnection != null)
       {
         try

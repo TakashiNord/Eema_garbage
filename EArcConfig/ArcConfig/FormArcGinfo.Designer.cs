@@ -170,9 +170,9 @@ namespace ArcConfig
 			// 
 			// label1
 			// 
-			this.label1.Location = new System.Drawing.Point(18, 16);
+			this.label1.Location = new System.Drawing.Point(18, 18);
 			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(27, 20);
+			this.label1.Size = new System.Drawing.Size(24, 16);
 			this.label1.TabIndex = 11;
 			this.label1.Text = "id =";
 			// 

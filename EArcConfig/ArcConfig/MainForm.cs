@@ -56,6 +56,7 @@ namespace ArcConfig
 
     public int OptionFullDelete = 0;
     public int OptionWriteOnDelete = 0 ;
+    public int OptionFullName = 0;
 
     public MainForm()
     {
@@ -142,6 +143,64 @@ namespace ArcConfig
      }
      return(ret);
    }
+
+
+   public string GetFullName(String id,  String TableTree )
+   {
+     // Объект для выполнения запросов к базе данных
+     OdbcCommand cmd0 = new OdbcCommand();
+     cmd0.Connection=this._conn;
+     OdbcDataReader reader=null ;
+     String NAME = "";
+     String ID = id ;
+
+     string[] arr = new string[3];
+     int fl = 0;
+     while (fl==0)
+     {
+       // ORA 1000 !!!!!!
+       cmd0.CommandText="SELECT ID, ID_PARENT, NAME FROM " + TableTree + " WHERE ID="+ID ;
+       try
+       {
+         reader = cmd0.ExecuteReader();
+       }
+       catch (Exception ex1)
+       {
+        fl=1;
+        reader.Close();
+        //MessageBox.Show("Error ="+ex1.Message + "  id=" + id);
+        continue ;
+       }
+
+       if (reader.HasRows) {
+         while (reader.Read())
+         {
+           for ( int i = 0; i<reader.FieldCount; i++)
+           {
+             if (reader.IsDBNull(i)) {
+                arr[i]="" ;
+             } else {
+                object obj = reader.GetValue(i) ;
+                arr[i] = obj.ToString();
+             }
+           }
+         }
+
+         ID = arr[1]; // ID_PARENT
+         if (ID=="") fl = 1 ;
+
+         NAME=arr[2]+ "\\" + NAME ;
+       }
+       reader.Close();
+
+     } // while
+
+     reader=null ;
+     cmd0.Dispose(); // ORA 1000 !!!!!!
+
+     return(NAME);
+   }
+
 
     //Unix -> DateTime
     public  DateTime UnixTimestampToDateTime(double unixTime)
@@ -574,7 +633,7 @@ namespace ArcConfig
         var column0 = new DataGridViewColumn();
         column0.HeaderText = "Группа";
         column0.Name = "Group";
-        column0.ReadOnly = true;
+        //column0.ReadOnly = true;
         column0.CellTemplate = new DataGridViewTextBoxCell();
 
         var column1 = new DataGridViewColumn();
@@ -700,6 +759,8 @@ namespace ArcConfig
 
         sl1="SELECT 0,0,0,0,0,0,0 FROM DUAL" ;
 
+        string TableTree = "OBJ_TREE" ;
+
         if (TABLE_NAME.IndexOf("PHREG_LIST_V")>=0) {
           sl1 = r.GetString("PHREG_LIST_V");;
         }
@@ -723,6 +784,7 @@ namespace ArcConfig
         }
         if (TABLE_NAME.IndexOf("DG_LIST")>=0) {
             sl1 = r.GetString("DG_LIST");
+            TableTree = "DG_GROUPS" ;
         }
         if (TABLE_NAME.IndexOf("EXDATA_LIST_V")>=0) {
             sl1 = r.GetString("EXDATA_LIST_V");     ;
@@ -803,7 +865,9 @@ namespace ArcConfig
            if (TABLE_NAME.IndexOf("DA_V_LST")>=0) {
               dataGridViewP.Rows[iRowIndex].Cells[0].Value = p.NAME2;
            } else {
-              dataGridViewP.Rows[iRowIndex].Cells[0].Value = "";
+            String nd = "" ;
+           	if (OptionFullName>0) nd=GetFullName(p.ID_NODE.ToString(),TableTree) ;
+           	dataGridViewP.Rows[iRowIndex].Cells[0].Value = nd ;
            }
            dataGridViewP.Rows[iRowIndex].Cells[1].Value = p.ID.ToString();
            dataGridViewP.Rows[iRowIndex].Cells[2].Value = p.NAME1;
@@ -2701,7 +2765,7 @@ void OracleStat ( )
 
        //DialogResult result1;
        //
-       Form ifdel = new FormDel(_conn, ID, IDNAME, IDGTOPT, NAMEHEADER, id_tbl);
+       Form ifdel = new FormDel(_conn, ID, IDNAME, IDGTOPT, NAMEHEADER, id_tbl,OptionFullName);
        ifdel.StartPosition=FormStartPosition.CenterParent ;
        ifdel.Show();
     }
@@ -2713,6 +2777,8 @@ void OracleStat ( )
        else  ofrm._OptionFullDelete = true ;
        if (OptionWriteOnDelete==0) ofrm._OptionWriteOnDelete = false ;
        else  ofrm._OptionWriteOnDelete = true ;
+       if (OptionFullName==0) ofrm._OptionFullName = false ;
+       else  ofrm._OptionFullName = true ;
 
        ofrm.ShowDialog();
 
@@ -2720,6 +2786,8 @@ void OracleStat ( )
        if (ofrm._OptionFullDelete) OptionFullDelete=1 ;
        OptionWriteOnDelete=0 ;
        if (ofrm._OptionWriteOnDelete) OptionWriteOnDelete=1 ;
+       OptionFullName=0 ;
+       if (ofrm._OptionFullName) OptionFullName=1 ;
 
        ofrm.Dispose();
     }

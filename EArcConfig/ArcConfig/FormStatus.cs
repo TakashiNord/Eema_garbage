@@ -222,6 +222,10 @@ namespace ArcConfig
       StatusLoad( ) ;
 
 		}
+		void Button2Click(object sender, EventArgs e)
+		{
+			this.Close();
+		}
 
 
 	}
