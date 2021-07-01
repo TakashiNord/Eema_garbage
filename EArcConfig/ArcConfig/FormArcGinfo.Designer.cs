@@ -69,6 +69,7 @@ namespace ArcConfig
 		private System.Windows.Forms.Label label25;
 		private System.Windows.Forms.DataGridView dataGridView1;
 		private System.Data.DataSet dataSet1;
+		private System.Windows.Forms.Button buttonCalc;
 		
 		/// <summary>
 		/// Disposes resources used by the form.
@@ -148,6 +149,7 @@ namespace ArcConfig
 			this.button4 = new System.Windows.Forms.Button();
 			this.dataGridView1 = new System.Windows.Forms.DataGridView();
 			this.dataSet1 = new System.Data.DataSet();
+			this.buttonCalc = new System.Windows.Forms.Button();
 			this.groupBox1.SuspendLayout();
 			this.groupBox4.SuspendLayout();
 			this.groupBox2.SuspendLayout();
@@ -217,6 +219,7 @@ namespace ArcConfig
 			// 
 			// groupBox1
 			// 
+			this.groupBox1.Controls.Add(this.buttonCalc);
 			this.groupBox1.Controls.Add(this.label26);
 			this.groupBox1.Controls.Add(this.textBoxN);
 			this.groupBox1.Controls.Add(this.label25);
@@ -667,6 +670,16 @@ namespace ArcConfig
 			// dataSet1
 			// 
 			this.dataSet1.DataSetName = "NewDataSet";
+			// 
+			// buttonCalc
+			// 
+			this.buttonCalc.Location = new System.Drawing.Point(211, 54);
+			this.buttonCalc.Name = "buttonCalc";
+			this.buttonCalc.Size = new System.Drawing.Size(42, 23);
+			this.buttonCalc.TabIndex = 45;
+			this.buttonCalc.Text = "Calc";
+			this.buttonCalc.UseVisualStyleBackColor = true;
+			this.buttonCalc.Click += new System.EventHandler(this.ButtonCalcClick);
 			// 
 			// FormArcGinfo
 			// 

@@ -832,6 +832,8 @@ namespace ArcConfig
             {  dataGridView1.Rows[jj].DefaultCellStyle.BackColor = Color.Magenta ;
               sm ++ ;
             }
+            
+            //cmd0.Dispose();
 
           } //check
         } // for

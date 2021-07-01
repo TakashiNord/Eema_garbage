@@ -13,6 +13,8 @@ using System.Windows.Forms;
 using System.ComponentModel;
 using System.Data.Odbc;
 
+using System.Diagnostics;
+
 namespace ArcConfig
 {
   /// <summary>
@@ -791,6 +793,12 @@ sl1="" +
 
        textBoxSTATE.Text=val1.ToString();
     }
+		void ButtonCalcClick(object sender, EventArgs e)
+		{
+           System.Diagnostics.Process p = System.Diagnostics.Process.Start("calc.exe");
+           p.WaitForInputIdle();
+           //NativeMethods.SetParent(p.MainWindowHandle, this.Handle);
+		}
 
   }
 }

@@ -1014,8 +1014,8 @@ namespace ArcConfig
       DB_NAME = arr[1];
       break ;
     } // while
-   reader.Close();
-   AddLogString("DB_NAME=" + DB_NAME );
+    reader.Close();
+    AddLogString("DB_NAME=" + DB_NAME );
     this.Text = this.Text + "  :  " + DB_NAME ;
    }
 
@@ -1080,6 +1080,27 @@ namespace ArcConfig
        Nd6.Text = "Состояния - для журнала управления целостностью архивов (ARC_INTEGRITY_DESC)";
        rootNode1.Nodes.Add(Nd6);
 
+       TreeNode Nd61 = new TreeNode();
+       Nd61.Name = "ARC_STORAGE_TYPE";
+       Nd61.Text = "Типы хранилища (ARC_STORAGE_TYPE)";
+       rootNode1.Nodes.Add(Nd61);       
+
+       TreeNode Nd11 = new TreeNode();
+       Nd11.Name = "ARC_SERVICES_INFO";
+       Nd11.Text = "Соответствия сервисов хранения архивов (ARC_SERVICES_INFO)";
+       rootNode1.Nodes.Add(Nd11);
+
+       TreeNode Nd12 = new TreeNode();
+       Nd12.Name = "ARC_SERVICES_ACCESS";
+       Nd12.Text = "Настройка глубины оперативного буфера серверов (ARC_SERVICES_ACCESS)";
+       rootNode1.Nodes.Add(Nd12);
+
+       TreeNode Nd14 = new TreeNode();
+       Nd14.Name = "ARC_READ_VIEW";
+       Nd14.Text = "Связи для доступа к архивам (ARC_READ_VIEW)";
+       rootNode1.Nodes.Add(Nd14);
+
+       
        TreeNode rootNode2 = new TreeNode();
        rootNode2.Name = "0";
        rootNode2.Text = "Справочники системные";
@@ -1105,6 +1126,11 @@ namespace ArcConfig
        Nd9.Text = "Глобальные типы данных (SYS_TBLLST)";
        rootNode2.Nodes.Add(Nd9);
 
+       TreeNode Nd30 = new TreeNode();
+       Nd30.Name = "SYS_DB_PART";
+       Nd30.Text = "Каталог разделов БД и подсистем комплекса РСДУ2 (SYS_DB_PART)";
+       rootNode2.Nodes.Add(Nd30);
+       
 
        TreeNode rootNode3 = new TreeNode();
        rootNode3.Name = "0";
@@ -1122,35 +1148,21 @@ namespace ArcConfig
        rootNode4.Text = "Таблицы";
        treeViewS.Nodes.Add(rootNode4);
 
-       TreeNode Nd11 = new TreeNode();
-       Nd11.Name = "ARC_SERVICES_INFO";
-       Nd11.Text = "Соответствия сервисов хранения архивов (ARC_SERVICES_INFO)";
-       rootNode4.Nodes.Add(Nd11);
-
-       TreeNode Nd12 = new TreeNode();
-       Nd12.Name = "ARC_SERVICES_ACCESS";
-       Nd12.Text = "Настройка глубины оперативного буфера серверов (ARC_SERVICES_ACCESS)";
-       rootNode4.Nodes.Add(Nd12);
-
        TreeNode Nd13 = new TreeNode();
        Nd13.Name = "ARC_VIEW_PARTITIONS";
        Nd13.Text = "Описания разделов стека для архивов мгновенных значений (ARC_VIEW_PARTITIONS)";
        rootNode4.Nodes.Add(Nd13);
 
-       TreeNode Nd14 = new TreeNode();
-       Nd14.Name = "ARC_READ_VIEW";
-       Nd14.Text = "Связи для доступа к архивам (ARC_READ_VIEW)";
-       rootNode4.Nodes.Add(Nd14);
-
+       TreeNode Nd15 = new TreeNode();
+       Nd15.Name = "ARC_STAT";
+       Nd15.Text = "Статистика записи архивов (ARC_STAT)";
+       rootNode4.Nodes.Add(Nd15);       
+       
+       
        TreeNode rootNode5 = new TreeNode();
        rootNode5.Name = "0";
        rootNode5.Text = "Журналы";
        treeViewS.Nodes.Add(rootNode5);
-
-       TreeNode Nd15 = new TreeNode();
-       Nd15.Name = "ARC_STAT";
-       Nd15.Text = "Статистика записи архивов (ARC_STAT)";
-       rootNode5.Nodes.Add(Nd15);
 
        TreeNode Nd16 = new TreeNode();
        Nd16.Name = "ARC_INTEGRITY";
@@ -1182,38 +1194,36 @@ namespace ArcConfig
        Nd21.Text = "Журнал ошибок РСДУ (J_RSDU_ERROR)";
        rootNode5.Nodes.Add(Nd21);
 
+       
+       TreeNode rootNode8 = new TreeNode();
+       rootNode8.Name = "0";
+       rootNode8.Text = "Описание таблиц хранения архивов";
+       treeViewS.Nodes.Add(rootNode8);       
+       
        TreeNode Nd22 = new TreeNode();
        Nd22.Name = "MEAS_ARC";
        Nd22.Text = "Описание таблиц хранения архивов измерений (MEAS_ARC)";
-       rootNode5.Nodes.Add(Nd22);
+       rootNode8.Nodes.Add(Nd22);
 
        TreeNode Nd23 = new TreeNode();
        Nd23.Name = "DG_ARC";
        Nd23.Text = "Описание таблиц хранения архивов диспетчерских графиков (DG_ARC)";
-       rootNode5.Nodes.Add(Nd23);
+       rootNode8.Nodes.Add(Nd23);
 
        TreeNode Nd24 = new TreeNode();
        Nd24.Name = "DA_ARC";
        Nd24.Text = "Описание таблиц хранения архивов параметров подсистемы сбора (DA_ARC)";
-       rootNode5.Nodes.Add(Nd24);
+       rootNode8.Nodes.Add(Nd24);
 
        TreeNode Nd25 = new TreeNode();
        Nd25.Name = "CALC_ARC";
        Nd25.Text = "Описание таблиц хранения архивов универсального дорасчета (CALC_ARC)";
-       rootNode5.Nodes.Add(Nd25);
-
-
-
-       TreeNode Nd30 = new TreeNode();
-       Nd30.Name = "SYS_DB_PART";
-       Nd30.Text = "Каталог разделов БД и подсистем комплекса РСДУ2";
-       rootNode2.Nodes.Add(Nd30);
-
+       rootNode8.Nodes.Add(Nd25);
 
 
        TreeNode rootNode6 = new TreeNode();
        rootNode6.Name = "0";
-       rootNode6.Text = "Источники";
+       rootNode6.Text = "Таблицы источников";
        treeViewS.Nodes.Add(rootNode6);
 
        TreeNode rootNode61 = new TreeNode();
@@ -1270,7 +1280,7 @@ namespace ArcConfig
        //while (0 != dataGridViewS.Columns.Count)
        //        dataGridViewS.Columns.RemoveAt(0);
 
-       cmd0.CommandText="select * from " + id_parent;
+       cmd0.CommandText="SELECT * FROM " + id_parent;
        Application.DoEvents();
 
        dataSetS.Clear();

@@ -59,9 +59,9 @@ namespace ArcConfig
 			// 
 			this.checkBox2.Location = new System.Drawing.Point(12, 63);
 			this.checkBox2.Name = "checkBox2";
-			this.checkBox2.Size = new System.Drawing.Size(246, 33);
+			this.checkBox2.Size = new System.Drawing.Size(239, 33);
 			this.checkBox2.TabIndex = 1;
-			this.checkBox2.Text = "Удаление даже обязательных архивов";
+			this.checkBox2.Text = "Отключение даже обязательных архивов";
 			this.checkBox2.UseVisualStyleBackColor = true;
 			// 
 			// label1
@@ -77,7 +77,7 @@ namespace ArcConfig
 			// 
 			this.checkBox3.Location = new System.Drawing.Point(12, 102);
 			this.checkBox3.Name = "checkBox3";
-			this.checkBox3.Size = new System.Drawing.Size(246, 24);
+			this.checkBox3.Size = new System.Drawing.Size(239, 24);
 			this.checkBox3.TabIndex = 3;
 			this.checkBox3.Text = "Формировать полный путь до параметра";
 			this.checkBox3.UseVisualStyleBackColor = true;
