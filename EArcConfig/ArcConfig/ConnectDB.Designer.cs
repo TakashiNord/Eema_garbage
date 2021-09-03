@@ -22,6 +22,7 @@ namespace ArcConfig
 		private System.Windows.Forms.TextBox _txLogin;
 		private System.Windows.Forms.TextBox _txPassword;
 		private System.Windows.Forms.Label label4;
+		private System.Windows.Forms.ComboBox _cmbBoxDsn;
 		
 		/// <summary>
 		/// Disposes resources used by the form.
@@ -52,6 +53,7 @@ namespace ArcConfig
 			this._txLogin = new System.Windows.Forms.TextBox();
 			this._txPassword = new System.Windows.Forms.TextBox();
 			this.label4 = new System.Windows.Forms.Label();
+			this._cmbBoxDsn = new System.Windows.Forms.ComboBox();
 			this.SuspendLayout();
 			// 
 			// simpleButton1
@@ -90,10 +92,12 @@ namespace ArcConfig
 			// 
 			// _txDsn
 			// 
-			this._txDsn.Location = new System.Drawing.Point(158, 21);
+			this._txDsn.Enabled = false;
+			this._txDsn.Location = new System.Drawing.Point(12, 102);
 			this._txDsn.Name = "_txDsn";
 			this._txDsn.Size = new System.Drawing.Size(100, 20);
 			this._txDsn.TabIndex = 4;
+			this._txDsn.Visible = false;
 			// 
 			// _txLogin
 			// 
@@ -118,11 +122,20 @@ namespace ArcConfig
 			this.label4.TabIndex = 7;
 			this.label4.Text = "Заполните поля для подключения  к БД";
 			// 
+			// _cmbBoxDsn
+			// 
+			this._cmbBoxDsn.FormattingEnabled = true;
+			this._cmbBoxDsn.Location = new System.Drawing.Point(151, 20);
+			this._cmbBoxDsn.Name = "_cmbBoxDsn";
+			this._cmbBoxDsn.Size = new System.Drawing.Size(107, 21);
+			this._cmbBoxDsn.TabIndex = 8;
+			// 
 			// ConnectDB
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(274, 130);
+			this.ClientSize = new System.Drawing.Size(273, 130);
+			this.Controls.Add(this._cmbBoxDsn);
 			this.Controls.Add(this.label4);
 			this.Controls.Add(this._txPassword);
 			this.Controls.Add(this._txLogin);

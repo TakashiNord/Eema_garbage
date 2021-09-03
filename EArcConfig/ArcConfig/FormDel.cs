@@ -575,6 +575,9 @@ namespace ArcConfig
          iFindNo = p.ID;
          if (prevFindNo != iFindNo ) {
            iRowIndex=dataGridView1.Rows.Add();
+           
+           dataGridView1.Rows[iRowIndex].HeaderCell.Value = (iRowIndex + 1).ToString();
+           
            if (TABLE_NAME.IndexOf("DA_V_LST")>=0) {
               dataGridView1.Rows[iRowIndex].Cells[0].Value = p.NAME2;
            } else {
@@ -763,9 +766,10 @@ namespace ArcConfig
             //Unix -> DateTime
             double d1 = Convert.ToDouble(ext1[0]) ;
             double d2 = Convert.ToDouble(ext1[1]) ;
-
-            if (dtmin>=d1) dtmin = d1 ;
-            if (dtmax<=d2) dtmax = d2 ;
+            
+            // не учитываем 0 значения
+            if (d1>0.1) if (dtmin>=d1) dtmin = d1 ;
+            if (d2>0.1) if (dtmax<=d2) dtmax = d2 ;
 
             DateTime t1 = UnixTimestampToDateTime(d1);
             DateTime t2 = UnixTimestampToDateTime(d2);
@@ -777,12 +781,21 @@ namespace ArcConfig
 
           } //check
         } // for
-
+        
         DateTime t11 = UnixTimestampToDateTime(dtmin);
         DateTime t22 = UnixTimestampToDateTime(dtmax);
 
         textBox1.Text = t11.ToString();
         textBox2.Text = t22.ToString();
+        
+        // 157766400 = 5 лет 
+        dtmin = dtmin - 157766400 ;
+        
+        // если в таблице 0
+        if (dtmin<0.1) {
+        	dtmin = 0 ;
+        	t11 = UnixTimestampToDateTime(dtmin);
+        }
 
         dateTimePicker1.Value = t11 ;
 
@@ -885,6 +898,7 @@ namespace ArcConfig
        button12.Enabled=false ;
        button3.Enabled=false ;
        button1.Enabled=false ;
+       button4.Enabled=false ; // list
     }
 
     void Button2Click(object sender, EventArgs e)
@@ -921,6 +935,8 @@ namespace ArcConfig
        button2.Enabled=true ;
        button3.Enabled=true ;
        button1.Enabled=true ;
+       
+       button4.Enabled=true ; // list
 
     }
     void Button12Click(object sender, EventArgs e)
@@ -943,6 +959,7 @@ namespace ArcConfig
        button2.Enabled=false ;
        button3.Enabled=false ;
        button1.Enabled=false ;
+       button4.Enabled=true ; // list
 
        DelProcess( sender) ;
 
@@ -951,6 +968,7 @@ namespace ArcConfig
        button2.Enabled=true ;
        button3.Enabled=true ;
        button1.Enabled=true ;
+       button4.Enabled=true ; // list
 
     }
     void Button11Click(object sender, EventArgs e)
@@ -1020,6 +1038,115 @@ namespace ArcConfig
       toolStripStatusLabel1.Text = s1;
       //MessageBox.Show("Export to \n " + filename + " \n done");
     }
+		void DataGridView1Sorted(object sender, EventArgs e)
+		{
+            // после сортировки заново перенумеровать
+			dataGridView1.RowHeadersWidth = 90;
+            for (int i = 0; i < dataGridView1.Rows.Count; i++)
+            {
+               dataGridView1.Rows[i].HeaderCell.Value = (i + 1).ToString();
+            }
+		}
+		void Button4Click(object sender, EventArgs e)
+		{
+	        // вывести лист
+	        
+       DateTime dt0 = dateTimePicker1.Value ;
+       double dtd=DateTimeToUnixTimestamp(dt0);
+
+       	        FormDelInfo1 fdi1 = new FormDelInfo1();
+       
+       	        
+        ResourceManager r = new ResourceManager("ArcConfig.ArcResource", Assembly.GetExecutingAssembly());
+
+        // Объект для выполнения запросов к базе данных
+        OdbcCommand cmd0 = new OdbcCommand();
+        OdbcDataReader reader = null ;
+
+        cmd0.Connection=this._conn;
+
+        string sl1 = r.GetString("ARH_SYSTBLLST2");
+        sl1 = String.Format(sl1,_id_tbl);
+
+        cmd0.CommandText=sl1;
+        try
+        {
+          reader = cmd0.ExecuteReader();
+        }
+        catch (Exception ex1)
+        {
+          MessageBox.Show(ex1.Message);
+        }
+
+        String ARC_NAME = "" ;
+        String _SCHEME_NAME = "" ;
+        if (reader.HasRows) {
+          while (reader.Read())
+          {
+            ARC_NAME = GetTypeValue(ref reader, 2).ToUpper() ;
+            _SCHEME_NAME = GetTypeValue(ref reader, 3).ToUpper() ;
+            break ;
+          } // while
+        }
+        reader.Close();
+
+        Application.DoEvents();      	        
+       	        
+       string RETFNAME = "" ;
+       int res1 = 0 ;
+       int err = 0 ;
+       int sm = 0 ;
+       String str = "" ;
+
+       for (int jj = 0; jj < dataGridView1.Rows.Count; ++jj)
+       {
+          statusStrip1.Items[1].Text = (jj+1).ToString() + " of " +  dataGridView1.Rows.Count.ToString();
+
+          DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell) dataGridView1.Rows[jj].Cells[4] ;
+
+          if ( Convert.ToBoolean(chk.Value) == true )
+          {
+            RETFNAME = dataGridView1.Rows[jj].Cells[8].Value.ToString()  ;
+            if (RETFNAME=="") { err ++ ; continue ; }
+            
+            fdi1.Add("--");
+            
+            if (_SCHEME_NAME!="") { 
+            	RETFNAME= _SCHEME_NAME+"."+RETFNAME ;
+            }
+ 
+            str="-- -- -- DELETE FROM " + RETFNAME + " WHERE TIME1970 < " +dtd.ToString() + " ;" ;
+            
+            fdi1.Add(str);
+
+//-- усечение таблицы
+//-- способ 1 - освободить неиспользуемое место - обычно не в конце файла
+    str= "alter table "+ RETFNAME + " enable row movement" + " ;" ;
+    fdi1.Add(str);
+    
+    str= "alter table "+ RETFNAME + " shrink space cascade" + " ;" ; // вместе с индексом
+    fdi1.Add(str);
+
+    //-- Cause: Cannot shrink the segment because it is not in auto segment space managed tablespace
+      //-- возможно, проблема в индексе, попробуем то же самое без него:
+        str= "-- -- alter table "+ RETFNAME  + " shrink space" + " ;" ;
+    fdi1.Add(str);
+    
+        str= "-- -- alter index "+ RETFNAME + "_I DEALLOCATE UNUSED" + " ;" ;
+    fdi1.Add(str); 
+
+            Application.DoEvents();
+            
+
+
+          } //check
+        } // for	        
+	        
+	        
+
+	        fdi1.ShowDialog();
+	        
+		}
 
   }
 

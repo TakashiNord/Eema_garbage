@@ -70,6 +70,7 @@ namespace ArcConfig
 		private System.Windows.Forms.DataGridView dataGridView1;
 		private System.Data.DataSet dataSet1;
 		private System.Windows.Forms.Button buttonCalc;
+		private System.Windows.Forms.Button button5;
 		
 		/// <summary>
 		/// Disposes resources used by the form.
@@ -101,6 +102,8 @@ namespace ArcConfig
 			this.textBoxName = new System.Windows.Forms.TextBox();
 			this.label13 = new System.Windows.Forms.Label();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
+			this.button5 = new System.Windows.Forms.Button();
+			this.buttonCalc = new System.Windows.Forms.Button();
 			this.label26 = new System.Windows.Forms.Label();
 			this.textBoxN = new System.Windows.Forms.TextBox();
 			this.label25 = new System.Windows.Forms.Label();
@@ -149,7 +152,6 @@ namespace ArcConfig
 			this.button4 = new System.Windows.Forms.Button();
 			this.dataGridView1 = new System.Windows.Forms.DataGridView();
 			this.dataSet1 = new System.Data.DataSet();
-			this.buttonCalc = new System.Windows.Forms.Button();
 			this.groupBox1.SuspendLayout();
 			this.groupBox4.SuspendLayout();
 			this.groupBox2.SuspendLayout();
@@ -172,9 +174,10 @@ namespace ArcConfig
 			// 
 			// label1
 			// 
-			this.label1.Location = new System.Drawing.Point(18, 18);
+			this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.label1.Location = new System.Drawing.Point(11, 18);
 			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(24, 16);
+			this.label1.Size = new System.Drawing.Size(31, 16);
 			this.label1.TabIndex = 11;
 			this.label1.Text = "id =";
 			// 
@@ -195,7 +198,7 @@ namespace ArcConfig
 			"Запись по событию"});
 			this.comboBoxID_TYPE.Location = new System.Drawing.Point(423, 15);
 			this.comboBoxID_TYPE.Name = "comboBoxID_TYPE";
-			this.comboBoxID_TYPE.Size = new System.Drawing.Size(149, 21);
+			this.comboBoxID_TYPE.Size = new System.Drawing.Size(157, 21);
 			this.comboBoxID_TYPE.TabIndex = 14;
 			this.comboBoxID_TYPE.SelectedIndexChanged += new System.EventHandler(this.ComboBoxID_TYPESelectedIndexChanged);
 			this.comboBoxID_TYPE.MouseHover += new System.EventHandler(this.ComboBoxID_TYPEMouseHover);
@@ -219,6 +222,7 @@ namespace ArcConfig
 			// 
 			// groupBox1
 			// 
+			this.groupBox1.Controls.Add(this.button5);
 			this.groupBox1.Controls.Add(this.buttonCalc);
 			this.groupBox1.Controls.Add(this.label26);
 			this.groupBox1.Controls.Add(this.textBoxN);
@@ -233,10 +237,32 @@ namespace ArcConfig
 			this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.groupBox1.Location = new System.Drawing.Point(11, 294);
 			this.groupBox1.Name = "groupBox1";
-			this.groupBox1.Size = new System.Drawing.Size(259, 176);
+			this.groupBox1.Size = new System.Drawing.Size(295, 176);
 			this.groupBox1.TabIndex = 33;
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "Основа";
+			// 
+			// button5
+			// 
+			this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.button5.Location = new System.Drawing.Point(238, 81);
+			this.button5.Name = "button5";
+			this.button5.Size = new System.Drawing.Size(51, 23);
+			this.button5.TabIndex = 46;
+			this.button5.Text = "if>99";
+			this.button5.UseVisualStyleBackColor = true;
+			this.button5.Click += new System.EventHandler(this.Button5Click);
+			// 
+			// buttonCalc
+			// 
+			this.buttonCalc.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.buttonCalc.Location = new System.Drawing.Point(238, 51);
+			this.buttonCalc.Name = "buttonCalc";
+			this.buttonCalc.Size = new System.Drawing.Size(51, 23);
+			this.buttonCalc.TabIndex = 45;
+			this.buttonCalc.Text = "Calc";
+			this.buttonCalc.UseVisualStyleBackColor = true;
+			this.buttonCalc.Click += new System.EventHandler(this.ButtonCalcClick);
 			// 
 			// label26
 			// 
@@ -275,9 +301,9 @@ namespace ArcConfig
 			// 
 			this.label11.Location = new System.Drawing.Point(138, 18);
 			this.label11.Name = "label11";
-			this.label11.Size = new System.Drawing.Size(115, 29);
+			this.label11.Size = new System.Drawing.Size(151, 29);
 			this.label11.TabIndex = 40;
-			this.label11.Text = "часов (min=24, max=0=100000,)";
+			this.label11.Text = "часов (min=24, max=0=100000)";
 			// 
 			// groupBox4
 			// 
@@ -289,39 +315,39 @@ namespace ArcConfig
 			this.groupBox4.Controls.Add(this.label15);
 			this.groupBox4.Location = new System.Drawing.Point(7, 105);
 			this.groupBox4.Name = "groupBox4";
-			this.groupBox4.Size = new System.Drawing.Size(246, 65);
+			this.groupBox4.Size = new System.Drawing.Size(282, 65);
 			this.groupBox4.TabIndex = 39;
 			this.groupBox4.TabStop = false;
 			this.groupBox4.Text = "Партиции для мгновенных";
 			// 
 			// label19
 			// 
-			this.label19.Location = new System.Drawing.Point(162, 36);
+			this.label19.Location = new System.Drawing.Point(185, 42);
 			this.label19.Name = "label19";
-			this.label19.Size = new System.Drawing.Size(28, 20);
+			this.label19.Size = new System.Drawing.Size(28, 16);
 			this.label19.TabIndex = 42;
 			this.label19.Text = "сек";
 			// 
 			// label18
 			// 
-			this.label18.Location = new System.Drawing.Point(162, 8);
+			this.label18.Location = new System.Drawing.Point(185, 13);
 			this.label18.Name = "label18";
-			this.label18.Size = new System.Drawing.Size(76, 31);
+			this.label18.Size = new System.Drawing.Size(91, 26);
 			this.label18.TabIndex = 41;
 			this.label18.Text = "мин (min=10, max= 525600)";
 			// 
 			// textBoxSTACK_INTERVAL
 			// 
-			this.textBoxSTACK_INTERVAL.Location = new System.Drawing.Point(110, 36);
+			this.textBoxSTACK_INTERVAL.Location = new System.Drawing.Point(121, 38);
 			this.textBoxSTACK_INTERVAL.Name = "textBoxSTACK_INTERVAL";
-			this.textBoxSTACK_INTERVAL.Size = new System.Drawing.Size(50, 20);
+			this.textBoxSTACK_INTERVAL.Size = new System.Drawing.Size(58, 20);
 			this.textBoxSTACK_INTERVAL.TabIndex = 37;
 			this.textBoxSTACK_INTERVAL.Text = "0";
 			this.textBoxSTACK_INTERVAL.MouseHover += new System.EventHandler(this.TextBoxSTACK_INTERVALMouseHover);
 			// 
 			// label10
 			// 
-			this.label10.Location = new System.Drawing.Point(6, 36);
+			this.label10.Location = new System.Drawing.Point(6, 38);
 			this.label10.Name = "label10";
 			this.label10.Size = new System.Drawing.Size(98, 20);
 			this.label10.TabIndex = 36;
@@ -329,9 +355,9 @@ namespace ArcConfig
 			// 
 			// textBoxDEPTH_PARTITION
 			// 
-			this.textBoxDEPTH_PARTITION.Location = new System.Drawing.Point(110, 13);
+			this.textBoxDEPTH_PARTITION.Location = new System.Drawing.Point(121, 13);
 			this.textBoxDEPTH_PARTITION.Name = "textBoxDEPTH_PARTITION";
-			this.textBoxDEPTH_PARTITION.Size = new System.Drawing.Size(50, 20);
+			this.textBoxDEPTH_PARTITION.Size = new System.Drawing.Size(58, 20);
 			this.textBoxDEPTH_PARTITION.TabIndex = 33;
 			this.textBoxDEPTH_PARTITION.Text = "0";
 			this.textBoxDEPTH_PARTITION.MouseHover += new System.EventHandler(this.TextBoxDEPTH_PARTITIONMouseHover);
@@ -340,9 +366,9 @@ namespace ArcConfig
 			// 
 			this.label15.Location = new System.Drawing.Point(6, 16);
 			this.label15.Name = "label15";
-			this.label15.Size = new System.Drawing.Size(98, 17);
+			this.label15.Size = new System.Drawing.Size(119, 17);
 			this.label15.TabIndex = 32;
-			this.label15.Text = "Глубина (среза):";
+			this.label15.Text = "Глубина (среза) (Dp):";
 			// 
 			// label5
 			// 
@@ -354,11 +380,11 @@ namespace ArcConfig
 			// 
 			// label4
 			// 
-			this.label4.Location = new System.Drawing.Point(14, 27);
+			this.label4.Location = new System.Drawing.Point(6, 27);
 			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(54, 18);
+			this.label4.Size = new System.Drawing.Size(62, 18);
 			this.label4.TabIndex = 30;
-			this.label4.Text = "Глубина:";
+			this.label4.Text = "Глубина(D):";
 			// 
 			// textBoxDEPTH_LOCAL
 			// 
@@ -477,9 +503,9 @@ namespace ArcConfig
 			this.groupBox3.Controls.Add(this.checkBoxWRITE_MINMAX);
 			this.groupBox3.Controls.Add(this.label14);
 			this.groupBox3.Controls.Add(this.checkedListBoxSTATE);
-			this.groupBox3.Location = new System.Drawing.Point(276, 294);
+			this.groupBox3.Location = new System.Drawing.Point(312, 294);
 			this.groupBox3.Name = "groupBox3";
-			this.groupBox3.Size = new System.Drawing.Size(383, 176);
+			this.groupBox3.Size = new System.Drawing.Size(368, 176);
 			this.groupBox3.TabIndex = 35;
 			this.groupBox3.TabStop = false;
 			this.groupBox3.Text = "Дополнительные";
@@ -520,23 +546,24 @@ namespace ArcConfig
 			"1"});
 			this.checkedListBoxSTATE.Location = new System.Drawing.Point(6, 42);
 			this.checkedListBoxSTATE.Name = "checkedListBoxSTATE";
-			this.checkedListBoxSTATE.Size = new System.Drawing.Size(371, 109);
+			this.checkedListBoxSTATE.Size = new System.Drawing.Size(356, 109);
 			this.checkedListBoxSTATE.TabIndex = 30;
 			this.checkedListBoxSTATE.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.CheckedListBoxSTATEItemCheck);
 			this.checkedListBoxSTATE.SelectedIndexChanged += new System.EventHandler(this.CheckedListBoxSTATESelectedIndexChanged);
 			// 
 			// label2
 			// 
+			this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.label2.Location = new System.Drawing.Point(11, 39);
 			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(122, 16);
+			this.label2.Size = new System.Drawing.Size(154, 16);
 			this.label2.TabIndex = 36;
 			this.label2.Text = "Тип хранимых данных:";
 			// 
 			// button1
 			// 
 			this.button1.Enabled = false;
-			this.button1.Location = new System.Drawing.Point(636, 58);
+			this.button1.Location = new System.Drawing.Point(657, 58);
 			this.button1.Name = "button1";
 			this.button1.Size = new System.Drawing.Size(23, 23);
 			this.button1.TabIndex = 39;
@@ -626,9 +653,10 @@ namespace ArcConfig
 			// 
 			// button2
 			// 
+			this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.button2.Location = new System.Drawing.Point(584, 476);
 			this.button2.Name = "button2";
-			this.button2.Size = new System.Drawing.Size(75, 49);
+			this.button2.Size = new System.Drawing.Size(86, 49);
 			this.button2.TabIndex = 41;
 			this.button2.Text = "Сохранить и завершить.";
 			this.button2.UseVisualStyleBackColor = true;
@@ -637,9 +665,10 @@ namespace ArcConfig
 			// button3
 			// 
 			this.button3.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+			this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.button3.Location = new System.Drawing.Point(584, 554);
 			this.button3.Name = "button3";
-			this.button3.Size = new System.Drawing.Size(75, 33);
+			this.button3.Size = new System.Drawing.Size(86, 33);
 			this.button3.TabIndex = 42;
 			this.button3.Text = "Отмена";
 			this.button3.UseVisualStyleBackColor = true;
@@ -647,7 +676,8 @@ namespace ArcConfig
 			// 
 			// button4
 			// 
-			this.button4.Location = new System.Drawing.Point(584, 3);
+			this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.button4.Location = new System.Drawing.Point(605, 3);
 			this.button4.Name = "button4";
 			this.button4.Size = new System.Drawing.Size(75, 52);
 			this.button4.TabIndex = 43;
@@ -663,7 +693,7 @@ namespace ArcConfig
 			this.dataGridView1.Name = "dataGridView1";
 			this.dataGridView1.RowHeadersVisible = false;
 			this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-			this.dataGridView1.Size = new System.Drawing.Size(626, 217);
+			this.dataGridView1.Size = new System.Drawing.Size(647, 217);
 			this.dataGridView1.TabIndex = 44;
 			this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1CellContentClick);
 			// 
@@ -671,22 +701,12 @@ namespace ArcConfig
 			// 
 			this.dataSet1.DataSetName = "NewDataSet";
 			// 
-			// buttonCalc
-			// 
-			this.buttonCalc.Location = new System.Drawing.Point(211, 54);
-			this.buttonCalc.Name = "buttonCalc";
-			this.buttonCalc.Size = new System.Drawing.Size(42, 23);
-			this.buttonCalc.TabIndex = 45;
-			this.buttonCalc.Text = "Calc";
-			this.buttonCalc.UseVisualStyleBackColor = true;
-			this.buttonCalc.Click += new System.EventHandler(this.ButtonCalcClick);
-			// 
 			// FormArcGinfo
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.CancelButton = this.button3;
-			this.ClientSize = new System.Drawing.Size(671, 599);
+			this.ClientSize = new System.Drawing.Size(682, 599);
 			this.Controls.Add(this.dataGridView1);
 			this.Controls.Add(this.button4);
 			this.Controls.Add(this.button3);

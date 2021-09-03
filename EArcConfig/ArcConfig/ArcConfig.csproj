@@ -70,6 +70,10 @@
     <Compile Include="FormDel.Designer.cs">
       <DependentUpon>FormDel.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormDelInfo1.cs" />
+    <Compile Include="FormDelInfo1.Designer.cs">
+      <DependentUpon>FormDelInfo1.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormExport.cs" />
     <Compile Include="FormExport.Designer.cs">
       <DependentUpon>FormExport.cs</DependentUpon>
@@ -77,6 +81,10 @@
     <Compile Include="FormGr.cs" />
     <Compile Include="FormGr.Designer.cs">
       <DependentUpon>FormGr.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormInfo1.cs" />
+    <Compile Include="FormInfo1.Designer.cs">
+      <DependentUpon>FormInfo1.cs</DependentUpon>
     </Compile>
     <Compile Include="FormOption.cs" />
     <Compile Include="FormOption.Designer.cs">
@@ -121,8 +129,14 @@
     <EmbeddedResource Include="FormDel.resx">
       <DependentUpon>FormDel.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormDelInfo1.resx">
+      <DependentUpon>FormDelInfo1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormGr.resx">
       <DependentUpon>FormGr.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormInfo1.resx">
+      <DependentUpon>FormInfo1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormOption.resx">
       <DependentUpon>FormOption.cs</DependentUpon>

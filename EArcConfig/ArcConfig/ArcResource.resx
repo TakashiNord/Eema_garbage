@@ -481,4 +481,7 @@ and arcs.ID_SPROFILE={0}</value>
                 and y.ID = {0}
               order by y.id</value>
   </data>
+  <data name="TABLE_ARC1" xml:space="preserve">
+    <value>SELECT upper(lst.TABLE_NAME) FROM sys_tbllst lst WHERE lst.ID={0}</value>
+  </data>
 </root>

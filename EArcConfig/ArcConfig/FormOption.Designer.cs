@@ -18,6 +18,8 @@ namespace ArcConfig
 		private System.Windows.Forms.CheckBox checkBox2;
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.CheckBox checkBox3;
+		private System.Windows.Forms.Label label2;
+		private System.Windows.Forms.Label label3;
 		
 		/// <summary>
 		/// Disposes resources used by the form.
@@ -44,6 +46,8 @@ namespace ArcConfig
 			this.checkBox2 = new System.Windows.Forms.CheckBox();
 			this.label1 = new System.Windows.Forms.Label();
 			this.checkBox3 = new System.Windows.Forms.CheckBox();
+			this.label2 = new System.Windows.Forms.Label();
+			this.label3 = new System.Windows.Forms.Label();
 			this.SuspendLayout();
 			// 
 			// checkBox1
@@ -57,9 +61,9 @@ namespace ArcConfig
 			// 
 			// checkBox2
 			// 
-			this.checkBox2.Location = new System.Drawing.Point(12, 63);
+			this.checkBox2.Location = new System.Drawing.Point(12, 53);
 			this.checkBox2.Name = "checkBox2";
-			this.checkBox2.Size = new System.Drawing.Size(239, 33);
+			this.checkBox2.Size = new System.Drawing.Size(239, 28);
 			this.checkBox2.TabIndex = 1;
 			this.checkBox2.Text = "Отключение даже обязательных архивов";
 			this.checkBox2.UseVisualStyleBackColor = true;
@@ -75,18 +79,38 @@ namespace ArcConfig
 			// 
 			// checkBox3
 			// 
-			this.checkBox3.Location = new System.Drawing.Point(12, 102);
+			this.checkBox3.Location = new System.Drawing.Point(12, 106);
 			this.checkBox3.Name = "checkBox3";
 			this.checkBox3.Size = new System.Drawing.Size(239, 24);
 			this.checkBox3.TabIndex = 3;
 			this.checkBox3.Text = "Формировать полный путь до параметра";
 			this.checkBox3.UseVisualStyleBackColor = true;
 			// 
+			// label2
+			// 
+			this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.label2.Location = new System.Drawing.Point(13, 133);
+			this.label2.Name = "label2";
+			this.label2.Size = new System.Drawing.Size(206, 32);
+			this.label2.TabIndex = 4;
+			this.label2.Text = "вкладка: Параметры - расчет займет больше времени";
+			// 
+			// label3
+			// 
+			this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.label3.Location = new System.Drawing.Point(12, 75);
+			this.label3.Name = "label3";
+			this.label3.Size = new System.Drawing.Size(137, 17);
+			this.label3.TabIndex = 5;
+			this.label3.Text = "вкладка: Параметры";
+			// 
 			// FormOption
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(263, 264);
+			this.Controls.Add(this.label3);
+			this.Controls.Add(this.label2);
 			this.Controls.Add(this.checkBox3);
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.checkBox2);

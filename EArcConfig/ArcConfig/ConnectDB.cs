@@ -13,6 +13,12 @@ using System.Windows.Forms;
 using System.ComponentModel;
 using System.Data.Odbc;
 
+using System.Collections.Generic;
+
+using System.Security.Permissions;
+using Microsoft.Win32;
+
+
 namespace ArcConfig
 {
 	/// <summary>
@@ -44,7 +50,10 @@ namespace ArcConfig
 
     private OdbcConnection _DB_Connect()
     {
-      OdbcConnection odbcConnection = new OdbcConnection("DSN=" + this._txDsn.Text + ";UID=" + this._txLogin.Text + ";PWD=" + this._txPassword.Text + "; Pooling=False;");
+    	string sDsn = _cmbBoxDsn.Text.Trim();
+    	//sDsn = this._txDsn.Text.Trim();
+   	    	
+    	OdbcConnection odbcConnection = new OdbcConnection("DSN=" + sDsn + ";UID=" + this._txLogin.Text + ";PWD=" + this._txPassword.Text + "; Pooling=False;");
       if (odbcConnection != null)
       {
         try
@@ -88,6 +97,13 @@ namespace ArcConfig
 			this._txLogin.Text = "rsduadmin";
 			this._txPassword.Text = "passme";
 			this._txPassword.Focus();
+			
+			List<string> list1 = EnumDsn();
+			foreach (string nm in list1) {
+				this._cmbBoxDsn.Items.Add(nm);
+			}
+			this._cmbBoxDsn.Text = "RSDU2";
+			
 		}
 
 		void ConnectDBKeyDown(object sender, KeyEventArgs e)
@@ -97,6 +113,26 @@ namespace ArcConfig
 		}
 
 
+    private List<string> EnumDsn()
+    {
+        List<string> list = new List<string>();
+        list.AddRange(EnumDsn(Registry.CurrentUser));
+        list.AddRange(EnumDsn(Registry.LocalMachine));
+        return list;
+    }
+
+    private IEnumerable<string> EnumDsn(RegistryKey rootKey)
+    {
+        RegistryKey regKey = rootKey.OpenSubKey(@"Software\ODBC\ODBC.INI\ODBC Data Sources");
+        if (regKey != null)
+        {
+            foreach (string name in regKey.GetValueNames())
+            {
+                string value = regKey.GetValue(name, "").ToString();
+                yield return name;
+            }
+        }
+    }
 
 
 

@@ -35,6 +35,7 @@ namespace ArcConfig
 		private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
 		private System.Windows.Forms.Button button1;
 		private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+		private System.Windows.Forms.Button button4;
 		
 		/// <summary>
 		/// Disposes resources used by the form.
@@ -59,6 +60,7 @@ namespace ArcConfig
 		{
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormDel));
 			this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+			this.button4 = new System.Windows.Forms.Button();
 			this.button1 = new System.Windows.Forms.Button();
 			this.button12 = new System.Windows.Forms.Button();
 			this.textBox4 = new System.Windows.Forms.TextBox();
@@ -98,6 +100,7 @@ namespace ArcConfig
 			// 
 			// splitContainer1.Panel1
 			// 
+			this.splitContainer1.Panel1.Controls.Add(this.button4);
 			this.splitContainer1.Panel1.Controls.Add(this.button1);
 			this.splitContainer1.Panel1.Controls.Add(this.button12);
 			this.splitContainer1.Panel1.Controls.Add(this.textBox4);
@@ -118,8 +121,19 @@ namespace ArcConfig
 			// 
 			this.splitContainer1.Panel2.Controls.Add(this.dataGridView1);
 			this.splitContainer1.Size = new System.Drawing.Size(1005, 348);
-			this.splitContainer1.SplitterDistance = 63;
+			this.splitContainer1.SplitterDistance = 85;
 			this.splitContainer1.TabIndex = 0;
+			// 
+			// button4
+			// 
+			this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.button4.Location = new System.Drawing.Point(838, 57);
+			this.button4.Name = "button4";
+			this.button4.Size = new System.Drawing.Size(154, 23);
+			this.button4.TabIndex = 15;
+			this.button4.Text = "Получить список";
+			this.button4.UseVisualStyleBackColor = true;
+			this.button4.Click += new System.EventHandler(this.Button4Click);
 			// 
 			// button1
 			// 
@@ -162,21 +176,21 @@ namespace ArcConfig
 			// 
 			// button3
 			// 
-			this.button3.Location = new System.Drawing.Point(522, 10);
+			this.button3.Location = new System.Drawing.Point(522, 5);
 			this.button3.Name = "button3";
-			this.button3.Size = new System.Drawing.Size(80, 43);
+			this.button3.Size = new System.Drawing.Size(80, 54);
 			this.button3.TabIndex = 10;
-			this.button3.Text = "Получить границы";
+			this.button3.Text = "Шаг 2. Получить границы";
 			this.button3.UseVisualStyleBackColor = true;
 			this.button3.Click += new System.EventHandler(this.Button3Click);
 			// 
 			// button2
 			// 
-			this.button2.Location = new System.Drawing.Point(207, 7);
+			this.button2.Location = new System.Drawing.Point(207, 5);
 			this.button2.Name = "button2";
-			this.button2.Size = new System.Drawing.Size(95, 44);
+			this.button2.Size = new System.Drawing.Size(95, 54);
 			this.button2.TabIndex = 9;
-			this.button2.Text = "Построить список";
+			this.button2.Text = "Шаг 1. Построить список";
 			this.button2.UseVisualStyleBackColor = true;
 			this.button2.Click += new System.EventHandler(this.Button2Click);
 			// 
@@ -260,8 +274,9 @@ namespace ArcConfig
 			this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.dataGridView1.Location = new System.Drawing.Point(0, 0);
 			this.dataGridView1.Name = "dataGridView1";
-			this.dataGridView1.Size = new System.Drawing.Size(1003, 279);
+			this.dataGridView1.Size = new System.Drawing.Size(1003, 257);
 			this.dataGridView1.TabIndex = 0;
+			this.dataGridView1.Sorted += new System.EventHandler(this.DataGridView1Sorted);
 			// 
 			// statusStrip1
 			// 

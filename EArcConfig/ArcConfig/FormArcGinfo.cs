@@ -424,7 +424,7 @@ sl1="" +
     }
     void TextBoxDEPTH_PARTITIONMouseHover(object sender, EventArgs e)
     {
-        toolTip1.SetToolTip(textBoxDEPTH_PARTITION, "Глубина хранения среза в разделе (в часах). По умолчанию - 3 часа");
+        toolTip1.SetToolTip(textBoxDEPTH_PARTITION, "Глубина хранения среза в разделе (в минутах). По умолчанию - 180 мин = 3 часа");
     }
     void TextBoxRESTORE_TIME_LOCALMouseHover(object sender, EventArgs e)
     {
@@ -798,6 +798,13 @@ sl1="" +
            System.Diagnostics.Process p = System.Diagnostics.Process.Start("calc.exe");
            p.WaitForInputIdle();
            //NativeMethods.SetParent(p.MainWindowHandle, this.Handle);
+		}
+		void Button5Click(object sender, EventArgs e)
+		{
+	       // if > 63
+	       FormInfo1 fi = new FormInfo1() ;
+	       fi.ShowDialog();
+	       
 		}
 
   }
