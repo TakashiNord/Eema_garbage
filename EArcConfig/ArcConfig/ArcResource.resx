@@ -484,4 +484,72 @@ and arcs.ID_SPROFILE={0}</value>
   <data name="TABLE_ARC1" xml:space="preserve">
     <value>SELECT upper(lst.TABLE_NAME) FROM sys_tbllst lst WHERE lst.ID={0}</value>
   </data>
+  <data name="PHREG_LIST_V1" xml:space="preserve">
+    <value>  SELECT ID, id_obj, id_meas_type, NAME, alias, 0 as ID_GINFO
+     FROM meas_list
+    WHERE id_meas_type IN (
+   SELECT m.ID FROM sys_meas_types m, sys_ptyp t
+    WHERE m.id_type = t.ID
+      AND t.id_node &lt;&gt; 1
+      AND m.define_alias NOT LIKE ('MEAS_SWITCH_STATE%')
+      AND m.define_alias NOT LIKE ('MEAS_SIGNAL_STATE%')
+      AND m.define_alias NOT LIKE ('MEAS_STATE_EQUIP')
+      AND m.define_alias NOT LIKE ('MEAS_START_STOP')
+   ) 
+  UNION
+  SELECT ID, id_obj, id_meas_type, NAME, alias, MEAS_ARC.ID_GINFO as ID_GINFO
+     FROM meas_list, MEAS_ARC
+    WHERE id_meas_type IN (
+   SELECT m.ID FROM sys_meas_types m, sys_ptyp t
+    WHERE m.id_type = t.ID
+      AND t.id_node &lt;&gt; 1
+      AND m.define_alias NOT LIKE ('MEAS_SWITCH_STATE%')
+      AND m.define_alias NOT LIKE ('MEAS_SIGNAL_STATE%')
+      AND m.define_alias NOT LIKE ('MEAS_STATE_EQUIP')
+      AND m.define_alias NOT LIKE ('MEAS_START_STOP')
+   ) 
+  AND MEAS_LIST.ID=MEAS_ARC.ID_PARAM
+  ORDER BY ID ASC   </value>
+  </data>
+  <data name="ELREG_LIST_V1" xml:space="preserve">
+    <value>SELECT ID, id_obj, id_meas_type, NAME, alias , 0 as  ID_GINFO
+FROM meas_list
+WHERE id_meas_type IN (
+ SELECT m.ID FROM sys_meas_types m, sys_ptyp t WHERE m.id_type = t.ID AND t.id_node = 1
+) 
+UNION
+SELECT ID, id_obj, id_meas_type, NAME, alias , MEAS_ARC.ID_GINFO  as  ID_GINFO
+FROM meas_list , MEAS_ARC
+WHERE id_meas_type IN (
+  SELECT m.ID FROM sys_meas_types m, sys_ptyp t WHERE m.id_type = t.ID AND t.id_node = 1
+) 
+ AND MEAS_LIST.ID=MEAS_ARC.ID_PARAM
+ ORDER BY ID ASC  </value>
+  </data>
+  <data name="PSWT_LIST_V1" xml:space="preserve">
+    <value>SELECT ID, id_obj, id_meas_type, NAME, alias, 0 as ID_GINFO
+FROM meas_list
+WHERE id_meas_type IN (SELECT ID FROM sys_meas_types WHERE define_alias LIKE 'MEAS_SWITCH_STATE%')
+UNION
+SELECT ID, id_obj, id_meas_type, NAME, alias, MEAS_ARC.ID_GINFO as ID_GINFO
+FROM meas_list, MEAS_ARC
+WHERE id_meas_type IN (SELECT ID FROM sys_meas_types WHERE define_alias LIKE 'MEAS_SWITCH_STATE%')
+ AND MEAS_LIST.ID=MEAS_ARC.ID_PARAM
+ORDER BY ID ASC </value>
+  </data>
+  <data name="AUTO_LIST_V1" xml:space="preserve">
+    <value>  SELECT ID, id_obj, id_meas_type, NAME, alias, 0 as ID_GINFO
+     FROM meas_list
+    WHERE id_meas_type IN (SELECT ID
+                             FROM sys_meas_types
+                            WHERE define_alias LIKE 'MEAS_SIGNAL_STATE%')
+  UNION
+    SELECT ID, id_obj, id_meas_type, NAME, alias, MEAS_ARC.ID_GINFO as ID_GINFO
+     FROM meas_list , MEAS_ARC
+    WHERE id_meas_type IN (SELECT ID
+                             FROM sys_meas_types
+                            WHERE define_alias LIKE 'MEAS_SIGNAL_STATE%')
+  AND MEAS_LIST.ID=MEAS_ARC.ID_PARAM
+  ORDER BY ID ASC</value>
+  </data>
 </root>

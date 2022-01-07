@@ -50,20 +50,27 @@ namespace ArcConfig
 			this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.splitContainer1.Location = new System.Drawing.Point(0, 0);
 			this.splitContainer1.Name = "splitContainer1";
+			this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
 			// 
 			// splitContainer1.Panel1
 			// 
 			this.splitContainer1.Panel1.Controls.Add(this.listBox1);
 			this.splitContainer1.Size = new System.Drawing.Size(873, 345);
-			this.splitContainer1.SplitterDistance = 136;
+			this.splitContainer1.SplitterDistance = 272;
 			this.splitContainer1.TabIndex = 0;
 			// 
 			// listBox1
 			// 
 			this.listBox1.FormattingEnabled = true;
+			this.listBox1.Items.AddRange(new object[] {
+			"Получения значений параметров (CALC_SOURCE)",
+			"Для рапределенной системы сбора (DA_SOURCE)",
+			"Получения значений параметров ДГ (DG_SOURCE)",
+			"Для параметров учета электроэнергии (EA_SOURCE)",
+			"Получения значений параметров (MEAS_SOURCE)"});
 			this.listBox1.Location = new System.Drawing.Point(8, 13);
 			this.listBox1.Name = "listBox1";
-			this.listBox1.Size = new System.Drawing.Size(116, 290);
+			this.listBox1.Size = new System.Drawing.Size(252, 108);
 			this.listBox1.TabIndex = 0;
 			// 
 			// FormSource

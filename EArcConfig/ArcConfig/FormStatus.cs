@@ -18,34 +18,34 @@ using System.Text;
 
 namespace ArcConfig
 {
-	/// <summary>
-	/// Description of FormStatus.
-	/// </summary>
-	public partial class FormStatus : Form
-	{
-		public FormStatus()
-		{
-			//
-			// The InitializeComponent() call is required for Windows Forms designer support.
-			//
-			InitializeComponent();
+  /// <summary>
+  /// Description of FormStatus.
+  /// </summary>
+  public partial class FormStatus : Form
+  {
+    public FormStatus()
+    {
+      //
+      // The InitializeComponent() call is required for Windows Forms designer support.
+      //
+      InitializeComponent();
 
-			//
-			// TODO: Add constructor code after the InitializeComponent() call.
-			//
-		}
-		public FormStatus(OdbcConnection conn)
-		{
-			//
-			// The InitializeComponent() call is required for Windows Forms designer support.
-			//
-			InitializeComponent();
+      //
+      // TODO: Add constructor code after the InitializeComponent() call.
+      //
+    }
+    public FormStatus(OdbcConnection conn)
+    {
+      //
+      // The InitializeComponent() call is required for Windows Forms designer support.
+      //
+      InitializeComponent();
 
-			//
-			// TODO: Add constructor code after the InitializeComponent() call.
-			//
-			_conn = conn ;
-		}
+      //
+      // TODO: Add constructor code after the InitializeComponent() call.
+      //
+      _conn = conn ;
+    }
 
     public OdbcConnection _conn;
 
@@ -59,13 +59,13 @@ namespace ArcConfig
 
    public string GetTypeValue(ref OdbcDataReader reader, int i)
    {
-   	 object obj ;
-   	 string ret="";
+     object obj ;
+     string ret="";
      if (reader.IsDBNull(i)) {
           ;
      } else {
-   	 	obj = reader.GetValue(i) ;
-   	 	string stype= reader.GetDataTypeName(i).ToUpper();
+      obj = reader.GetValue(i) ;
+      string stype= reader.GetDataTypeName(i).ToUpper();
         //AddLogString("reader.GetDataTypeName = " + stype);
         ret = obj.ToString();
 
@@ -98,7 +98,7 @@ namespace ArcConfig
     void StatusLoad( )
     {
 
-			// Объект для связи между базой данных и источником данных
+      // Объект для связи между базой данных и источником данных
       OdbcDataAdapter adapter = new OdbcDataAdapter();
 
       // Объект для выполнения запросов к базе данных
@@ -131,7 +131,7 @@ namespace ArcConfig
       // Запрет добавления данных
       dataSet1.Tables[0].DefaultView.AllowNew = false;
 
-      dataSet1.Tables[0].DefaultView.RowFilter= "DEFINE_ALIAS Like '%EL_REG_DBPART%' or DEFINE_ALIAS Like '%PH_REG_DBPART%'  or DEFINE_ALIAS Like '%AUTOMAT_DBPART%'  or DEFINE_ALIAS Like '%PWSWITCH_DBPART%'" ;
+      dataSet1.Tables[0].DefaultView.RowFilter= "DEFINE_ALIAS Like '%EL_REG_DBPART%' or DEFINE_ALIAS Like '%PH_REG_DBPART%'  or DEFINE_ALIAS Like '%AUTOMAT_DBPART%'  or DEFINE_ALIAS Like '%PWSWITCH_DBPART%' or DEFINE_ALIAS Like 'OBJECT' " ;
 
       // (с этого момента она будет отображать его содержимое)
       dataGridView1.DataSource = dataSet1.Tables[0].DefaultView;;
@@ -169,64 +169,75 @@ namespace ArcConfig
 
       }
 
-}
+    }
 
 
-		void FormStatusLoad(object sender, EventArgs e)
-		{
-			StatusLoad( ) ;
-		}
-		void Button1Click(object sender, EventArgs e)
-		{
-	    //
-      // Объект для выполнения запросов к базе данных
-      OdbcCommand cmd0 = new OdbcCommand();
-      OdbcDataReader reader = null ;
+    void FormStatusLoad(object sender, EventArgs e)
+    {
+        DataGridViewCheckBoxColumn checkBoxColumn = new DataGridViewCheckBoxColumn();
+        checkBoxColumn.HeaderText = "";
+        checkBoxColumn.Width = 30;
+        checkBoxColumn.TrueValue = true;
+        checkBoxColumn.FalseValue = false;
+        checkBoxColumn.Name = "checkonoff";
+        dataGridView1.Columns.Insert(0, checkBoxColumn);
 
-      cmd0.Connection=this._conn;
+        StatusLoad( ) ;
+    }
+    void Button1Click(object sender, EventArgs e)
+    {
+        //
+        // Объект для выполнения запросов к базе данных
+        OdbcCommand cmd0 = new OdbcCommand();
+        OdbcDataReader reader = null ;
+        
+        cmd0.Connection=this._conn;
+        
+        for (int ii = 0; ii < dataGridView1.RowCount ; ii++) {
+           //
+           var isChecked = Convert.ToBoolean(dataGridView1.Rows[ii].Cells[0].Value) ;
+           if (isChecked==false) continue ;
+        
+           string id = Convert.ToString (dataGridView1.Rows[ii].Cells["ID"].Value);
+        
+           string vl1 = Convert.ToString (dataGridView1.Rows[ii].Cells["LAST_UPDATE"].Value);
+           if (vl1!="0") {
+               cmd0.CommandText=" UPDATE SYS_DB_PART SET LAST_UPDATE = 0 WHERE ID=" + id;
+               try
+               {
+                 reader = cmd0.ExecuteReader();
+               }
+               catch (Exception ex1)
+               {
+                 MessageBox.Show(ex1.ToString() );
+               }
+               reader.Close();
+           }
+        
+        
+           vl1 = Convert.ToString(dataGridView1.Rows[ii].Cells["LAST_RELINK"].Value);
+           if (vl1!="0") {
+               cmd0.CommandText=" UPDATE SYS_DB_PART SET LAST_RELINK = 0 WHERE ID=" + id;
+               try
+               {
+                 reader = cmd0.ExecuteReader();
+               }
+               catch (Exception ex1)
+               {
+                 MessageBox.Show(ex1.ToString() );
+               }
+               reader.Close();
+           }
+        
+        }
+        StatusLoad( ) ;
 
-      for (int ii = 0; ii < dataGridView1.RowCount ; ii++) {
-         //
-         string id = Convert.ToString (dataGridView1.Rows[ii].Cells["ID"].Value);
-
-         string vl1 = Convert.ToString (dataGridView1.Rows[ii].Cells["LAST_UPDATE"].Value);
-         if (vl1!="0") {
-             cmd0.CommandText=" UPDATE SYS_DB_PART SET LAST_UPDATE = 0 WHERE ID=" + id;
-             try
-             {
-               reader = cmd0.ExecuteReader();
-             }
-             catch (Exception ex1)
-             {
-               MessageBox.Show(ex1.ToString() );
-             }
-             reader.Close();
-         }
+    }
+    void Button2Click(object sender, EventArgs e)
+    {
+        this.Close();
+    }
 
 
-         vl1 = Convert.ToString(dataGridView1.Rows[ii].Cells["LAST_RELINK"].Value);
-         if (vl1!="0") {
-             cmd0.CommandText=" UPDATE SYS_DB_PART SET LAST_RELINK = 0 WHERE ID=" + id;
-             try
-             {
-               reader = cmd0.ExecuteReader();
-             }
-             catch (Exception ex1)
-             {
-               MessageBox.Show(ex1.ToString() );
-             }
-             reader.Close();
-         }
-
-      }
-      StatusLoad( ) ;
-
-		}
-		void Button2Click(object sender, EventArgs e)
-		{
-			this.Close();
-		}
-
-
-	}
+  }
 }

@@ -33,7 +33,12 @@ namespace ArcConfig
         get { return checkBox3.Checked; }
         set { checkBox3.Checked = value; }
     }
-
+    public bool _OptionCheckData
+    {
+        get { return checkBox4.Checked; }
+        set { checkBox4.Checked = value; }
+    }
+    
 		public FormOption()
 		{
 			//

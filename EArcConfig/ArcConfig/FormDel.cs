@@ -480,18 +480,39 @@ namespace ArcConfig
         sl1="SELECT 0,0,0,0,0,0,0 FROM DUAL" ;
 
         string TableTree = "OBJ_TREE" ;
+        
+        // определяем поле 
+        //ERROR [42S22] [Oracle][ODBC][Ora]ORA-00904: "IS_EXDATA": недопустимый идентификатор
+        int is_exdata = 1 ;
+        sl1="SELECT is_exdata FROM meas_list" ;
+
+        cmd0.CommandText=sl1;
+        try
+        {
+          reader = cmd0.ExecuteReader();
+        }
+        catch (Exception ex1)
+        {
+          is_exdata = 0 ;
+        } 
+        reader.Close();        
+        
 
         if (TABLE_NAME.IndexOf("PHREG_LIST_V")>=0) {
-          sl1 = r.GetString("PHREG_LIST_V");;
+            sl1 = r.GetString("PHREG_LIST_V");
+            if (is_exdata == 0 ) sl1 = r.GetString("PHREG_LIST_V1");
         }
         if (TABLE_NAME.IndexOf("ELREG_LIST_V")>=0) {
             sl1 = r.GetString("ELREG_LIST_V");
+            if (is_exdata == 0 ) sl1 = r.GetString("ELREG_LIST_V1");
         }
         if (TABLE_NAME.IndexOf("PSWT_LIST_V")>=0) {
             sl1 = r.GetString("PSWT_LIST_V");
+            if (is_exdata == 0 ) sl1 = r.GetString("PSWT_LIST_V1");
         }
         if (TABLE_NAME.IndexOf("AUTO_LIST_V")>=0) {
             sl1 = r.GetString("AUTO_LIST_V");
+            if (is_exdata == 0 ) sl1 = r.GetString("AUTO_LIST_V1");
         }
         if (TABLE_NAME.IndexOf("EA_CHANNELS")>=0) {
             sl1 = r.GetString("EA_CHANNELS");

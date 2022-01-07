@@ -54,14 +54,14 @@ namespace ArcConfig
 			// dataGridView1
 			// 
 			this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.dataGridView1.Location = new System.Drawing.Point(12, 13);
+			this.dataGridView1.Location = new System.Drawing.Point(12, 4);
 			this.dataGridView1.Name = "dataGridView1";
-			this.dataGridView1.Size = new System.Drawing.Size(786, 147);
+			this.dataGridView1.Size = new System.Drawing.Size(786, 182);
 			this.dataGridView1.TabIndex = 0;
 			// 
 			// button1
 			// 
-			this.button1.Location = new System.Drawing.Point(268, 166);
+			this.button1.Location = new System.Drawing.Point(270, 192);
 			this.button1.Name = "button1";
 			this.button1.Size = new System.Drawing.Size(75, 23);
 			this.button1.TabIndex = 1;
@@ -71,7 +71,7 @@ namespace ArcConfig
 			// 
 			// label1
 			// 
-			this.label1.Location = new System.Drawing.Point(12, 166);
+			this.label1.Location = new System.Drawing.Point(12, 192);
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(250, 23);
 			this.label1.TabIndex = 2;
@@ -83,7 +83,7 @@ namespace ArcConfig
 			// 
 			// button2
 			// 
-			this.button2.Location = new System.Drawing.Point(718, 166);
+			this.button2.Location = new System.Drawing.Point(718, 192);
 			this.button2.Name = "button2";
 			this.button2.Size = new System.Drawing.Size(80, 23);
 			this.button2.TabIndex = 3;
@@ -95,7 +95,7 @@ namespace ArcConfig
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(810, 192);
+			this.ClientSize = new System.Drawing.Size(810, 217);
 			this.Controls.Add(this.button2);
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.button1);
