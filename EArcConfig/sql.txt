@@ -341,6 +341,12 @@ for rec in (
            Values (nID_SPROFILE, rec.id, 86400);
   end loop;
 
+
+
+
+
+ -- Критическое нарушение целостности БДРВ  / Нарушение целостности БДРВ 
+
 #define SRV_ITEGRITY_INFO_SQL  "select sbs.LAST_UPDATE, sbs.LAST_RELINK, sbs.REINIT_TYPE \
     from sys_db_part sbs, sys_tbllst lst \
     where lst.ID_NODE = sbs.ID AND lst.ID = %u"
@@ -363,6 +369,67 @@ for rec in (
                     RSDURTGUtils_SS_SendTaskState(msg_port, (uint32_t)SS_INTEGRITY_W, SS_WARNING, LogFile, SEnv->FullPathName);
                 }
             }
-			
-			
+
+
+
+
+
+ -- 
+
+
+COMMENT ON TABLE SYS_GTOPT IS 'Виды характеристик параметров поддерживаемых системой';
+COMMENT ON COLUMN SYS_GTOPT.ID_GTYPE IS 'Глобальный тип данных параметра';
+COMMENT ON COLUMN SYS_GTOPT.INTERVAL IS 'Интервал получения значений параметра';
+
+FOR EACH ROW
+DECLARE
+ nErrNumber  NUMBER := 99999;
+ sTEXT VARCHAR2(255) := ''Ошибка вставки в таблицу SYS_GTOPT - идентификатор принадлежит зарезервированному диапазону [1..1000].'';
+
+CREATE TABLE SYS_GTOPT
+(
+  ID            NUMBER(11),
+  NAME          VARCHAR2(255 BYTE),
+  ALIAS         VARCHAR2(255 BYTE),
+  ID_GTYPE      NUMBER(11),
+  DEFINE_ALIAS  VARCHAR2(63 BYTE),
+  INTERVAL      NUMBER(11),
+  ID_ATYPE      NUMBER(11)
+)
+
+
+GRANT DELETE, INSERT, UPDATE ON SYS_GTYP TO BASE_STAND_ADJ;
+GRANT SELECT ON SYS_GTYP TO BASE_STAND_READ;
+COMMENT ON TABLE SYS_GTYP IS 'Глобальные типы данных';
+COMMENT ON COLUMN SYS_GTYP.NAME IS 'Наименование глобального типа';
+COMMENT ON COLUMN SYS_GTYP.DEFINE_ALIAS IS 'Уникальный символьный идентификатор типа';
+CREATE TABLE SYS_GTYP
+(
+  ID            NUMBER(11),
+  NAME          VARCHAR2(255 BYTE),
+  DEFINE_ALIAS  VARCHAR2(63 BYTE),
+  CIM_NAME      VARCHAR2(63 BYTE),
+  DESCRIPTION   VARCHAR2(255 BYTE),
+  ALIAS         VARCHAR2(255 CHAR),
+  ID_ICON       NUMBER(11)                      DEFAULT NULL
+)
+
+
+  dbms_output.put_line ('Добавление данных в таблицу SYS_GTOPT:');
+   --Отключим триггер, блокирующий вставку в зарезервированный для РСДУ диапазон ID
+   for rec in (select trigger_name, status from all_triggers 
+        where owner like 'RSDUADMIN' and trigger_name like 'SYS_GTOPT_ID_CHK_TR') loop
+         execute  immediate 'alter trigger '||rec.trigger_name||' DISABLE';
+   end loop;
+
+--Включаем триггер обратно
+for rec in (select trigger_name, status from all_triggers where owner like 'RSDUADMIN'  
+	       and trigger_name like 'SYS_GTOPT_ID_CHK_TR') loop
+    execute  immediate 'alter trigger '||rec.trigger_name||' ENABLE';
+end loop;
+
+
+
+
+
 
