@@ -167,7 +167,7 @@ namespace ArcConfig
        {
          reader = cmd0.ExecuteReader();
        }
-       catch (Exception ex1)
+       catch (Exception )
        {
         fl=1;
         reader.Close();
@@ -799,6 +799,7 @@ namespace ArcConfig
         catch (Exception ex1)
         {
           is_exdata = 0 ;
+          AddLogString(" is_exdata = 0 , " + ex1.Message);
         }
         reader.Close();
 
@@ -918,8 +919,8 @@ namespace ArcConfig
               dataGridViewP.Rows[iRowIndex].Cells[0].Value = p.NAME2;
            } else {
             String nd = "" ;
-           	if (OptionFullName>0) nd=GetFullName(p.ID_NODE.ToString(),TableTree) ;
-           	dataGridViewP.Rows[iRowIndex].Cells[0].Value = nd ;
+            if (OptionFullName>0) nd=GetFullName(p.ID_NODE.ToString(),TableTree) ;
+            dataGridViewP.Rows[iRowIndex].Cells[0].Value = nd ;
            }
            dataGridViewP.Rows[iRowIndex].Cells[1].Value = p.ID.ToString();
            dataGridViewP.Rows[iRowIndex].Cells[2].Value = p.NAME1;
@@ -1045,7 +1046,7 @@ namespace ArcConfig
       //AddLogString(" id_parent=" + id_parent + "  id_index=" + id_index);
 
       Application.DoEvents();
-      
+
       this.Text = this.Text + "  :  " + Application.ProductVersion ;
 
       //ResourceManager r = new ResourceManager("ArcConfig.ArcResource", Assembly.GetExecutingAssembly());
@@ -1827,9 +1828,9 @@ namespace ArcConfig
 
         if (isChecked)
         {
-        	/*
-        	 элемент чекнутый - мы пытаемся снять удаление
-        	*/
+          /*
+           элемент чекнутый - мы пытаемся снять удаление
+          */
 
           _profileData=(ARC_SUBSYST_PROFILE)propertyGridA.SelectedObject;
           String ID = _profileData.ID ;
@@ -1893,6 +1894,7 @@ namespace ArcConfig
           catch (Exception ex1)
           {
             is_exdata = 0 ;
+            AddLogString(" CellContent: is_exdata = 0 ," + ex1.Message);
           }
           reader.Close();
 
@@ -2045,7 +2047,7 @@ namespace ArcConfig
                 AddLogString("CellContent Del from TABLE_NAME= " + TABLE_NAME );
                 foreach (MEAS1 pv in dp)
                 {
-                	  String ID_param = pv.ID.ToString();
+                    String ID_param = pv.ID.ToString();
 
                     sl1="DELETE FROM " + TABLE_NAME +
                         " WHERE ID_PARAM=" + ID_param + " AND " + " ID_GINFO=" + ID_GINFO +" ;" ;
@@ -2245,7 +2247,7 @@ namespace ArcConfig
        selRowNum = dataGridViewP.CurrentCell.RowIndex; //mouseLocation.RowIndex ;
        selColNum = dataGridViewP.CurrentCell.ColumnIndex ; //mouseLocation.ColumnIndex ;
 
-       //AddLogString(" GraphicsTool -> selRowNum=" + selRowNum.ToString() + " selColNum=" + selColNum.ToString());
+       AddLogString(" GraphicsToolStripMenuItemClick -> selRowNum=" + selRowNum.ToString() + " selColNum=" + selColNum.ToString());
 
        if (selRowNum<0) return ;
        // group id name type {}
@@ -2256,9 +2258,27 @@ namespace ArcConfig
        string IDGINFO = dataGridViewP.Columns[selColNum].Name ;
        string NAMEHEADER = dataGridViewP.Columns[selColNum].HeaderText ;
 
-       // если ячейка Unchecked - покидаем алгоритм
-       if ((System.Windows.Forms.CheckState)dataGridViewP.Rows[selRowNum].Cells[selColNum].Value
-                        ==CheckState.Unchecked) { return ; }
+       object obj1=dataGridViewP.Rows[selRowNum].Cells[selColNum].Value ;
+
+       try
+      {
+        /*
+        unchecked   true   - включение
+        checked false   - выключение
+        false  true  - включение
+        true false - выключение
+        */
+
+        // если ячейка Unchecked - покидаем алгоритм
+        if (  obj1.ToString()=="Unchecked" ) { return ; }
+        if (  obj1.ToString()=="False" ) { return ; }
+      }
+      catch (Exception ex1)
+      {
+        AddLogString("GraphicsToolStripMenuItemClick - прервано.. = " + ex1.Message);
+        return ;
+      }
+
 
        //Получить Имя выделенного элемента
        string id_parent=treeViewA.SelectedNode.Name;
@@ -2306,10 +2326,10 @@ namespace ArcConfig
 
       for (int ii = 0; ii < dataGridViewA.RowCount ; ii++) {
 
-      	// нумерация строк
-      	dataGridViewA.Rows[ii].HeaderCell.Value = (ii + 1).ToString();
+        // нумерация строк
+        dataGridViewA.Rows[ii].HeaderCell.Value = (ii + 1).ToString();
 
-      	dataGridViewA.Rows[ii].Cells[0].Value = false ;
+        dataGridViewA.Rows[ii].Cells[0].Value = false ;
         //dataGridViewA.Rows[ii].HeaderCell.Style.BackColor = Color.White ;
         //dataGridViewA.Rows[ii].DefaultCellStyle.BackColor = Color.White ;
       }
@@ -2358,61 +2378,70 @@ namespace ArcConfig
 
     void DataGridViewPCurrentCellDirtyStateChanged(object sender, EventArgs e)
     {
+
+      return ;
+
+    //  var dataGridView = (DataGridView)sender;
+
       /* if (dataGridViewP.IsCurrentCellDirty)
       {
           dataGridViewP.CommitEdit(DataGridViewDataErrorContexts.Commit);
       }*/
 
-      if (this.dataGridViewP.IsCurrentCellDirty && this.dataGridViewP.CurrentCell is DataGridViewCheckBoxCell)
-      {
-        this.dataGridViewP.EndEdit();
 
-        var dataGridView = (DataGridView)sender;
-        DataGridViewCell currentCell = dataGridView.CurrentCell;
-        DataGridViewCheckBoxCell checkCell =
-           (DataGridViewCheckBoxCell)dataGridView.CurrentCell;
-        DataGridViewColumn OwnCol = dataGridView.CurrentCell.OwningColumn ;
-        object obj1 = checkCell.Value;
-        AddLogString("Выкл|вкл архив = before status =" + checkCell.Value.ToString());
-        if (Convert.ToBoolean(checkCell.Value)==false) {
-            if (OwnCol.DefaultCellStyle.BackColor==Color.LightGray) {
-            if (OptionWriteOnDelete == 0)
-               checkCell.Value=true;
-            }
-        }
-        object obj2 = checkCell.Value ;
+      // рабочий, но не Commit - код
 
-// before status =False = turn on = True - ничего
-// before status =True = turn on = True  - включаем
-// before status =False = delete = False - удаляем
-
-        if (obj1==obj2) {
-
-          // получаем ячейку
-          int selRowNum , selColNum ;
-          selRowNum = currentCell.RowIndex ;
-          selColNum = currentCell.ColumnIndex ;
-
-          if (selRowNum>=0 && selColNum>3) {
-            if (Convert.ToBoolean(obj1)==false) {
-              AddLogString("Выкл|вкл архив = delete = " + checkCell.Value.ToString());
-              int ret1 =  ArcDel( sender, selRowNum , selColNum) ;
-              if (ret1!=0) { checkCell.Value=true; }
-              AddLogString( "Выкл|вкл архив Алг удаления завершен." );
-            } else {
-                  //if (Convert.ToBoolean(obj1)==true) {
-                  AddLogString("Выкл|вкл архив = turn on = " + checkCell.Value.ToString());
-                  int ret2 = ArcAdd( sender, selRowNum , selColNum) ;
-                  if (ret2!=0) { checkCell.Value=false; }
-                  AddLogString( " Алг добавления завершен." );
-                }
-          }
-
-        }
-
-        dataGridView.CurrentCell = checkCell;
-
-      }
+//      if (dataGridView.IsCurrentCellDirty && dataGridView.CurrentCell is DataGridViewCheckBoxCell)
+//      {
+//        dataGridView.EndEdit();
+//
+//        //var dataGridView = (DataGridView)sender;
+//        DataGridViewCell currentCell = dataGridView.CurrentCell;
+//        DataGridViewCheckBoxCell checkCell =
+//           (DataGridViewCheckBoxCell)dataGridView.CurrentCell;
+//        DataGridViewColumn OwnCol = dataGridView.CurrentCell.OwningColumn ;
+//        object obj1 = checkCell.Value;
+//        AddLogString("Выкл|вкл архив = before status =" + checkCell.Value.ToString());
+//        if (Convert.ToBoolean(checkCell.Value)==false) {
+//            if (OwnCol.DefaultCellStyle.BackColor==Color.LightGray) {
+//            if (OptionWriteOnDelete == 0)
+//               checkCell.Value=true;
+//            }
+//        }
+//        object obj2 = checkCell.Value ;
+//
+//// before status =False = turn on = True - ничего
+//// before status =True = turn on = True  - включаем
+//// before status =False = delete = False - удаляем
+//
+//        if (obj1==obj2) {
+//
+//          // получаем ячейку
+//          int selRowNum , selColNum ;
+//          selRowNum = currentCell.RowIndex ;
+//          selColNum = currentCell.ColumnIndex ;
+//
+//          if (selRowNum>=0 && selColNum>3) {
+//            if (Convert.ToBoolean(obj1)==false) {
+//              AddLogString("Выкл|вкл архив = delete = " + checkCell.Value.ToString());
+//              int ret1 =  ArcDel( sender, selRowNum , selColNum) ;
+//              if (ret1!=0) { checkCell.Value=true; }
+//              AddLogString( "Выкл|вкл архив Алг удаления завершен." );
+//            } else {
+//                  //if (Convert.ToBoolean(obj1)==true) {
+//                  AddLogString("Выкл|вкл архив = turn on = " + checkCell.Value.ToString());
+//                  int ret2 = ArcAdd( sender, selRowNum , selColNum) ;
+//                  if (ret2!=0) { checkCell.Value=false; }
+//                  AddLogString( " Алг добавления завершен." );
+//                }
+//          }
+//
+//        }
+//
+//        dataGridView.CurrentCell = checkCell;
+//        //dataGridView.CommitEdit(DataGridViewDataErrorContexts.Commit);
+//
+//      }
     }
     void DataGridViewPCellValueChanged(object sender, DataGridViewCellEventArgs e)
     {
@@ -2421,7 +2450,7 @@ namespace ArcConfig
     void DataGridViewPCellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
     {
         // записывает в структуру местоположения курсора
-        // mouseLocation = e;
+        mouseLocation = e;
     }
     void DataGridViewPCellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
     {
@@ -2433,7 +2462,53 @@ namespace ArcConfig
     }
     void DataGridViewPCellContentClick(object sender, DataGridViewCellEventArgs e)
     {
+        //
+        var dataGridView = (DataGridView)sender;
 
+        DataGridViewCell currentCell = dataGridView.CurrentCell;
+        DataGridViewCheckBoxCell checkCell =
+           (DataGridViewCheckBoxCell)dataGridView.CurrentCell;
+        DataGridViewColumn OwnCol = dataGridView.CurrentCell.OwningColumn ;
+        object obj1 = checkCell.Value;
+        object obj2 = checkCell.EditedFormattedValue ;
+        AddLogString("Выкл|вкл архив = before status =" + obj1.ToString());
+        // если пытаемся выключить - обьязательный архив
+        if (Convert.ToBoolean(obj2)==false) {
+            if (OwnCol.DefaultCellStyle.BackColor==Color.LightGray) {
+              if (OptionWriteOnDelete == 0)
+                  checkCell.EditingCellFormattedValue = true ;
+                  return ;
+              }
+        }
+        object obj3 = checkCell.EditingCellFormattedValue ;
+
+        /*
+        unchecked   true   - включение
+        checked false   - выключение
+        false  true  - включение
+        true false - выключение
+        */
+
+        // получаем ячейку
+        int selRowNum , selColNum ;
+        selRowNum = currentCell.RowIndex ;
+        selColNum = currentCell.ColumnIndex ;
+
+        if (selRowNum>=0 && selColNum>3) {
+            if (Convert.ToBoolean(obj2)==false) {
+              AddLogString("Выкл|вкл архив = delete = " + obj2.ToString());
+              int ret1 =  ArcDel( sender, selRowNum , selColNum) ;
+              if (ret1!=0) { checkCell.EditingCellFormattedValue=true; }
+              AddLogString( "Выкл|вкл архив Алг удаления завершен." );
+            } else {
+                  AddLogString("Выкл|вкл архив = turn on = " + obj2.ToString());
+                  int ret2 = ArcAdd( sender, selRowNum , selColNum) ;
+                  if (ret2!=0) { checkCell.EditingCellFormattedValue=false; }
+                  AddLogString( " Алг добавления завершен." );
+                }
+          }
+
+        dataGridView.CurrentCell = checkCell;
 
     }
 
@@ -3147,23 +3222,23 @@ void OracleStat ( )
        frmServ.Dispose();
 
     }
-		void ToolStripButton5Click(object sender, EventArgs e)
-		{
-			  // show form Status
-			  FormStatus frmSt = new FormStatus(this._conn); //(this._conn);
+    void ToolStripButton5Click(object sender, EventArgs e)
+    {
+        // show form Status
+        FormStatus frmSt = new FormStatus(this._conn); //(this._conn);
         frmSt.Show();
         //frmSt.Dispose();
-		}
-		void ToolStripButton6Click(object sender, EventArgs e)
-		{
-			  // установка источников
-			  FormSource frmSo = new FormSource(this._conn); //(this._conn);
+    }
+    void ToolStripButton6Click(object sender, EventArgs e)
+    {
+        // установка источников
+        FormSource frmSo = new FormSource(this._conn); //(this._conn);
         frmSo.ShowDialog();
         frmSo.Dispose();
-		}
-		void ExportDataToolStripMenuItemClick(object sender, EventArgs e)
-		{
-			 // ExportData
+    }
+    void ExportDataToolStripMenuItemClick(object sender, EventArgs e)
+    {
+       // ExportData
        // вызов формы для построения графика через контекстное меню
 
        // string msg = String.Format("Row: {0}, Column: {1}",
@@ -3186,9 +3261,32 @@ void OracleStat ( )
        string IDGINFO = dataGridViewP.Columns[selColNum].Name ;
        //string NAMEHEADER = dataGridViewP.Columns[selColNum].HeaderText ;
 
+
        // если ячейка Unchecked - покидаем алгоритм
-       if ((System.Windows.Forms.CheckState)dataGridViewP.Rows[selRowNum].Cells[selColNum].Value
-                        ==CheckState.Unchecked) { return ; }
+       //if ((System.Windows.Forms.CheckState)dataGridViewP.Rows[selRowNum].Cells[selColNum].Value
+       //                 ==CheckState.Unchecked) { return ; }
+
+
+       object obj1=dataGridViewP.Rows[selRowNum].Cells[selColNum].Value ;
+
+       try
+      {
+        /*
+        unchecked   true   - включение
+        checked false   - выключение
+        false  true  - включение
+        true false - выключение
+        */
+
+        // если ячейка Unchecked - покидаем алгоритм
+        if (  obj1.ToString()=="Unchecked" ) { return ; }
+        if (  obj1.ToString()=="False" ) { return ; }
+      }
+      catch (Exception ex1)
+      {
+        AddLogString("ExportDataTool - прервано.. = " + ex1.Message);
+        return ;
+      }
 
        //Получить Имя выделенного элемента
        string id_parent=treeViewA.SelectedNode.Name;
@@ -3205,7 +3303,7 @@ void OracleStat ( )
        FormExport ifex = new FormExport(_conn, ID, IDNAME, IDGINFO, id_tbl);
        ifex.Show();
 
-		}
+    }
 
   }
 

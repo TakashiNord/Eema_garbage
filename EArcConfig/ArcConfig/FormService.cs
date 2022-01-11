@@ -421,9 +421,9 @@ and arcs.ID_SPROFILE=5
       {
         ret1 = cmd0.ExecuteNonQuery();
       }
-      catch (Exception ex1)
+      catch (Exception )
       {
-        ;//MessageBox.Show(ex1.ToString() );
+        ;//MessageBox.Show(ex.ToString() );
       }
 
       int nID_PRIORITY = 1 ;
@@ -470,9 +470,9 @@ and arcs.ID_SPROFILE=5
       {
         ret1 = cmd0.ExecuteNonQuery();
       }
-      catch (Exception ex1)
+      catch (Exception)
       {
-        ;//MessageBox.Show(ex1.ToString() );
+        ;//MessageBox.Show(ex.ToString() );
       }
 
       string Period = BoxPeriod.Text.Trim() ;

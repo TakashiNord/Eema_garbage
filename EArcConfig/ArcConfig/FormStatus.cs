@@ -104,7 +104,7 @@ namespace ArcConfig
       // Объект для выполнения запросов к базе данных
       OdbcCommand cmd0 = new OdbcCommand();
       OdbcCommand cmd1 = new OdbcCommand();
-      OdbcDataReader reader = null ;
+      //OdbcDataReader reader = null ;
 
       cmd0.Connection=this._conn;
       cmd1.Connection=this._conn;
@@ -159,9 +159,9 @@ namespace ArcConfig
         }
 
 
-        vl1 = Convert.ToDouble(dataGridView1.Rows[ii].Cells["LAST_RELINK"].Value);
-        if (vl1>0) {
-          t0 = UnixTimestampToDateTime(vl1) ;
+        vl2 = Convert.ToDouble(dataGridView1.Rows[ii].Cells["LAST_RELINK"].Value);
+        if (vl2>0) {
+          t0 = UnixTimestampToDateTime(vl2) ;
           //t0=t0.ToUniversalTime() ;
           t0=t0.ToLocalTime();
           dataGridView1.Rows[ii].Cells["LAST_RELINK"].Value=t0.ToString("u"); // u s o
