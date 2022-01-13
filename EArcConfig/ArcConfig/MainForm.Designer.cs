@@ -707,6 +707,7 @@ namespace ArcConfig
 			this.dataGridViewP.Size = new System.Drawing.Size(868, 512);
 			this.dataGridViewP.TabIndex = 0;
 			this.dataGridViewP.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewPCellContentClick);
+			this.dataGridViewP.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DataGridViewPCellMouseDoubleClick);
 			this.dataGridViewP.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DataGridViewPCellMouseDown);
 			this.dataGridViewP.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DataGridViewPCellMouseUp);
 			this.dataGridViewP.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewPCellValueChanged);

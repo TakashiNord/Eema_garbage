@@ -716,6 +716,8 @@ namespace ArcConfig
           {
              arr[i]= GetTypeValue(ref reader, i);
           }
+          
+          Application.DoEvents();
 
          //ARC_SUBSYST_PROFILE.ID, ARC_SUBSYST_PROFILE.ID_GINFO, ARC_SUBSYST_PROFILE.IS_WRITEON,
          //    ARC_GINFO.NAME, SYS_GTOPT.NAME
@@ -753,7 +755,36 @@ namespace ArcConfig
         AddLogString("id_tbl=" + _id_tbl);
         if (_id_tbl=="0" || _id_tbl=="") return ;
 
-        // get table
+        
+        string ARC_NAME = "" ; // имя таблицы архивов
+        // проверка существования данных
+        if (OptionCheckData>0) {
+           sl1 = r.GetString("ARH_SYSTBLLST1");
+           sl1 = String.Format(sl1,_id_tbl);
+           cmd0.CommandText=sl1;
+           try
+           {
+              reader = cmd0.ExecuteReader();
+           }
+           catch (Exception ex1)
+           {
+              AddLogString("OptionCheckData ?ARC_NAME?," + ex1.ToString());
+           }
+           if (reader.HasRows) {
+             while (reader.Read())
+             {
+                ARC_NAME = GetTypeValue(ref reader, 0).ToUpper() ;
+                break ;
+             } // while
+           }
+           reader.Close();
+           AddLogString("OptionCheckData ARC_NAME =" + ARC_NAME );
+
+           Application.DoEvents();
+        }
+
+
+        // get table списка параметров для данного раздела
         string TABLE_NAME = "" ;
 
         sl1= "SELECT UPPER(lst.TABLE_NAME) FROM sys_tbllst lst WHERE lst.ID=" + _id_tbl;
@@ -918,9 +949,9 @@ namespace ArcConfig
            if (TABLE_NAME.IndexOf("DA_V_LST")>=0) {
               dataGridViewP.Rows[iRowIndex].Cells[0].Value = p.NAME2;
            } else {
-            String nd = "" ;
-            if (OptionFullName>0) nd=GetFullName(p.ID_NODE.ToString(),TableTree) ;
-            dataGridViewP.Rows[iRowIndex].Cells[0].Value = nd ;
+              String nd = "" ;
+              if (OptionFullName>0) nd=GetFullName(p.ID_NODE.ToString(),TableTree) ;
+              dataGridViewP.Rows[iRowIndex].Cells[0].Value = nd ;
            }
            dataGridViewP.Rows[iRowIndex].Cells[1].Value = p.ID.ToString();
            dataGridViewP.Rows[iRowIndex].Cells[2].Value = p.NAME1;
@@ -931,11 +962,71 @@ namespace ArcConfig
               dataGridViewP.Rows[iRowIndex].Cells[jj].Value = CheckState.Unchecked ;
               if ( dataGridViewP.Columns[jj].Name==p.ID_GINFO.ToString() )
               {
-                 dataGridViewP.Rows[iRowIndex].Cells[jj].Value = CheckState.Checked;
+                dataGridViewP.Rows[iRowIndex].Cells[jj].Value = CheckState.Checked;
                 foreach (ARCSUM1 vq in sum)
                 {
                    if (vq.ID_GINFO==p.ID_GINFO.ToString() ) vq.SUM+=1;
                 }
+
+                // проверка существования данных
+                if (OptionCheckData>0 && ARC_NAME.Length>0) {
+                	 
+                   int err_cnt = 0 ;
+                   string RETFNAME = "dual"  ;
+                   sl1 = "SELECT RETFNAME FROM " + ARC_NAME + " WHERE ID_PARAM=" + p.ID.ToString() + " AND ID_GINFO=" + p.ID_GINFO.ToString() + " ;" ;
+                   cmd0.CommandText=sl1;
+                   try
+                   {
+                     reader = cmd0.ExecuteReader();
+                   }
+                   catch (Exception )
+                   {
+                     err_cnt++;
+                   } 
+                   if (!reader.IsClosed )
+                    if (reader.HasRows) {
+                     while (reader.Read())
+                     {
+                       RETFNAME = GetTypeValue(ref reader, 0).ToUpper() ;
+                       break ;
+                     } // while
+                     reader.Close();
+                    }
+                   
+                   string RETFNAME_CNT = "0" ;
+                      	 
+                   sl1 = "SELECT count(*) FROM " + RETFNAME + " ;"  ;
+                   cmd0.CommandText=sl1;
+                   try
+                   {
+                     reader = cmd0.ExecuteReader();
+                   }
+                   catch (Exception )
+                   {
+                     err_cnt++;
+                     RETFNAME_CNT="none" ;  
+                   }   
+                   if (!reader.IsClosed )
+                    if (reader.HasRows) {
+                     while (reader.Read())
+                     {
+                       RETFNAME_CNT = GetTypeValue(ref reader, 0).ToUpper() ;
+                       break ;
+                     } // while
+                    reader.Close();
+                   }
+
+                   DataGridViewCellStyle cellStyle2 = new DataGridViewCellStyle();
+                   cellStyle2 = dataGridViewP.Rows[iRowIndex].Cells[jj].Style ;
+                   if (RETFNAME_CNT=="none")
+                     cellStyle2.BackColor  = Color.Red ;                   
+                   if (RETFNAME_CNT=="0")
+                     cellStyle2.BackColor  = Color.GreenYellow ;
+                   dataGridViewP.Rows[iRowIndex].Cells[jj].Style=cellStyle2;
+
+                }
+
+
               }
             }
 
@@ -949,6 +1040,68 @@ namespace ArcConfig
                 {
                   if (vq.ID_GINFO==p.ID_GINFO.ToString() ) vq.SUM+=1;
                 }
+
+                // проверка существования данных
+                if (OptionCheckData>0 && ARC_NAME.Length>0) {
+                	 
+                   int err_cnt = 0 ;
+                   string RETFNAME = "dual"  ;
+                   sl1 = "SELECT RETFNAME FROM " + ARC_NAME + " WHERE ID_PARAM=" + p.ID.ToString() + " AND ID_GINFO=" + p.ID_GINFO.ToString() + " ;" ;
+                   cmd0.CommandText=sl1;
+                   try
+                   {
+                     reader = cmd0.ExecuteReader();
+                   }
+                   catch (Exception )
+                   {
+                     err_cnt++;
+                   } 
+                   if (!reader.IsClosed )
+                    if (reader.HasRows) {
+                     while (reader.Read())
+                     {
+                       RETFNAME = GetTypeValue(ref reader, 0).ToUpper() ;
+                       break ;
+                     } // while
+                     reader.Close();
+                    }
+                   
+                   string RETFNAME_CNT = "0" ;
+                      	 
+                   sl1 = "SELECT count(*) FROM " + RETFNAME + " ;"  ;
+                   cmd0.CommandText=sl1;
+                   try
+                   {
+                     reader = cmd0.ExecuteReader();
+                   }
+                   catch (Exception )
+                   {
+                     err_cnt++;
+                     RETFNAME_CNT="none" ;  
+                   }   
+                   if (!reader.IsClosed )
+                    if (reader.HasRows) {
+                     while (reader.Read())
+                     {
+                       RETFNAME_CNT = GetTypeValue(ref reader, 0).ToUpper() ;
+                       break ;
+                     } // while
+                    reader.Close();
+                   }
+
+                   DataGridViewCellStyle cellStyle2 = new DataGridViewCellStyle();
+                   cellStyle2 = dataGridViewP.Rows[iRowIndex].Cells[jj].Style ;
+                   if (RETFNAME_CNT=="none")
+                     cellStyle2.BackColor  = Color.Red ;                   
+                   if (RETFNAME_CNT=="0")
+                     cellStyle2.BackColor  = Color.GreenYellow ;
+                   dataGridViewP.Rows[iRowIndex].Cells[jj].Style=cellStyle2;
+
+                }
+
+
+
+
               }
             }
 
@@ -2261,23 +2414,23 @@ namespace ArcConfig
        object obj1=dataGridViewP.Rows[selRowNum].Cells[selColNum].Value ;
 
        try
-      {
-        /*
-        unchecked   true   - включение
-        checked false   - выключение
-        false  true  - включение
-        true false - выключение
-        */
-
-        // если ячейка Unchecked - покидаем алгоритм
-        if (  obj1.ToString()=="Unchecked" ) { return ; }
-        if (  obj1.ToString()=="False" ) { return ; }
-      }
-      catch (Exception ex1)
-      {
-        AddLogString("GraphicsToolStripMenuItemClick - прервано.. = " + ex1.Message);
-        return ;
-      }
+       {
+         /*
+         unchecked   true   - включение
+         checked false   - выключение
+         false  true  - включение
+         true false - выключение
+         */
+       
+         // если ячейка Unchecked - покидаем алгоритм
+         if (  obj1.ToString()=="Unchecked" ) { return ; }
+         if (  obj1.ToString()=="False" ) { return ; }
+       }
+       catch (Exception ex1)
+       {
+         AddLogString("GraphicsToolStripMenuItemClick - прервано.. = " + ex1.Message);
+         return ;
+       }
 
 
        //Получить Имя выделенного элемента
@@ -2344,7 +2497,7 @@ namespace ArcConfig
       }
       catch (Exception ex1)
       {
-        AddLogString("DataGridViewASorted выполнение алгоритма  - прервано.. = " + cmd1.CommandText + " " + ex1.Message);
+        AddLogString("DataGridViewASorted - break ! " + cmd1.CommandText + ", " + ex1.Message);
         reader.Close();
         return ;
       }
@@ -2378,70 +2531,11 @@ namespace ArcConfig
 
     void DataGridViewPCurrentCellDirtyStateChanged(object sender, EventArgs e)
     {
-
-      return ;
-
-    //  var dataGridView = (DataGridView)sender;
-
-      /* if (dataGridViewP.IsCurrentCellDirty)
+      var dataGridView = (DataGridView)sender;
+      if (dataGridView.IsCurrentCellDirty && dataGridView.CurrentCell is DataGridViewCheckBoxCell)
       {
-          dataGridViewP.CommitEdit(DataGridViewDataErrorContexts.Commit);
-      }*/
-
-
-      // рабочий, но не Commit - код
-
-//      if (dataGridView.IsCurrentCellDirty && dataGridView.CurrentCell is DataGridViewCheckBoxCell)
-//      {
-//        dataGridView.EndEdit();
-//
-//        //var dataGridView = (DataGridView)sender;
-//        DataGridViewCell currentCell = dataGridView.CurrentCell;
-//        DataGridViewCheckBoxCell checkCell =
-//           (DataGridViewCheckBoxCell)dataGridView.CurrentCell;
-//        DataGridViewColumn OwnCol = dataGridView.CurrentCell.OwningColumn ;
-//        object obj1 = checkCell.Value;
-//        AddLogString("Выкл|вкл архив = before status =" + checkCell.Value.ToString());
-//        if (Convert.ToBoolean(checkCell.Value)==false) {
-//            if (OwnCol.DefaultCellStyle.BackColor==Color.LightGray) {
-//            if (OptionWriteOnDelete == 0)
-//               checkCell.Value=true;
-//            }
-//        }
-//        object obj2 = checkCell.Value ;
-//
-//// before status =False = turn on = True - ничего
-//// before status =True = turn on = True  - включаем
-//// before status =False = delete = False - удаляем
-//
-//        if (obj1==obj2) {
-//
-//          // получаем ячейку
-//          int selRowNum , selColNum ;
-//          selRowNum = currentCell.RowIndex ;
-//          selColNum = currentCell.ColumnIndex ;
-//
-//          if (selRowNum>=0 && selColNum>3) {
-//            if (Convert.ToBoolean(obj1)==false) {
-//              AddLogString("Выкл|вкл архив = delete = " + checkCell.Value.ToString());
-//              int ret1 =  ArcDel( sender, selRowNum , selColNum) ;
-//              if (ret1!=0) { checkCell.Value=true; }
-//              AddLogString( "Выкл|вкл архив Алг удаления завершен." );
-//            } else {
-//                  //if (Convert.ToBoolean(obj1)==true) {
-//                  AddLogString("Выкл|вкл архив = turn on = " + checkCell.Value.ToString());
-//                  int ret2 = ArcAdd( sender, selRowNum , selColNum) ;
-//                  if (ret2!=0) { checkCell.Value=false; }
-//                  AddLogString( " Алг добавления завершен." );
-//                }
-//          }
-//
-//        }
-//
-//        dataGridView.CurrentCell = checkCell;
-//        //dataGridView.CommitEdit(DataGridViewDataErrorContexts.Commit);
-//
-//      }
+          dataGridView.CommitEdit(DataGridViewDataErrorContexts.Commit);
+      }
     }
     void DataGridViewPCellValueChanged(object sender, DataGridViewCellEventArgs e)
     {
@@ -2457,9 +2551,20 @@ namespace ArcConfig
        // End of edition on each click on column of checkbox
        if (e.ColumnIndex >=4 && e.RowIndex != -1)
        {
-           dataGridViewP.EndEdit();
+         dataGridViewP.EndEdit();
        }
     }
+
+    void DataGridViewPCellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+    {
+       // End of edition on each click on column of checkbox
+       if (e.ColumnIndex >=4 && e.RowIndex != -1)
+       {
+         dataGridViewP.EndEdit();
+       }
+
+    }
+
     void DataGridViewPCellContentClick(object sender, DataGridViewCellEventArgs e)
     {
         //
@@ -2471,16 +2576,22 @@ namespace ArcConfig
         DataGridViewColumn OwnCol = dataGridView.CurrentCell.OwningColumn ;
         object obj1 = checkCell.Value;
         object obj2 = checkCell.EditedFormattedValue ;
+
         AddLogString("Выкл|вкл архив = before status =" + obj1.ToString());
-        // если пытаемся выключить - обьязательный архив
-        if (Convert.ToBoolean(obj2)==false) {
+
+        // если пытаемся выключить - обьязательный архив - Checked or True
+        if (obj1.ToString()=="Unchecked" || obj1.ToString()=="False") {
             if (OwnCol.DefaultCellStyle.BackColor==Color.LightGray) {
-              if (OptionWriteOnDelete == 0)
-                  checkCell.EditingCellFormattedValue = true ;
+              if (OptionWriteOnDelete == 0) {
+                  //checkCell.EditingCellFormattedValue = true ;
+                  checkCell.Value = true ;
+                  dataGridView.CurrentCell = checkCell;
+                  dataGridView.EndEdit();
+                  dataGridView.Invalidate();
                   return ;
               }
+            }
         }
-        object obj3 = checkCell.EditingCellFormattedValue ;
 
         /*
         unchecked   true   - включение
@@ -2497,18 +2608,20 @@ namespace ArcConfig
         if (selRowNum>=0 && selColNum>3) {
             if (Convert.ToBoolean(obj2)==false) {
               AddLogString("Выкл|вкл архив = delete = " + obj2.ToString());
-              int ret1 =  ArcDel( sender, selRowNum , selColNum) ;
-              if (ret1!=0) { checkCell.EditingCellFormattedValue=true; }
-              AddLogString( "Выкл|вкл архив Алг удаления завершен." );
+              int ret1 = ArcDel( sender, selRowNum , selColNum) ;
+              if (ret1!=0) { checkCell.Value = true ; /*checkCell.EditingCellFormattedValue=true; */}
+              AddLogString( "Выкл|вкл удаления завершен." );
             } else {
                   AddLogString("Выкл|вкл архив = turn on = " + obj2.ToString());
                   int ret2 = ArcAdd( sender, selRowNum , selColNum) ;
-                  if (ret2!=0) { checkCell.EditingCellFormattedValue=false; }
-                  AddLogString( " Алг добавления завершен." );
+                  if (ret2!=0) { checkCell.Value = false ; /*checkCell.EditingCellFormattedValue=false;*/ }
+                  AddLogString( "Выкл|вкл добавления завершен." );
                 }
-          }
 
-        dataGridView.CurrentCell = checkCell;
+            dataGridView.CurrentCell = checkCell;
+            dataGridView.Invalidate();
+
+        }
 
     }
 
@@ -2625,7 +2738,7 @@ int ArcAdd(object sender, int selRowNum , int selColNum)
    catch (Exception ex1)
    {
       exists_idgopt = 0;
-      AddLogString("ArcAdd - столбца ID_GTOPT - нет = " + cmd0.CommandText + " " + ex1.Message);
+      AddLogString("ArcAdd столбца ID_GTOPT - нет = " + cmd0.CommandText + " " + ex1.Message);
    }
    reader.Close();
 
@@ -2656,7 +2769,7 @@ int ArcAdd(object sender, int selRowNum , int selColNum)
       reader.Close();
    }
 
-   AddLogString("ArcAdd IDGINFO=" + IDGINFO + " idgopt=" + idgopt );
+   //AddLogString("ArcAdd IDGINFO=" + IDGINFO + " idgopt=" + idgopt );
 
    AddLogString("ArcAdd Вызов процедуры arc_arh_pkg.create_arh (parnum,gtype,retname,sname) ..");
 
@@ -2751,25 +2864,54 @@ int ArcAdd(object sender, int selRowNum , int selColNum)
    AddLogString( "ArcAdd retname=" + retname + "; vRetVal="+vRetVal );
 
    if (vRetVal=="0") {
+     // проверяем , есть ли в таблице TABLE_NAME уже запись о регистрации архива
+     sl1="SELECT COUNT(*) FROM " + TABLE_NAME + " WHERE " +
+         "ID_PARAM="+ID+" AND RETFNAME='"+retname+"' AND ID_GINFO="+IDGINFO ;
      if (exists_idgopt==1) {
-       sl1="INSERT INTO " + TABLE_NAME + " (ID_PARAM, ID_GTOPT, RETFNAME, ID_GINFO) VALUES " +
-           " (" + ID + "," + idgopt + ",'" + retname + "'," + IDGINFO +");" ;
-     } else {
-       sl1="INSERT INTO " + TABLE_NAME + " (ID_PARAM, RETFNAME, ID_GINFO) VALUES " +
-           " (" + ID +  ",'" + retname + "'," + IDGINFO +");" ;
+       sl1=sl1+" AND ID_GTOPT="+idgopt ;
      }
+     sl1=sl1 + " ;" ;
+
+     object rec1 = null ;
 
      cmd0.CommandText=sl1;
      try
      {
-       reader = cmd0.ExecuteReader();
+      rec1 = cmd0.ExecuteScalar();
      }
      catch (Exception ex1)
      {
-       AddLogString("ArcAdd выполнение алгоритма  - прервано.. = " + cmd0.CommandText + " " + ex1.Message);
-       return(-7) ;
+       AddLogString("ArcAdd - " + cmd0.CommandText + " " + ex1.Message);
      }
-     reader.Close();
+
+     int crec1=Convert.ToInt32(rec1) ;
+     AddLogString("ArcAdd record insert =" + crec1.ToString() );
+
+     // записей нет, вставляем
+     if (crec1==0) {
+
+         if (exists_idgopt==1) {
+           sl1="INSERT INTO " + TABLE_NAME + " (ID_PARAM, ID_GTOPT, RETFNAME, ID_GINFO) VALUES " +
+               " (" + ID + "," + idgopt + ",'" + retname + "'," + IDGINFO +");" ;
+         } else {
+           sl1="INSERT INTO " + TABLE_NAME + " (ID_PARAM, RETFNAME, ID_GINFO) VALUES " +
+               " (" + ID +  ",'" + retname + "'," + IDGINFO +");" ;
+         }
+
+         cmd0.CommandText=sl1;
+         try
+         {
+           reader = cmd0.ExecuteReader();
+         }
+         catch (Exception ex1)
+         {
+           AddLogString("ArcAdd регистрация отменена, " + cmd0.CommandText + ", " + ex1.Message);
+           return(-7) ;
+         }
+         reader.Close();
+
+     }
+
    }
 
    return(0);
@@ -2925,7 +3067,7 @@ int ArcDel(object sender, int selRowNum , int selColNum)
          AddLogString("ArcDel Не удалось вызвать процедуру arc_arh_pkg.drop_arh");
          AddLogString("ArcDel Ошибка вызова процедуры ="+ex8.Message);
       }
-      AddLogString("ArcDel vRetVal ="+vRetVal +  " sname="+sname);
+      AddLogString("ArcDel vRetVal =" + vRetVal + " sname=" + sname);
 
     }
 
@@ -2951,6 +3093,7 @@ int ArcDel(object sender, int selRowNum , int selColNum)
         AddLogString("ArcDel Тип архива для параметра не удален = " + cmd0.CommandText + " " + ex1.Message);
         return(-7);
       }
+      AddLogString("ArcDel удален = " + res1.ToString() );
 
     }
 
@@ -3304,6 +3447,7 @@ void OracleStat ( )
        ifex.Show();
 
     }
+
 
   }
 

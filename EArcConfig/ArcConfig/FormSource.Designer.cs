@@ -55,8 +55,8 @@ namespace ArcConfig
 			// splitContainer1.Panel1
 			// 
 			this.splitContainer1.Panel1.Controls.Add(this.listBox1);
-			this.splitContainer1.Size = new System.Drawing.Size(873, 345);
-			this.splitContainer1.SplitterDistance = 272;
+			this.splitContainer1.Size = new System.Drawing.Size(533, 345);
+			this.splitContainer1.SplitterDistance = 121;
 			this.splitContainer1.TabIndex = 0;
 			// 
 			// listBox1
@@ -68,16 +68,16 @@ namespace ArcConfig
 			"Получения значений параметров ДГ (DG_SOURCE)",
 			"Для параметров учета электроэнергии (EA_SOURCE)",
 			"Получения значений параметров (MEAS_SOURCE)"});
-			this.listBox1.Location = new System.Drawing.Point(8, 13);
+			this.listBox1.Location = new System.Drawing.Point(3, 3);
 			this.listBox1.Name = "listBox1";
-			this.listBox1.Size = new System.Drawing.Size(252, 108);
+			this.listBox1.Size = new System.Drawing.Size(350, 108);
 			this.listBox1.TabIndex = 0;
 			// 
 			// FormSource
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(873, 345);
+			this.ClientSize = new System.Drawing.Size(533, 345);
 			this.Controls.Add(this.splitContainer1);
 			this.Name = "FormSource";
 			this.Text = "Источники";
