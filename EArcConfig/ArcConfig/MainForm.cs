@@ -256,7 +256,7 @@ namespace ArcConfig
        command.Connection = this._conn; // уже созданное и открытое соединение
        command.CommandType = System.Data.CommandType.StoredProcedure;
        command.Parameters.Clear();
-       command.CommandText="SET ROLE BASE_EXT_CONNECT_OIK , ARC_STAND_ADMIN, ARC_STAND_ADJ, ARC_STAND_READ";
+       command.CommandText="SET ROLE BASE_EXT_CONNECT_OIK , ARC_STAND_ADMIN, ARC_STAND_ADJ, ARC_STAND_READ, BASE_STAND_ADJ";
 
        try
        {
@@ -716,7 +716,7 @@ namespace ArcConfig
           {
              arr[i]= GetTypeValue(ref reader, i);
           }
-          
+
           Application.DoEvents();
 
          //ARC_SUBSYST_PROFILE.ID, ARC_SUBSYST_PROFILE.ID_GINFO, ARC_SUBSYST_PROFILE.IS_WRITEON,
@@ -755,7 +755,7 @@ namespace ArcConfig
         AddLogString("id_tbl=" + _id_tbl);
         if (_id_tbl=="0" || _id_tbl=="") return ;
 
-        
+
         string ARC_NAME = "" ; // имя таблицы архивов
         // проверка существования данных
         if (OptionCheckData>0) {
@@ -937,8 +937,12 @@ namespace ArcConfig
         int iFindNo =-1;
         int iRowIndex = 0;
         int prevFindNo = -1;
+        int dpCnt = dp.Count ;
         foreach (MEAS1 p in dp)
         {
+
+         toolStripStatusLabel2.Text = iRowIndex.ToString() + " of " + dpCnt.ToString() ;
+
          iFindNo = p.ID;
          if (prevFindNo != iFindNo ) {
            iRowIndex=dataGridViewP.Rows.Add();
@@ -970,7 +974,7 @@ namespace ArcConfig
 
                 // проверка существования данных
                 if (OptionCheckData>0 && ARC_NAME.Length>0) {
-                	 
+
                    int err_cnt = 0 ;
                    string RETFNAME = "dual"  ;
                    sl1 = "SELECT RETFNAME FROM " + ARC_NAME + " WHERE ID_PARAM=" + p.ID.ToString() + " AND ID_GINFO=" + p.ID_GINFO.ToString() + " ;" ;
@@ -982,7 +986,7 @@ namespace ArcConfig
                    catch (Exception )
                    {
                      err_cnt++;
-                   } 
+                   }
                    if (!reader.IsClosed )
                     if (reader.HasRows) {
                      while (reader.Read())
@@ -992,9 +996,9 @@ namespace ArcConfig
                      } // while
                      reader.Close();
                     }
-                   
+
                    string RETFNAME_CNT = "0" ;
-                      	 
+
                    sl1 = "SELECT count(*) FROM " + RETFNAME + " ;"  ;
                    cmd0.CommandText=sl1;
                    try
@@ -1004,8 +1008,8 @@ namespace ArcConfig
                    catch (Exception )
                    {
                      err_cnt++;
-                     RETFNAME_CNT="none" ;  
-                   }   
+                     RETFNAME_CNT="none" ;
+                   }
                    if (!reader.IsClosed )
                     if (reader.HasRows) {
                      while (reader.Read())
@@ -1019,7 +1023,7 @@ namespace ArcConfig
                    DataGridViewCellStyle cellStyle2 = new DataGridViewCellStyle();
                    cellStyle2 = dataGridViewP.Rows[iRowIndex].Cells[jj].Style ;
                    if (RETFNAME_CNT=="none")
-                     cellStyle2.BackColor  = Color.Red ;                   
+                     cellStyle2.BackColor  = Color.Red ;
                    if (RETFNAME_CNT=="0")
                      cellStyle2.BackColor  = Color.GreenYellow ;
                    dataGridViewP.Rows[iRowIndex].Cells[jj].Style=cellStyle2;
@@ -1043,7 +1047,7 @@ namespace ArcConfig
 
                 // проверка существования данных
                 if (OptionCheckData>0 && ARC_NAME.Length>0) {
-                	 
+
                    int err_cnt = 0 ;
                    string RETFNAME = "dual"  ;
                    sl1 = "SELECT RETFNAME FROM " + ARC_NAME + " WHERE ID_PARAM=" + p.ID.ToString() + " AND ID_GINFO=" + p.ID_GINFO.ToString() + " ;" ;
@@ -1055,7 +1059,7 @@ namespace ArcConfig
                    catch (Exception )
                    {
                      err_cnt++;
-                   } 
+                   }
                    if (!reader.IsClosed )
                     if (reader.HasRows) {
                      while (reader.Read())
@@ -1065,9 +1069,9 @@ namespace ArcConfig
                      } // while
                      reader.Close();
                     }
-                   
+
                    string RETFNAME_CNT = "0" ;
-                      	 
+
                    sl1 = "SELECT count(*) FROM " + RETFNAME + " ;"  ;
                    cmd0.CommandText=sl1;
                    try
@@ -1077,8 +1081,8 @@ namespace ArcConfig
                    catch (Exception )
                    {
                      err_cnt++;
-                     RETFNAME_CNT="none" ;  
-                   }   
+                     RETFNAME_CNT="none" ;
+                   }
                    if (!reader.IsClosed )
                     if (reader.HasRows) {
                      while (reader.Read())
@@ -1092,7 +1096,7 @@ namespace ArcConfig
                    DataGridViewCellStyle cellStyle2 = new DataGridViewCellStyle();
                    cellStyle2 = dataGridViewP.Rows[iRowIndex].Cells[jj].Style ;
                    if (RETFNAME_CNT=="none")
-                     cellStyle2.BackColor  = Color.Red ;                   
+                     cellStyle2.BackColor  = Color.Red ;
                    if (RETFNAME_CNT=="0")
                      cellStyle2.BackColor  = Color.GreenYellow ;
                    dataGridViewP.Rows[iRowIndex].Cells[jj].Style=cellStyle2;
@@ -1133,7 +1137,7 @@ namespace ArcConfig
 
         //dataGridViewP.Update();
 
-        toolStripStatusLabel2.Text = "Building Ready..done";
+        toolStripStatusLabel2.Text = "Building ... done";
 
         PCellValueChanged = 1;
 
@@ -2017,7 +2021,7 @@ namespace ArcConfig
           }
           catch (Exception ex1)
           {
-            AddLogString("DataGridViewACellContent: Get TABLE_NAME = " + cmd0.CommandText + "," + ex1.Message);
+            AddLogString("A CellContent: Get TABLE_NAME = " + cmd0.CommandText + "," + ex1.Message);
           }
 
           if (! reader.IsClosed ) {
@@ -2047,7 +2051,7 @@ namespace ArcConfig
           catch (Exception ex1)
           {
             is_exdata = 0 ;
-            AddLogString(" CellContent: is_exdata = 0 ," + ex1.Message);
+            AddLogString("A CellContent: is_exdata = 0 ," + ex1.Message);
           }
           reader.Close();
 
@@ -2102,7 +2106,7 @@ namespace ArcConfig
               }
               catch (Exception ex1)
               {
-                AddLogString("DataGridViewACellContent: Get List = " + cmd0.CommandText + " " + ex1.Message);
+                AddLogString("A CellContent: Get List = " + cmd0.CommandText + " " + ex1.Message);
               }
 
               if (! reader.IsClosed ) {
@@ -2200,23 +2204,51 @@ namespace ArcConfig
                 AddLogString("CellContent Del from TABLE_NAME= " + TABLE_NAME );
                 foreach (MEAS1 pv in dp)
                 {
-                    String ID_param = pv.ID.ToString();
+                   String ID_param = pv.ID.ToString();
 
-                    sl1="DELETE FROM " + TABLE_NAME +
+
+                   string RETFNAME = "dual"  ;
+
+                   sl1="SELECT RETFNAME FROM " + TABLE_NAME +
                         " WHERE ID_PARAM=" + ID_param + " AND " + " ID_GINFO=" + ID_GINFO +" ;" ;
 
-                    AddLogString(" -- " + sl1);
+                   cmd0.CommandText=sl1;
+                   try
+                   {
+                     reader = cmd0.ExecuteReader();
+                   }
+                   catch (Exception ex1)
+                   {
+                     AddLogString(" ---- " + ex1.Message);
+                   }
+                   if (!reader.IsClosed )
+                    if (reader.HasRows) {
+                     while (reader.Read())
+                     {
+                       RETFNAME = GetTypeValue(ref reader, 0).ToUpper() ;
+                       break ;
+                     } // while
+                     reader.Close();
+                    }
 
-                    cmd0.CommandText=sl1;
-                    int res1 = 0 ;
-                    try
-                    {
-                      res1 = cmd0.ExecuteNonQuery();
-                    }
-                    catch (Exception ex1)
-                    {
-                      AddLogString("Регистрация архива для параметра " + ID + "не удалена , -- " + cmd0.CommandText + " " + ex1.Message);
-                    }
+
+                   sl1="DELETE FROM " + TABLE_NAME +
+                       " WHERE ID_PARAM=" + ID_param + " AND " + " ID_GINFO=" + ID_GINFO +" ;" ;
+
+                   AddLogString(" ---- " + sl1);
+
+                   cmd0.CommandText=sl1;
+                   int res1 = 0 ;
+                   try
+                   {
+                     res1 = cmd0.ExecuteNonQuery();
+                   }
+                   catch (Exception ex1)
+                   {
+                     AddLogString(" ---- Регистрация архива для параметра " + ID + " не удалена , " + ex1.Message);
+                   }
+
+                   AddLogString(" -- DROP TABLE " + RETFNAME + " CASCADE CONSTRAINTS  PURGE ; ");
 
                 }
 
@@ -2421,7 +2453,7 @@ namespace ArcConfig
          false  true  - включение
          true false - выключение
          */
-       
+
          // если ячейка Unchecked - покидаем алгоритм
          if (  obj1.ToString()=="Unchecked" ) { return ; }
          if (  obj1.ToString()=="False" ) { return ; }
@@ -3080,6 +3112,32 @@ int ArcDel(object sender, int selRowNum , int selColNum)
     vRetVal="0";
 
     if (vRetVal=="0") {
+
+      string RETFNAME = "dual"  ;
+
+      sl1="SELECT RETFNAME FROM " + TABLE_NAME +
+           " WHERE ID_PARAM=" + ID + " AND " + " ID_GINFO=" + IDGINFO +" ;" ;
+
+      cmd0.CommandText=sl1;
+      try
+      {
+        reader = cmd0.ExecuteReader();
+      }
+      catch (Exception ex1)
+      {
+        AddLogString(" ---- " + ex1.Message);
+      }
+      if (!reader.IsClosed )
+       if (reader.HasRows) {
+        while (reader.Read())
+        {
+          RETFNAME = GetTypeValue(ref reader, 0).ToUpper() ;
+          break ;
+        } // while
+        reader.Close();
+       }
+
+
       sl1="DELETE FROM " + TABLE_NAME +
           " WHERE ID_PARAM=" + ID + " AND " + " ID_GINFO=" + IDGINFO +" ;" ;
       cmd0.CommandText=sl1;
@@ -3095,6 +3153,8 @@ int ArcDel(object sender, int selRowNum , int selColNum)
       }
       AddLogString("ArcDel удален = " + res1.ToString() );
 
+      AddLogString(" -- DROP TABLE " + SCHEMA_NAME + "." + RETFNAME + " CASCADE CONSTRAINTS PURGE ;" );
+    
     }
 
     return(0);
