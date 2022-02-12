@@ -58,6 +58,7 @@ namespace ArcConfig
     public int OptionWriteOnDelete = 0 ;
     public int OptionFullName = 0;
     public int OptionCheckData = 0;
+    public int OptionSchemaName = 0;
 
     public MainForm()
     {
@@ -90,6 +91,8 @@ namespace ArcConfig
 
        toolStripButton5.Enabled=true;
        toolStripButton6.Enabled=true;
+       
+       toolStripButton7.Enabled=true;
 
        tabControl1.Enabled=true;
        _tree21();
@@ -598,6 +601,8 @@ namespace ArcConfig
 
        toolStripButton5.Enabled=false;
        toolStripButton6.Enabled=false;
+       
+       toolStripButton7.Enabled=false;
 
        _setDBS();
 
@@ -2603,6 +2608,13 @@ namespace ArcConfig
         var dataGridView = (DataGridView)sender;
 
         DataGridViewCell currentCell = dataGridView.CurrentCell;
+
+        //-----------------------
+        if (currentCell.RowIndex>=0 && currentCell.ColumnIndex<=3) {
+          return ;
+        }
+        //-----------------------
+
         DataGridViewCheckBoxCell checkCell =
            (DataGridViewCheckBoxCell)dataGridView.CurrentCell;
         DataGridViewColumn OwnCol = dataGridView.CurrentCell.OwningColumn ;
@@ -3154,7 +3166,7 @@ int ArcDel(object sender, int selRowNum , int selColNum)
       AddLogString("ArcDel удален = " + res1.ToString() );
 
       AddLogString(" -- DROP TABLE " + SCHEMA_NAME + "." + RETFNAME + " CASCADE CONSTRAINTS PURGE ;" );
-    
+
     }
 
     return(0);
@@ -3389,6 +3401,8 @@ void OracleStat ( )
        else  ofrm._OptionFullName = true ;
        if (OptionCheckData==0) ofrm._OptionCheckData = false ;
        else  ofrm._OptionCheckData = true ;
+       if (OptionSchemaName==0) ofrm._OptionSchemaName = false ;
+       else  ofrm._OptionSchemaName = true ;
 
        ofrm.ShowDialog();
 
@@ -3400,6 +3414,8 @@ void OracleStat ( )
        if (ofrm._OptionFullName) OptionFullName=1 ;
        OptionCheckData=0 ;
        if (ofrm._OptionCheckData) OptionCheckData=1 ;
+       OptionSchemaName=0 ;
+       if (ofrm._OptionSchemaName) OptionSchemaName=1 ;
 
        ofrm.Dispose();
     }
@@ -3473,23 +3489,23 @@ void OracleStat ( )
        object obj1=dataGridViewP.Rows[selRowNum].Cells[selColNum].Value ;
 
        try
-      {
-        /*
-        unchecked   true   - включение
-        checked false   - выключение
-        false  true  - включение
-        true false - выключение
-        */
+       {
+         /*
+         unchecked   true   - включение
+         checked false   - выключение
+         false  true  - включение
+         true false - выключение
+         */
 
-        // если ячейка Unchecked - покидаем алгоритм
-        if (  obj1.ToString()=="Unchecked" ) { return ; }
-        if (  obj1.ToString()=="False" ) { return ; }
-      }
-      catch (Exception ex1)
-      {
-        AddLogString("ExportDataTool - прервано.. = " + ex1.Message);
-        return ;
-      }
+         // если ячейка Unchecked - покидаем алгоритм
+         if (  obj1.ToString()=="Unchecked" ) { return ; }
+         if (  obj1.ToString()=="False" ) { return ; }
+       }
+       catch (Exception ex1)
+       {
+         AddLogString("ExportDataTool - прервано.. = " + ex1.Message);
+         return ;
+       }
 
        //Получить Имя выделенного элемента
        string id_parent=treeViewA.SelectedNode.Name;
@@ -3506,6 +3522,106 @@ void OracleStat ( )
        FormExport ifex = new FormExport(_conn, ID, IDNAME, IDGINFO, id_tbl);
        ifex.Show();
 
+    }
+
+
+
+    void ToolStripButton7Click(object sender, EventArgs e)
+    {
+        // button Test
+        FormInfo1 fi = new FormInfo1() ;
+        fi.Text="Check...";
+        fi.richTextBox1.Text="";
+
+        // Output Stat to Logs
+        toolStripStatusLabel2.Text = "Create Logs.";
+
+        //=========================================================
+        // Объект для выполнения запросов к базе данных
+        OdbcCommand cmd0 = new OdbcCommand();
+        OdbcDataReader reader = null ;
+        cmd0.Connection=this._conn;
+        string strQry = "";
+
+        List<string> listOfNames = new List<string>()
+        {
+            "datafile1",  "tablespace size"
+        };
+
+        ResourceManager ro = new ResourceManager("ArcConfig.StatOracle", Assembly.GetExecutingAssembly());
+
+        for(int ii = 0; ii < listOfNames.Count; ii++)
+        {
+          strQry=listOfNames[ii];
+
+          fi.richTextBox1.AppendText("\n--" + strQry);
+
+          string tmpName = ro.GetString(strQry);
+          if (tmpName == null || tmpName.Trim().Length == 0)
+          {
+             AddLogString("Test = variable '" + strQry + "' not set" );
+             continue ;
+          }
+
+          cmd0.CommandText=tmpName;
+          try
+          {
+            reader = cmd0.ExecuteReader();
+          }
+          catch (Exception ex1)
+          {
+            AddLogString("Test =" + cmd0.CommandText + "=" + ex1.Message);
+            continue ;
+          }
+
+          while (reader.Read())
+          {
+             strQry = ";" ;
+             for ( int i = 0; i<reader.FieldCount; i++)
+             {
+               strQry+=GetTypeValue(ref reader, i) +  ";";
+             }
+             if (reader.FieldCount>1) fi.richTextBox1.AppendText("\n"+strQry);
+          } // while
+          reader.Close();
+
+        }
+
+        List<string> listTable = new List<string>()
+        {
+            "ARC_GINFO", "ARC_SERVICES_ACCESS", "ARC_SERVICES_TUNE", "ARC_SUBSYST_PROFILE", "SYS_GTOPT"
+        };
+        listTable.Sort();
+        foreach (string name in listTable) {
+
+        	fi.richTextBox1.AppendText("\n -- "+name);
+
+          cmd0.CommandText="SELECT * FROM " + name +" ;" ;
+          try
+          {
+            reader = cmd0.ExecuteReader();
+          }
+          catch (Exception ex1)
+          {
+            AddLogString("Test =" + cmd0.CommandText + "=" + ex1.Message);
+            continue ;
+          }
+
+          while (reader.Read())
+          {
+             strQry = ";" ;
+             for ( int i = 0; i<reader.FieldCount; i++)
+             {
+               strQry+=GetTypeValue(ref reader, i) +  ";";
+             }
+             if (reader.FieldCount>1) fi.richTextBox1.AppendText("\n"+strQry);
+          } // while
+          reader.Close();
+
+        }
+
+
+        fi.ShowDialog();
     }
 
 

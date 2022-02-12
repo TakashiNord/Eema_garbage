@@ -38,7 +38,11 @@ namespace ArcConfig
         get { return checkBox4.Checked; }
         set { checkBox4.Checked = value; }
     }
-    
+    public bool _OptionSchemaName
+    {
+        get { return checkBox5.Checked; }
+        set { checkBox5.Checked = value; }
+    }
 		public FormOption()
 		{
 			//

@@ -14,7 +14,7 @@ namespace ArcConfig
 		/// Designer variable used to keep track of non-visual components.
 		/// </summary>
 		private System.ComponentModel.IContainer components = null;
-		private System.Windows.Forms.RichTextBox richTextBox1;
+		public System.Windows.Forms.RichTextBox richTextBox1;
 		
 		/// <summary>
 		/// Disposes resources used by the form.
@@ -49,6 +49,7 @@ namespace ArcConfig
 			this.richTextBox1.Size = new System.Drawing.Size(493, 325);
 			this.richTextBox1.TabIndex = 0;
 			this.richTextBox1.Text = resources.GetString("richTextBox1.Text");
+
 			// 
 			// FormInfo1
 			// 
