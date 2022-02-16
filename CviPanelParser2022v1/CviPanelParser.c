@@ -4,7 +4,7 @@
 #include <string.h>
 
 //#include "wchar.h"
-#include "windows.h"
+//#include "windows.h"
 
 #include <utility.h>
 #include <cvirte.h>     /* needed if linking executable in external compiler; harmless otherwise */
@@ -170,7 +170,7 @@ void PanelTextMsg(FILE *outfile, char * textId, int x, int y,int h, int w, char 
 }
 
 
-void PanelNumeric(FILE *outfile, char * textId, int x,int y, int h, int w, int attr_precision, int attr_text_point_size, int zplane )
+void PanelNumeric(FILE *outfile, char * textId, int x,int y, int h, int w, int attr_precision, int attr_label_bold, int attr_text_point_size, int zplane )
 {
   if(flagNotFirst){fprintf(outfile ,",\n");} else {flagNotFirst = 1;};
 
@@ -186,7 +186,8 @@ void PanelNumeric(FILE *outfile, char * textId, int x,int y, int h, int w, int a
   fprintf(outfile ,"id: '%s',\n",textId);
   fprintf(outfile ,"hideLabel: true,\n");
   fprintf(outfile ,"disabled: true,\n");
-  fprintf(outfile ,"fieldStyle: {'fontSize': '%dpx'}\n", attr_text_point_size);
+  //fontWeight {normal, bold, bolder, lighter}
+  fprintf(outfile ,"fieldStyle: {'fontSize': '%dpx','fontWeight': '%s'}\n", attr_text_point_size, (attr_label_bold ? "bold":"normal"));
   fprintf(outfile ,"}");
 }
 
@@ -248,7 +249,8 @@ void PanelSquareLed(FILE *outfile, char * textId, int x, int y, int h, int w, in
   fprintf(outfile ,"}");
 }
 
-void PanelSquareBorder(FILE *outfile, char * textId, int x, int y, int h, int w,int attr_bg_color, int zplane)
+void PanelSquareBorder(FILE *outfile, char * textId, int x, int y, int h, int w,
+                      int attr_fr_thick, int attr_fr_color, int attr_bg_color, int zplane)
 {
   if(flagNotFirst){fprintf(outfile ,",\n");} else {flagNotFirst = 1;};
 
@@ -260,16 +262,15 @@ void PanelSquareBorder(FILE *outfile, char * textId, int x, int y, int h, int w,
   fprintf(outfile ,"width: %d,\n",w);
 
   fprintf(outfile ,"style: 'margin: 0; padding:0;;z-index: %d;",zplane);
-
+  if(attr_fr_thick != 0) //border: 2px solid #f0f0f0
+  {
+    fprintf(outfile ,"border: %dpx solid %s;",attr_fr_thick, Int2HexWeb(attr_fr_color) );
+  }
   if(attr_bg_color != 0)
   {
-    if(attr_bg_color != 0 )
-    {
-      fprintf(outfile ,"background-color:%s", Int2HexWeb(attr_bg_color) );
-    }
-
-    fprintf(outfile ,"',\n");
+    fprintf(outfile ,"background-color:%s", Int2HexWeb(attr_bg_color) );
   }
+  fprintf(outfile ,"',\n");
 
   fprintf(outfile ,"id: '%s'\n",textId);
   fprintf(outfile ,"}");
@@ -293,10 +294,11 @@ void PanelCommandButton(FILE *outfile, char * textId, int x, int y, int h, int w
   fprintf(outfile ,"y: %d,\n",y);
   fprintf(outfile ,"height: %d,\n",h);
   fprintf(outfile ,"width: %d,\n",w);
-  fprintf(outfile ,"style:'z-index: %d',\n",zplane);
+  fprintf(outfile ,"style:{'z-index': %d},\n",zplane); // ----------------------
   fprintf(outfile ,"text: '%s',\n",textLabel);
   fprintf(outfile ,"id: '%s',\n",textId);
-  fprintf(outfile ,"onClick: function(){ panelsHelper.openWindow(this.isContained.id,this.id);}\n");
+  //fprintf(outfile ,"onClick: function(){ panelsHelper.openWindow(this.isContained.id,this.id);}\n");
+  fprintf(outfile ,"onClick: function(){ panelsHelper.openWindow(this.up('panel').id,this.id);}\n");
   fprintf(outfile ,"}");
 }
 
@@ -330,6 +332,9 @@ int GetCtrlElem ( FILE *outfile, int panelHandle, int ctrlID )
   int attr_zplane_position;
   int attr_ctrl_tab_position;
   int attr_on_color,attr_off_color;
+
+  int attr_fr_thick;
+  int attr_fr_color;
 
 
     //GetPanelAttribute(panelHandle, ATTR_TITLE,        attr_label_text); //!!
@@ -385,9 +390,10 @@ int GetCtrlElem ( FILE *outfile, int panelHandle, int ctrlID )
            case CTRL_NUMERIC_LS:
              GetCtrlAttribute(panelHandle, ctrlID, ATTR_PRECISION,       &attr_precision);
              GetCtrlAttribute(panelHandle, ctrlID, ATTR_LABEL_VISIBLE,   &attr_label_visible); //!!
-       GetCtrlAttribute(panelHandle, ctrlID, ATTR_TEXT_POINT_SIZE,     &attr_text_point_size); //ATTR_LABEL_POINT_SIZE
+             GetCtrlAttribute(panelHandle, ctrlID, ATTR_TEXT_POINT_SIZE,     &attr_text_point_size); //ATTR_LABEL_POINT_SIZE
+             GetCtrlAttribute(panelHandle, ctrlID, ATTR_TEXT_BOLD,     &attr_label_bold); //ATTR_TEXT_BOLD
 
-             PanelNumeric(outfile,attr_constant_name,x,y,h,w,attr_precision,attr_text_point_size,attr_zplane_position);
+             PanelNumeric(outfile,attr_constant_name,x,y,h,w,attr_precision,attr_label_bold,attr_text_point_size,attr_zplane_position);
 
              len = strlen(attr_label_text);
              if(attr_label_visible && len>0)
@@ -527,9 +533,11 @@ int GetCtrlElem ( FILE *outfile, int panelHandle, int ctrlID )
 
            case CTRL_PICTURE:
            case CTRL_PICTURE_LS:
+             GetCtrlAttribute(panelHandle, ctrlID, ATTR_FRAME_THICKNESS, &attr_fr_thick);
+             GetCtrlAttribute(panelHandle, ctrlID, ATTR_FRAME_COLOR, &attr_fr_color);
              GetCtrlAttribute(panelHandle, ctrlID, ATTR_PICT_BGCOLOR, &attr_bg_color);
 
-             PanelSquareBorder(outfile,attr_constant_name,x,y,h,w,attr_bg_color,attr_zplane_position);
+             PanelSquareBorder(outfile,attr_constant_name,x,y,h,w,attr_fr_thick,attr_fr_color,attr_bg_color,attr_zplane_position);
            break;
 
 
@@ -556,7 +564,11 @@ int GetCtrlElem ( FILE *outfile, int panelHandle, int ctrlID )
            case CTRL_HORIZONTAL_SPLITTER_LS:
            case CTRL_VERTICAL_SPLITTER_LS:
              GetCtrlAttribute(panelHandle, ctrlID, ATTR_FRAME_COLOR, &attr_bg_color);
-             PanelSquareBorder(outfile,attr_constant_name,x,y,h,w,attr_bg_color,attr_zplane_position);
+
+             GetCtrlAttribute(panelHandle, ctrlID, ATTR_FRAME_THICKNESS, &attr_fr_thick);
+             GetCtrlAttribute(panelHandle, ctrlID, ATTR_FRAME_COLOR, &attr_fr_color);
+
+             PanelSquareBorder(outfile,attr_constant_name,x,y,h,w,attr_fr_thick,attr_fr_color,attr_bg_color,attr_zplane_position);
            break;
 
            default:
