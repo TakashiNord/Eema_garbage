@@ -1,0 +1,108 @@
+[Workspace Header]
+Version = 901
+Pathname = "/d/home/EmaProj/pr44-CviPanelParser/CviPanelParser2022v2/CviPanelParser.cws"
+CVI Dir = "/c/program files (x86)/national instruments/cvi90"
+CVI Shared Dir = "/C/Program Files (x86)/National Instruments/Shared/CVI"
+CVI Pub Local Dir = "/C/ProgramData/National Instruments/CVI90"
+CVI Pub Global Dir = "/C/ProgramData/National Instruments/CVI"
+IVI Standard Root Dir = "/C/Program Files (x86)/IVI"
+VXIplug&play Framework Dir = "/C/Program Files (x86)/IVI Foundation/VISA/winnt"
+Number of Projects = 1
+Active Project = 1
+Project 0001 = "CviPanelParser.prj"
+Drag Bar Left = 284
+Window Top = 111
+Window Left = 87
+Window Bottom = 672
+Window Right = 1206
+Maximized = False
+Maximized Children = True
+Max Number Of Errors = 20
+Track Include File Dependencies = True
+Prompt For Missing Includes = True
+Stop On First Error File = False
+Bring Up Err Win For Warnings = True
+Show Build Dialog = False
+Save Changes Before Running = "Always"
+Hide Windows = False
+Break At First Statement = False
+Sort Type = "File Name"
+Number of Opened Files = 1
+Window Confinement Region Enabled = True
+MainColumnWidth = 265
+FileDateColumnWidth = 70
+FileSizeColumnWidth = 70
+StatusColumnWidth = 70
+
+[Project Header 0001]
+Version = 901
+Don't Update DistKit = False
+Platform Code = 4
+Build Configuration = "Debug"
+Warn User If Debugging Release = 1
+Batch Build Release = False
+Batch Build Debug = False
+Force Rebuild = False
+
+[File 0001]
+Path = "/d/home/EmaProj/pr44-CviPanelParser/CviPanelParser2022v2/Test.uir"
+File Type = "User Interface Resource"
+Disk Date = 3728386818
+In Projects = ""
+Window Top = 32
+Window Left = 10
+Window Height = 310
+Window Width = 687
+Window Z-Order = 1
+
+[File 0002]
+Path = "/d/home/EmaProj/pr44-CviPanelParser/CviPanelParser2022v2/CviPanelParser.c"
+File Type = "CSource"
+Disk Date = 3728301269
+In Projects = "1,"
+Window Top = 32
+Window Left = 10
+Source Window State = "1,597,599,599,0,14,14,0,0,0,0,0,0,0,0,0,588,0,597,0,258,527,1,0,"
+
+[File 0003]
+Path = "/d/home/EmaProj/pr44-CviPanelParser/CviPanelParser2022v2/CviPanelParser.h"
+File Type = "Include"
+Disk Date = 3727060764
+In Projects = "1,"
+Window Top = 32
+Window Left = 10
+Source Window State = "1,16,16,16,9,14,14,0,0,0,0,0,0,0,0,0,4,0,13,44,193,527,1,0,"
+
+[Build Options 0001]
+Generate Browse Info = True
+Enable Uninitialized Locals Runtime Warning = True
+Execution Trace = "Disabled"
+Debugging Level = "Extended"
+Break On Library Errors = True
+Break On First Chance Exceptions = False
+Execution Target Address = "Local desktop computer"
+Execution Target Port = 0
+Execution Target Type = 0
+
+[SCC Options 0001]
+Use global settings = True
+SCC Provider = ""
+SCC Project = ""
+Local Path = ""
+Auxiliary Path = ""
+Perform Same Action For .h File As For .uir File = "Ask"
+Perform Same Action For .cds File As For .prj File = "Ask"
+Username = ""
+Comment = ""
+Use Default Username = False
+Use Default Comment = False
+Suppress CVI Error Messages = False
+Always show confirmation dialog = True
+
+[DLL Debugging Support 0001]
+External Process Path = ""
+
+[Command Line Args 0001]
+Command Line Args = ""
+Working Directory = ""
+
