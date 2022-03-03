@@ -384,12 +384,12 @@ int GetCtrlElem ( FILE *outfile, int panelHandle, int ctrlID )
 
 
         // поиск повторов среди ATTR_CONSTANT_NAME
-        if (ic>9999) ic=0;
+        if (ic>=9999) ic=0;
         strcpy(ac[ic],attr_constant_name);strcat(ac[ic],"\0");
         for (jc=0;jc<ic;jc++) {
             if ( ic!=jc && 0==strcmp(ac[ic],ac[jc]) ) {
-                fprintf (stderr, "! -- SECOND ATTR_CONSTANT_NAME Id: %s [%d]\n",attr_constant_name,attr_ctrl_style );
-                break ;
+                fprintf (stderr, "! -- SECOND ATTR_CONSTANT_NAME Id: %s [%d]\n",ac[ic],attr_ctrl_style );
+                break  ; // 
             }
         }
         ic ++ ;
