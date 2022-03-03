@@ -36,6 +36,9 @@
 
   int flagNotFirst = 0 ;
   int flagNotFirstSave = 0; // save for sub panel
+
+  int  ic = 0 ;
+  char ac[9999][MAX_STRING_SIZE];
 //==============================================================================
 // Global functions
 
@@ -324,6 +327,8 @@ int GetCtrlElem ( FILE *outfile, int panelHandle, int ctrlID )
   int numControls;
   int counter = 0;
   int len = 0 ;
+  
+  int jc ;
 
   int y = 0, x = 0;
   int h = 0, w = 0;
@@ -376,6 +381,19 @@ int GetCtrlElem ( FILE *outfile, int panelHandle, int ctrlID )
         GetCtrlAttribute(panelHandle, ctrlID, ATTR_WIDTH,             &w);
         GetCtrlAttribute(panelHandle, ctrlID, ATTR_ZPLANE_POSITION,   &attr_zplane_position);
         //GetCtrlAttribute(panelHandle, ctrlID, ATTR_CTRL_TAB_POSITION, &attr_ctrl_tab_position);
+
+
+        // поиск повторов среди ATTR_CONSTANT_NAME
+        if (ic>9999) ic=0;
+		strcpy(ac[ic],attr_constant_name);strcat(ac[ic],"\0");
+        for (jc=0;jc<ic;jc++) {
+			if ( ic!=jc && 0==strcmp(ac[ic],ac[jc]) ) {
+		        fprintf (stderr, "! -- SECOND ATTR_CONSTANT_NAME Id: %s [%d]\n",attr_constant_name,attr_ctrl_style ); 
+                break ;				
+			}
+		}       
+		ic ++ ;
+		//  ------------------------
 
 
         switch(attr_ctrl_style)
@@ -672,6 +690,7 @@ int main (int argc, char *argv[])
       return -1;
     }
 
+    // если число аргументов больше 2, то показываем Панель
     if (argc > 2)
     {
       showPanel = 1;
@@ -694,7 +713,10 @@ int main (int argc, char *argv[])
     }
 
     InstallPanelCallback(panelHandle, GraphPanelCallback, 0);
-    //DisplayPanel(panelHandle);
+    if (showPanel >= 1 )
+    {
+      DisplayPanel(panelHandle);
+    } 
 
     fprintf (stderr, "! File in : %s \n",argv[1]);
     SplitPath(argv[1],driveName,dirName,fileName);
@@ -744,6 +766,7 @@ int main (int argc, char *argv[])
     // -1 - base file, 0 ... n - tabpanel
     for(i=-1;i<tabCountMain;i++)
     {
+		ic = 0; // обнуляем счетчик элементов для поиска повторов
 
         GetPanelAttribute(panelHandle, ATTR_TITLE,     panel_attr_label_text); //!!
         GetPanelAttribute(panelHandle, ATTR_HEIGHT,    &panel_h);
