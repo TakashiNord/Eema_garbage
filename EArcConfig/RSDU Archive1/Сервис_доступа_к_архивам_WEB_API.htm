@@ -1,0 +1,1093 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Сервис доступа к архивам WEB API</title>
+<meta name="GENERATOR" content="WinCHM">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<style>
+html,body { 
+	/* Default Font */
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11pt;
+}
+</style>
+
+</head>
+
+<body>
+<P class=MsoToc1 style="MARGIN: 6pt 0cm"><A href="#_Toc88556538"><FONT size=2><FONT color=#0000ff>1 Термины, определения, обозначения и 
+сокращения</FONT><SPAN 
+style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none; mso-hide: screen; text-underline: none"><SPAN 
+style="mso-tab-count: 1 dotted">. </SPAN></SPAN><SPAN 
+style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none; mso-hide: screen; text-underline: none">2</SPAN></FONT></A><SPAN 
+style='FONT-SIZE: 11pt; FONT-FAMILY: "Calibri","sans-serif"; LINE-HEIGHT: 115%; mso-ascii-theme-font: minor-latin; mso-fareast-font-family: "Times New Roman"; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-latin; mso-bidi-font-family: "Times New Roman"; mso-bidi-theme-font: minor-bidi'><o:p></O:P></SPAN></P>
+<P class=MsoToc1 style="MARGIN: 6pt 0cm"><A href="#_Toc88556539"><FONT size=2><FONT color=#0000ff>2 Общие сведения</FONT><SPAN 
+style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none; mso-hide: screen; text-underline: none"><SPAN 
+style="mso-tab-count: 1 dotted">. </SPAN></SPAN><SPAN 
+style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none; mso-hide: screen; text-underline: none">3</SPAN></FONT></A><SPAN 
+style='FONT-SIZE: 11pt; FONT-FAMILY: "Calibri","sans-serif"; LINE-HEIGHT: 115%; mso-ascii-theme-font: minor-latin; mso-fareast-font-family: "Times New Roman"; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-latin; mso-bidi-font-family: "Times New Roman"; mso-bidi-theme-font: minor-bidi'><o:p></O:P></SPAN></P>
+<P class=MsoToc2 style="MARGIN: 0cm 0cm 0pt 21.55pt"><A 
+href="#_Toc88556540"><FONT size=2><SPAN lang=EN-US style="mso-ansi-language: EN-US"><FONT color=#0000ff >2.1</FONT></SPAN><FONT color=#0000ff > Назначение 
+сервиса</FONT><SPAN 
+style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none; mso-hide: screen; text-underline: none"><SPAN 
+style="mso-tab-count: 1 dotted">. </SPAN></SPAN><SPAN 
+style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none; mso-hide: screen; text-underline: none">3</SPAN></FONT></A><SPAN 
+style='FONT-SIZE: 11pt; FONT-FAMILY: "Calibri","sans-serif"; LINE-HEIGHT: 115%; mso-ascii-theme-font: minor-latin; mso-fareast-font-family: "Times New Roman"; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-latin; mso-bidi-font-family: "Times New Roman"; mso-bidi-theme-font: minor-bidi'><o:p></O:P></SPAN></P>
+<P class=MsoToc2 style="MARGIN: 0cm 0cm 0pt 21.55pt"><A 
+href="#_Toc88556541"><FONT size=2><SPAN lang=EN-US style="mso-ansi-language: EN-US"><FONT color=#0000ff >2.2</FONT></SPAN><FONT color=#0000ff > Необходимые 
+условия</FONT><SPAN 
+style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none; mso-hide: screen; text-underline: none"><SPAN 
+style="mso-tab-count: 1 dotted">. </SPAN></SPAN><SPAN 
+style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none; mso-hide: screen; text-underline: none">3</SPAN></FONT></A><SPAN 
+style='FONT-SIZE: 11pt; FONT-FAMILY: "Calibri","sans-serif"; LINE-HEIGHT: 115%; mso-ascii-theme-font: minor-latin; mso-fareast-font-family: "Times New Roman"; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-latin; mso-bidi-font-family: "Times New Roman"; mso-bidi-theme-font: minor-bidi'><o:p></O:P></SPAN></P>
+<P class=MsoToc2 style="MARGIN: 0cm 0cm 0pt 21.55pt"><A 
+href="#_Toc88556542"><FONT size=2><SPAN lang=EN-US style="mso-ansi-language: EN-US"><FONT color=#0000ff >2.3</FONT></SPAN><FONT color=#0000ff > Необходимые 
+знания</FONT><SPAN 
+style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none; mso-hide: screen; text-underline: none"><SPAN 
+style="mso-tab-count: 1 dotted">. </SPAN></SPAN><SPAN 
+style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none; mso-hide: screen; text-underline: none">3</SPAN></FONT></A><SPAN 
+style='FONT-SIZE: 11pt; FONT-FAMILY: "Calibri","sans-serif"; LINE-HEIGHT: 115%; mso-ascii-theme-font: minor-latin; mso-fareast-font-family: "Times New Roman"; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-latin; mso-bidi-font-family: "Times New Roman"; mso-bidi-theme-font: minor-bidi'><o:p></O:P></SPAN></P>
+<P class=MsoToc1 style="MARGIN: 6pt 0cm"><A href="#_Toc88556543"><FONT size=2><FONT color=#0000ff>3 Создание учетной записи РСДУ</FONT><SPAN 
+style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none; mso-hide: screen; text-underline: none"><SPAN 
+style="mso-tab-count: 1 dotted">.. </SPAN></SPAN><SPAN 
+style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none; mso-hide: screen; text-underline: none">5</SPAN></FONT></A><SPAN 
+style='FONT-SIZE: 11pt; FONT-FAMILY: "Calibri","sans-serif"; LINE-HEIGHT: 115%; mso-ascii-theme-font: minor-latin; mso-fareast-font-family: "Times New Roman"; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-latin; mso-bidi-font-family: "Times New Roman"; mso-bidi-theme-font: minor-bidi'><o:p></O:P></SPAN></P>
+<P class=MsoToc2 style="MARGIN: 0cm 0cm 0pt 21.55pt"><A 
+href="#_Toc88556544"><FONT size=2><FONT color=#0000ff><SPAN lang=EN-US 
+style="mso-ansi-language: EN-US">3.1</SPAN><SPAN lang=EN-US> 
+</SPAN></FONT><FONT color=#0000ff >Описание исполняемого 
+модуля</FONT><SPAN 
+style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none; mso-hide: screen; text-underline: none"><SPAN 
+style="mso-tab-count: 1 dotted">. </SPAN></SPAN><SPAN 
+style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none; mso-hide: screen; text-underline: none">5</SPAN></FONT></A><SPAN 
+style='FONT-SIZE: 11pt; FONT-FAMILY: "Calibri","sans-serif"; LINE-HEIGHT: 115%; mso-ascii-theme-font: minor-latin; mso-fareast-font-family: "Times New Roman"; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-latin; mso-bidi-font-family: "Times New Roman"; mso-bidi-theme-font: minor-bidi'><o:p></O:P></SPAN></P>
+<P class=MsoToc2 style="MARGIN: 0cm 0cm 0pt 21.55pt"><A 
+href="#_Toc88556545"><FONT size=2><SPAN lang=EN-US style="mso-ansi-language: EN-US"><FONT color=#0000ff >3.2</FONT></SPAN><FONT color=#0000ff > Описание 
+пользователя-процесса</FONT><SPAN 
+style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none; mso-hide: screen; text-underline: none"><SPAN 
+style="mso-tab-count: 1 dotted">. </SPAN></SPAN><SPAN 
+style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none; mso-hide: screen; text-underline: none">7</SPAN></FONT></A><SPAN 
+style='FONT-SIZE: 11pt; FONT-FAMILY: "Calibri","sans-serif"; LINE-HEIGHT: 115%; mso-ascii-theme-font: minor-latin; mso-fareast-font-family: "Times New Roman"; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-latin; mso-bidi-font-family: "Times New Roman"; mso-bidi-theme-font: minor-bidi'><o:p></O:P></SPAN></P>
+<P class=MsoToc1 style="MARGIN: 6pt 0cm"><A href="#_Toc88556546"><FONT size=2><FONT color=#0000ff>4 Установка и управление сервисом</FONT><SPAN 
+style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none; mso-hide: screen; text-underline: none"><SPAN 
+style="mso-tab-count: 1 dotted">.. </SPAN></SPAN><SPAN 
+style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none; mso-hide: screen; text-underline: none">9</SPAN></FONT></A><SPAN 
+style='FONT-SIZE: 11pt; FONT-FAMILY: "Calibri","sans-serif"; LINE-HEIGHT: 115%; mso-ascii-theme-font: minor-latin; mso-fareast-font-family: "Times New Roman"; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-latin; mso-bidi-font-family: "Times New Roman"; mso-bidi-theme-font: minor-bidi'><o:p></O:P></SPAN></P>
+<P class=MsoToc2 style="MARGIN: 0cm 0cm 0pt 21.55pt"><A 
+href="#_Toc88556547"><FONT size=2><SPAN lang=EN-US style="mso-ansi-language: EN-US"><FONT color=#0000ff >4.1</FONT></SPAN><FONT color=#0000ff > Установка 
+сервиса</FONT><SPAN 
+style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none; mso-hide: screen; text-underline: none"><SPAN 
+style="mso-tab-count: 1 dotted">. </SPAN></SPAN><SPAN 
+style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none; mso-hide: screen; text-underline: none">9</SPAN></FONT></A><SPAN 
+style='FONT-SIZE: 11pt; FONT-FAMILY: "Calibri","sans-serif"; LINE-HEIGHT: 115%; mso-ascii-theme-font: minor-latin; mso-fareast-font-family: "Times New Roman"; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-latin; mso-bidi-font-family: "Times New Roman"; mso-bidi-theme-font: minor-bidi'><o:p></O:P></SPAN></P>
+<P class=MsoToc2 style="MARGIN: 0cm 0cm 0pt 21.55pt"><A 
+href="#_Toc88556548"><FONT size=2><SPAN lang=EN-US style="mso-ansi-language: EN-US"><FONT color=#0000ff >4.2</FONT></SPAN><FONT color=#0000ff > Запуск и 
+останов сервиса</FONT><SPAN 
+style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none; mso-hide: screen; text-underline: none"><SPAN 
+style="mso-tab-count: 1 dotted">. </SPAN></SPAN><SPAN 
+style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none; mso-hide: screen; text-underline: none">10</SPAN></FONT></A><SPAN 
+style='FONT-SIZE: 11pt; FONT-FAMILY: "Calibri","sans-serif"; LINE-HEIGHT: 115%; mso-ascii-theme-font: minor-latin; mso-fareast-font-family: "Times New Roman"; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-latin; mso-bidi-font-family: "Times New Roman"; mso-bidi-theme-font: minor-bidi'><o:p></O:P></SPAN></P>
+<P class=MsoToc2 style="MARGIN: 0cm 0cm 0pt 21.55pt"><A 
+href="#_Toc88556549"><FONT size=2><SPAN lang=EN-US style="mso-ansi-language: EN-US"><FONT color=#0000ff >4.3</FONT></SPAN><FONT color=#0000ff > Контроль 
+лог-файлов</FONT><SPAN 
+style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none; mso-hide: screen; text-underline: none"><SPAN 
+style="mso-tab-count: 1 dotted">. </SPAN></SPAN><SPAN 
+style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none; mso-hide: screen; text-underline: none">10</SPAN></FONT></A><SPAN 
+style='FONT-SIZE: 11pt; FONT-FAMILY: "Calibri","sans-serif"; LINE-HEIGHT: 115%; mso-ascii-theme-font: minor-latin; mso-fareast-font-family: "Times New Roman"; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-latin; mso-bidi-font-family: "Times New Roman"; mso-bidi-theme-font: minor-bidi'><o:p></O:P></SPAN></P>
+<P class=MsoToc2 style="MARGIN: 0cm 0cm 0pt 21.55pt"><A 
+href="#_Toc88556550"><FONT size=2><SPAN lang=EN-US style="mso-ansi-language: EN-US"><FONT color=#0000ff >4.4</FONT></SPAN><FONT color=#0000ff > Удаление 
+сервиса</FONT><SPAN 
+style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none; mso-hide: screen; text-underline: none"><SPAN 
+style="mso-tab-count: 1 dotted">. </SPAN></SPAN><SPAN 
+style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none; mso-hide: screen; text-underline: none">10</SPAN></FONT></A><SPAN 
+style='FONT-SIZE: 11pt; FONT-FAMILY: "Calibri","sans-serif"; LINE-HEIGHT: 115%; mso-ascii-theme-font: minor-latin; mso-fareast-font-family: "Times New Roman"; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-latin; mso-bidi-font-family: "Times New Roman"; mso-bidi-theme-font: minor-bidi'><o:p></O:P></SPAN></P>
+<P class=MsoToc1 style="MARGIN: 6pt 0cm"><A href="#_Toc88556551"><FONT size=2><FONT color=#0000ff>5 Конфигурирование сервиса</FONT><SPAN 
+style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none; mso-hide: screen; text-underline: none"><SPAN 
+style="mso-tab-count: 1 dotted">. </SPAN></SPAN><SPAN 
+style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none; mso-hide: screen; text-underline: none">11</SPAN></FONT></A><SPAN 
+style='FONT-SIZE: 11pt; FONT-FAMILY: "Calibri","sans-serif"; LINE-HEIGHT: 115%; mso-ascii-theme-font: minor-latin; mso-fareast-font-family: "Times New Roman"; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-latin; mso-bidi-font-family: "Times New Roman"; mso-bidi-theme-font: minor-bidi'><o:p></O:P></SPAN></P>
+<P class=MsoToc2 style="MARGIN: 0cm 0cm 0pt 21.55pt"><A 
+href="#_Toc88556552"><FONT size=2><SPAN lang=EN-US style="mso-ansi-language: EN-US"><FONT color=#0000ff >5.1</FONT></SPAN><FONT color=#0000ff > 
+Файл</FONT><SPAN lang=EN-US style="mso-ansi-language: EN-US"><FONT color=#0000ff > arch-</FONT></SPAN><FONT color=#0000ff >webapi</FONT><SPAN lang=EN-US style="mso-ansi-language: EN-US"><FONT color=#0000ff>.json</FONT></SPAN><SPAN 
+style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none; mso-hide: screen; text-underline: none"><SPAN 
+style="mso-tab-count: 1 dotted">.. </SPAN></SPAN><SPAN 
+style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none; mso-hide: screen; text-underline: none">11</SPAN></FONT></A><SPAN 
+style='FONT-SIZE: 11pt; FONT-FAMILY: "Calibri","sans-serif"; LINE-HEIGHT: 115%; mso-ascii-theme-font: minor-latin; mso-fareast-font-family: "Times New Roman"; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-latin; mso-bidi-font-family: "Times New Roman"; mso-bidi-theme-font: minor-bidi'><o:p></O:P></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 6pt"><o:p><FONT size=2></FONT></O:P></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 6pt"><SPAN class=MsoPageNumber><SPAN 
+style='FONT-SIZE: 11pt; LINE-HEIGHT: 115%; mso-bidi-font-family: "Times New Roman"'><o:p><STRONG><FONT size=2></FONT></STRONG></O:P></SPAN></SPAN></P>
+<H1 
+style="MARGIN: 0cm 164.45pt 12pt 14.2pt; TEXT-INDENT: 0cm; mso-list: l3 level1 lfo4"><A 
+name=_Toc88556538><SPAN 
+style="mso-fareast-font-family: Arial; mso-bidi-font-family: Arial"><SPAN 
+style="mso-list: Ignore"><FONT color=#17365d size=2>1 
+</FONT></SPAN></SPAN></A><V:SHAPETYPE id="_x0000_t75" stroked="f" 
+filled="f" path="m@4@5l@4@11@9@11@9@5xe" o:preferrelative="t" o:spt="75" 
+coordsize="21600,21600"><v:stroke joinstyle="miter"></V:STROKE><v:formulas><v:f 
+eqn="if lineDrawn pixelLineWidth 0"></V:F><v:f eqn="sum @0 1 0"></V:F><v:f 
+eqn="sum 0 0 @1"></V:F><v:f eqn="prod @2 1 2"></V:F><v:f 
+eqn="prod @3 21600 pixelWidth"></V:F><v:f 
+eqn="prod @3 21600 pixelHeight"></V:F><v:f eqn="sum @0 0 1"></V:F><v:f 
+eqn="prod @6 1 2"></V:F><v:f eqn="prod @7 21600 pixelWidth"></V:F><v:f 
+eqn="sum @8 21600 0"></V:F><v:f eqn="prod @7 21600 pixelHeight"></V:F><v:f 
+eqn="sum @10 21600 0"></V:F></V:FORMULAS><v:path o:connecttype="rect" 
+gradientshapeok="t" o:extrusionok="f"></V:PATH><o:lock aspectratio="t" 
+v:ext="edit"></O:LOCK></V:SHAPETYPE><V:SHAPE id=Рисунок_x0020_11 
+style="HEIGHT: 53.85pt; WIDTH: 484.45pt; POSITION: absolute; TEXT-ALIGN: left; MARGIN-LEFT: 0px; LEFT: 0px; Z-INDEX: -251658240; MARGIN-TOP: -5.55pt; VISIBILITY: visible; mso-wrap-style: square; mso-width-percent: 0; mso-height-percent: 0; mso-wrap-distance-left: 9pt; mso-wrap-distance-top: 0; mso-wrap-distance-right: 9pt; mso-wrap-distance-bottom: 0; mso-position-horizontal: absolute; mso-position-horizontal-relative: text; mso-position-vertical: absolute; mso-position-vertical-relative: text; mso-width-relative: page; mso-height-relative: page" 
+type="#_x0000_t75" o:spid="_x0000_s1030" o:allowincell="f"><FONT color=#17365d><V:IMAGEDATA cropright="12944f" o:title="" 
+src="file:///C:\Users\gal\AppData\Local\Temp\msohtmlclip1\01\clip_image001.wmz"></V:IMAGEDATA><o:lock 
+aspectratio="f" v:ext="edit"></O:LOCK></FONT></V:SHAPE><FONT color=#17365d><SPAN style="mso-bookmark: _Toc88556538"><FONT size=2>Термины, определения, обозначения и 
+сокращения</FONT>  
+  </SPAN><o:p></O:P></FONT></H1>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 6pt"><A name=_Hlk39060785><SPAN 
+style="COLOR: black"><FONT size=2>В настоящем документе приняты следующие 
+термины, определения, обозначения и сокращения</FONT></SPAN></A><SPAN 
+style="COLOR: black"><FONT size=2>:<o:p></O:P></FONT></SPAN></P>
+<P class=a0 style="MARGIN: 0cm 0cm 6pt 36pt"><FONT size=2><B 
+style="mso-bidi-font-weight: normal"><SPAN lang=EN-US 
+style="mso-ansi-language: EN-US">systemd</SPAN> 
+– </B><SPAN style="mso-bidi-font-weight: bold">с</SPAN>тандартная система инициализации, запуска и 
+управления фоновыми процессами в ОС Linux.<o:p></O:P></FONT></P>
+<P class=a0 style="MARGIN: 0cm 0cm 6pt 36pt"><FONT size=2><B 
+style="mso-bidi-font-weight: normal">Пакет обновления БД – 
+</B>набор скриптов, предназначенных для внесения изменений в 
+структуру и данные таблиц БДТИ комплекса.<o:p></O:P></FONT></P>
+<P class=a0 style="MARGIN: 0cm 0cm 6pt 36pt"><FONT size=2><B 
+style="mso-bidi-font-weight: normal">БДТИ – </B>База Данных Технологической Информации РСДУ.<o:p></O:P></FONT></P>
+<P class=a0 style="MARGIN: 0cm 0cm 6pt 36pt"><FONT size=2><B 
+style="mso-bidi-font-weight: normal">СУБД –</B> 
+Система Управления Базами Данных.<o:p></O:P></FONT></P>
+<P class=a0 style="MARGIN: 0cm 0cm 6pt 36pt"><FONT size=2><B 
+style="mso-bidi-font-weight: normal">Лог-файл – </B>текстовый файл с записями о событиях, происходящих в программном 
+обеспечении, в хронологическом порядке.<o:p></O:P></FONT></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 6pt"><o:p><FONT size=2></FONT></O:P></P>
+<H1 
+style="MARGIN: 0cm 164.45pt 12pt 14.2pt; TEXT-INDENT: 0cm; mso-list: l3 level1 lfo4"><A 
+name=_Toc88556539><SPAN 
+style="mso-fareast-font-family: Arial; mso-bidi-font-family: Arial"><SPAN 
+style="mso-list: Ignore"><FONT color=#17365d size=2>2 
+</FONT></SPAN></SPAN></A><V:SHAPE id=Рисунок_x0020_12 
+style="HEIGHT: 28.35pt; WIDTH: 484.45pt; POSITION: absolute; TEXT-ALIGN: left; MARGIN-LEFT: 0.3pt; LEFT: 0px; Z-INDEX: -251662336; MARGIN-TOP: -2.85pt; VISIBILITY: visible; mso-wrap-style: square; mso-width-percent: 0; mso-height-percent: 0; mso-wrap-distance-left: 9pt; mso-wrap-distance-top: 0; mso-wrap-distance-right: 9pt; mso-wrap-distance-bottom: 0; mso-position-horizontal: absolute; mso-position-horizontal-relative: text; mso-position-vertical: absolute; mso-position-vertical-relative: text; mso-width-relative: page; mso-height-relative: page" 
+type="#_x0000_t75" o:spid="_x0000_s1029" o:allowincell="f"><FONT color=#17365d><V:IMAGEDATA cropright="13046f" o:title="" 
+src="file:///C:\Users\gal\AppData\Local\Temp\msohtmlclip1\01\clip_image001.wmz"></V:IMAGEDATA><o:lock 
+aspectratio="f" v:ext="edit"></O:LOCK></FONT></V:SHAPE><FONT color=#17365d><SPAN style="mso-bookmark: _Toc88556539"><FONT size=2>Общие 
+сведения</FONT> 
+</SPAN><o:p></O:P></FONT></H1>
+<H2 style="MARGIN: 6pt 0cm 12pt 28.8pt; mso-list: l3 level2 lfo4"><A 
+name=_Toc88556540></A><A name=_Toc11145431></A><A name=_Toc462055435><SPAN 
+style="mso-bookmark: _Toc11145431"><SPAN 
+style="mso-bookmark: _Toc88556540"><FONT size=2><SPAN lang=EN-US 
+style="mso-fareast-font-family: Arial; mso-bidi-font-family: Arial; mso-ansi-language: EN-US"><SPAN 
+style="mso-list: Ignore">2.1 </SPAN></SPAN>Назначение </FONT> </SPAN></SPAN></A><SPAN 
+style="mso-bookmark: _Toc88556540"><FONT size=2>сервиса</FONT></SPAN><o:p></O:P></H2>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 6pt"><A name=_Toc11145432></A><A 
+name=_Toc462055436><SPAN style="mso-bookmark: _Toc11145432"><FONT size=2>Сервис 
+доступа к архивам </FONT></SPAN></A><FONT size=2><SPAN 
+style="mso-bookmark: _Toc462055436"><SPAN 
+style="mso-bookmark: _Toc11145432"><SPAN lang=EN-US 
+style="mso-ansi-language: EN-US">WEB</SPAN><SPAN lang=EN-US> 
+</SPAN></SPAN></SPAN><SPAN style="mso-bookmark: _Toc462055436"><SPAN 
+style="mso-bookmark: _Toc11145432"><SPAN lang=EN-US 
+style="mso-ansi-language: EN-US">API</SPAN><SPAN lang=EN-US> </SPAN>(</SPAN></SPAN><SPAN style="mso-bookmark: _Toc462055436"><SPAN 
+style="mso-bookmark: _Toc11145432"><SPAN class=a3><SPAN 
+style='mso-bidi-font-family: "Times New Roman"'><FONT face="Courier New">arch-webapi</FONT></SPAN></SPAN>) предоставляет 
+доступ к архивным данным комплекса РСДУ. Доступны следующие функции: чтение, 
+запись и удаление данных. Информация об изменении архивных данных направляется 
+брокеру сообщений RabbitMQ.<o:p></O:P></SPAN></SPAN></FONT></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 6pt"><FONT size=2><SPAN 
+style="mso-bookmark: _Toc462055436"><SPAN 
+style="mso-bookmark: _Toc11145432">В сервисе отдельно 
+конфигурируется подключения к БД модели и к базам данных архивов. Поддерживаются 
+СУБД </SPAN></SPAN><SPAN style="mso-bookmark: _Toc462055436"><SPAN 
+style="mso-bookmark: _Toc11145432"><SPAN lang=EN-US 
+style="mso-ansi-language: EN-US">Oracle</SPAN> 
+и </SPAN></SPAN><SPAN style="mso-bookmark: _Toc462055436"><SPAN 
+style="mso-bookmark: _Toc11145432"><SPAN lang=EN-US 
+style="mso-ansi-language: EN-US">PostgreSQL</SPAN> для модели данных, </SPAN></SPAN><SPAN 
+style="mso-bookmark: _Toc462055436"><SPAN 
+style="mso-bookmark: _Toc11145432"><SPAN lang=EN-US 
+style="mso-ansi-language: EN-US">Oracle</SPAN> 
+и </SPAN></SPAN><SPAN style="mso-bookmark: _Toc462055436"><SPAN 
+style="mso-bookmark: _Toc11145432"><SPAN lang=EN-US 
+style="mso-ansi-language: EN-US">Cassandra</SPAN> для базы данных архивов.<o:p></O:P></SPAN></SPAN></FONT></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 6pt"><FONT size=2><SPAN 
+style="mso-bookmark: _Toc462055436"><SPAN 
+style="mso-bookmark: _Toc11145432">Описание АПИ сервиса доступно 
+после установки в интерфейсе </SPAN></SPAN><SPAN 
+style="mso-bookmark: _Toc462055436"><SPAN 
+style="mso-bookmark: _Toc11145432"><SPAN lang=EN-US 
+style="mso-ansi-language: EN-US">Swagger</SPAN> 
+по адресу: </SPAN></SPAN><FONT face="Courier New"><SPAN 
+style="mso-bookmark: _Toc462055436"><SPAN 
+style="mso-bookmark: _Toc11145432"><SPAN class=a3><SPAN lang=EN-US 
+style='mso-bidi-font-family: "Times New Roman"; mso-ansi-language: EN-US'>http</SPAN></SPAN></SPAN></SPAN><SPAN 
+style="mso-bookmark: _Toc462055436"><SPAN 
+style="mso-bookmark: _Toc11145432"><SPAN class=a3><SPAN 
+style='mso-bidi-font-family: "Times New Roman"'>://host:port/</SPAN></SPAN></SPAN></SPAN><SPAN 
+style="mso-bookmark: _Toc462055436"><SPAN 
+style="mso-bookmark: _Toc11145432"><SPAN class=a3><SPAN lang=EN-US 
+style='mso-bidi-font-family: "Times New Roman"; mso-ansi-language: EN-US'>rsdu</SPAN></SPAN></SPAN></SPAN><SPAN 
+style="mso-bookmark: _Toc462055436"><SPAN 
+style="mso-bookmark: _Toc11145432"><SPAN class=a3><SPAN 
+style='mso-bidi-font-family: "Times New Roman"'>/</SPAN></SPAN></SPAN></SPAN><SPAN 
+style="mso-bookmark: _Toc462055436"><SPAN 
+style="mso-bookmark: _Toc11145432"><SPAN class=a3><SPAN lang=EN-US 
+style='mso-bidi-font-family: "Times New Roman"; mso-ansi-language: EN-US'>archives</SPAN></SPAN></SPAN></SPAN><SPAN 
+style="mso-bookmark: _Toc462055436"><SPAN 
+style="mso-bookmark: _Toc11145432"><SPAN class=a3><SPAN 
+style='mso-bidi-font-family: "Times New Roman"'>/</SPAN></SPAN></SPAN></SPAN><SPAN 
+style="mso-bookmark: _Toc462055436"><SPAN 
+style="mso-bookmark: _Toc11145432"><SPAN class=a3><SPAN lang=EN-US 
+style='mso-bidi-font-family: "Times New Roman"; mso-ansi-language: EN-US'>swagger</SPAN></SPAN></SPAN></SPAN><SPAN 
+style="mso-bookmark: _Toc462055436"><SPAN 
+style="mso-bookmark: _Toc11145432"><SPAN class=a3><SPAN 
+style='mso-bidi-font-family: "Times New Roman"'>/</SPAN></SPAN></SPAN></SPAN><SPAN 
+style="mso-bookmark: _Toc462055436"><SPAN 
+style="mso-bookmark: _Toc11145432"><SPAN class=a3><SPAN lang=EN-US 
+style='mso-bidi-font-family: "Times New Roman"; mso-ansi-language: EN-US'>index</SPAN></SPAN></SPAN></SPAN><SPAN 
+style="mso-bookmark: _Toc462055436"><SPAN 
+style="mso-bookmark: _Toc11145432"><SPAN class=a3><SPAN 
+style='mso-bidi-font-family: "Times New Roman"'>.</SPAN></SPAN></SPAN></SPAN></FONT><SPAN 
+style="mso-bookmark: _Toc462055436"><SPAN 
+style="mso-bookmark: _Toc11145432"><SPAN class=a3><SPAN lang=EN-US 
+style='mso-bidi-font-family: "Times New Roman"; mso-ansi-language: EN-US'><FONT face="Courier New">html</FONT></SPAN></SPAN>.<o:p></O:P></SPAN></SPAN></FONT></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 6pt"><FONT size=2><SPAN 
+style="mso-bookmark: _Toc462055436"><SPAN 
+style="mso-bookmark: _Toc11145432">Сервис доступа к архивам 
+работает в операционной системе </SPAN></SPAN><SPAN 
+style="mso-bookmark: _Toc462055436"><SPAN 
+style="mso-bookmark: _Toc11145432"><SPAN lang=EN-US 
+style="mso-ansi-language: EN-US">Linux</SPAN>.<o:p></O:P></SPAN></SPAN></FONT></P>
+<H2 style="MARGIN: 6pt 0cm 12pt 28.8pt; mso-list: l3 level2 lfo4"><SPAN 
+style="mso-bookmark: _Toc462055436"><SPAN style="mso-bookmark: _Toc11145432"><A 
+name=_Toc88556541><FONT size=2><SPAN lang=EN-US 
+style="mso-fareast-font-family: Arial; mso-bidi-font-family: Arial; mso-ansi-language: EN-US"><SPAN 
+style="mso-list: Ignore">2.2 </SPAN></SPAN>Необходимые условия</FONT> 
+</A></SPAN></SPAN><o:p></O:P></H2>
+<P class=MsoListBullet2 
+style="MARGIN: 0cm 0cm 6pt 32.15pt; mso-list: l2 level1 lfo1"><FONT size=2><SPAN 
+style="FONT-FAMILY: Wingdings; mso-fareast-font-family: Wingdings; mso-bidi-font-family: Wingdings"><SPAN 
+style="mso-list: Ignore">ü<SPAN 
+style='FONT: 7pt "Times New Roman"'>&nbsp; </SPAN></SPAN></SPAN>ОС 
+<SPAN lang=EN-US style="mso-ansi-language: EN-US">Linux</SPAN>: <o:p></O:P></FONT></P>
+<P class=MsoListBullet3 
+style="MARGIN: 0cm 0cm 6pt 46.3pt; mso-list: l1 level1 lfo2"><FONT size=2><SPAN 
+style='FONT-FAMILY: "Courier New"; mso-fareast-font-family: "Courier New"'><SPAN 
+style="mso-list: Ignore">o<SPAN 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp; </SPAN></SPAN></SPAN>Ubuntu 16.04 или выше;<o:p></O:P></FONT></P>
+<P class=MsoListBullet3 
+style="MARGIN: 0cm 0cm 6pt 46.3pt; mso-list: l1 level1 lfo2"><FONT size=2><SPAN 
+style='FONT-FAMILY: "Courier New"; mso-fareast-font-family: "Courier New"'><SPAN 
+style="mso-list: Ignore">o<SPAN 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp; </SPAN></SPAN></SPAN>Debian 9 или выше;<o:p></O:P></FONT></P>
+<P class=MsoListBullet3 
+style="MARGIN: 0cm 0cm 6pt 46.3pt; mso-list: l1 level1 lfo2"><FONT size=2><SPAN 
+style='FONT-FAMILY: "Courier New"; mso-fareast-font-family: "Courier New"'><SPAN 
+style="mso-list: Ignore">o<SPAN 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp; </SPAN></SPAN></SPAN>openSUSE 15 или выше;<o:p></O:P></FONT></P>
+<P class=MsoListBullet3 
+style="MARGIN: 0cm 0cm 6pt 46.3pt; mso-list: l1 level1 lfo2"><FONT size=2><SPAN lang=EN-US 
+style='FONT-FAMILY: "Courier New"; mso-fareast-font-family: "Courier New"; mso-ansi-language: EN-US'><SPAN 
+style="mso-list: Ignore">o<SPAN 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp; </SPAN></SPAN></SPAN><SPAN 
+lang=EN-US style="mso-ansi-language: EN-US">SUSE Enterprise Linux 
+(SLES) 12 SP2 </SPAN>или<SPAN 
+style="mso-ansi-language: EN-US"> </SPAN>выше<SPAN lang=EN-US style="mso-ansi-language: EN-US">.<o:p></O:P></SPAN></FONT></P>
+<P class=MsoListBullet2 
+style="MARGIN: 0cm 0cm 6pt 32.15pt; mso-list: l2 level1 lfo1"><FONT size=2><SPAN 
+style="FONT-FAMILY: Wingdings; mso-fareast-font-family: Wingdings; mso-bidi-font-family: Wingdings"><SPAN 
+style="mso-list: Ignore">ü<SPAN 
+style='FONT: 7pt "Times New Roman"'>&nbsp; </SPAN></SPAN></SPAN>Установлены следующие пакеты обновления БДТИ:<o:p></O:P></FONT></P>
+<P class=MsoListBullet3 
+style="MARGIN: 0cm 0cm 6pt 46.3pt; mso-list: l1 level1 lfo2"><FONT size=2><SPAN lang=EN-US 
+style='FONT-FAMILY: "Courier New"; mso-fareast-font-family: "Courier New"; mso-ansi-language: EN-US'><SPAN 
+style="mso-list: Ignore">o<SPAN 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp; </SPAN></SPAN></SPAN><SPAN 
+lang=EN-US style="mso-ansi-language: EN-US">2021_01_26_ADD_ROLE_ARC_EXT_WRITE.<o:p></O:P></SPAN></FONT></P>
+<P class=MsoListBullet2 
+style="MARGIN: 0cm 0cm 6pt 32.15pt; mso-list: l2 level1 lfo1"><FONT size=2><SPAN lang=EN-US 
+style="FONT-FAMILY: Wingdings; mso-fareast-font-family: Wingdings; mso-bidi-font-family: Wingdings; mso-ansi-language: EN-US"><SPAN 
+style="mso-list: Ignore">ü<SPAN 
+style='FONT: 7pt "Times New Roman"'>&nbsp; </SPAN></SPAN></SPAN>Брокер<SPAN style="mso-ansi-language: EN-US"> 
+</SPAN>сообщений<SPAN 
+style="mso-ansi-language: EN-US"> <SPAN lang=EN-US>RabbitMQ 
+</SPAN></SPAN>сконфигурирован<SPAN 
+style="mso-ansi-language: EN-US"> </SPAN>согласно</FONT><SPAN style="mso-ansi-language: EN-US"><FONT size=2> 
+</FONT><SPAN lang=EN-US><BR></SPAN></SPAN><FONT size=2><SPAN class=a3><SPAN 
+lang=EN-US 
+style='mso-bidi-font-family: "Times New Roman"; mso-ansi-language: EN-US'><FONT face="Courier New">RSDU5_RMQ-CONF_YYYYMMDD_HHMM-&lt;revision&gt;.tar 
+</FONT></SPAN></SPAN><SPAN lang=EN-US style="mso-ansi-language: EN-US">версии 
+РСДУ 5.21.4.0 или выше.<o:p></O:P></SPAN></FONT></P>
+<H2 style="MARGIN: 6pt 0cm 12pt 28.8pt; mso-list: l3 level2 lfo4"><A 
+name=_Toc88556542></A><A name=_Toc11145433></A><A name=_Toc462055437><SPAN 
+style="mso-bookmark: _Toc11145433"><SPAN 
+style="mso-bookmark: _Toc88556542"><FONT size=2><SPAN lang=EN-US 
+style="mso-fareast-font-family: Arial; mso-bidi-font-family: Arial; mso-ansi-language: EN-US"><SPAN 
+style="mso-list: Ignore">2.3 </SPAN></SPAN>Необходимые знания</FONT> 
+</SPAN></SPAN></A><o:p></O:P></H2>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 6pt"><FONT size=2>Дистрибутив 
+серверной части РСДУ: <FONT face="Courier New"><SPAN class=a3><SPAN lang=EN-US 
+style='mso-bidi-font-family: "Times New Roman"; mso-ansi-language: EN-US'>RSDU</SPAN></SPAN><SPAN 
+class=a3><SPAN 
+style='mso-bidi-font-family: "Times New Roman"'>5_</SPAN></SPAN><SPAN 
+class=a3><SPAN lang=EN-US 
+style='mso-bidi-font-family: "Times New Roman"; mso-ansi-language: EN-US'>SCADA</SPAN></SPAN><SPAN 
+class=a3><SPAN 
+style='mso-bidi-font-family: "Times New Roman"'>_</SPAN></SPAN><SPAN 
+class=a3><SPAN lang=EN-US 
+style='mso-bidi-font-family: "Times New Roman"; mso-ansi-language: EN-US'>linux</SPAN></SPAN><SPAN 
+class=a3><SPAN 
+style='mso-bidi-font-family: "Times New Roman"'>-</SPAN></SPAN><SPAN 
+class=a3><SPAN lang=EN-US 
+style='mso-bidi-font-family: "Times New Roman"; mso-ansi-language: EN-US'>x</SPAN></SPAN><SPAN class=a3><SPAN 
+style='mso-bidi-font-family: "Times New Roman"'>64-&lt;</SPAN></SPAN><SPAN class=a3><SPAN lang=EN-US 
+style='mso-bidi-font-family: "Times New Roman"; mso-ansi-language: EN-US'>version</SPAN></SPAN><SPAN class=a3><SPAN style='mso-bidi-font-family: "Times New Roman"'>&gt;-</SPAN></SPAN><SPAN class=a3><SPAN lang=EN-US 
+style='mso-bidi-font-family: "Times New Roman"; mso-ansi-language: EN-US'>YYYYMMDD</SPAN></SPAN><SPAN class=a3><SPAN style='mso-bidi-font-family: "Times New Roman"'>_</SPAN></SPAN><SPAN class=a3><SPAN 
+lang=EN-US 
+style='mso-bidi-font-family: "Times New Roman"; mso-ansi-language: EN-US'>HHMM</SPAN></SPAN><SPAN class=a3><SPAN 
+style='mso-bidi-font-family: "Times New Roman"'>-&lt;</SPAN></SPAN><SPAN class=a3><SPAN lang=EN-US 
+style='mso-bidi-font-family: "Times New Roman"; mso-ansi-language: EN-US'>revision</SPAN></SPAN><SPAN class=a3><SPAN style='mso-bidi-font-family: "Times New Roman"'>&gt;.</SPAN></SPAN><SPAN class=a3><SPAN lang=EN-US 
+style='mso-bidi-font-family: "Times New Roman"; mso-ansi-language: EN-US'>tar</SPAN></SPAN><SPAN class=a3><SPAN 
+style='mso-bidi-font-family: "Times New Roman"'>.</SPAN></SPAN><SPAN class=a3><SPAN 
+lang=EN-US 
+style='mso-bidi-font-family: "Times New Roman"; mso-ansi-language: EN-US'>bz</SPAN></SPAN><SPAN class=a3><SPAN 
+style='mso-bidi-font-family: "Times New Roman"'>2<o:p></O:P></SPAN></SPAN></FONT></FONT></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 6pt"><FONT size=2>Название сервиса: Сервис доступа к 
+архивам <SPAN lang=EN-US style="mso-ansi-language: EN-US">WEB</SPAN><SPAN lang=EN-US> 
+</SPAN><SPAN lang=EN-US style="mso-ansi-language: EN-US">API</SPAN>.<o:p></O:P></FONT></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 6pt"><FONT size=2>Модуль<SPAN class=a3><SPAN style='mso-bidi-font-family: "Times New Roman"'><FONT face="Courier New">: 
+arch-webapi</FONT></SPAN></SPAN>.<o:p></O:P></FONT></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 6pt"><FONT size=2>Для запуска сервиса необходимо 
+знать:<o:p></O:P></FONT></P>
+<P class=MsoListBullet2 
+style="MARGIN: 0cm 0cm 6pt 32.15pt; mso-list: l2 level1 lfo1"><FONT size=2><SPAN 
+style="FONT-FAMILY: Wingdings; mso-fareast-font-family: Wingdings; mso-bidi-font-family: Wingdings"><SPAN style="mso-list: Ignore">ü<SPAN style='FONT: 7pt "Times New Roman"'>&nbsp; </SPAN></SPAN></SPAN>имя 
+пользователя ОС, имеющего права администратора, и его пароль на сервере 
+установки сервиса;<o:p></O:P></FONT></P>
+<P class=MsoListBullet2 
+style="MARGIN: 0cm 0cm 6pt 32.15pt; mso-list: l2 level1 lfo1"><FONT size=2><SPAN 
+style="FONT-FAMILY: Wingdings; mso-fareast-font-family: Wingdings; mso-bidi-font-family: Wingdings"><SPAN style="mso-list: Ignore">ü<SPAN style='FONT: 7pt "Times New Roman"'>&nbsp; </SPAN></SPAN></SPAN>имя 
+пользователя и пароль учетной записи администратора РСДУ, для выполнения 
+операций настройки сервиса;<o:p></O:P></FONT></P>
+<P class=MsoListBullet2 
+style="MARGIN: 0cm 0cm 6pt 32.15pt; mso-list: l2 level1 lfo1"><FONT size=2><SPAN 
+style="FONT-FAMILY: Wingdings; mso-fareast-font-family: Wingdings; mso-bidi-font-family: Wingdings"><SPAN style="mso-list: Ignore">ü<SPAN style='FONT: 7pt "Times New Roman"'>&nbsp; </SPAN></SPAN></SPAN>имя 
+пользователя и пароль учетной записи РСДУ, используемой сервисом для подключения 
+к РСДУ;<o:p></O:P></FONT></P>
+<P class=MsoListBullet2 
+style="MARGIN: 0cm 0cm 6pt 32.15pt; mso-list: l2 level1 lfo1"><FONT size=2><SPAN 
+style="FONT-FAMILY: Wingdings; mso-fareast-font-family: Wingdings; mso-bidi-font-family: Wingdings"><SPAN style="mso-list: Ignore">ü<SPAN style='FONT: 7pt "Times New Roman"'>&nbsp; </SPAN></SPAN></SPAN>параметры подключения к БДТИ и базам данных архивов 
+комплекса РСДУ;<o:p></O:P></FONT></P>
+<P class=MsoListBullet2 
+style="MARGIN: 0cm 0cm 6pt 32.15pt; mso-list: l2 level1 lfo1"><FONT size=2><SPAN 
+style="FONT-FAMILY: Wingdings; mso-fareast-font-family: Wingdings; mso-bidi-font-family: Wingdings"><SPAN style="mso-list: Ignore">ü<SPAN style='FONT: 7pt "Times New Roman"'>&nbsp; </SPAN></SPAN></SPAN>параметры подключения к брокеру сообщений RabbitMQ.<o:p></O:P></FONT></P>
+<H1 
+style="MARGIN: 0cm 164.45pt 12pt 14.2pt; TEXT-INDENT: 0cm; mso-list: l3 level1 lfo4"><A name=_Toc88556543><SPAN 
+style="mso-fareast-font-family: Arial; mso-bidi-font-family: Arial"><SPAN style="mso-list: Ignore"><FONT color=#17365d size=2>3 </FONT></SPAN></SPAN></A><v:shape 
+id=Рисунок_x0020_9 
+style="HEIGHT: 28.35pt; WIDTH: 484.7pt; POSITION: absolute; TEXT-ALIGN: left; MARGIN-LEFT: 0px; LEFT: 0px; Z-INDEX: -251653120; MARGIN-TOP: -2.85pt; VISIBILITY: visible; mso-wrap-style: square; mso-width-percent: 0; mso-height-percent: 0; mso-wrap-distance-left: 9pt; mso-wrap-distance-top: 0; mso-wrap-distance-right: 9pt; mso-wrap-distance-bottom: 0; mso-position-horizontal: absolute; mso-position-horizontal-relative: text; mso-position-vertical: absolute; mso-position-vertical-relative: text; mso-width-relative: page; mso-height-relative: page" o:spid="_x0000_s1028" o:allowincell="f" 
+type="#_x0000_t75"><FONT color=#17365d><v:imagedata cropright="13046f" 
+o:title="" 
+src="file:///C:\Users\gal\AppData\Local\Temp\msohtmlclip1\01\clip_image001.wmz"></V:IMAGEDATA><o:lock aspectratio="f" 
+v:ext="edit"></O:LOCK></FONT></V:SHAPE><FONT color=#17365d><SPAN style="mso-bookmark: _Toc88556543"><FONT size=2>Создание учетной записи РСДУ</FONT></SPAN><o:p></O:P></FONT></H1>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 6pt"><FONT size=2>Для работы сервиса требуется учетная 
+запись РСДУ. Сервис использует эту учетную запись для подключения к БД.<o:p></O:P></FONT></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 6pt"><FONT size=2>Для создания учетной записи необходимо 
+вначале зарегистрировать сервис в качестве исполняемого модуля РСДУ.<o:p></O:P></FONT></P>
+<H2 style="MARGIN: 6pt 0cm 12pt 28.8pt; mso-list: l3 level2 lfo4"><A name=_Toc88556544></A><A 
+name=_Toc69232570><SPAN style="mso-bookmark: _Toc88556544"><FONT size=2><SPAN lang=EN-US 
+style="mso-fareast-font-family: Arial; mso-bidi-font-family: Arial; mso-ansi-language: EN-US"><SPAN style="mso-list: Ignore">3.1 
+</SPAN></SPAN>Описание исполняемого модуля</FONT></SPAN></A><o:p></O:P></H2>
+<P class=MsoListNumber2 
+style="MARGIN: 0cm 0cm 6pt 32.15pt; mso-list: l0 level1 lfo3; tab-stops: list 32.15pt"><FONT size=2><SPAN 
+style="mso-fareast-font-family: Arial; mso-bidi-font-family: Arial"><SPAN style="mso-list: Ignore">1.<SPAN style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; </SPAN></SPAN></SPAN>Запустить приложение Навигатор БД РСДУ и перейти в раздел 
+«Служебная информации&nbsp;<SPAN style="mso-bidi-font-family: Arial">→</SPAN>&nbsp;Программное обеспечение&nbsp;<SPAN 
+style="mso-bidi-font-family: Arial">→&nbsp;Программы&nbsp;→&nbsp;</SPAN>Загружаемые модули».<o:p></O:P></FONT></P>
+<P class=MsoListNumber2 
+style="MARGIN: 0cm 0cm 6pt 32.15pt; mso-list: l0 level1 lfo3; tab-stops: list 32.15pt"><FONT size=2><SPAN 
+style="mso-fareast-font-family: Arial; mso-bidi-font-family: Arial"><SPAN style="mso-list: Ignore">2.<SPAN style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; </SPAN></SPAN></SPAN>Вызвать пункт «Создать» контекстного меню области списка 
+Навигатора БД.<o:p></O:P></FONT></P>
+<P class=MsoListNumber2 
+style="MARGIN: 0cm 0cm 6pt 32.15pt; mso-list: l0 level1 lfo3; tab-stops: list 32.15pt"><FONT size=2><SPAN 
+style="mso-fareast-font-family: Arial; mso-bidi-font-family: Arial"><SPAN style="mso-list: Ignore">3.<SPAN style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; </SPAN></SPAN></SPAN>В открывшемся окне выбрать тип «Модуль <SPAN 
+lang=EN-US style="mso-ansi-language: EN-US">Linux</SPAN>», заполнить 
+поля «Имя» и «Файл».<o:p></O:P></FONT></P>
+<P class=MsoListContinue2 
+style="TEXT-ALIGN: center; MARGIN: 0cm 0cm 6pt 32.05pt" align=center><SPAN style="mso-no-proof: yes"></SPAN><SPAN lang=EN-US style="mso-ansi-language: EN-US"><o:p><FONT size=2><IMG alt="" src="Aimage003.png" ></O:P></FONT></FONT></SPAN></P>
+<P class=MsoCaption style="MARGIN: 6pt 0cm 12pt 35.45pt"><STRONG><FONT size=2>Рисунок 1 – Окно регистрации приложения 
+РСДУ<o:p></O:P></FONT></STRONG></P>
+<P class=MsoListNumber2 
+style="MARGIN: 0cm 0cm 6pt 32.15pt; mso-list: l0 level1 lfo3; tab-stops: list 32.15pt"><FONT size=2><SPAN 
+style="mso-fareast-font-family: Arial; mso-bidi-font-family: Arial"><SPAN style="mso-list: Ignore">4.<SPAN style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; </SPAN></SPAN></SPAN>Нажать «Далее». Откроется окно заполнения входных 
+параметров. Входные параметры для сервиса не предусмотрены. Нажать «Готово».<o:p></O:P></FONT></P>
+<P class=MsoListNumber2 
+style="MARGIN: 0cm 0cm 6pt 32.15pt; mso-list: l0 level1 lfo3; tab-stops: list 32.15pt"><FONT size=2><SPAN 
+style="mso-fareast-font-family: Arial; mso-bidi-font-family: Arial"><SPAN style="mso-list: Ignore">5.<SPAN style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; </SPAN></SPAN></SPAN>Назначить необходимые права для сервиса. Для этого вызвать 
+пункт контекстного меню «Свойства» или дважды кликнуть по созданному описанию 
+сервиса. В открывшемся окне перейти на вкладку «Права».<o:p></O:P></FONT></P>
+<P class=MsoListContinue2 
+style="TEXT-ALIGN: center; MARGIN: 0cm 0cm 6pt 32.05pt" align=center><SPAN style="mso-no-proof: yes"><o:p><FONT size=2><IMG alt="" src="Aimage004.png" ></O:P></FONT></FONT></SPAN></P>
+<P class=MsoCaption style="MARGIN: 6pt 0cm 12pt 35.45pt"><STRONG><FONT size=2>Рисунок 2 – Окно назначения прав 
+приложению РСДУ<o:p></O:P></FONT></STRONG></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 6pt"><FONT size=2>Для работы сервиса необходимы следующие 
+права:<o:p></O:P></FONT></P>
+<DIV align=center>
+<TABLE class=ab 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; mso-table-layout-alt: fixed; mso-border-alt: solid windowtext .5pt; mso-yfti-tbllook: 1184; mso-padding-alt: 0cm 5.4pt 0cm 5.4pt" 
+cellSpacing=0 cellPadding=0 width=643 border=1>
+  <THEAD>
+  <TR style="mso-yfti-irow: -1; mso-yfti-firstrow: yes">
+    <TD     style="BORDER-TOP: windowtext 1pt solid; BORDER-RIGHT: windowtext 1pt solid; WIDTH: 226.9pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt; BACKGROUND-COLOR: transparent; mso-border-alt: solid windowtext .5pt"     vAlign=top width=303>
+      <P class=a7 
+      style="MARGIN: 0cm 0cm 6pt; mso-yfti-cnfc: 1; mso-textbox-tight-wrap: all" 
+      ><STRONG><FONT       size=2>Подсистема<o:p 
+      ></O:P></FONT></STRONG></P></TD>
+    <TD     style="BORDER-TOP: windowtext 1pt solid; BORDER-RIGHT: windowtext 1pt solid; WIDTH: 255.05pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: #f0f0f0; PADDING-RIGHT: 5.4pt; BACKGROUND-COLOR: transparent; mso-border-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt"     vAlign=top width=340>
+      <P class=a7 
+      style="MARGIN: 0cm 0cm 6pt; mso-yfti-cnfc: 1; mso-textbox-tight-wrap: all" 
+      ><STRONG><FONT size=2>Права 
+      доступа<o:p 
+  ></O:P></FONT></STRONG></P></TD></TR></THEAD>
+  
+  <TR style="mso-yfti-irow: 0">
+    <TD     style="BORDER-TOP: #f0f0f0; BORDER-RIGHT: windowtext 1pt solid; WIDTH: 226.9pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt; BACKGROUND-COLOR: transparent; mso-border-alt: solid windowtext .5pt; mso-border-top-alt: solid windowtext .5pt"     vAlign=top width=303>
+      <P class=a2 style="MARGIN: 0cm 0cm 6pt; mso-textbox-tight-wrap: all" 
+      ><FONT size=2>Базовая информация комплекса<o:p 
+      ></O:P></FONT></P></TD>
+    <TD     style="BORDER-TOP: #f0f0f0; BORDER-RIGHT: windowtext 1pt solid; WIDTH: 255.05pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: #f0f0f0; PADDING-RIGHT: 5.4pt; BACKGROUND-COLOR: transparent; mso-border-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-top-alt: solid windowtext .5pt"     vAlign=top width=340>
+      <P class=a2 style="MARGIN: 0cm 0cm 6pt; mso-textbox-tight-wrap: all" 
+      ><FONT size=2>Чтение<o:p 
+      ></O:P></FONT></P>
+      <P class=a2 style="MARGIN: 0cm 0cm 6pt; mso-textbox-tight-wrap: all" 
+      ><FONT size=2>Вход в систему ОИК<o:p 
+      ></O:P></FONT></P></TD></TR>
+  <TR style="mso-yfti-irow: 1; mso-yfti-lastrow: yes">
+    <TD     style="BORDER-TOP: #f0f0f0; BORDER-RIGHT: windowtext 1pt solid; WIDTH: 226.9pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt; BACKGROUND-COLOR: transparent; mso-border-alt: solid windowtext .5pt; mso-border-top-alt: solid windowtext .5pt"     vAlign=top width=303>
+      <P class=a2 style="MARGIN: 0cm 0cm 6pt; mso-textbox-tight-wrap: all" 
+      ><FONT size=2>Серверы архивов<o:p 
+      ></O:P></FONT></P></TD>
+    <TD     style="BORDER-TOP: #f0f0f0; BORDER-RIGHT: windowtext 1pt solid; WIDTH: 255.05pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: #f0f0f0; PADDING-RIGHT: 5.4pt; BACKGROUND-COLOR: transparent; mso-border-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-top-alt: solid windowtext .5pt"     vAlign=top width=340>
+      <P class=a2 style="MARGIN: 0cm 0cm 6pt; mso-textbox-tight-wrap: all" 
+      ><FONT size=2>Чтение<o:p 
+      ></O:P></FONT></P>
+      <P class=a2 style="MARGIN: 0cm 0cm 6pt; mso-textbox-tight-wrap: all" 
+      ><FONT size=2>Настройка подсистемы<o:p 
+      ></O:P></FONT></P>
+      <P class=a2 style="MARGIN: 0cm 0cm 6pt; mso-textbox-tight-wrap: all" 
+      ><FONT size=2>Запись в архивы<o:p 
+      ></O:P></FONT></P></TD></TR></TABLE></DIV>
+<H2 style="MARGIN: 6pt 0cm 12pt 28.8pt; mso-list: l3 level2 lfo4"><A name=_Ref441068553></A><A 
+name=_Toc88556545></A><A name=_Toc69232571><SPAN style="mso-bookmark: _Toc88556545"><SPAN style="mso-bookmark: _Ref441068553"><FONT size=2><SPAN lang=EN-US 
+style="mso-fareast-font-family: Arial; mso-bidi-font-family: Arial; mso-ansi-language: EN-US"><SPAN style="mso-list: Ignore">3.2 
+</SPAN></SPAN>Описание 
+пользователя-процесса</FONT></SPAN></SPAN></A><SPAN 
+style="mso-bookmark: _Ref441068553"><o:p></O:P></SPAN></H2><SPAN style="mso-bookmark: _Ref441068553"></SPAN>
+<P class=MsoListNumber2 
+style="PAGE-BREAK-AFTER: avoid; MARGIN: 0cm 0cm 6pt 32.15pt; mso-list: l0 level1 lfo5; tab-stops: list 32.15pt"><FONT size=2><SPAN 
+style="mso-fareast-font-family: Arial; mso-bidi-font-family: Arial"><SPAN style="mso-list: Ignore">1.<SPAN style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; </SPAN></SPAN></SPAN>Перейти в раздел Навигатора БД «Доступ к информации и 
+управлению <SPAN style="mso-bidi-font-family: Arial">→ </SPAN>Процессы и персонал», найти ветку «Процессы».<o:p></O:P></FONT></P>
+<P class=MsoListNumber2 
+style="MARGIN: 0cm 0cm 6pt 32.15pt; mso-list: l0 level1 lfo3; tab-stops: list 32.15pt"><FONT size=2><SPAN 
+style="mso-fareast-font-family: Arial; mso-bidi-font-family: Arial"><SPAN style="mso-list: Ignore">2.<SPAN style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; </SPAN></SPAN></SPAN>В ветке «Процессы» раздела определить группу, в которой 
+будет создана учетная запись для сервиса. Как правило, группы в ветке «Процессы» 
+организованы по хостам комплекса.<o:p></O:P></FONT></P>
+<P class=MsoListContinue2 style="MARGIN: 0cm 0cm 6pt 32.05pt"><FONT size=2>Выбрать 
+необходимую группу и вызвать пункт «Создать» контекстного меню области списка 
+Навигатора БД.<o:p></O:P></FONT></P>
+<P class=MsoListContinue2 style="MARGIN: 0cm 0cm 6pt 32.05pt"><FONT size=2>В открывшемся 
+окне указать соответствующее приложение, имя и логин учетной записи. Выбор 
+приложения осуществляется по кнопке «Выбрать» из приложения «Настройка Базы 
+Данных – <SPAN lang=EN-US style="mso-ansi-language: EN-US">Adjust</SPAN>».<o:p></O:P></FONT></P>
+<P class=MsoListContinue2 style="MARGIN: 0cm 0cm 6pt 32.05pt"><FONT size=2>В поле «Тип» 
+должно быть задано «Процесс», в поле «Подсистема» – «Серверы архивов».<o:p></O:P></FONT></P>
+<P class=MsoListContinue2 
+style="TEXT-ALIGN: center; MARGIN: 0cm 0cm 6pt 32.05pt" align=center><SPAN style="mso-no-proof: yes"><o:p><FONT size=2><IMG alt="" src="Aimage005.png" ></O:P></FONT></FONT></SPAN></P>
+<P class=MsoCaption style="MARGIN: 6pt 0cm 12pt 35.45pt"><STRONG><FONT size=2>Рисунок 3 – Окно создания учетной записи 
+РСДУ с типом «Процесс»<o:p></O:P></FONT></STRONG></P>
+<P class=MsoListNumber2 
+style="MARGIN: 0cm 0cm 6pt 32.15pt; mso-list: l0 level1 lfo3; tab-stops: list 32.15pt"><FONT size=2><SPAN 
+style="mso-fareast-font-family: Arial; mso-bidi-font-family: Arial"><SPAN style="mso-list: Ignore">3.<SPAN style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; </SPAN></SPAN></SPAN>Завершение создания учетной записи выполняется кнопкой 
+«Готово».<o:p></O:P></FONT></P>
+<P class=MsoListContinue2 style="MARGIN: 0cm 0cm 6pt 32.05pt"><FONT size=2>Права доступа 
+назначаются автоматически при создании учетной записи на основе описания 
+выбранного приложения.<o:p></O:P></FONT></P>
+<P class=MsoListContinue2 style="MARGIN: 0cm 0cm 6pt 32.05pt"><FONT size=2>По умолчанию 
+для учетных записей с типом «Процесс» задается пароль «rsdu_211».<o:p></O:P></FONT></P>
+<H1 
+style="MARGIN: 0cm 164.45pt 12pt 14.2pt; TEXT-INDENT: 0cm; mso-list: l3 level1 lfo4"><A name=_Toc88556546><SPAN 
+style="mso-fareast-font-family: Arial; mso-bidi-font-family: Arial"><SPAN style="mso-list: Ignore"><FONT color=#17365d size=2>4 </FONT></SPAN></SPAN></A><v:shape 
+id=Рисунок_x0020_15 
+style="HEIGHT: 31.5pt; WIDTH: 484.35pt; POSITION: absolute; TEXT-ALIGN: left; MARGIN-LEFT: 0.3pt; LEFT: 0px; Z-INDEX: -251659264; MARGIN-TOP: -5.55pt; VISIBILITY: visible; mso-wrap-style: square; mso-width-percent: 0; mso-height-percent: 0; mso-wrap-distance-left: 9pt; mso-wrap-distance-top: 0; mso-wrap-distance-right: 9pt; mso-wrap-distance-bottom: 0; mso-position-horizontal: absolute; mso-position-horizontal-relative: text; mso-position-vertical: absolute; mso-position-vertical-relative: text; mso-width-relative: page; mso-height-relative: page" o:spid="_x0000_s1027" o:allowincell="f" 
+type="#_x0000_t75"><FONT color=#17365d><v:imagedata cropright="12944f" 
+o:title="" 
+src="file:///C:\Users\gal\AppData\Local\Temp\msohtmlclip1\01\clip_image001.wmz"></V:IMAGEDATA><o:lock aspectratio="f" 
+v:ext="edit"></O:LOCK></FONT></V:SHAPE><FONT color=#17365d><SPAN 
+style="mso-bookmark: _Toc88556546"><FONT size=2>Установка и 
+управление сервисом</FONT></SPAN><o:p></O:P></FONT></H1>
+<H2 style="MARGIN: 6pt 0cm 12pt 28.8pt; mso-list: l3 level2 lfo4"><A name=_Toc88556547></A><A 
+name=_Toc54207203><SPAN style="mso-bookmark: _Toc88556547"><FONT size=2><SPAN lang=EN-US 
+style="mso-fareast-font-family: Arial; mso-bidi-font-family: Arial; mso-ansi-language: EN-US"><SPAN style="mso-list: Ignore">4.1 
+</SPAN></SPAN>Установка сервиса</FONT></SPAN></A><o:p></O:P></H2>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 6pt"><FONT size=2>Установка сервиса производится от имени 
+пользователя с правами <SPAN lang=EN-US style="mso-ansi-language: EN-US">root</SPAN>. Если в 
+используемой ОС <SPAN lang=EN-US style="mso-ansi-language: EN-US">Linux</SPAN> заблокирован вход от имени пользователя <SPAN 
+lang=EN-US style="mso-ansi-language: EN-US">root</SPAN>, то 
+необходимо использовать команду <SPAN class=a3><SPAN 
+style='mso-bidi-font-family: "Times New Roman"'><FONT face="Courier New">sudo </FONT></SPAN></SPAN>для выполнения операций.<o:p></O:P></FONT></P>
+<P class=MsoListNumber2 
+style="MARGIN: 0cm 0cm 6pt 32.15pt; mso-list: l0 level1 lfo6; tab-stops: list 32.15pt"><FONT size=2><SPAN 
+style="mso-fareast-font-family: Arial; mso-bidi-font-family: Arial"><SPAN style="mso-list: Ignore">1.<SPAN style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; </SPAN></SPAN></SPAN>Скопировать архив с дистрибутивом сервиса для ОС 
+<SPAN lang=EN-US style="mso-ansi-language: EN-US">Linux</SPAN> на целевой хост в домашний каталог пользователя. <o:p></O:P></FONT></P>
+<P class=MsoListContinue2 style="MARGIN: 0cm 0cm 6pt 32.05pt"><FONT size=2>Имя файла 
+дистрибутива: <FONT face="Courier New"><SPAN class=a3><SPAN style='mso-bidi-font-family: "Times New Roman"'>RSDU5_SCADA_linux-x64-&lt;version&gt;-YYYYMMDD_HHMM-&lt;revision&gt;.tar.bz2</SPAN></SPAN><o:p></O:P></FONT></FONT></P>
+<P class=MsoListNumber2 
+style="MARGIN: 0cm 0cm 6pt 32.15pt; mso-list: l0 level1 lfo3"><FONT size=2><SPAN 
+style="mso-fareast-font-family: Arial; mso-bidi-font-family: Arial"><SPAN style="mso-list: Ignore">2.<SPAN style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; </SPAN></SPAN></SPAN>Выполнить распаковку архива в домашний каталог 
+пользователя:<o:p></O:P></FONT></P>
+<DIV 
+style="BORDER-TOP: windowtext 1pt dashed; BORDER-RIGHT: windowtext 1pt dashed; BACKGROUND: #c1c1c1; BORDER-BOTTOM: windowtext 1pt dashed; PADDING-BOTTOM: 1pt; PADDING-TOP: 1pt; PADDING-LEFT: 4pt; MARGIN-LEFT: 38.25pt; BORDER-LEFT: windowtext 1pt dashed; PADDING-RIGHT: 4pt; MARGIN-RIGHT: 5.65pt; mso-border-alt: dashed windowtext .5pt; mso-element: para-border-div">
+<P class=10 style="BACKGROUND: #c1c1c1; MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US><FONT face="Courier New"><FONT size=2>tar -xjf 
+RSDU5_SCADA_linux-x64-&lt;version&gt;-YYYYMMDD_HHMM-&lt;revision&gt;.tar.bz2<o:p></O:P></FONT></FONT></SPAN></P></DIV>
+<P class=MsoListNumber2 
+style="MARGIN: 6pt 0cm 6pt 32.05pt; TEXT-INDENT: -17.85pt; mso-list: l0 level1 lfo3"><FONT size=2><SPAN lang=EN-US 
+style="mso-fareast-font-family: Arial; mso-bidi-font-family: Arial; mso-ansi-language: EN-US"><SPAN style="mso-list: Ignore">3.<SPAN style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; </SPAN></SPAN></SPAN>Перейти<SPAN style="mso-ansi-language: EN-US"> </SPAN>в<SPAN style="mso-ansi-language: EN-US"> </SPAN>каталог<SPAN 
+style="mso-ansi-language: EN-US"> </SPAN><SPAN class=a3><SPAN lang=EN-US 
+style='mso-bidi-font-family: "Times New Roman"; mso-ansi-language: EN-US'><FONT face="Courier New">linux-x64/rsdu-arch-webapi/Installers/Linux</FONT></SPAN></SPAN><SPAN 
+lang=EN-US style="mso-ansi-language: EN-US">.<o:p></O:P></SPAN></FONT></P>
+<P class=MsoListNumber2 
+style="MARGIN: 6pt 0cm 6pt 32.05pt; TEXT-INDENT: -17.85pt; mso-list: l0 level1 lfo3"><FONT size=2><SPAN 
+style="mso-fareast-font-family: Arial; mso-bidi-font-family: Arial"><SPAN style="mso-list: Ignore">4.<SPAN style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; </SPAN></SPAN></SPAN>Выполнить скрипт установки сервера <SPAN class=a3><SPAN style='mso-bidi-font-family: "Times New Roman"'><FONT face="Courier New">install.sh</FONT></SPAN></SPAN>.<o:p></O:P></FONT></P>
+<DIV 
+style="BORDER-TOP: windowtext 1pt dashed; BORDER-RIGHT: windowtext 1pt dashed; BACKGROUND: #c1c1c1; BORDER-BOTTOM: windowtext 1pt dashed; PADDING-BOTTOM: 1pt; PADDING-TOP: 1pt; PADDING-LEFT: 4pt; MARGIN-LEFT: 38.25pt; BORDER-LEFT: windowtext 1pt dashed; PADDING-RIGHT: 4pt; MARGIN-RIGHT: 5.65pt; mso-border-alt: dashed windowtext .5pt; mso-element: para-border-div">
+<P class=10 style="BACKGROUND: #c1c1c1; MARGIN: 0cm 0cm 0pt"><A name=_Hlk71215838><FONT face="Courier New"><FONT size=2><SPAN style="mso-ansi-language: RU">./</SPAN><SPAN lang=EN-US>install</SPAN></FONT></FONT></A><FONT face="Courier New"><FONT size=2><SPAN style="mso-bookmark: _Hlk71215838"><SPAN 
+style="mso-ansi-language: RU">.</SPAN><SPAN lang=EN-US>sh</SPAN></SPAN><SPAN style="mso-bookmark: _Hlk71215838"><SPAN style="mso-ansi-language: RU"><o:p></O:P></SPAN></SPAN></FONT></FONT></P></DIV><SPAN 
+style="mso-bookmark: _Hlk71215838"></SPAN>
+<P class=MsoListContinue2 style="MARGIN: 6pt 0cm 6pt 32.05pt"><FONT size=2>Рабочий 
+каталог сервиса<FONT face="Courier New"><SPAN class=a3><SPAN style='mso-bidi-font-family: "Times New Roman"'>: /usr/lib/ema/rsdu/</SPAN></SPAN><SPAN class=a3><SPAN lang=EN-US 
+style='mso-bidi-font-family: "Times New Roman"; mso-ansi-language: EN-US'>arch</SPAN></SPAN><SPAN class=a3><SPAN 
+style='mso-bidi-font-family: "Times New Roman"'>-</SPAN></SPAN><SPAN class=a3><SPAN 
+lang=EN-US 
+style='mso-bidi-font-family: "Times New Roman"; mso-ansi-language: EN-US'>webapi</SPAN></SPAN><o:p></O:P></FONT></FONT></P>
+<P class=MsoListNumber2 
+style="MARGIN: 0cm 0cm 6pt 32.15pt; mso-list: l0 level1 lfo3"><FONT size=2><SPAN 
+style="mso-fareast-font-family: Arial; mso-bidi-font-family: Arial"><SPAN style="mso-list: Ignore">5.<SPAN style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; </SPAN></SPAN></SPAN>Задать конфигурацию сервису. <o:p></O:P></FONT></P>
+<P class=MsoListNumber2 
+style="MARGIN: 0cm 0cm 6pt 32.15pt; TEXT-INDENT: 0cm; mso-list: none"><FONT size=2>Скопировать 
+конфигурационный файл по умолчанию из дистрибутива:<o:p></O:P></FONT></P>
+<DIV 
+style="BORDER-TOP: windowtext 1pt dashed; BORDER-RIGHT: windowtext 1pt dashed; BACKGROUND: #c1c1c1; BORDER-BOTTOM: windowtext 1pt dashed; PADDING-BOTTOM: 1pt; PADDING-TOP: 1pt; PADDING-LEFT: 4pt; MARGIN-LEFT: 38.25pt; BORDER-LEFT: windowtext 1pt dashed; PADDING-RIGHT: 4pt; MARGIN-RIGHT: 5.65pt; mso-border-alt: dashed windowtext .5pt; mso-element: para-border-div">
+<P class=10 style="BACKGROUND: #c1c1c1; MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US><FONT face="Courier New"><FONT size=2>cp ./arch-webapi.default.json /etc/ema/arch-webapi.json<o:p></O:P></FONT></FONT></SPAN></P></DIV>
+<P class=MsoListContinue2 style="MARGIN: 6pt 0cm 6pt 32.05pt"><FONT size=2>Отредактировать<SPAN class=a3><SPAN 
+style='mso-bidi-font-family: "Times New Roman"'><FONT face="Courier New">, согласно описанию 
+</FONT></SPAN></SPAN>в разделе 
+«Конфигурирование сервиса».<o:p></O:P></FONT></P>
+<P class=MsoListNumber2 
+style="MARGIN: 0cm 0cm 6pt 32.15pt; mso-list: l0 level1 lfo3"><FONT size=2><SPAN 
+style="mso-fareast-font-family: Arial; mso-bidi-font-family: Arial"><SPAN style="mso-list: Ignore">6.<SPAN style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; </SPAN></SPAN></SPAN>При необходимости удалить дистрибутив:<o:p></O:P></FONT></P>
+<DIV 
+style="BORDER-TOP: windowtext 1pt dashed; BORDER-RIGHT: windowtext 1pt dashed; BACKGROUND: #c1c1c1; BORDER-BOTTOM: windowtext 1pt dashed; PADDING-BOTTOM: 1pt; PADDING-TOP: 1pt; PADDING-LEFT: 4pt; MARGIN-LEFT: 38.25pt; BORDER-LEFT: windowtext 1pt dashed; PADDING-RIGHT: 4pt; MARGIN-RIGHT: 5.65pt; mso-border-alt: dashed windowtext .5pt; mso-element: para-border-div">
+<P class=10 style="BACKGROUND: #c1c1c1; MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US><FONT face="Courier New"><FONT size=2>rm –R ~/linux-x64<o:p></O:P></FONT></FONT></SPAN></P>
+<P class=10 style="BACKGROUND: #c1c1c1; MARGIN: 0cm 0cm 12pt"><SPAN lang=EN-US><FONT face="Courier New"><FONT size=2>rm 
+~/RSDU5_SCADA_linux-x64-&lt;version&gt;-YYYYMMDD_HHMM-&lt;revision&gt;.tar.bz2<o:p></O:P></FONT></FONT></SPAN></P></DIV>
+<H2 
+style="PAGE-BREAK-BEFORE: always; MARGIN: 6pt 0cm 12pt; TEXT-INDENT: 0cm; mso-list: l3 level2 lfo4"><A name=_Toc88556548></A><A 
+name=_Toc54207204><SPAN style="mso-bookmark: _Toc88556548"><FONT size=2><SPAN lang=EN-US 
+style="mso-fareast-font-family: Arial; mso-bidi-font-family: Arial; mso-ansi-language: EN-US"><SPAN style="mso-list: Ignore">4.2 
+</SPAN></SPAN>Запуск и останов сервиса</FONT></SPAN></A><o:p></O:P></H2>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 6pt"><FONT size=2>Управление работой сервиса в ОС <SPAN 
+lang=EN-US style="mso-ansi-language: EN-US">Linux</SPAN> 
+осуществляется через стандартные команды <SPAN lang=EN-US 
+style="mso-ansi-language: EN-US">systemd</SPAN>.<o:p></O:P></FONT></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 6pt"><FONT size=2>Запуск<SPAN 
+style="mso-ansi-language: EN-US"> </SPAN>сервиса<SPAN lang=EN-US 
+style="mso-ansi-language: EN-US">:<o:p></O:P></SPAN></FONT></P>
+<DIV 
+style="BORDER-TOP: windowtext 1pt dashed; BORDER-RIGHT: windowtext 1pt dashed; BACKGROUND: #c1c1c1; BORDER-BOTTOM: windowtext 1pt dashed; PADDING-BOTTOM: 1pt; PADDING-TOP: 1pt; PADDING-LEFT: 4pt; MARGIN-LEFT: 5.65pt; BORDER-LEFT: windowtext 1pt dashed; PADDING-RIGHT: 4pt; MARGIN-RIGHT: 5.65pt; mso-border-alt: dashed windowtext .5pt; mso-element: para-border-div">
+<P class=a style="BACKGROUND: #c1c1c1; MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US><FONT face="Courier New"><FONT size=2>systemctl start rsdu-arch-webapi<o:p></O:P></FONT></FONT></SPAN></P></DIV>
+<P class=a8 style="MARGIN: 6pt 0cm"><FONT size=2>Останов<SPAN 
+style="mso-ansi-language: EN-US"> </SPAN>сервиса<SPAN lang=EN-US 
+style="mso-ansi-language: EN-US">:<o:p></O:P></SPAN></FONT></P>
+<DIV 
+style="BORDER-TOP: windowtext 1pt dashed; BORDER-RIGHT: windowtext 1pt dashed; BACKGROUND: #c1c1c1; BORDER-BOTTOM: windowtext 1pt dashed; PADDING-BOTTOM: 1pt; PADDING-TOP: 1pt; PADDING-LEFT: 4pt; MARGIN-LEFT: 5.65pt; BORDER-LEFT: windowtext 1pt dashed; PADDING-RIGHT: 4pt; MARGIN-RIGHT: 5.65pt; mso-border-alt: dashed windowtext .5pt; mso-element: para-border-div">
+<P class=a style="BACKGROUND: #c1c1c1; MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US><FONT face="Courier New"><FONT size=2>systemctl stop rsdu-arch-webapi<o:p></O:P></FONT></FONT></SPAN></P></DIV>
+<P class=a8 style="MARGIN: 6pt 0cm"><FONT size=2>Перезапуск<SPAN 
+style="mso-ansi-language: EN-US"> </SPAN>сервиса<SPAN lang=EN-US 
+style="mso-ansi-language: EN-US">:<o:p></O:P></SPAN></FONT></P>
+<DIV 
+style="BORDER-TOP: windowtext 1pt dashed; BORDER-RIGHT: windowtext 1pt dashed; BACKGROUND: #c1c1c1; BORDER-BOTTOM: windowtext 1pt dashed; PADDING-BOTTOM: 1pt; PADDING-TOP: 1pt; PADDING-LEFT: 4pt; MARGIN-LEFT: 5.65pt; BORDER-LEFT: windowtext 1pt dashed; PADDING-RIGHT: 4pt; MARGIN-RIGHT: 5.65pt; mso-border-alt: dashed windowtext .5pt; mso-element: para-border-div">
+<P class=a style="BACKGROUND: #c1c1c1; MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US><FONT face="Courier New"><FONT size=2>systemctl restart rsdu-arch-webapi<o:p></O:P></FONT></FONT></SPAN></P></DIV>
+<P class=a8 style="MARGIN: 6pt 0cm"><FONT size=2>Контроль<SPAN 
+style="mso-ansi-language: EN-US"> </SPAN>текущего<SPAN style="mso-ansi-language: EN-US"> </SPAN>состояния<SPAN lang=EN-US 
+style="mso-ansi-language: EN-US">: <o:p></O:P></SPAN></FONT></P>
+<DIV 
+style="BORDER-TOP: windowtext 1pt dashed; BORDER-RIGHT: windowtext 1pt dashed; BACKGROUND: #c1c1c1; BORDER-BOTTOM: windowtext 1pt dashed; PADDING-BOTTOM: 1pt; PADDING-TOP: 1pt; PADDING-LEFT: 4pt; MARGIN-LEFT: 5.65pt; BORDER-LEFT: windowtext 1pt dashed; PADDING-RIGHT: 4pt; MARGIN-RIGHT: 5.65pt; mso-border-alt: dashed windowtext .5pt; mso-element: para-border-div">
+<P class=a style="BACKGROUND: #c1c1c1; MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US><FONT face="Courier New"><FONT size=2>systemctl status rsdu-arch-webapi<o:p></O:P></FONT></FONT></SPAN></P></DIV>
+<H2 style="MARGIN: 6pt 0cm 12pt 28.8pt; mso-list: l3 level2 lfo4"><A name=_Toc88556549></A><A 
+name=_Toc54207205><SPAN style="mso-bookmark: _Toc88556549"><FONT size=2><SPAN lang=EN-US 
+style="mso-fareast-font-family: Arial; mso-bidi-font-family: Arial; mso-ansi-language: EN-US"><SPAN style="mso-list: Ignore">4.3 
+</SPAN></SPAN>Контроль лог-файлов</FONT></SPAN></A><o:p></O:P></H2>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 6pt"><FONT size=2>Лог-файлы сервиса в ОС <SPAN lang=EN-US 
+style="mso-ansi-language: EN-US">Linux</SPAN> располагаются в каталоге:<o:p></O:P></FONT></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 6pt"><SPAN 
+class=a3><SPAN lang=EN-US 
+style='mso-bidi-font-family: "Times New Roman"; mso-ansi-language: EN-US'><FONT face="Courier New"><FONT size=2>/var/log/ema/arch-webapi<o:p></O:P></FONT></FONT></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 6pt"><FONT size=2><STRONG><SPAN class=a5><SPAN 
+style='FONT-SIZE: 11pt; LINE-HEIGHT: 115%; mso-bidi-font-family: "Times New Roman"; mso-bidi-font-size: 9.0pt'>Примечание</SPAN></SPAN><SPAN class=a5><SPAN lang=EN-US 
+style='FONT-SIZE: 11pt; LINE-HEIGHT: 115%; mso-bidi-font-family: "Times New Roman"; mso-ansi-language: EN-US; mso-bidi-font-size: 9.0pt'>.</SPAN></SPAN></STRONG><SPAN lang=EN-US 
+style="mso-ansi-language: EN-US"> </SPAN>Если после 
+команды запуска сервера лог-файлы не появились, ошибки запуска следует смотреть 
+в системном журнале ОС, используя команду <FONT face="Courier New"><SPAN 
+class=a3><SPAN 
+style='mso-bidi-font-family: "Times New Roman"'>journalctl 
+-u rsdu-</SPAN></SPAN><SPAN class=a3><SPAN lang=EN-US 
+style='mso-bidi-font-family: "Times New Roman"; mso-ansi-language: EN-US'>arch</SPAN></SPAN><SPAN class=a3><SPAN 
+style='mso-bidi-font-family: "Times New Roman"'>-</SPAN></SPAN><SPAN class=a3><SPAN 
+lang=EN-US 
+style='mso-bidi-font-family: "Times New Roman"; mso-ansi-language: EN-US'>webapi</SPAN></SPAN><SPAN class=a3><SPAN style='mso-bidi-font-family: "Times New Roman"'>.</SPAN></SPAN><o:p></O:P></FONT></FONT></P>
+<H2 style="MARGIN: 6pt 0cm 12pt 28.8pt; mso-list: l3 level2 lfo4"><A name=_Toc88556550></A><A 
+name=_Toc54207206><SPAN style="mso-bookmark: _Toc88556550"><FONT size=2><SPAN lang=EN-US 
+style="mso-fareast-font-family: Arial; mso-bidi-font-family: Arial; mso-ansi-language: EN-US"><SPAN style="mso-list: Ignore">4.4 
+</SPAN></SPAN>Удаление сервиса</FONT></SPAN></A><o:p></O:P></H2>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 6pt"><FONT size=2>Удаление сервиса выполняется от имени 
+пользователя с правами <SPAN lang=EN-US style="mso-ansi-language: EN-US">root</SPAN> при помощи 
+скрипта <SPAN class=a3><SPAN 
+style='mso-bidi-font-family: "Times New Roman"'><FONT face="Courier New">uninstall.sh</FONT></SPAN></SPAN>.<o:p></O:P></FONT></P>
+<DIV 
+style="BORDER-TOP: windowtext 1pt dashed; BORDER-RIGHT: windowtext 1pt dashed; BACKGROUND: #c1c1c1; BORDER-BOTTOM: windowtext 1pt dashed; PADDING-BOTTOM: 1pt; PADDING-TOP: 1pt; PADDING-LEFT: 4pt; MARGIN-LEFT: 5.65pt; BORDER-LEFT: windowtext 1pt dashed; PADDING-RIGHT: 4pt; MARGIN-RIGHT: 5.65pt; mso-border-alt: dashed windowtext .5pt; mso-element: para-border-div">
+<P class=a style="BACKGROUND: #c1c1c1; MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US><FONT face="Courier New"><FONT size=2>cd /usr/lib/ema/rsdu<o:p></O:P></FONT></FONT></SPAN></P>
+<P class=a style="BACKGROUND: #c1c1c1; MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US><FONT face="Courier New"><FONT size=2>./arch-webapi/uninstall.sh<o:p></O:P></FONT></FONT></SPAN></P></DIV>
+<P class=a8 style="MARGIN: 6pt 0cm"><FONT size=2>Скрипт <SPAN class=a3><SPAN style='mso-bidi-font-family: "Times New Roman"'><FONT face="Courier New">uninstall.sh</FONT></SPAN></SPAN> не удаляет конфигурационные файлы.<o:p></O:P></FONT></P>
+<H1 
+style="MARGIN: 0cm 164.45pt 12pt 14.2pt; TEXT-INDENT: 0cm; mso-list: l3 level1 lfo4"><A name=_Toc88556551></A><A 
+name=_Ref55421659></A><A name=_Ref55421599><SPAN style="mso-bookmark: _Ref55421659"><SPAN style="mso-bookmark: _Toc88556551"><SPAN 
+style="mso-fareast-font-family: Arial; mso-bidi-font-family: Arial"><SPAN style="mso-list: Ignore"><FONT color=#17365d size=2>5 
+</FONT></SPAN></SPAN></SPAN></SPAN></A><v:shape id=Рисунок_x0020_17 
+style="HEIGHT: 28.35pt; WIDTH: 484.45pt; POSITION: absolute; TEXT-ALIGN: left; MARGIN-LEFT: 0px; LEFT: 0px; Z-INDEX: -251657216; MARGIN-TOP: -2.85pt; VISIBILITY: visible; mso-wrap-style: square; mso-width-percent: 0; mso-height-percent: 0; mso-wrap-distance-left: 9pt; mso-wrap-distance-top: 0; mso-wrap-distance-right: 9pt; mso-wrap-distance-bottom: 0; mso-position-horizontal: absolute; mso-position-horizontal-relative: text; mso-position-vertical: absolute; mso-position-vertical-relative: text; mso-width-relative: page; mso-height-relative: page" o:spid="_x0000_s1026" o:allowincell="f" 
+type="#_x0000_t75"><FONT color=#17365d><v:imagedata cropright="13046f" 
+o:title="" 
+src="file:///C:\Users\gal\AppData\Local\Temp\msohtmlclip1\01\clip_image001.wmz"></V:IMAGEDATA><o:lock aspectratio="f" 
+v:ext="edit"></O:LOCK></FONT></V:SHAPE><FONT color=#17365d><SPAN style="mso-bookmark: _Ref55421599"><SPAN style="mso-bookmark: _Ref55421659"><SPAN style="mso-bookmark: _Toc88556551"><FONT size=2>Конфигурирование 
+сервиса</FONT></SPAN></SPAN></SPAN><o:p></O:P></FONT></H1>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 6pt"><FONT size=2>Конфигурация сервиса хранится в файле 
+<FONT face="Courier New"><SPAN class=a3><SPAN style='mso-bidi-font-family: "Times New Roman"'>/</SPAN></SPAN><SPAN class=a3><SPAN 
+lang=EN-US 
+style='mso-bidi-font-family: "Times New Roman"; mso-ansi-language: EN-US'>etc</SPAN></SPAN><SPAN class=a3><SPAN 
+style='mso-bidi-font-family: "Times New Roman"'>/</SPAN></SPAN><SPAN class=a3><SPAN 
+lang=EN-US 
+style='mso-bidi-font-family: "Times New Roman"; mso-ansi-language: EN-US'>ema</SPAN></SPAN><SPAN class=a3><SPAN 
+style='mso-bidi-font-family: "Times New Roman"'>/</SPAN></SPAN><SPAN class=a3><SPAN 
+lang=EN-US 
+style='mso-bidi-font-family: "Times New Roman"; mso-ansi-language: EN-US'>arch</SPAN></SPAN><SPAN class=a3><SPAN 
+style='mso-bidi-font-family: "Times New Roman"'>-</SPAN></SPAN><SPAN class=a3><SPAN 
+lang=EN-US 
+style='mso-bidi-font-family: "Times New Roman"; mso-ansi-language: EN-US'>webapi</SPAN></SPAN><SPAN class=a3><SPAN style='mso-bidi-font-family: "Times New Roman"'>.json</SPAN></SPAN></FONT>. <o:p></O:P></FONT></P>
+<H2 style="MARGIN: 6pt 0cm 12pt 28.8pt; mso-list: l3 level2 lfo4"><A name=_Toc88556552></A><A 
+name=_Toc54207215><SPAN style="mso-bookmark: _Toc88556552"><FONT size=2><SPAN lang=EN-US 
+style="mso-fareast-font-family: Arial; mso-bidi-font-family: Arial; mso-ansi-language: EN-US"><SPAN style="mso-list: Ignore">5.1 
+</SPAN></SPAN>Файл</FONT></SPAN></A><FONT size=2><SPAN 
+style="mso-bookmark: _Toc54207215"><SPAN 
+style="mso-bookmark: _Toc88556552"><SPAN 
+style="mso-ansi-language: EN-US"> <SPAN lang=EN-US>arch-</SPAN></SPAN>webapi</SPAN></SPAN><SPAN 
+style="mso-bookmark: _Toc54207215"><SPAN 
+style="mso-bookmark: _Toc88556552"><SPAN lang=EN-US 
+style="mso-ansi-language: EN-US">.json</SPAN></SPAN></SPAN><SPAN lang=EN-US 
+style="mso-ansi-language: EN-US"><o:p></O:P></SPAN></FONT></H2>
+<DIV 
+style="BORDER-TOP: windowtext 1pt dashed; BORDER-RIGHT: windowtext 1pt dashed; BACKGROUND: #c1c1c1; BORDER-BOTTOM: windowtext 1pt dashed; PADDING-BOTTOM: 1pt; PADDING-TOP: 1pt; PADDING-LEFT: 4pt; MARGIN-LEFT: 5.65pt; BORDER-LEFT: windowtext 1pt dashed; PADDING-RIGHT: 4pt; MARGIN-RIGHT: 5.65pt; mso-border-alt: dashed windowtext .5pt; mso-element: para-border-div">
+<P class=a style="BACKGROUND: #c1c1c1; MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US><FONT face="Courier New"><FONT size=2>{<o:p></O:P></FONT></FONT></SPAN></P>
+<P class=a style="BACKGROUND: #c1c1c1; MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US><FONT face="Courier New"><FONT size=2><SPAN 
+style="mso-spacerun: yes">&nbsp; 
+</SPAN>"urls": "http://*:5004;",<o:p></O:P></FONT></FONT></SPAN></P>
+<P class=a style="BACKGROUND: #c1c1c1; MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US><FONT face="Courier New"><FONT size=2><SPAN 
+style="mso-spacerun: yes">&nbsp; 
+</SPAN>"PathBase": "/rsdu/archives",<o:p></O:P></FONT></FONT></SPAN></P>
+<P class=a style="BACKGROUND: #c1c1c1; MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US><FONT face="Courier New"><FONT size=2><SPAN 
+style="mso-spacerun: yes">&nbsp; 
+</SPAN>"RsduAuthService": "<B>http://192.168.1.4:8080</B>",<o:p></O:P></FONT></FONT></SPAN></P>
+<P class=a style="BACKGROUND: #c1c1c1; MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US><FONT face="Courier New"><FONT size=2><SPAN 
+style="mso-spacerun: yes">&nbsp; 
+</SPAN>"ModelStorage": {<o:p></O:P></FONT></FONT></SPAN></P>
+<P class=a style="BACKGROUND: #c1c1c1; MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US><FONT face="Courier New"><FONT size=2><SPAN 
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </SPAN>"Provider": "Oracle",<o:p></O:P></FONT></FONT></SPAN></P>
+<P class=a style="BACKGROUND: #c1c1c1; MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US><FONT face="Courier New"><FONT size=2><SPAN 
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </SPAN>"DataSource": "Data Source=<B>192.168.1.1:1521/rsdudk.rsdu</B>",<o:p></O:P></FONT></FONT></SPAN></P>
+<P class=a style="BACKGROUND: #c1c1c1; MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US><FONT face="Courier New"><FONT size=2><SPAN 
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </SPAN>"DefaultSchema": null,<o:p></O:P></FONT></FONT></SPAN></P>
+<P class=a style="BACKGROUND: #c1c1c1; MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US><FONT face="Courier New"><FONT size=2><SPAN 
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </SPAN>"Login": "<B>archwebapi01</B>",<o:p></O:P></FONT></FONT></SPAN></P>
+<P class=a style="BACKGROUND: #c1c1c1; MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US><FONT face="Courier New"><FONT size=2><SPAN 
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </SPAN>"Password": "<B>rsdu_211</B>"<o:p></O:P></FONT></FONT></SPAN></P>
+<P class=a style="BACKGROUND: #c1c1c1; MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US><FONT face="Courier New"><FONT size=2><SPAN 
+style="mso-spacerun: yes">&nbsp; 
+</SPAN>},<o:p></O:P></FONT></FONT></SPAN></P>
+<P class=a style="BACKGROUND: #c1c1c1; MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US><FONT face="Courier New"><FONT size=2><SPAN 
+style="mso-spacerun: yes">&nbsp; 
+</SPAN>"ArchiveStorageOptions": {<o:p></O:P></FONT></FONT></SPAN></P>
+<P class=a style="BACKGROUND: #c1c1c1; MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US><FONT face="Courier New"><FONT size=2><SPAN 
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </SPAN>"MaxReadValues": 86400,<o:p></O:P></FONT></FONT></SPAN></P>
+<P class=a style="BACKGROUND: #c1c1c1; MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US><FONT face="Courier New"><FONT size=2><SPAN 
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </SPAN>"OracleDriver": {<o:p></O:P></FONT></FONT></SPAN></P>
+<P class=a style="BACKGROUND: #c1c1c1; MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US><FONT face="Courier New"><FONT size=2><SPAN 
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </SPAN>"Enable": <B>true</B>,<o:p></O:P></FONT></FONT></SPAN></P>
+<P class=a style="BACKGROUND: #c1c1c1; MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US><FONT face="Courier New"><FONT size=2><SPAN 
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </SPAN>"DataSource": "Data Source=<B>192.168.1.1:1521/rsdudk.rsdu</B>",<o:p></O:P></FONT></FONT></SPAN></P>
+<P class=a style="BACKGROUND: #c1c1c1; MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US><FONT face="Courier New"><FONT size=2><SPAN 
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </SPAN>"Login": "<B>archwebapi01</B>",<o:p></O:P></FONT></FONT></SPAN></P>
+<P class=a style="BACKGROUND: #c1c1c1; MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US><FONT face="Courier New"><FONT size=2><SPAN 
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </SPAN>"Password": "<B>rsdu_211</B>"<o:p></O:P></FONT></FONT></SPAN></P>
+<P class=a style="BACKGROUND: #c1c1c1; MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US><FONT face="Courier New"><FONT size=2><SPAN 
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </SPAN>},<o:p></O:P></FONT></FONT></SPAN></P>
+<P class=a style="BACKGROUND: #c1c1c1; MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US><FONT face="Courier New"><FONT size=2><SPAN 
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </SPAN>"CassandraDriver": {<o:p></O:P></FONT></FONT></SPAN></P>
+<P class=a style="BACKGROUND: #c1c1c1; MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US><FONT face="Courier New"><FONT size=2><SPAN 
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </SPAN>"Enable": <B>false</B>,<o:p></O:P></FONT></FONT></SPAN></P>
+<P class=a style="BACKGROUND: #c1c1c1; MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US><FONT face="Courier New"><FONT size=2><SPAN 
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </SPAN>"Hosts": [<o:p></O:P></FONT></FONT></SPAN></P>
+<P class=a style="BACKGROUND: #c1c1c1; MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US><FONT face="Courier New"><FONT size=2><SPAN 
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN>"<B>192.168.1.3</B>",<o:p></O:P></FONT></FONT></SPAN></P>
+<P class=a style="BACKGROUND: #c1c1c1; MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US><FONT face="Courier New"><FONT size=2><SPAN 
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN>"<B>192.168.1.4</B>"<o:p></O:P></FONT></FONT></SPAN></P>
+<P class=a style="BACKGROUND: #c1c1c1; MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US><FONT face="Courier New"><FONT size=2><SPAN 
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </SPAN>],<o:p></O:P></FONT></FONT></SPAN></P>
+<P class=a style="BACKGROUND: #c1c1c1; MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US><FONT face="Courier New"><FONT size=2><SPAN 
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </SPAN>"Port": 9042,<o:p></O:P></FONT></FONT></SPAN></P>
+<P class=a style="BACKGROUND: #c1c1c1; MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US><FONT face="Courier New"><FONT size=2><SPAN 
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </SPAN>"Username": "<B>admin</B>",<o:p></O:P></FONT></FONT></SPAN></P>
+<P class=a style="BACKGROUND: #c1c1c1; MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US><FONT face="Courier New"><FONT size=2><SPAN 
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </SPAN>"Password": "<B>password1</B>",<o:p></O:P></FONT></FONT></SPAN></P>
+<P class=a style="BACKGROUND: #c1c1c1; MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US><FONT face="Courier New"><FONT size=2><SPAN 
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </SPAN>"Keyspace": "arc",<o:p></O:P></FONT></FONT></SPAN></P>
+<P class=a style="BACKGROUND: #c1c1c1; MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US><FONT face="Courier New"><FONT size=2><SPAN 
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </SPAN>"MaxStatementsInBatch": 40<o:p></O:P></FONT></FONT></SPAN></P>
+<P class=a style="BACKGROUND: #c1c1c1; MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US><FONT face="Courier New"><FONT size=2><SPAN 
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </SPAN>}<o:p></O:P></FONT></FONT></SPAN></P>
+<P class=a style="BACKGROUND: #c1c1c1; MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US><FONT face="Courier New"><FONT size=2><SPAN 
+style="mso-spacerun: yes">&nbsp; 
+</SPAN>},<o:p></O:P></FONT></FONT></SPAN></P>
+<P class=a style="BACKGROUND: #c1c1c1; MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US><FONT face="Courier New"><FONT size=2><SPAN 
+style="mso-spacerun: yes">&nbsp; 
+</SPAN>"RabbitMQ": {<o:p></O:P></FONT></FONT></SPAN></P>
+<P class=a style="BACKGROUND: #c1c1c1; MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US><FONT face="Courier New"><FONT size=2><SPAN 
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </SPAN>"Login": "<B>rsdu</B>",<o:p></O:P></FONT></FONT></SPAN></P>
+<P class=a style="BACKGROUND: #c1c1c1; MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US><FONT face="Courier New"><FONT size=2><SPAN 
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </SPAN>"Password": "<B>password1</B>",<o:p></O:P></FONT></FONT></SPAN></P>
+<P class=a style="BACKGROUND: #c1c1c1; MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US><FONT face="Courier New"><FONT size=2><SPAN 
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </SPAN>"Port": 5672,<o:p></O:P></FONT></FONT></SPAN></P>
+<P class=a style="BACKGROUND: #c1c1c1; MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US><FONT face="Courier New"><FONT size=2><SPAN 
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </SPAN>"VirtualHost": "rsdu",<o:p></O:P></FONT></FONT></SPAN></P>
+<P class=a style="BACKGROUND: #c1c1c1; MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US><FONT face="Courier New"><FONT size=2><SPAN 
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </SPAN>"HostNames": [<o:p></O:P></FONT></FONT></SPAN></P>
+<P class=a style="BACKGROUND: #c1c1c1; MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US><FONT face="Courier New"><FONT size=2><SPAN 
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </SPAN>"<B>oic1, oic2</B>"<o:p></O:P></FONT></FONT></SPAN></P>
+<P class=a style="BACKGROUND: #c1c1c1; MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US><FONT face="Courier New"><FONT size=2><SPAN 
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </SPAN>]<o:p></O:P></FONT></FONT></SPAN></P>
+<P class=a style="BACKGROUND: #c1c1c1; MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US><FONT face="Courier New"><FONT size=2><SPAN 
+style="mso-spacerun: yes">&nbsp; 
+</SPAN>},<o:p></O:P></FONT></FONT></SPAN></P>
+<P class=a style="BACKGROUND: #c1c1c1; MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US><FONT face="Courier New"><FONT size=2><SPAN 
+style="mso-spacerun: yes">&nbsp; 
+</SPAN>"RuntimeOptions" : {<o:p></O:P></FONT></FONT></SPAN></P>
+<P class=a style="BACKGROUND: #c1c1c1; MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US><FONT face="Courier New"><FONT size=2><SPAN 
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </SPAN>"MaxQueuedTasksProcess" : 10,<o:p></O:P></FONT></FONT></SPAN></P>
+<P class=a style="BACKGROUND: #c1c1c1; MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US><FONT face="Courier New"><FONT size=2><SPAN 
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </SPAN>"UpdateModelCachePeriod" : 60,<o:p></O:P></FONT></FONT></SPAN></P>
+<P class=a style="BACKGROUND: #c1c1c1; MARGIN: 0cm 0cm 0pt"><SPAN class=a3><SPAN lang=EN-US 
+style='FONT-SIZE: 12pt; LINE-HEIGHT: 115%; mso-bidi-font-family: "Times New Roman"; mso-bidi-font-size: 10.0pt'><FONT face="Courier New"><FONT size=2><SPAN style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </SPAN>"ProfileLastUpdatePeriod" : 
+10<o:p></O:P></FONT></FONT></SPAN></SPAN></P>
+<P class=a style="BACKGROUND: #c1c1c1; MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US><FONT face="Courier New"><FONT size=2><SPAN 
+style="mso-spacerun: yes">&nbsp; 
+</SPAN>},<o:p></O:P></FONT></FONT></SPAN></P>
+<P class=a style="BACKGROUND: #c1c1c1; MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US><FONT face="Courier New"><FONT size=2><SPAN 
+style="mso-spacerun: yes">&nbsp; 
+</SPAN>"NLog": {<o:p></O:P></FONT></FONT></SPAN></P>
+<P class=a style="BACKGROUND: #c1c1c1; MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US><FONT face="Courier New"><FONT size=2><SPAN 
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </SPAN>"autoReload": true,<o:p></O:P></FONT></FONT></SPAN></P>
+<P class=a style="BACKGROUND: #c1c1c1; MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US><FONT face="Courier New"><FONT size=2><SPAN 
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </SPAN>"throwConfigExceptions": true,<o:p></O:P></FONT></FONT></SPAN></P>
+<P class=a style="BACKGROUND: #c1c1c1; MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US><FONT face="Courier New"><FONT size=2><SPAN 
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </SPAN>"variables": {<o:p></O:P></FONT></FONT></SPAN></P>
+<P class=a style="BACKGROUND: #c1c1c1; MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US><FONT face="Courier New"><FONT size=2><SPAN 
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </SPAN>"logDirectory": "/var/log/ema/arch-webapi",<o:p></O:P></FONT></FONT></SPAN></P>
+<P class=a style="BACKGROUND: #c1c1c1; MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US><FONT face="Courier New"><FONT size=2><SPAN 
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </SPAN>"logFilePrefix": "arch-webapi",<o:p></O:P></FONT></FONT></SPAN></P>
+<P class=a style="BACKGROUND: #c1c1c1; MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US><FONT face="Courier New"><FONT size=2><SPAN 
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </SPAN>"full_message": "${longdate} - ${level:uppercase=true}: 
+[${logger}] ${message} ${onexc<o:p></O:P></FONT></FONT></SPAN></P>
+<P class=a style="BACKGROUND: #c1c1c1; MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US><FONT face="Courier New"><FONT size=2>eption:${newline}EXCEPTION: 
+${exception:format=ToString,StackTrace}${newline}}"<o:p></O:P></FONT></FONT></SPAN></P>
+<P class=a style="BACKGROUND: #c1c1c1; MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US><FONT face="Courier New"><FONT size=2><SPAN 
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </SPAN>},<o:p></O:P></FONT></FONT></SPAN></P>
+<P class=a style="BACKGROUND: #c1c1c1; MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US><FONT face="Courier New"><FONT size=2><SPAN 
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </SPAN>"targets": {<o:p></O:P></FONT></FONT></SPAN></P>
+<P class=a style="BACKGROUND: #c1c1c1; MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US><FONT face="Courier New"><FONT size=2><SPAN 
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </SPAN>"async": true,<o:p></O:P></FONT></FONT></SPAN></P>
+<P class=a style="BACKGROUND: #c1c1c1; MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US><FONT face="Courier New"><FONT size=2><SPAN 
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </SPAN>"console": {<o:p></O:P></FONT></FONT></SPAN></P>
+<P class=a style="BACKGROUND: #c1c1c1; MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US><FONT face="Courier New"><FONT size=2><SPAN 
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN>"type": "Console",<o:p></O:P></FONT></FONT></SPAN></P>
+<P class=a style="BACKGROUND: #c1c1c1; MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US><FONT face="Courier New"><FONT size=2><SPAN 
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN>"layout": "${full_message}"<o:p></O:P></FONT></FONT></SPAN></P>
+<P class=a style="BACKGROUND: #c1c1c1; MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US><FONT face="Courier New"><FONT size=2><SPAN 
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </SPAN>},<o:p></O:P></FONT></FONT></SPAN></P>
+<P class=a style="BACKGROUND: #c1c1c1; MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US><FONT face="Courier New"><FONT size=2><SPAN 
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </SPAN>"file": {<o:p></O:P></FONT></FONT></SPAN></P>
+<P class=a style="BACKGROUND: #c1c1c1; MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US><FONT face="Courier New"><FONT size=2><SPAN 
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN>"encoding": "UTF8",<o:p></O:P></FONT></FONT></SPAN></P>
+<P class=a style="BACKGROUND: #c1c1c1; MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US><FONT face="Courier New"><FONT size=2><SPAN 
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN>"type": "file",<o:p></O:P></FONT></FONT></SPAN></P>
+<P class=a style="BACKGROUND: #c1c1c1; MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US><FONT face="Courier New"><FONT size=2><SPAN 
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN>"keepFileOpen": false,<o:p></O:P></FONT></FONT></SPAN></P>
+<P class=a style="BACKGROUND: #c1c1c1; MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US><FONT face="Courier New"><FONT size=2><SPAN 
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN>"fileName": 
+"${logDirectory}/${logFilePrefix}.log",<o:p></O:P></FONT></FONT></SPAN></P>
+<P class=a style="BACKGROUND: #c1c1c1; MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US><FONT face="Courier New"><FONT size=2><SPAN 
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN>"archiveFileName": 
+"${logDirectory}/${logFilePrefix}-${shortdate}.log",<o:p></O:P></FONT></FONT></SPAN></P>
+<P class=a style="BACKGROUND: #c1c1c1; MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US><FONT face="Courier New"><FONT size=2><SPAN 
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN>"layout": "${full_message}",<o:p></O:P></FONT></FONT></SPAN></P>
+<P class=a style="BACKGROUND: #c1c1c1; MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US><FONT face="Courier New"><FONT size=2><SPAN 
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN>"maxArchiveFiles": 10,<o:p></O:P></FONT></FONT></SPAN></P>
+<P class=a style="BACKGROUND: #c1c1c1; MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US><FONT face="Courier New"><FONT size=2><SPAN 
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN>"archiveEvery": "Day"<o:p></O:P></FONT></FONT></SPAN></P>
+<P class=a style="BACKGROUND: #c1c1c1; MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US><FONT face="Courier New"><FONT size=2><SPAN 
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </SPAN>}<o:p></O:P></FONT></FONT></SPAN></P>
+<P class=a style="BACKGROUND: #c1c1c1; MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US><FONT face="Courier New"><FONT size=2><SPAN 
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </SPAN>},<o:p></O:P></FONT></FONT></SPAN></P>
+<P class=a style="BACKGROUND: #c1c1c1; MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US><FONT face="Courier New"><FONT size=2><SPAN 
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </SPAN>"rules": [<o:p></O:P></FONT></FONT></SPAN></P>
+<P class=a style="BACKGROUND: #c1c1c1; MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US><FONT face="Courier New"><FONT size=2><SPAN 
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </SPAN>{<o:p></O:P></FONT></FONT></SPAN></P>
+<P class=a style="BACKGROUND: #c1c1c1; MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US><FONT face="Courier New"><FONT size=2><SPAN 
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN>"logger": "*",<o:p></O:P></FONT></FONT></SPAN></P>
+<P class=a style="BACKGROUND: #c1c1c1; MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US><FONT face="Courier New"><FONT size=2><SPAN 
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN>"minLevel": "Trace",<o:p></O:P></FONT></FONT></SPAN></P>
+<P class=a style="BACKGROUND: #c1c1c1; MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US><FONT face="Courier New"><FONT size=2><SPAN 
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN>"writeTo": "file,console"<o:p></O:P></FONT></FONT></SPAN></P>
+<P class=a style="BACKGROUND: #c1c1c1; MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US><FONT face="Courier New"><FONT size=2><SPAN 
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </SPAN>}<o:p></O:P></FONT></FONT></SPAN></P>
+<P class=a style="BACKGROUND: #c1c1c1; MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US><FONT face="Courier New"><FONT size=2><SPAN 
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </SPAN>]<o:p></O:P></FONT></FONT></SPAN></P>
+<P class=a style="BACKGROUND: #c1c1c1; MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US><FONT face="Courier New"><FONT size=2><SPAN 
+style="mso-spacerun: yes">&nbsp; 
+</SPAN>},<o:p></O:P></FONT></FONT></SPAN></P>
+<P class=a style="BACKGROUND: #c1c1c1; MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US><FONT face="Courier New"><FONT size=2><SPAN 
+style="mso-spacerun: yes">&nbsp; 
+</SPAN>"Logging": {<o:p></O:P></FONT></FONT></SPAN></P>
+<P class=a style="BACKGROUND: #c1c1c1; MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US><FONT face="Courier New"><FONT size=2><SPAN 
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </SPAN>"LogLevel": {<o:p></O:P></FONT></FONT></SPAN></P>
+<P class=a style="BACKGROUND: #c1c1c1; MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US><FONT face="Courier New"><FONT size=2><SPAN 
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </SPAN>"Default": "Error",<o:p></O:P></FONT></FONT></SPAN></P>
+<P class=a style="BACKGROUND: #c1c1c1; MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US><FONT face="Courier New"><FONT size=2><SPAN 
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </SPAN>"Microsoft": "None",<o:p></O:P></FONT></FONT></SPAN></P>
+<P class=a style="BACKGROUND: #c1c1c1; MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US><FONT face="Courier New"><FONT size=2><SPAN 
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </SPAN>"Microsoft.Hosting.Lifetime": "Information",<o:p></O:P></FONT></FONT></SPAN></P>
+<P class=a style="BACKGROUND: #c1c1c1; MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US><FONT face="Courier New"><FONT size=2><SPAN 
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </SPAN>"Microsoft.EntityFrameworkCore" : "Information",<o:p></O:P></FONT></FONT></SPAN></P>
+<P class=a style="BACKGROUND: #c1c1c1; MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US><FONT face="Courier New"><FONT size=2><SPAN 
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </SPAN>"*.ExecuteQueuedTaskBkgService" : "Debug"<o:p></O:P></FONT></FONT></SPAN></P>
+<P class=a style="BACKGROUND: #c1c1c1; MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US><FONT face="Courier New"><FONT size=2><SPAN 
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </SPAN>}<o:p></O:P></FONT></FONT></SPAN></P>
+<P class=a style="BACKGROUND: #c1c1c1; MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US><FONT face="Courier New"><FONT size=2><SPAN 
+style="mso-spacerun: yes">&nbsp; 
+</SPAN>}<o:p></O:P></FONT></FONT></SPAN></P>
+<P class=a style="BACKGROUND: #c1c1c1; MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US><FONT face="Courier New"><FONT size=2>}<o:p></O:P></FONT></FONT></SPAN></P></DIV>
+<P class=MsoNormal style="MARGIN: 6pt 0cm"><FONT size=2>В<SPAN style="mso-ansi-language: EN-US"> </SPAN>файле<SPAN 
+style="mso-ansi-language: EN-US"> </SPAN>указывается<SPAN lang=EN-US 
+style="mso-ansi-language: EN-US">:<o:p></O:P></SPAN></FONT></P>
+<P class=a8 style="MARGIN: 6pt 0cm"><FONT size=2><SPAN class=a3><SPAN lang=EN-US 
+style='mso-bidi-font-family: "Times New Roman"; mso-ansi-language: EN-US'><FONT face="Courier New">Urls</FONT></SPAN></SPAN> – 
+<SPAN lang=EN-US style="mso-ansi-language: EN-US">IP</SPAN>-адрес и порт сервиса.<o:p></O:P></FONT></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 6pt"><FONT size=2><SPAN class=a3><SPAN 
+style='mso-bidi-font-family: "Times New Roman"'><FONT face="Courier New">PathBase </FONT></SPAN></SPAN>– базовый путь в URL сервиса.<o:p></O:P></FONT></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 6pt"><FONT size=2><FONT face="Courier New"><SPAN class=a3><SPAN lang=EN-US 
+style='mso-bidi-font-family: "Times New Roman"; mso-ansi-language: EN-US'>RsduAuthService</SPAN></SPAN><SPAN class=a3><SPAN lang=EN-US 
+style='mso-bidi-font-family: "Times New Roman"'> 
+</SPAN></SPAN></FONT>– URL доступа к сервису 
+аутентификации и авторизации пользователей.<o:p></O:P></FONT></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 6pt"><FONT size=2>Блок <SPAN class=a3><SPAN style='mso-bidi-font-family: "Times New Roman"'><FONT face="Courier New">ModelStorage</FONT></SPAN></SPAN> – настройки доступа к БДТИ с конфигурацией комплекса 
+РСДУ:<o:p></O:P></FONT></P>
+<P class=MsoListBullet2 
+style="MARGIN: 0cm 0cm 6pt 32.15pt; mso-list: l2 level1 lfo1"><FONT size=2><SPAN 
+style="FONT-FAMILY: Wingdings; mso-fareast-font-family: Wingdings; mso-bidi-font-family: Wingdings"><SPAN style="mso-list: Ignore">ü<SPAN style='FONT: 7pt "Times New Roman"'>&nbsp; </SPAN></SPAN></SPAN><SPAN class=a3><SPAN style='mso-bidi-font-family: "Times New Roman"'><FONT face="Courier New">Provider 
+</FONT></SPAN></SPAN>– провайдер доступа к БД. На 
+текущей модели поддерживаются Oracle и PostgreSQL;<o:p></O:P></FONT></P>
+<P class=MsoListBullet2 
+style="MARGIN: 0cm 0cm 6pt 32.15pt; mso-list: l2 level1 lfo1"><FONT size=2><SPAN 
+style="FONT-FAMILY: Wingdings; mso-fareast-font-family: Wingdings; mso-bidi-font-family: Wingdings"><SPAN style="mso-list: Ignore">ü<SPAN style='FONT: 7pt "Times New Roman"'>&nbsp; </SPAN></SPAN></SPAN><SPAN class=a3><SPAN style='mso-bidi-font-family: "Times New Roman"'><FONT face="Courier New">DataSource</FONT></SPAN></SPAN> 
+– параметры подключения к БД;<o:p></O:P></FONT></P>
+<P class=MsoListBullet2 
+style="MARGIN: 0cm 0cm 6pt 32.15pt; mso-list: l2 level1 lfo1"><FONT size=2><SPAN 
+style="FONT-FAMILY: Wingdings; mso-fareast-font-family: Wingdings; mso-bidi-font-family: Wingdings"><SPAN style="mso-list: Ignore">ü<SPAN style='FONT: 7pt "Times New Roman"'>&nbsp; </SPAN></SPAN></SPAN><SPAN class=a3><SPAN style='mso-bidi-font-family: "Times New Roman"'><FONT face="Courier New">DefaultSchema</FONT></SPAN></SPAN><SPAN 
+style='FONT-SIZE: 10pt; FONT-FAMILY: "Courier New"; LINE-HEIGHT: 115%; mso-bidi-font-family: "Times New Roman"; mso-no-proof: yes'> </SPAN>– название схемы 
+размещения таблиц в БД по умолчанию;<o:p></O:P></FONT></P>
+<P class=MsoListBullet2 
+style="MARGIN: 0cm 0cm 6pt 32.15pt; mso-list: l2 level1 lfo1"><FONT size=2><SPAN 
+style="FONT-FAMILY: Wingdings; mso-fareast-font-family: Wingdings; mso-bidi-font-family: Wingdings"><SPAN style="mso-list: Ignore">ü<SPAN style='FONT: 7pt "Times New Roman"'>&nbsp; </SPAN></SPAN></SPAN><SPAN class=a3><SPAN 
+style='mso-bidi-font-family: "Times New Roman"'><FONT face="Courier New">Login</FONT></SPAN></SPAN><SPAN 
+style='FONT-FAMILY: "Calibri","sans-serif"'> </SPAN><SPAN 
+style="mso-bidi-font-family: Arial">– л</SPAN>огин учетной записи;<o:p></O:P></FONT></P>
+<P class=MsoListBullet2 
+style="MARGIN: 0cm 0cm 6pt 32.15pt; mso-list: l2 level1 lfo1"><FONT size=2><SPAN 
+style="FONT-FAMILY: Wingdings; mso-fareast-font-family: Wingdings; mso-bidi-font-family: Wingdings"><SPAN style="mso-list: Ignore">ü<SPAN style='FONT: 7pt "Times New Roman"'>&nbsp; </SPAN></SPAN></SPAN><SPAN class=a3><SPAN 
+style='mso-bidi-font-family: "Times New Roman"'><FONT face="Courier New">Password</FONT></SPAN></SPAN><SPAN 
+style='FONT-FAMILY: "Calibri","sans-serif"'> </SPAN><SPAN 
+style="mso-bidi-font-family: Arial">– </SPAN>пароль учетной записи.<SPAN 
+style="mso-bidi-font-family: Arial"><o:p></O:P></SPAN></FONT></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 6pt"><FONT size=2><SPAN 
+style="mso-bidi-font-family: Arial">Блок </SPAN><SPAN 
+class=a3><SPAN 
+style='mso-bidi-font-family: "Times New Roman"'><FONT face="Courier New">ArchiveStorageOptions 
+</FONT></SPAN></SPAN>– настройки работы с БД 
+архивов:<SPAN class=a3><SPAN 
+style='mso-bidi-font-family: "Times New Roman"'><o:p></O:P></SPAN></SPAN></FONT></P>
+<P class=MsoListBullet2 
+style="MARGIN: 0cm 0cm 6pt 32.15pt; mso-list: l2 level1 lfo1"><FONT size=2><SPAN class=a3><SPAN 
+style="FONT-FAMILY: Wingdings; mso-fareast-font-family: Wingdings; mso-bidi-font-family: Wingdings"><SPAN style="mso-list: Ignore">ü<SPAN style='FONT: 7pt "Times New Roman"'>&nbsp; </SPAN></SPAN></SPAN></SPAN><SPAN class=a3><SPAN style='mso-bidi-font-family: "Times New Roman"'><FONT face="Courier New">MaxReadValues 
+</FONT></SPAN></SPAN>– ограничение по количеству 
+получаемых значений при чтении данных из архива<SPAN class=a3><SPAN style='mso-bidi-font-family: "Times New Roman"'><FONT face="Courier New">;<o:p></O:P></FONT></SPAN></SPAN></FONT></P>
+<P class=MsoListBullet2 
+style="MARGIN: 0cm 0cm 6pt 32.15pt; mso-list: l2 level1 lfo1"><FONT size=2><SPAN 
+style="FONT-FAMILY: Wingdings; mso-fareast-font-family: Wingdings; mso-bidi-font-family: Wingdings"><SPAN style="mso-list: Ignore">ü<SPAN style='FONT: 7pt "Times New Roman"'>&nbsp; </SPAN></SPAN></SPAN><FONT face="Courier New"><SPAN 
+class=a3><SPAN 
+style='mso-bidi-font-family: "Times New Roman"'>OracleD</SPAN></SPAN><SPAN class=a3><SPAN lang=EN-US 
+style='mso-bidi-font-family: "Times New Roman"; mso-ansi-language: EN-US'>river</SPAN></SPAN></FONT><SPAN 
+style="mso-bidi-font-family: Arial"> – настройки драйвера 
+работы с хранилищем архивов в СУБД Oracle:<o:p></O:P></SPAN></FONT></P>
+<P class=MsoListBullet3 
+style="MARGIN: 0cm 0cm 6pt 46.3pt; mso-list: l1 level1 lfo2"><FONT size=2><SPAN 
+style='FONT-FAMILY: "Courier New"; mso-fareast-font-family: "Courier New"'><SPAN style="mso-list: Ignore">o<SPAN style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp; </SPAN></SPAN></SPAN><SPAN class=a3><SPAN 
+style='mso-bidi-font-family: "Times New Roman"'><FONT face="Courier New">Enable</FONT></SPAN></SPAN><SPAN 
+style="mso-bidi-font-family: Arial"> </SPAN>– определяет включение драйвера в работу. Принимает 
+значения true либо false;<o:p></O:P></FONT></P>
+<P class=MsoListBullet3 
+style="MARGIN: 0cm 0cm 6pt 46.3pt; mso-list: l1 level1 lfo2"><FONT size=2><SPAN 
+style='FONT-FAMILY: "Courier New"; mso-fareast-font-family: "Courier New"'><SPAN style="mso-list: Ignore">o<SPAN style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp; </SPAN></SPAN></SPAN><SPAN class=a3><SPAN 
+style='mso-bidi-font-family: "Times New Roman"'><FONT face="Courier New">DataSource</FONT></SPAN></SPAN><SPAN 
+style="mso-bidi-font-family: Arial"> – </SPAN>строка подключения к БД <SPAN lang=EN-US 
+style="mso-ansi-language: EN-US">Oracle</SPAN>;<o:p></O:P></FONT></P>
+<P class=MsoListBullet3 
+style="MARGIN: 0cm 0cm 6pt 46.3pt; mso-list: l1 level1 lfo2"><FONT size=2><SPAN 
+style='FONT-FAMILY: "Courier New"; mso-fareast-font-family: "Courier New"'><SPAN style="mso-list: Ignore">o<SPAN style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp; </SPAN></SPAN></SPAN><SPAN class=a3><SPAN 
+style='mso-bidi-font-family: "Times New Roman"'><FONT face="Courier New">Login</FONT></SPAN></SPAN><SPAN 
+style="mso-bidi-font-family: Arial"> – логин учетной 
+записи;<o:p></O:P></SPAN></FONT></P>
+<P class=MsoListBullet3 
+style="MARGIN: 0cm 0cm 6pt 46.3pt; mso-list: l1 level1 lfo2"><FONT size=2><SPAN lang=EN-US 
+style='FONT-FAMILY: "Courier New"; mso-fareast-font-family: "Courier New"; mso-ansi-language: EN-US'><SPAN style="mso-list: Ignore">o<SPAN style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp; </SPAN></SPAN></SPAN><SPAN class=a3><SPAN 
+style='mso-bidi-font-family: "Times New Roman"'><FONT face="Courier New">Password</FONT></SPAN></SPAN><SPAN 
+style="mso-bidi-font-family: Arial"> – пароль учетной 
+записи.</SPAN><SPAN lang=EN-US 
+style="mso-bidi-font-family: Arial; mso-ansi-language: EN-US"><o:p></O:P></SPAN></FONT></P>
+<P class=MsoListBullet2 
+style="MARGIN: 0cm 0cm 6pt 32.15pt; mso-list: l2 level1 lfo1"><FONT size=2><SPAN lang=EN-US 
+style="FONT-FAMILY: Wingdings; mso-fareast-font-family: Wingdings; mso-bidi-font-family: Wingdings; mso-ansi-language: EN-US"><SPAN style="mso-list: Ignore">ü<SPAN style='FONT: 7pt "Times New Roman"'>&nbsp; </SPAN></SPAN></SPAN><SPAN class=a3><SPAN lang=EN-US 
+style='mso-bidi-font-family: "Times New Roman"; mso-ansi-language: EN-US'><FONT face="Courier New">CassandraArchivesDB</FONT></SPAN></SPAN><SPAN lang=EN-US 
+style="mso-bidi-font-family: Arial; mso-ansi-language: EN-US"> – </SPAN><SPAN style="mso-bidi-font-family: Arial">настройки</SPAN><SPAN 
+style="mso-bidi-font-family: Arial; mso-ansi-language: EN-US"> </SPAN><SPAN style="mso-bidi-font-family: Arial">БД</SPAN><SPAN lang=EN-US 
+style="mso-bidi-font-family: Arial; mso-ansi-language: EN-US"> Cassandra </SPAN><SPAN style="mso-bidi-font-family: Arial">для</SPAN><SPAN 
+style="mso-bidi-font-family: Arial; mso-ansi-language: EN-US"> </SPAN><SPAN style="mso-bidi-font-family: Arial">хранения</SPAN><SPAN 
+style="mso-bidi-font-family: Arial; mso-ansi-language: EN-US"> </SPAN><SPAN style="mso-bidi-font-family: Arial">архивов</SPAN><SPAN lang=EN-US 
+style="mso-bidi-font-family: Arial; mso-ansi-language: EN-US">:<o:p></O:P></SPAN></FONT></P>
+<P class=MsoListBullet3 
+style="MARGIN: 0cm 0cm 6pt 46.3pt; mso-list: l1 level1 lfo2"><FONT size=2><SPAN 
+style='FONT-FAMILY: "Courier New"; mso-fareast-font-family: "Courier New"'><SPAN style="mso-list: Ignore">o<SPAN style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp; </SPAN></SPAN></SPAN><SPAN class=a3><SPAN 
+style='mso-bidi-font-family: "Times New Roman"'><FONT face="Courier New">Enable</FONT></SPAN></SPAN><SPAN 
+style="mso-bidi-font-family: Arial"> </SPAN>– определяет включение драйвера в работу. Принимает 
+значения true либо false;<o:p></O:P></FONT></P>
+<P class=MsoListBullet3 
+style="MARGIN: 0cm 0cm 6pt 46.3pt; mso-list: l1 level1 lfo2"><FONT size=2><SPAN 
+style='FONT-FAMILY: "Courier New"; mso-fareast-font-family: "Courier New"'><SPAN style="mso-list: Ignore">o<SPAN style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp; </SPAN></SPAN></SPAN><SPAN class=a3><SPAN style='mso-bidi-font-family: "Times New Roman"'><FONT face="Courier New">Hosts</FONT></SPAN></SPAN> – 
+список <SPAN lang=EN-US style="mso-ansi-language: EN-US">IP</SPAN>-адресов или <SPAN lang=EN-US 
+style="mso-ansi-language: EN-US">DNS</SPAN> имён;<o:p></O:P></FONT></P>
+<P class=MsoListBullet3 
+style="MARGIN: 0cm 0cm 6pt 46.3pt; mso-list: l1 level1 lfo2"><FONT size=2><SPAN 
+style='FONT-FAMILY: "Courier New"; mso-fareast-font-family: "Courier New"'><SPAN style="mso-list: Ignore">o<SPAN style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp; </SPAN></SPAN></SPAN><SPAN class=a3><SPAN style='mso-bidi-font-family: "Times New Roman"'><FONT face="Courier New">Port</FONT></SPAN></SPAN> – 
+порт;<o:p></O:P></FONT></P>
+<P class=MsoListBullet3 
+style="MARGIN: 0cm 0cm 6pt 46.3pt; mso-list: l1 level1 lfo2"><FONT size=2><SPAN lang=EN-US 
+style='FONT-FAMILY: "Courier New"; mso-fareast-font-family: "Courier New"; mso-ansi-language: EN-US'><SPAN style="mso-list: Ignore">o<SPAN style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp; </SPAN></SPAN></SPAN><SPAN class=a3><SPAN style='mso-bidi-font-family: "Times New Roman"'><FONT face="Courier New">Username</FONT></SPAN></SPAN> – 
+имя пользователя;<SPAN lang=EN-US style="mso-ansi-language: EN-US"><o:p></O:P></SPAN></FONT></P>
+<P class=MsoListBullet3 
+style="MARGIN: 0cm 0cm 6pt 46.3pt; mso-list: l1 level1 lfo2"><FONT size=2><SPAN lang=EN-US 
+style='FONT-FAMILY: "Courier New"; mso-fareast-font-family: "Courier New"; mso-ansi-language: EN-US'><SPAN style="mso-list: Ignore">o<SPAN style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp; </SPAN></SPAN></SPAN><SPAN class=a3><SPAN style='mso-bidi-font-family: "Times New Roman"'><FONT face="Courier New">Password</FONT></SPAN></SPAN> – 
+пароль пользователя;<SPAN lang=EN-US style="mso-ansi-language: EN-US"><o:p></O:P></SPAN></FONT></P>
+<P class=MsoListBullet3 
+style="MARGIN: 0cm 0cm 6pt 46.3pt; mso-list: l1 level1 lfo2"><FONT size=2><SPAN 
+style='FONT-FAMILY: "Courier New"; mso-fareast-font-family: "Courier New"'><SPAN style="mso-list: Ignore">o<SPAN style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp; </SPAN></SPAN></SPAN><SPAN class=a3><SPAN style='mso-bidi-font-family: "Times New Roman"'><FONT face="Courier New">Keyspace</FONT></SPAN></SPAN> – 
+имя пространства хранения данных;<o:p></O:P></FONT></P>
+<P class=MsoListBullet3 
+style="MARGIN: 0cm 0cm 6pt 46.3pt; mso-list: l1 level1 lfo2"><FONT size=2><SPAN 
+style='FONT-FAMILY: "Courier New"; mso-fareast-font-family: "Courier New"'><SPAN style="mso-list: Ignore">o<SPAN style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp; </SPAN></SPAN></SPAN><SPAN class=a3><SPAN style='mso-bidi-font-family: "Times New Roman"'><FONT face="Courier New">MaxStatementsInBatch </FONT></SPAN></SPAN>– максимальное количество операций INSERT в одном блоке 
+(batch). Если задано значение меньше 1, то ограничение не применяется.<o:p></O:P></FONT></P>
+<P class=MsoNormal style="PAGE-BREAK-AFTER: avoid; MARGIN: 0cm 0cm 6pt"><FONT size=2>Блок <SPAN 
+class=a3><SPAN 
+style='mso-bidi-font-family: "Times New Roman"'><FONT face="Courier New">RabbitMQ</FONT></SPAN></SPAN> – содержит настройки подключения к брокеру сообщений 
+RabbitMQ:<o:p></O:P></FONT></P>
+<P class=MsoListBullet2 
+style="MARGIN: 0cm 0cm 6pt 32.15pt; mso-list: l2 level1 lfo1"><FONT size=2><SPAN 
+style="FONT-FAMILY: Wingdings; mso-fareast-font-family: Wingdings; mso-bidi-font-family: Wingdings"><SPAN style="mso-list: Ignore">ü<SPAN style='FONT: 7pt "Times New Roman"'>&nbsp; </SPAN></SPAN></SPAN><SPAN class=a3><SPAN style='mso-bidi-font-family: "Times New Roman"'><FONT face="Courier New">Login</FONT></SPAN></SPAN> – имя 
+пользователя;<o:p></O:P></FONT></P>
+<P class=MsoListBullet2 
+style="MARGIN: 0cm 0cm 6pt 32.15pt; mso-list: l2 level1 lfo1"><FONT size=2><SPAN 
+style="FONT-FAMILY: Wingdings; mso-fareast-font-family: Wingdings; mso-bidi-font-family: Wingdings"><SPAN style="mso-list: Ignore">ü<SPAN style='FONT: 7pt "Times New Roman"'>&nbsp; </SPAN></SPAN></SPAN><SPAN class=a3><SPAN style='mso-bidi-font-family: "Times New Roman"'><FONT face="Courier New">Password</FONT></SPAN></SPAN> – 
+пароль пользователя;<o:p></O:P></FONT></P>
+<P class=MsoListBullet2 
+style="MARGIN: 0cm 0cm 6pt 32.05pt; TEXT-INDENT: -17.85pt; mso-list: l2 level1 lfo1"><FONT size=2><SPAN 
+style="FONT-FAMILY: Wingdings; mso-fareast-font-family: Wingdings; mso-bidi-font-family: Wingdings"><SPAN style="mso-list: Ignore">ü<SPAN style='FONT: 7pt "Times New Roman"'>&nbsp; </SPAN></SPAN></SPAN><SPAN class=a3><SPAN style='mso-bidi-font-family: "Times New Roman"'><FONT face="Courier New">Port</FONT></SPAN></SPAN> – 
+номер порта, на котором работает брокер.<o:p></O:P></FONT></P>
+<P class=MsoListContinue2 style="MARGIN: 0cm 0cm 6pt 32.05pt"><FONT size=2>По умолчанию 
+5672;<o:p></O:P></FONT></P>
+<P class=MsoListBullet2 
+style="MARGIN: 0cm 0cm 6pt 32.15pt; mso-list: l2 level1 lfo1"><FONT size=2><SPAN 
+style="FONT-FAMILY: Wingdings; mso-fareast-font-family: Wingdings; mso-bidi-font-family: Wingdings"><SPAN style="mso-list: Ignore">ü<SPAN style='FONT: 7pt "Times New Roman"'>&nbsp; </SPAN></SPAN></SPAN><SPAN class=a3><SPAN style='mso-bidi-font-family: "Times New Roman"'><FONT face="Courier New">VirtualHost</FONT></SPAN></SPAN> 
+– используемый на брокере виртуальный узел.<o:p></O:P></FONT></P>
+<P class=MsoListContinue2 style="MARGIN: 0cm 0cm 6pt 32.05pt"><FONT size=2>По умолчанию 
+«/»;<o:p></O:P></FONT></P>
+<P class=MsoListBullet2 
+style="MARGIN: 0cm 0cm 6pt 32.15pt; mso-list: l2 level1 lfo1"><FONT size=2><SPAN 
+style="FONT-FAMILY: Wingdings; mso-fareast-font-family: Wingdings; mso-bidi-font-family: Wingdings"><SPAN style="mso-list: Ignore">ü<SPAN style='FONT: 7pt "Times New Roman"'>&nbsp; </SPAN></SPAN></SPAN><SPAN class=a3><SPAN style='mso-bidi-font-family: "Times New Roman"'><FONT face="Courier New">HostNames</FONT></SPAN></SPAN> – 
+список <SPAN lang=EN-US style="mso-ansi-language: EN-US">IP</SPAN>-адресов или <SPAN lang=EN-US 
+style="mso-ansi-language: EN-US">DNS</SPAN>-имён 
+компьютеров, на которых работает брокер;<o:p></O:P></FONT></P>
+<P class=MsoNormal style="PAGE-BREAK-AFTER: avoid; MARGIN: 0cm 0cm 6pt"><FONT size=2>Блок <SPAN 
+class=a3><SPAN 
+style='mso-bidi-font-family: "Times New Roman"'><FONT face="Courier New">RuntimeOptions</FONT></SPAN></SPAN> – содержит настройки производительности сервиса 
+<SPAN class=a3><SPAN 
+style='mso-bidi-font-family: "Times New Roman"'><FONT face="Courier New">arch-webapi</FONT></SPAN></SPAN>:<o:p></O:P></FONT></P>
+<P class=MsoListBullet2 
+style="PAGE-BREAK-AFTER: avoid; MARGIN: 0cm 0cm 6pt 32.05pt; TEXT-INDENT: -17.85pt; mso-list: l2 level1 lfo1"><FONT size=2><SPAN 
+style="FONT-FAMILY: Wingdings; mso-fareast-font-family: Wingdings; mso-bidi-font-family: Wingdings"><SPAN style="mso-list: Ignore">ü<SPAN style='FONT: 7pt "Times New Roman"'>&nbsp; </SPAN></SPAN></SPAN><SPAN class=a3><SPAN style='mso-bidi-font-family: "Times New Roman"'><FONT face="Courier New">MaxQueuedTasksProcess</FONT></SPAN></SPAN> – максимальное количество процессов для обработки 
+запросов.<o:p></O:P></FONT></P>
+<P class=MsoListContinue2 style="MARGIN: 0cm 0cm 6pt 32.05pt"><FONT size=2>По умолчанию 
+10;<o:p></O:P></FONT></P>
+<P class=MsoListBullet2 
+style="MARGIN: 0cm 0cm 6pt 32.15pt; mso-list: l2 level1 lfo1"><FONT size=2><SPAN 
+style="FONT-FAMILY: Wingdings; mso-fareast-font-family: Wingdings; mso-bidi-font-family: Wingdings"><SPAN style="mso-list: Ignore">ü<SPAN style='FONT: 7pt "Times New Roman"'>&nbsp; </SPAN></SPAN></SPAN><SPAN class=a3><SPAN style='mso-bidi-font-family: "Times New Roman"'><FONT face="Courier New">UpdateModelCachePeriod</FONT></SPAN></SPAN> – период обновления кэша модели в минутах.<o:p></O:P></FONT></P>
+<P class=MsoListContinue2 style="MARGIN: 0cm 0cm 6pt 32.05pt"><FONT size=2>По умолчанию 
+60;<o:p></O:P></FONT></P>
+<P class=MsoListBullet2 
+style="MARGIN: 0cm 0cm 6pt 32.15pt; mso-list: l2 level1 lfo1"><FONT size=2><SPAN 
+style="FONT-FAMILY: Wingdings; mso-fareast-font-family: Wingdings; mso-bidi-font-family: Wingdings"><SPAN style="mso-list: Ignore">ü<SPAN style='FONT: 7pt "Times New Roman"'>&nbsp; </SPAN></SPAN></SPAN><SPAN class=a3><SPAN style='mso-bidi-font-family: "Times New Roman"'><FONT face="Courier New">ProfileLastUpdatePeriod</FONT></SPAN></SPAN> – технологический цикл проверки меток времени изменений 
+профилей архивов в секундах.<o:p></O:P></FONT></P>
+<P class=MsoListContinue2 style="MARGIN: 0cm 0cm 6pt 32.05pt"><FONT size=2>По умолчанию 
+10.<o:p></O:P></FONT></P>
+<P><SPAN 
+style='FONT-SIZE: 12pt; FONT-FAMILY: "Arial","sans-serif"; LINE-HEIGHT: 115%; mso-fareast-font-family: "Times New Roman"; mso-ansi-language: RU; mso-bidi-font-size: 10.0pt; mso-fareast-language: RU; mso-bidi-language: AR-SA'><FONT size=2>Остальные блоки конфигурационного файла 
+отвечают за настройки логирования и не должны изменяться 
+пользо</FONT></SPAN></P></body>
+</html>

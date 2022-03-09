@@ -1,0 +1,299 @@
+﻿<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Рекомендации по чистке архивов в СУБД Oracle</title>
+</head>
+
+<body>
+
+<h3  >Рекомендации по чистке архивов в СУБД Oracle</h3>
+
+<p  ><FONT size=2>При длительном функционировании (3-5 и более лет) комплекса
+РСДУ накапливаются данные в архивах параметров, т.е. объем БД растет.<span
+ style="mso-spacerun: yes">&nbsp; </span>При этом место, выделенное под хранение
+файлов БД, может быть<span style="mso-spacerun: yes">&nbsp; </span>уже заполнено на величину,
+близкую к 100% использования. Также растут и объемы<span
+ style="mso-spacerun: yes">&nbsp; </span>файлов резервных копий БД. Так или иначе, но
+встает вопрос о том, что место на дисках заканчивается, что чревато проблемами<span
+ style="mso-spacerun: yes">&nbsp; </span>вплоть до полного останова БД.</FONT>    </p>
+
+<p  ><FONT size=2>В этом случае<span style="mso-spacerun: yes">&nbsp;
+</span>используется 
+приложение для чистки архивов БД – ArcCleaner.exe. К данному приложению 
+составлена инструкция, где все написано. </FONT>        
+       </p>
+
+<p  ><FONT size=2>В текущем документе еще раз описано, как избежать различного
+рода проблемы. А проблемы могут возникнуть из-за того, что как правило
+большинство БД заказчиков находятся в режиме ARCHIVELOG (архивирования журналов
+повтора), и<span style="mso-spacerun: yes">&nbsp; </span>это правильно<span
+ style="mso-spacerun: yes">&nbsp; </span>(для тех, у кого NOARCHIVELOG, можно дальше
+не читать, проверить режим "<span style="BACKGROUND:
+ white; mso-highlight: white">select log_mode from v$database</span>"; если есть автоматическое резервное копирование 
+БД с RMAN, то можно не проверять – она точно в режиме ARCHIVELOG). </FONT>    
+              </p>
+
+<p  ><FONT size=2>Следует иметь в виду, что место, которое изначально
+выделяется на дисках для архивирования журналов повтора (как правило, это папка
+с названием flash_recovery_area, или для краткости FRA) – рассчитано на
+стандартный режим работы БД, а вот операция чистки БД – это не стандартный
+режим!<span style="mso-spacerun: yes">&nbsp; </span>Это удаление<span
+ style="mso-spacerun: yes">&nbsp; </span>достаточно большого объема старых данных, при
+этом базой генерируется в разы больший объем архивных логов и потому<span
+ style="mso-spacerun: yes">&nbsp; </span>может быстро наступить переполнение области 
+FRA , что приведет к останову БД до момента очистки этой области, чтобы 
+освободить место под запись новых архивных логов.</FONT>    
+            
+      </p>
+
+<p  ><FONT size=2>Поэтому в инструкции к приложению ArcCleaner написано, что
+за наполнением области FRA надо пристально следить все время работы приложения
+и удалять в большом количестве<span style="mso-spacerun: yes">&nbsp;
+</span>генерируемые в 
+процессе его работы архивные логи, дабы не наступило переполнения FRA. Т.е. 
+ответственный человек должен сидеть рядом с сервером БД, следить за оставшимся 
+местом на дисках (по команде "df –h" и своевременно удалять файлы из области 
+FRA)</FONT>         
+          
+          
+     </p>
+
+<p  ><FONT size=2>Однако – человек может отвлечься – у него 
+полно других дел или обед или конец рабочего дня и надо уходить, а программа все 
+еще не доработала. Кто бы заранее знал, сколько вообще ей надо времени, ведь это 
+зависит и от количества параметров и от серверного железа вплоть до заряда 
+батареек в контроллерах дисков, и положения звезд на небе как в момент ее (БД) 
+зачатия (в смысле, инсталляции и настройки), так и в текущее время, даже если 
+утро и звезд уже не видно.</FONT>          
+             
+           
+           
+             
+            
+     </p>
+
+<p  ><STRONG>Лайфхак №1:<span style="mso-spacerun: yes">&nbsp; </span>для
+избежания<span style="mso-spacerun: yes">&nbsp; </span>проблем отключить режим 
+ARCHIVELOG</STRONG>  
+</p>
+
+<p  ><FONT size=2>Я бы тогда для 100%<span style="mso-spacerun: yes">&nbsp;
+</span>избежания<span style="mso-spacerun: yes">&nbsp; </span>останова БД вследствие
+переполнения FRA рекомендовала временно отключить для БД режим ARCHIVELOG, а
+без него она (БД), кстати, и отработала бы удалению устаревших данных быстрее,
+т.к. не затрачивала бы время на архивирование журналов.<span
+ style="mso-spacerun: yes">&nbsp; </span>Да, это требует останова БД. Но<span
+ style="mso-spacerun: yes">&nbsp; </span>останов, перевод в режим NOARCHIVELOG и снова
+запуск БД<span style="mso-spacerun: yes">&nbsp; </span>делается довольно 
+быстро, так что клиенты (как люди-диспетчеры, так и наши технологические 
+сервера), скорее всего, этого даже и не заметят. Надо только попасть в нужный 
+промежуток времени.</FONT>   
+         
+           
+</p>
+
+<p  ><FONT size=2>Все изложенное ниже лучше сначала<span
+ style="mso-spacerun: yes">&nbsp; </span>дочитать до конца,<span
+ style="mso-spacerun: yes">&nbsp; </span>осмыслить, потренироваться с деталями настройки, и только потом уже 
+делать останов и перезапуск БД. А то быстро может и не получится. </FONT>   
+             
+   </p>
+
+<p  ><STRONG>Итак, лайфхак №2:<span style="mso-spacerun: yes">&nbsp;
+</span>попасть в нужный промежуток 
+времени.</STRONG>    </p>
+
+<p  ><FONT size=2>Для этого надо помониторить минут 5-10 
+</FONT>      <a name="OLE_LINK1"><FONT size=2>вью 
+ARC_STAT_CURRENT_V</FONT>
+</a><FONT size=2> – вью статистики по записи данных в 
+БД (текущее состояние записи). </FONT><FONT size=2>Лучше это делать в sqlplus 
+непосредственно на сервере, ведь в нем же сразу и сделаем перезапуск БД. 
+</FONT><FONT size=2>Итак, сделали окно путти побольше, выставили в свойствах
+окна кодировку Win1251<span style="mso-spacerun: yes">&nbsp; </span>чтобы читать
+русские буквы, и запустили sqlplus (команда "sqlplus /<span
+ style="mso-spacerun: yes">&nbsp; </span>as sysdba" под oracle), </FONT><FONT size=2>Сразу<span style="mso-spacerun: yes">&nbsp; </span>дали для удобства работы в нем ряд команд</FONT>         
+ </p>
+
+<p  ><span style="BACKGROUND: white; mso-highlight: white"><FONT color=#0000ff>set linesize 140</FONT>
+ </span></p>
+
+<p  ><span style="BACKGROUND: white; mso-highlight: white"><FONT color=#0000ff>set pagesize 999</FONT>
+ </span></p>
+
+<p  ><span style="BACKGROUND: white; mso-highlight: white"><FONT color=#0000ff>alter session set 
+nls_date_format =   'dd.mm.yyyy 
+hh24:mi:ss';&lt; /FONT
+  &gt;  </span></p>
+
+<p  ><FONT size=2>И мониторим вью ARC_STAT_CURRENT_V – вот 
+хороший запрос </FONT>        </p>
+
+<p  ><span style="BACKGROUND: white; mso-highlight: white"><FONT color=#0000ff>select last_update, cur_process, 
+cur_row, substr (tbl_name || ' - ' ||opt_alias, 1, 30) alias from 
+ARC_STAT_CURRENT_V;</FONT>
+          
+   </span></p>
+
+<p  ><FONT size=2>результат<span style="mso-spacerun: yes">&nbsp; </span>будет<span
+ style="mso-spacerun: yes">&nbsp; </span>вот такого типа</FONT>  </p>
+
+<p  ><span style="BACKGROUND: white; mso-highlight: white"><FONT color=#000080 size=1>LAST_UPDATE<span
+ style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>CUR_PROCESS<span
+ style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </span>CUR_ROW ALIAS</FONT> </span></p>
+
+<p  ><span style="BACKGROUND: white; mso-highlight: white"><FONT color=#000080 size=1>------------------- ----------- 
+---------- ------------------------------</FONT>
+  </span></p>
+
+<p  ><span style="BACKGROUND: white; mso-highlight: white"><FONT color=#000080 size=1>29.09.2016
+12:00:00<span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>6<span
+ style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </span><span
+ style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;</span>2823 ELREG_LIST_V - Уср. 
+час</FONT>    </span></p>
+
+<p  ><span style="BACKGROUND: white; mso-highlight: white"><FONT color=#000080 size=1>29.09.2016
+12:10:00<span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>3<span
+ style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>2823 
+ELREG_LIST_V - Уср. 10</FONT>    </span></p>
+
+<p  ><span style="BACKGROUND: white; mso-highlight: white"><FONT color=#000080 size=1>29.09.2016
+12:00:00<span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>0<span
+ style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>7 ELREG_LIST_V - Интеграл</FONT>   </span></p>
+
+<p  ><span style="BACKGROUND: white; mso-highlight: white"><FONT color=#000080 size=1>29.09.2016
+12:14:55<span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>2<span
+ style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp; </span>169380 ELREG_LIST_V - 
+Мгновенные5S</FONT>   </span></p>
+
+<p  ><span style="BACKGROUND: white; mso-highlight: white"><FONT color=#000080 size=1>29.09.2016
+12:15:00 <span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>0<span
+ style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>1 ELREG_LIST_V - Интеграл3мин</FONT>   </span></p>
+
+<p  ><span style="BACKGROUND: white; mso-highlight: white"><FONT color=#000080 size=1>29.09.2016
+12:00:00<span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>3<span
+ style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>1606 
+PSWT_LIST_V - Состояния60</FONT>   </span></p>
+
+<p  ><span style="BACKGROUND: white; mso-highlight: white"><FONT color=#000080 size=1>29.09.2016
+12:00:00<span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>2<span
+ style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>158 
+PHREG_LIST_V - Уср. час</FONT>    </span></p>
+
+<p  ><span style="BACKGROUND: white; mso-highlight: white"><FONT color=#000080 size=1>29.09.2016
+12:10:00<span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>2<span
+ style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>158 
+PHREG_LIST_V - Уср. 10</FONT>    </span></p>
+
+<p  ><FONT size=2 color=#000000>Для справки -<span style="mso-spacerun: yes">&nbsp; </span>что это
+все это значит: последняя запись архивов данного вида прошла для<span
+ style="mso-spacerun: yes">&nbsp; </span>указанного времени <span style="BACKGROUND:
+ white; mso-highlight: white">LAST_UPDATE</span>, записано <span style="BACKGROUND:
+ white; mso-highlight: white">CUR_ROW</span> строк за <span style="BACKGROUND:
+ white; mso-highlight: white">CUR_PROCESS</span> секунд. </FONT>  </p>
+
+<p  ><FONT size=2 color=#000000>Смотрим на результаты запроса - нас интересует, когда была
+запись мгновенных<span style="mso-spacerun: yes">&nbsp; </span>(ELREG-5секундных или
+у некоторых заказчиков 1 cекундных). Как правило, она идет по наполнению буфера
+БД РВ приблизительно раз в 5 мин (или раз в 1 минуту).<span
+ style="mso-spacerun: yes">&nbsp;&nbsp; </span>И смотрим еще, что уже прошла запись
+периодических архивов (часовых, 30мин, 10 мин, у некоторых 5 мин) и есть
+некоторое еще время до следующей записи.<span style="mso-spacerun: yes">&nbsp;
+</span>Вот в этот перерыв между записью мгновенных<span
+ style="mso-spacerun: yes">&nbsp; </span>и следующей записью новой порции<span
+ style="mso-spacerun: yes">&nbsp; </span>мгновенных и периодических нам и надо
+попасть.<span style="mso-spacerun: yes">&nbsp;&nbsp; </span>И еще смотрим на текущую дату
+сервера – тут же, в sqlplus, командой !date<span style="mso-spacerun: yes">&nbsp;
+</span>- это чтобы понять, когда в БД повалят периодические. Повторяем
+указанный запрос к ARC_STAT_CURRENT_V в течении времени мониторинга несколько
+раз (повтор предыдущей команды в sqlplus, напоминаю, это слэш<span
+ style="mso-spacerun: yes">&nbsp; </span>-<span style="mso-spacerun: yes">&nbsp;
+</span>символ /). Из наблюдений делаем вывод, как 
+часто скидываются мгновенные – в них тоже прослеживается периодичность записи. 
+</FONT>         
+       </p>
+
+<p  >&nbsp;<IMG alt="" src="Cimage001.png"><span style="mso-no-proof: yes"></span></p>
+
+<p  ><FONT color=#000000 size=2>В примере мониторинга выше видно по первому запросу к<span
+ style="mso-spacerun: yes">&nbsp; </span>ARC_STAT_CURRENT_V, что запись мгновенных
+прошла в 15:39:55; затем я считала текущее время сервера !date,<span
+ style="mso-spacerun: yes">&nbsp; </span>и поняла, что еще приблизительно через минуту
+должна быть следующая запись, затем<span style="mso-spacerun: yes">&nbsp;
+</span>повторение запроса к<span style="mso-spacerun: yes">&nbsp;
+</span>ARC_STAT_CURRENT_V<span style="mso-spacerun: yes">&nbsp; </span>показало, что
+прошла запись мгновенных в 15:44:55, и до следующей записи обязательных
+периодических (10-минуток) в 15:50 у нас есть 5 минут, и поэтому прям
+немедленно можно быстро выполнить<span style="mso-spacerun: yes">&nbsp;
+</span>перезапуск БД для перевода в режим NOARCHIVLOG. Для этого быстро
+последовательно даем тут же в<span style="mso-spacerun: yes">&nbsp; </span>sqlplus 
+команды:</FONT>
+</p>
+
+<p  ><span style="BACKGROUND: white; mso-highlight: white">shutdown
+immediate</span></p>
+
+<p  ><span style="BACKGROUND: white; mso-highlight: white">startup
+mount</span></p>
+
+<p  ><span style="BACKGROUND: white; mso-highlight: white">alter
+database NO<a name="OLE_LINK3"></a><a name="OLE_LINK2"><span style="mso-bookmark:
+ OLE_LINK3">ARCHIVELOG;</span></a></span><span style="mso-bookmark: OLE_LINK2"><span
+ style="mso-bookmark: OLE_LINK3"></span></span></p>
+
+<span style="mso-bookmark: OLE_LINK3"></span><span style="mso-bookmark: OLE_LINK2"></span>
+
+<p  ><span style="BACKGROUND: white; mso-highlight: white">shutdown
+immediate</span></p>
+
+<p  ><span style="BACKGROUND: white; mso-highlight: white">startup</span></p>
+
+<p  ><FONT color=#000000 size=2>Таким образом, мы попадаем в 
+интервал наименьшей загрузки БД и эти команды пройдут менее чем за пару минут. 
+</FONT>        
+         </p>
+
+<p  ><FONT color=#000000 size=2>Зато теперь можно<span style="mso-spacerun: yes">&nbsp;
+</span>запустить<span style="mso-spacerun: yes">&nbsp; </span>приложение чистки
+архивов БД без опасений переполнения области FRA и без необходимости неусыпного
+контроля ситуации. Внимание еще к одному моменту - в инструкции к приложению
+подчеркнуто, что НЕ НАДО включать выгрузку удаляемых данных в файлы, т.к. это
+требует дополнительного места,<span style="mso-spacerun: yes">&nbsp; </span>так и не включайте, если места у вас на диске 
+нет.</FONT>  
+       </p>
+
+<p  ><FONT color=#000000 size=2>После завершения работы приложения ArcCleaner обязательно
+нужно таким же образом, как переводили БД в NOARCHIVELOG<span
+ style="mso-spacerun: yes">&nbsp; </span>вернуть БД в режим </FONT>    <a name="OLE_LINK5"></a><a
+ name="OLE_LINK4"><span style="mso-bookmark: OLE_LINK5"><FONT color=#000000 size=2>ARCHIVELOG</FONT></span></a><FONT color=#000000><FONT size=2>,
+чтобы автоматическое резервеное копирование БД могло выполняться<span
+ style="mso-spacerun: yes">&nbsp;&nbsp; </span>дальше.<span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;
+</span>Там меняется только одно слово в команде<span style="mso-spacerun: yes">&nbsp;
+</span>вместо <span style="BACKGROUND: white; mso-highlight: white">alter database
+NOARCHIVELOG;</span> делаем<span style="mso-spacerun: yes">&nbsp;&nbsp; </span><span
+ style="BACKGROUND: white; mso-highlight: white">alter database ARCHIVELOG; </span></FONT></FONT></p>
+
+<p  ><FONT color=#000000 size=2>То есть<span style="mso-spacerun: yes">&nbsp; </span>выбираем
+подходящий интервал времени для перезапуска БД<span style="mso-spacerun: yes">&nbsp;
+</span>и выполняем для обратного перевода в 
+ARCHIVELOG последовательность команд </FONT>       
+ </p>
+
+<p  ><span style="BACKGROUND: white; mso-highlight: white">shutdown
+immediate</span></p>
+
+<p  ><span style="BACKGROUND: white; mso-highlight: white">startup
+mount</span></p>
+
+<p  ><span style="BACKGROUND: white; mso-highlight: white">alter
+database ARCHIVELOG;</span></p>
+
+<p  ><span style="BACKGROUND: white; mso-highlight: white">shutdown
+immediate</span></p>
+
+<p  ><span style="BACKGROUND: white; mso-highlight: white">startup</span></p></FONT>
+
+</body>
+
+</html>
