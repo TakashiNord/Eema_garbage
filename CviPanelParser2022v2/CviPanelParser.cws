@@ -1,20 +1,20 @@
 [Workspace Header]
 Version = 901
-Pathname = "/d/home/EmaProj/pr44-CviPanelParser/CviPanelParser2022v2/CviPanelParser.cws"
+Pathname = "/c/Users/gal/Desktop/CviPanelParser2022v2/CviPanelParser.cws"
 CVI Dir = "/c/program files (x86)/national instruments/cvi90"
 CVI Shared Dir = "/C/Program Files (x86)/National Instruments/Shared/CVI"
 CVI Pub Local Dir = "/C/ProgramData/National Instruments/CVI90"
 CVI Pub Global Dir = "/C/ProgramData/National Instruments/CVI"
 IVI Standard Root Dir = "/C/Program Files (x86)/IVI"
-VXIplug&play Framework Dir = "/C/Program Files (x86)/IVI Foundation/VISA/winnt"
+VXIplug&play Framework Dir = "/c/vxipnp/winnt"
 Number of Projects = 1
 Active Project = 1
 Project 0001 = "CviPanelParser.prj"
 Drag Bar Left = 284
-Window Top = 111
-Window Left = 87
-Window Bottom = 672
-Window Right = 1206
+Window Top = 51
+Window Left = 263
+Window Bottom = 885
+Window Right = 1687
 Maximized = False
 Maximized Children = True
 Max Number Of Errors = 20
@@ -27,7 +27,7 @@ Save Changes Before Running = "Always"
 Hide Windows = False
 Break At First Statement = False
 Sort Type = "File Name"
-Number of Opened Files = 1
+Number of Opened Files = 0
 Window Confinement Region Enabled = True
 MainColumnWidth = 265
 FileDateColumnWidth = 70
@@ -45,29 +45,18 @@ Batch Build Debug = False
 Force Rebuild = False
 
 [File 0001]
-Path = "/d/home/EmaProj/pr44-CviPanelParser/CviPanelParser2022v2/Test.uir"
-File Type = "User Interface Resource"
-Disk Date = 3728386931
-In Projects = ""
-Window Top = 32
-Window Left = 10
-Window Height = 310
-Window Width = 687
-Window Z-Order = 1
-
-[File 0002]
-Path = "/d/home/EmaProj/pr44-CviPanelParser/CviPanelParser2022v2/CviPanelParser.c"
+Path = "/c/Users/gal/Desktop/CviPanelParser2022v2/CviPanelParser.c"
 File Type = "CSource"
-Disk Date = 3729165770
+Disk Date = 3734070774
 In Projects = "1,"
 Window Top = 32
 Window Left = 10
-Source Window State = "1,597,599,599,0,14,14,0,0,0,0,0,0,0,0,0,588,0,597,0,258,527,1,0,"
+Source Window State = "1,325,326,326,0,12,12,0,0,0,0,0,0,0,0,0,785,0,794,16,258,527,1,0,"
 
-[File 0003]
-Path = "/d/home/EmaProj/pr44-CviPanelParser/CviPanelParser2022v2/CviPanelParser.h"
+[File 0002]
+Path = "/c/Users/gal/Desktop/CviPanelParser2022v2/CviPanelParser.h"
 File Type = "Include"
-Disk Date = 3727060764
+Disk Date = 3729685693
 In Projects = "1,"
 Window Top = 32
 Window Left = 10

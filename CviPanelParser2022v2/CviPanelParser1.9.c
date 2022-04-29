@@ -646,6 +646,9 @@ int GetCtrlElem ( FILE *outfile, int panelHandle, int ctrlID )
 
 int TabCtrlElem ( FILE *outfile, int panelHandle, int ctrlIDdef )
 {
+    char outl[64];
+    char fout[5];
+
     int ctrl, ctrlID = ctrlIDdef;
     int y = 0, x = 0;
     int h = 0, w = 0;
@@ -663,6 +666,9 @@ int TabCtrlElem ( FILE *outfile, int panelHandle, int ctrlIDdef )
     int attr_visible, attr_dimmed ;
     int attr_backcolor ;
 
+    fout[0]='\0'; sprintf(fout ,"%%%ds", level+1);
+    outl[0]='\0'; sprintf(outl ,fout, " ");
+
     GetCtrlAttribute(panelHandle, ctrlID, ATTR_CTRL_STYLE,     &attr_ctrl_style);
     GetCtrlAttribute(panelHandle, ctrlID, ATTR_CONSTANT_NAME,   attr_constant_name); //!!
     GetCtrlAttribute(panelHandle, ctrlID, ATTR_LEFT,       &x);
@@ -674,20 +680,17 @@ int TabCtrlElem ( FILE *outfile, int panelHandle, int ctrlIDdef )
 
     if(flagNotFirst){fprintf(outfile ,",\n");} else {flagNotFirst = 1;};
 
-    fprintf(outfile ," {\n");
-    fprintf(outfile ,"  id: '%s',\n", attr_constant_name );
-
-    /* up */  level ++ ;
-
-    fprintf(outfile ,"  xtype: 'tabpanel',\n");
-    //fprintf(outfile ,"  //fullscreen: true,\n");
-    //fprintf(outfile ,"  //tabBarPosition: 'bottom',\n");
-    fprintf(outfile ,"  x: %d,\n",x);
-    fprintf(outfile ,"  y: %d,\n",y);
-    fprintf(outfile ,"  height: %d,\n",h);
-    fprintf(outfile ,"  width: %d,\n",w);
-    fprintf(outfile ,"  activeTab: 0,\n");
-    fprintf(outfile ,"  items: [\n");
+    fprintf(outfile ,"%s{\n",outl);
+    fprintf(outfile ,"%sid: '%s',\n",outl, attr_constant_name ); /* up */  level ++ ;
+    fprintf(outfile ,"%sxtype: 'tabpanel',\n",outl);
+    //fprintf(outfile ,"%s//fullscreen: true,\n",outl);
+    //fprintf(outfile ,"%s//tabBarPosition: 'bottom',\n",outl);
+    fprintf(outfile ,"%sx: %d,\n",outl,x);
+    fprintf(outfile ,"%sy: %d,\n",outl,y);
+    fprintf(outfile ,"%sheight: %d,\n",outl,h);
+    fprintf(outfile ,"%swidth: %d,\n",outl,w);
+    fprintf(outfile ,"%sactiveTab: 0,\n",outl);
+    fprintf(outfile ,"%sitems: [\n",outl);
 
     flagNotFirst = 0;
 
@@ -718,24 +721,30 @@ int TabCtrlElem ( FILE *outfile, int panelHandle, int ctrlIDdef )
 
       // Start block
       fprintf(outfile ,"");
-      fprintf(outfile ,"   {\n");
+      fprintf(outfile ,"%s{\n",outl);
 
       /* up */  level ++ ;
 
-      fprintf(outfile ,"    id: '%s',\n",GenId());
-      fprintf(outfile ,"    title: '%s',\n",attr_label_text);
-      fprintf(outfile ,"    layout: 'fit',\n");
-      //fprintf(outfile ,"    //border: true,\n");
-      fprintf(outfile ,"    items: [ {\n");
+          fout[0]='\0'; sprintf(fout ,"%%%ds", level+1);
+          outl[0]='\0'; sprintf(outl ,fout, " ");
+
+      fprintf(outfile ,"%s id: '%s',\n",outl,GenId());
+      fprintf(outfile ,"%s title: '%s',\n",outl,attr_label_text);
+      fprintf(outfile ,"%s layout: 'fit',\n",outl);
+      //fprintf(outfile ,"%s //border: true,\n",outl);
+      fprintf(outfile ,"%s items: [ {\n",outl);
 
        /* up */  level ++ ;
 
-      fprintf(outfile ," xtype : 'panel',\n");
+          fout[0]='\0'; sprintf(fout ,"%%%ds", level+1);
+          outl[0]='\0'; sprintf(outl ,fout, " ");
+
+      fprintf(outfile ,"%s xtype : 'panel',\n",outl);
       //fprintf(outfile ,"     vpPanelId: '%s%d',\n",GenId(),tabIndex);
-      fprintf(outfile ," id: '%s%d',\n",GenId(),tabIndex);
-      fprintf(outfile ," layout: { type: 'absolute'},\n");
-      fprintf(outfile ," bodyStyle: 'background-color:%s',\n", Int2HexWeb(attr_backcolor) );
-      fprintf(outfile ," items: [\n");
+      fprintf(outfile ,"%s id: '%s%d',\n",outl,GenId(),tabIndex);
+      fprintf(outfile ,"%s layout: { type: 'absolute'},\n",outl);
+      fprintf(outfile ,"%s bodyStyle: 'background-color:%s',\n",outl, Int2HexWeb(attr_backcolor) );
+      fprintf(outfile ,"%s items: [\n",outl);
 
       flagNotFirst = 0;
 
@@ -765,11 +774,19 @@ int TabCtrlElem ( FILE *outfile, int panelHandle, int ctrlIDdef )
 
       // End block
       /* down */  level -- ;
-      fprintf(outfile ,"     ]\n");
+
+          fout[0]='\0'; sprintf(fout ,"%%%ds", level);
+          outl[0]='\0'; sprintf(outl ,fout, " ");
+
+      fprintf(outfile ,"%s ]\n",outl);
 
       /* down */  level -- ;
-      fprintf(outfile ,"    } ]\n");
-      fprintf(outfile ,"  }");
+
+          fout[0]='\0'; sprintf(fout ,"%%%ds", level);
+          outl[0]='\0'; sprintf(outl ,fout, " ");
+
+      fprintf(outfile ,"%s } ]\n",outl);
+      fprintf(outfile ,"%s }",outl);
 
       if (tabIndex!=(tabCount-1)) fprintf(outfile ,","); fprintf(outfile ,"\n");
     }
