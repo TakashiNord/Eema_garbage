@@ -1,0 +1,3549 @@
+﻿<html>
+
+<head>
+<title>Сервис передачи КДУ в СК-2007. Руководство администратора</title>
+
+<meta http-equiv=Content-Type content="text/html; charset=UTF-8">
+<meta name=Generator content="Microsoft Word 14 (filtered)">
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Courier;
+	panose-1:2 7 4 9 2 2 5 2 4 4;}
+@font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:"Bookshelf Symbol 7";
+	panose-1:5 1 1 1 1 1 1 1 1 1;}
+@font-face
+	{font-family:"Calibri Light";
+	panose-1:2 15 3 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:"Segoe UI";
+	panose-1:2 11 5 2 4 2 4 2 2 3;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	text-align:justify;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+h1
+	{margin-top:0cm;
+	margin-right:164.45pt;
+	margin-bottom:12.0pt;
+	margin-left:14.2pt;
+	text-indent:0cm;
+	line-height:115%;
+	page-break-before:always;
+	font-size:16.0pt;
+	font-family:"Arial","sans-serif";
+	color:#17365D;
+	font-weight:bold;}
+h2
+	{mso-style-link:"Заголовок 2 Знак";
+	margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:12.0pt;
+	margin-left:0cm;
+	text-indent:0cm;
+	line-height:115%;
+	page-break-after:avoid;
+	font-size:14.0pt;
+	font-family:"Arial","sans-serif";
+	font-weight:bold;}
+h3
+	{mso-style-link:"Заголовок 3 Знак";
+	margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	text-indent:0cm;
+	line-height:115%;
+	page-break-after:avoid;
+	font-size:13.0pt;
+	font-family:"Arial","sans-serif";
+	font-weight:bold;}
+h4
+	{mso-style-link:"Заголовок 4 Знак";
+	margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:0cm;
+	text-indent:0cm;
+	line-height:115%;
+	page-break-after:avoid;
+	font-size:12.5pt;
+	font-family:"Arial","sans-serif";
+	font-weight:bold;}
+h5
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:0cm;
+	text-indent:0cm;
+	line-height:115%;
+	page-break-after:avoid;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";
+	font-weight:bold;}
+h6
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:57.55pt;
+	text-align:justify;
+	text-indent:-57.55pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";
+	font-weight:normal;}
+p.MsoHeading7, li.MsoHeading7, div.MsoHeading7
+	{margin-top:0cm;
+	margin-right:164.45pt;
+	margin-bottom:12.0pt;
+	margin-left:14.2pt;
+	text-indent:0cm;
+	line-height:115%;
+	page-break-before:always;
+	font-size:16.0pt;
+	font-family:"Arial","sans-serif";
+	color:#17365D;
+	font-weight:bold;}
+p.MsoHeading8, li.MsoHeading8, div.MsoHeading8
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:12.0pt;
+	margin-left:0cm;
+	text-indent:0cm;
+	line-height:115%;
+	page-break-after:avoid;
+	font-size:14.0pt;
+	font-family:"Arial","sans-serif";
+	font-weight:bold;}
+p.MsoHeading9, li.MsoHeading9, div.MsoHeading9
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	text-indent:0cm;
+	line-height:115%;
+	page-break-after:avoid;
+	font-size:13.0pt;
+	font-family:"Arial","sans-serif";
+	font-weight:bold;}
+p.MsoToc1, li.MsoToc1, div.MsoToc1
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoToc2, li.MsoToc2, div.MsoToc2
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:21.55pt;
+	margin-bottom:.0001pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoToc3, li.MsoToc3, div.MsoToc3
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:48.2pt;
+	margin-bottom:.0001pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoToc4, li.MsoToc4, div.MsoToc4
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:61.25pt;
+	margin-bottom:.0001pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoToc5, li.MsoToc5, div.MsoToc5
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:44.0pt;
+	text-align:justify;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoToc6, li.MsoToc6, div.MsoToc6
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:55.0pt;
+	text-align:justify;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoToc7, li.MsoToc7, div.MsoToc7
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:66.0pt;
+	text-align:justify;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoToc8, li.MsoToc8, div.MsoToc8
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:77.0pt;
+	text-align:justify;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoToc9, li.MsoToc9, div.MsoToc9
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:88.0pt;
+	text-align:justify;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoNormalIndent, li.MsoNormalIndent, div.MsoNormalIndent
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:35.4pt;
+	text-align:justify;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoFootnoteText, li.MsoFootnoteText, div.MsoFootnoteText
+	{mso-style-link:"Текст сноски Знак";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	line-height:115%;
+	font-size:11.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoCommentText, li.MsoCommentText, div.MsoCommentText
+	{mso-style-link:"Текст примечания Знак";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	text-align:justify;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoHeader, li.MsoHeader, div.MsoHeader
+	{mso-style-link:"Верхний колонтитул Знак";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	text-align:justify;
+	line-height:115%;
+	font-size:9.0pt;
+	font-family:"Arial","sans-serif";
+	font-style:italic;}
+p.MsoFooter, li.MsoFooter, div.MsoFooter
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	text-align:justify;
+	line-height:115%;
+	font-size:9.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoCaption, li.MsoCaption, div.MsoCaption
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:12.0pt;
+	margin-left:0cm;
+	text-align:center;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";
+	font-weight:bold;}
+span.MsoFootnoteReference
+	{vertical-align:super;}
+span.MsoPageNumber
+	{font-family:"Arial","sans-serif";
+	font-weight:bold;}
+p.MsoEndnoteText, li.MsoEndnoteText, div.MsoEndnoteText
+	{mso-style-link:"Текст концевой сноски Знак";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoList, li.MsoList, div.MsoList
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:14.15pt;
+	text-align:justify;
+	text-indent:-14.15pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoListCxSpFirst, li.MsoListCxSpFirst, div.MsoListCxSpFirst
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:14.15pt;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-indent:-14.15pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoListCxSpMiddle, li.MsoListCxSpMiddle, div.MsoListCxSpMiddle
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:14.15pt;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-indent:-14.15pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoListCxSpLast, li.MsoListCxSpLast, div.MsoListCxSpLast
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:14.15pt;
+	text-align:justify;
+	text-indent:-14.15pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoListBullet, li.MsoListBullet, div.MsoListBullet
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:32.05pt;
+	text-align:justify;
+	text-indent:-17.85pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+p.MsoListNumber, li.MsoListNumber, div.MsoListNumber
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:159.75pt;
+	text-align:justify;
+	text-indent:-18.0pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoListBullet2, li.MsoListBullet2, div.MsoListBullet2
+	{mso-style-name:"Маркированный список 2\,р_мар1";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:32.15pt;
+	text-align:justify;
+	text-indent:-18.0pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoListBullet3, li.MsoListBullet3, div.MsoListBullet3
+	{mso-style-name:"Маркированный список 3\,р_мар2";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:46.3pt;
+	text-align:justify;
+	text-indent:-18.0pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoListBullet4, li.MsoListBullet4, div.MsoListBullet4
+	{mso-style-name:"Маркированный список 4\,р_мар3";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:60.45pt;
+	text-align:justify;
+	text-indent:-18.0pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoListNumber2, li.MsoListNumber2, div.MsoListNumber2
+	{mso-style-name:"Нумерованный список 2\,р_нум1";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:32.15pt;
+	text-align:justify;
+	text-indent:-18.0pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoListNumber3, li.MsoListNumber3, div.MsoListNumber3
+	{mso-style-name:"Нумерованный список 3\,р_нум2";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:46.3pt;
+	text-align:justify;
+	text-indent:-18.0pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoListNumber4, li.MsoListNumber4, div.MsoListNumber4
+	{mso-style-name:"Нумерованный список 4\,р_нум3";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:60.45pt;
+	text-align:justify;
+	text-indent:-18.0pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoClosing, li.MsoClosing, div.MsoClosing
+	{mso-style-link:"Прощание Знак";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:212.6pt;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoBodyText, li.MsoBodyText, div.MsoBodyText
+	{mso-style-link:"Основной текст Знак";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	line-height:115%;
+	font-size:8.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoBodyTextIndent, li.MsoBodyTextIndent, div.MsoBodyTextIndent
+	{mso-style-link:"Основной текст с отступом Знак";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	text-align:justify;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";
+	layout-grid-mode:line;}
+p.MsoListContinue2, li.MsoListContinue2, div.MsoListContinue2
+	{mso-style-name:"Продолжение списка 2\,р_прод1";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:32.05pt;
+	text-align:justify;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoListContinue3, li.MsoListContinue3, div.MsoListContinue3
+	{mso-style-name:"Продолжение списка 3\,р_прод2";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:46.2pt;
+	text-align:justify;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoListContinue4, li.MsoListContinue4, div.MsoListContinue4
+	{mso-style-name:"Продолжение списка 4\,р_прод3";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:60.4pt;
+	text-align:justify;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoBodyText2, li.MsoBodyText2, div.MsoBodyText2
+	{mso-style-link:"Основной текст 2 Знак";
+	margin-top:3.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:0cm;
+	line-height:115%;
+	font-size:9.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoBodyText3, li.MsoBodyText3, div.MsoBodyText3
+	{mso-style-link:"Основной текст 3 Знак";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	text-align:justify;
+	line-height:115%;
+	font-size:8.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoBodyTextIndent2, li.MsoBodyTextIndent2, div.MsoBodyTextIndent2
+	{mso-style-link:"Основной текст с отступом 2 Знак";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:233.9pt;
+	text-align:justify;
+	text-indent:-70.9pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoBodyTextIndent3, li.MsoBodyTextIndent3, div.MsoBodyTextIndent3
+	{mso-style-link:"Основной текст с отступом 3 Знак";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	text-align:justify;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";
+	layout-grid-mode:line;
+	font-style:italic;}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:#954F72;
+	text-decoration:underline;}
+em
+	{font-family:Courier;
+	font-style:normal;}
+p
+	{margin-right:0cm;
+	margin-left:0cm;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+address
+	{mso-style-link:"Адрес HTML Знак";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";
+	font-style:italic;}
+kbd
+	{font-family:"Courier New";}
+p.MsoCommentSubject, li.MsoCommentSubject, div.MsoCommentSubject
+	{mso-style-link:"Тема примечания Знак";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:5.0cm;
+	text-align:justify;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";
+	font-weight:bold;}
+p.MsoAcetate, li.MsoAcetate, div.MsoAcetate
+	{mso-style-link:"Текст выноски Знак";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	line-height:115%;
+	font-size:9.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoListParagraph, li.MsoListParagraph, div.MsoListParagraph
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:36.0pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoListParagraphCxSpFirst, li.MsoListParagraphCxSpFirst, div.MsoListParagraphCxSpFirst
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	margin-bottom:.0001pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoListParagraphCxSpMiddle, li.MsoListParagraphCxSpMiddle, div.MsoListParagraphCxSpMiddle
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	margin-bottom:.0001pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoListParagraphCxSpLast, li.MsoListParagraphCxSpLast, div.MsoListParagraphCxSpLast
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:36.0pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoQuote, li.MsoQuote, div.MsoQuote
+	{mso-style-link:"Цитата 2 Знак";
+	margin-top:10.0pt;
+	margin-right:43.2pt;
+	margin-bottom:8.0pt;
+	margin-left:43.2pt;
+	text-align:center;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";
+	color:#404040;
+	font-style:italic;}
+p.MsoIntenseQuote, li.MsoIntenseQuote, div.MsoIntenseQuote
+	{mso-style-name:"Выделенная цитата\,р_скрипт";
+	mso-style-link:"Выделенная цитата Знак\,р_скрипт Знак";
+	margin-top:0cm;
+	margin-right:5.65pt;
+	margin-bottom:0cm;
+	margin-left:5.65pt;
+	margin-bottom:.0001pt;
+	line-height:115%;
+	background:#C1C1C1;
+	border:none;
+	padding:0cm;
+	font-size:12.0pt;
+	font-family:"Courier New";}
+span.MsoSubtleEmphasis
+	{color:#404040;
+	font-style:italic;}
+span.MsoIntenseEmphasis
+	{color:#4472C4;
+	font-style:italic;}
+span.MsoBookTitle
+	{letter-spacing:.25pt;
+	font-weight:bold;
+	font-style:italic;}
+p.MsoTocHeading, li.MsoTocHeading, div.MsoTocHeading
+	{margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:14.2pt;
+	margin-bottom:.0001pt;
+	text-indent:0cm;
+	line-height:107%;
+	font-size:16.0pt;
+	font-family:"Calibri Light","sans-serif";
+	color:#2F5496;}
+p.a, li.a, div.a
+	{mso-style-name:р_дисплейсерый;
+	mso-style-link:"р_дисплейсерый Знак";
+	margin-top:0cm;
+	margin-right:5.65pt;
+	margin-bottom:0cm;
+	margin-left:5.65pt;
+	margin-bottom:.0001pt;
+	line-height:115%;
+	background:#C1C1C1;
+	border:none;
+	padding:0cm;
+	font-size:10.0pt;
+	font-family:"Courier New";}
+p.a0, li.a0, div.a0
+	{mso-style-name:название;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";
+	font-weight:bold;}
+p.a1, li.a1, div.a1
+	{mso-style-name:Программа;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	line-height:115%;
+	font-size:11.0pt;
+	font-family:Courier;}
+p.a2, li.a2, div.a2
+	{mso-style-name:псевдо;
+	mso-style-link:"псевдо Знак";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:14.2pt;
+	text-align:justify;
+	line-height:115%;
+	font-size:14.0pt;
+	font-family:"Arial","sans-serif";
+	color:white;
+	font-weight:bold;}
+p.a3, li.a3, div.a3
+	{mso-style-name:Маркированный;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:155.95pt;
+	text-align:justify;
+	text-indent:-14.2pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.2, li.2, div.2
+	{mso-style-name:"Маркированный 2";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:171.0pt;
+	text-align:justify;
+	text-indent:-14.2pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.3, li.3, div.3
+	{mso-style-name:"Маркированный 3";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:186.0pt;
+	text-align:justify;
+	text-indent:-14.2pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.a4, li.a4, div.a4
+	{mso-style-name:Нумерованный;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	text-align:justify;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+span.a5
+	{mso-style-name:"Основной текст Знак";
+	mso-style-link:"Основной текст";
+	font-family:"Arial","sans-serif";}
+span.20
+	{mso-style-name:"Основной текст 2 Знак";
+	mso-style-link:"Основной текст 2";
+	font-family:"Arial","sans-serif";}
+span.30
+	{mso-style-name:"Основной текст 3 Знак";
+	mso-style-link:"Основной текст 3";
+	font-family:"Arial","sans-serif";}
+span.a6
+	{mso-style-name:"Основной текст с отступом Знак";
+	mso-style-link:"Основной текст с отступом";
+	font-family:"Arial","sans-serif";
+	layout-grid-mode:both;}
+span.31
+	{mso-style-name:"Основной текст с отступом 3 Знак";
+	mso-style-link:"Основной текст с отступом 3";
+	font-family:"Arial","sans-serif";
+	layout-grid-mode:both;
+	font-style:italic;}
+span.1
+	{mso-style-name:"Неразрешенное упоминание1";
+	color:#605E5C;
+	background:#E1DFDD;}
+p.a7, li.a7, div.a7
+	{mso-style-name:"Нумерованный список широкий";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:18.0pt;
+	text-align:justify;
+	text-indent:-18.0pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+span.a8
+	{mso-style-name:"Текст сноски Знак";
+	mso-style-link:"Текст сноски";
+	font-family:"Arial","sans-serif";}
+span.a9
+	{mso-style-name:"Текст выноски Знак";
+	mso-style-link:"Текст выноски";
+	font-family:"Arial","sans-serif";}
+p.aa, li.aa, div.aa
+	{mso-style-name:р_определение;
+	mso-style-link:"р_определение Знак";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:36.0pt;
+	text-align:justify;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.ab, li.ab, div.ab
+	{mso-style-name:"Обычный широкий";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	text-align:justify;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+span.ac
+	{mso-style-name:"р_определение Знак";
+	mso-style-link:р_определение;
+	font-family:"Arial","sans-serif";}
+span.21
+	{mso-style-name:"Заголовок 2 Знак";
+	mso-style-link:"Заголовок 2";
+	font-family:"Arial","sans-serif";
+	font-weight:bold;}
+span.32
+	{mso-style-name:"Заголовок 3 Знак";
+	mso-style-link:"Заголовок 3";
+	font-family:"Arial","sans-serif";
+	font-weight:bold;}
+span.10
+	{mso-style-name:"Неразрешенное упоминание1";
+	color:#605E5C;
+	background:#E1DFDD;}
+span.4
+	{mso-style-name:"Заголовок 4 Знак";
+	mso-style-link:"Заголовок 4";
+	font-family:"Arial","sans-serif";
+	font-weight:bold;}
+span.ad
+	{mso-style-name:"псевдо Знак";
+	mso-style-link:псевдо;
+	font-family:"Arial","sans-serif";
+	color:white;
+	font-weight:bold;}
+p.ae, li.ae, div.ae
+	{mso-style-name:Нумерация;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:32.2pt;
+	text-align:justify;
+	text-indent:-18.0pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+p.af, li.af, div.af
+	{mso-style-name:р_верхкол;
+	mso-style-link:"р_верхкол Знак";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	line-height:115%;
+	border:none;
+	padding:0cm;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";
+	font-style:italic;}
+span.11
+	{mso-style-name:"Неразрешенное упоминание1";
+	color:#605E5C;
+	background:#E1DFDD;}
+span.af0
+	{mso-style-name:"Верхний колонтитул Знак";
+	mso-style-link:"Верхний колонтитул";
+	font-family:"Arial","sans-serif";
+	font-style:italic;}
+span.af1
+	{mso-style-name:"р_верхкол Знак";
+	mso-style-link:р_верхкол;
+	font-family:"Arial","sans-serif";
+	font-style:italic;}
+p.af2, li.af2, div.af2
+	{mso-style-name:р_марИ;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";
+	color:black;}
+p.af3, li.af3, div.af3
+	{mso-style-name:р_обТаб;
+	mso-style-link:"р_обТаб Знак";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	line-height:115%;
+	font-size:9.0pt;
+	font-family:"Arial","sans-serif";}
+p.12, li.12, div.12
+	{mso-style-name:Стиль1;
+	mso-style-link:"Стиль1 Знак";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:14.2pt;
+	text-align:justify;
+	line-height:115%;
+	font-size:14.0pt;
+	font-family:"Arial","sans-serif";
+	color:white;
+	font-weight:bold;}
+p.13, li.13, div.13
+	{mso-style-name:р_тит1;
+	mso-style-link:"р_тит1 Знак";
+	margin-top:0cm;
+	margin-right:2.85pt;
+	margin-bottom:12.0pt;
+	margin-left:0cm;
+	line-height:115%;
+	font-size:18.0pt;
+	font-family:"Arial","sans-serif";
+	color:#17365D;
+	text-transform:uppercase;
+	font-weight:bold;}
+span.14
+	{mso-style-name:"Стиль1 Знак";
+	mso-style-link:Стиль1;
+	font-family:"Arial","sans-serif";
+	color:white;
+	font-weight:bold;}
+p.22, li.22, div.22
+	{mso-style-name:р_тит2;
+	mso-style-link:"р_тит2 Знак";
+	margin-top:0cm;
+	margin-right:2.85pt;
+	margin-bottom:12.0pt;
+	margin-left:0cm;
+	line-height:115%;
+	font-size:18.0pt;
+	font-family:"Arial","sans-serif";
+	color:#17365D;
+	font-weight:bold;}
+span.15
+	{mso-style-name:"р_тит1 Знак";
+	mso-style-link:р_тит1;
+	font-family:"Arial","sans-serif";
+	color:#17365D;
+	text-transform:uppercase;
+	font-weight:bold;}
+span.23
+	{mso-style-name:"р_тит2 Знак";
+	mso-style-link:р_тит2;
+	font-family:"Arial","sans-serif";
+	color:#17365D;
+	text-transform:none;
+	font-weight:bold;}
+p.af4, li.af4, div.af4
+	{mso-style-name:"";
+	margin-right:0cm;
+	margin-left:0cm;
+	text-indent:14.2pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	color:black;}
+p.af5, li.af5, div.af5
+	{mso-style-name:р_выделить;
+	mso-style-link:"р_выделить Знак";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	text-align:justify;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";
+	font-weight:bold;
+	font-style:italic;}
+p.af6, li.af6, div.af6
+	{mso-style-name:р_клав;
+	mso-style-link:"р_клав Знак";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	text-align:justify;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";
+	text-transform:uppercase;}
+span.af7
+	{mso-style-name:"р_выделить Знак";
+	mso-style-link:р_выделить;
+	font-family:"Arial","sans-serif";
+	font-weight:bold;
+	font-style:italic;}
+span.af8
+	{mso-style-name:"р_клав Знак";
+	mso-style-link:р_клав;
+	font-family:"Arial","sans-serif";
+	text-transform:uppercase;}
+span.af9
+	{mso-style-name:р_дисплей;
+	font-family:"Courier New";}
+p.afa, li.afa, div.afa
+	{mso-style-name:р_выноска;
+	mso-style-link:"р_выноска Знак";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	line-height:115%;
+	font-size:11.0pt;
+	font-family:"Arial","sans-serif";}
+span.afb
+	{mso-style-name:р_БД;
+	text-transform:uppercase;
+	font-weight:bold;
+	font-style:italic;}
+p.afc, li.afc, div.afc
+	{mso-style-name:р_примТекст;
+	mso-style-link:"р_примТекст Знак";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	text-align:justify;
+	line-height:115%;
+	font-size:11.0pt;
+	font-family:"Arial","sans-serif";}
+p.afd, li.afd, div.afd
+	{mso-style-name:р_прим;
+	mso-style-link:"р_прим Знак";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	text-align:justify;
+	line-height:115%;
+	font-size:11.0pt;
+	font-family:"Arial","sans-serif";
+	letter-spacing:1.0pt;
+	font-weight:bold;}
+span.afe
+	{mso-style-name:"р_примТекст Знак";
+	mso-style-link:р_примТекст;
+	font-family:"Arial","sans-serif";}
+span.aff
+	{mso-style-name:"р_прим Знак";
+	mso-style-link:р_прим;
+	font-family:"Arial","sans-serif";
+	letter-spacing:1.0pt;
+	font-weight:bold;}
+p.aff0, li.aff0, div.aff0
+	{mso-style-name:р_пред;
+	mso-style-link:"р_пред Знак";
+	margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	line-height:115%;
+	page-break-after:avoid;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";
+	text-transform:uppercase;
+	letter-spacing:1.0pt;
+	font-weight:bold;}
+span.aff1
+	{mso-style-name:"р_пред Знак";
+	mso-style-link:р_пред;
+	font-family:"Arial","sans-serif";
+	text-transform:uppercase;
+	letter-spacing:1.0pt;
+	font-weight:bold;}
+span.aff2
+	{mso-style-name:"Текст концевой сноски Знак";
+	mso-style-link:"Текст концевой сноски";
+	font-family:"Arial","sans-serif";}
+span.aff3
+	{mso-style-name:"Текст примечания Знак";
+	mso-style-link:"Текст примечания";
+	font-family:"Arial","sans-serif";}
+span.24
+	{mso-style-name:"Цитата 2 Знак";
+	mso-style-link:"Цитата 2";
+	font-family:"Arial","sans-serif";
+	color:#404040;
+	font-style:italic;}
+span.aff4
+	{mso-style-name:"Выделенная цитата Знак\,р_скрипт Знак";
+	mso-style-link:"Выделенная цитата\,р_скрипт";
+	font-family:"Courier New";
+	background:#C1C1C1;}
+p.aff5, li.aff5, div.aff5
+	{mso-style-name:запрос;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:5.0cm;
+	margin-bottom:.0001pt;
+	line-height:115%;
+	font-size:11.0pt;
+	font-family:"Courier New";}
+span.aff6
+	{mso-style-name:"р_дисплейсерый Знак";
+	mso-style-link:р_дисплейсерый;
+	font-family:"Courier New";
+	background:#C1C1C1;}
+p.aff7, li.aff7, div.aff7
+	{mso-style-name:р_содерж;
+	mso-style-link:"р_содерж Знак";
+	margin-top:0cm;
+	margin-right:7.0cm;
+	margin-bottom:24.0pt;
+	margin-left:14.2pt;
+	line-height:115%;
+	page-break-before:always;
+	font-size:16.0pt;
+	font-family:"Arial","sans-serif";
+	color:#17365D;
+	font-weight:bold;}
+p.aff8, li.aff8, div.aff8
+	{mso-style-name:р_внимание;
+	mso-style-link:"р_внимание Знак";
+	margin-top:6.0pt;
+	margin-right:5.65pt;
+	margin-bottom:6.0pt;
+	margin-left:5.65pt;
+	line-height:115%;
+	page-break-after:avoid;
+	background:#FEDB8E;
+	border:none;
+	padding:0cm;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";
+	text-transform:uppercase;
+	letter-spacing:1.0pt;
+	font-weight:bold;}
+span.aff9
+	{mso-style-name:"р_содерж Знак";
+	mso-style-link:р_содерж;
+	font-family:"Arial","sans-serif";
+	color:#17365D;
+	font-weight:bold;}
+p.affa, li.affa, div.affa
+	{mso-style-name:р_обТабЗаг;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	text-align:center;
+	line-height:115%;
+	font-size:9.0pt;
+	font-family:"Arial","sans-serif";
+	font-weight:bold;}
+p.affb, li.affb, div.affb
+	{mso-style-name:р_обычАбзац;
+	mso-style-link:"р_обычАбзац Знак";
+	margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	text-align:justify;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+span.affc
+	{mso-style-name:"р_внимание Знак";
+	mso-style-link:р_внимание;
+	font-family:"Arial","sans-serif";
+	text-transform:uppercase;
+	letter-spacing:1.0pt;
+	background:#FEDB8E;
+	font-weight:bold;}
+span.affd
+	{mso-style-name:"р_обычАбзац Знак";
+	mso-style-link:р_обычАбзац;
+	font-family:"Arial","sans-serif";}
+p.affe, li.affe, div.affe
+	{mso-style-name:р_обТНум;
+	mso-style-link:"р_обТНум Знак";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	text-align:center;
+	line-height:115%;
+	font-size:9.0pt;
+	font-family:"Arial","sans-serif";}
+p.afff, li.afff, div.afff
+	{mso-style-name:р_нумТаб;
+	mso-style-link:"р_нумТаб Знак";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	text-align:center;
+	text-indent:0cm;
+	line-height:115%;
+	font-size:9.0pt;
+	font-family:"Arial","sans-serif";}
+span.afff0
+	{mso-style-name:"р_обТаб Знак";
+	mso-style-link:р_обТаб;
+	font-family:"Arial","sans-serif";}
+span.afff1
+	{mso-style-name:"р_обТНум Знак";
+	mso-style-link:р_обТНум;
+	font-family:"Arial","sans-serif";}
+span.afff2
+	{mso-style-name:"р_нумТаб Знак";
+	mso-style-link:р_нумТаб;
+	font-family:"Arial","sans-serif";}
+span.HTML
+	{mso-style-name:"Адрес HTML Знак";
+	mso-style-link:"Адрес HTML";
+	font-family:"Arial","sans-serif";
+	font-style:italic;}
+span.afff3
+	{mso-style-name:"Прощание Знак";
+	mso-style-link:Прощание;
+	font-family:"Arial","sans-serif";}
+p.16, li.16, div.16
+	{mso-style-name:р_1дисплейсерый;
+	mso-style-link:"р_1дисплейсерый Знак";
+	margin-top:0cm;
+	margin-right:5.65pt;
+	margin-bottom:0cm;
+	margin-left:38.25pt;
+	margin-bottom:.0001pt;
+	line-height:115%;
+	background:#C1C1C1;
+	border:none;
+	padding:0cm;
+	font-size:10.0pt;
+	font-family:"Courier New";}
+p.25, li.25, div.25
+	{mso-style-name:р_2дисплейсерый;
+	mso-style-link:"р_2дисплейсерый Знак";
+	margin-top:0cm;
+	margin-right:5.65pt;
+	margin-bottom:0cm;
+	margin-left:52.45pt;
+	margin-bottom:.0001pt;
+	line-height:115%;
+	background:#C1C1C1;
+	border:none;
+	padding:0cm;
+	font-size:10.0pt;
+	font-family:"Courier New";}
+span.17
+	{mso-style-name:"р_1дисплейсерый Знак";
+	mso-style-link:р_1дисплейсерый;
+	font-family:"Courier New";
+	background:#C1C1C1;}
+span.26
+	{mso-style-name:"р_2дисплейсерый Знак";
+	mso-style-link:р_2дисплейсерый;
+	font-family:"Courier New";
+	background:#C1C1C1;}
+span.afff4
+	{mso-style-name:"р_выноска Знак";
+	mso-style-link:р_выноска;
+	font-family:"Arial","sans-serif";}
+p.afff5, li.afff5, div.afff5
+	{mso-style-name:р_обычный;
+	mso-style-link:"р_обычный Знак";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	text-align:justify;
+	line-height:normal;
+	font-size:10.0pt;
+	font-family:"Arial","sans-serif";}
+span.afff6
+	{mso-style-name:"р_обычный Знак";
+	mso-style-link:р_обычный;
+	font-family:"Arial","sans-serif";}
+span.afff7
+	{mso-style-name:"р_дисплей Знак";
+	font-family:"Courier New";}
+span.27
+	{mso-style-name:"Основной текст с отступом 2 Знак";
+	mso-style-link:"Основной текст с отступом 2";
+	font-family:"Arial","sans-serif";}
+span.m1
+	{mso-style-name:m1;
+	color:blue;}
+span.t1
+	{mso-style-name:t1;
+	color:#990000;}
+span.tx1
+	{mso-style-name:tx1;
+	font-weight:bold;}
+span.apple-converted-space
+	{mso-style-name:apple-converted-space;}
+span.afff8
+	{mso-style-name:"Тема примечания Знак";
+	mso-style-link:"Тема примечания";
+	font-family:"Arial","sans-serif";
+	font-weight:bold;}
+span.tgc
+	{mso-style-name:_tgc;}
+p.afff9, li.afff9, div.afff9
+	{mso-style-name:р_табТекст;
+	mso-style-link:"р_табТекст Знак";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	line-height:115%;
+	font-size:11.0pt;
+	font-family:"Arial","sans-serif";}
+p.afffa, li.afffa, div.afffa
+	{mso-style-name:р_табЗаг;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	text-align:center;
+	line-height:115%;
+	font-size:11.0pt;
+	font-family:"Arial","sans-serif";
+	font-weight:bold;}
+p.afffb, li.afffb, div.afffb
+	{mso-style-name:р_табНум;
+	mso-style-link:"р_табНум Знак";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	text-align:center;
+	line-height:115%;
+	font-size:11.0pt;
+	font-family:"Arial","sans-serif";}
+span.afffc
+	{mso-style-name:"р_табТекст Знак";
+	mso-style-link:р_табТекст;
+	font-family:"Arial","sans-serif";}
+span.afffd
+	{mso-style-name:"р_табНум Знак";
+	mso-style-link:р_табНум;
+	font-family:"Arial","sans-serif";}
+p.afffe, li.afffe, div.afffe
+	{mso-style-name:р_табОбъед;
+	mso-style-link:"р_табОбъед Знак";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	line-height:115%;
+	font-size:11.0pt;
+	font-family:"Arial","sans-serif";}
+span.affff
+	{mso-style-name:"р_табОбъед Знак";
+	mso-style-link:р_табОбъед;
+	font-family:"Arial","sans-serif";}
+.MsoChpDefault
+	{font-size:10.0pt;}
+ /* Page Definitions */
+ @page WordSection1
+	{size:595.3pt 841.9pt;
+	margin:3.0cm 2.0cm 70.9pt 2.0cm;}
+div.WordSection1
+	{page:WordSection1;}
+ /* List Definitions */
+ ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
+-->
+</style>
+
+</head>
+
+<body lang=RU link=blue vlink="#954f72">
+
+<div class=WordSection1>
+
+<p class=MsoNormal><a name="_Toc521142556"></a><a
+ name="_Toc41200689"></a><a name="_Toc41194303"></a><a name="_Toc41190549"></a><a
+ name="_Toc41190422"></a><a name="_Toc41151993"></a><a name="_Toc41151875"></a><a
+ name="_Toc41149718"></a><a name="_Toc41138842"></a><span style="POSITION:
+ relative; Z-INDEX: 251713010"></span>Содержание</p>
+
+<p class=MsoToc1><A href="#_Toc44738876">1&nbsp; Термины, определения, обозначения и
+сокращения<span style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">. </span><span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">2</span></a></p>
+
+<p class=MsoToc1><A href="#_Toc44738877">2 Общие сведения<span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">. </span><span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">4</span></a></p>
+
+<p class=MsoToc2><A href="#_Toc44738878">2.1 Назначение<span style="TEXT-DECORATION:
+ none; COLOR: windowtext; DISPLAY: none">. </span><span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">4</span></a></p>
+
+<p class=MsoToc2><A href="#_Toc44738879">2.2 Необходимые условия<span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">. </span><span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">4</span></a></p>
+
+<p class=MsoToc2><A href="#_Toc44738880">2.3 Необходимые знания<span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">. </span><span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">4</span></a></p>
+
+<p class=MsoToc2><A href="#_Toc44738881">2.4 Ссылки<span style="TEXT-DECORATION:
+ none; COLOR: windowtext; DISPLAY: none">.. </span><span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">5</span></a></p>
+
+<p class=MsoToc1><A href="#_Toc44738882">3 Описание сервиса в БДТИ РСДУ<span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">.. </span><span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">6</span></a></p>
+
+<p class=MsoToc1><A href="#_Toc44738883">4 Конфигурирование сервиса<span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">. </span><span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">8</span></a></p>
+
+<p class=MsoToc2><A href="#_Toc44738884">4.1 Общие настройки<span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">.. </span><span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">9</span></a></p>
+
+<p class=MsoToc2><A href="#_Toc44738885">4.2 Настройка связей справочников<span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">. </span><span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">10</span></a></p>
+
+<p class=MsoToc3><A href="#_Toc44738886">4.2.1 Описание интерфейса управления
+справочниками<span style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">.. </span><span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">11</span></a></p>
+
+<p class=MsoToc3><A href="#_Toc44738887">4.2.2 Справочник КДУ<span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">.. </span><span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">12</span></a></p>
+
+<p class=MsoToc3><A href="#_Toc44738888">4.2.3 Справочник ГОУ и персонала<span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">. </span><span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">20</span></a></p>
+
+<p class=MsoToc3><A href="#_Toc44738889">4.2.4 Справочник диспетчерских центров<span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">. </span><span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">24</span></a></p>
+
+<p class=MsoToc1><A href="#_Toc44738890">5 Администрирование сервиса<span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">. </span><span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">29</span></a></p>
+
+<p class=MsoToc2><A href="#_Toc44738891">5.1 Регистрация и удаление сервиса в
+ОС Windows<span style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">. </span><span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">29</span></a></p>
+
+<p class=MsoToc3><A href="#_Toc44738892">5.1.1 Описание сервиса&nbsp; (файл <span
+ lang=EN-US>ServiceDefinition</span>.<span lang=EN-US>xml</span>)<span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none"> </span><span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">29</span></a></p>
+
+<p class=MsoToc3><A href="#_Toc44738893">5.1.2 Установка сервиса<span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">. </span><span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">29</span></a></p>
+
+<p class=MsoToc3><A href="#_Toc44738894">5.1.3 Удаление сервиса<span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">. </span><span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">31</span></a></p>
+
+<p class=MsoToc2><A href="#_Toc44738895">5.2 Запуск и останов сервиса<span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">. </span><span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">31</span></a></p>
+
+<p class=MsoToc3><A href="#_Toc44738896">5.2.1 Запуск/останов сервиса из
+командной строки<span style="TEXT-DECORATION:
+ none; COLOR: windowtext; DISPLAY: none">.. </span><span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">31</span></a></p>
+
+<p class=MsoToc3><A href="#_Toc44738897">5.2.2 Запуск/останов из консоли
+управления службами Windows<span style="TEXT-DECORATION:
+ none; COLOR: windowtext; DISPLAY: none">. </span><span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">32</span></a></p>
+
+<p class=MsoToc2><A href="#_Toc44738898">5.3 Управление рабочими переменными<span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">.. </span><span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">32</span></a></p>
+
+<p class=MsoToc2><A href="#_Toc44738899">5.4 Администрирование очереди передачи
+КДУ<span style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">.. </span><span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">33</span></a></p>
+
+<p class=MsoToc3><A href="#_Toc44738900">5.4.1 Описание элементов управления<span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">. </span><span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">33</span></a></p>
+
+<p class=MsoToc3><A href="#_Toc44738901">5.4.2 Описание полей таблицы
+отображения элементов очереди<span style="TEXT-DECORATION:
+ none; COLOR: windowtext; DISPLAY: none">.. </span><span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">34</span></a></p>
+
+<p class=MsoToc2><A href="#_Toc44738902">5.5 Контроль лог-файлов<span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">. </span><span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">36</span></a></p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p>
+
+<h1 style="TEXT-INDENT: 0cm"><a name="_Toc44738876"></a><a name="_Toc42240022"></a><a
+ name="_Toc42237714">1 </a><span style="POSITION: relative; Z-INDEX: 251718130"><span
+ style="HEIGHT: 72px; WIDTH: 646px; POSITION: absolute; LEFT: 0px; TOP: -8px"><IMG
+ src="0011.files/image003.png" width=646 height=72 ></span></span>&nbsp;Термины,
+определения, обозначения и сокращения</h1>
+
+<p class=MsoNormal>В настоящем документе приняты следующие термины,
+определения, обозначения и сокращения:</p>
+
+<p class=aa><b>API (Application&nbsp;Programming&nbsp;Interface)</b> – интерфейс
+программирования приложений, интерфейс прикладного программирования. Набор
+готовых классов, процедур, функций, структур и констант, предоставляемых
+приложением (библиотекой, сервисом) для использования во внешних программных
+продуктах;</p>
+
+<p class=aa><b>MRID</b> – уникальный идентификатор информационных объектов
+справочников и журналов, используемый в СК-2007;</p>
+
+<p class=aa><b>ODBC (Open Database Connectivity)</b> – программный интерфейс
+(API) доступа к базам данных, разработанный фирмой Microsoft;</p>
+
+<p class=aa><b>SOAP (Simple Object Access Protocol)</b> – протокол обмена
+структурированными сообщениями в распределённой вычислительной среде.
+Первоначально SOAP предназначался в основном для реализации удалённого вызова
+процедур (RPC);</p>
+
+<p class=aa><b>SQLite</b> – компактная встраиваемая реляционная база данных,
+используемая для хранения локальных данных;</p>
+
+<p class=aa><b>URL (Uniform Resource Locator)</b> – единообразный определитель
+местонахождения (адрес) ресурса в вычислительной сети;</p>
+
+<p class=aa><b>БДТИ</b> – База Данных Технологической Информации РСДУ;</p>
+
+<p class=aa><b>ГОУ (Групповой объект управления)</b> – совокупность одной или
+нескольких групп точек поставки (ГТП), в отношении которой Системным оператором
+отдаются и фиксируются команды на изменение режима работы;</p>
+
+<p class=aa><b>ГТП (Группа точек поставки)</b> – одна или несколько точек
+поставки, относящихся к одному узлу расчетной модели и/или к единому
+технологически не делимому энергетическому объекту и ограничивающих территорию,
+в отношении которой купля-продажа электрической энергии (мощности) на оптовом рынке
+осуществляется только данным участником, и используемых для определения и
+исполнения участником оптового рынка обязательств, связанных с поставкой и
+оплатой электрической энергии (мощности). Группа точек поставки определяется
+Системным и Коммерческим операторами в соответствии с Положением о порядке
+получения статуса субъекта оптового рынка и ведения реестра субъектов оптового
+рынка электрической энергии и мощности;</p>
+
+<p class=aa><b>КДУ</b> – Команда диспетчерского управления;</p>
+
+<p class=aa><b>ОИК</b> – оперативно-информационный комплекс;</p>
+
+<p class=aa><b>Сервис EMSDataService</b> – веб-сервис на базе SOAP,
+предоставляющий функции управления журналом КДУ в СК-2007;</p>
+
+<p class=aa><b>СК-2007</b> – универсальная многофункциональная система для
+построения автоматизированных систем коммерческой и технологической
+диспетчеризации в сетевых и генерирующих компаниях;</p>
+
+<p class=aa><b>СО (СО ЕЭС)</b> – Системный Оператор Единой Энергосистемы
+Российской Федерации.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<h1 style="TEXT-INDENT: 0cm"><a name="_Toc44738877"></a><a name="_Toc42240023"></a><a
+ name="_Toc42237715"></a><a name="_Toc11145430"></a><a name="_Toc462055434">2 </a><span
+ style="POSITION: relative; Z-INDEX: 251723250"><span style="HEIGHT:
+ 34px; WIDTH: 646px; POSITION: absolute; LEFT: 0px; TOP: -4px"><IMG src="0011.files/image004.png" width=646
+ height=34 ></span></span>Общие сведения</h1>
+
+<h2 style="MARGIN-LEFT: 0cm; TEXT-INDENT: 0cm"><a name="_Toc44738878"></a><a
+ name="_Toc42240024"></a><a name="_Toc42237716">2.1 Назначение</a></h2>
+
+<p class=MsoNormal>Сервис предназначен для ретрансляции КДУ в темпе их
+регистрации из системы РСДУ в СК-2007.</p>
+
+<p class=MsoNormal>Сервис использует интерфейс (<span lang=EN-US>API</span>) <span
+ class=afff7>EMSDataService</span> СК-2007, реализованный в виде веб-сервиса <span
+ lang=EN-US>SOAP</span>.</p>
+
+<h2 style="MARGIN-LEFT: 0cm; TEXT-INDENT: 0cm"><a name="_Toc44738879"></a><a
+ name="_Toc42240025"></a><a name="_Toc42237717">2.2 Необходимые условия</a></h2>
+
+<p class=MsoNormal>Перед переходом к действиям, описанным ниже в руководстве,
+должны быть выполнены следующие необходимые условия:</p>
+
+<p class=MsoListBullet2><span style="FONT-FAMILY: Wingdings">ü<span
+ style  ='FONT: 7pt "Times New Roman"'>&nbsp; </span></span>установлена ОС
+Microsoft Windows 2008 или выше;</p>
+
+<p class=MsoListBullet2><span style="FONT-FAMILY: Wingdings">ü<span
+ style  ='FONT: 7pt "Times New Roman"'>&nbsp; </span></span>сервер должен быть
+включен в домен, для пользователей которого настроена система санкционирования
+СК-2007;</p>
+
+<p class=MsoListBullet2><span style="FONT-FAMILY: Wingdings">ü<span
+ style  ='FONT: 7pt "Times New Roman"'>&nbsp; </span></span>установлен пакет .NET
+Framework 4.5<span lang=EN-US>;</span></p>
+
+<p class=MsoListBullet2><span lang=EN-US style="FONT-FAMILY: Wingdings">ü<span
+ style  ='FONT: 7pt "Times New Roman"'>&nbsp; </span></span>установлен пакет <span
+ lang=EN-US>Visual C++ 2010 Redistributable Package;</span></p>
+
+<p class=MsoListBullet2><span style="FONT-FAMILY: Wingdings">ü<span
+ style  ='FONT: 7pt "Times New Roman"'>&nbsp; </span></span>установлен пакет
+клиента Oracle 11.2<span lang=EN-US>;</span></p>
+
+<p class=MsoListBullet2><span style="FONT-FAMILY: Wingdings">ü<span
+ style  ='FONT: 7pt "Times New Roman"'>&nbsp; </span></span>настроен источник ODBC
+для БДТИ РСДУ;</p>
+
+<p class=MsoListBullet2><span style="FONT-FAMILY: Wingdings">ü<span
+ style  ='FONT: 7pt "Times New Roman"'>&nbsp; </span></span>выполнены обновления
+в БДТИ РСДУ:</p>
+
+<p class=MsoListBullet3><span style='FONT-FAMILY: "Courier New"'>o<span
+ style  ='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp; </span></span>2013_12_02_DG_NEW;</p>
+
+<p class=MsoListBullet3><span style='FONT-FAMILY: "Courier New"'>o<span
+ style  ='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp; </span></span>2014_03_04_J_DGSTATE;</p>
+
+<p class=MsoListBullet3><span style='FONT-FAMILY: "Courier New"'>o<span
+ style  ='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp; </span></span>2015_10_08_ORG_STRUCTURE_AST;</p>
+
+<p class=MsoListBullet3><span style='FONT-FAMILY: "Courier New"'>o<span
+ style  ='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp; </span></span>2015_09_15_DG_KDU_EXTENTION<span
+ lang=EN-US>.</span></p>
+
+<p class=MsoNormal>Необходимо наличие следующих исходных данных:</p>
+
+<p class=MsoListBullet2><span style="FONT-FAMILY: Wingdings">ü<span
+ style  ='FONT: 7pt "Times New Roman"'>&nbsp; </span></span>справочник ГОУ
+СК-2007 с <span lang=EN-US>MRID</span>;</p>
+
+<p class=MsoListBullet2><span style="FONT-FAMILY: Wingdings">ü<span
+ style  ='FONT: 7pt "Times New Roman"'>&nbsp; </span></span>справочник центров
+диспетчерского управления СК-2007 с <span lang=EN-US>MRID</span>.</p>
+
+<h2 style="MARGIN-LEFT: 0cm; TEXT-INDENT: 0cm"><a name="_Toc44738880"></a><a
+ name="_Toc42240026"></a><a name="_Toc42237718">2.3 Необходимые знания</a></h2>
+
+<p class=MsoNormal>Для выполнения действий, описанных ниже в руководстве,
+требуются следующие знания:</p>
+
+<p class=MsoListBullet2><span style="FONT-FAMILY: Wingdings">ü<span
+ style  ='FONT: 7pt "Times New Roman"'>&nbsp; </span></span>имя пользователя ОС,
+имеющего права администратора и его пароль;</p>
+
+<p class=MsoListBullet2><span style="FONT-FAMILY: Wingdings">ü<span
+ style  ='FONT: 7pt "Times New Roman"'>&nbsp; </span></span>имя пользователя и
+пароль в домене <span lang=EN-US>Windows</span> с правами на доступ к сервису <span
+ class=afff7>EMSDataService</span> СК-2007;</p>
+
+<p class=MsoListBullet2><span style="FONT-FAMILY: Wingdings">ü<span
+ style  ='FONT: 7pt "Times New Roman"'>&nbsp; </span></span><span lang=EN-US>URL</span><span
+ lang=EN-US> </span>основного и резервного серверов СК-2007, на которых настроен
+сервис <span class=afff7>EMSDataService </span>(как правило, в СК-2007 сервис <span
+ class=afff7>EMSDataService</span> работает на серверах ОИК №1 и ОИК №2).</p>
+
+<h2 style="MARGIN-LEFT: 0cm; TEXT-INDENT: 0cm"><a name="_Toc44738881"></a><a
+ name="_Toc42240027"></a><a name="_Toc42237719"></a><a name="_Toc11145434"></a><a
+ name="_Toc462055438"></a><a name="_Toc441760062">2.4 Ссылки</a></h2>
+
+<p class=MsoNormal>В руководстве используются ссылки на следующую документацию
+к комплексу РСДУ:</p>
+
+<p class=MsoListBullet2><span style="FONT-FAMILY: Wingdings">ü<span
+ style  ='FONT: 7pt "Times New Roman"'>&nbsp; </span></span>«Руководство
+администратора. Описание серверов и точек доступа в комплексе РСДУ»;</p>
+
+<p class=MsoListBullet2><span style="FONT-FAMILY: Wingdings">ü<span
+ style  ='FONT: 7pt "Times New Roman"'>&nbsp; </span></span>«Руководство
+администратора. Описание структуры БД РСДУ».</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<h1 style="TEXT-INDENT: 0cm"><a name="_Toc44738882"></a><a name="_Toc42240028"></a><a
+ name="_Toc42237720"></a><a name="_Toc11145435"></a><a name="_Toc462055439">3 </a><span
+ style="POSITION: relative; Z-INDEX: 251728370"><span style="HEIGHT:
+ 38px; WIDTH: 646px; POSITION: absolute; LEFT: 0px; TOP: -4px"><IMG src="0011.files/image005.png" width=646
+ height=38 ></span></span>Описание сервиса в БДТИ РСДУ</h1>
+
+<p class=MsoNormal>Название сервиса ретрансляции: <span class=afff7>RSDU.INP\TransferKDUtoSK2007</span>.</p>
+
+<p class=MsoNormal>Перед установкой сервиса, необходимо выполнить его описание
+в БДТИ РСДУ.<a name="_Ref441068553"> </a></p>
+
+<p class=MsoListNumber2>1.<span style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;
+</span>Запустить приложение «Навигатор БД» РСДУ и проверить наличие модуля «Сервис
+передачи КДУ в СК-2007» в разделе «Служебная информация<span lang=EN-US>&nbsp;</span>→<span
+ lang=EN-US>&nbsp;</span>Программное обеспечение<span lang=EN-US>&nbsp;</span>→<span
+ lang=EN-US>&nbsp;</span>Программы<span lang=EN-US>&nbsp;</span>→<span
+ lang=EN-US>&nbsp;</span>Загружаемые модули». Если описание модуля отсутствует,
+его необходимо добавить, назначив права, представленные в Таблица 1.</p>
+
+<p class=MsoCaption style="PAGE-BREAK-AFTER: avoid"><a name="_Ref42063223">Таблица
+</a>1 - Права для приложения «Сервис передачи КДУ в СК-2007»</p>
+
+<div align=center>
+
+<table class=affff0 border=1 cellspacing=0 cellpadding=0 width=557
+ style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; WIDTH: 418.1pt; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: medium none; BORDER-LEFT: medium none">
+ <thead>
+  <tr>
+   <td width=368 valign=top style="BORDER-TOP: windowtext 1pt   solid; BORDER-RIGHT: windowtext 1pt solid; WIDTH: 276.35pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt"    >
+   <p class=afffa>Подсистема</p>
+   </td>
+   <td width=189 valign=top style="BORDER-TOP: windowtext 1pt   solid; BORDER-RIGHT: windowtext 1pt solid; WIDTH: 5cm; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt"    >
+   <p class=afffa>Права</p>
+   </td>
+  </tr>
+ </thead>
+ <tr>
+  <td width=368 valign=top style="BORDER-TOP: medium none;  BORDER-RIGHT: windowtext 1pt solid; WIDTH: 276.35pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt"    >
+  <p class=afff9>Базовая информация комплекса</p>
+  </td>
+  <td width=189 valign=top style="BORDER-TOP:  medium none; BORDER-RIGHT: windowtext 1pt  solid; WIDTH: 5cm; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt"    >
+  <p class=afff9>Чтение</p>
+  <p class=afff9>Вход в систему ОИК</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=368 valign=top style="BORDER-TOP: medium none;  BORDER-RIGHT: windowtext 1pt solid; WIDTH: 276.35pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt"    >
+  <p class=afff9>Дополнительные источники данных</p>
+  </td>
+  <td width=189 valign=top style="BORDER-TOP:  medium none; BORDER-RIGHT: windowtext 1pt  solid; WIDTH: 5cm; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt"    >
+  <p class=afff9>Чтение</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=368 valign=top style="BORDER-TOP: medium none;  BORDER-RIGHT: windowtext 1pt solid; WIDTH: 276.35pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt"    >
+  <p class=afff9>Учет электроэнергии</p>
+  </td>
+  <td width=189 valign=top style="BORDER-TOP:  medium none; BORDER-RIGHT: windowtext 1pt  solid; WIDTH: 5cm; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt"    >
+  <p class=afff9>Чтение</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=368 valign=top style="BORDER-TOP: medium none;  BORDER-RIGHT: windowtext 1pt solid; WIDTH: 276.35pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt"    >
+  <p class=afff9>Серверы архивов</p>
+  </td>
+  <td width=189 valign=top style="BORDER-TOP:  medium none; BORDER-RIGHT: windowtext 1pt  solid; WIDTH: 5cm; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt"    >
+  <p class=afff9>Чтение</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=368 valign=top style="BORDER-TOP: medium none;  BORDER-RIGHT: windowtext 1pt solid; WIDTH: 276.35pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt"    >
+  <p class=afff9>Оперативный информационный комплекс</p>
+  </td>
+  <td width=189 valign=top style="BORDER-TOP:  medium none; BORDER-RIGHT: windowtext 1pt  solid; WIDTH: 5cm; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt"    >
+  <p class=afff9>Чтение</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=368 valign=top style="BORDER-TOP: medium none;  BORDER-RIGHT: windowtext 1pt solid; WIDTH: 276.35pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt"    >
+  <p class=afff9>Подсистема контроля и резервирования</p>
+  </td>
+  <td width=189 valign=top style="BORDER-TOP:  medium none; BORDER-RIGHT: windowtext 1pt  solid; WIDTH: 5cm; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt"    >
+  <p class=afff9>Чтение</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=368 valign=top style="BORDER-TOP: medium none;  BORDER-RIGHT: windowtext 1pt solid; WIDTH: 276.35pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt"    >
+  <p class=afff9>Подсистема сбора информации </p>
+  </td>
+  <td width=189 valign=top style="BORDER-TOP:  medium none; BORDER-RIGHT: windowtext 1pt  solid; WIDTH: 5cm; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt"    >
+  <p class=afff9>Чтение</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=368 valign=top style="BORDER-TOP: medium none;  BORDER-RIGHT: windowtext 1pt solid; WIDTH: 276.35pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt"    >
+  <p class=afff9>Пользователи</p>
+  </td>
+  <td width=189 valign=top style="BORDER-TOP:  medium none; BORDER-RIGHT: windowtext 1pt  solid; WIDTH: 5cm; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt"    >
+  <p class=afff9>Чтение</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=368 valign=top style="BORDER-TOP: medium none;  BORDER-RIGHT: windowtext 1pt solid; WIDTH: 276.35pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt"    >
+  <p class=afff9>Средства отображения</p>
+  </td>
+  <td width=189 valign=top style="BORDER-TOP:  medium none; BORDER-RIGHT: windowtext 1pt  solid; WIDTH: 5cm; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt"    >
+  <p class=afff9>Чтение</p>
+  </td>
+ </tr>
+</table>
+
+</div>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoListNumber2 style="MARGIN-LEFT: 1cm">2.<span style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;
+</span>Описать сервис в разделе «Комплекс автоматики<span lang=EN-US>&nbsp;</span>→<span
+ lang=EN-US>&nbsp;</span>Оборудование и точки доступа», выполнив шаги, указанные
+ниже. Для дополнительной информации можно воспользоваться инструкцией «Описание
+серверов и точек доступа в комплексе РСДУ. Руководство администратора».</p>
+
+<p class=MsoNormal style="MARGIN-LEFT: 1cm"><IMG id="Рисунок 689"
+ src ="0011.files/image006.jpg" width=603 height=322 ></p>
+
+<p class=MsoCaption>Рисунок 1 - Описание сервиса на хосте</p>
+
+<p class=MsoListNumber3>A.<span style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;
+</span>Выбрать в дереве хост, на котором будет работать сервис.</p>
+
+<p class=MsoListNumber3>B.<span style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;
+</span>Если хост отсутствует в дереве, то необходимо выполнить описание нового
+хоста.</p>
+
+<p class=MsoListNumber3>C.<span style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;
+</span>Выполнить описание сервиса в списке приложений хоста, используя
+следующие данные:</p>
+
+<p class=MsoListNumber4>1)<span style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;
+</span>Тип – технологический сервер;</p>
+
+<p class=MsoListNumber4>2)<span style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;
+</span>Загружаемый модуль – «Сервис передачи КДУ в СК-2007»;</p>
+
+<p class=MsoListNumber4>3)<span style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;
+</span>Пользователь – необходимо создать нового пользователя по кнопке
+«Создать»;</p>
+
+<p class=MsoListNumber4>4)<span style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;
+</span>Параметры, обрабатываемые сервером – параметр не используется, можно
+указать «Пользователи и процессы».</p>
+
+<p class=MsoListNumber3>D.<span style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;
+</span>Задать инициализационные параметры SS_USER_ID и SS_USER_ID_SLAVE, которые
+определяют идентификаторы пользователей (процессов) серверов сигнальной системы
+основного и резервного узла БДРВ, через которые будет выполняться рассылка
+сигналов.</p>
+
+<p class=MsoNormal style="MARGIN-LEFT: 177.2pt">&nbsp;</p>
+
+<h1 style="TEXT-INDENT: 0cm"><a name="_Toc44738883"></a><a name="_Toc42240029"></a><a
+ name="_Toc42237721"></a><a name="_Toc11145436"></a><a name="_Toc462055440"></a><a
+ name="_Ref420746404"></a><a name="_Ref419724332">4 </a><span style="POSITION:
+ relative; Z-INDEX: 251733490"><span style="HEIGHT:
+ 34px; WIDTH: 646px; POSITION: absolute; LEFT: 0px; TOP: -4px"><IMG src="0011.files/image007.png" width=646
+ height=34 ></span></span>Конфигурирование сервиса</h1>
+
+<p class=MsoNormal>Для конфигурирования сервиса используется приложение <span
+ class=afff7>TransferKDUtoSK2007.Config.exe</span>, расположенное в каталоге
+установки сервиса (по умолчанию – каталог <span class=afff7>C:\RsduServices\RSDU.INP\TransferKDUtoSK2007</span>).</p>
+
+<p class=MsoNormal align=center style="TEXT-ALIGN: center"><IMG id="Рисунок
+ 10" src ="0011.files/image008.jpg" width=642 height=346 ></p>
+
+<p class=MsoCaption>Рисунок 2 - Интерфейс приложения настройки сервиса вкладка
+«Настройки»</p>
+
+<p class=MsoNormal>Окно конфигуратора содержит следующие вкладки:</p>
+
+<p class=MsoListBullet2><span style="FONT-FAMILY: Wingdings">ü<span
+ style  ='FONT: 7pt "Times New Roman"'>&nbsp; </span></span>Настройки – общие
+настройки сервиса, такие как параметры подключения к системам, периоды опроса,
+часовые пояса и т.д.</p>
+
+<p class=MsoListBullet2><span style="FONT-FAMILY: Wingdings">ü<span
+ style  ='FONT: 7pt "Times New Roman"'>&nbsp; </span></span>Связь справочников –
+содержит описание элементов справочников интегрируемых систем и связей между
+ними.</p>
+
+<p class=MsoListBullet2><span style="FONT-FAMILY: Wingdings">ü<span
+ style  ='FONT: 7pt "Times New Roman"'>&nbsp; </span></span>Рабочие переменные –
+это переменные, которые сохраняются при остановке сервиса и используются при
+его старте; рабочие переменные могут быть отредактированы.</p>
+
+<p class=MsoListBullet2><span style="FONT-FAMILY: Wingdings">ü<span
+ style  ='FONT: 7pt "Times New Roman"'>&nbsp; </span></span>Администрирование
+очереди передачи КДУ – содержит инструменты для контроля разбора очереди КДУ на
+передачу в СК-2007.</p>
+
+<p class=MsoNormal>Конфигурация сервиса хранится в файлах БД <span lang=EN-US>SQLite</span>
+в каталоге <span class=afff7>db</span> – «<span class=afff7>config.db»</span> и
+«<span class=afff7>work.db»</span>.</p>
+
+<p class=MsoNormal>Файл «<span class=afff7>config.db»</span> – файл
+конфигурации сервиса; содержит общие настройки сервиса (вкладка Настройка) и
+описание справочников интегрируемых систем (вкладка Связь справочников).</p>
+
+<p class=MsoNormal>Файл «<span class=afff7>work.db»</span> – файл для хранения
+рабочих переменных и очереди передачи КДУ. </p>
+
+<p class=MsoNormal>Для удобства выполнения настройки необходимо дополнительно
+запустить приложение «Навигатор БД» комплекса РСДУ (запустить «Панель оператора»
+и вызвать приложение «Навигатор БД»). С помощью навигатора БД, например, можно
+будет получить информацию об идентификаторах объектов, используемых при
+настройке связей между системами.</p>
+
+<h2 style="MARGIN-LEFT: 0cm; TEXT-INDENT: 0cm"><a name="_Toc44738884"></a><a
+ name="_Toc42240030"></a><a name="_Toc42237722"></a><a name="_Toc11145437"></a><a
+ name="_Toc462055441">4.1 Общие настройки</a></h2>
+
+<p class=MsoNormal>Вкладка «Настройки» содержит набор общих конфигурационных
+параметров сервиса. Описание параметров представлено в Таблица 2.</p>
+
+<p class=MsoCaption style="PAGE-BREAK-AFTER: avoid"><a name="_Ref42065505">Таблица
+</a>2 - Набор общих конфигурационных параметров сервиса</p>
+
+<div align=center>
+
+<table class=affff0 border=1 cellspacing=0 cellpadding=0 width=643
+ style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; WIDTH: 17cm; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: medium none; BORDER-LEFT: medium none">
+ <thead>
+  <tr>
+   <td width=199 valign=top style="BORDER-TOP: windowtext 1pt   solid; BORDER-RIGHT: windowtext 1pt solid; WIDTH: 148.9pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt"    >
+   <p class=afffa>Параметр</p>
+   </td>
+   <td width=161 valign=top style="BORDER-TOP: windowtext 1pt   solid; BORDER-RIGHT: windowtext 1pt solid; WIDTH: 120.5pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt"    >
+   <p class=afffa>Возможные значения</p>
+   </td>
+   <td width=283 valign=top style="BORDER-TOP: windowtext 1pt   solid; BORDER-RIGHT: windowtext 1pt solid; WIDTH: 212.55pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt"    >
+   <p class=afffa>Описание</p>
+   </td>
+  </tr>
+ </thead>
+ <tr>
+  <td width=643 colspan=3 valign=top style="BORDER-TOP: medium none;  BORDER-RIGHT: windowtext 1pt solid; WIDTH: 17cm; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt"    >
+  <p class=af5>Получение КДУ</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=199 valign=top style="BORDER-TOP: medium none;  BORDER-RIGHT: windowtext 1pt solid; WIDTH: 148.9pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt"    >
+  <p class=afff9>Период (сек) опроса журнала КДУ в БДТИ РСДУ</p>
+  </td>
+  <td width=161 valign=top style="BORDER-TOP:  medium none; BORDER-RIGHT: windowtext 1pt  solid; WIDTH: 120.5pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt"    >
+  <p class=afff9>От 60 секунд…</p>
+  <p class=afff9>Рекомендуемое значение: 60 сек</p>
+  </td>
+  <td width=283 valign=top style="BORDER-TOP:  medium none; BORDER-RIGHT: windowtext 1pt  solid; WIDTH: 212.55pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt"    >
+  <p class=afff9>Определяет период проверки журнала на появление новых КДУ.</p>
+  <p class=afff9>Используется как дополнительный механизм получения КДУ, в
+  случае если событие о регистрации КДУ не получено. </p>
+  </td>
+ </tr>
+ <tr>
+  <td width=643 colspan=3 valign=top style="BORDER-TOP: medium none;  BORDER-RIGHT: windowtext 1pt solid; WIDTH: 17cm; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt"    >
+  <p class=af5>Раздел «Подключение к БД РСДУ»</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=199 valign=top style="BORDER-TOP: medium none;  BORDER-RIGHT: windowtext 1pt solid; WIDTH: 148.9pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt"    >
+  <p class=afff9>Имя <span lang=EN-US>DSN (ODBC)</span></p>
+  </td>
+  <td width=161 valign=top style="BORDER-TOP:  medium none; BORDER-RIGHT: windowtext 1pt  solid; WIDTH: 120.5pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt"    >
+  <p class=afff9>Имя <span lang=EN-US>ODBC</span></p>
+  <p class=afff9>По умолчанию <span lang=EN-US>RSDU</span>2</p>
+  </td>
+  <td width=283 valign=top style="BORDER-TOP:  medium none; BORDER-RIGHT: windowtext 1pt  solid; WIDTH: 212.55pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt"    >
+  <p class=afff9>Название источник, по которому доступна БДТИ РСДУ.</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=199 valign=top style="BORDER-TOP: medium none;  BORDER-RIGHT: windowtext 1pt solid; WIDTH: 148.9pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt"    >
+  <p class=afff9>Имя процесса (пользователя)</p>
+  </td>
+  <td width=161 valign=top style="BORDER-TOP:  medium none; BORDER-RIGHT: windowtext 1pt  solid; WIDTH: 120.5pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt"    >
+  <p class=afff9>Имя пользователя</p>
+  </td>
+  <td width=283 valign=top style="BORDER-TOP:  medium none; BORDER-RIGHT: windowtext 1pt  solid; WIDTH: 212.55pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt"    >
+  <p class=afff9>Логин пользователя <span lang=EN-US>Oracle</span>.</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=199 valign=top style="BORDER-TOP: medium none;  BORDER-RIGHT: windowtext 1pt solid; WIDTH: 148.9pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt"    >
+  <p class=afff9>Пароль </p>
+  </td>
+  <td width=161 valign=top style="BORDER-TOP:  medium none; BORDER-RIGHT: windowtext 1pt  solid; WIDTH: 120.5pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt"    >
+  <p class=afff9>Пароль</p>
+  </td>
+  <td width=283 valign=top style="BORDER-TOP:  medium none; BORDER-RIGHT: windowtext 1pt  solid; WIDTH: 212.55pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt"    >
+  <p class=afff9>Пароль пользователя <span lang=EN-US>Oracle</span>.</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=199 valign=top style="BORDER-TOP: medium none;  BORDER-RIGHT: windowtext 1pt solid; WIDTH: 148.9pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt"    >
+  <p class=afff9>Запускаемый модуль (приложение)</p>
+  </td>
+  <td width=161 valign=top style="BORDER-TOP:  medium none; BORDER-RIGHT: windowtext 1pt  solid; WIDTH: 120.5pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt"    >
+  <p class=afff9>Название приложения</p>
+  </td>
+  <td width=283 valign=top style="BORDER-TOP:  medium none; BORDER-RIGHT: windowtext 1pt  solid; WIDTH: 212.55pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt"    >
+  <p class=afff9>Соответствует названию файла «Сервис передачи КДУ в СК-2007»&nbsp;
+  в разделе в разделе «Служебная информация<span lang=EN-US>&nbsp;</span>→<span
+  
+      lang=EN-US>&nbsp;</span>Программное обеспечение<span lang=EN-US>&nbsp;</span>→<span
+  lang=EN-US>&nbsp;</span>Программы<span lang=EN-US>&nbsp;</span>→<span
+  lang=EN-US>&nbsp;</span>Загружаемые модули».</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=643 colspan=3 valign=top style="BORDER-TOP: medium none;  BORDER-RIGHT: windowtext 1pt solid; WIDTH: 17cm; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt"    >
+  <p class=af5>Отправка КДУ</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=199 valign=top style="BORDER-TOP: medium none;  BORDER-RIGHT: windowtext 1pt solid; WIDTH: 148.9pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt"    >
+  <p class=afff9>Период (сек) разбора очереди КДУ на передачу</p>
+  </td>
+  <td width=161 valign=top style="BORDER-TOP:  medium none; BORDER-RIGHT: windowtext 1pt  solid; WIDTH: 120.5pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt"    >
+  <p class=afff9>От 60 секунд…</p>
+  <p class=afff9>Рекомендуемое значение: 60 сек</p>
+  </td>
+  <td width=283 valign=top style="BORDER-TOP:  medium none; BORDER-RIGHT: windowtext 1pt  solid; WIDTH: 212.55pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt"    >
+  <p class=afff9>Определяет периодичность разбора очереди КДУ на передачу в
+  СК-2007.</p>
+  <p class=afff9>Передача КДУ производится по событию (факт регистрации КДУ), а
+  также периодически (для восстановления передачи в случае возникновения ошибок).</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=643 colspan=3 valign=top style="BORDER-TOP: medium none;  BORDER-RIGHT: windowtext 1pt solid; WIDTH: 17cm; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt"    >
+  <p class=af5>СК-2007\Сервис EMSDataService</p>
+  </td>
+ </tr>
+ <tr style="HEIGHT: 38.85pt">
+  <td width=199 valign=top style="BORDER-TOP: medium none;  HEIGHT: 38.85pt; BORDER-RIGHT: windowtext 1pt solid; WIDTH: 148.9pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt"    >
+  <p class=afff9>Адрес (<span lang=EN-US>URL</span>) основного сервера СК-2007</p>
+  </td>
+  <td width=161 valign=top style="BORDER-TOP:  medium none; HEIGHT: 38.85pt; BORDER-RIGHT:  windowtext 1pt solid; WIDTH: 120.5pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt"    >
+  <p class=afff9><span lang=EN-US>URL</span></p>
+  </td>
+  <td width=283 rowspan=2 valign=top style="BORDER-TOP:  medium none; HEIGHT: 38.85pt; BORDER-RIGHT:  windowtext 1pt solid; WIDTH: 212.55pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt"    >
+  <p class=afff9>Определяет <span lang=EN-US>URL</span> основного и резервного
+  сервиса <span class=af9><span style="FONT-SIZE: 12pt; LINE-HEIGHT: 115%" 
+     >EMSDataService
+  </span></span>СК-2007.</p>
+  <p class=afff9>Формат адреса:</p>
+  <p class=afff9><span class=af9><span style="FONT-SIZE:
+  12pt; LINE-HEIGHT: 115%" 
+     >http://&lt;IP&gt;:&lt;Port&gt;/ESMDataService/</span></span></p>
+  <p class=afff9>По умолчанию в СК-2007 сервис <span class=af9><span
+  
+      style="FONT-SIZE: 12pt; LINE-HEIGHT: 115%" 
+     >ESMDataService</span></span>
+  доступен по порту 8120.</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=199 valign=top style="BORDER-TOP: medium none;  BORDER-RIGHT: windowtext 1pt solid; WIDTH: 148.9pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt"    >
+  <p class=afff9>Адрес (<span lang=EN-US>URL</span>) основного сервера СК-2007</p>
+  </td>
+  <td width=161 valign=top style="BORDER-TOP:  medium none; BORDER-RIGHT: windowtext 1pt  solid; WIDTH: 120.5pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt"    >
+  <p class=afff9><span lang=EN-US>URL</span></p>
+  </td>
+ </tr>
+</table>
+
+</div>
+
+<h2 style="MARGIN-LEFT: 0cm; TEXT-INDENT: 0cm"><a name="_Toc44738885"></a><a
+ name="_Toc42240031"></a><a name="_Toc42237723"></a><a name="_Toc11145438"></a><a
+ name="_Toc462055442">4.2 Настройка связей справочников</a></h2>
+
+<p class=MsoNormal>Вкладка «Связь справочников» содержит описание справочников
+СК-2007 и РСДУ, а также связей между их элементами.</p>
+
+<p class=MsoNormal>Для работы сервиса необходимо заполнить следующие
+справочники:</p>
+
+<p class=MsoListBullet2><span style="FONT-FAMILY: Wingdings">ü<span
+ style  ='FONT: 7pt "Times New Roman"'>&nbsp; </span></span>справочник КДУ –
+содержит описание команд диспетчерского управления, инициатив, причин
+отклонений и комментариев к причинам;</p>
+
+<p class=MsoListBullet2><span style="FONT-FAMILY: Wingdings">ü<span
+ style  ='FONT: 7pt "Times New Roman"'>&nbsp; </span></span>справочник ГОУ и
+персонала – содержит описание ГОУ и персонала, выполняющего получение и
+регистрацию КДУ на станции; как правило, КДУ получает начальник смены станции;</p>
+
+<p class=MsoListBullet2><span style="FONT-FAMILY: Wingdings">ü<span
+ style  ='FONT: 7pt "Times New Roman"'>&nbsp; </span></span>справочник
+диспетчерских центров – содержит идентификаторы диспетчерских центров СО,
+выдающих КДУ.</p>
+
+<h3 style="MARGIN-LEFT: 0cm; TEXT-INDENT: 0cm"><a name="_Toc44738886"></a><a
+ name="_Toc42240032"></a><a name="_Toc42237724"></a><a name="_Toc11145439"></a><a
+ name="_Toc462055443">4.2.1 Описание интерфейса управления справочниками</a></h3>
+
+<p class=afff5><span style="HEIGHT:
+ 295px; WIDTH: 557px; POSITION: absolute; MARGIN-LEFT: 14px; LEFT: 0px; Z-INDEX: 251586048; MARGIN-TOP: 45px"><IMG src="0011.files/image009.png"
+ width=557 height=295 ></span><IMG id="Рисунок 687"
+ src ="0011.files/image010.jpg" width=642 height=370 ></p>
+
+<p class=MsoCaption>Рисунок 3 - Интерфейс приложения настройки сервиса вкладка
+«Связь справочников»</p>
+
+<p class=MsoNormal>Описание кнопок управления:</p>
+
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0 width=650
+ style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; WIDTH: 487.3pt; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: medium none; MARGIN-LEFT: 5.4pt; BORDER-LEFT: medium none">
+ <tr>
+  <td width=229 valign=top style="BORDER-TOP:  medium none; BORDER-RIGHT: windowtext 1pt  solid; WIDTH: 172pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt"    >
+  <p class=afffa>Кнопка</p>
+  </td>
+  <td width=93 valign=top style="BORDER-TOP:  medium none; BORDER-RIGHT: windowtext 1pt  solid; WIDTH: 69.8pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt"    >
+  <p class=afffa>Пиктограмма</p>
+  </td>
+  <td width=327 valign=top style="BORDER-TOP: medium none;  BORDER-RIGHT: medium none; WIDTH: 245.5pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt"    >
+  <p class=afffa>Описание</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=229 valign=top style="BORDER-TOP:  medium none; BORDER-RIGHT: windowtext 1pt  solid; WIDTH: 172pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt"    >
+  <p class=afff9><b>Обновить</b></p>
+  </td>
+  <td width=93 valign=top style="BORDER-TOP:  medium none; BORDER-RIGHT: windowtext 1pt  solid; WIDTH: 69.8pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt"    >
+  <p class=afffb><IMG id="Рисунок 12" src="0011.files/image011.png" width
+  =16 height=16 ></p>
+  </td>
+  <td width=327 valign=top style="BORDER-TOP: medium none;  BORDER-RIGHT: medium none; WIDTH: 245.5pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt"    >
+  <p class=afff9>Перечитать дерево элементов справочника из конфигурационной БД
+  сервиса.</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=229 valign=top style="BORDER-TOP:  medium none; BORDER-RIGHT: windowtext 1pt  solid; WIDTH: 172pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt"    >
+  <p class=afff9><b>Создать</b></p>
+  </td>
+  <td width=93 valign=top style="BORDER-TOP:  medium none; BORDER-RIGHT: windowtext 1pt  solid; WIDTH: 69.8pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt"    >
+  <p class=afffb><IMG id="Рисунок 13" src="0011.files/image012.png" width
+  =16 height=16 ></p>
+  </td>
+  <td width=327 valign=top style="BORDER-TOP: medium none;  BORDER-RIGHT: medium none; WIDTH: 245.5pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt"    >
+  <p class=afff9>Создать новый элемент в дереве элементов справочника
+  относительно выделенного.</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=229 valign=top style="BORDER-TOP:  medium none; BORDER-RIGHT: windowtext 1pt  solid; WIDTH: 172pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt"    >
+  <p class=afff9><b>Сохранить</b></p>
+  </td>
+  <td width=93 valign=top style="BORDER-TOP:  medium none; BORDER-RIGHT: windowtext 1pt  solid; WIDTH: 69.8pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt"    >
+  <p class=afffb><IMG id="Рисунок 682" src="0011.files/image013.png" width
+  =16 height=16 ></p>
+  </td>
+  <td width=327 valign=top style="BORDER-TOP: medium none;  BORDER-RIGHT: medium none; WIDTH: 245.5pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt"    >
+  <p class=afff9>Сохранить изменения выделенного элемента.</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=229 valign=top style="BORDER-TOP:  medium none; BORDER-RIGHT: windowtext 1pt  solid; WIDTH: 172pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt"    >
+      <p class=afff9><b 
+    >Удалить</B></P>
+  </td>
+    <td     style="BORDER-TOP: medium none; BORDER-RIGHT: windowtext 1pt solid; WIDTH: 69.8pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt"     vAlign=top width=93>
+      <p class=afffb><IMG id="Рисунок 684" src="0011.files/image014.png" width=22 height=22 ></P></TD>
+    <td     style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; WIDTH: 245.5pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt"     vAlign=top width=327>
+      <p class=afff9>Удалить выделенный элемент справочника. 
+      Удаление выполняется рекурсивно.</P></TD>
+ </tr>
+  <tr>
+    <td     style="BORDER-TOP: medium none; BORDER-RIGHT: windowtext 1pt solid; WIDTH: 172pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt"     vAlign=top width=229>
+      <p class=afff9><b>Загрузить 
+      модель</B></P></TD>
+    <td     style="BORDER-TOP: medium none; BORDER-RIGHT: windowtext 1pt solid; WIDTH: 69.8pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt"     vAlign=top width=93>
+      <p class=afffb><IMG id="Рисунок 685" src="0011.files/image015.png" width=16 height=16 ></P></TD>
+    <td     style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; WIDTH: 245.5pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt"     vAlign=top width=327>
+      <p class=afff9>Загрузить весь справочник из СК-2007. 
+      При этом старый справочник очищается.</P></TD></TR>
+  <tr>
+    <td     style="BORDER-TOP: medium none; BORDER-RIGHT: windowtext 1pt solid; WIDTH: 172pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt"     vAlign=top width=229>
+      <p class=afff9><b>Загрузить ветку 
+      модели</B></P></TD>
+    <td     style="BORDER-TOP: medium none; BORDER-RIGHT: windowtext 1pt solid; WIDTH: 69.8pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt"     vAlign=top width=93>
+      <p class=afffb><IMG id="Рисунок 686" src="0011.files/image016.png" width=16 height=16 >&nbsp;</P></TD>
+    <td     style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; WIDTH: 245.5pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt"     vAlign=top width=327>
+      <p class=afff9>Загрузить ветку модели из 
+  СК-2007</P></TD></TR>
+</table>
+<p class=affb>Кнопки загрузки модели и ветки модели из 
+СК-2007 выполняют подключение к серверу СК-2007 (сервису <span class=afff7>EMSDataService</SPAN>) и загрузку справочника с 
+использованием параметров, заданных на вкладке «Настройки» (см. раздел «Общие 
+настройки»).</P>
+<h3 style="MARGIN-LEFT: 0cm; TEXT-INDENT: 0cm"><a 
+name=_Toc44738887></A><a name=_Toc42240033></A><a name=_Toc42237725></A><a 
+name=_Toc11145440></A><a name=_Toc462055444>4.2.2 Справочник КДУ</A></H3>
+<p class=MsoNormal>Справочник КДУ содержит описание команд, 
+инициатив, причин отклонений и шаблонов комментариев к причинам отклонений. 
+Справочник строится на базе справочника СК-2007.</P>
+<p class=MsoNormal>Соответствующие элементы справочника 
+должны содержать идентификаторы аналогичных элементов в системах СК-2007 и 
+РСДУ.</P>
+<p class=MsoNormal>Справочник КДУ является условно статичным 
+и может меняться в следующих случаях:</P>
+<p class=MsoListBullet2><span style="FONT-FAMILY: Wingdings">ü<span style='FONT: 7pt "Times New Roman"'>&nbsp; </SPAN></SPAN>изменение регламента СО, связанного с 
+регистрацией команд диспетчерского управления, сообщений и т.д.;</P>
+<p class=MsoListBullet2><span style="FONT-FAMILY: Wingdings">ü<span style='FONT: 7pt "Times New Roman"'>&nbsp; </SPAN></SPAN>изменение уникальных идентификаторов 
+(MRID) элементов справочника на стороне СК-2007. </P>
+<table class=MsoTableGrid 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; WIDTH: 17cm; BACKGROUND: #fedb8e; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: medium none; MARGIN-LEFT: 5.4pt; BORDER-LEFT: medium none" 
+cellSpacing=0 cellPadding=0 width=643 border=1>
+  
+  <tr>
+    <td     style="BORDER-TOP: windowtext 1pt solid; BORDER-RIGHT: windowtext 1pt solid; WIDTH: 17cm; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt"     width=643>
+      <p class=aff0>внимание! </P>
+      <p class=MsoNormal>Дистрибутив сервиса содержит 
+      преднастроенный справочник КДУ. Редактирование справочника необходимо 
+      выполнять только в случае возникновения ошибок передачи КДУ, связанных с 
+      сопоставлением элементов справочника.</P></TD></TR>
+  <tr style="HEIGHT: 2.85pt">
+    <td     style="BORDER-TOP: medium none; HEIGHT: 2.85pt; BORDER-RIGHT: medium none; WIDTH: 17cm; BACKGROUND: none transparent scroll repeat 0% 0%; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt"     width=643>
+      <p class=aff0><span 
+      style="FONT-SIZE: 1pt; LINE-HEIGHT: 115%" 
+      ></SPAN>&nbsp;</P></TD></TR></TABLE>
+<h4 style="MARGIN-LEFT: 0cm; TEXT-INDENT: 0cm">4.2.2.1 
+Описание структуры справочника</H4>
+<p class=MsoNormal>Справочник оперирует следующими типами 
+элементов:</P>
+<p class=MsoListBullet2><span style="FONT-FAMILY: Wingdings">ü<span style='FONT: 7pt "Times New Roman"'>&nbsp; </SPAN></SPAN>Группа команд (<span lang=EN-US>TYPE</SPAN>_<span lang=EN-US>KDU</SPAN>_<span lang=EN-US>GROUP</SPAN>) – определяет группу команд, разрешений и 
+сообщений.</P>
+<p class=MsoListBullet2><span style="FONT-FAMILY: Wingdings">ü<span style='FONT: 7pt "Times New Roman"'>&nbsp; </SPAN></SPAN>Команда (<span lang=EN-US>TYPE</SPAN>_<span lang=EN-US>KDU</SPAN>_<span lang=EN-US>CMD</SPAN>) 
+– определяет команду.</P>
+<p class=MsoListBullet2><span style="FONT-FAMILY: Wingdings">ü<span style='FONT: 7pt "Times New Roman"'>&nbsp; </SPAN></SPAN>Инициатива (<span lang=EN-US>TYPE</SPAN>_<span lang=EN-US>KDU</SPAN>_<span lang=EN-US>INITIATIVE</SPAN>) – определяет инициативу.</P>
+<p class=MsoListBullet2><span style="FONT-FAMILY: Wingdings">ü<span style='FONT: 7pt "Times New Roman"'>&nbsp; </SPAN></SPAN>Причина отклонения (<span lang=EN-US>TYPE</SPAN>_<span lang=EN-US>KDU</SPAN>_<span lang=EN-US>CAUSE</SPAN>) – определяет причину отклонения.</P>
+<p class=MsoListBullet2><span style="FONT-FAMILY: Wingdings">ü<span style='FONT: 7pt "Times New Roman"'>&nbsp; </SPAN></SPAN>Комментарий к причине (<span lang=EN-US>TYPE</SPAN>_<span lang=EN-US>KDU</SPAN>_<span lang=EN-US>CAUSE</SPAN>_<span lang=EN-US>COMMENT</SPAN>) – определяет шаблон комментария к причине 
+отклонения.</P>
+<p class=MsoNormal>Структура справочника приведена ниже:</P>
+<table class=MsoNormalTable 
+style="WIDTH: 364.8pt; BORDER-COLLAPSE: collapse; MARGIN-LEFT: 5.4pt" 
+cellSpacing=0 cellPadding=0 width=486 border=0>
+  
+  <tr style="HEIGHT: 15pt">
+    <td     style="HEIGHT: 15pt; WIDTH: 364.8pt; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; PADDING-RIGHT: 5.4pt"     width=486 colSpan=5 noWrap>
+      <p class=af2>Группа команд</P></TD></TR>
+  <tr style="HEIGHT: 15pt">
+    <td     style="BORDER-TOP: medium none; HEIGHT: 15pt; BORDER-RIGHT: windowtext 1pt solid; WIDTH: 21.7pt; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt"     width=29 noWrap>
+      <p class=af2>&nbsp;</P></TD>
+    <td     style="HEIGHT: 15pt; WIDTH: 343.1pt; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; PADDING-RIGHT: 5.4pt"     width=457 colSpan=4 noWrap>
+      <p class=af2>Команда </P></TD></TR>
+  <tr style="HEIGHT: 15pt">
+    <td     style="BORDER-TOP: medium none; HEIGHT: 15pt; BORDER-RIGHT: windowtext 1pt solid; WIDTH: 21.7pt; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt"     width=29 noWrap>
+      <p class=af2>&nbsp;</P></TD>
+    <td     style="BORDER-TOP: medium none; HEIGHT: 15pt; BORDER-RIGHT: windowtext 1pt solid; WIDTH: 23.45pt; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt"     width=31 noWrap>
+      <p class=af2>&nbsp;</P></TD>
+    <td     style="HEIGHT: 15pt; WIDTH: 319.65pt; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; PADDING-RIGHT: 5.4pt"     width=426 colSpan=3 noWrap>
+      <p class=af2>Инициатива</P></TD></TR>
+  <tr style="HEIGHT: 15pt">
+    <td     style="BORDER-TOP: medium none; HEIGHT: 15pt; BORDER-RIGHT: windowtext 1pt solid; WIDTH: 21.7pt; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt"     width=29 noWrap>
+      <p class=af2>&nbsp;</P></TD>
+    <td     style="BORDER-TOP: medium none; HEIGHT: 15pt; BORDER-RIGHT: windowtext 1pt solid; WIDTH: 23.45pt; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt"     width=31 noWrap>
+      <p class=af2>&nbsp;</P></TD>
+    <td     style="BORDER-TOP: medium none; HEIGHT: 15pt; BORDER-RIGHT: windowtext 1pt solid; WIDTH: 23.4pt; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt"     width=31 noWrap>
+      <p class=af2>&nbsp;</P></TD>
+    <td     style="HEIGHT: 15pt; WIDTH: 296.25pt; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; PADDING-RIGHT: 5.4pt"     width=395 colSpan=2 noWrap>
+      <p class=af2>Причина отклонения </P></TD></TR>
+  <tr style="HEIGHT: 15pt">
+    <td     style="BORDER-TOP: medium none; HEIGHT: 15pt; BORDER-RIGHT: windowtext 1pt solid; WIDTH: 21.7pt; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt"     width=29 noWrap>
+      <p class=af2>&nbsp;</P></TD>
+    <td     style="BORDER-TOP: medium none; HEIGHT: 15pt; BORDER-RIGHT: windowtext 1pt solid; WIDTH: 23.45pt; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt"     width=31 noWrap>
+      <p class=af2>&nbsp;</P></TD>
+    <td     style="BORDER-TOP: medium none; HEIGHT: 15pt; BORDER-RIGHT: windowtext 1pt solid; WIDTH: 23.4pt; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt"     width=31 noWrap>
+      <p class=af2>&nbsp;</P></TD>
+    <td     style="BORDER-TOP: medium none; HEIGHT: 15pt; BORDER-RIGHT: windowtext 1pt solid; WIDTH: 23.4pt; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt"     width=31 noWrap>
+      <p class=af2>&nbsp;</P></TD>
+    <td     style="HEIGHT: 15pt; WIDTH: 272.85pt; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; PADDING-RIGHT: 5.4pt"     width=364 noWrap>
+      <p class=af2>Комментарий к причине 
+</P></TD></TR></TABLE>
+<p class=affb>Каждый элемент справочника содержит 
+идентификатор соответствующего элемента в СК-2007 и РСДУ.</P>
+<p class=MsoNormal>В СК-2007 элементы справочника 
+определяются уникальным идентификатором <span lang=EN-US>MRID</SPAN>. </P>
+<p class=MsoNormal>В РСДУ элементы справочника КДУ 
+содержатся в соответствующих таблицах в БДТИ раздела <span class=afb><span lang=EN-US>DG</SPAN></SPAN> (см. 
+описание раздела <span class=afb><span lang=EN-US>DG</SPAN></SPAN><span lang=EN-US> 
+</SPAN>в документации БДТИ РСДУ) и определяются полем <span lang=EN-US>ID</SPAN><span lang=EN-US> 
+</SPAN>таблиц.</P>
+<p class=MsoNormal>Кроме идентификаторов записей таблиц БД 
+РСДУ (поле <span lang=EN-US>ID</SPAN>) справочник 
+поддерживает специализированное символьное обозначение – «<span lang=EN-US>DEFAULT</SPAN>».</P>
+<p class=MsoNormal>Обозначение «<span lang=EN-US>DEFAULT</SPAN>» определяет элемент справочника как элемент 
+по умолчанию при поиске соответствия. Таким образом, если по идентификатору РСДУ 
+не найден элемент в «Справочнике КДУ» заданного типа, то будет использоваться 
+тот элемент, у которого в поле «Идентификатор РСДУ» задано обозначение «<span 
+lang=EN-US>DEFAULT</SPAN>». Это правило распространяется на 
+элементы определенного типа и на определенном уровне вложенности. Например, 
+первый уровень иерархии справочника содержит «Группы команд», – на этом уровне 
+может быть задан один элемент как «<span lang=EN-US>DEFAULT</SPAN>». Элемент ниже по иерархии может быть задан 
+как «<span lang=EN-US>DEFAULT</SPAN>» в рамках выбранного 
+родительского элемента.</P>
+<p class=MsoNormal>Соответствие таблиц БДТИ РСДУ и элементов 
+справочника представлено <br>в<a name=_Ref42077919> </A>Таблица 3.</P>
+<p class=MsoCaption style="PAGE-BREAK-AFTER: avoid"><a 
+name=_Ref44738871>Таблица </A>3 - Соответствие таблиц БДТИ 
+РСДУ и элементов справочника КДУ</P>
+<div align=center>
+<table class=affff0 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: medium none; BORDER-LEFT: medium none" 
+cellSpacing=0 cellPadding=0 border=1>
+  <thead>
+  <tr>
+    <td     style="BORDER-TOP: windowtext 1pt solid; BORDER-RIGHT: windowtext 1pt solid; WIDTH: 184.35pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt"     vAlign=top width=246>
+      <p class=afffa>Тип элемента справочника</P></TD>
+    <td     style="BORDER-TOP: windowtext 1pt solid; BORDER-RIGHT: windowtext 1pt solid; WIDTH: 141.7pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt"     vAlign=top width=189>
+      <p class=afffa>Таблица БДТИ РСДУ</P></TD>
+    <td     style="BORDER-TOP: windowtext 1pt solid; BORDER-RIGHT: windowtext 1pt solid; WIDTH: 155.9pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt"     vAlign=top width=208>
+      <p class=afffa>Примечание</P></TD></TR></THEAD>
+  
+  <tr>
+    <td     style="BORDER-TOP: medium none; BORDER-RIGHT: windowtext 1pt solid; WIDTH: 184.35pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt"     vAlign=top width=246>
+      <p class=afff9>Группа команд <br 
+      >(<span lang=EN-US 
+      >TYPE</SPAN>_<span lang=EN-US 
+      >KDU</SPAN>_<span lang=EN-US 
+      >GROUP</SPAN>)</P></TD>
+    <td     style="BORDER-TOP: medium none; BORDER-RIGHT: windowtext 1pt solid; WIDTH: 141.7pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt"     vAlign=top width=189>
+      <p class=afff9>нет</P></TD>
+    <td     style="BORDER-TOP: medium none; BORDER-RIGHT: windowtext 1pt solid; WIDTH: 155.9pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt"     vAlign=top width=208>
+      <p class=afff9>В РСДУ поддерживается только группа 
+      «Команды по изменению активной нагрузки».</P></TD></TR>
+  <tr>
+    <td     style="BORDER-TOP: medium none; BORDER-RIGHT: windowtext 1pt solid; WIDTH: 184.35pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt"     vAlign=top width=246>
+      <p class=afff9>Команда <br>(<span 
+      lang=EN-US>TYPE</SPAN>_<span lang=EN-US 
+      >KDU</SPAN>_<span lang=EN-US 
+      >CMD</SPAN>)</P></TD>
+    <td     style="BORDER-TOP: medium none; BORDER-RIGHT: windowtext 1pt solid; WIDTH: 141.7pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt"     vAlign=top width=189>
+      <p class=afff9><span class=afb 
+      ><span lang=EN-US 
+      >DG_KDU_COMMAND</SPAN></SPAN></P></TD>
+    <td     style="BORDER-TOP: medium none; BORDER-RIGHT: windowtext 1pt solid; WIDTH: 155.9pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt"     vAlign=top width=208>
+      <p class=afff9>&nbsp;</P></TD></TR>
+  <tr>
+    <td     style="BORDER-TOP: medium none; BORDER-RIGHT: windowtext 1pt solid; WIDTH: 184.35pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt"     vAlign=top width=246>
+      <p class=afff9>Инициатива <br 
+      >(<span lang=EN-US 
+      >TYPE</SPAN>_<span lang=EN-US 
+      >KDU</SPAN>_<span lang=EN-US 
+      >INITIATIVE</SPAN>)</P></TD>
+    <td     style="BORDER-TOP: medium none; BORDER-RIGHT: windowtext 1pt solid; WIDTH: 141.7pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt"     vAlign=top width=189>
+      <p class=afff9><span class=afb 
+      ><span lang=EN-US 
+      >DG_KDU_INITIATIVE</SPAN></SPAN></P></TD>
+    <td     style="BORDER-TOP: medium none; BORDER-RIGHT: windowtext 1pt solid; WIDTH: 155.9pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt"     vAlign=top width=208>
+      <p class=afff9>&nbsp;</P></TD></TR>
+  <tr>
+    <td     style="BORDER-TOP: medium none; BORDER-RIGHT: windowtext 1pt solid; WIDTH: 184.35pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt"     vAlign=top width=246>
+      <p class=afff9>Причина отклонения <br 
+      >(<span lang=EN-US 
+      >TYPE</SPAN>_<span lang=EN-US 
+      >KDU</SPAN>_<span lang=EN-US 
+      >CAUSE</SPAN>)</P></TD>
+    <td     style="BORDER-TOP: medium none; BORDER-RIGHT: windowtext 1pt solid; WIDTH: 141.7pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt"     vAlign=top width=189>
+      <p class=afff9><span class=afb 
+      ><span lang=EN-US 
+      >DG_KDU_CAUSE</SPAN></SPAN></P></TD>
+    <td     style="BORDER-TOP: medium none; BORDER-RIGHT: windowtext 1pt solid; WIDTH: 155.9pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt"     vAlign=top width=208>
+      <p class=afff9>&nbsp;</P></TD></TR>
+  <tr>
+    <td     style="BORDER-TOP: medium none; BORDER-RIGHT: windowtext 1pt solid; WIDTH: 184.35pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt"     vAlign=top width=246>
+      <p class=afff9>Комментарий к причине <br 
+      >(<span lang=EN-US 
+      >TYPE</SPAN>_<span lang=EN-US 
+      >KDU</SPAN>_<span lang=EN-US 
+      >CAUSE</SPAN>_<span lang=EN-US 
+      >COMMENT</SPAN>)</P></TD>
+    <td     style="BORDER-TOP: medium none; BORDER-RIGHT: windowtext 1pt solid; WIDTH: 141.7pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt"     vAlign=top width=189>
+      <p class=afff9><span class=afb 
+      ><span lang=EN-US 
+      >DG_KDU_COMMENT_TMPL</SPAN></SPAN></P></TD>
+    <td     style="BORDER-TOP: medium none; BORDER-RIGHT: windowtext 1pt solid; WIDTH: 155.9pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt"     vAlign=top width=208>
+      <p class=afff9>&nbsp;</P></TD></TR></TABLE></DIV>
+<p class=affb>Связи между элементами справочника КДУ РСДУ 
+определяются в таблице <span class=afb><span lang=EN-US>DG</SPAN></SPAN><span class=afb>_<span 
+lang=EN-US>KDU</SPAN></SPAN><span class=afb>_<span lang=EN-US>PRMLINK</SPAN></SPAN>.</P>
+<h4 style="MARGIN-LEFT: 0cm; TEXT-INDENT: 0cm">4.2.2.2 
+Заполнение справочника</H4>
+<p class=MsoNormal>Приложение настройки сервиса поддерживает 
+автоматизированное заполнение справочника КДУ на базе справочников СК-2007. </P>
+<p class=MsoNormal>При этом приложение выполняет подключение 
+к серверу СК-2007 сервису <span class=afff7>EMSDataService</SPAN> (используя параметры подключения, 
+заданные во вкладке «Настройки»), производит запрос информационной модели и на 
+базе полученных данных заполняет «Справочник КДУ». В справочнике будет выполнено 
+формирование полного дерева поддерживаемых СК-2007 команд, разрешений и 
+сообщений.</P>
+<p class=MsoNormal>Дальнейшая привязка элементов 
+сформированного справочника производится вручную и заключается в заполнении поля 
+«Идентификатор РСДУ».</P>
+<p class=MsoNormal>Для удобства поиска и определения 
+идентификаторов элементов справочника РСДУ необходимо использовать инструмент 
+доступа к СУБД <span lang=EN-US>Oracle</SPAN> (например, 
+свободно распространяемое приложение <span lang=EN-US>Oracle</SPAN><span lang=EN-US> 
+</SPAN><span lang=EN-US>SQL</SPAN><span lang=EN-US> </SPAN><span lang=EN-US>Developer</SPAN>).</P>
+<p class=MsoNormal>Для заполнения и привязки справочника 
+необходимо выполнить следующие действия:</P>
+<p class=MsoListNumber2>1.<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; 
+</SPAN>Запустить приложение <span class=afff7>TransferKDUtoSK2007.Config.exe</SPAN> и перейти во вкладку 
+«Связь справочников», выбрать «Справочник КДУ».</P>
+<p class=MsoListNumber2>2.<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; 
+</SPAN>Запустить «<span lang=EN-US>Oracle</SPAN><span 
+lang=EN-US> </SPAN><span lang=EN-US>SQL</SPAN><span lang=EN-US> </SPAN><span 
+lang=EN-US>Developer</SPAN>» и подключиться к БД РСДУ.</P>
+<p class=MsoListNumber2>3.<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; 
+</SPAN>Нажать кнопку «Загрузить модель» (<IMG id="Рисунок 679" src="0011.files/image015.png" width=16 height=16 >) в приложении <span class=afff7>TransferKDUtoSK2007.Config.exe</SPAN>. Приложение выполнит 
+загрузку полного справочника КДУ с сервера СК-2007 и отобразит его в дереве 
+элементов (на Рисунок 4 приведен пример отображения справочника КДУ). </P>
+<p class=MsoListContinue2 style="TEXT-ALIGN: center" align=center><IMG id="Рисунок 678" src="0011.files/image017.jpg" width=599 height=284 ></P>
+<p class=MsoCaption><a name=_Ref42082568>Рисунок </A>4 - Пример отображения справочника, полученного 
+от СК-2007</P>
+<p class=MsoListNumber2>4.<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; 
+</SPAN>Привязка элемента типа «Группа команд»:</P>
+<p class=MsoListNumber3>A.<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp; 
+</SPAN>Выбрать группу «Команды по изменению активной нагрузки».</P>
+<p class=MsoListContinue3><span class=aff><span style="FONT-SIZE: 11pt; LINE-HEIGHT: 115%">Примечание.</SPAN></SPAN> <span class=afe><span style="FONT-SIZE: 11pt; LINE-HEIGHT: 115%">В настоящее время в РСДУ реализована поддержка только 
+команд, входящих состав группы «Команды по изменению активной 
+нагрузки».</SPAN></SPAN></P>
+<p class=MsoListContinue3>Для элемента «Команды по изменению 
+активной нагрузки» в поле «Идентификатор РСДУ» необходимо указать «<span 
+lang=EN-US>DEFAULT</SPAN>», что определяет эту группу как 
+группа по умолчанию для всех команд, поддерживаемых в РСДУ.</P>
+<p class=MsoListContinue3><span 
+style="HEIGHT: 245px; WIDTH: 567px; POSITION: absolute; MARGIN-LEFT: 59px; LEFT: 0px; Z-INDEX: 251697664; MARGIN-TOP: 110px"><IMG src="0011.files/image018.png" width=567 height=245 ></SPAN><IMG id="Рисунок 677" src="0011.files/image019.jpg" width=579 height=276 ></P>
+<p class=MsoCaption>&nbsp;</P>
+<p class=MsoCaption>&nbsp;</P>
+<p class=MsoCaption>Рисунок 5 - Привязка элемента типа 
+«Группа команд»</P>
+<p class=MsoListNumber2>5.<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; 
+</SPAN>Привязка элемента типа «Команда»:</P>
+<p class=MsoListNumber3>A.<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp; 
+</SPAN>Выбрать элемент с типом «Команда», привязку которого необходимо 
+выполнить.</P>
+<p class=MsoListNumber3>B.<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp; 
+</SPAN>Выполнить поиск элемента в справочнике РСДУ.</P>
+<p class=MsoListContinue3>В приложении <span lang=EN-US>Oracle</SPAN><span lang=EN-US> 
+</SPAN><span lang=EN-US>SQL</SPAN><span lang=EN-US> </SPAN><span lang=EN-US>Developer</SPAN><span lang=EN-US> 
+</SPAN>необходимо выполнить следующий запрос:</P>
+<div 
+style="BORDER-TOP: windowtext 1pt solid; BORDER-RIGHT: windowtext 1pt solid; BACKGROUND: #c1c1c1; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 1pt; PADDING-TOP: 1pt; PADDING-LEFT: 4pt; MARGIN-LEFT: 52.45pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 4pt; MARGIN-RIGHT: 5.65pt">
+<p class=25 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>SELECT ID, NAME FROM 
+DG_KDU_COMMAND</SPAN></P></DIV>
+<p class=MsoListContinue3>Поиск соответствующей Команды в 
+справочнике РСДУ выполнить по наименованию. </P>
+<p class=MsoListNumber3>C.<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp; 
+</SPAN>Указать идентификатор команды из справочника РСДУ в поле «Идентификатор 
+РСДУ».</P>
+<p class=MsoListContinue3 style="MARGIN-LEFT: 49.65pt"><span 
+style="HEIGHT: 211px; WIDTH: 272px; POSITION: absolute; MARGIN-LEFT: 90px; LEFT: 0px; Z-INDEX: 251591168; MARGIN-TOP: 214px"><IMG src="0011.files/image020.png" width=272 height=211 ></SPAN><IMG id="Рисунок 676" src="0011.files/image021.jpg" width=572 height=266 ></P>
+<p class=MsoListContinue3 style="MARGIN-LEFT: 49.65pt"><IMG id="Рисунок 675" src="0011.files/image022.jpg" width=572 height=253 ></P>
+<p class=MsoCaption>Рисунок 6 - Привязка элемента типа 
+«Команда»</P>
+<p class=MsoListContinue2>По завершению ввода нажать кнопку 
+«Сохранить» (<IMG id="Рисунок 674" src="0011.files/image013.png" width=16 height=16 >).</P>
+<p class=MsoListContinue2>Повторить операции привязки для 
+других элементов типа «Команда» для выбранной группы.</P>
+<p class=MsoListNumber2>6.<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; 
+</SPAN>Привязка элемента типа «Инициатива»<span lang=EN-US>:</SPAN></P>
+<p class=MsoListNumber3>A.<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp; 
+</SPAN>Выбрать элемент с типом «Инициатива», привязку которого необходимо 
+выполнить.</P>
+<p class=MsoListNumber3>B.<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp; 
+</SPAN>Выполнить поиск элемента в справочнике РСДУ.</P>
+<p class=MsoListContinue3>В приложении <span lang=EN-US>Oracle</SPAN><span lang=EN-US> 
+</SPAN><span lang=EN-US>SQL</SPAN><span lang=EN-US> </SPAN><span lang=EN-US>Developer</SPAN><span lang=EN-US> 
+</SPAN>необходимо выполнить следующий запрос:</P>
+<div 
+style="BORDER-TOP: windowtext 1pt solid; BORDER-RIGHT: windowtext 1pt solid; BACKGROUND: #c1c1c1; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 1pt; PADDING-TOP: 1pt; PADDING-LEFT: 4pt; MARGIN-LEFT: 52.45pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 4pt; MARGIN-RIGHT: 5.65pt">
+<p class=25 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>SELECT ID, NAME FROM 
+DG_KDU_INITIATIVE</SPAN></P></DIV>
+<p class=MsoListContinue3><span lang=EN-US></SPAN>&nbsp;</P>
+<p class=MsoListContinue3>Поиск соответствующей инициативы в 
+справочнике РСДУ выполнить по наименованию. </P>
+<p class=MsoListNumber3>C.<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp; 
+</SPAN>Указать идентификатор инициативы из справочника РСДУ в поле 
+«Идентификатор РСДУ».</P>
+<p class=MsoNormal style="MARGIN-LEFT: 49.65pt"><span 
+style="HEIGHT: 219px; WIDTH: 271px; POSITION: absolute; MARGIN-LEFT: 93px; LEFT: 0px; Z-INDEX: 251646464; MARGIN-TOP: 188px"><IMG src="0011.files/image023.png" width=271 height=219 ></SPAN><IMG id="Рисунок 673" src="0011.files/image024.jpg" width=573 height=253 ></P>
+<p class=MsoNormal style="MARGIN-LEFT: 49.65pt"><IMG id="Рисунок 672" src="0011.files/image025.jpg" width=573 height=249 ></P>
+<p class=MsoCaption>Рисунок 7 - Привязка элемента типа 
+«Инициатива»</P>
+<p class=MsoListContinue3>По завершению ввода нажать кнопку 
+«Сохранить» (<IMG id="Рисунок 31" src="0011.files/image013.png" width=16 height=16 >).</P>
+<p class=MsoListContinue3>Повторить операции привязки прочих 
+элементов типа «Инициативы» для выбранной команды.</P>
+<p class=MsoListNumber2>7.<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; 
+</SPAN>Привязка элемента типа «Причина отклонения»:</P>
+<p class=MsoListNumber3>A.<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp; 
+</SPAN>Выбрать элемент с типом «Причина отклонения», привязку которого 
+необходимо выполнить.</P>
+<p class=MsoListNumber3>B.<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp; 
+</SPAN>Выполнить поиск элемента в справочнике РСДУ.</P>
+<p class=MsoListContinue3>В приложении <span lang=EN-US>Oracle</SPAN><span lang=EN-US> 
+</SPAN><span lang=EN-US>SQL</SPAN><span lang=EN-US> </SPAN><span lang=EN-US>Developer</SPAN><span lang=EN-US> 
+</SPAN>необходимо выполнить следующий запрос:</P>
+<div 
+style="BORDER-TOP: windowtext 1pt solid; BORDER-RIGHT: windowtext 1pt solid; BACKGROUND: #c1c1c1; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 1pt; PADDING-TOP: 1pt; PADDING-LEFT: 4pt; MARGIN-LEFT: 52.45pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 4pt; MARGIN-RIGHT: 5.65pt">
+<p class=25 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>SELECT ID, NAME FROM 
+DG_KDU_CAUSE</SPAN></P></DIV>
+<p class=MsoListContinue3><span lang=EN-US></SPAN>&nbsp;</P>
+<p class=MsoListContinue3>Поиск соответствующей причины 
+отклонения в справочнике РСДУ выполнить по наименованию. </P>
+<p class=MsoListNumber3>C.<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp; 
+</SPAN>Указать идентификатор причины из справочника РСДУ в поле «Идентификатор 
+РСДУ».</P>
+<p class=MsoNormal style="MARGIN-LEFT: 49.65pt"><span 
+style="HEIGHT: 217px; WIDTH: 278px; POSITION: absolute; MARGIN-LEFT: 76px; LEFT: 0px; Z-INDEX: 251702784; MARGIN-TOP: 192px"><IMG src="0011.files/image026.png" width=278 height=217 ></SPAN><IMG id="Рисунок 30" src="0011.files/image027.jpg" width=571 height=259 ></P>
+<p class=MsoNormal style="MARGIN-LEFT: 49.65pt"><IMG id="Рисунок 29" src="0011.files/image028.jpg" width=571 height=236 ></P>
+<p class=MsoCaption>Рисунок 8 - Привязка элемента типа 
+«Причина отклонения»</P>
+<p class=MsoListContinue3>По завершению ввода нажать кнопку 
+«Сохранить» (<IMG id="Рисунок 27" src="0011.files/image013.png" width=16 height=16 >).</P>
+<p class=MsoListContinue3>Повторить операции привязки для 
+других элементов типа «Причина отклонения» для выбранной инициативы.</P>
+<p class=MsoListNumber2>8.<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; 
+</SPAN>Привязка элемента типа «Комментарий к причине»</P>
+<p class=MsoListNumber3>A.<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp; 
+</SPAN>Выбрать элемент с типом «Комментарий к причине», привязку которого 
+необходимо выполнить.</P>
+<p class=MsoListNumber3>B.<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp; 
+</SPAN>Выполнить поиск элемента в справочнике РСДУ.</P>
+<p class=MsoListContinue3>В приложении <span lang=EN-US>Oracle</SPAN><span lang=EN-US> 
+</SPAN><span lang=EN-US>SQL</SPAN><span lang=EN-US> </SPAN><span lang=EN-US>Developer</SPAN><span lang=EN-US> 
+</SPAN>необходимо выполнить следующий запрос:</P>
+<div 
+style="BORDER-TOP: windowtext 1pt solid; BORDER-RIGHT: windowtext 1pt solid; BACKGROUND: #c1c1c1; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 1pt; PADDING-TOP: 1pt; PADDING-LEFT: 4pt; MARGIN-LEFT: 52.45pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 4pt; MARGIN-RIGHT: 5.65pt">
+<p class=25 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>SELECT * FROM 
+DG_KDU_COMMENT_TMPL</SPAN></P></DIV>
+<p class=MsoListContinue3><span lang=EN-US></SPAN>&nbsp;</P>
+<p class=MsoListContinue3>Поиск соответствующего комментария 
+в справочнике РСДУ выполнить по тексту комментария. </P>
+<p class=MsoListNumber3>C.<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp; 
+</SPAN>Указать идентификатор комментария из справочника РСДУ в поле 
+«Идентификатор РСДУ».</P>
+<p class=MsoNormal 
+style="PAGE-BREAK-AFTER: avoid; TEXT-ALIGN: center; MARGIN-LEFT: 49.65pt" 
+align=center><span 
+style="HEIGHT: 204px; WIDTH: 282px; POSITION: absolute; MARGIN-LEFT: 83px; LEFT: 0px; Z-INDEX: 251707904; MARGIN-TOP: 182px"><IMG src="0011.files/image029.png" width=282 height=204 ></SPAN><IMG id="Рисунок 26" src="0011.files/image030.jpg" width=571 height=232 ></P>
+<p class=MsoNormal 
+style="PAGE-BREAK-AFTER: avoid; TEXT-ALIGN: right; MARGIN-LEFT: 49.65pt" 
+align=right><IMG id="Рисунок 24" src="0011.files/image031.jpg" width=571 height=243 ></P>
+<p class=MsoCaption>Рисунок 9 - Привязка элемента типа 
+«Комментарий к причине»</P>
+<p class=MsoListContinue3>По завершению ввода нажать кнопку 
+«Сохранить» (<IMG id="Рисунок 23" src="0011.files/image013.png" width=16 height=16 >).</P>
+<p class=MsoListContinue3>Повторить операции привязки для 
+других элементов типа «Комментарий к причине» для выбранной причины.</P>
+<h3 style="MARGIN-LEFT: 0cm; TEXT-INDENT: 0cm"><a 
+name=_Toc44738888></A><a name=_Toc42240034></A><a name=_Toc42237726></A><a 
+name=_Toc11145441></A><a name=_Toc462055445>4.2.3 Справочник ГОУ и персонала</A></H3>
+<p class=MsoNormal>Справочник ГОУ и персонала содержит 
+описание групповых объектов управления и персонала, имеющего право на 
+регистрацию команд диспетчерского управления. Справочник строится на базе 
+справочника СК-2007.</P>
+<h4 style="MARGIN-LEFT: 0cm; TEXT-INDENT: 0cm">4.2.3.1 
+Описание структуры справочника</H4>
+<p class=MsoNormal>Справочник оперирует следующими типами 
+элементов:</P>
+<p class=MsoListBullet2><span style="FONT-FAMILY: Wingdings">ü<span style='FONT: 7pt "Times New Roman"'>&nbsp; </SPAN></SPAN>группа или каталог (<span lang=EN-US>TYPE</SPAN>_<span lang=EN-US>GOU</SPAN>_<span lang=EN-US>GROUP</SPAN>) – используется для каталогизации 
+справочника.</P>
+<p class=MsoListBullet2><span style="FONT-FAMILY: Wingdings">ü<span style='FONT: 7pt "Times New Roman"'>&nbsp; </SPAN></SPAN>групповой объект управления (ГОУ) 
+(<span lang=EN-US>TYPE</SPAN>_<span lang=EN-US>GOU</SPAN>) – определяет Групповой объект управления.</P>
+<p class=MsoListBullet2><span style="FONT-FAMILY: Wingdings">ü<span style='FONT: 7pt "Times New Roman"'>&nbsp; </SPAN></SPAN>персонал станции (<span lang=EN-US>TYPE</SPAN>_<span lang=EN-US>GOU</SPAN>_<span lang=EN-US>USER</SPAN>) 
+– определяет персонал станции, имеющий право получения и регистрации КДУ для 
+данного ГОУ.</P>
+<p class=MsoNormal style="PAGE-BREAK-AFTER: avoid">Структура 
+справочника:</P>
+<table class=MsoNormalTable 
+style="WIDTH: 487.3pt; BORDER-COLLAPSE: collapse; MARGIN-LEFT: 5.4pt" 
+cellSpacing=0 cellPadding=0 width=650 border=0>
+  
+  <tr style="HEIGHT: 15pt">
+    <td     style="HEIGHT: 15pt; WIDTH: 487.3pt; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; PADDING-RIGHT: 5.4pt"     width=650 colSpan=3 noWrap>
+      <p class=af2>Группа (каталог)</P></TD></TR>
+  <tr style="HEIGHT: 15pt">
+    <td     style="BORDER-TOP: medium none; HEIGHT: 15pt; BORDER-RIGHT: windowtext 1pt solid; WIDTH: 19.5pt; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt"     width=26 noWrap>
+      <p class=af2>&nbsp;</P></TD>
+    <td     style="HEIGHT: 15pt; WIDTH: 467.8pt; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; PADDING-RIGHT: 5.4pt"     width=624 colSpan=2 noWrap>
+      <p class=af2>Групповой объект управления 
+  (ГОУ)</P></TD></TR>
+  <tr style="HEIGHT: 15pt">
+    <td     style="BORDER-TOP: medium none; HEIGHT: 15pt; BORDER-RIGHT: windowtext 1pt solid; WIDTH: 19.5pt; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt"     width=26 noWrap>
+      <p class=af2>&nbsp;</P></TD>
+    <td     style="BORDER-TOP: medium none; HEIGHT: 15pt; BORDER-RIGHT: windowtext 1pt solid; WIDTH: 27.8pt; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt"     width=37 noWrap>
+      <p class=af2>&nbsp;</P></TD>
+    <td     style="HEIGHT: 15pt; WIDTH: 440pt; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; PADDING-RIGHT: 5.4pt"     width=587 noWrap>
+      <p class=af2>Персонал станции</P></TD></TR></TABLE>
+<p class=affb>Каждый элемент справочника содержит 
+идентификатор соответствующего элемента в системе СК-2007 и РСДУ.</P>
+<p class=MsoNormal>В СК-2007 элементы справочника 
+определяются уникальным идентификатором MRID. </P>
+<p class=MsoNormal>В РСДУ элементы справочника содержатся в 
+соответствующих таблицах в БДТИ общего системного раздела (таблица <span 
+class=afb><span lang=EN-US>S</SPAN></SPAN><span class=afb>_<span 
+lang=EN-US>USERS</SPAN></SPAN>) и раздела <span class=afb><span lang=EN-US>DG</SPAN></SPAN> (см. 
+описание разделов в документации «Описание структуры БД РСДУ. Руководство 
+администратора»). Элементы определяются полем <span lang=EN-US>ID</SPAN><span lang=EN-US> 
+</SPAN>таблиц.</P>
+<p class=MsoNormal>Кроме идентификаторов записей таблиц БД 
+(поле <span lang=EN-US>ID</SPAN>) справочник поддерживает 
+специализированное символьное обозначение&nbsp; «<span lang=EN-US>DEFAULT</SPAN>».</P>
+<p class=MsoNormal>Обозначение «<span lang=EN-US>DEFAULT</SPAN>» определяет элемент справочника как элемент 
+по умолчанию при поиске соответствия. Таким образом, если по идентификатору РСДУ 
+не найден элемент заданного типа, то будет использоваться тот элемент, у 
+которого в поле «Идентификатор РСДУ» задано обозначение «<span lang=EN-US>DEFAULT</SPAN>». Это правило распространяется на элементы 
+типа «Персонал станции».</P>
+<p class=MsoCaption style="PAGE-BREAK-AFTER: avoid">Таблица 
+4 - Соответствие таблиц БДТИ РСДУ и элементов справочника ГОУ</P>
+<div align=center>
+<table class=affff0 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: medium none; BORDER-LEFT: medium none" 
+cellSpacing=0 cellPadding=0 border=1>
+  <thead>
+  <tr>
+    <td     style="BORDER-TOP: windowtext 1pt solid; BORDER-RIGHT: windowtext 1pt solid; WIDTH: 184.3pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt"     vAlign=top width=246>
+      <p class=afffa>Тип элемента справочника</P></TD>
+    <td     style="BORDER-TOP: windowtext 1pt solid; BORDER-RIGHT: windowtext 1pt solid; WIDTH: 4cm; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt"     vAlign=top width=151>
+      <p class=afffa>Таблица БДТИ РСДУ</P></TD>
+    <td     style="BORDER-TOP: windowtext 1pt solid; BORDER-RIGHT: windowtext 1pt solid; WIDTH: 184.25pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt"     vAlign=top width=246>
+      <p class=afffa>Примечание</P></TD></TR></THEAD>
+  
+  <tr>
+    <td     style="BORDER-TOP: medium none; BORDER-RIGHT: windowtext 1pt solid; WIDTH: 184.3pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt"     vAlign=top width=246>
+      <p class=afff9 style="PAGE-BREAK-AFTER: avoid" 
+      >Групповой объект управления (ГОУ)<br 
+      >(<span lang=EN-US 
+      >TYPE</SPAN>_<span lang=EN-US 
+      >GOU</SPAN>)</P></TD>
+    <td     style="BORDER-TOP: medium none; BORDER-RIGHT: windowtext 1pt solid; WIDTH: 4cm; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt"     vAlign=top width=151>
+      <p class=afff9 style="PAGE-BREAK-AFTER: avoid"><span 
+      class=afb><span lang=EN-US 
+      >DG_GROUPS</SPAN></SPAN></P></TD>
+    <td     style="BORDER-TOP: medium none; BORDER-RIGHT: windowtext 1pt solid; WIDTH: 184.25pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt"     vAlign=top width=246>
+      <p class=afff9 style="PAGE-BREAK-AFTER: avoid" 
+      >Используются записи с <span lang=EN-US 
+      >ID</SPAN>_<span lang=EN-US 
+      >TYPE</SPAN>, соответствующий типу «Группа точек 
+      поставки» (<span class=afb><span lang=EN-US 
+      >OTYP</SPAN></SPAN><span class=afb 
+      >_</SPAN><span class=afb><span 
+      lang=EN-US>EA</SPAN></SPAN><span class=afb 
+      >_</SPAN><span class=afb><span 
+      lang=EN-US>GROUP</SPAN></SPAN>) из таблицы <span 
+      class=afb><span lang=EN-US 
+      >SYS</SPAN></SPAN><span class=afb 
+      >_</SPAN><span class=afb><span 
+      lang=EN-US>OTYP</SPAN></SPAN></P></TD></TR>
+  <tr>
+    <td     style="BORDER-TOP: medium none; BORDER-RIGHT: windowtext 1pt solid; WIDTH: 184.3pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt"     vAlign=top width=246>
+      <p class=afff9>Персонал станции<br 
+      >(<span lang=EN-US 
+      >TYPE</SPAN>_<span lang=EN-US 
+      >GOU</SPAN>_<span lang=EN-US 
+      >USER</SPAN>)</P></TD>
+    <td     style="BORDER-TOP: medium none; BORDER-RIGHT: windowtext 1pt solid; WIDTH: 4cm; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt"     vAlign=top width=151>
+      <p class=afff9><span class=afb 
+      ><span lang=EN-US 
+      >S_USERS</SPAN></SPAN></P></TD>
+    <td     style="BORDER-TOP: medium none; BORDER-RIGHT: windowtext 1pt solid; WIDTH: 184.25pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt"     vAlign=top width=246>
+      <p class=afff9>&nbsp;</P></TD></TR></TABLE></DIV>
+<h4 style="MARGIN-LEFT: 0cm; TEXT-INDENT: 0cm">4.2.3.2 
+Заполнение справочника</H4>
+<p class=MsoNormal>Приложение настройки сервиса поддерживает 
+автоматизированное&nbsp; заполнение справочника ГОУ и персонала на базе 
+справочников СК-2007. </P>
+<p class=MsoNormal>При этом приложение выполняет подключение 
+к серверу СК-2007 сервису <span class=afff7>EMSDataService</SPAN> (используя параметры подключения, 
+заданные во вкладке «Настройки»), производит запрос информационной модели и на 
+базе полученных данных заполняет справочник.</P>
+<p class=MsoNormal>Дальнейшая привязка элементов 
+сформированного справочника производится вручную и заключается в заполнении поля 
+«Идентификатор РСДУ».</P>
+<p class=MsoNormal>Для удобства поиска и определения 
+идентификаторов элементов справочника РСДУ необходимо использовать «Навигатор 
+БД».</P>
+<p class=MsoNormal>Для заполнения и привязки справочника 
+«Справочник ГОУ и персонала» необходимо выполнить следующие действия:</P>
+<p class=MsoListNumber2>1.<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; 
+</SPAN>Запустить приложение настройки сервиса <span class=afff7>TransferKDUtoSK2007.Config.exe</SPAN> и перейти во вкладку 
+«Связь справочников».</P>
+<p class=MsoListNumber2>2.<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; 
+</SPAN>Выбрать «Справочник ГОУ и персонала». </P>
+<p class=MsoListNumber2>3.<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; 
+</SPAN>Запустить «Панель оператора» и приложение «Навигатор БД» РСДУ. </P>
+<p class=MsoListContinue2>Приложение «Навигатор БД» 
+потребуется для поиска идентификаторов элементов справочников РСДУ на дальнейших 
+шагах выполнения настройки.</P>
+<p class=MsoListNumber2><a name=_Ref441505351>4.<span style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; </SPAN>Нажать кнопку «Загрузить модель» 
+(<IMG id="Рисунок 22" src="0011.files/image015.png" width=16 height=16 >) в приложении 
+</A><span class=afff7>TransferKDUtoSK2007.Config.exe</SPAN>.</P>
+<p class=MsoListContinue2>Приложение произведет загрузку 
+справочника из СК-2007 и обновит дерево загруженных элементов.</P>
+<p class=MsoNormal style="MARGIN-LEFT: 35.45pt"><IMG id="Рисунок 20" src="0011.files/image032.jpg" width=593 height=317 ></P>
+<p class=MsoCaption style="MARGIN-LEFT: 35.45pt">Рисунок 10 
+- Пример отображения справочника «ГОУ и персонала», <br>полученного от СК-2007</P>
+<p class=MsoListNumber2>5.<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; 
+</SPAN>Выбрать в дереве справочника требуемый для привязки элемент типа «ГОУ» и 
+заполнить поле «Идентификатор РСДУ». По завершению ввода нажать кнопку 
+«Сохранить» (<IMG id="Рисунок 19" src="0011.files/image013.png" width=16 height=16 >).</P>
+<p class=MsoListContinue2><span class=af7>Идентификатор РСДУ</SPAN><b>:</B> 
+указать идентификатор соответствующего ГОУ из раздела «Диспетчерские графики» 
+РСДУ.</P>
+<p class=MsoListContinue2>Для получения идентификатора ГОУ в 
+РСДУ необходимо открыть приложение «Навигатор БД», перейти в раздел 
+«Технологическая информация<span lang=EN-US>&nbsp;</SPAN>→<span lang=EN-US>&nbsp;</SPAN>Контролируемые параметры<span lang=EN-US>&nbsp;</SPAN>→<span lang=EN-US>&nbsp;</SPAN>Диспетчерские графики» и выбрать 
+соответствующий ГОУ. </P>
+<p class=MsoListContinue2>Идентификатор выбранного ГОУ 
+отображается внизу в строке статуса приложения «Навигатор БД» или в наименовании 
+окна свойств (пункт «Свойства» контекстного меню).</P>
+<p class=MsoNormal style="MARGIN-LEFT: 35.45pt"><IMG id="Рисунок 18" src="0011.files/image033.jpg" width=593 height=316 ></P>
+<p class=MsoCaption style="TEXT-ALIGN: left; MARGIN-LEFT: 35.45pt" align=left>Рисунок 11 - Получение идентификатора ГОУ в разделе 
+«Диспетчерские графики» РСДУ</P>
+<p class=MsoListNumber2><a name=_Ref441505357>6.<span style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; </SPAN>Выбрать в дереве справочника 
+требуемый для привязки элемент&nbsp; типа «Персонал станции» и заполнить поле 
+«Идентификатор РСДУ», указав при этом идентификатор пользователя РСДУ. По 
+завершению ввода нажать кнопку «Сохранить» (<IMG id="Рисунок 17" src="0011.files/image013.png" width=16 height=16 >).</A></P>
+<p class=MsoListContinue2>Для получения идентификатора 
+пользователя в РСДУ необходимо открыть приложение «Навигатор БД», перейти в 
+раздел «Доступ к информации и управлению<span lang=EN-US>&nbsp;</SPAN>→<span lang=EN-US>&nbsp;</SPAN>Процессы и персонал» и выбрать соответствующего 
+пользователя. </P>
+<p class=MsoListContinue2>Идентификатор пользователя РСДУ 
+отображается в поле ID списка пользователей или в наименовании окна свойств 
+пользователя (контекстное меню пункт «Свойства»).</P>
+<table class=MsoTableGrid 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; WIDTH: 446.5pt; BACKGROUND: #fedb8e; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: medium none; MARGIN-LEFT: 40.85pt; BORDER-LEFT: medium none" 
+cellSpacing=0 cellPadding=0 width=595 border=1>
+  
+  <tr>
+    <td     style="BORDER-TOP: windowtext 1pt solid; BORDER-RIGHT: windowtext 1pt solid; WIDTH: 446.5pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt"     width=595>
+      <p class=aff0>внимание! </P>
+      <p class=MsoNormal>Вместо идентификатора пользователя 
+      РСДУ можно использовать обозначение «DEFAULT» в случае, если требуется 
+      определить персонал ГОУ по умолчанию.</P></TD></TR>
+  <tr style="HEIGHT: 2.85pt">
+    <td     style="BORDER-TOP: medium none; HEIGHT: 2.85pt; BORDER-RIGHT: medium none; WIDTH: 446.5pt; BACKGROUND: none transparent scroll repeat 0% 0%; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt"     width=595>
+      <p class=aff0><span 
+      style="FONT-SIZE: 1pt; LINE-HEIGHT: 115%" 
+      ></SPAN>&nbsp;</P></TD></TR></TABLE>
+<p class=MsoListContinue2>&nbsp;</P>
+<p class=MsoListNumber2>7.<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; 
+</SPAN>При необходимости повторить операции п.4 и п.6 для добавления и привязки 
+нового ГОУ и персонала.</P>
+<p class=MsoNormal>Список персонала станции, имеющий право 
+на регистрацию КДУ для выбранного ГОУ, может быть обновлен из СК-2007 отдельно. 
+</P>
+<p class=MsoNormal>Для этого необходимо выполнить следующие 
+действия:</P>
+<p class=MsoListNumber2>1.<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; 
+</SPAN>Выбрать ГОУ.</P>
+<p class=MsoListNumber2>2.<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; 
+</SPAN>Нажать кнопку «Загрузить ветку модели» (<IMG id="Рисунок 16" src="0011.files/image016.png" width=16 height=16 >).</P>
+<p class=MsoListNumber2>3.<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; 
+</SPAN>При этом приложение настройки сервиса выполнит подключение к сервису 
+<span class=afff7>EMSDataService</SPAN> СК-2007 (используя 
+параметры подключения, заданные во вкладке «Настройки»), произведет запрос 
+списка персонала выбранной ГОУ и на базе полученных данных добавит отсутствующие 
+в справочнике для выбранной ГОУ элементы типа «Персонал станции».</P>
+<p class=MsoListNumber2>4.<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; 
+</SPAN>Для загруженных элементов выполнить настройку привязки к пользователям 
+РСДУ (заполнить поле «Идентификатор РСДУ»).</P>
+<p class=MsoListNumber2>5.<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; 
+</SPAN>По завершению ввода нажать кнопку «Сохранить» (<IMG id="Рисунок 15" src="0011.files/image013.png" width=16 height=16 >).</P>
+<h3 style="MARGIN-LEFT: 0cm; TEXT-INDENT: 0cm"><a 
+name=_Toc44738889></A><a name=_Toc42240035></A><a name=_Toc42237727></A><a 
+name=_Toc11145442></A><a name=_Toc462055446>4.2.4 Справочник диспетчерских центров</A></H3>
+<p class=MsoNormal>Справочник диспетчерских центров содержит 
+описание структуры диспетчерских центров и оперативного персонала СО, 
+используемых при регистрации КДУ. Справочник строится на базе справочника 
+системы СК-2007.</P>
+<h4 style="MARGIN-LEFT: 0cm; TEXT-INDENT: 0cm">4.2.4.1 
+Описание структуры справочника</H4>
+<p class=MsoNormal>Справочник оперирует следующими типами 
+элементов:</P>
+<p class=MsoListBullet2><span style="FONT-FAMILY: Wingdings">ü<span style='FONT: 7pt "Times New Roman"'>&nbsp; </SPAN></SPAN>диспетчерский центр (<span lang=EN-US>TYPE</SPAN>_<span lang=EN-US>CNT</SPAN>) 
+– определяет диспетчерский центр СО;</P>
+<p class=MsoListBullet2><span style="FONT-FAMILY: Wingdings">ü<span style='FONT: 7pt "Times New Roman"'>&nbsp; </SPAN></SPAN>диспетчер (<span lang=EN-US>TYPE</SPAN>_<span lang=EN-US>CNT</SPAN>_<span lang=EN-US>PERSONNEL</SPAN>) – определяет оперативный персонал 
+диспетчерского центра СО, имеющий право выдачи КДУ.</P>
+<p class=MsoNormal>Структура справочника:</P>
+<table class=MsoNormalTable 
+style="WIDTH: 487.3pt; BORDER-COLLAPSE: collapse; MARGIN-LEFT: 5.4pt" 
+cellSpacing=0 cellPadding=0 width=650 border=0>
+  
+  <tr style="HEIGHT: 15pt">
+    <td     style="HEIGHT: 15pt; WIDTH: 487.3pt; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; PADDING-RIGHT: 5.4pt"     width=650 colSpan=3 noWrap>
+      <p class=af2>Диспетчерский центр</P></TD></TR>
+  <tr style="HEIGHT: 15pt">
+    <td     style="BORDER-TOP: medium none; HEIGHT: 15pt; BORDER-RIGHT: windowtext 1pt solid; WIDTH: 21.95pt; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt"     width=29 noWrap>
+      <p class=af2>&nbsp;</P></TD>
+    <td     style="HEIGHT: 15pt; WIDTH: 465.35pt; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; PADDING-RIGHT: 5.4pt"     width=620 colSpan=2 noWrap>
+      <p class=af2>Диспетчерский центр</P></TD></TR>
+  <tr style="HEIGHT: 15pt">
+    <td     style="BORDER-TOP: medium none; HEIGHT: 15pt; BORDER-RIGHT: windowtext 1pt solid; WIDTH: 21.95pt; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt"     width=29 noWrap>
+      <p class=af2>&nbsp;</P></TD>
+    <td     style="BORDER-TOP: medium none; HEIGHT: 15pt; BORDER-RIGHT: windowtext 1pt solid; WIDTH: 28.75pt; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt"     width=38 noWrap>
+      <p class=af2>&nbsp;</P></TD>
+    <td     style="HEIGHT: 15pt; WIDTH: 436.6pt; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; PADDING-RIGHT: 5.4pt"     width=582 noWrap>
+      <p class=af2>Диспетчер</P></TD></TR></TABLE>
+<p class=affb>Каждый элемент справочника содержит 
+идентификатор соответствующего элемента в системе СК-2007 и РСДУ.</P>
+<p class=MsoNormal>В СК-2007 элементы справочника 
+определяются уникальным идентификатором MRID. </P>
+<p class=MsoNormal>В РСДУ элементы справочника содержатся в 
+соответствующих таблицах в БДТИ общесистемного раздела (см. описание разделов в 
+документации «Описание структуры БД РСДУ. Руководство администратора»). Элементы 
+определяются полем <span lang=EN-US>ID</SPAN><span 
+lang=EN-US> </SPAN>таблиц.</P>
+<p class=MsoNormal>Кроме идентификаторов записей таблиц БД 
+(поле <span lang=EN-US>ID</SPAN>) справочник поддерживает 
+специализированное символьное обозначение&nbsp; «<span lang=EN-US>DEFAULT</SPAN>».</P>
+<p class=MsoNormal>Обозначение «<span lang=EN-US>DEFAULT</SPAN>» определяет элемент справочника как элемент 
+по умолчанию при поиске соответствия. Таким образом, если по идентификатору РСДУ 
+не найден элемент заданного типа, то будет использоваться тот элемент, у 
+которого в поле «Идентификатор РСДУ» задано обозначение «<span lang=EN-US>DEFAULT</SPAN>». Это правило распространяется на элементы 
+типа «Персонал станции».</P>
+<p class=MsoCaption style="PAGE-BREAK-AFTER: avoid">Таблица 
+5 - Соответствие таблиц БДТИ РСДУ и элементов справочника диспетчерских 
+центров</P>
+<div align=center>
+<table class=affff0 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: medium none; BORDER-LEFT: medium none" 
+cellSpacing=0 cellPadding=0 border=1>
+  <thead>
+  <tr>
+    <td     style="BORDER-TOP: windowtext 1pt solid; BORDER-RIGHT: windowtext 1pt solid; WIDTH: 156pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt"     vAlign=top width=208>
+      <p class=afffa>Тип элемента справочника</P></TD>
+    <td     style="BORDER-TOP: windowtext 1pt solid; BORDER-RIGHT: windowtext 1pt solid; WIDTH: 4cm; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt"     vAlign=top width=151>
+      <p class=afffa>Таблица БДТИ РСДУ</P></TD>
+    <td     style="BORDER-TOP: windowtext 1pt solid; BORDER-RIGHT: windowtext 1pt solid; WIDTH: 212.55pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt"     vAlign=top width=283>
+      <p class=afffa>Примечание</P></TD></TR></THEAD>
+  
+  <tr>
+    <td     style="BORDER-TOP: medium none; BORDER-RIGHT: windowtext 1pt solid; WIDTH: 156pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt"     vAlign=top width=208>
+      <p class=afff9>Диспетчерский центр<br 
+      >(<span lang=EN-US 
+      >TYPE</SPAN>_<span lang=EN-US 
+      >CNT</SPAN>)</P></TD>
+    <td     style="BORDER-TOP: medium none; BORDER-RIGHT: windowtext 1pt solid; WIDTH: 4cm; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt"     vAlign=top width=151>
+      <p class=afff9><span class=afb 
+      ><span lang=EN-US 
+      >AST_CNT</SPAN></SPAN></P></TD>
+    <td     style="BORDER-TOP: medium none; BORDER-RIGHT: windowtext 1pt solid; WIDTH: 212.55pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt"     vAlign=top width=283>
+      <p class=afff9>Таблица содержит структуры 
+      диспетчерских центров СО и генерирующей компании.</P></TD></TR>
+  <tr>
+    <td     style="BORDER-TOP: medium none; BORDER-RIGHT: windowtext 1pt solid; WIDTH: 156pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt"     vAlign=top width=208>
+      <p class=afff9>Диспетчер<br>(<span 
+      lang=EN-US>TYPE</SPAN>_<span lang=EN-US 
+      >CNT_PERSONNEL</SPAN>)</P></TD>
+    <td     style="BORDER-TOP: medium none; BORDER-RIGHT: windowtext 1pt solid; WIDTH: 4cm; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt"     vAlign=top width=151>
+      <p class=afff9><span class=afb 
+      ><span lang=EN-US 
+      >AST_PERSONNEL</SPAN></SPAN></P></TD>
+    <td     style="BORDER-TOP: medium none; BORDER-RIGHT: windowtext 1pt solid; WIDTH: 212.55pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt"     vAlign=top width=283>
+      <p class=afff9>Связь диспетчерских центров таблица 
+      <span class=afb><span lang=EN-US 
+      >AST</SPAN></SPAN><span class=afb 
+      >_</SPAN><span class=afb><span 
+      lang=EN-US>CNT</SPAN></SPAN> и персонала <span 
+      class=afb><span lang=EN-US 
+      >AST</SPAN></SPAN><span class=afb 
+      >_</SPAN><span class=afb><span 
+      lang=EN-US>PERSONNEL</SPAN></SPAN> осуществляется с 
+      использованием таблиц <span class=afb><span lang=EN-US 
+      >AST</SPAN></SPAN><span class=afb 
+      >_</SPAN><span class=afb><span 
+      lang=EN-US>ORG</SPAN></SPAN> и <span class=afb 
+      ><span lang=EN-US 
+      >AST</SPAN></SPAN><span class=afb 
+      >_</SPAN><span class=afb><span 
+      lang=EN-US>LINK</SPAN></SPAN>.</P></TD></TR></TABLE></DIV>
+<h4 style="MARGIN-LEFT: 0cm; TEXT-INDENT: 0cm">4.2.4.2 
+Заполнение справочника</H4>
+<p class=MsoNormal>Приложение настройки сервиса поддерживает 
+автоматизированное заполнение справочника Диспетчерских центров на базе 
+справочников СК-2007. </P>
+<p class=MsoNormal>При этом приложение выполняет подключение 
+к серверу СК-2007 сервису <span class=afff7>EMSDataService</SPAN> (используя параметры подключения, 
+заданные во вкладке «Настройки»), производит запрос информационной модели и на 
+базе полученных данных заполняет справочник.</P>
+<p class=MsoNormal>Дальнейшая привязка элементов 
+сформированного справочника производится вручную и заключается в заполнении поля 
+«Идентификатор РСДУ».</P>
+<p class=MsoNormal>Для удобства поиска и определения 
+идентификаторов элементов справочника РСДУ необходимо использовать «Навигатор 
+БД».</P>
+<p class=MsoNormal style="PAGE-BREAK-AFTER: avoid">Для 
+заполнения и привязки справочника «Справочник диспетчерских центров» необходимо 
+выполнить следующие действия:</P>
+<p class=MsoListNumber2>1.<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; 
+</SPAN>Запустить приложение настройки сервиса <span class=afff7>TransferKDUtoSK2007.Config.exe</SPAN> и перейти во вкладку 
+«Связь справочников».</P>
+<p class=MsoListNumber2>2.<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; 
+</SPAN>Выбрать «Справочник диспетчерских центров». </P>
+<p class=MsoListNumber2>3.<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; 
+</SPAN>Запустить «Панель оператора» и приложение «Навигатор БД» РСДУ. </P>
+<p class=MsoListNumber2>4.<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; 
+</SPAN>Приложение «Навигатор БД» потребуется для поиска идентификаторов 
+элементов справочников РСДУ на дальнейших шагах выполнения настройки.</P>
+<p class=MsoListNumber2><a name=_Ref441590616>5.<span style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; </SPAN>Нажать кнопку «Загрузить модель» 
+(<IMG id="Рисунок 14" src="0011.files/image015.png" width=16 height=16 >) в приложении 
+</A><span class=afff7>TransferKDUtoSK2007.Config.exe</SPAN>.</P>
+<p class=MsoListContinue2>Приложение произведет загрузки 
+справочника из СК-2007 и обновит дерево загруженных элементов.</P>
+<p class=MsoNormal style="MARGIN-LEFT: 35.45pt"><IMG id="Рисунок 11" src="0011.files/image034.jpg" width=593 height=320 ></P>
+<p class=MsoCaption>Рисунок 12 - Пример отображения 
+справочника «Диспетчерских центров», <br>полученного от 
+СК-2007</P>
+<p class=MsoListNumber2>6.<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; 
+</SPAN>Выбрать в дереве справочника требуемый для привязки элемент&nbsp; типа 
+«Диспетчерский центр» и заполнить поле «Идентификатор РСДУ». По завершению ввода 
+нажать кнопку «Сохранить» (&nbsp;<IMG id="Рисунок 28" src="0011.files/image013.png" width=16 height=16 >&nbsp;).</P>
+<p class=MsoListContinue2><span class=af7>Идентификатор РСДУ:</SPAN> указать идентификатор 
+соответствующего диспетчерского центра из раздела «Центры диспетчерского 
+управления» РСДУ;</P>
+<p class=MsoListContinue2>Для получения идентификатора 
+диспетчерского центра в РСДУ необходимо открыть приложение «Навигатор БД», 
+перейти в раздел «Служебная информация<span lang=EN-US>&nbsp;</SPAN>→<span lang=EN-US>&nbsp;</SPAN>Справочники<span lang=EN-US>&nbsp;</SPAN>→<span lang=EN-US>&nbsp;</SPAN>Центры диспетчерского управления» и выбрать 
+соответствующий диспетчерский центр в ветке ЦДУ СО ЕЭС справочника. </P>
+<p class=MsoListContinue2>Идентификатор выбранного 
+диспетчерского центра отображается внизу в строке статуса приложения «Навигатор 
+БД» или в наименовании окна свойств (контекстное меню пункт «Свойства»).</P>
+<p class=MsoNormal><IMG id="Рисунок 681" src="0011.files/image035.jpg" width=643 height=412 ></P>
+<p class=MsoCaption>Рисунок 13 - Получение идентификатора 
+диспетчерского центра справочника РСДУ</P>
+<p class=MsoListNumber2><a name=_Ref441590621>7.<span style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; </SPAN>Выбрать в дереве справочника 
+требуемый для привязки элемент типа «Диспетчер» и заполнить поле «Идентификатор 
+РСДУ», указав при этом идентификатор персонала РСДУ. По завершению ввода нажать 
+кнопку «Сохранить» (<IMG id="Рисунок 294" src="0011.files/image013.png" width=16 height=16 >).</A></P>
+<p class=MsoListContinue2>Для получения идентификатора 
+персонала в РСДУ необходимо открыть приложение «Навигатор БД», перейти в раздел 
+«Служебная информация<span lang=EN-US>&nbsp;</SPAN>→<span 
+lang=EN-US>&nbsp;</SPAN>Справочники<span lang=EN-US>&nbsp;</SPAN>→<span lang=EN-US>&nbsp;</SPAN>Организационная структура» и выбрать 
+соответствующий филиал СО.</P>
+<p class=MsoListContinue2>Идентификатор диспетчера СО в 
+справочнике РСДУ отображается в поле ID списка или в наименовании окна свойств 
+пользователя (пункт «Свойства» контекстного меню). </P>
+<table class=MsoTableGrid 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; WIDTH: 446.5pt; BACKGROUND: #fedb8e; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: medium none; MARGIN-LEFT: 35.2pt; BORDER-LEFT: medium none" 
+cellSpacing=0 cellPadding=0 width=595 border=1>
+  
+  <tr>
+    <td     style="BORDER-TOP: windowtext 1pt solid; BORDER-RIGHT: windowtext 1pt solid; WIDTH: 446.5pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt"     width=595>
+      <p class=aff0>внимание! </P>
+      <p class=MsoNormal>Вместо идентификатора диспетчера 
+      РСДУ можно использовать обозначение «<span lang=EN-US 
+      >DEFAULT</SPAN>» в случае, если требуется определить 
+      персонал ГОУ по умолчанию.</P></TD></TR>
+  <tr style="HEIGHT: 2.85pt">
+    <td     style="BORDER-TOP: medium none; HEIGHT: 2.85pt; BORDER-RIGHT: medium none; WIDTH: 446.5pt; BACKGROUND: none transparent scroll repeat 0% 0%; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt"     width=595>
+      <p class=aff0><span 
+      style="FONT-SIZE: 1pt; LINE-HEIGHT: 115%" 
+      ></SPAN>&nbsp;</P></TD></TR></TABLE>
+<p class=MsoListContinue2>&nbsp;</P>
+<p class=MsoNormal style="MARGIN-LEFT: 35.45pt"><IMG id="Рисунок 305" src="0011.files/image036.jpg" width=594 height=341 ></P>
+<p class=MsoCaption style="MARGIN-LEFT: 35.45pt">Рисунок 14 
+- Получение идентификатора диспетчера СО из справочника РСДУ</P>
+<p class=MsoListNumber2>8.<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; 
+</SPAN>При необходимости повторить операции п.4 и п.6 для добавления и привязки 
+нового центра диспетчерского управления и персонала.</P>
+<p class=MsoNormal>Список оперативного персонала 
+диспетчерского центра может быть обновлен из СК-2007 отдельно. Привязка 
+загруженных элементов к справочнику РСДУ осуществляется вручную.</P>
+<p class=MsoNormal>Для этого необходимо выполнить следующие 
+действия:</P>
+<p class=MsoListNumber2>1.<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; 
+</SPAN>Выбрать диспетчерский центр.</P>
+<p class=MsoListNumber2>2.<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; 
+</SPAN>Нажать кнопку «Загрузить ветку модели» (<IMG id="Рисунок 6" src="0011.files/image016.png" width=16 height=16 >).</P>
+<p class=MsoListNumber2>3.<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; 
+</SPAN>При этом приложение настройки сервиса выполнит подключение к сервису 
+<span class=afff7>EMSDataService </SPAN>СК-2007 (используя 
+параметры подключения, заданные во вкладке «Настройки»), произведет запрос 
+списка оперативного персонала выбранного диспетчерского центра и на базе 
+полученных данных добавит недостающие элементы типа «Диспетчер».</P>
+<p class=MsoListNumber2>4.<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; 
+</SPAN>Для загруженных элементов выполнить настройку привязки к персоналу из 
+справочника «Организационная структура» РСДУ (заполнить поле «Идентификатор 
+РСДУ»).</P>
+<p class=MsoListNumber2>5.<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; 
+</SPAN>По завершению ввода нажать кнопку «Сохранить» (<IMG id="Рисунок 310" src="0011.files/image013.png" width=16 height=16 >).</P>
+<p class=MsoNormal>&nbsp;</P>
+<h1 style="TEXT-INDENT: 0cm"><a name=_Toc44738890></A><a name=_Toc42240036></A><a 
+name=_Toc42237728></A><a name=_Toc11145443></A><a name=_Toc462055447>5 </A><span 
+style="POSITION: relative; Z-INDEX: 251738610"><span 
+style="HEIGHT: 38px; WIDTH: 646px; POSITION: absolute; LEFT: 0px; TOP: -4px"><IMG src="0011.files/image037.png" width=646 height=38 ></SPAN></SPAN>Администрирование 
+сервиса</H1>
+<h2 style="MARGIN-LEFT: 0cm; TEXT-INDENT: 0cm"><a 
+name=_Toc44738891></A><a name=_Toc42240037></A><a name=_Toc42237729></A><a 
+name=_Toc11145444></A><a name=_Toc462055448></A><a name=_Toc446948778>5.1 
+Регистрация и удаление сервиса в ОС Windows</A></H2>
+<h3 style="MARGIN-LEFT: 0cm; TEXT-INDENT: 0cm"><a 
+name=_Toc44738892></A><a name=_Toc42240038></A><a name=_Toc42237730></A><a 
+name=_Toc11145445></A><a name=_Toc462055449></A><a name=_Toc446948779>5.1.1 Описание 
+сервиса &nbsp;(файл </A><span lang=EN-US>ServiceDefinition</SPAN>.<span lang=EN-US>xml</SPAN>)</H3>
+<p class=MsoNormal>Описание сервиса, необходимое для 
+регистрации сервиса в консоли управление Службы <span lang=EN-US>Windows</SPAN><span lang=EN-US> 
+</SPAN>находится в файле «<span class=afff7>ServiceDefinition.xml»</SPAN>.</P>
+<p class=MsoNormal>Файл «<span class=afff7>ServiceDefinition.xml»</SPAN> располагается в каталоге 
+установки сервиса, по умолчанию <span class=afff7><span 
+lang=EN-US>C:\RsduServices\RSDU.INP\TransferKDUtoRSDU</SPAN></SPAN><span 
+lang=EN-US>.</SPAN></P>
+<div 
+style="BORDER-TOP: windowtext 1pt solid; BORDER-RIGHT: windowtext 1pt solid; BACKGROUND: #c1c1c1; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 1pt; PADDING-TOP: 1pt; PADDING-LEFT: 4pt; MARGIN-LEFT: 5.65pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 4pt; MARGIN-RIGHT: 5.65pt">
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&lt;?xml version="1.0" 
+encoding="utf-16" ?&gt;</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&lt;ServiceDefinition 
+</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>xmlns:xsd="http://www.w3.org/2001/XMLSchema" </SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>xmlns="rsdu.ema"&gt;</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp; &lt;Name&gt; 
+RSDUINPTransferKDUtoSK2007&lt;/Name&gt;</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp; &lt;Display&gt; 
+RSDU.INP&gt; Сервис передачи КДУ в СК-2007&lt;/Display&gt;</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp; </SPAN>&lt;<span 
+lang=EN-US>Description</SPAN>&gt; Сервис передачи КДУ в 
+СК-2007. Входит в состав подсистемы <span lang=EN-US>RSDU</SPAN>.<span lang=EN-US>INP</SPAN> 
+комплекса РСДУ.&lt;/<span lang=EN-US>Description</SPAN>&gt;</P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&lt;/ServiceDefinition&gt;</SPAN></P></DIV>
+<p class=MsoNormal style="MARGIN-BOTTOM: 0pt"><span 
+lang=EN-US style="COLOR: #1f497d"></SPAN>&nbsp;</P>
+<p class=MsoNormal>Описание тэгов файла <span lang=EN-US>«</SPAN><span class=afff7><span 
+lang=EN-US>ServiceDefinition.xml»</SPAN></SPAN><span 
+lang=EN-US>:</SPAN></P>
+<p class=MsoListBullet2><span style="FONT-FAMILY: Wingdings">ü<span style='FONT: 7pt "Times New Roman"'>&nbsp; </SPAN></SPAN><span class=afff7>Name</SPAN> – уникальное в рамках ОС название сервиса; как 
+правило, в названии сервиса используются латинские буквы и цифры;</P>
+<p class=MsoListBullet2><span style="FONT-FAMILY: Wingdings">ü<span style='FONT: 7pt "Times New Roman"'>&nbsp; </SPAN></SPAN><span class=afff7>Display</SPAN> – название сервиса, которое будет 
+отображаться в консоли управления Службы <span lang=EN-US>Windows</SPAN>; допускается использование русских букв;</P>
+<p class=MsoListBullet2><span style="FONT-FAMILY: Wingdings">ü<span style='FONT: 7pt "Times New Roman"'>&nbsp; </SPAN></SPAN><span class=afff7>Description </SPAN>– текстовое описание сервиса.</P>
+<h3 style="MARGIN-LEFT: 0cm; TEXT-INDENT: 0cm"><a 
+name=_Toc44738893></A><a name=_Toc42240039></A><a name=_Toc42237731></A><a 
+name=_Toc11145446></A><a name=_Toc462055450>5.1.2 Установка сервиса</A></H3>
+<p class=MsoNormal>Необходимо войти в операционную систему 
+<span lang=EN-US>Windows</SPAN> пользователем с правами 
+администратора и далее:</P>
+<p class=MsoListNumber2>1.<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; 
+</SPAN>Скопировать дистрибутив сервиса (каталог <span class=afff7>RSDU.INP\TransferKDUtoSK2007</SPAN>) на целевой хост в 
+каталог <span class=afff7>C:\RsduServices\RSDU.INP</SPAN>.</P>
+<p class=MsoListNumber2>2.<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; 
+</SPAN>Выполнить установку сервиса с помощью скрипта <span class=afff7>«01.&nbsp;Install.cmd»:</SPAN> открыть командную строку 
+Windows от имени Администратора, перейти в каталог размещения сервиса и 
+выполнить скрипт <span class=afff7>«01.&nbsp;Install.cmd».</SPAN></P>
+<p class=MsoListContinue2>После выполнения скрипта <i>«</I><span class=afff7>01.&nbsp;Install.cmd</SPAN><i>»</I> 
+сервис должен отображаться в консоли управления Службами <span lang=EN-US>Windows</SPAN> (<span lang=EN-US>Services</SPAN>).</P>
+<p class=MsoListContinue2>Название сервиса <span lang=EN-US>Windows</SPAN>: <span class=afff7>«RSDU.INP&gt; Сервис передачи КДУ в СК-2007</SPAN><i>».</I></P>
+<p class=MsoListNumber2>3.<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; 
+</SPAN>Выполнить конфигурирование сервиса с помощью приложения <span class=afff7>TransferKDUtoSK2007.Config.exe</SPAN> (см. раздел настоящей 
+инструкции «Конфигурирование сервиса»);</P>
+<p class=MsoListNumber2>4.<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; 
+</SPAN>Выполнить настройку пользователя, от имени которого сервис будет 
+запускаться в ОС <span lang=EN-US>Windows</SPAN>.</P>
+<p class=MsoListContinue2>Для обеспечения доступа к сервису 
+<span class=afff7>EMSDataService</SPAN> СК-2007 сервис 
+передачи КДУ должен запускаться от имени доменного пользователя, которому в 
+системе санкционирования СК-2007 назначены соответствующие права.</P>
+<table class=MsoTableGrid 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; WIDTH: 446.5pt; BACKGROUND: #fedb8e; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: medium none; MARGIN-LEFT: 35.2pt; BORDER-LEFT: medium none" 
+cellSpacing=0 cellPadding=0 width=595 border=1>
+  
+  <tr>
+    <td     style="BORDER-TOP: windowtext 1pt solid; BORDER-RIGHT: windowtext 1pt solid; WIDTH: 446.5pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt"     width=595>
+      <p class=aff0>внимание! </P>
+      <p class=MsoNormal>Сервер, на котором выполняется 
+      настройка сервиса передачи КДУ, должен быть включен в домен, пользователи 
+      которого настроены в системе санкционирования СК-2007.</P></TD></TR>
+  <tr style="HEIGHT: 2.85pt">
+    <td     style="BORDER-TOP: medium none; HEIGHT: 2.85pt; BORDER-RIGHT: medium none; WIDTH: 446.5pt; BACKGROUND: none transparent scroll repeat 0% 0%; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt"     width=595>
+      <p class=aff0><span 
+      style="FONT-SIZE: 1pt; LINE-HEIGHT: 115%" 
+      ></SPAN>&nbsp;</P></TD></TR></TABLE>
+<p class=MsoListContinue2>Для настройки доменного 
+пользователя и системы санкционирования СК-2007 необходимо обратиться к 
+администратору системы СК-2007 и/или документации производителя на систему 
+СК-2007.</P>
+<p class=MsoListContinue2>Для настройки пользователя 
+необходимо открыть свойства сервиса <span class=afff7>«RSDU.INP&gt; Сервис передачи КДУ в СК-2007»</SPAN><i> </I>в консоли управления Службами <span lang=EN-US>Windows</SPAN> (<span lang=EN-US>Services</SPAN>), перейти во вкладку «Вход в систему» и 
+заполнить следующие поля:</P>
+<p class=MsoListBullet2 style="MARGIN-LEFT: 49.65pt"><span 
+style="FONT-FAMILY: Wingdings">ü<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp; 
+</SPAN></SPAN>установить галочку «С учетной записью»;</P>
+<p class=MsoListBullet2 style="MARGIN-LEFT: 49.65pt"><span 
+style="FONT-FAMILY: Wingdings">ü<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp; 
+</SPAN></SPAN>указать домен и имя пользователя;</P>
+<p class=MsoListBullet2 style="MARGIN-LEFT: 49.65pt"><span 
+style="FONT-FAMILY: Wingdings">ü<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp; 
+</SPAN></SPAN>указать пароль с подтверждением<span lang=EN-US>;</SPAN></P>
+<p class=MsoListBullet2 style="MARGIN-LEFT: 49.65pt"><span 
+style="FONT-FAMILY: Wingdings">ü<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp; </SPAN></SPAN>по 
+завершению ввода нажать «ОК».</P>
+<p class=MsoListNumber2>5.<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; 
+</SPAN>Выполнить настройку автоматического запуска сервиса: открыть свойства 
+сервиса <span class=afff7>«RSDU.INP&gt; Сервис передачи КДУ 
+в СК-2007»</SPAN> в консоли управления Службами Windows (Services), перейти во 
+вкладку «Общие» и указать тип запуска «Автоматически».</P>
+<p class=MsoListNumber2>6.<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; 
+</SPAN>Выполнить настройку автоматического восстановления сервиса: настройка 
+параметров восстановления при сбоях выполняется во вкладке «Восстановление». При 
+этом необходимо указать для Первого, Второго и Последующих сбоев перезапуск 
+через 1 минуту.</P>
+<h3 style="MARGIN-LEFT: 0cm; TEXT-INDENT: 0cm"><a 
+name=_Toc44738894></A><a name=_Toc42240040></A><a name=_Toc42237732></A><a 
+name=_Toc11145447></A><a name=_Toc462055451>5.1.3 Удаление сервиса</A></H3>
+<p class=MsoListNumber2 style="TEXT-INDENT: 0cm">Необходимо 
+войти в операционную систему <span lang=EN-US>Windows</SPAN> 
+пользователем с правами администратора и далее:</P>
+<p class=MsoListNumber2>1.<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; 
+</SPAN>Выполнить скрипт удаления сервиса <span class=afff7>«04.&nbsp;Uninstall.cmd</SPAN><i>»</I>: 
+открыть командную строку <span lang=EN-US>Windows</SPAN><span lang=EN-US> 
+</SPAN>от имени Администратора, перейти в каталог размещения сервиса (по 
+умолчанию <span class=afff7>C:\RsduServices\RSDU.INP\TransferKDUtoSK2007</SPAN>) и 
+выполнить скрипт <span class=afff7>«04.&nbsp;Uninstall.cmd».</SPAN></P>
+<p class=MsoListNumber2>2.<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; 
+</SPAN>В консоли управления Службами Windows (Services) проверить отсутствие в 
+списке сервиса <span class=afff7>«RSDU.INP&gt; Сервис 
+передачи КДУ в СК-2007».</SPAN></P>
+<p class=MsoListNumber2>3.<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; 
+</SPAN>При необходимости удалить каталог размещения сервиса.</P>
+<h2 style="MARGIN-LEFT: 0cm; TEXT-INDENT: 0cm"><a 
+name=_Toc44738895></A><a name=_Toc42240041></A><a name=_Toc42237733></A><a 
+name=_Toc11145448></A><a name=_Toc462055452>5.2 Запуск и останов сервиса</A></H2>
+<p class=MsoNormal>Запуск и останов сервиса можно выполнить 
+следующими способами:</P>
+<p class=MsoListBullet2><span style="FONT-FAMILY: Wingdings">ü<span style='FONT: 7pt "Times New Roman"'>&nbsp; </SPAN></SPAN>с помощью консоли управления службами 
+<span lang=EN-US>Windows</SPAN> (<span lang=EN-US>Services</SPAN>&nbsp;→&nbsp;Службы);</P>
+<p class=MsoListBullet2><span lang=EN-US 
+style="FONT-FAMILY: Wingdings">ü<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp; </SPAN></SPAN>из 
+командной строки <span lang=EN-US>Windows.</SPAN></P>
+<h3 style="MARGIN-LEFT: 0cm; TEXT-INDENT: 0cm"><a 
+name=_Toc44738896></A><a name=_Toc42240042></A><a name=_Toc42237734></A><a 
+name=_Toc11145449></A><a name=_Toc462055453>5.2.1 Запуск/останов сервиса из командной строки</A></H3>
+<p class=MsoNormal>Запуск и останов сервиса из командной 
+строки выполняется с помощью скриптов <span class=afff7>«02.&nbsp;Start.cmd»</SPAN> и <span class=afff7>«03.&nbsp;Stop.cmd»</SPAN> соответственно. </P>
+<p class=MsoNormal>Для работы скриптов необходимы права 
+администратора.</P>
+<p class=MsoNormal><span class=af7>Для 
+запуска сервиса</SPAN> необходимо выполнить следующие шаги:</P>
+<p class=MsoListNumber2>1.<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; 
+</SPAN>Открыть командную строку <span lang=EN-US>Windows</SPAN><span lang=EN-US> </SPAN>с 
+правами администратора: вызвать контекстное меню для приложения «Командная 
+строка» (Пуск&nbsp;→&nbsp;Все 
+программы&nbsp;→&nbsp;Стандартные&nbsp;→&nbsp;Командная строка) и выбрать пункт 
+«Запуск от имени администратора».</P>
+<p class=MsoListNumber2 style="TEXT-ALIGN: left" align=left>2.<span style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; </SPAN>Перейти в каталог установки 
+сервиса. </P>
+<p class=MsoListContinue2>По умолчанию каталог установки: 
+<span class=afff7>C:\RsduServices\RSDU.INP\TransferKDUtoSK2007</SPAN>.</P>
+<p class=MsoListNumber2>3.<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; 
+</SPAN>Запустить скрипт <span class=afff7>«02.&nbsp;Start.cmd».</SPAN></P>
+<p class=MsoNormal>Работу сервиса можно проконтролировать по 
+сообщениям в лог-файле.</P>
+<p class=MsoNormal><span class=af7>Для 
+остановки сервиса</SPAN> необходимо выполнить следующие шаги:</P>
+<p class=MsoListNumber2>1.<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; 
+</SPAN>Открыть командную строку Windows с правами администратора и перейти в 
+каталог установки сервиса (см. выше).</P>
+<p class=MsoListNumber2>2.<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; 
+</SPAN>Запустить скрипт <span class=afff7>«03.&nbsp;Stop.cmd».</SPAN></P>
+<h3 style="MARGIN-LEFT: 0cm; TEXT-INDENT: 0cm"><a 
+name=_Toc44738897></A><a name=_Toc42240043></A><a name=_Toc42237735></A><a 
+name=_Toc11145450></A><a name=_Toc462055454>5.2.2 Запуск/останов из консоли управления службами 
+Windows</A></H3>
+<p class=MsoNormal>Для запуска или остановки сервиса с 
+использованием консоли управления службами <span lang=EN-US>Windows</SPAN><span lang=EN-US> 
+</SPAN>необходимо выполнить следующие операции:</P>
+<p class=MsoListNumber2>1.<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; 
+</SPAN>Открыть консоль управления службами <span lang=EN-US>Windows</SPAN> («Пуск<span lang=EN-US>&nbsp;</SPAN>→<span lang=EN-US>&nbsp;</SPAN>Панель&nbsp; управления<span lang=EN-US>&nbsp;</SPAN>→<span lang=EN-US>&nbsp;</SPAN>Администрирование<span lang=EN-US>&nbsp;</SPAN>→<span lang=EN-US>&nbsp;</SPAN>Службы»).</P>
+<p class=MsoListNumber2>2.<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; 
+</SPAN>В списке служб найти и выделить службу <span class=afff7>«RSDU.INP&gt; Сервис передачи КДУ в СК-2007».</SPAN></P>
+<p class=MsoListNumber2>3.<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; 
+</SPAN>Для запуска службы нажать кнопку «Запуск службы».</P>
+<p class=MsoListNumber2>4.<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; 
+</SPAN>Для остановки&nbsp; службы нажать кнопку «Остановка службы».</P>
+<p class=MsoNormal>Текущее состояние службы отображается в 
+колонке «Состояние» в списке служб.</P>
+<p class=MsoNormal>Работу сервиса можно проконтролировать по 
+сообщениям в лог-файле (см. раздел Контроль лог-файлов).</P>
+<h2 style="MARGIN-LEFT: 0cm; TEXT-INDENT: 0cm"><a 
+name=_Toc44738898></A><a name=_Toc42240044></A><a name=_Toc42237736></A><a 
+name=_Toc11145451></A><a name=_Toc462055455>5.3 Управление рабочими переменными</A></H2>
+<p class=MsoNormal>Рабочие переменные сервиса – это 
+переменные, которые сервис сохраняет в файл в темпе их изменения в процессе 
+работы и читает из файла при запуске. </P>
+<table class=MsoTableGrid 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; WIDTH: 17cm; BACKGROUND: #fedb8e; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: medium none; MARGIN-LEFT: -0.25pt; BORDER-LEFT: medium none" 
+cellSpacing=0 cellPadding=0 width=643 border=1>
+  
+  <tr>
+    <td     style="BORDER-TOP: windowtext 1pt solid; BORDER-RIGHT: windowtext 1pt solid; WIDTH: 17cm; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt"     width=643>
+      <p class=aff0>внимание! </P>
+      <p class=MsoNormal>Редактирование переменных возможно 
+      только при остановленном сервисе, поскольку сервис выполняет чтение 
+      переменных из файла при старте, и в процессе работы осуществляет запись 
+      переменных в файл.</P></TD></TR>
+  <tr style="HEIGHT: 2.85pt">
+    <td     style="BORDER-TOP: medium none; HEIGHT: 2.85pt; BORDER-RIGHT: medium none; WIDTH: 17cm; BACKGROUND: none transparent scroll repeat 0% 0%; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt"     width=643>
+      <p class=aff0><span 
+      style="FONT-SIZE: 1pt; LINE-HEIGHT: 115%" 
+      ></SPAN>&nbsp;</P></TD></TR></TABLE>
+<p class=MsoNormal>Редактирование переменных возможно только 
+при остановленном сервисе, поскольку сервис выполняет чтение переменных из файла 
+при старте, и в процессе работы осуществляет запись переменных в файл.</P>
+<p class=MsoNormal>Для изменения значения переменной 
+выберите ячейку колонки «Значение», введите новое значение и нажмите <span 
+class=af8>Enter</SPAN> или переместите фокус на другой 
+элемент или строку.</P>
+<p class=MsoNormal>Кнопка «Обновить» производит обновление 
+значений переменных из файла.</P>
+<p class=MsoNormal>Описание переменных представлено в 
+Таблица 6:</P>
+<p class=MsoCaption style="PAGE-BREAK-AFTER: avoid"><a 
+name=_Ref42094044>Таблица </A>6 - Описание переменных</P>
+<div align=center>
+<table class=affff0 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: medium none; BORDER-LEFT: medium none" 
+cellSpacing=0 cellPadding=0 border=1>
+  <thead>
+  <tr>
+    <td     style="BORDER-TOP: windowtext 1pt solid; BORDER-RIGHT: windowtext 1pt solid; WIDTH: 123.25pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt"     vAlign=top width=164>
+      <p class=afffa>Переменная</P></TD>
+    <td     style="BORDER-TOP: windowtext 1pt solid; BORDER-RIGHT: windowtext 1pt solid; WIDTH: 181.55pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt"     vAlign=top width=242>
+      <p class=afffa>Значение</P></TD>
+    <td     style="BORDER-TOP: windowtext 1pt solid; BORDER-RIGHT: windowtext 1pt solid; WIDTH: 177.15pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt"     vAlign=top width=236>
+      <p class=afffa>Описание</P></TD></TR></THEAD>
+  
+  <tr>
+    <td     style="BORDER-TOP: medium none; BORDER-RIGHT: windowtext 1pt solid; WIDTH: 123.25pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt"     vAlign=top width=164>
+      <p class=afff9 style="PAGE-BREAK-AFTER: avoid">Время 
+      последнего успешного получения КДУ из журнала БДТИ РСДУ</P></TD>
+    <td     style="BORDER-TOP: medium none; BORDER-RIGHT: windowtext 1pt solid; WIDTH: 181.55pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt"     vAlign=top width=242>
+      <p class=afff9 style="PAGE-BREAK-AFTER: avoid" 
+      >Дата/время в формате <span lang=EN-US 
+      >DT</SPAN>1970</P>
+      <p class=afff9 style="PAGE-BREAK-AFTER: avoid">Пример: 
+      1453809879</P>
+      <p class=afff9 style="PAGE-BREAK-AFTER: avoid">(что 
+      соответствует 26.01.16 16:04:39 часовой пояс Новосибирск) </P></TD>
+    <td     style="BORDER-TOP: medium none; BORDER-RIGHT: windowtext 1pt solid; WIDTH: 177.15pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt"     vAlign=top width=236>
+      <p class=afff9 style="PAGE-BREAK-AFTER: avoid">Хранит 
+      время в формате <span lang=EN-US>DT</SPAN>1970 
+      последнего успешного получения КДУ из журналов 
+РСДУ.</P></TD></TR></TABLE></DIV>
+<h2 style="MARGIN-LEFT: 0cm; TEXT-INDENT: 0cm"><a 
+name=_Toc44738899></A><a name=_Toc42240045></A><a name=_Toc42237737></A><a 
+name=_Toc11145452></A><a name=_Toc462055456></A><a name=_Toc446948786>5.4 
+Администрирование очереди передачи КДУ</A></H2>
+<p class=MsoNormal>Вкладка «Администрирование очереди 
+передачи КДУ» отображает элементы очереди на передачу, состояние ее элементов и 
+сообщения об ошибках.</P>
+<p class=MsoNormal style="PAGE-BREAK-AFTER: avoid; TEXT-ALIGN: center" 
+align=center><IMG id="Рисунок 311" src="0011.files/image038.jpg" width=643 height=345 ></P>
+<p class=MsoCaption>Рисунок 15 - Интерфейс консоли 
+администрирования очереди на передачу КДУ</P>
+<h3 style="MARGIN-LEFT: 0cm; TEXT-INDENT: 0cm"><a 
+name=_Toc44738900></A><a name=_Toc42240046></A><a name=_Toc42237738>5.4.1 Описание 
+элементов управления</A></H3>
+<p class=MsoNormal>Поле «Статус» определяет фильтр элементов 
+очереди по текущему состоянию.</P>
+<p class=MsoNormal>Возможные варианты поля «Статус»:</P>
+<p class=MsoListBullet2><span style="FONT-FAMILY: Wingdings">ü<span style='FONT: 7pt "Times New Roman"'>&nbsp; </SPAN></SPAN><span class=afff7><span style='FONT-FAMILY: "Arial","sans-serif"'>ALL</SPAN></SPAN><span lang=EN-US> – 
+</SPAN>все записи очереди.</P>
+<p class=MsoListBullet2><span style="FONT-FAMILY: Wingdings">ü<span style='FONT: 7pt "Times New Roman"'>&nbsp; </SPAN></SPAN><span class=afff7><span style='FONT-FAMILY: "Arial","sans-serif"'>DONE</SPAN></SPAN> – успешно обработанные (переданные) 
+КДУ.</P>
+<p class=MsoListBullet2><span style="FONT-FAMILY: Wingdings">ü<span style='FONT: 7pt "Times New Roman"'>&nbsp; </SPAN></SPAN><span class=afff7><span style='FONT-FAMILY: "Arial","sans-serif"'>ERROR</SPAN></SPAN> – КДУ, при передаче которых возникла 
+ошибка. </P>
+<p class=MsoListBullet2><span style="FONT-FAMILY: Wingdings">ü<span style='FONT: 7pt "Times New Roman"'>&nbsp; </SPAN></SPAN><span class=afff7><span style='FONT-FAMILY: "Arial","sans-serif"'>NEW</SPAN></SPAN> – новые КДУ в очереди, ожидающие передачу. 
+</P>
+<p class=MsoNormal>Поле «Дата начала» и «Дата окончания» 
+задают фильтр выбора элементов очереди по времени поступления в очередь – фильтр 
+по полю «Дата» таблицы.</P>
+<p class=MsoNormal>Кнопка «Выбрать» производит выбор 
+элементов очереди по заданному полями «Статус», «Дата начала» и «Дата окончания» 
+фильтру.</P>
+<p class=MsoNormal>Кнопка «Удалить» производит удаление 
+выбранного элемента очереди в таблице.</P>
+<p class=MsoNormal>Кнопка «Изменить» открывает окно 
+изменения статуса и сообщения об ошибке элемента очереди. </P>
+<p class=MsoNormal>Кнопка «Очистить» позволяет выполнять 
+очистку старых обработанных записей очереди. Используется для уменьшения размера 
+файла «<span class=afff7>Work.db»</SPAN>.</P>
+<h3 style="MARGIN-LEFT: 0cm; TEXT-INDENT: 0cm"><a 
+name=_Toc44738901></A><a name=_Toc42240047></A><a name=_Toc42237739>5.4.2 Описание 
+полей таблицы отображения элементов очереди</A></H3>
+<p class=MsoNormal>Поля таблицы отображения элементов 
+очереди:</P>
+<p class=MsoListBullet2><span style="FONT-FAMILY: Wingdings">ü<span style='FONT: 7pt "Times New Roman"'>&nbsp; </SPAN></SPAN>Id – идентификатор элемента 
+очереди;</P>
+<p class=MsoListBullet2><span style="FONT-FAMILY: Wingdings">ü<span style='FONT: 7pt "Times New Roman"'>&nbsp; </SPAN></SPAN>IdParent – ссылка на другой элемент 
+очереди; используется при передаче операций над зарегистрированными КДУ – 
+операция КДУ;</P>
+<p class=MsoListBullet2><span style="FONT-FAMILY: Wingdings">ü<span style='FONT: 7pt "Times New Roman"'>&nbsp; </SPAN></SPAN>Дата – дата поступления КДУ в очередь 
+на передачу;</P>
+<p class=MsoListBullet2><span style="FONT-FAMILY: Wingdings">ü<span style='FONT: 7pt "Times New Roman"'>&nbsp; </SPAN></SPAN>Состояние – текущее состояние элемента 
+в очереди; возможны состояния: NEW – новый элемент, DONE – успешно обработанный 
+элемент, ERROR – элемент, при обработке которого возникла ошибка;</P>
+<p class=MsoListBullet2><span style="FONT-FAMILY: Wingdings">ü<span style='FONT: 7pt "Times New Roman"'>&nbsp; </SPAN></SPAN>Id объекта (локальный) – идентификатор 
+КДУ в РСДУ;</P>
+<p class=MsoListBullet2><span style="FONT-FAMILY: Wingdings">ü<span style='FONT: 7pt "Times New Roman"'>&nbsp; </SPAN></SPAN>Id объекта (внешний) – идентификатор 
+(MRID) КДУ в СК-2007;</P>
+<p class=MsoListBullet2><span style="FONT-FAMILY: Wingdings">ü<span style='FONT: 7pt "Times New Roman"'>&nbsp; </SPAN></SPAN>Текст – текстовое представление 
+КДУ.</P>
+<p class=MsoNormal>Для удобства контроля процесса передачи 
+КДУ под таблицей расположены два окна отображающих текстовое представление КДУ и 
+в виде <span lang=EN-US>XML</SPAN>.</P>
+<p class=MsoNormal><span lang=EN-US>XML</SPAN><span lang=EN-US> 
+</SPAN>представление КДУ позволяет получить расширенную информации об 
+идентификаторах элементов справочников, используемых при регистрации КДУ.</P>
+<p class=MsoNormal>Пример <span lang=EN-US>XML</SPAN><span lang=EN-US> 
+</SPAN>представления КДУ:</P>
+<div 
+style="BORDER-TOP: windowtext 1pt solid; BORDER-RIGHT: windowtext 1pt solid; BACKGROUND: #c1c1c1; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 1pt; PADDING-TOP: 1pt; PADDING-LEFT: 4pt; MARGIN-LEFT: 5.65pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 4pt; MARGIN-RIGHT: 5.65pt">
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm">&lt;?<span lang=EN-US>xml</SPAN><span 
+lang=EN-US> </SPAN><span lang=EN-US>version</SPAN>="1.0" <span lang=EN-US>encoding</SPAN>="<span lang=EN-US>utf</SPAN>-16"?&gt;</P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&lt;RsduKDU 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp; 
+&lt;Id&gt;2856&lt;/Id&gt;</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp; 
+&lt;KeyUnique&gt;2739c626-374e-8b4c-9781-a9472e96252e&lt;/KeyUnique&gt;</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp; 
+&lt;IdCommand&gt;1&lt;/IdCommand&gt;</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp; 
+&lt;IdObject&gt;3&lt;/IdObject&gt;</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp; 
+&lt;dt1970_start&gt;1459176540&lt;/dt1970_start&gt;</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp; 
+&lt;dt1970_end&gt;1459176600&lt;/dt1970_end&gt;</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp; 
+&lt;Value&gt;300&lt;/Value&gt;</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp; 
+&lt;IdInitiative&gt;1&lt;/IdInitiative&gt;</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp; 
+&lt;IsDeleted&gt;false&lt;/IsDeleted&gt;</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp; 
+&lt;dt1970_create&gt;1459176606&lt;/dt1970_create&gt;</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp; 
+&lt;IdUserCreate&gt;1&lt;/IdUserCreate&gt;</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp; 
+&lt;dt1970_modify xsi:nil="true" /&gt;</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp; &lt;IdUserModify 
+xsi:nil="true" /&gt;</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp; 
+&lt;dt1970_receive&gt;1459176540&lt;/dt1970_receive&gt;</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp; </SPAN>&lt;<span 
+lang=EN-US>sComment</SPAN>&gt;Нагрузка станции 
+(наименование) ниже планового ДГ на «<span lang=EN-US>N</SPAN>» МВт&lt;/<span lang=EN-US>sComment</SPAN>&gt;</P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm">&nbsp; <span lang=EN-US>&lt;IdCause&gt;3&lt;/IdCause&gt;</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp; 
+&lt;IdCauseCommentTmpl&gt;3&lt;/IdCauseCommentTmpl&gt;</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp; 
+&lt;IdSourceCnt&gt;3000022&lt;/IdSourceCnt&gt;</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp; 
+&lt;IdSourceDisp&gt;24&lt;/IdSourceDisp&gt;</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp; 
+&lt;TextCommand&gt;Дата: 28.03.2016 19:49</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>ГОУ: ОЛИМПГРЭС ГТП 1 
+</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm">Команда: ИВ, Генерация 300МВт </P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm">Период: 28.03.2016 с 19:49 к 19:50 </P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm">Причина отклонения: Неплановое изменение генерации </P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm">Нагрузка станции (наименование) ниже планового ДГ на «<span 
+lang=EN-US>N</SPAN>» МВт </P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm">Отдано: Красноярское РДУ </P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm">Отдал: Диспетчер (Красноярское РДУ) </P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm">Принял: Администратор комплекса РСДУ5 </P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm">&lt;/<span lang=EN-US>TextCommand</SPAN>&gt;</P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm">&lt;/<span lang=EN-US>RsduKDU</SPAN>&gt;</P></DIV>
+<p class=MsoNormal 
+style="MARGIN-BOTTOM: 0pt; TEXT-ALIGN: left; TEXT-AUTOSPACE: " align=left><span style='FONT-FAMILY: "Courier New"'></SPAN>&nbsp;</P>
+<p class=MsoNormal style="PAGE-BREAK-AFTER: avoid">Описание 
+тэгов и атрибутов <span lang=EN-US>XML</SPAN><span 
+lang=EN-US> </SPAN>представления:</P>
+<p class=MsoListBullet2><span style="FONT-FAMILY: Wingdings">ü<span style='FONT: 7pt "Times New Roman"'>&nbsp; </SPAN></SPAN><span class=afff7>Id </SPAN>– идентификатор КДУ в журнале в таблице <span 
+class=afb><span lang=EN-US>DG</SPAN></SPAN>_<span class=afb><span 
+lang=EN-US>KDU</SPAN></SPAN>_<span class=afb><span lang=EN-US>JOURNAL</SPAN></SPAN>;</P>
+<p class=MsoListBullet2><span style="FONT-FAMILY: Wingdings">ü<span style='FONT: 7pt "Times New Roman"'>&nbsp; </SPAN></SPAN><span class=afff7>IdCommand</SPAN> – идентификатор команды из таблицы <span 
+class=afb><span lang=EN-US>DG</SPAN></SPAN>_<span class=afb><span 
+lang=EN-US>KDU</SPAN></SPAN>_<span class=afb><span lang=EN-US>COMMAND</SPAN></SPAN>;</P>
+<p class=MsoListBullet2><span style="FONT-FAMILY: Wingdings">ü<span style='FONT: 7pt "Times New Roman"'>&nbsp; </SPAN></SPAN><span class=afff7>IdInitiative</SPAN> – идентификатор инициативы из таблицы 
+<span class=afb><span lang=EN-US>DG</SPAN></SPAN><span class=afb>_<span 
+lang=EN-US>KDU</SPAN></SPAN><span class=afb>_<span lang=EN-US>INITIATIVE</SPAN></SPAN>;</P>
+<p class=MsoListBullet2><span style="FONT-FAMILY: Wingdings">ü<span style='FONT: 7pt "Times New Roman"'>&nbsp; </SPAN></SPAN><span class=afff7>IdCause</SPAN> – идентификатор причины отклонения из таблицы 
+<span class=afb><span lang=EN-US>DG</SPAN></SPAN><span class=afb>_<span 
+lang=EN-US>KDU</SPAN></SPAN><span class=afb>_<span lang=EN-US>CAUSE</SPAN></SPAN>;</P>
+<p class=MsoListBullet2><span style="FONT-FAMILY: Wingdings">ü<span style='FONT: 7pt "Times New Roman"'>&nbsp; </SPAN></SPAN><span class=afff7>IdCauseCommentTmpl</SPAN> – идентификатор шаблона 
+комментария к причине отклонения из таблицы <span class=afb><span lang=EN-US>DG</SPAN></SPAN><span 
+class=afb>_<span lang=EN-US>KDU</SPAN></SPAN><span class=afb>_<span 
+lang=EN-US>COMMENT</SPAN></SPAN><span class=afb>_<span lang=EN-US>TMPL</SPAN></SPAN>;</P>
+<p class=MsoListBullet2><span style="FONT-FAMILY: Wingdings">ü<span style='FONT: 7pt "Times New Roman"'>&nbsp; </SPAN></SPAN><span class=afff7>KeyUnique</SPAN> – глобальный идентификатор КДУ в 
+журнале;</P>
+<p class=MsoListBullet2><span style="FONT-FAMILY: Wingdings">ü<span style='FONT: 7pt "Times New Roman"'>&nbsp; </SPAN></SPAN><span class=afff7>IdObject</SPAN> – идентификатор ГОУ из таблицы <span 
+class=afb><span lang=EN-US>DG</SPAN></SPAN><span class=afb>_<span 
+lang=EN-US>GROUPS</SPAN></SPAN>;</P>
+<p class=MsoListBullet2><span style="FONT-FAMILY: Wingdings">ü<span style='FONT: 7pt "Times New Roman"'>&nbsp; </SPAN></SPAN><span class=afff7>dt1970</SPAN>_<span class=afff7>start</SPAN> и <span class=afff7>dt1970</SPAN>_<span class=afff7>end</SPAN> – даты начала и окончания КДУ в формате <span 
+lang=EN-US>DT</SPAN>1970;</P>
+<p class=MsoListBullet2><span style="FONT-FAMILY: Wingdings">ü<span style='FONT: 7pt "Times New Roman"'>&nbsp; </SPAN></SPAN><span class=afff7>Value</SPAN> – значение (определяет значение МВт, указанное 
+при регистрации КДУ);</P>
+<p class=MsoListBullet2><span style="FONT-FAMILY: Wingdings">ü<span style='FONT: 7pt "Times New Roman"'>&nbsp; </SPAN></SPAN><span class=afff7>IsDeleted</SPAN> – флаг, определяющий удаление КДУ;</P>
+<p class=MsoListBullet2><span style="FONT-FAMILY: Wingdings">ü<span style='FONT: 7pt "Times New Roman"'>&nbsp; </SPAN></SPAN><span class=afff7>dt1970</SPAN>_<span class=afff7>create</SPAN> – дата регистрации КДУ в РСДУ в формате <span 
+lang=EN-US>DT</SPAN>1970;</P>
+<p class=MsoListBullet2><span style="FONT-FAMILY: Wingdings">ü<span style='FONT: 7pt "Times New Roman"'>&nbsp; </SPAN></SPAN><span class=afff7>IdUserCreate</SPAN> – идентификатор пользователя РСДУ, 
+зарегистрировавшего КДУ;</P>
+<p class=MsoListBullet2><span style="FONT-FAMILY: Wingdings">ü<span style='FONT: 7pt "Times New Roman"'>&nbsp; </SPAN></SPAN><span class=afff7>dt1970</SPAN>_<span class=afff7>modify</SPAN> – дата изменения КДУ в формате <span 
+lang=EN-US>DT</SPAN>1970;</P>
+<p class=MsoListBullet2><span style="FONT-FAMILY: Wingdings">ü<span style='FONT: 7pt "Times New Roman"'>&nbsp; </SPAN></SPAN><span class=afff7>IdUserModify</SPAN> – идентификатор пользователя РСДУ, 
+выполнившего изменение КДУ;</P>
+<p class=MsoListBullet2><span style="FONT-FAMILY: Wingdings">ü<span style='FONT: 7pt "Times New Roman"'>&nbsp; </SPAN></SPAN><span class=afff7>dt1970</SPAN>_<span class=afff7>receive</SPAN> – дата получения КДУ в формате <span 
+lang=EN-US>DT</SPAN>1970;</P>
+<p class=MsoListBullet2><span lang=EN-US 
+style="FONT-FAMILY: Wingdings">ü<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp; 
+</SPAN></SPAN><span class=afff7>sComment</SPAN> <span 
+lang=EN-US>– </SPAN>комментарий<span lang=EN-US>;</SPAN></P>
+<p class=MsoListBullet2><span style="FONT-FAMILY: Wingdings">ü<span style='FONT: 7pt "Times New Roman"'>&nbsp; </SPAN></SPAN><span class=afff7>IdSourceCnt</SPAN> – идентификатор диспетчерского центра из 
+таблицы <span class=afb><span lang=EN-US>AST</SPAN></SPAN><span class=afb>_<span 
+lang=EN-US>CNT</SPAN></SPAN><span class=afb>,</SPAN> отдавшего КДУ;</P>
+<p class=MsoListBullet2><span style="FONT-FAMILY: Wingdings">ü<span style='FONT: 7pt "Times New Roman"'>&nbsp; </SPAN></SPAN><span class=afff7>IdSourceDisp</SPAN> – идентификатор персонала из таблицы 
+<span class=afb><span lang=EN-US>AST</SPAN></SPAN><span class=afb>_<span 
+lang=EN-US>PERSONNEL</SPAN></SPAN>, отдавшего КДУ;</P>
+<p class=MsoListBullet2><span lang=EN-US 
+style="FONT-FAMILY: Wingdings">ü<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp; 
+</SPAN></SPAN><span class=afff7>TextCommand</SPAN><span 
+lang=EN-US> – </SPAN>текстовое представление<span lang=EN-US> КДУ.</SPAN></P>
+<h2 style="MARGIN-LEFT: 0cm; TEXT-INDENT: 0cm"><a 
+name=_Toc44738902></A><a name=_Toc42240048></A><a name=_Toc42237740></A><a 
+name=_Toc11145453></A><a name=_Toc462055457></A><a name=_Ref447100534>5.5 Контроль 
+лог-файлов</A></H2>
+<p class=MsoNormal>Лог-файл сервиса располагается в каталоге 
+установки сервиса и называется «<span class=afff7>TransferKDUtoSK2007.Service.log»</SPAN>.</P>
+<p class=MsoNormal>Например<span lang=EN-US>,</SPAN></P>
+<div 
+style="BORDER-TOP: windowtext 1pt solid; BORDER-RIGHT: windowtext 1pt solid; BACKGROUND: #c1c1c1; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 1pt; PADDING-TOP: 1pt; PADDING-LEFT: 4pt; MARGIN-LEFT: 5.65pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 4pt; MARGIN-RIGHT: 5.65pt">
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>C:\RsduServices\RSDU.INP\TransferKDUtoSK2007\ 
+TransferKDUtoSK2007.Service.log</SPAN></P></DIV>
+<p class=MsoNormal>Раз в неделю сервис выполняет 
+архивирование и очистку лог-фала. Архивный лог-файл сжимается и копируется в 
+каталог <span class=afff7>archivelogs</SPAN>. В имени 
+архивированного лог-файла содержится дата архивации.</P>
+<p class=MsoNormal>Например,</P>
+<div 
+style="BORDER-TOP: windowtext 1pt solid; BORDER-RIGHT: windowtext 1pt solid; BACKGROUND: #c1c1c1; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 1pt; PADDING-TOP: 1pt; PADDING-LEFT: 4pt; MARGIN-LEFT: 5.65pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 4pt; MARGIN-RIGHT: 5.65pt">
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>C</SPAN>:\<span 
+lang=EN-US>RsduServices</SPAN>\<span lang=EN-US>RSDU</SPAN>.<span lang=EN-US>INP</SPAN>\<span lang=EN-US>TransferKDUtoSK</SPAN>2007\<span lang=EN-US>archivelogs</SPAN>\ <span lang=EN-US>TransferKDUtoSK</SPAN>2007.<span lang=EN-US>Service</SPAN>_2016-01-07.<span lang=EN-US>log</SPAN>.<span lang=EN-US>gz</SPAN></P></DIV>
+<p class=MsoNormal>&nbsp;</P>
+<p class=MsoNormal style="TEXT-ALIGN: right" align=right>&nbsp;</P>
+
+</div>
+
+</body>
+
+</html>
