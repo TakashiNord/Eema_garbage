@@ -1,0 +1,2721 @@
+﻿<html>
+
+<head>
+<title>Сервер приложений SCADA. Руководство администратора</title>
+
+<meta http-equiv=Content-Type content="text/html; charset=UTF-8">
+<meta name=Generator content="Microsoft Word 14 (filtered)">
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Courier;
+	panose-1:2 7 4 9 2 2 5 2 4 4;}
+@font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:"Bookshelf Symbol 7";
+	panose-1:5 1 1 1 1 1 1 1 1 1;}
+@font-face
+	{font-family:"Calibri Light";
+	panose-1:2 15 3 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:"Segoe UI";
+	panose-1:2 11 5 2 4 2 4 2 2 3;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	text-align:justify;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+h1
+	{margin-top:0cm;
+	margin-right:164.45pt;
+	margin-bottom:12.0pt;
+	margin-left:14.2pt;
+	text-indent:0cm;
+	line-height:115%;
+	page-break-before:always;
+	font-size:16.0pt;
+	font-family:"Arial","sans-serif";
+	color:#17365D;
+	font-weight:bold;}
+h2
+	{mso-style-link:"Заголовок 2 Знак";
+	margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:12.0pt;
+	margin-left:28.8pt;
+	text-indent:-28.8pt;
+	line-height:115%;
+	page-break-after:avoid;
+	font-size:14.0pt;
+	font-family:"Arial","sans-serif";
+	font-weight:bold;}
+h3
+	{mso-style-link:"Заголовок 3 Знак";
+	margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:36.0pt;
+	text-indent:-36.0pt;
+	line-height:115%;
+	page-break-after:avoid;
+	font-size:13.0pt;
+	font-family:"Arial","sans-serif";
+	font-weight:bold;}
+h4
+	{mso-style-link:"Заголовок 4 Знак";
+	margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:43.2pt;
+	text-indent:-43.2pt;
+	line-height:115%;
+	page-break-after:avoid;
+	font-size:12.5pt;
+	font-family:"Arial","sans-serif";
+	font-weight:bold;}
+h5
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:0cm;
+	text-indent:0cm;
+	line-height:115%;
+	page-break-after:avoid;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";
+	font-weight:bold;}
+h6
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:57.55pt;
+	text-align:justify;
+	text-indent:-57.55pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";
+	font-weight:normal;}
+p.MsoHeading7, li.MsoHeading7, div.MsoHeading7
+	{margin-top:0cm;
+	margin-right:164.45pt;
+	margin-bottom:12.0pt;
+	margin-left:14.2pt;
+	text-indent:0cm;
+	line-height:115%;
+	page-break-before:always;
+	font-size:16.0pt;
+	font-family:"Arial","sans-serif";
+	color:#17365D;
+	font-weight:bold;}
+p.MsoHeading8, li.MsoHeading8, div.MsoHeading8
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:12.0pt;
+	margin-left:0cm;
+	text-indent:0cm;
+	line-height:115%;
+	page-break-after:avoid;
+	font-size:14.0pt;
+	font-family:"Arial","sans-serif";
+	font-weight:bold;}
+p.MsoHeading9, li.MsoHeading9, div.MsoHeading9
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	text-indent:0cm;
+	line-height:115%;
+	page-break-after:avoid;
+	font-size:13.0pt;
+	font-family:"Arial","sans-serif";
+	font-weight:bold;}
+p.MsoToc1, li.MsoToc1, div.MsoToc1
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoToc2, li.MsoToc2, div.MsoToc2
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:21.55pt;
+	margin-bottom:.0001pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoToc3, li.MsoToc3, div.MsoToc3
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:48.2pt;
+	margin-bottom:.0001pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoToc4, li.MsoToc4, div.MsoToc4
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:61.25pt;
+	margin-bottom:.0001pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoToc5, li.MsoToc5, div.MsoToc5
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:44.0pt;
+	text-align:justify;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoToc6, li.MsoToc6, div.MsoToc6
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:55.0pt;
+	text-align:justify;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoToc7, li.MsoToc7, div.MsoToc7
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:66.0pt;
+	text-align:justify;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoToc8, li.MsoToc8, div.MsoToc8
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:77.0pt;
+	text-align:justify;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoToc9, li.MsoToc9, div.MsoToc9
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:88.0pt;
+	text-align:justify;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoNormalIndent, li.MsoNormalIndent, div.MsoNormalIndent
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:35.4pt;
+	text-align:justify;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoFootnoteText, li.MsoFootnoteText, div.MsoFootnoteText
+	{mso-style-link:"Текст сноски Знак";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	line-height:115%;
+	font-size:11.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoCommentText, li.MsoCommentText, div.MsoCommentText
+	{mso-style-link:"Текст примечания Знак";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	text-align:justify;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoHeader, li.MsoHeader, div.MsoHeader
+	{mso-style-link:"Верхний колонтитул Знак";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	text-align:justify;
+	line-height:115%;
+	font-size:9.0pt;
+	font-family:"Arial","sans-serif";
+	font-style:italic;}
+p.MsoFooter, li.MsoFooter, div.MsoFooter
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	text-align:justify;
+	line-height:115%;
+	font-size:9.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoCaption, li.MsoCaption, div.MsoCaption
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:12.0pt;
+	margin-left:0cm;
+	text-align:center;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";
+	font-weight:bold;}
+span.MsoFootnoteReference
+	{vertical-align:super;}
+span.MsoPageNumber
+	{font-family:"Arial","sans-serif";
+	font-weight:bold;}
+p.MsoEndnoteText, li.MsoEndnoteText, div.MsoEndnoteText
+	{mso-style-link:"Текст концевой сноски Знак";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoList, li.MsoList, div.MsoList
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:14.15pt;
+	text-align:justify;
+	text-indent:-14.15pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoListCxSpFirst, li.MsoListCxSpFirst, div.MsoListCxSpFirst
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:14.15pt;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-indent:-14.15pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoListCxSpMiddle, li.MsoListCxSpMiddle, div.MsoListCxSpMiddle
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:14.15pt;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-indent:-14.15pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoListCxSpLast, li.MsoListCxSpLast, div.MsoListCxSpLast
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:14.15pt;
+	text-align:justify;
+	text-indent:-14.15pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoListBullet, li.MsoListBullet, div.MsoListBullet
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:32.05pt;
+	text-align:justify;
+	text-indent:-17.85pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+p.MsoListNumber, li.MsoListNumber, div.MsoListNumber
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:159.75pt;
+	text-align:justify;
+	text-indent:-18.0pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoListBullet2, li.MsoListBullet2, div.MsoListBullet2
+	{mso-style-name:"Маркированный список 2\,р_мар1";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:32.15pt;
+	text-align:justify;
+	text-indent:-18.0pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoListBullet3, li.MsoListBullet3, div.MsoListBullet3
+	{mso-style-name:"Маркированный список 3\,р_мар2";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:46.3pt;
+	text-align:justify;
+	text-indent:-18.0pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoListBullet4, li.MsoListBullet4, div.MsoListBullet4
+	{mso-style-name:"Маркированный список 4\,р_мар3";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:60.45pt;
+	text-align:justify;
+	text-indent:-18.0pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoListNumber2, li.MsoListNumber2, div.MsoListNumber2
+	{mso-style-name:"Нумерованный список 2\,р_нум1";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:32.15pt;
+	text-align:justify;
+	text-indent:-18.0pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoListNumber3, li.MsoListNumber3, div.MsoListNumber3
+	{mso-style-name:"Нумерованный список 3\,р_нум2";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:46.3pt;
+	text-align:justify;
+	text-indent:-18.0pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoListNumber4, li.MsoListNumber4, div.MsoListNumber4
+	{mso-style-name:"Нумерованный список 4\,р_нум3";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:60.45pt;
+	text-align:justify;
+	text-indent:-18.0pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoClosing, li.MsoClosing, div.MsoClosing
+	{mso-style-link:"Прощание Знак";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:212.6pt;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoBodyText, li.MsoBodyText, div.MsoBodyText
+	{mso-style-link:"Основной текст Знак";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	line-height:115%;
+	font-size:8.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoBodyTextIndent, li.MsoBodyTextIndent, div.MsoBodyTextIndent
+	{mso-style-link:"Основной текст с отступом Знак";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	text-align:justify;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";
+	layout-grid-mode:line;}
+p.MsoListContinue2, li.MsoListContinue2, div.MsoListContinue2
+	{mso-style-name:"Продолжение списка 2\,р_прод1";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:32.05pt;
+	text-align:justify;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoListContinue3, li.MsoListContinue3, div.MsoListContinue3
+	{mso-style-name:"Продолжение списка 3\,р_прод2";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:46.2pt;
+	text-align:justify;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoListContinue4, li.MsoListContinue4, div.MsoListContinue4
+	{mso-style-name:"Продолжение списка 4\,р_прод3";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:60.4pt;
+	text-align:justify;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoBodyText2, li.MsoBodyText2, div.MsoBodyText2
+	{mso-style-link:"Основной текст 2 Знак";
+	margin-top:3.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:0cm;
+	line-height:115%;
+	font-size:9.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoBodyText3, li.MsoBodyText3, div.MsoBodyText3
+	{mso-style-link:"Основной текст 3 Знак";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	text-align:justify;
+	line-height:115%;
+	font-size:8.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoBodyTextIndent3, li.MsoBodyTextIndent3, div.MsoBodyTextIndent3
+	{mso-style-link:"Основной текст с отступом 3 Знак";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	text-align:justify;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";
+	layout-grid-mode:line;
+	font-style:italic;}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:#954F72;
+	text-decoration:underline;}
+em
+	{font-family:Courier;
+	font-style:normal;}
+p
+	{margin-right:0cm;
+	margin-left:0cm;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+address
+	{mso-style-link:"Адрес HTML Знак";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";
+	font-style:italic;}
+kbd
+	{font-family:"Courier New";}
+p.MsoAcetate, li.MsoAcetate, div.MsoAcetate
+	{mso-style-link:"Текст выноски Знак";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	line-height:115%;
+	font-size:9.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoListParagraph, li.MsoListParagraph, div.MsoListParagraph
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:36.0pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoListParagraphCxSpFirst, li.MsoListParagraphCxSpFirst, div.MsoListParagraphCxSpFirst
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	margin-bottom:.0001pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoListParagraphCxSpMiddle, li.MsoListParagraphCxSpMiddle, div.MsoListParagraphCxSpMiddle
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	margin-bottom:.0001pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoListParagraphCxSpLast, li.MsoListParagraphCxSpLast, div.MsoListParagraphCxSpLast
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:36.0pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoQuote, li.MsoQuote, div.MsoQuote
+	{mso-style-link:"Цитата 2 Знак";
+	margin-top:10.0pt;
+	margin-right:43.2pt;
+	margin-bottom:8.0pt;
+	margin-left:43.2pt;
+	text-align:center;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";
+	color:#404040;
+	font-style:italic;}
+span.MsoSubtleEmphasis
+	{color:#404040;
+	font-style:italic;}
+span.MsoIntenseEmphasis
+	{color:#4472C4;
+	font-style:italic;}
+span.MsoBookTitle
+	{letter-spacing:.25pt;
+	font-weight:bold;
+	font-style:italic;}
+p.MsoTocHeading, li.MsoTocHeading, div.MsoTocHeading
+	{margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:14.2pt;
+	margin-bottom:.0001pt;
+	text-indent:0cm;
+	line-height:107%;
+	font-size:16.0pt;
+	font-family:"Calibri Light","sans-serif";
+	color:#2F5496;}
+p.a, li.a, div.a
+	{mso-style-name:р_дисплейсерый;
+	mso-style-link:"р_дисплейсерый Знак";
+	margin-top:0cm;
+	margin-right:5.65pt;
+	margin-bottom:0cm;
+	margin-left:5.65pt;
+	margin-bottom:.0001pt;
+	line-height:115%;
+	background:#C1C1C1;
+	border:none;
+	padding:0cm;
+	font-size:10.0pt;
+	font-family:"Courier New";}
+p.a0, li.a0, div.a0
+	{mso-style-name:Маркированный;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:155.95pt;
+	text-align:justify;
+	text-indent:-14.2pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.2, li.2, div.2
+	{mso-style-name:"Маркированный 2";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:171.0pt;
+	text-align:justify;
+	text-indent:-14.2pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.3, li.3, div.3
+	{mso-style-name:"Маркированный 3";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:186.0pt;
+	text-align:justify;
+	text-indent:-14.2pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.a1, li.a1, div.a1
+	{mso-style-name:Нумерованный;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	text-align:justify;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+span.a2
+	{mso-style-name:"Основной текст Знак";
+	mso-style-link:"Основной текст";
+	font-family:"Arial","sans-serif";}
+span.20
+	{mso-style-name:"Основной текст 2 Знак";
+	mso-style-link:"Основной текст 2";
+	font-family:"Arial","sans-serif";}
+span.30
+	{mso-style-name:"Основной текст 3 Знак";
+	mso-style-link:"Основной текст 3";
+	font-family:"Arial","sans-serif";}
+span.a3
+	{mso-style-name:"Основной текст с отступом Знак";
+	mso-style-link:"Основной текст с отступом";
+	font-family:"Arial","sans-serif";
+	layout-grid-mode:both;}
+span.31
+	{mso-style-name:"Основной текст с отступом 3 Знак";
+	mso-style-link:"Основной текст с отступом 3";
+	font-family:"Arial","sans-serif";
+	layout-grid-mode:both;
+	font-style:italic;}
+span.1
+	{mso-style-name:"Неразрешенное упоминание1";
+	color:#605E5C;
+	background:#E1DFDD;}
+p.a4, li.a4, div.a4
+	{mso-style-name:"Нумерованный список широкий";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:18.0pt;
+	text-align:justify;
+	text-indent:-18.0pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+span.a5
+	{mso-style-name:"Текст сноски Знак";
+	mso-style-link:"Текст сноски";
+	font-family:"Arial","sans-serif";}
+span.a6
+	{mso-style-name:"Текст выноски Знак";
+	mso-style-link:"Текст выноски";
+	font-family:"Arial","sans-serif";}
+p.a7, li.a7, div.a7
+	{mso-style-name:р_определение;
+	mso-style-link:"р_определение Знак";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:36.0pt;
+	text-align:justify;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.a8, li.a8, div.a8
+	{mso-style-name:"Обычный широкий";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	text-align:justify;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+span.a9
+	{mso-style-name:"р_определение Знак";
+	mso-style-link:р_определение;
+	font-family:"Arial","sans-serif";}
+span.21
+	{mso-style-name:"Заголовок 2 Знак";
+	mso-style-link:"Заголовок 2";
+	font-family:"Arial","sans-serif";
+	font-weight:bold;}
+span.32
+	{mso-style-name:"Заголовок 3 Знак";
+	mso-style-link:"Заголовок 3";
+	font-family:"Arial","sans-serif";
+	font-weight:bold;}
+span.10
+	{mso-style-name:"Неразрешенное упоминание1";
+	color:#605E5C;
+	background:#E1DFDD;}
+span.4
+	{mso-style-name:"Заголовок 4 Знак";
+	mso-style-link:"Заголовок 4";
+	font-family:"Arial","sans-serif";
+	font-weight:bold;}
+p.aa, li.aa, div.aa
+	{mso-style-name:Нумерация;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:32.2pt;
+	text-align:justify;
+	text-indent:-18.0pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+p.ab, li.ab, div.ab
+	{mso-style-name:р_верхкол;
+	mso-style-link:"р_верхкол Знак";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	line-height:115%;
+	border:none;
+	padding:0cm;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";
+	font-style:italic;}
+span.11
+	{mso-style-name:"Неразрешенное упоминание1";
+	color:#605E5C;
+	background:#E1DFDD;}
+span.ac
+	{mso-style-name:"Верхний колонтитул Знак";
+	mso-style-link:"Верхний колонтитул";
+	font-family:"Arial","sans-serif";
+	font-style:italic;}
+span.ad
+	{mso-style-name:"р_верхкол Знак";
+	mso-style-link:р_верхкол;
+	font-family:"Arial","sans-serif";
+	font-style:italic;}
+p.ae, li.ae, div.ae
+	{mso-style-name:р_марИ;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";
+	color:black;}
+p.af, li.af, div.af
+	{mso-style-name:р_табТекст;
+	mso-style-link:"р_табТекст Знак";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	line-height:115%;
+	font-size:11.0pt;
+	font-family:"Arial","sans-serif";}
+p.12, li.12, div.12
+	{mso-style-name:Стиль1;
+	mso-style-link:"Стиль1 Знак";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:14.2pt;
+	text-align:justify;
+	line-height:115%;
+	font-size:14.0pt;
+	font-family:"Arial","sans-serif";
+	color:white;
+	font-weight:bold;}
+p.13, li.13, div.13
+	{mso-style-name:р_тит1;
+	mso-style-link:"р_тит1 Знак";
+	margin-top:0cm;
+	margin-right:2.85pt;
+	margin-bottom:12.0pt;
+	margin-left:0cm;
+	line-height:115%;
+	font-size:18.0pt;
+	font-family:"Arial","sans-serif";
+	color:#17365D;
+	text-transform:uppercase;
+	font-weight:bold;}
+span.14
+	{mso-style-name:"Стиль1 Знак";
+	mso-style-link:Стиль1;
+	font-family:"Arial","sans-serif";
+	color:white;
+	font-weight:bold;}
+p.22, li.22, div.22
+	{mso-style-name:р_тит2;
+	mso-style-link:"р_тит2 Знак";
+	margin-top:0cm;
+	margin-right:2.85pt;
+	margin-bottom:12.0pt;
+	margin-left:0cm;
+	line-height:115%;
+	font-size:18.0pt;
+	font-family:"Arial","sans-serif";
+	color:#17365D;
+	font-weight:bold;}
+span.15
+	{mso-style-name:"р_тит1 Знак";
+	mso-style-link:р_тит1;
+	font-family:"Arial","sans-serif";
+	color:#17365D;
+	text-transform:uppercase;
+	font-weight:bold;}
+span.23
+	{mso-style-name:"р_тит2 Знак";
+	mso-style-link:р_тит2;
+	font-family:"Arial","sans-serif";
+	color:#17365D;
+	text-transform:none;
+	font-weight:bold;}
+p.af0, li.af0, div.af0
+	{mso-style-name:"";
+	margin-right:0cm;
+	margin-left:0cm;
+	text-indent:14.2pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	color:black;}
+p.af1, li.af1, div.af1
+	{mso-style-name:р_выделить;
+	mso-style-link:"р_выделить Знак";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	text-align:justify;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";
+	font-weight:bold;
+	font-style:italic;}
+p.af2, li.af2, div.af2
+	{mso-style-name:р_клав;
+	mso-style-link:"р_клав Знак";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	text-align:justify;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";
+	text-transform:uppercase;}
+span.af3
+	{mso-style-name:"р_выделить Знак";
+	mso-style-link:р_выделить;
+	font-family:"Arial","sans-serif";
+	font-weight:bold;
+	font-style:italic;}
+span.af4
+	{mso-style-name:"р_клав Знак";
+	mso-style-link:р_клав;
+	font-family:"Arial","sans-serif";
+	text-transform:uppercase;}
+span.af5
+	{mso-style-name:р_дисплей;
+	font-family:"Courier New";}
+p.af6, li.af6, div.af6
+	{mso-style-name:р_выноска;
+	mso-style-link:"р_выноска Знак";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	line-height:115%;
+	font-size:11.0pt;
+	font-family:"Arial","sans-serif";}
+span.af7
+	{mso-style-name:р_БД;
+	text-transform:uppercase;
+	font-weight:bold;
+	font-style:italic;}
+p.af8, li.af8, div.af8
+	{mso-style-name:р_примТекст;
+	mso-style-link:"р_примТекст Знак";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	text-align:justify;
+	line-height:115%;
+	font-size:11.0pt;
+	font-family:"Arial","sans-serif";}
+p.af9, li.af9, div.af9
+	{mso-style-name:р_прим;
+	mso-style-link:"р_прим Знак";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	text-align:justify;
+	line-height:115%;
+	font-size:11.0pt;
+	font-family:"Arial","sans-serif";
+	letter-spacing:1.0pt;
+	font-weight:bold;}
+span.afa
+	{mso-style-name:"р_примТекст Знак";
+	mso-style-link:р_примТекст;
+	font-family:"Arial","sans-serif";}
+span.afb
+	{mso-style-name:"р_прим Знак";
+	mso-style-link:р_прим;
+	font-family:"Arial","sans-serif";
+	letter-spacing:1.0pt;
+	font-weight:bold;}
+p.afc, li.afc, div.afc
+	{mso-style-name:р_пред;
+	mso-style-link:"р_пред Знак";
+	margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	line-height:115%;
+	page-break-after:avoid;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";
+	text-transform:uppercase;
+	letter-spacing:1.0pt;
+	font-weight:bold;}
+span.afd
+	{mso-style-name:"р_пред Знак";
+	mso-style-link:р_пред;
+	font-family:"Arial","sans-serif";
+	text-transform:uppercase;
+	letter-spacing:1.0pt;
+	font-weight:bold;}
+span.afe
+	{mso-style-name:"Текст концевой сноски Знак";
+	mso-style-link:"Текст концевой сноски";
+	font-family:"Arial","sans-serif";}
+span.aff
+	{mso-style-name:"Текст примечания Знак";
+	mso-style-link:"Текст примечания";
+	font-family:"Arial","sans-serif";}
+span.24
+	{mso-style-name:"Цитата 2 Знак";
+	mso-style-link:"Цитата 2";
+	font-family:"Arial","sans-serif";
+	color:#404040;
+	font-style:italic;}
+span.aff0
+	{mso-style-name:"р_дисплейсерый Знак";
+	mso-style-link:р_дисплейсерый;
+	font-family:"Courier New";
+	background:#C1C1C1;}
+p.aff1, li.aff1, div.aff1
+	{mso-style-name:р_содерж;
+	mso-style-link:"р_содерж Знак";
+	margin-top:0cm;
+	margin-right:7.0cm;
+	margin-bottom:24.0pt;
+	margin-left:14.2pt;
+	line-height:115%;
+	page-break-before:always;
+	font-size:16.0pt;
+	font-family:"Arial","sans-serif";
+	color:#17365D;
+	font-weight:bold;}
+span.aff2
+	{mso-style-name:"р_содерж Знак";
+	mso-style-link:р_содерж;
+	font-family:"Arial","sans-serif";
+	color:#17365D;
+	font-weight:bold;}
+p.aff3, li.aff3, div.aff3
+	{mso-style-name:р_табЗаг;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	text-align:center;
+	line-height:115%;
+	font-size:11.0pt;
+	font-family:"Arial","sans-serif";
+	font-weight:bold;}
+p.aff4, li.aff4, div.aff4
+	{mso-style-name:р_обычАбзац;
+	mso-style-link:"р_обычАбзац Знак";
+	margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	text-align:justify;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+span.aff5
+	{mso-style-name:"р_обычАбзац Знак";
+	mso-style-link:р_обычАбзац;
+	font-family:"Arial","sans-serif";}
+p.aff6, li.aff6, div.aff6
+	{mso-style-name:р_табНум;
+	mso-style-link:"р_табНум Знак";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	text-align:center;
+	line-height:115%;
+	font-size:11.0pt;
+	font-family:"Arial","sans-serif";}
+p.aff7, li.aff7, div.aff7
+	{mso-style-name:р_нумТаб;
+	mso-style-link:"р_нумТаб Знак";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	text-align:center;
+	text-indent:0cm;
+	line-height:115%;
+	font-size:9.0pt;
+	font-family:"Arial","sans-serif";}
+span.aff8
+	{mso-style-name:"р_табТекст Знак";
+	mso-style-link:р_табТекст;
+	font-family:"Arial","sans-serif";}
+span.aff9
+	{mso-style-name:"р_табНум Знак";
+	mso-style-link:р_табНум;
+	font-family:"Arial","sans-serif";}
+span.affa
+	{mso-style-name:"р_нумТаб Знак";
+	mso-style-link:р_нумТаб;
+	font-family:"Arial","sans-serif";}
+span.HTML
+	{mso-style-name:"Адрес HTML Знак";
+	mso-style-link:"Адрес HTML";
+	font-family:"Arial","sans-serif";
+	font-style:italic;}
+span.affb
+	{mso-style-name:"Прощание Знак";
+	mso-style-link:Прощание;
+	font-family:"Arial","sans-serif";}
+p.16, li.16, div.16
+	{mso-style-name:р_1дисплейсерый;
+	mso-style-link:"р_1дисплейсерый Знак";
+	margin-top:0cm;
+	margin-right:5.65pt;
+	margin-bottom:0cm;
+	margin-left:38.25pt;
+	margin-bottom:.0001pt;
+	line-height:115%;
+	background:#C1C1C1;
+	border:none;
+	padding:0cm;
+	font-size:10.0pt;
+	font-family:"Courier New";}
+p.25, li.25, div.25
+	{mso-style-name:р_2дисплейсерый;
+	mso-style-link:"р_2дисплейсерый Знак";
+	margin-top:0cm;
+	margin-right:5.65pt;
+	margin-bottom:0cm;
+	margin-left:52.45pt;
+	margin-bottom:.0001pt;
+	line-height:115%;
+	background:#C1C1C1;
+	border:none;
+	padding:0cm;
+	font-size:10.0pt;
+	font-family:"Courier New";}
+span.17
+	{mso-style-name:"р_1дисплейсерый Знак";
+	mso-style-link:р_1дисплейсерый;
+	font-family:"Courier New";
+	background:#C1C1C1;}
+span.26
+	{mso-style-name:"р_2дисплейсерый Знак";
+	mso-style-link:р_2дисплейсерый;
+	font-family:"Courier New";
+	background:#C1C1C1;}
+span.affc
+	{mso-style-name:"р_выноска Знак";
+	mso-style-link:р_выноска;
+	font-family:"Arial","sans-serif";}
+p.affd, li.affd, div.affd
+	{mso-style-name:р_обычный;
+	mso-style-link:"р_обычный Знак";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	text-align:justify;
+	line-height:normal;
+	font-size:10.0pt;
+	font-family:"Arial","sans-serif";}
+span.affe
+	{mso-style-name:"р_обычный Знак";
+	mso-style-link:р_обычный;
+	font-family:"Arial","sans-serif";}
+p.afff, li.afff, div.afff
+	{mso-style-name:р_табОбъед;
+	mso-style-link:"р_табОбъед Знак";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	line-height:115%;
+	font-size:11.0pt;
+	font-family:"Arial","sans-serif";}
+span.afff0
+	{mso-style-name:"р_табОбъед Знак";
+	mso-style-link:р_табОбъед;
+	font-family:"Arial","sans-serif";}
+.MsoChpDefault
+	{font-size:10.0pt;}
+ /* Page Definitions */
+ @page WordSection1
+	{size:595.3pt 841.9pt;
+	margin:0cm 2.0cm 0cm 2.0cm;}
+div.WordSection1
+	{page:WordSection1;}
+@page WordSection2
+	{size:595.3pt 841.9pt;
+	margin:3.0cm 2.0cm 70.9pt 2.0cm;}
+div.WordSection2
+	{page:WordSection2;}
+ /* List Definitions */
+ ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
+-->
+</style>
+
+</head>
+
+<body lang=RU link=blue vlink="#954f72">
+
+<div class=WordSection1>
+
+<p class=MsoNormal><a name="_Toc41138842">Содержание</a></p>
+
+</div>
+
+<div class=WordSection2>
+
+<p class=MsoToc1><A
+ href="#_Toc83894893" >1 Термины, определения, обозначения и сокращения<span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">. </span><span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">2</span></A></p>
+
+<p class=MsoToc1><A href="#_Toc83894894">2 Общие сведения<span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">. </span><span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">3</span></A></p>
+
+<p class=MsoToc2><A href="#_Toc83894895">2.1 Назначение сервиса<span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">. </span><span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">3</span></A></p>
+
+<p class=MsoToc2><A href="#_Toc83894896">2.2 Необходимые условия<span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">. </span><span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">3</span></A></p>
+
+<p class=MsoToc2><A href="#_Toc83894897">2.3 Необходимые знания<span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">. </span><span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">3</span></A></p>
+
+<p class=MsoToc2><A href="#_Toc83894898">2.4 Ссылки<span style="TEXT-DECORATION:
+ none; COLOR: windowtext; DISPLAY: none">.. </span><span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">4</span></A></p>
+
+<p class=MsoToc1><A href="#_Toc83894899">3 Создание учетной записи РСДУ<span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">.. </span><span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">5</span></A></p>
+
+<p class=MsoToc1><A href="#_Toc83894900">4 Установка и управление сервером <span
+ lang=EN-US>SCADA</span><span style="TEXT-DECORATION:
+ none; COLOR: windowtext; DISPLAY: none">.. </span><span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">7</span></A></p>
+
+<p class=MsoToc2><A href="#_Toc83894901">4.1 Установка сервиса<span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">. </span><span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">7</span></A></p>
+
+<p class=MsoToc2><A href="#_Toc83894902">4.2 Запуск и останов сервиса<span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">. </span><span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">7</span></A></p>
+
+<p class=MsoToc2><A href="#_Toc83894903">4.3 Контроль лог файлов<span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">. </span><span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">8</span></A></p>
+
+<p class=MsoToc2><A href="#_Toc83894904">4.4 Удаление сервиса<span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">. </span><span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">8</span></A></p>
+
+<p class=MsoToc1><A href="#_Toc83894905">5 Конфигурирование сервера <span
+ lang=EN-US>SCADA</span><span style="TEXT-DECORATION:
+ none; COLOR: windowtext; DISPLAY: none">.. </span><span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">9</span></A></p>
+
+<p class=MsoToc2><A href="#_Toc83894906">Файл конфигурации <span lang=EN-US>scada</span>-<span
+ lang=EN-US>server</span>.<span lang=EN-US>json</span><span style="TEXT-DECORATION:
+ none; COLOR: windowtext; DISPLAY: none">.. </span><span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">9</span></A></p>
+
+<p class=MsoToc2><A href="#_Toc83894907">5.1 Общая конфигурация<span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">. </span><span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">12</span></A></p>
+
+<p class=MsoToc2><A href="#_Toc83894908">5.2 Конфигурация модулей приложений<span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">.. </span><span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">14</span></A></p>
+
+<p class=MsoToc3><A href="#_Toc83894909">5.2.1 Приложение просмотра схем<span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">.. </span><span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">14</span></A></p>
+
+<p class=MsoToc3><A href="#_Toc83894910">5.2.2 Модуль формирования
+топологической модели<span style="TEXT-DECORATION:
+ none; COLOR: windowtext; DISPLAY: none">.. </span><span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">16</span></A></p>
+
+<p class=MsoToc3><A href="#_Toc83894911">5.2.3 Приложение программ переключений<span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">.. </span><span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">16</span></A></p>
+
+<p class=MsoToc3><A href="#_Toc83894912">5.2.4 Модуль приложения «Журнал
+отключений»<span style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">. </span><span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">16</span></A></p>
+
+<p class=MsoToc3><A href="#_Toc83894913">5.2.5 Модуль поддержки видеостены<span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">.. </span><span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">16</span></A></p>
+
+<p class=MsoToc3><A href="#_Toc83894914">5.2.6 Модуль работы с сервисом
+интеграции с АС Энергия<span style="TEXT-DECORATION:
+ none; COLOR: windowtext; DISPLAY: none">. </span><span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">16</span></A></p>
+
+<p class=MsoToc1><A href="#_Toc83894915">6 Конфигурирование <span lang=EN-US>NGINX</span><span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">.. </span><span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">18</span></A></p>
+
+<p class=MsoToc2><A href="#_Toc83894916">Файл<span lang=EN-US> scada.loc</span><span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">. </span><span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">18</span></A></p>
+
+<p class=MsoToc1><A href="#_Toc83894917">7 Настройка клиентского ПО<span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">.. </span><span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">19</span></A></p>
+
+<p class=MsoToc2><A href="#_Toc83894918">7.1 Настройка подключения к серверу <span
+ lang=EN-US>SCADA</span><span style="TEXT-DECORATION:
+ none; COLOR: windowtext; DISPLAY: none">.. </span><span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">19</span></A></p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><span class=MsoPageNumber><span style="FONT-SIZE:
+ 11pt; LINE-HEIGHT: 115%"></span></span>&nbsp;</p>
+
+<h1 style="TEXT-INDENT: 0cm"><a name="_Toc83894893">1 </a><span
+ style="POSITION: relative; Z-INDEX: 251656182"><span style="HEIGHT:
+ 72px; WIDTH: 646px; POSITION: absolute; LEFT: 0px; TOP: -7px"><IMG src="0001.files/image003.png" width=646
+ height=72 ></span></span>Термины, определения, обозначения и
+сокращения</h1>
+
+<p class=MsoNormal><a name="_Hlk39060785">В настоящем документе приняты
+следующие термины, определения, обозначения и сокращения</a>:</p>
+
+<p class=a7><b><span lang=EN-US>systemd</span></b> – стандартная система
+инициализации, запуска и управления фоновыми процессами в ОС Linux.</p>
+
+<p class=a7><b>БДТИ</b> – База Данных Технологической Информации РСДУ.</p>
+
+<p class=a7><b>Лог-файл</b> – текстовый файл с записями о событиях,
+происходящих в программном обеспечении в хронологическом порядке.</p>
+
+<p class=a7><b>Пакет обновления БД</b> – набор скриптов, предназначенных для
+внесения изменений в структуру и данные таблиц БДТИ комплекса.</p>
+
+<p class=MsoNormal><span style="COLOR: black"></span>&nbsp;</p>
+
+<p class=MsoNormal><span style="COLOR: black"></span>&nbsp;</p>
+
+<h1 style="TEXT-INDENT: 0cm"><a name="_Toc83894894">2 </a><span
+ style="POSITION: relative; Z-INDEX: 251654134"><span style="HEIGHT:
+ 38px; WIDTH: 646px; POSITION: absolute; LEFT: 0px; TOP: -4px"><IMG src="0001.files/image004.png" width=646
+ height=38 ></span></span>Общие сведения</h1>
+
+<h2><a name="_Toc83894895"></a><a name="_Toc55216489"></a><a
+ name="_Toc498938389">2.1 Назначение сервиса</a></h2>
+
+<p class=MsoNormal>Сервер приложений <span lang=EN-US>SCADA</span><span
+ lang=EN-US> </span>(далее Сервер <span lang=EN-US>SCADA</span><span lang=EN-US>
+</span>или Сервис) представляет собой серверный программный модуль,
+обеспечивающий высокопроизводительный доступ к функциям комплекса для
+клиентских приложений.</p>
+
+<p class=MsoNormal>Высокая производительность Сервера <span lang=EN-US>SCADA</span><span
+ lang=EN-US> </span>достигается за счет кэширования модели и данных при
+выполнении функций. </p>
+
+<p class=MsoNormal>С целью резервирования в комплексе может быть установлено
+несколько Серверов <span lang=EN-US>SCADA</span>, при этом только один
+экземпляр работает в режиме основной (<span lang=EN-US>master</span>). Некоторые
+функции сервера выполняются только в режиме основной.</p>
+
+<p class=MsoNormal>Поддерживается работа <span lang=EN-US>SCADA</span><span
+ lang=EN-US> </span>сервера в операционной системе <span lang=EN-US>Linux</span>.</p>
+
+<h2><a name="_Toc83894896"></a><a name="_Toc55216490"></a><a
+ name="_Toc498938390">2.2 Необходимые условия</a></h2>
+
+<p class=MsoNormal>ОС <span lang=EN-US>Linux</span>: </p>
+
+<p class=MsoListBullet2><span style="FONT-FAMILY: Wingdings">ü<span
+ style  ='FONT: 7pt "Times New Roman"'>&nbsp; </span></span>Ubuntu 16.04 или выше;</p>
+
+<p class=MsoListBullet2><span style="FONT-FAMILY: Wingdings">ü<span
+ style  ='FONT: 7pt "Times New Roman"'>&nbsp; </span></span>Debian 9 или выше;</p>
+
+<p class=MsoListBullet2><span style="FONT-FAMILY: Wingdings">ü<span
+ style  ='FONT: 7pt "Times New Roman"'>&nbsp; </span></span>openSUSE 15 или выше;</p>
+
+<p class=MsoListBullet2><span lang=EN-US style="FONT-FAMILY: Wingdings">ü<span
+ style  ='FONT: 7pt "Times New Roman"'>&nbsp; </span></span><span lang=EN-US>SUSE
+Enterprise Linux (SLES) 12 SP2 </span>или выше<span lang=EN-US>.</span></p>
+
+<p class=MsoNormal>Установлен прокси-сервер Nginx версии 1.14.2 или выше.</p>
+
+<p class=MsoNormal>Установлен сервер авторизации РСДУ.</p>
+
+<p class=MsoNormal>Установлены следующие пакеты обновления БДТИ:</p>
+
+<p class=MsoListBullet2><span style="FONT-FAMILY: Wingdings">ü<span
+ style  ='FONT: 7pt "Times New Roman"'>&nbsp; </span></span>2020_02_10_JSWITCHES_APP.</p>
+
+<h2><a name="_Toc83894897"></a><a name="_Toc55216491"></a><a
+ name="_Toc498938391">2.3 Необходимые знания</a></h2>
+
+<p class=MsoNormal>Дистрибутив серверной части РСДУ: </p>
+
+<p class=MsoNormal><span class=af5><span lang=EN-US>RSDU5_SCADA_linux-x64-&lt;version&gt;-YYYYMMDD_HHMM-&lt;revision&gt;.tar.bz2</span></span></p>
+
+<p class=MsoNormal>Название сервиса: <span lang=EN-US>scada</span>-<span
+ lang=EN-US>server</span>.</p>
+
+<p class=MsoNormal>Для запуска сервиса необходимо знать:</p>
+
+<p class=MsoListBullet2><span style="FONT-FAMILY: Wingdings">ü<span
+ style  ='FONT: 7pt "Times New Roman"'>&nbsp; </span></span>имя пользователя ОС,
+имеющего права администратора, и его пароль на сервере установки сервиса;</p>
+
+<p class=MsoListBullet2><span style="FONT-FAMILY: Wingdings">ü<span
+ style  ='FONT: 7pt "Times New Roman"'>&nbsp; </span></span>имя пользователя и
+пароль учетной записи РСДУ, используемой сервисом для подключения к РСДУ;</p>
+
+<p class=MsoListBullet2><span style="FONT-FAMILY: Wingdings">ü<span
+ style  ='FONT: 7pt "Times New Roman"'>&nbsp; </span></span>имя пользователя и
+пароль учетной записи администратора РСДУ, для выполнения операций настройки
+сервиса;</p>
+
+<p class=MsoListBullet2><span style="FONT-FAMILY: Wingdings">ü<span
+ style  ='FONT: 7pt "Times New Roman"'>&nbsp; </span></span>параметры подключения
+к БДТИ и другим системным ресурсам комплекса РСДУ.</p>
+
+<h2><a name="_Toc83894898"></a><a name="_Toc55216492"></a><a
+ name="_Toc498938392"></a><a name="_Toc441760062">2.4 Ссылки</a></h2>
+
+<p class=MsoNormal>Для настройки сервиса в БДТИ РСДУ ознакомьтесь со следующими
+документами:</p>
+
+<p class=MsoListBullet2><span style="FONT-FAMILY: Wingdings">ü<span
+ style  ='FONT: 7pt "Times New Roman"'>&nbsp; </span></span>«Описание оборудования
+и точек доступа в комплексе РСДУ5. Руководство администратора»;</p>
+
+<p class=MsoListBullet2><span style="FONT-FAMILY: Wingdings">ü<span
+ style  ='FONT: 7pt "Times New Roman"'>&nbsp; </span></span>«Структура базы
+данных. Описание структуры БД РСДУ. Руководство администратора»;</p>
+
+<p class=MsoListBullet2><span style="FONT-FAMILY: Wingdings">ü<span
+ style  ='FONT: 7pt "Times New Roman"'>&nbsp; </span></span>«Установка и запуск <span
+ lang=EN-US>NGINX</span><span lang=EN-US> </span>для <span lang=EN-US>OC</span><span
+ lang=EN-US> </span><span lang=EN-US>SLES</span> 12. Руководство администратора»
+или «Установка и запуск <span lang=EN-US>NGINX</span><span lang=EN-US> </span>для
+<span lang=EN-US>DEBIAN</span>. Руководство администратора».</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<h1 style="TEXT-INDENT: 0cm"><a name="_Toc83894899">3 </a><span
+ style="POSITION: relative; Z-INDEX: 251652086"><span style="HEIGHT:
+ 38px; WIDTH: 646px; POSITION: absolute; LEFT: 0px; TOP: -3px"><IMG src="0001.files/image004.png" width=646
+ height=38 ></span></span>Создание учетной записи РСДУ</h1>
+
+<p class=MsoNormal>Для работы Сервера <span lang=EN-US>SCADA</span> требуется
+учетная запись РСДУ. Сервер использует эту учетную запись для подключения к БД
+и другим ресурсам комплекса.</p>
+
+<p class=MsoNormal>Пакет обновления 2020_02_10_JSWITCHES_APP выполняет
+регистрацию исполняемого модуля (приложения/файла) сервера <span lang=EN-US>SCADA</span>
+в разделе <i>«</i>Служебная информация → Программное обеспечение → Программы
+→ Загружаемые модули<i>».</i></p>
+
+<p class=MsoNormal>Для создания учетной записи РСДУ необходимо:</p>
+
+<p class=MsoListNumber2><a name="_Ref441068553">1.<span style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;
+</span>Запустить приложение «Навигатор БД» РСДУ и перейти в раздел «Доступ к
+информации </a>→ Процессы и персонал». </p>
+
+<p class=MsoListNumber2>2.<span style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;
+</span>В ветке «Процессы» раздела определить группу, в которой будет создана
+учетная запись для Сервера <span lang=EN-US>SCADA</span>. Как правило, группы в
+ветке «Процесс» организованы по хостам комплекса.</p>
+
+<p class=MsoListContinue2>Выбрать необходимую группу и вызвать пункт «Создать»
+контекстного меню области списка Навигатора БД.</p>
+
+<p class=MsoListContinue2>В открывшемся окне указать соответствующее
+приложение, имя и логин учетной записи. Выбор приложения осуществляется по
+кнопке «Выбрать» из приложения «Настройка Базы Данных – <span lang=EN-US>Adjust</span>».</p>
+
+<p class=MsoListContinue2>В поле «Тип» должно быть задано «Процесс», в поле
+«Подсистема» – «Базовая информация комплекса».</p>
+
+<p class=MsoNormal align=center style="TEXT-ALIGN: center"><IMG id="Рисунок&#13;&#10;
+ 9" src ="0001.files/image005.jpg" width=642 height=554 ></p>
+
+<p class=MsoCaption>Рисунок 1 – Окно создания учетной записи РСДУ с типом «Процесс»</p>
+
+<p class=MsoListNumber2>3.<span style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;
+</span>Завершение создания учетной записи выполнить кнопкой «Готово».</p>
+
+<p class=MsoListContinue2>Права доступа назначаются автоматически при создании
+учетной записи на основе описания приложения «Сервер приложений <span
+ lang=EN-US>SCADA</span>».</p>
+
+<p class=MsoNormal>По умолчанию для учетных записей с типом «Процесс» задается
+пароль «<span lang=EN-US>rsdu</span>_211».</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<h1 style="TEXT-INDENT: 0cm"><a name="_Toc83894900"></a><a name="_Toc41984983"></a><a
+ name="_Toc41713533"></a><a name="_Toc41712929">4 </a><span style="POSITION:
+ relative; Z-INDEX: 251651062"><span style="HEIGHT:
+ 72px; WIDTH: 646px; POSITION: absolute; LEFT: 0px; TOP: -7px"><IMG src="0001.files/image003.png" width=646
+ height=72 ></span></span>Установка и управление сервером <span
+ lang=EN-US>SCADA</span></h1>
+
+<h2><a name="_Toc83894901"></a><a name="_Toc55216495">4.1 Установка сервиса</a></h2>
+
+<p class=MsoNormal>Установка сервиса проводится от имени пользователя с правами
+<span lang=EN-US>root</span>. Если в используемой ОС <span lang=EN-US>Linux</span><span
+ lang=EN-US> </span>заблокирован вход от имени пользователя <span lang=EN-US>root</span>,
+то необходимо использовать команду <span class=af5>sudo</span> для выполнения
+операций.</p>
+
+<p class=MsoListNumber2>1.<span style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;
+</span>Скопировать архив с дистрибутивом Сервера <span lang=EN-US>SCADA</span><span
+ lang=EN-US> </span>для ОС <span lang=EN-US>Linux</span><span lang=EN-US> </span>на
+целевой хост в домашний каталог пользователя. </p>
+
+<p class=MsoListContinue2>Имя файла дистрибутива: <span class=af5>RSDU5_SCADA_linux-x64-&lt;version&gt;-YYYYMMDD-HHMM-&lt;revision&gt;.tar.bz2</span></p>
+
+<p class=MsoListNumber2>2.<span style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;
+</span>Выполнить распаковку архива в домашний каталог пользователя</p>
+
+<div style="BORDER-TOP: windowtext 1pt solid; BORDER-RIGHT: windowtext
+ 1pt solid; BACKGROUND: #c1c1c1; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 1pt; PADDING-TOP: 1pt; PADDING-LEFT: 4pt; MARGIN-LEFT: 38.25pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 4pt; MARGIN-RIGHT: 5.65pt">
+
+<p class=16 style="BORDER-TOP:
+ medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>tar -xjf RSDU5_SCADA_linux-x64-&lt;version&gt;-YYYYMMDD-HHMM-&lt;revision&gt;.tar.bz2</span></p>
+
+</div>
+
+<p class=MsoListNumber2 style="MARGIN:
+ 6pt 0cm 6pt 32.05pt; TEXT-INDENT: -17.85pt">3.<span style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;
+</span>Выполнить скрипт установки сервера <span class=af5>install.sh</span>.</p>
+
+<div style="BORDER-TOP: windowtext 1pt solid; BORDER-RIGHT: windowtext
+ 1pt solid; BACKGROUND: #c1c1c1; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 1pt; PADDING-TOP: 1pt; PADDING-LEFT: 4pt; MARGIN-LEFT: 38.25pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 4pt; MARGIN-RIGHT: 5.65pt">
+
+<p class=16 style="BORDER-TOP:
+ medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>cd ~/linux-x64/scada-server/Installers/Linux/</span></p>
+
+<p class=16 style="BORDER-TOP:
+ medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>./install.sh</span></p>
+
+</div>
+
+<p class=MsoListContinue2 style="MARGIN-TOP: 6pt">Рабочий каталог сервера<span
+ lang=EN-US>: </span><span class=af5><span lang=EN-US>/usr/lib/ema/rsdu/scada-server</span></span></p>
+
+<p class=MsoListContinue2>Каталог конфигурационных файлов: <span class=af5>/etc/ema/</span></p>
+
+<p class=MsoListNumber2>4.<span style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;
+</span>Скопировать конфигурационные файлы для настройки.</p>
+
+<p class=MsoListContinue2>В директории <span class=af5>~/</span><span
+ class=af5><span lang=EN-US>linux</span></span><span class=af5>-</span><span
+ class=af5><span lang=EN-US>x</span></span><span class=af5>64/</span><span
+ class=af5><span lang=EN-US>scada</span></span><span class=af5>-</span><span
+ class=af5><span lang=EN-US>server</span></span><span class=af5>/</span><span
+ class=af5><span lang=EN-US>Installers</span></span><span class=af5>/</span><span
+ class=af5><span 
+lang=EN-US>Linux</SPAN></span><span class=af5><span lang=EN-US> 
+</SPAN></SPAN>находится<span class=af5> </SPAN>шаблон<span 
+class=af5> </SPAN>файла<span class=af5> </SPAN>конфигурации<span class=af5> 
+</SPAN><span class=af5><span lang=EN-US>scada</SPAN></SPAN><span class=af5>-</SPAN><span class=af5><span 
+lang=EN-US>server</SPAN></SPAN><span class=af5>.</SPAN><span class=af5><span 
+lang=EN-US>default</SPAN></SPAN><span class=af5>.</SPAN><span class=af5><span 
+lang=EN-US>json</SPAN></SPAN><span class=af5>.</SPAN></p>
+<p class=MsoListContinue2>Необходимо скопировать шаблон в 
+директорию <span class=af5>/etc/ema</SPAN> под именем <span 
+class=af5>scada-server.json.</SPAN></P>
+<div 
+style="BORDER-TOP: windowtext 1pt solid; BORDER-RIGHT: windowtext 1pt solid; BACKGROUND: #c1c1c1; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 1pt; PADDING-TOP: 1pt; PADDING-LEFT: 4pt; MARGIN-LEFT: 38.25pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 4pt; MARGIN-RIGHT: 5.65pt">
+<p class=16 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>cp 
+scada-server.defaults.json /etc/ema/scada-server.json</SPAN></P></DIV>
+<p class=MsoListNumber2 
+style="MARGIN: 6pt 0cm 6pt 32.05pt; TEXT-INDENT: -17.85pt">5.<span style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; </SPAN>Выполнить редактирование 
+скопированного конфигурационного файла, согласно разделу «Конфигурирование 
+сервера <span lang=EN-US>SCADA</SPAN>».</P>
+<p class=MsoListNumber2>6.<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; 
+</SPAN>При необходимости удалить дистрибутив:</P>
+<div 
+style="BORDER-TOP: windowtext 1pt solid; BORDER-RIGHT: windowtext 1pt solid; BACKGROUND: #c1c1c1; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 1pt; PADDING-TOP: 1pt; PADDING-LEFT: 4pt; MARGIN-LEFT: 38.25pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 4pt; MARGIN-RIGHT: 5.65pt">
+<p class=16 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>rm –R 
+~/linux-x64</SPAN></P>
+<p class=16 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>rm 
+~/RSDU5_SCADA_linux-x64-&lt;version&gt;-YYYYMMDD-HHMM-&lt;revision&gt;.tar.bz2</SPAN></P></DIV>
+<h2><a name=_Toc83894902></A><a 
+name=_Toc55216496>4.2 Запуск и останов сервиса</A></H2>
+<p class=MsoNormal>Управление работой Сервера <span 
+lang=EN-US>SCADA</SPAN> в ОС <span lang=EN-US>Linux</SPAN><span lang=EN-US> 
+</SPAN>осуществляется через стандартные команды <span lang=EN-US>systemd</SPAN>. Имя сервиса в <span lang=EN-US>systemd</SPAN>: <span class=af5><span 
+lang=EN-US>rsdu</SPAN></SPAN><span class=af5>-</SPAN><span class=af5><span 
+lang=EN-US>scada</SPAN></SPAN><span class=af5>-</SPAN><span class=af5><span 
+lang=EN-US>server</SPAN></SPAN>.</P>
+<p class=MsoNormal>Запуск сервиса:</P>
+<div 
+style="BORDER-TOP: windowtext 1pt solid; BORDER-RIGHT: windowtext 1pt solid; BACKGROUND: #c1c1c1; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 1pt; PADDING-TOP: 1pt; PADDING-LEFT: 4pt; MARGIN-LEFT: 5.65pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 4pt; MARGIN-RIGHT: 5.65pt">
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>systemctl</SPAN><span 
+lang=EN-US> </SPAN><span lang=EN-US>start</SPAN><span lang=EN-US> 
+</SPAN><span lang=EN-US>rsdu</SPAN>-<span lang=EN-US>scada</SPAN>-<span lang=EN-US>server</SPAN></P></DIV>
+<p class=aff4>Останов сервиса<span lang=EN-US>:</SPAN></P>
+<div 
+style="BORDER-TOP: windowtext 1pt solid; BORDER-RIGHT: windowtext 1pt solid; BACKGROUND: #c1c1c1; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 1pt; PADDING-TOP: 1pt; PADDING-LEFT: 4pt; MARGIN-LEFT: 5.65pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 4pt; MARGIN-RIGHT: 5.65pt">
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>systemctl stop 
+rsdu-scada-server</SPAN></P></DIV>
+<p class=aff4>Перезапуск сервиса<span lang=EN-US>:</SPAN></P>
+<div 
+style="BORDER-TOP: windowtext 1pt solid; BORDER-RIGHT: windowtext 1pt solid; BACKGROUND: #c1c1c1; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 1pt; PADDING-TOP: 1pt; PADDING-LEFT: 4pt; MARGIN-LEFT: 5.65pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 4pt; MARGIN-RIGHT: 5.65pt">
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>systemctl restart 
+rsdu-scada-server</SPAN></P></DIV>
+<p class=aff4>Контроль текущего состояния<span lang=EN-US>: </SPAN></P>
+<div 
+style="BORDER-TOP: windowtext 1pt solid; BORDER-RIGHT: windowtext 1pt solid; BACKGROUND: #c1c1c1; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 1pt; PADDING-TOP: 1pt; PADDING-LEFT: 4pt; MARGIN-LEFT: 5.65pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 4pt; MARGIN-RIGHT: 5.65pt">
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>systemctl status 
+rsdu-scada-server</SPAN></P></DIV>
+<h2><a name=_Toc83894903></A><a 
+name=_Toc55216497>4.3 Контроль лог файлов</A></H2>
+<p class=MsoNormal>Лог-файлы в ОС <span lang=EN-US>Linux</SPAN><span lang=EN-US> 
+</SPAN>Сервера <span lang=EN-US>SCADA</SPAN> располагаются 
+в каталоге:</P>
+<p class=MsoNormal><span class=af5>/var/log/ema/scada-server</SPAN></P>
+<p class=MsoNormal>Сервер ведет следующие лог-файлы:</P>
+<p class=MsoListBullet2><span 
+style="FONT-FAMILY: Wingdings">ü<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp; 
+</SPAN></SPAN><span class=af5>scada-server.log</SPAN> – 
+рабочий лог-файл. Хранение до месяца;</P>
+<p class=MsoListBullet2><span 
+style="FONT-FAMILY: Wingdings">ü<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp; 
+</SPAN></SPAN><span class=af5><span lang=EN-US>scada-server_debug.log</SPAN></SPAN><span lang=EN-US> – </SPAN>отладочный лог<span lang=EN-US>. </SPAN>Хранение несколько дней;</P>
+<p class=MsoListBullet2><span 
+style="FONT-FAMILY: Wingdings">ü<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp; 
+</SPAN></SPAN><span class=af5><span lang=EN-US>scada-server_web.log</SPAN></SPAN><span lang=EN-US> – </SPAN>лог работы <span lang=EN-US>WEB API. </SPAN>Хранение несколько дней.</P>
+<p class=MsoNormal><span class=afb><span style="FONT-SIZE: 11pt; LINE-HEIGHT: 115%">Примечание.</SPAN></SPAN> Если после команды запуска 
+сервера лог-файлы не появились, ошибки запуска следует смотреть в системном 
+журнале ОС, используя команду <span class=af5>journalctl -u 
+rsdu-scada-server.</SPAN></P>
+<h2><a name=_Toc83894904></A><a 
+name=_Toc55216498>4.4 Удаление сервиса</A></H2>
+<p class=MsoNormal>Удаление сервиса выполняется от имени 
+пользователя с правами <span lang=EN-US>root</SPAN> при 
+помощи скрипта <span class=af5>uninstall.sh</SPAN></P>
+<div 
+style="BORDER-TOP: windowtext 1pt solid; BORDER-RIGHT: windowtext 1pt solid; BACKGROUND: #c1c1c1; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 1pt; PADDING-TOP: 1pt; PADDING-LEFT: 4pt; MARGIN-LEFT: 5.65pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 4pt; MARGIN-RIGHT: 5.65pt">
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>cd 
+/usr/lib/ema/rsdu/scada-server</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm">./<span lang=EN-US>uninstall</SPAN>.<span lang=EN-US>sh</SPAN></P></DIV>
+<p class=af8 style="MARGIN-TOP: 6pt"><span class=afb>Примечание</SPAN><b>. </B>Скрипт 
+uninstall.sh не удаляет конфигурационные файлы.</P>
+<p class=MsoNormal>&nbsp;</P>
+<p class=MsoNormal>&nbsp;</P>
+<p class=MsoNormal>&nbsp;</P>
+<h1 style="TEXT-INDENT: 0cm"><a name=_Toc83894905></A><a name=_Ref55292421>5 </A><span 
+style="POSITION: relative; Z-INDEX: 251658230"><span 
+style="HEIGHT: 38px; WIDTH: 646px; POSITION: absolute; LEFT: 0px; TOP: -4px"><IMG src="0001.files/image004.png" width=646 height=38 ></SPAN></SPAN>Конфигурирование сервера 
+<span lang=EN-US>SCADA</SPAN></H1>
+<p class=MsoNormal>Конфигурация сервера <span lang=EN-US>SCADA</SPAN><span lang=EN-US> 
+</SPAN>расположена в конфигурационном файле <span class=af5>/etc/ema/scada-server.json</SPAN>.</P>
+<h2><a name=_Toc83894906></A><a 
+name=_Toc55216500>Файл конфигурации </A><span lang=EN-US>scada</SPAN>-<span lang=EN-US>server</SPAN>.<span lang=EN-US>json</SPAN></H2>
+<div 
+style="BORDER-TOP: windowtext 1pt solid; BORDER-RIGHT: windowtext 1pt solid; BACKGROUND: #c1c1c1; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 1pt; PADDING-TOP: 1pt; PADDING-LEFT: 4pt; MARGIN-LEFT: 5.65pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 4pt; MARGIN-RIGHT: 5.65pt">
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm">{</P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm">&nbsp; <span lang=EN-US>"ServiceName": 
+"scada-server",</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US></SPAN>&nbsp;</P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp; "Url": 
+"http://127.0.0.1:5001",</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US></SPAN>&nbsp;</P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp; 
+"HostStatusOptions": {</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp; 
+"DefaultHostStatus": "Master"</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp; },</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US></SPAN>&nbsp;</P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp; 
+"HostStatusFileOptions": {</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp; 
+"Enabled": true,</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp; 
+"FilePath": "/var/run/ema/hoststate",</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp; 
+"ReadFileInterval": 1</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US></SPAN>&nbsp;</P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp; },</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US></SPAN>&nbsp;</P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp; "DataBase": 
+{</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp; 
+"DataSource": "db:1521/XE",</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp; 
+"Login": "scada01",</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp; 
+"Password": "rsdu_211",</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp; 
+"Application": "scada-server"</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp; },</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US></SPAN>&nbsp;</P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp; "RabbitMQ": 
+{</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp; 
+"Login": "rsdu",</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp; 
+"Password": "passme",</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp; 
+"VirtualHost": "rsdu",</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp; 
+"Port": 5672,</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp; 
+"HostNames": [ "oic1", "oic2"]</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp; },</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US></SPAN>&nbsp;</P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp; 
+"UserServiceOptions": {</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp; 
+"AuthServerUrl": "http://app:8080"</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp; },</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US></SPAN>&nbsp;</P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp; 
+"TopologyServerOptions": {</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp; 
+"ProcessIds": [ 20015, 20033],</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp; 
+"OicConnectionOptions": {</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "UseMasterSlave": 
+true,</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "ConnectTo": 0,</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "UserId": 20085,</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "SocketTimeout": 20,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "ConnectRetryInterval": 
+30</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp; 
+}</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp; },</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US></SPAN>&nbsp;</P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp; 
+"SchemesOptions": {</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp; 
+"UseDataEmulation": false,</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US></SPAN>&nbsp;</P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp; 
+"NetworkStateService": {</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "ControlPeriod": 
+15</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp; 
+},</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US></SPAN>&nbsp;</P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp; 
+"TracingService": {</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "ControlPeriod": 
+15,</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "NotAciveLivePeriod": 
+300</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp; 
+}</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp; },</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US></SPAN>&nbsp;</P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp; 
+"VSCommonSettings": {</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp; 
+"ENetworkStateSettings": {</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp; 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"States": [</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+{</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+"State": "Damaged",</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp;"Name": "Поврежден",</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+"Color": "#FF0000"</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+},</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+{</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+"State": "Failure",</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+"Name": "Авария",</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+"Color": "#FFFF00"</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+},</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+{</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+"State": "Grounded",</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+"Name": "Заземлено",</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+"Color": "#FFFFFF"</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+},</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+{</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+"State": "PartiallyGrounded",</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+"Name": "Частично заземлено",</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+"Color": "#008000"</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+},</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+{</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+"State": "Isolated",</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"Name": "Изолирован",</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+"Color": "#FFFFFF"</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+},</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+{</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+"State": "UnderVoltage",</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN>"<span lang=EN-US>Name</SPAN>": "Под 
+напряжением",</P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+"<span lang=EN-US>Color</SPAN>": "#<span lang=EN-US>FFA</SPAN>500"</P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; },</P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {</P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+"<span lang=EN-US>State</SPAN>": "<span lang=EN-US>Undefined</SPAN>",</P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+"<span lang=EN-US>Name</SPAN>": "Состояние не 
+определено",</P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<span lang=EN-US>"Color": "#696969"</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+}</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ]</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp; },</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp; "ENetworkTracingSettings": 
+{</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "Traces": [</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+{</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+"TraceType": "TraceNetwork",</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN>"<span lang=EN-US>Name</SPAN>": "Трассировка участка 
+сети",</P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+"<span lang=EN-US>Color</SPAN>": "#<span lang=EN-US>FF</SPAN>0000"</P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; },</P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {</P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+"<span lang=EN-US>TraceType</SPAN>": "<span lang=EN-US>TraceToConsumer</SPAN>",</P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+"<span lang=EN-US>Name</SPAN>": "Трассировка до 
+потребителя",</P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+"<span lang=EN-US>Color</SPAN>": "#00<span lang=EN-US>FF</SPAN>00"</P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; },</P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {</P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+"<span lang=EN-US>TraceType</SPAN>": "<span lang=EN-US>TraceToSource</SPAN>",</P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+"<span lang=EN-US>Name</SPAN>": "Трассировка до центра 
+питания",</P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<span lang=EN-US>"Color": "#0000FF"</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+}</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ]</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp; }</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp; },</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US></SPAN>&nbsp;</P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp; 
+"TopologyServiceOptions": {</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US></SPAN>&nbsp;</P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp; 
+"OMSConnection": {</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "Address": 
+"app:8080",</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "Login": "admin",</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "Password": 
+"passme"</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp; 
+}</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp; },</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US></SPAN>&nbsp;</P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp; "JobOptions": 
+{</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp; 
+"TemplateFilePath": "/usr/lib/ema/rsdu/scada-server/job.dotx",<br>&nbsp;&nbsp;&nbsp; "SFormUrl": 
+"http://127.0.0.1:5007/rsdu/sforms"</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp; },</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US></SPAN>&nbsp;</P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp; 
+"VideowallOptions": {</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp; 
+"Videowalls": [</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "Name": 
+"Видеостена 1",</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "Url": 
+"ws://192.168.12.139:5005/rsdu/videowall/api/v1/rpc"</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp; 
+]</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp; },</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US></SPAN>&nbsp;</P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp; 
+"ArchivesServiceOptions": {</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp; 
+"Enabled": true,</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp; 
+"OracleModelDB": {</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "DataSource": 
+"db:1521/XE",</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "Login": 
+"scada01",</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "Password": 
+"rsdu_211"</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp; 
+},</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp; 
+"UseOracleArchives": true,</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp; 
+"UseCassandraArchives": true,</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp; 
+"OracleArchivesDB": {</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "DataSource": 
+"db:1521/XE",</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "Login": 
+"scada01",</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "Password": 
+"rsdu_211"</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp; 
+},</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp; 
+"CassandraArchivesDB": {</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "Hosts": [ "arc01", 
+"arc02"],</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "Port": 9042,</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "Username": 
+"admin",</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "Password": 
+"passme",</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "Keyspace": "arc"</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp; 
+}</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp; },</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US></SPAN>&nbsp;</P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp; 
+"ASEnergy": {</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "AccessToken": 
+"rsdu",</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+"ConnectTimeoutSec": 20,</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "AccessPoints": 
+[</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ]</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp; 
+},&nbsp;&nbsp;&nbsp; </SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp; 
+</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp; 
+"JSwitch": {</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+"ReportTemplatePath": 
+"/usr/lib/ema/rsdu/scada-server/switch_report_template.xlsx",<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+"OutOfWorkReportTemplatePath": 
+"/usr/lib/ema/rsdu/scada-server/outofwork_report_template.xlsx",</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "APTSSignals": [ 
+"SS_SSW_ON" ],</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "APTSTypes": [ 
+"MEAS_SIGNAL_STATE" ]</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp; 
+},</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US></SPAN>&nbsp;</P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp; "Logging": 
+{</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp; 
+"IncludeScopes": false,</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp; 
+"LogLevel": {</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "Default": 
+"Trace",</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "Microsoft": 
+"Warning",</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+"Microsoft.Hosting.Lifetime": "Information"</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp; 
+}</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp; }</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 12pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>}</SPAN></P></DIV>
+<h2><a name=_Toc83894907></A><a 
+name=_Toc55216501>5.1 Общая конфигурация</A></H2>
+<p class=MsoNormal><span class=af5>Urls</SPAN> – <span lang=EN-US>IP</SPAN>-адрес и порт сервиса.</P>
+<p class=MsoNormal><span class=af5><span lang=EN-US>HostStatusInformerOptions / 
+DefaultHostStatus</SPAN></SPAN><span lang=EN-US> – 
+</SPAN>статус сервиса при запуске<span lang=EN-US>. 
+</SPAN>Доступные варианты: Slave (резервный), Master (основной).</P>
+<p class=MsoNormal>Если предполагается запускать только 
+один экземпляр сервиса без резервирования (односерверная конфигурация), 
+необходимо указать <span lang=EN-US>Master</SPAN>. В случае 
+резервирования каждому экземпляру в зависимости от предполагаемой по умолчанию 
+роли, при этом экземпляр со статусом <span lang=EN-US>Master</SPAN> должен быть один.</P>
+<p class=MsoNormal>Блок <span class=af5>HostStatusFromFileOptions</SPAN> – параметры модуля 
+определения текущего статуса сервиса.</P>
+<p class=MsoListBullet2><span 
+style="FONT-FAMILY: Wingdings">ü<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp; 
+</SPAN></SPAN><span class=af5>Enabled</SPAN> – <span 
+lang=EN-US>true</SPAN> (модуль включён). Для односерверной 
+конфигурации модуль необходимо отключить, указав <span class=af5><span style='FONT-FAMILY: "Arial","sans-serif"'>false</SPAN></SPAN>;</P>
+<p class=MsoListBullet2><span 
+style="FONT-FAMILY: Wingdings">ü<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp; 
+</SPAN></SPAN><span class=af5>FilePath</SPAN><span 
+style='FONT-FAMILY: "Calibri","sans-serif"'> </SPAN>– путь 
+к файлу с текущим статусом сервиса. </P>
+<p class=MsoNormal>Блок <span class=af5>DataBase</SPAN> – параметры подключения к БД. </P>
+<p class=MsoListBullet2><span 
+style="FONT-FAMILY: Wingdings">ü<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp; 
+</SPAN></SPAN><span class=af5>DataSource</SPAN> – строка с 
+информацией о подключении к БД в формате «<span class=af5>IP_адрес:порт/имя_бд</SPAN>». Вместо <span lang=EN-US>IP</SPAN>_адреса может использоваться <span lang=EN-US>DNS</SPAN><span lang=EN-US> 
+</SPAN>имя;</P>
+<p class=MsoListBullet2><span 
+style="FONT-FAMILY: Wingdings">ü<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp; 
+</SPAN></SPAN><span class=af5>Login</SPAN><span 
+style='FONT-FAMILY: "Calibri","sans-serif"'> </SPAN>– логин 
+учетной записи;</P>
+<p class=MsoListBullet2><span 
+style="FONT-FAMILY: Wingdings">ü<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp; 
+</SPAN></SPAN><span class=af5>Password</SPAN><span 
+style='FONT-FAMILY: "Calibri","sans-serif"'> </SPAN>– 
+пароль учетной записи;</P>
+<p class=MsoListBullet2><span 
+style="FONT-FAMILY: Wingdings">ü<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp; 
+</SPAN></SPAN><span class=af5>Application</SPAN><span 
+style='FONT-SIZE: 9pt; FONT-FAMILY: "Courier New"; LINE-HEIGHT: 115%'> </SPAN><span style="LINE-HEIGHT: 115%">– </SPAN>alias зарегистрированного сервера в разделе 
+Навигатора БД РСДУ «Служебная информация → Программное обеспечение → Программы → 
+Загружаемые модули» (по умолчанию «scada-server»).</P>
+<p class=MsoNormal>Блок <span class=af5>RabbitMQ</SPAN><span 
+style='FONT-FAMILY: "Calibri","sans-serif"'> </SPAN>– 
+параметры подключения к брокеру сообщений Rabbit.</P>
+<p class=MsoListBullet2><span 
+style="FONT-FAMILY: Wingdings">ü<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp; 
+</SPAN></SPAN><span class=af5>Login</SPAN><span 
+style='FONT-FAMILY: "Calibri","sans-serif"'> </SPAN>– логин 
+учетной записи;</P>
+<p class=MsoListBullet2><span 
+style="FONT-FAMILY: Wingdings">ü<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp; 
+</SPAN></SPAN><span class=af5>Password</SPAN><span 
+style='FONT-FAMILY: "Calibri","sans-serif"'> </SPAN>– 
+пароль учетной записи;</P>
+<p class=MsoListBullet2><span 
+style="FONT-FAMILY: Wingdings">ü<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp; 
+</SPAN></SPAN><span class=af5>VirtualHost</SPAN><span 
+style='FONT-SIZE: 9pt; FONT-FAMILY: "Courier New"; LINE-HEIGHT: 115%'> </SPAN><span style="LINE-HEIGHT: 115%">–</SPAN><span 
+style='FONT-SIZE: 9pt; FONT-FAMILY: "Courier New"; LINE-HEIGHT: 115%'> </SPAN>виртуальный хост для обмена сообщениями, 
+используемый в комплексе<span 
+style='FONT-SIZE: 9pt; FONT-FAMILY: "Courier New"; LINE-HEIGHT: 115%'>. </SPAN>По умолчанию – rsdu;</P>
+<p class=MsoListBullet2><span 
+style="FONT-FAMILY: Wingdings; LINE-HEIGHT: 115%">ü<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp; 
+</SPAN></SPAN><span class=af5>Port</SPAN><span 
+style='FONT-FAMILY: "Calibri","sans-serif"'> </SPAN>– порт 
+подключения. По умолчанию –<span 
+style='FONT-SIZE: 9pt; FONT-FAMILY: "Courier New"; LINE-HEIGHT: 115%'> </SPAN><span style="LINE-HEIGHT: 115%">5672;</SPAN></P>
+<p class=MsoListBullet2><span 
+style="FONT-FAMILY: Wingdings">ü<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp; 
+</SPAN></SPAN><span class=af5>HostNames</SPAN><span 
+style='FONT-SIZE: 9pt; FONT-FAMILY: "Courier New"; LINE-HEIGHT: 115%'> </SPAN>– список серверов RabbitMQ. Задаются в виде <span 
+lang=EN-US>ip</SPAN>-адресов или имен <span lang=EN-US>DNS</SPAN>.</P>
+<p class=MsoNormal>Блок <span class=af5>UserServiceOptions</SPAN><span 
+style='FONT-SIZE: 9pt; FONT-FAMILY: "Courier New"; LINE-HEIGHT: 115%'> </SPAN>– параметры подключения к серверу авторизации.</P>
+<p class=MsoListBullet2><span 
+style="FONT-SIZE: 9pt; FONT-FAMILY: Wingdings; LINE-HEIGHT: 115%">ü<span style='FONT: 7pt "Times New Roman"'>&nbsp; </SPAN></SPAN><span class=af5>AuthServerUrl</SPAN><span 
+style='FONT-FAMILY: "Calibri","sans-serif"'> </SPAN>–<span 
+style='FONT-FAMILY: "Calibri","sans-serif"'> </SPAN>Url 
+подключения к серверу авторизации.<span 
+style='FONT-SIZE: 9pt; FONT-FAMILY: "Courier New"; LINE-HEIGHT: 115%'> </SPAN></P>
+<p class=MsoNormal>Блок <span class=af5>ArchivesServiceOptions / OracleModelDB</SPAN> – настройки 
+БД <span lang=EN-US>Oracle</SPAN><span lang=EN-US> </SPAN>для доступа к БДТИ с конфигурацией комплекса РСДУ – 
+используется модулем чтения и записи архивов.</P>
+<p class=MsoListBullet2><span 
+style="FONT-FAMILY: Wingdings">ü<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp; 
+</SPAN></SPAN><span class=af5>DataSource</SPAN> – строка с 
+информацией о подключении к БД <span lang=EN-US>Oracle</SPAN> в формате «<span class=af5>IP_адрес:порт/имя_бд</SPAN>». Вместо <span lang=EN-US>IP_</SPAN>адреса может использоваться <span lang=EN-US>DNS </SPAN>имя;</P>
+<p class=MsoListBullet2><span 
+style="FONT-FAMILY: Wingdings">ü<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp; 
+</SPAN></SPAN><span class=af5>Login</SPAN><span 
+style='FONT-FAMILY: "Calibri","sans-serif"'> </SPAN>– логин 
+учетной записи;</P>
+<p class=MsoListBullet2><span 
+style="FONT-FAMILY: Wingdings">ü<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp; 
+</SPAN></SPAN><span class=af5>Password</SPAN><span 
+style='FONT-FAMILY: "Calibri","sans-serif"'> </SPAN>– 
+пароль учетной записи;</P>
+<p class=MsoListBullet2><span 
+style="FONT-FAMILY: Wingdings">ü<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp; 
+</SPAN></SPAN><span class=af5>UseOracleArchives</SPAN> – 
+использовать БД <span lang=EN-US>Oracle</SPAN> для хранения 
+архивов;</P>
+<p class=MsoListBullet2><span 
+style="FONT-FAMILY: Wingdings">ü<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp; 
+</SPAN></SPAN><span class=af5>UseCassandraArchives</SPAN> – 
+использовать БД <span lang=EN-US>Cassandra</SPAN> для 
+хранения архивов.</P>
+<p class=MsoNormal>Блок <span class=af5>ArchivesServiceOptions / OracleArchivesDB</SPAN> – 
+настройки БД <span lang=EN-US>Oracle</SPAN><span lang=EN-US> </SPAN>для хранения архивов.</P>
+<p class=MsoListBullet2><span 
+style="FONT-FAMILY: Wingdings">ü<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp; 
+</SPAN></SPAN><span class=af5>DataSource</SPAN> – строка с 
+информацией о подключении к БД <span lang=EN-US>Oracle</SPAN> в формате «<span class=af5>IP_адрес:порт/имя_бд</SPAN>». Вместо <span lang=EN-US>IP_</SPAN>адреса может использоваться <span lang=EN-US>DNS </SPAN>имя;</P>
+<p class=MsoListBullet2><span 
+style="FONT-FAMILY: Wingdings">ü<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp; 
+</SPAN></SPAN><span class=af5>Login</SPAN> – логин учетной 
+записи;</P>
+<p class=MsoListBullet2><span lang=EN-US 
+style="FONT-FAMILY: Wingdings">ü<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp; 
+</SPAN></SPAN><span class=af5>Password</SPAN> – пароль 
+учетной записи</P>
+<p class=MsoNormal>Блок <span class=af5><span lang=EN-US>ArchivesServiceOptions / 
+CassandraArchivesDB</SPAN></SPAN><span lang=EN-US> – 
+</SPAN>настройки БД <span lang=EN-US>Cassandra </SPAN>для 
+хранения архивов<span lang=EN-US>.</SPAN></P>
+<p class=MsoListBullet2><span 
+style="FONT-FAMILY: Wingdings">ü<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp; 
+</SPAN></SPAN><span class=af5>Hosts</SPAN> – список <span 
+lang=EN-US>IP</SPAN>-адресов или <span lang=EN-US>DNS</SPAN> имён;</P>
+<p class=MsoListBullet2><span 
+style="FONT-FAMILY: Wingdings">ü<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp; 
+</SPAN></SPAN><span class=af5>Port</SPAN> – порт;</P>
+<p class=MsoListBullet2><span lang=EN-US 
+style="FONT-FAMILY: Wingdings">ü<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp; 
+</SPAN></SPAN><span class=af5>Username</SPAN> – имя 
+пользователя;</P>
+<p class=MsoListBullet2><span lang=EN-US 
+style="FONT-FAMILY: Wingdings">ü<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp; 
+</SPAN></SPAN><span class=af5>Password</SPAN> – пароль 
+пользователя;</P>
+<p class=MsoListBullet2><span 
+style="FONT-FAMILY: Wingdings">ü<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp; 
+</SPAN></SPAN><span class=af5>Keyspace</SPAN> – имя 
+пространства хранения данных.</P>
+<p class=MsoNormal>Блок <span class=af5>Logging</SPAN> – конфигурация логирования. Не должна 
+изменяться пользователем.</P>
+<p class=MsoNormal>Дополнительные настройки вывода 
+сообщений в лог так же содержатся в файле <span class=af5>/usr/lib/ema/</SPAN><span class=af5><span lang=EN-US>rsdu</SPAN></SPAN><span class=af5>/scada-server/appsettings.json</SPAN>.</P>
+<h2><a name=_Toc83894908></A><a 
+name=_Toc55216502>5.2 Конфигурация модулей 
+приложений</A></H2>
+<h3><a name=_Toc83894909>5.2.1 
+Приложение просмотра схем</A></H3>
+<p class=MsoNormal>Блок <span class=af5>TopologyServerOptions</SPAN><span 
+style='FONT-SIZE: 9pt; FONT-FAMILY: "Courier New"; LINE-HEIGHT: 115%'> </SPAN>– конфигурация подключения к серверу топологии.</P>
+<p class=MsoListBullet2><span 
+style="FONT-FAMILY: Wingdings; LINE-HEIGHT: 115%">ü<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp; 
+</SPAN></SPAN><span class=af5>ProcessIds</SPAN><span 
+style='FONT-SIZE: 9pt; FONT-FAMILY: "Courier New"; LINE-HEIGHT: 115%'> </SPAN>– список идентификаторов пользователей серверов 
+топологии в разделе Навигатора БД РСДУ<span 
+style='FONT-SIZE: 9pt; FONT-FAMILY: "Courier New"; LINE-HEIGHT: 115%'> </SPAN><i>«</I>Доступ к информации и 
+управлению → Процессы и персонал → Процессы»<i>. </I></P>
+<p class=MsoListBullet2><span lang=EN-US 
+style="FONT-FAMILY: Wingdings">ü<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp; 
+</SPAN></SPAN><span class=af5>OicConnectionOptions</SPAN> – 
+опции подключения</P>
+<p class=MsoListBullet3><span 
+style='FONT-FAMILY: "Courier New"'>o<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp; 
+</SPAN></SPAN><span class=af5>UseMasterSlave</SPAN> – 
+использовать механизм определения статуса хоста (Master/Slave),</P>
+<p class=MsoListBullet3><span 
+style='FONT-FAMILY: "Courier New"; LINE-HEIGHT: 115%'>o<span style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp; </SPAN></SPAN><span class=af5>ConnectTo</SPAN><span 
+style='FONT-SIZE: 9pt; FONT-FAMILY: "Courier New"; LINE-HEIGHT: 115%'> </SPAN>– определяет к какому серверу подключаться: 0 – со 
+статусом основной, 1 – со статусом резервный, 2 – к <span 
+style="LINE-HEIGHT: 115%">любому.</SPAN></P>
+<p class=MsoListBullet3><span 
+style='FONT-FAMILY: "Courier New"; LINE-HEIGHT: 115%'>o<span style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp; </SPAN></SPAN><span class=af5>UserId</SPAN><span style="LINE-HEIGHT: 115%"> – идентификатор пользователя сервера приложений 
+</SPAN><span lang=EN-US style="LINE-HEIGHT: 115%">scada</SPAN><span style="LINE-HEIGHT: 115%"> (</SPAN>раздел Навигатора БД РСДУ<span 
+style='FONT-SIZE: 9pt; FONT-FAMILY: "Courier New"; LINE-HEIGHT: 115%'> </SPAN><i>«</I>Доступ к информации и 
+управлению → Процессы и персонал → Процессы»)<span style="LINE-HEIGHT: 115%">, логин которого используется при подключении к БД (блок 
+</SPAN><span class=af5>DataBase</SPAN>).<span 
+style="LINE-HEIGHT: 115%"> От имени этого пользователя 
+будет инициировано подключение, этот идентификатор пользователя будет 
+использоваться в протоколе </SPAN><span lang=EN-US style="LINE-HEIGHT: 115%">ADCP</SPAN><span style="LINE-HEIGHT: 115%">.</SPAN></P>
+<p class=MsoListBullet3><span 
+style='FONT-FAMILY: "Courier New"; LINE-HEIGHT: 115%'>o<span style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp; </SPAN></SPAN><span class=af5>SocketTimeout</SPAN><span style="LINE-HEIGHT: 115%"> – таймаут ожидания ответа от сервера в секундах. 
+Необязательный параметр. По умолчанию 20 секунд.</SPAN></P>
+<p class=MsoListBullet3><span 
+style='FONT-FAMILY: "Courier New"'>o<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp; 
+</SPAN></SPAN><span class=af5>ConnectRetryInterval</SPAN> – 
+интервал времени между попытками восстановления соединения с сервером топологии 
+в секундах. По умолчанию 30 секунд.</P>
+<p class=MsoNormal>Блок <span class=af5>SchemesOptions</SPAN><span 
+style='FONT-SIZE: 9pt; FONT-FAMILY: "Courier New"; LINE-HEIGHT: 115%'> </SPAN>– конфигурирование работы модуля.</P>
+<p class=MsoListBullet2><span 
+style="FONT-FAMILY: Wingdings; LINE-HEIGHT: 115%">ü<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp; 
+</SPAN></SPAN><span class=af5>UseDataEmulation</SPAN><span 
+style='FONT-SIZE: 9pt; FONT-FAMILY: "Courier New"; LINE-HEIGHT: 115%'> </SPAN>– подключение режима эмуляции данных без 
+подключения к серверу топологии. Используется для отладки. В обычном режиме 
+должно иметь значение<span 
+style='FONT-SIZE: 9pt; FONT-FAMILY: "Courier New"; LINE-HEIGHT: 115%'> </SPAN><span class=af5>false</SPAN><span style="LINE-HEIGHT: 115%">;</SPAN></P>
+<p class=MsoListBullet2><span 
+style="FONT-FAMILY: Wingdings">ü<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp; 
+</SPAN></SPAN><span class=af5>NetworkStateService/ControlPeriod</SPAN><span 
+style='FONT-SIZE: 9pt; FONT-FAMILY: "Courier New"; LINE-HEIGHT: 115%'> </SPAN>– период опроса состояния сети (сек);</P>
+<p class=MsoListBullet2><span 
+style="FONT-FAMILY: Wingdings">ü<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp; 
+</SPAN></SPAN><span class=af5>TracingService/ControlPeriod</SPAN><span 
+style='FONT-SIZE: 9pt; FONT-FAMILY: "Courier New"; LINE-HEIGHT: 115%'> </SPAN>– период опроса при трассировке сети (сек);</P>
+<p class=MsoListBullet2><span 
+style="FONT-FAMILY: Wingdings">ü<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp; 
+</SPAN></SPAN><span class=af5>TracingService/NotAciveLivePeriod</SPAN><span 
+style='FONT-SIZE: 9pt; FONT-FAMILY: "Courier New"; LINE-HEIGHT: 115%'> </SPAN>– период неактивности задачи трассировки до ее 
+завершения (сек).</P>
+<p class=MsoNormal>Блок<span class=af5> VSCommonSettings</SPAN> – общие настройки модуля схем. 
+Содержит настройки цветов, используемых приложением «Просмотр схем» при 
+трассировке и отображении состояния электрической сети.</P>
+<p class=MsoNormal style="MARGIN-TOP: 6pt">Блок <span 
+class=af5>VSCommonSettings </SPAN>/ <span class=af5>ENetworkStateSettings</SPAN> содержит список цветовых 
+настроек для отображения состояния сети.</P>
+<p class=MsoListBullet2><span 
+style="FONT-FAMILY: Wingdings">ü<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp; 
+</SPAN></SPAN><span class=af5>State</SPAN> – состояние, для 
+которого задается цвет;</P>
+<p class=MsoListBullet2><span 
+style="FONT-FAMILY: Wingdings">ü<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp; 
+</SPAN></SPAN><span class=af5>Name</SPAN><span lang=EN-US> – </SPAN>наименование состояния;</P>
+<p class=MsoListBullet2><span 
+style="FONT-FAMILY: Wingdings">ü<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp; 
+</SPAN></SPAN><span class=af5>Color</SPAN> – цвет в 
+шестнадцатеричном представлении формата <span lang=EN-US>RGB</SPAN>.</P>
+<p class=MsoNormal>Блок <span class=af5>VSCommonSettings </SPAN>/ <span class=af5>ENetworkTracingSettings – </SPAN>список цветовых настроек 
+для отображения трассировки.</P>
+<p class=MsoListBullet2><span 
+style="FONT-FAMILY: Wingdings">ü<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp; 
+</SPAN></SPAN><span class=af5>TraceType </SPAN>– тип 
+трассировки;</P>
+<p class=MsoListBullet2><span 
+style="FONT-FAMILY: Wingdings">ü<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp; 
+</SPAN></SPAN><span class=af5>Name</SPAN><span lang=EN-US> – </SPAN>наименование типа трассировки;</P>
+<p class=MsoListBullet2><span 
+style="FONT-FAMILY: Wingdings">ü<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp; 
+</SPAN></SPAN><span class=af5>Color</SPAN> – цвет в 
+шестнадцатеричном представлении формата <span lang=EN-US>RGB</SPAN></P>
+<h3 style="MARGIN-LEFT: 0cm; TEXT-INDENT: 0cm"><a 
+name=_Toc83894910>5.2.2 Модуль формирования топологической 
+модели</A></H3>
+<p class=MsoNormal>Блок <span class=af5>TopologyServiceOptions/OMSConnection</SPAN> – настройки 
+подключения к серверу ОМС для получения информации о потребителях.</P>
+<p class=MsoListBullet2><span 
+style="FONT-FAMILY: Wingdings">ü<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp; 
+</SPAN></SPAN><span class=af5>Address</SPAN><span 
+style='FONT-FAMILY: "Calibri","sans-serif"'> </SPAN>– адрес 
+подключения в формате <span class=af5>&lt;host&gt;:&lt;port&gt;;</SPAN></P>
+<p class=MsoListBullet2><span 
+style="FONT-FAMILY: Wingdings">ü<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp; 
+</SPAN></SPAN><span class=af5>Login</SPAN> – логин учетной 
+записи ОМС;</P>
+<p class=MsoListBullet2><span 
+style="FONT-FAMILY: Wingdings">ü<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp; 
+</SPAN></SPAN><span class=af5>Password</SPAN> – пароль 
+учетной записи ОМС.</P>
+<h3 style="MARGIN-LEFT: 0cm; TEXT-INDENT: 0cm"><a 
+name=_Toc83894911>5.2.3 Приложение программ 
+переключений</A></H3>
+<p class=MsoNormal>Блок <span class=af5>JobOptions</SPAN>.</P>
+<p class=MsoListBullet2><span 
+style="FONT-FAMILY: Wingdings">ü<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp; 
+</SPAN></SPAN><span class=af5>TemplateFilePath</SPAN><span 
+style='FONT-FAMILY: "Calibri","sans-serif"'> </SPAN>– 
+расположение шаблона для формирования бланков переключений.</P>
+<p class=MsoListBullet2><span 
+style="FONT-FAMILY: Wingdings">ü<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp; 
+</SPAN></SPAN><span class=af5>SFormUrl</SPAN> – <span 
+lang=EN-US>URL</SPAN>-адрес сервиса «Программы 
+переключений».</P>
+<h3 style="MARGIN-LEFT: 0cm; TEXT-INDENT: 0cm"><a 
+name=_Toc83894912>5.2.4 Модуль приложения «Журнал 
+отключений»</A></H3>
+<p class=MsoNormal>Блок <span lang=EN-US 
+style="FONT-FAMILY: Courier">JSwitch</SPAN> – настройки 
+работы модуля журнала отключений.</P>
+<p class=MsoListBullet2><span 
+style="FONT-FAMILY: Wingdings">ü<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp; 
+</SPAN></SPAN><span class=af5>ReportTemplatePath</SPAN><span 
+style='FONT-FAMILY: "Calibri","sans-serif"'> – </SPAN>путь 
+к шаблону ведомости отключений<span style='FONT-FAMILY: "Calibri","sans-serif"'>.</SPAN></P>
+<p class=MsoListBullet2><span 
+style="FONT-FAMILY: Wingdings">ü<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp; 
+</SPAN></SPAN><span class=af5>OutOfWorkReportTemplatePath</SPAN><span 
+style='FONT-FAMILY: "Calibri","sans-serif"'> </SPAN>– путь 
+к шаблону ведомости коммутационных аппаратов с выведенными из работы источниками 
+состояний.</P>
+<p class=MsoListBullet2><span 
+style="FONT-FAMILY: Wingdings">ü<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp; 
+</SPAN></SPAN><span class=af5>APTSSignals</SPAN><span 
+style='FONT-FAMILY: "Calibri","sans-serif"'> – 
+</SPAN>список сигналов, принимаемых за срабатывание АПТС. Список содержит поле 
+DEFINE_ALIAS сигналов<span style='FONT-FAMILY: "Calibri","sans-serif"'>.</SPAN></P>
+<p class=MsoListBullet2><span 
+style="FONT-FAMILY: Wingdings">ü<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp; 
+</SPAN></SPAN><span class=af5>APTSTypes</SPAN><span 
+style='FONT-FAMILY: "Calibri","sans-serif"'> – 
+</SPAN>список типов параметров, относящихся к АПТС. Список содержит список 
+DEFINE_ALIAS типов параметров<span style='FONT-FAMILY: "Calibri","sans-serif"'>.</SPAN></P>
+<h3 style="MARGIN-LEFT: 0cm; TEXT-INDENT: 0cm"><a 
+name=_Toc83894913>5.2.5 Модуль поддержки 
+видеостены</A></H3>
+<p class=MsoNormal>Работает в связке с сервисом управления 
+видеостеной. Поддерживается работа с несколькими видеостенами.</P>
+<p class=MsoNormal>Блок<span 
+style='FONT-SIZE: 9pt; FONT-FAMILY: "Courier New"; LINE-HEIGHT: 115%'> </SPAN><span class=af5>VideowallOptions/Videowalls</SPAN><span 
+style='FONT-SIZE: 9pt; FONT-FAMILY: "Courier New"; LINE-HEIGHT: 115%'> </SPAN>– настройки подключения. Для каждого сервиса 
+управления видеостеной задается:</P>
+<p class=MsoListBullet2><span lang=EN-US 
+style="FONT-SIZE: 9pt; FONT-FAMILY: Wingdings; LINE-HEIGHT: 115%">ü<span style='FONT: 7pt "Times New Roman"'>&nbsp; </SPAN></SPAN><span class=af5>Name</SPAN><span 
+style='FONT-SIZE: 9pt; FONT-FAMILY: "Courier New"; LINE-HEIGHT: 115%'> </SPAN>– наименование;</P>
+<p class=MsoListBullet2><span lang=EN-US 
+style="FONT-SIZE: 9pt; FONT-FAMILY: Wingdings; LINE-HEIGHT: 115%">ü<span style='FONT: 7pt "Times New Roman"'>&nbsp; </SPAN></SPAN><span class=af5>Url</SPAN><span 
+style='FONT-SIZE: 9pt; FONT-FAMILY: "Courier New"; LINE-HEIGHT: 115%'> </SPAN>– Url подключения.</P>
+<h3 style="MARGIN-LEFT: 0cm; TEXT-INDENT: 0cm"><a 
+name=_Toc83894914>5.2.6 Модуль работы с сервисом интеграции 
+с АС Энергия</A></H3>
+<p class=MsoNormal>В комплексе может функционировать 
+несколько экземпляров сервисов интеграции с АС Энергия, работающих в режиме 
+резервирования.</P>
+<p class=MsoNormal style="PAGE-BREAK-AFTER: avoid">Блок 
+<span class=af5>ASEnergy</SPAN>.</P>
+<p class=MsoListBullet2><span 
+style="FONT-FAMILY: Wingdings">ü<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp; 
+</SPAN></SPAN><span class=af5>AccessToken</SPAN><span 
+style='FONT-FAMILY: "Calibri","sans-serif"'> </SPAN>– токен 
+доступа к сервису. Должен совпадать с настройками сервиса интеграции;</P>
+<p class=MsoListBullet2><span 
+style="FONT-FAMILY: Wingdings">ü<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp; 
+</SPAN></SPAN><span class=af5>ConnectTimeoutSec</SPAN><span 
+style='FONT-FAMILY: "Calibri","sans-serif"'> </SPAN>– 
+таймаут подключения к сервису интеграции, в секундах;</P>
+<p class=MsoListBullet2><span 
+style="FONT-FAMILY: Wingdings">ü<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp; 
+</SPAN></SPAN><span class=af5>AccessPoints</SPAN><span 
+style='FONT-FAMILY: "Calibri","sans-serif"'> </SPAN>– 
+настройки подключения для каждого сервиса интеграции</P>
+<p class=MsoListBullet3><span 
+style='FONT-SIZE: 9pt; FONT-FAMILY: "Courier New"; LINE-HEIGHT: 115%'>o<span style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; </SPAN></SPAN><span class=af5>Id</SPAN><span style='FONT-FAMILY: "Calibri","sans-serif"'> </SPAN>– идентификатор может быть любой, при этом 
+уникальным в списке,<span style='FONT-FAMILY: "Calibri","sans-serif"'> </SPAN></P>
+<p class=MsoListBullet3><span 
+style='FONT-SIZE: 9pt; FONT-FAMILY: "Courier New"; LINE-HEIGHT: 115%'>o<span style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; </SPAN></SPAN><span class=af5>ServerHost</SPAN><span 
+style='FONT-FAMILY: "Calibri","sans-serif"'> </SPAN>– 
+ip-адрес или <span lang=EN-US>DNS</SPAN> имя сервера,</P>
+<p class=MsoListBullet3><span 
+style='FONT-FAMILY: "Courier New"'>o<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp; 
+</SPAN></SPAN><span class=af5>ServerPort</SPAN><span 
+style='FONT-SIZE: 9pt; FONT-FAMILY: "Courier New"; LINE-HEIGHT: 115%'> </SPAN>– порт подключения.</P>
+<h1 style="TEXT-INDENT: 0cm"><a name=_Toc83894915>6 </A><span style="POSITION: relative; Z-INDEX: 251660278"><span 
+style="HEIGHT: 38px; WIDTH: 646px; POSITION: absolute; LEFT: 0px; TOP: -4px"><IMG src="0001.files/image006.png" width=646 height=38 ></SPAN></SPAN>Конфигурирование <span 
+lang=EN-US>NGINX</SPAN></H1>
+<p class=MsoNormal>Для конфигурации доступа к серверу <span 
+lang=EN-US>SCADA</SPAN> необходимо прописать его в 
+конфигурации <span lang=EN-US>NGINX</SPAN>.</P>
+<p class=MsoNormal>Конфигурация <span lang=EN-US>NGINX</SPAN><span lang=EN-US> 
+</SPAN>находится по пути <span class=af5>/etc/nginx</SPAN>. 
+</P>
+<p class=MsoNormal>Основные настройки прокси-сервера 
+находятся в файле <span class=af5>nginx.conf</SPAN>. 
+Конфигурация сайтов подключаются директивой <span class=af5>include</SPAN> и находится в поддиректории <span class=af5>conf.d.</SPAN></P>
+<p class=MsoNormal>Как правило, конфигурация доступа к 
+сервисам РСДУ описана в файле <span class=af5>rsdu_&lt;port&gt;.conf</SPAN> и отдельно в файлах <span 
+class=af5>*.loc</SPAN> поддиректории <span class=af5>rsdu_locations</SPAN>.</P>
+<p class=MsoNormal>Для работы сервера необходимо перейти в 
+директорию <span class=af5>/etc/nginx/conf.d/rsdu_locations 
+и</SPAN> добавить <span class=af5>scada.loc</SPAN>.</P>
+<h2><a name=_Toc83894916></A><a 
+name=_Toc55216504>Файл</A><span lang=EN-US> scada.loc</SPAN></H2>
+<div 
+style="BORDER-TOP: windowtext 1pt solid; BORDER-RIGHT: windowtext 1pt solid; BACKGROUND: #c1c1c1; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 1pt; PADDING-TOP: 1pt; PADDING-LEFT: 4pt; MARGIN-LEFT: 5.65pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 4pt; MARGIN-RIGHT: 5.65pt">
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>location 
+~/rsdu/scada/api</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp; 
+{</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if ($request_method = 
+OPTIONS )</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+add_header 'Access-Control-Allow-Origin' '*';</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+add_header 'Access-Control-Allow-Methods' 'GET, OPTIONS, HEAD, PUT, 
+DELETE';</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+add_header 'Access-Control-Allow-Headers' 'Content-Type';</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US></SPAN>&nbsp;</P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+add_header Content-Length 0;</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+add_header Content-Type text/plain;</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US></SPAN>&nbsp;</P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+return 200;</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US></SPAN>&nbsp;</P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; add_header 
+'Access-Control-Allow-Origin' '*';</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; add_header 
+'Access-Control-Allow-Methods' 'GET, OPTIONS, HEAD, PUT, DELETE';</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; add_header 
+'Access-Control-Allow-Headers' 'Content-Type';</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US></SPAN>&nbsp;</P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; proxy_pass 
+http://localhost:5001;</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US></SPAN>&nbsp;</P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; proxy_http_version 
+1.1;</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; proxy_set_header 
+Upgrade $http_upgrade;</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; proxy_set_header 
+Connection $connection_upgrade;</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; proxy_set_header 
+X-Forwarded-For $proxy_add_x_forwarded_for;</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp; 
+}</SPAN></P></DIV>
+<p class=MsoNormal>&nbsp;</P>
+<h1 style="TEXT-INDENT: 0cm"><a name=_Toc83894917>7 </A><span style="POSITION: relative; Z-INDEX: 251664374"><span 
+style="HEIGHT: 38px; WIDTH: 646px; POSITION: absolute; LEFT: 0px; TOP: -4px"><IMG src="0001.files/image004.png" width=646 height=38 ></SPAN></SPAN>Настройка клиентского 
+ПО</H1>
+<p class=MsoNormal>Для работы клиентских приложений РСДУ с 
+Сервером <span lang=EN-US>SCADA</SPAN><span lang=EN-US> </SPAN>необходимо указать настройки подключения.</P>
+<h2><a name=_Toc83894918></A><a 
+name=_Toc55216506>7.1 Настройка подключения к серверу 
+</A><span lang=EN-US>SCADA</SPAN></H2>
+<p class=MsoNormal>Настройка параметров подключения к 
+серверу <span lang=EN-US>SCADA</SPAN><span lang=EN-US> </SPAN>клиентских приложений комплекса РСДУ для ОС <span 
+lang=EN-US>Windows</SPAN><span lang=EN-US> </SPAN>находится в реестре <span lang=EN-US>Windows</SPAN>.</P>
+<p class=MsoNormal>Адрес сервера <span lang=EN-US>SCADA</SPAN> определяется в параметре <span lang=EN-US>Url</SPAN> раздела: </P>
+<p class=MsoNormal><span class=af5><span lang=EN-US>HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\EMA\RSDU 
+2.1.1</SPAN></SPAN></P>
+<p class=MsoNormal>Формат адреса: <span class=af5>&lt;host&gt;:&lt;port&gt;</SPAN></P>
+<p class=MsoNormal>В случае двухсерверной конфигурации 
+необходимо указать общий адрес кластера.</P>
+<p class=MsoNormal>&nbsp;</P>
+
+</div>
+
+</body>
+
+</html>

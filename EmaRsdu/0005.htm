@@ -1,0 +1,2646 @@
+﻿<html>
+
+<head>
+<title>Установка и конфигурация РСДУ для SLES. Руководство администратора</title>
+
+<meta http-equiv=Content-Type content="text/html; charset=UTF-8">
+<meta name=Generator content="Microsoft Word 14 (filtered)">
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Courier;
+	panose-1:2 7 4 9 2 2 5 2 4 4;}
+@font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:"Bookshelf Symbol 7";
+	panose-1:5 1 1 1 1 1 1 1 1 1;}
+@font-face
+	{font-family:"Calibri Light";
+	panose-1:2 15 3 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:"Segoe UI";
+	panose-1:2 11 5 2 4 2 4 2 2 3;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	text-align:justify;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+h1
+	{margin-top:0cm;
+	margin-right:164.45pt;
+	margin-bottom:12.0pt;
+	margin-left:14.2pt;
+	text-indent:0cm;
+	line-height:115%;
+	page-break-before:always;
+	font-size:16.0pt;
+	font-family:"Arial","sans-serif";
+	color:#17365D;
+	font-weight:bold;}
+h2
+	{mso-style-link:"Заголовок 2 Знак";
+	margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:12.0pt;
+	margin-left:28.8pt;
+	text-indent:-28.8pt;
+	line-height:115%;
+	page-break-after:avoid;
+	font-size:14.0pt;
+	font-family:"Arial","sans-serif";
+	font-weight:bold;}
+h3
+	{mso-style-link:"Заголовок 3 Знак";
+	margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:32.6pt;
+	text-indent:-32.6pt;
+	line-height:115%;
+	page-break-after:avoid;
+	font-size:13.0pt;
+	font-family:"Arial","sans-serif";
+	font-weight:bold;}
+h4
+	{mso-style-link:"Заголовок 4 Знак";
+	margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:41.95pt;
+	text-indent:-41.95pt;
+	line-height:115%;
+	page-break-after:avoid;
+	font-size:12.5pt;
+	font-family:"Arial","sans-serif";
+	font-weight:bold;}
+h5
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:50.4pt;
+	text-indent:-50.4pt;
+	line-height:115%;
+	page-break-after:avoid;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";
+	font-weight:bold;}
+h6
+	{margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:57.6pt;
+	text-align:justify;
+	text-indent:-57.6pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";
+	font-weight:normal;
+	font-style:italic;}
+p.MsoHeading7, li.MsoHeading7, div.MsoHeading7
+	{margin-top:0cm;
+	margin-right:164.45pt;
+	margin-bottom:12.0pt;
+	margin-left:14.2pt;
+	text-indent:0cm;
+	line-height:115%;
+	page-break-before:always;
+	font-size:16.0pt;
+	font-family:"Arial","sans-serif";
+	color:#17365D;
+	font-weight:bold;}
+p.MsoHeading8, li.MsoHeading8, div.MsoHeading8
+	{margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:72.0pt;
+	text-align:justify;
+	text-indent:-72.0pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";
+	font-style:italic;}
+p.MsoHeading9, li.MsoHeading9, div.MsoHeading9
+	{margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:79.2pt;
+	text-align:justify;
+	text-indent:-79.2pt;
+	line-height:115%;
+	font-size:9.0pt;
+	font-family:"Arial","sans-serif";
+	font-weight:bold;
+	font-style:italic;}
+p.MsoToc1, li.MsoToc1, div.MsoToc1
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoToc2, li.MsoToc2, div.MsoToc2
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:21.55pt;
+	margin-bottom:.0001pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoToc3, li.MsoToc3, div.MsoToc3
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:48.2pt;
+	margin-bottom:.0001pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoToc4, li.MsoToc4, div.MsoToc4
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:61.25pt;
+	margin-bottom:.0001pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoToc5, li.MsoToc5, div.MsoToc5
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:44.0pt;
+	text-align:justify;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoToc6, li.MsoToc6, div.MsoToc6
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:55.0pt;
+	text-align:justify;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoToc7, li.MsoToc7, div.MsoToc7
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:66.0pt;
+	text-align:justify;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoToc8, li.MsoToc8, div.MsoToc8
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:77.0pt;
+	text-align:justify;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoToc9, li.MsoToc9, div.MsoToc9
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:88.0pt;
+	text-align:justify;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoNormalIndent, li.MsoNormalIndent, div.MsoNormalIndent
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:35.4pt;
+	text-align:justify;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoFootnoteText, li.MsoFootnoteText, div.MsoFootnoteText
+	{mso-style-link:"Текст сноски Знак";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	line-height:115%;
+	font-size:11.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoCommentText, li.MsoCommentText, div.MsoCommentText
+	{mso-style-link:"Текст примечания Знак";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	text-align:justify;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoHeader, li.MsoHeader, div.MsoHeader
+	{mso-style-link:"Верхний колонтитул Знак";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	text-align:justify;
+	line-height:115%;
+	font-size:9.0pt;
+	font-family:"Arial","sans-serif";
+	font-style:italic;}
+p.MsoFooter, li.MsoFooter, div.MsoFooter
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	text-align:justify;
+	line-height:115%;
+	font-size:9.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoCaption, li.MsoCaption, div.MsoCaption
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:12.0pt;
+	margin-left:0cm;
+	text-align:center;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";
+	font-weight:bold;}
+span.MsoFootnoteReference
+	{vertical-align:super;}
+span.MsoPageNumber
+	{font-family:"Arial","sans-serif";
+	font-weight:bold;}
+p.MsoEndnoteText, li.MsoEndnoteText, div.MsoEndnoteText
+	{mso-style-link:"Текст концевой сноски Знак";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoList, li.MsoList, div.MsoList
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:14.15pt;
+	text-align:justify;
+	text-indent:-14.15pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoListCxSpFirst, li.MsoListCxSpFirst, div.MsoListCxSpFirst
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:14.15pt;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-indent:-14.15pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoListCxSpMiddle, li.MsoListCxSpMiddle, div.MsoListCxSpMiddle
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:14.15pt;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-indent:-14.15pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoListCxSpLast, li.MsoListCxSpLast, div.MsoListCxSpLast
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:14.15pt;
+	text-align:justify;
+	text-indent:-14.15pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoListBullet, li.MsoListBullet, div.MsoListBullet
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:32.05pt;
+	text-align:justify;
+	text-indent:-17.85pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+p.MsoListNumber, li.MsoListNumber, div.MsoListNumber
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:159.75pt;
+	text-align:justify;
+	text-indent:-18.0pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoListBullet2, li.MsoListBullet2, div.MsoListBullet2
+	{mso-style-name:"Маркированный список 2\,р_мар1";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:32.15pt;
+	text-align:justify;
+	text-indent:-18.0pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoListBullet3, li.MsoListBullet3, div.MsoListBullet3
+	{mso-style-name:"Маркированный список 3\,р_мар2";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:46.3pt;
+	text-align:justify;
+	text-indent:-18.0pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoListBullet4, li.MsoListBullet4, div.MsoListBullet4
+	{mso-style-name:"Маркированный список 4\,р_мар3";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:60.45pt;
+	text-align:justify;
+	text-indent:-18.0pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoListNumber2, li.MsoListNumber2, div.MsoListNumber2
+	{mso-style-name:"Нумерованный список 2\,р_нум1";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:32.15pt;
+	text-align:justify;
+	text-indent:-18.0pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoListNumber3, li.MsoListNumber3, div.MsoListNumber3
+	{mso-style-name:"Нумерованный список 3\,р_нум2";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:46.3pt;
+	text-align:justify;
+	text-indent:-18.0pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoListNumber4, li.MsoListNumber4, div.MsoListNumber4
+	{mso-style-name:"Нумерованный список 4\,р_нум3";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:60.45pt;
+	text-align:justify;
+	text-indent:-18.0pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoClosing, li.MsoClosing, div.MsoClosing
+	{mso-style-link:"Прощание Знак";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:212.6pt;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoBodyText, li.MsoBodyText, div.MsoBodyText
+	{mso-style-link:"Основной текст Знак";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	line-height:115%;
+	font-size:8.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoBodyTextIndent, li.MsoBodyTextIndent, div.MsoBodyTextIndent
+	{mso-style-link:"Основной текст с отступом Знак";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	text-align:justify;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";
+	layout-grid-mode:line;}
+p.MsoListContinue2, li.MsoListContinue2, div.MsoListContinue2
+	{mso-style-name:"Продолжение списка 2\,р_прод1";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:32.05pt;
+	text-align:justify;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoListContinue3, li.MsoListContinue3, div.MsoListContinue3
+	{mso-style-name:"Продолжение списка 3\,р_прод2";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:46.2pt;
+	text-align:justify;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoListContinue4, li.MsoListContinue4, div.MsoListContinue4
+	{mso-style-name:"Продолжение списка 4\,р_прод3";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:60.4pt;
+	text-align:justify;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoBodyText2, li.MsoBodyText2, div.MsoBodyText2
+	{mso-style-link:"Основной текст 2 Знак";
+	margin-top:3.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:0cm;
+	line-height:115%;
+	font-size:9.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoBodyText3, li.MsoBodyText3, div.MsoBodyText3
+	{mso-style-link:"Основной текст 3 Знак";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	text-align:justify;
+	line-height:115%;
+	font-size:8.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoBodyTextIndent3, li.MsoBodyTextIndent3, div.MsoBodyTextIndent3
+	{mso-style-link:"Основной текст с отступом 3 Знак";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	text-align:justify;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";
+	layout-grid-mode:line;
+	font-style:italic;}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:#954F72;
+	text-decoration:underline;}
+em
+	{font-family:Courier;
+	font-style:normal;}
+p
+	{margin-right:0cm;
+	margin-left:0cm;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+address
+	{mso-style-link:"Адрес HTML Знак";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";
+	font-style:italic;}
+kbd
+	{font-family:"Courier New";}
+pre
+	{mso-style-link:"Стандартный HTML Знак";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	line-height:normal;
+	font-size:10.0pt;
+	font-family:"Courier New";}
+p.MsoCommentSubject, li.MsoCommentSubject, div.MsoCommentSubject
+	{mso-style-link:"Тема примечания Знак";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	text-align:justify;
+	line-height:normal;
+	font-size:10.0pt;
+	font-family:"Arial","sans-serif";
+	font-weight:bold;}
+p.MsoAcetate, li.MsoAcetate, div.MsoAcetate
+	{mso-style-link:"Текст выноски Знак";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	line-height:115%;
+	font-size:9.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoListParagraph, li.MsoListParagraph, div.MsoListParagraph
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:36.0pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoListParagraphCxSpFirst, li.MsoListParagraphCxSpFirst, div.MsoListParagraphCxSpFirst
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	margin-bottom:.0001pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoListParagraphCxSpMiddle, li.MsoListParagraphCxSpMiddle, div.MsoListParagraphCxSpMiddle
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	margin-bottom:.0001pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoListParagraphCxSpLast, li.MsoListParagraphCxSpLast, div.MsoListParagraphCxSpLast
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:36.0pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoQuote, li.MsoQuote, div.MsoQuote
+	{mso-style-link:"Цитата 2 Знак";
+	margin-top:10.0pt;
+	margin-right:43.2pt;
+	margin-bottom:8.0pt;
+	margin-left:43.2pt;
+	text-align:center;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";
+	color:#404040;
+	font-style:italic;}
+span.MsoSubtleEmphasis
+	{color:#404040;
+	font-style:italic;}
+span.MsoIntenseEmphasis
+	{color:#4472C4;
+	font-style:italic;}
+span.MsoBookTitle
+	{letter-spacing:.25pt;
+	font-weight:bold;
+	font-style:italic;}
+p.MsoTocHeading, li.MsoTocHeading, div.MsoTocHeading
+	{margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:14.2pt;
+	margin-bottom:.0001pt;
+	text-indent:0cm;
+	line-height:107%;
+	font-size:16.0pt;
+	font-family:"Calibri Light","sans-serif";
+	color:#2F5496;}
+p.a, li.a, div.a
+	{mso-style-name:р_дисплейсерый;
+	mso-style-link:"р_дисплейсерый Знак";
+	margin-top:0cm;
+	margin-right:5.65pt;
+	margin-bottom:0cm;
+	margin-left:5.65pt;
+	margin-bottom:.0001pt;
+	line-height:115%;
+	background:#C1C1C1;
+	border:none;
+	padding:0cm;
+	font-size:10.0pt;
+	font-family:"Courier New";}
+p.a0, li.a0, div.a0
+	{mso-style-name:Маркированный;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:155.95pt;
+	text-align:justify;
+	text-indent:-14.2pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.2, li.2, div.2
+	{mso-style-name:"Маркированный 2";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:171.0pt;
+	text-align:justify;
+	text-indent:-14.2pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.3, li.3, div.3
+	{mso-style-name:"Маркированный 3";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:186.0pt;
+	text-align:justify;
+	text-indent:-14.2pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.a1, li.a1, div.a1
+	{mso-style-name:Нумерованный;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	text-align:justify;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+span.a2
+	{mso-style-name:"Основной текст Знак";
+	mso-style-link:"Основной текст";
+	font-family:"Arial","sans-serif";}
+span.20
+	{mso-style-name:"Основной текст 2 Знак";
+	mso-style-link:"Основной текст 2";
+	font-family:"Arial","sans-serif";}
+span.30
+	{mso-style-name:"Основной текст 3 Знак";
+	mso-style-link:"Основной текст 3";
+	font-family:"Arial","sans-serif";}
+span.a3
+	{mso-style-name:"Основной текст с отступом Знак";
+	mso-style-link:"Основной текст с отступом";
+	font-family:"Arial","sans-serif";
+	layout-grid-mode:both;}
+span.31
+	{mso-style-name:"Основной текст с отступом 3 Знак";
+	mso-style-link:"Основной текст с отступом 3";
+	font-family:"Arial","sans-serif";
+	layout-grid-mode:both;
+	font-style:italic;}
+span.1
+	{mso-style-name:"Неразрешенное упоминание1";
+	color:#605E5C;
+	background:#E1DFDD;}
+p.a4, li.a4, div.a4
+	{mso-style-name:"Нумерованный список широкий";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:18.0pt;
+	text-align:justify;
+	text-indent:-18.0pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+span.a5
+	{mso-style-name:"Текст сноски Знак";
+	mso-style-link:"Текст сноски";
+	font-family:"Arial","sans-serif";}
+span.a6
+	{mso-style-name:"Текст выноски Знак";
+	mso-style-link:"Текст выноски";
+	font-family:"Arial","sans-serif";}
+p.a7, li.a7, div.a7
+	{mso-style-name:р_определение;
+	mso-style-link:"р_определение Знак";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:36.0pt;
+	text-align:justify;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.a8, li.a8, div.a8
+	{mso-style-name:"Обычный широкий";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	text-align:justify;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+span.a9
+	{mso-style-name:"р_определение Знак";
+	mso-style-link:р_определение;
+	font-family:"Arial","sans-serif";}
+span.21
+	{mso-style-name:"Заголовок 2 Знак";
+	mso-style-link:"Заголовок 2";
+	font-family:"Arial","sans-serif";
+	font-weight:bold;}
+span.32
+	{mso-style-name:"Заголовок 3 Знак";
+	mso-style-link:"Заголовок 3";
+	font-family:"Arial","sans-serif";
+	font-weight:bold;}
+span.10
+	{mso-style-name:"Неразрешенное упоминание1";
+	color:#605E5C;
+	background:#E1DFDD;}
+span.4
+	{mso-style-name:"Заголовок 4 Знак";
+	mso-style-link:"Заголовок 4";
+	font-family:"Arial","sans-serif";
+	font-weight:bold;}
+p.aa, li.aa, div.aa
+	{mso-style-name:Нумерация;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:32.2pt;
+	text-align:justify;
+	text-indent:-18.0pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+p.ab, li.ab, div.ab
+	{mso-style-name:р_верхкол;
+	mso-style-link:"р_верхкол Знак";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	line-height:115%;
+	border:none;
+	padding:0cm;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";
+	font-style:italic;}
+span.11
+	{mso-style-name:"Неразрешенное упоминание1";
+	color:#605E5C;
+	background:#E1DFDD;}
+span.ac
+	{mso-style-name:"Верхний колонтитул Знак";
+	mso-style-link:"Верхний колонтитул";
+	font-family:"Arial","sans-serif";
+	font-style:italic;}
+span.ad
+	{mso-style-name:"р_верхкол Знак";
+	mso-style-link:р_верхкол;
+	font-family:"Arial","sans-serif";
+	font-style:italic;}
+p.ae, li.ae, div.ae
+	{mso-style-name:р_марИ;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";
+	color:black;}
+p.af, li.af, div.af
+	{mso-style-name:р_табТекст;
+	mso-style-link:"р_табТекст Знак";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	line-height:115%;
+	font-size:11.0pt;
+	font-family:"Arial","sans-serif";}
+p.12, li.12, div.12
+	{mso-style-name:Стиль1;
+	mso-style-link:"Стиль1 Знак";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:14.2pt;
+	text-align:justify;
+	line-height:115%;
+	font-size:14.0pt;
+	font-family:"Arial","sans-serif";
+	color:white;
+	font-weight:bold;}
+p.13, li.13, div.13
+	{mso-style-name:р_тит1;
+	mso-style-link:"р_тит1 Знак";
+	margin-top:0cm;
+	margin-right:2.85pt;
+	margin-bottom:12.0pt;
+	margin-left:0cm;
+	line-height:115%;
+	font-size:18.0pt;
+	font-family:"Arial","sans-serif";
+	color:#17365D;
+	text-transform:uppercase;
+	font-weight:bold;}
+span.14
+	{mso-style-name:"Стиль1 Знак";
+	mso-style-link:Стиль1;
+	font-family:"Arial","sans-serif";
+	color:white;
+	font-weight:bold;}
+p.22, li.22, div.22
+	{mso-style-name:р_тит2;
+	mso-style-link:"р_тит2 Знак";
+	margin-top:0cm;
+	margin-right:2.85pt;
+	margin-bottom:12.0pt;
+	margin-left:0cm;
+	line-height:115%;
+	font-size:18.0pt;
+	font-family:"Arial","sans-serif";
+	color:#17365D;
+	font-weight:bold;}
+span.15
+	{mso-style-name:"р_тит1 Знак";
+	mso-style-link:р_тит1;
+	font-family:"Arial","sans-serif";
+	color:#17365D;
+	text-transform:uppercase;
+	font-weight:bold;}
+span.23
+	{mso-style-name:"р_тит2 Знак";
+	mso-style-link:р_тит2;
+	font-family:"Arial","sans-serif";
+	color:#17365D;
+	text-transform:none;
+	font-weight:bold;}
+p.af0, li.af0, div.af0
+	{mso-style-name:"";
+	margin-right:0cm;
+	margin-left:0cm;
+	text-indent:14.2pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	color:black;}
+p.af1, li.af1, div.af1
+	{mso-style-name:р_выделить;
+	mso-style-link:"р_выделить Знак";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	text-align:justify;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";
+	font-weight:bold;
+	font-style:italic;}
+p.af2, li.af2, div.af2
+	{mso-style-name:р_клав;
+	mso-style-link:"р_клав Знак";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	text-align:justify;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";
+	text-transform:uppercase;}
+span.af3
+	{mso-style-name:"р_выделить Знак";
+	mso-style-link:р_выделить;
+	font-family:"Arial","sans-serif";
+	font-weight:bold;
+	font-style:italic;}
+span.af4
+	{mso-style-name:"р_клав Знак";
+	mso-style-link:р_клав;
+	font-family:"Arial","sans-serif";
+	text-transform:uppercase;}
+span.af5
+	{mso-style-name:р_дисплей;
+	font-family:"Courier New";}
+p.af6, li.af6, div.af6
+	{mso-style-name:р_выноска;
+	mso-style-link:"р_выноска Знак";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	line-height:115%;
+	font-size:11.0pt;
+	font-family:"Arial","sans-serif";}
+span.af7
+	{mso-style-name:р_БД;
+	text-transform:uppercase;
+	font-weight:bold;
+	font-style:italic;}
+p.af8, li.af8, div.af8
+	{mso-style-name:р_примТекст;
+	mso-style-link:"р_примТекст Знак";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	text-align:justify;
+	line-height:115%;
+	font-size:11.0pt;
+	font-family:"Arial","sans-serif";}
+p.af9, li.af9, div.af9
+	{mso-style-name:р_прим;
+	mso-style-link:"р_прим Знак";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	text-align:justify;
+	line-height:115%;
+	font-size:11.0pt;
+	font-family:"Arial","sans-serif";
+	letter-spacing:1.0pt;
+	font-weight:bold;}
+span.afa
+	{mso-style-name:"р_примТекст Знак";
+	mso-style-link:р_примТекст;
+	font-family:"Arial","sans-serif";}
+span.afb
+	{mso-style-name:"р_прим Знак";
+	mso-style-link:р_прим;
+	font-family:"Arial","sans-serif";
+	letter-spacing:1.0pt;
+	font-weight:bold;}
+p.afc, li.afc, div.afc
+	{mso-style-name:р_пред;
+	mso-style-link:"р_пред Знак";
+	margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	line-height:115%;
+	page-break-after:avoid;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";
+	text-transform:uppercase;
+	letter-spacing:1.0pt;
+	font-weight:bold;}
+span.afd
+	{mso-style-name:"р_пред Знак";
+	mso-style-link:р_пред;
+	font-family:"Arial","sans-serif";
+	text-transform:uppercase;
+	letter-spacing:1.0pt;
+	font-weight:bold;}
+span.afe
+	{mso-style-name:"Текст концевой сноски Знак";
+	mso-style-link:"Текст концевой сноски";
+	font-family:"Arial","sans-serif";}
+span.aff
+	{mso-style-name:"Текст примечания Знак";
+	mso-style-link:"Текст примечания";
+	font-family:"Arial","sans-serif";}
+span.24
+	{mso-style-name:"Цитата 2 Знак";
+	mso-style-link:"Цитата 2";
+	font-family:"Arial","sans-serif";
+	color:#404040;
+	font-style:italic;}
+span.aff0
+	{mso-style-name:"р_дисплейсерый Знак";
+	mso-style-link:р_дисплейсерый;
+	font-family:"Courier New";
+	background:#C1C1C1;}
+p.aff1, li.aff1, div.aff1
+	{mso-style-name:р_содерж;
+	mso-style-link:"р_содерж Знак";
+	margin-top:0cm;
+	margin-right:7.0cm;
+	margin-bottom:24.0pt;
+	margin-left:14.2pt;
+	line-height:115%;
+	page-break-before:always;
+	font-size:16.0pt;
+	font-family:"Arial","sans-serif";
+	color:#17365D;
+	font-weight:bold;}
+span.aff2
+	{mso-style-name:"р_содерж Знак";
+	mso-style-link:р_содерж;
+	font-family:"Arial","sans-serif";
+	color:#17365D;
+	font-weight:bold;}
+p.aff3, li.aff3, div.aff3
+	{mso-style-name:р_табЗаг;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	text-align:center;
+	line-height:115%;
+	font-size:11.0pt;
+	font-family:"Arial","sans-serif";
+	font-weight:bold;}
+p.aff4, li.aff4, div.aff4
+	{mso-style-name:р_обычАбзац;
+	mso-style-link:"р_обычАбзац Знак";
+	margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	text-align:justify;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+span.aff5
+	{mso-style-name:"р_обычАбзац Знак";
+	mso-style-link:р_обычАбзац;
+	font-family:"Arial","sans-serif";}
+p.aff6, li.aff6, div.aff6
+	{mso-style-name:р_табНум;
+	mso-style-link:"р_табНум Знак";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	text-align:center;
+	line-height:115%;
+	font-size:11.0pt;
+	font-family:"Arial","sans-serif";}
+p.aff7, li.aff7, div.aff7
+	{mso-style-name:р_нумТаб;
+	mso-style-link:"р_нумТаб Знак";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	text-align:center;
+	text-indent:0cm;
+	line-height:115%;
+	font-size:9.0pt;
+	font-family:"Arial","sans-serif";}
+span.aff8
+	{mso-style-name:"р_табТекст Знак";
+	mso-style-link:р_табТекст;
+	font-family:"Arial","sans-serif";}
+span.aff9
+	{mso-style-name:"р_табНум Знак";
+	mso-style-link:р_табНум;
+	font-family:"Arial","sans-serif";}
+span.affa
+	{mso-style-name:"р_нумТаб Знак";
+	mso-style-link:р_нумТаб;
+	font-family:"Arial","sans-serif";}
+span.HTML
+	{mso-style-name:"Адрес HTML Знак";
+	mso-style-link:"Адрес HTML";
+	font-family:"Arial","sans-serif";
+	font-style:italic;}
+span.affb
+	{mso-style-name:"Прощание Знак";
+	mso-style-link:Прощание;
+	font-family:"Arial","sans-serif";}
+p.16, li.16, div.16
+	{mso-style-name:р_1дисплейсерый;
+	mso-style-link:"р_1дисплейсерый Знак";
+	margin-top:0cm;
+	margin-right:5.65pt;
+	margin-bottom:0cm;
+	margin-left:38.25pt;
+	margin-bottom:.0001pt;
+	line-height:115%;
+	background:#C1C1C1;
+	border:none;
+	padding:0cm;
+	font-size:10.0pt;
+	font-family:"Courier New";}
+p.25, li.25, div.25
+	{mso-style-name:р_2дисплейсерый;
+	mso-style-link:"р_2дисплейсерый Знак";
+	margin-top:0cm;
+	margin-right:5.65pt;
+	margin-bottom:0cm;
+	margin-left:52.45pt;
+	margin-bottom:.0001pt;
+	line-height:115%;
+	background:#C1C1C1;
+	border:none;
+	padding:0cm;
+	font-size:10.0pt;
+	font-family:"Courier New";}
+span.17
+	{mso-style-name:"р_1дисплейсерый Знак";
+	mso-style-link:р_1дисплейсерый;
+	font-family:"Courier New";
+	background:#C1C1C1;}
+span.26
+	{mso-style-name:"р_2дисплейсерый Знак";
+	mso-style-link:р_2дисплейсерый;
+	font-family:"Courier New";
+	background:#C1C1C1;}
+span.affc
+	{mso-style-name:"р_выноска Знак";
+	mso-style-link:р_выноска;
+	font-family:"Arial","sans-serif";}
+p.affd, li.affd, div.affd
+	{mso-style-name:р_обычный;
+	mso-style-link:"р_обычный Знак";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	text-align:justify;
+	line-height:normal;
+	font-size:10.0pt;
+	font-family:"Arial","sans-serif";}
+span.affe
+	{mso-style-name:"р_обычный Знак";
+	mso-style-link:р_обычный;
+	font-family:"Arial","sans-serif";}
+p.afff, li.afff, div.afff
+	{mso-style-name:р_табОбъед;
+	mso-style-link:"р_табОбъед Знак";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	line-height:115%;
+	font-size:11.0pt;
+	font-family:"Arial","sans-serif";}
+span.afff0
+	{mso-style-name:"р_табОбъед Знак";
+	mso-style-link:р_табОбъед;
+	font-family:"Arial","sans-serif";}
+p.afff1, li.afff1, div.afff1
+	{mso-style-name:запрос;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:5.0cm;
+	margin-bottom:.0001pt;
+	line-height:normal;
+	font-size:11.0pt;
+	font-family:"Courier New";}
+span.apple-converted-space
+	{mso-style-name:apple-converted-space;}
+span.HTML0
+	{mso-style-name:"Стандартный HTML Знак";
+	mso-style-link:"Стандартный HTML";
+	font-family:"Courier New";}
+p.18, li.18, div.18
+	{mso-style-name:"Нумерованный список1";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:54.0pt;
+	text-align:justify;
+	text-indent:-18.0pt;
+	line-height:normal;
+	font-size:10.0pt;
+	font-family:"Arial","sans-serif";}
+p.afff2, li.afff2, div.afff2
+	{mso-style-name:"ЭМА\. Название_титульный_лист";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	line-height:normal;
+	font-size:18.0pt;
+	font-family:"Arial","sans-serif";
+	color:#17365D;
+	font-weight:bold;}
+span.afff3
+	{mso-style-name:"Тема примечания Знак";
+	mso-style-link:"Тема примечания";
+	font-family:"Arial","sans-serif";
+	font-weight:bold;}
+.MsoChpDefault
+	{font-size:10.0pt;}
+ /* Page Definitions */
+ @page WordSection1
+	{size:595.3pt 841.9pt;
+	margin:3.0cm 2.0cm 70.9pt 2.0cm;}
+div.WordSection1
+	{page:WordSection1;}
+ /* List Definitions */
+ ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
+-->
+</style>
+
+</head>
+
+<body lang=RU link=blue vlink="#954f72">
+
+<div class=WordSection1>
+
+<p class=MsoNormal><a name="_Toc521142556"></a><a
+ name="_Toc41200689"></a><a name="_Toc41194303"></a><a name="_Toc41190549"></a><a
+ name="_Toc41190422"></a><a name="_Toc41151993"></a><a name="_Toc41151875"></a><a
+ name="_Toc41149718"></a><a name="_Toc41138842"></a><span style="POSITION:
+ relative; Z-INDEX: 251651575"></span>Содержание</p>
+
+<p class=MsoToc1><A
+ href="#_Toc70418680" >1 Установка и конфигурация серверного ПО<span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">.. </span><span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">2</span></A></p>
+
+<p class=MsoToc2><A href="#_Toc70418681">1.1 Необходимые условия<span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">. </span><span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">2</span></A></p>
+
+<p class=MsoToc2><A href="#_Toc70418682">1.2 Необходимые знания<span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">. </span><span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">2</span></A></p>
+
+<p class=MsoToc2><A href="#_Toc70418683">1.3 Установка ОС <span lang=EN-US>SLES</span><span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">.. </span><span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">3</span></A></p>
+
+<p class=MsoToc2><A href="#_Toc70418684"><span lang=EN-US>1.4</span> Установка
+клиента <span lang=EN-US>Oracle</span><span style="TEXT-DECORATION:
+ none; COLOR: windowtext; DISPLAY: none">. </span><span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">3</span></A></p>
+
+<p class=MsoToc2><A href="#_Toc70418685">1.5 Настройка источников данных
+клиента <span lang=EN-US>Oracle</span><span style="TEXT-DECORATION:
+ none; COLOR: windowtext; DISPLAY: none">. </span><span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">3</span></A></p>
+
+<p class=MsoToc2><A href="#_Toc70418686">1.6 Установка и настройка <span
+ lang=EN-US>RabbitMQ</span> на серверах ОИК<span style="TEXT-DECORATION:
+ none; COLOR: windowtext; DISPLAY: none">. </span><span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">5</span></A></p>
+
+<p class=MsoToc2><A href="#_Toc70418687">1.7 Установка модулей РСДУ5<span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">. </span><span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">5</span></A></p>
+
+<p class=MsoToc2><A href="#_Toc70418688">1.8 Конфигурирование ОС SLES<span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">.. </span><span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">5</span></A></p>
+
+<p class=MsoToc2><A href="#_Toc70418689">1.9 Настройка ротации лог-файлов<span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">. </span><span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">6</span></A></p>
+
+<p class=MsoToc2><A href="#_Toc70418690">1.10 Настройка сторожевого таймера<span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">. </span><span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">6</span></A></p>
+
+<p class=MsoToc2><A href="#_Toc70418691">1.11 Обеспечение автоматической
+загрузки модулей РСДУ5 при старте системы<span style="TEXT-DECORATION:
+ none; COLOR: windowtext; DISPLAY: none">.. </span><span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">7</span></A></p>
+
+<p class=MsoToc2><A href="#_Toc70418692">1.12 Проверка работоспособности
+модулей РСДУ5<span style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">. </span><span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">7</span></A></p>
+
+<p class=MsoToc2><A href="#_Toc70418693">1.13 Настройка общего <span
+ lang=EN-US>IP</span>-адреса на ОИК<span style="TEXT-DECORATION:
+ none; COLOR: windowtext; DISPLAY: none">. </span><span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">8</span></A></p>
+
+<p class=MsoToc2><A href="#_Toc70418694">1.14 Переход на конфигурационный файл <span
+ lang=EN-US>ema</span>.<span lang=EN-US>conf</span> (введен в версии 5.16.3.0)<span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none"> </span><span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">10</span></A></p>
+
+<p class=MsoToc1><A href="#_Toc70418695">Приложение А. Структура <span
+ lang=EN-US>ini</span>-файла агента системного монитора<span style="TEXT-DECORATION:
+ none; COLOR: windowtext; DISPLAY: none">. </span><span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">11</span></A></p>
+
+<p class=MsoToc1><A href="#_Toc70418696">Приложение Б. Структура файла старта
+модулей РСДУ5 (<span lang=EN-US>ema</span>.<span lang=EN-US>conf</span>)<span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none"> </span><span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">14</span></A></p>
+
+<p class=MsoToc1><A href="#_Toc70418697">Приложение В. Порядок загрузки
+серверных модулей <span style="TEXT-DECORATION:
+ none; COLOR: windowtext; DISPLAY: none"> </span><span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">16</span></A></p>
+
+<p class=MsoToc1><A href="#_Toc70418698">Приложение Г. Рекомендуемые параметры
+ядра ОС <span lang=EN-US>Linux</span><span lang=EN-US> </span><span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none"> </span><span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">17</span></A></p>
+
+<p class=MsoToc1><A href="#_Toc70418699">Приложение Д. Пример настройки ротации
+файлов логов модулей РСДУ<span style="TEXT-DECORATION:
+ none; COLOR: windowtext; DISPLAY: none">.. </span><span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">18</span></A></p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><span class=MsoPageNumber><span style="FONT-WEIGHT:
+ normal; LINE-HEIGHT: 115%"></span></span>&nbsp;</p>
+
+<h1 style="TEXT-INDENT: 0cm"><a name="_Toc70418680">1 </a><span
+ style="POSITION: relative; Z-INDEX: 251655671"><span style="HEIGHT:
+ 72px; WIDTH: 646px; POSITION: absolute; LEFT: 0px; TOP: -7px"><IMG src="0005.files/image003.png" width=646
+ height=72 ></span></span>Установка и конфигурация серверного
+ПО</h1>
+
+<p class=MsoNormal>Данная инструкция описывает шаги, которые необходимо
+выполнить для первоначальной настройки и запуска серверного ПО РСДУ5 на
+платформе Linux.</p>
+
+<h2><a name="_Toc70418681"></a><a name="_Toc11067457">1.1 Необходимые условия</a></h2>
+
+<p class=MsoNormal>Необходимо иметь следующие дистрибутивы:</p>
+
+<p class=MsoListBullet2><span class=af5><span lang=EN-US style="FONT-FAMILY:
+ Wingdings">ü<span style='FONT: 7pt "Times New Roman"'>&nbsp; </span></span></span><span
+ class=af5><span lang=EN-US style='FONT-FAMILY: "Arial","sans-serif"'>SuSe Linux
+Enterprise Server 10 (SP1/SP3/SP4) </span></span><span class=af5><span
+ style='FONT-FAMILY: "Arial","sans-serif"'>или</span></span><span class=af5><span
+ lang=EN-US style='FONT-FAMILY: "Arial","sans-serif"'> SuSe Linux Enterprise
+Server 11 (SP4) </span></span><span class=af5><span style='FONT-FAMILY: "Arial","sans-serif"'>или</span></span><span
+ class=af5><span lang=EN-US style='FONT-FAMILY: "Arial","sans-serif"'> SuSe Linux
+Enterprise Server 12 (SP1);</span></span></p>
+
+<p class=MsoListBullet2><span class=af5><span style="FONT-FAMILY: Wingdings">ü<span
+ style  ='FONT: 7pt "Times New Roman"'>&nbsp; </span></span></span><span
+ class=af5><span style='FONT-FAMILY: "Arial","sans-serif"'>клиентское ПО СУБД
+Oracle 11;</span></span></p>
+
+<p class=MsoListBullet2><span class=af5><span style="FONT-FAMILY: Wingdings">ü<span
+ style  ='FONT: 7pt "Times New Roman"'>&nbsp; </span></span></span><span
+ class=af5><span style='FONT-FAMILY: "Arial","sans-serif"'>архив с серверными
+приложениями </span></span><span class=af5>RSDU5_RT_&lt;version&gt;_&lt;date&gt;_&lt;time&gt;_&lt;config_name&gt;.tar.bz2</span><span
+ class=af5><span style='FONT-FAMILY: "Arial","sans-serif"'>, куда помещены все
+необходимые компоненты для установки серверного ПО РСДУ5.</span></span></p>
+
+<p class=MsoNormal>Убедитесь в том, что вы располагаете файлом <span class=af5>rsdu.config</span>,
+который содержит актуальные для вашей системы параметры сборки серверных
+модулей.</p>
+
+<p class=MsoNormal>Перед сборкой и запуском ПО РВ РСДУ5 необходимо иметь
+доступную БДТИ РСДУ, откуда серверные модули при загрузке должны прочитать
+конфигурацию для своей дальнейшей работы.</p>
+
+<h2><a name="_Toc70418682"></a><a name="_Toc11067458">1.2 Необходимые знания</a></h2>
+
+<p class=MsoNormal>Пользователю, выполняющему установку серверной части РСДУ,
+необходимо обладать минимальными навыками работы в ОС <span lang=EN-US>Linux</span>.</p>
+
+<p class=MsoNormal>Кроме того, необходимо ознакомиться со следующими
+документами:</p>
+
+<p class=MsoListBullet2><span style="FONT-FAMILY: Wingdings">ü<span
+ style  ='FONT: 7pt "Times New Roman"'>&nbsp; </span></span><span lang=EN-US>«</span>Установка<span
+ lang=EN-US> SUSE Linux Enterprise Server 10 SP4 x64. </span>Руководство
+администратора» или «Установка SUSE Linux Enterprise Server 11 SPЗ x64.
+Руководство администратора» или «Установка SUSE Linux Enterprise Server 12 SP1
+SP3 x64. Руководство администратора»;</p>
+
+<p class=MsoListBullet2><span style="FONT-FAMILY: Wingdings">ü<span
+ style  ='FONT: 7pt "Times New Roman"'>&nbsp; </span></span>«Установка и
+настройка Oracle Instant Client и ODBC драйвера. Руководство администратора»;</p>
+
+<p class=MsoListBullet2><span style="FONT-FAMILY: Wingdings">ü<span
+ style  ='FONT: 7pt "Times New Roman"'>&nbsp; </span></span>«Установка полного
+клиента Oracle. Руководство администратора»;</p>
+
+<p class=MsoListBullet2><span style="FONT-FAMILY: Wingdings">ü<span
+ style  ='FONT: 7pt "Times New Roman"'>&nbsp; </span></span>«Установка Oracle 10g
+на Linux SLES 10 SP4 x64. Руководство администратора» или «Установка Oracle
+11gR2 на Linux SLES 11 SP3 x64. Руководство администратора»;</p>
+
+<p class=MsoListBullet2><span style="FONT-FAMILY: Wingdings">ü<span
+ style  ='FONT: 7pt "Times New Roman"'>&nbsp; </span></span>«Сборка и установка
+серверного ПО РСДУ. Руководство администратора»;</p>
+
+<p class=MsoListBullet2><span style="FONT-FAMILY: Wingdings">ü<span
+ style  ='FONT: 7pt "Times New Roman"'>&nbsp; </span></span>«Сопровождение
+серверного ПО для ОС Linux. Руководство администратора»;</p>
+
+<p class=MsoListBullet2><span style="FONT-FAMILY: Wingdings">ü<span
+ style  ='FONT: 7pt "Times New Roman"'>&nbsp; </span></span>«Установка скрипта
+контроля системного времени. Руководство администратора»;</p>
+
+<p class=MsoListBullet2><span style="FONT-FAMILY: Wingdings">ü<span
+ style  ='FONT: 7pt "Times New Roman"'>&nbsp; </span></span>«Описание
+оборудования и точек доступа в комплексе РСДУ5. Руководство администратора».</p>
+
+<h2><a name="_Toc70418683"></a><a name="_Toc11067459">1.3 Установка ОС </a><span
+ lang=EN-US>SLES</span></h2>
+
+<p class=MsoNormal>Описание установки ОС выполнено в соответствующем&nbsp; документе
+по установке ОС <span lang=EN-US>SLES</span>.</p>
+
+<p class=MsoNormal>Обратите внимание на то, что на настраиваемом хосте в
+системных настройках должен быть обязательно прописан доступный сервер <span
+ lang=EN-US>DNS</span>. В противном случае могут быть ситуации, когда обращение
+к источнику СУБД <span lang=EN-US>Oracle</span>, с которым работают &nbsp;серверные
+модули РСДУ, блокируется при попытке разрешения имени хоста БДТИ.</p>
+
+<h2><a name="_Toc70418684"></a><a name="_Toc11067460"><span lang=EN-US>1.4 </span>Установка
+клиента </a><span lang=EN-US>Oracle</span></h2>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0 align=left
+ width=643 style="MARGIN-BOTTOM:
+ 4.85pt; BORDER-TOP: medium none; BORDER-RIGHT: medium none; WIDTH: 17cm; BACKGROUND: #fedb8e; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: medium none; MARGIN-LEFT: 6.8pt; BORDER-LEFT: medium none; MARGIN-RIGHT: 6.8pt">
+ <tr>
+  <td width=640 style="BORDER-TOP: windowtext 1pt  solid; BORDER-RIGHT: windowtext 1pt solid; WIDTH: 480.3pt; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt"    >
+  <p class=afc>внимание! </p>
+  <p class=MsoNormal>Для работы серверных приложений РСДУ требуется
+  обязательная установка клиента СУБД <span lang=EN-US>Oracle</span><span
+  lang=EN-US> </span>версии <span class=af3>не ниже</span> 11<span lang=EN-US>gR</span>2.</p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal>Если на целевом сервере уже установлена СУБД <span
+ lang=EN-US>Oracle</span> или клиентское ПО <span lang=EN-US>Oracle</span>, версия
+которых ниже версии 11<span lang=EN-US>gR</span>2, то в этом случае также
+необходимо выполнить установку клиента <span lang=EN-US>Oracle</span> 11<span
+ lang=EN-US>gR</span>2, не удаляя предыдущие версии, которые могут
+использоваться прочим установленным ПО на текущем сервере.</p>
+
+<p class=MsoNormal>Установка клиента <span lang=EN-US>Oracle</span><span
+ lang=EN-US> </span>описана в инструкциях «Установка и настройка <span
+ lang=EN-US>Oracle</span><span lang=EN-US> </span><span lang=EN-US>Instant</span><span
+ lang=EN-US> </span><span lang=EN-US>Client</span> и <span lang=EN-US>ODBC</span><span
+ lang=EN-US> </span>драйвера. Руководство администратора» и «Установка полного
+клиента Oracle. Руководство администратора».</p>
+
+<h2><a name="_Toc70418685"></a><a name="_Toc11067461">1.5 Настройка источников
+данных клиента </a><span lang=EN-US>Oracle</span></h2>
+
+<p class=MsoNormal>Для доступа к БДТИ со стороны серверных модулей РСДУ5 в
+файле <span class=af5>tnsnames.ora</span> 
+обязательно должно присутствовать
+описание источника данных с названием&nbsp; <span lang=EN-US>RSDU</span>.</p>
+
+<p class=MsoNormal>Для односерверной СУБД описание источника может выглядеть
+следующим образом:</p>
+
+<div style="BORDER-TOP: windowtext 1pt solid; BORDER-RIGHT: windowtext
+ 1pt solid; BACKGROUND: #c1c1c1; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 1pt; PADDING-TOP: 1pt; PADDING-LEFT: 4pt; MARGIN-LEFT: 5.65pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 4pt; MARGIN-RIGHT: 5.65pt">
+
+<p class=a style="BORDER-TOP:
+ medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>RSDU =</span></p>
+
+<p class=a style="BORDER-TOP:
+ medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp; </span><span lang=EN-US>(DESCRIPTION
+= </span></p>
+
+<p class=a style="BORDER-TOP:
+ medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp; (CONNECT_TIMEOUT = 20)</span></p>
+
+<p class=a style="BORDER-TOP:
+ medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp; (TRANSPORT_CONNECT_TIMEOUT = 20)</span></p>
+
+<p class=a style="BORDER-TOP:
+ medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp; (ADDRESS = (PROTOCOL = TCP)</span></p>
+
+<p class=a style="BORDER-TOP:
+ medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (HOST = rsdudb.ema.ru)</span></p>
+
+<p class=a style="BORDER-TOP:
+ medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (PORT = 1521)</span></p>
+
+<p class=a style="BORDER-TOP:
+ medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp; )</span></p>
+
+<p class=a style="BORDER-TOP:
+ medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp; </span><span lang=EN-US>(CONNECT_DATA
+= </span></p>
+
+<p class=a style="BORDER-TOP:
+ medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span lang=EN-US>(SERVER
+= DEDICATED)</span></p>
+
+<p class=a style="BORDER-TOP:
+ medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span lang=EN-US>(SERVICE_NAME
+= rsdu.ema.ru)</span></p>
+
+<p class=a style="BORDER-TOP:
+ medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp; </span>)</p>
+
+<p class=a style="BORDER-TOP:
+ medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm">&nbsp; )</p>
+
+</div>
+
+<p class=aff4>Для кластерной СУБД используется следующее описание источника:</p>
+
+<div style="BORDER-TOP: windowtext 1pt solid; BORDER-RIGHT: windowtext
+ 1pt solid; BACKGROUND: #c1c1c1; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 1pt; PADDING-TOP: 1pt; PADDING-LEFT: 4pt; MARGIN-LEFT: 5.65pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 4pt; MARGIN-RIGHT: 5.65pt">
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>RSDU =</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp; (DESCRIPTION 
+=</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp; 
+(CONNECT_TIMEOUT = 20)</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp; 
+(TRANSPORT_CONNECT_TIMEOUT = 20)</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp; 
+(ADDRESS = (PROTOCOL = TCP)</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp; 
+(HOST = rsdudb01vip.ema.ru)(PORT = 1521)</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp; 
+)</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp; 
+(ADDRESS = (PROTOCOL = TCP)</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>(HOST = 
+rsdudb02vip.ema.ru)(PORT = 1521)</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp; 
+)</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp; 
+(CONNECT_DATA =</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (SERVER = 
+DEDICATED)</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (SERVICE_NAME = 
+rsdu.ema.ru)</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp; 
+</SPAN>)</P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm">&nbsp; )</P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm">&nbsp;</P>
+
+</div>
+<p class=af8 style="MARGIN-TOP: 6pt"><span class=afb>Примечание</SPAN>. В приведенных примерах необходимо 
+указывать актуальные параметры <span class=af5><span 
+style="FONT-SIZE: 12pt; LINE-HEIGHT: 115%">SERVICE_NAME</SPAN></SPAN> и <span class=af5><span style="FONT-SIZE: 12pt; LINE-HEIGHT: 115%">HOST</SPAN></SPAN>, согласно текущей конфигурации комплекса 
+РСДУ5.</P>
+<p class=MsoNormal><a name=_Hlk45896939>Чтобы проверить доступность БДТИ и возможность соединения с 
+ней, можно воспользоваться утилитами </A><span class=af5>tnsping</SPAN> либо <span class=af5>sqlplus</SPAN>.</P>
+<p class=MsoNormal><a name=_Hlk45896956>Например, </A></P>
+<div 
+style="BORDER-TOP: windowtext 1pt solid; BORDER-RIGHT: windowtext 1pt solid; BACKGROUND: #c1c1c1; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 1pt; PADDING-TOP: 1pt; PADDING-LEFT: 4pt; MARGIN-LEFT: 5.65pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 4pt; MARGIN-RIGHT: 5.65pt">
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>tnsping</SPAN><span 
+lang=EN-US> </SPAN><span lang=EN-US>RSDU</SPAN></P></DIV>
+<p class=aff4>Должно появиться сообщение, содержащее 
+информацию об успешном разрешении имени источника <span lang=EN-US>RSDU</SPAN>:</P>
+<div 
+style="BORDER-TOP: windowtext 1pt solid; BORDER-RIGHT: windowtext 1pt solid; BACKGROUND: #c1c1c1; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 1pt; PADDING-TOP: 1pt; PADDING-LEFT: 4pt; MARGIN-LEFT: 5.65pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 4pt; MARGIN-RIGHT: 5.65pt">
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>Attempting to contact 
+(DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = 192.168.10.132)(PORT = 1521)) 
+(CONNECT_DATA = (SERVICE_NAME = RSDU)))</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm">OK (20 мсек)</P></DIV>
+<p class=aff4>Далее необходимо проверить наличие соединения 
+с БДТИ с помощью команды:</P>
+<div 
+style="BORDER-TOP: windowtext 1pt solid; BORDER-RIGHT: windowtext 1pt solid; BACKGROUND: #c1c1c1; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 1pt; PADDING-TOP: 1pt; PADDING-LEFT: 4pt; MARGIN-LEFT: 5.65pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 4pt; MARGIN-RIGHT: 5.65pt">
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>sqlplus</SPAN> /<span 
+lang=EN-US>nolog</SPAN></P></DIV>
+<p class=aff4>На приглашение SQL ввести:</P>
+<div 
+style="BORDER-TOP: windowtext 1pt solid; BORDER-RIGHT: windowtext 1pt solid; BACKGROUND: #c1c1c1; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 1pt; PADDING-TOP: 1pt; PADDING-LEFT: 4pt; MARGIN-LEFT: 5.65pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 4pt; MARGIN-RIGHT: 5.65pt">
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>SQL</SPAN>&gt;<span 
+lang=EN-US>connect</SPAN><span lang=EN-US> </SPAN><span lang=EN-US>system</SPAN>/<span lang=EN-US>passme</SPAN>@<span lang=EN-US>RSDU</SPAN></P></DIV>
+<p class=aff4>При указании корректного пароля для 
+пользователя СУБД <span lang=EN-US>Oracle</SPAN><span 
+lang=EN-US> </SPAN><span lang=EN-US>system</SPAN> (по умолчанию passme), вы сможете наблюдать 
+следующее сообщение, демонстрирующее об успешном присоединении к БД:</P>
+<div 
+style="BORDER-TOP: windowtext 1pt solid; BORDER-RIGHT: windowtext 1pt solid; BACKGROUND: #c1c1c1; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 1pt; PADDING-TOP: 1pt; PADDING-LEFT: 4pt; MARGIN-LEFT: 5.65pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 4pt; MARGIN-RIGHT: 5.65pt">
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>.Соединено</SPAN></P></DIV>
+<h2><a name=_Toc11067462></A><a 
+name=_Toc70418686>1.6 Установка и настройка </A><span 
+lang=EN-US>RabbitMQ</SPAN><span lang=EN-US> </SPAN>на серверах ОИК</H2>
+<p class=MsoNormal>Если данный сервер планируется 
+использовать для серверного ПО РВ ОИК, необходимо установить <span lang=EN-US>RabbitMQ</SPAN><span lang=EN-US> 
+</SPAN>на нем в соответствии с инструкцией «Установка <span lang=EN-US>RabbitMQ</SPAN> для <span lang=EN-US>SLES</SPAN>12 <span lang=EN-US>SP</SPAN>3. Руководство администратора».</P>
+<h2><a name=_Toc70418687>1.7 Установка 
+модулей РСДУ5</A></H2>
+<p class=MsoNormal>Описание установки серверных модулей 
+РСДУ5 представлено в документе «Сборка и установка серверного ПО РСДУ. 
+Руководство администратора».</P>
+<h2 style="MARGIN-LEFT: 24.1pt; TEXT-INDENT: -24.1pt"><a 
+name=_Toc70418688></A><a name=_Toc11067463>1.8 Конфигурирование ОС SLES</A></H2>
+<p class=MsoNormal>Начальная конфигурация системы 
+выполняется в процессе установки серверного ПО РСДУ5 (при выполнении команды 
+<span class=af5>make install</SPAN>, см. «Сборка и 
+установка серверного ПО РСДУ. Руководство администратора»).</P>
+<p class=MsoNormal>После завершения выполнения команды 
+установки необходимо проверить, что были созданы следующие директории:</P>
+<p class=MsoListBullet2><span class=af5><span style="FONT-FAMILY: Wingdings">ü<span style='FONT: 7pt "Times New Roman"'>&nbsp; </SPAN></SPAN></SPAN><span class=af5>/var/log/ema;</SPAN></P>
+<p class=MsoListBullet2><span class=af5><span style="FONT-FAMILY: Wingdings">ü<span style='FONT: 7pt "Times New Roman"'>&nbsp; </SPAN></SPAN></SPAN><span class=af5>/var/run/ema;</SPAN></P>
+<p class=MsoListBullet2><span class=af5><span style="FONT-FAMILY: Wingdings">ü<span style='FONT: 7pt "Times New Roman"'>&nbsp; </SPAN></SPAN></SPAN><span class=af5>/home/ema;</SPAN></P>
+<p class=MsoListBullet2><span class=af5><span style="FONT-FAMILY: Wingdings">ü<span style='FONT: 7pt "Times New Roman"'>&nbsp; </SPAN></SPAN></SPAN><span class=af5>/etc/ema;</SPAN></P>
+<p class=MsoListBullet2><span class=af5><span style="FONT-FAMILY: Wingdings">ü<span style='FONT: 7pt "Times New Roman"'>&nbsp; </SPAN></SPAN></SPAN><span class=af5>/retro.</SPAN></P>
+<p class=MsoNormal>Обязательным условием для корректной 
+работы серверных модулей являются параметры ядра, перечисленные в Приложение 
+Г.</P>
+<p class=MsoNormal><a name=_Hlk45897129>С расположением и назначением всех директорий и файлов, 
+используемых при работе серверного ПО РСДУ5, вы можете ознакомиться в документе 
+«Сборка и установка серверного ПО РСДУ. Руководство администратора».</A></P>
+<p class=MsoNormal>Кроме того, необходимо заполнить 
+конфигурационные файлы <span class=af5>host.ini</SPAN> и 
+<span class=af5>ema.conf</SPAN> (расположенные в директории 
+<span class=af5>/etc/ema/</SPAN>) согласно текущей 
+конфигурации экземпляра комплекса РСДУ5 и информации в Приложение А и Приложение 
+Б настоящего документа. </P>
+<p class=MsoNormal><a name=_Hlk45897262>Если на хосте включена функция контроля системного времени, 
+потребуется редактирование файла </A><span class=af5>/etc/ema/ema_time.cfg</SPAN> (см. «Установка скрипта 
+контроля системного времени. Руководство администратора»). </P>
+<p class=MsoNormal>Редактирование файла <span class=af5>/etc/security/limits.conf</SPAN> не является обязательным, 
+но может быть полезно для разработчиков при отладке серверного ПО. В упомянутом 
+выше файле требуется добавить следующие строки:</P>
+<div 
+style="BORDER-TOP: windowtext 1pt solid; BORDER-RIGHT: windowtext 1pt solid; BACKGROUND: #c1c1c1; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 1pt; PADDING-TOP: 1pt; PADDING-LEFT: 4pt; MARGIN-LEFT: 5.65pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 4pt; MARGIN-RIGHT: 5.65pt">
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PAGE-BREAK-AFTER: avoid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>oracle</SPAN>&nbsp; 
+<span lang=EN-US>soft</SPAN>&nbsp;&nbsp;&nbsp; <span 
+lang=EN-US>core</SPAN>&nbsp;&nbsp; <span lang=EN-US>unlimited</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PAGE-BREAK-AFTER: avoid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>oracle&nbsp; 
+hard&nbsp;&nbsp;&nbsp; core&nbsp;&nbsp; unlimited</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PAGE-BREAK-AFTER: avoid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>root&nbsp;&nbsp;&nbsp; soft&nbsp;&nbsp;&nbsp; 
+core&nbsp;&nbsp; unlimited</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PAGE-BREAK-AFTER: avoid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm">root&nbsp;&nbsp;&nbsp; hard&nbsp;&nbsp;&nbsp; 
+core&nbsp;&nbsp; u<span lang=EN-US>n</SPAN>limited</P></DIV>
+<p class=aff4>Для того чтобы изменения, прописанные в файле 
+<span class=af5>/etc/security/limits.conf,</SPAN> вступили 
+в силу, потребуется перезагрузка настраиваемого хоста.</P>
+<h2><a name=_Toc70418689></A><a 
+name=_Toc11067464>1.9 Настройка ротации лог-файлов</A></H2>
+<p class=MsoNormal>Ротация логов – это процесс 
+архивирования логов и удаление старых файлов логов. Таким образом, с помощью 
+данного процесса можно остановить бесконтрольный рост лог-файлов, в которые 
+пишутся события от серверных модулей РСДУ.</P>
+<p class=MsoNormal>В ОС <span lang=EN-US>Linux</SPAN> для выполнения ротации логов существует 
+специальный сервис – logrotate. Базовые настройки для logrotate хранятся в 
+конфигурационном файле <span class=af5>/etc/logrotate.conf</SPAN>, а информация о ротации логов 
+для конкретных сервисов оформляется в отдельный файл и помещается в директорию 
+<span class=af5>/etc/logrotate.d/.</SPAN></P>
+<p class=MsoNormal>Настройка ротации логов серверных 
+модулей РСДУ обычно содержится в файле <span class=af5>/etc/logrotate.d/ema</SPAN> (см. Приложение Д). Этот файл 
+копируется при установке серверного ПО РСДУ (см. «Сборка и установка серверного 
+ПО РСДУ. Руководство администратора»), но может быть также самостоятельно 
+подготовлен администратором комплекса.</P>
+<h2><a name=_Toc70418690></A><a 
+name=_Toc11067465>1.10 Настройка сторожевого 
+таймера</A></H2>
+<p class=MsoNormal>Сторожевой таймер (англ. Watchdog Timer) 
+используется для контроля зависания системы. Он п<span style="BACKGROUND: white">редставляет собой таймер, который периодически сбрасывается 
+контролируемой системой. Если сброса не произошло в течение некоторого интервала 
+времени, то происходит принудительная<span class=apple-converted-space><span style="COLOR: black"> 
+</SPAN></SPAN>перезагрузка системы.</SPAN></P>
+<p class=MsoNormal><span style="BACKGROUND: white">В РСДУ5 инициализацию и сбрасывание таймера выполняет 
+модуль </SPAN><span class=af5>lsmagentd</SPAN><span 
+style='FONT-SIZE: 11pt; FONT-FAMILY: "Courier New"; BACKGROUND: white; LINE-HEIGHT: 115%'> (</SPAN><span style="BACKGROUND: white">в ОС </SPAN><span lang=EN-US style="BACKGROUND: white">SLES</SPAN><span lang=EN-US style="BACKGROUND: white"> </SPAN><span style="BACKGROUND: white">управление таймером реализуется через обращение к файлу 
+</SPAN><span class=af5>/dev/watchdog</SPAN><span 
+style='FONT-SIZE: 11pt; FONT-FAMILY: "Courier New"; BACKGROUND: white; LINE-HEIGHT: 115%'>)</SPAN><span style="BACKGROUND: white">. Для настройки параметров</SPAN> watchdog<span 
+style="FONT-SIZE: 11pt; BACKGROUND: white; LINE-HEIGHT: 115%"> </SPAN><span style="BACKGROUND: white">используется конфигурационный файл </SPAN><span class=af5>host.ini</SPAN><span 
+style="FONT-SIZE: 11pt; BACKGROUND: white; LINE-HEIGHT: 115%"> </SPAN><span style="BACKGROUND: white">(см. </SPAN><span style="BACKGROUND: white">Приложение А</SPAN><span style="BACKGROUND: white">). </SPAN></P>
+<p class=MsoNormal><span style="BACKGROUND: white">Для конкретного оборудования выпускается специальный 
+драйвер, который предоставляет доступ к аппаратному </SPAN><span lang=EN-US 
+style="BACKGROUND: white">watchdog</SPAN><span 
+style="BACKGROUND: white">. Существует также возможность 
+настройки программного </SPAN><span lang=EN-US style="BACKGROUND: white">watchdog</SPAN><span style="BACKGROUND: white">.</SPAN></P>
+<p class=MsoNormal><span 
+style="BACKGROUND: white; COLOR: black">Для загрузки 
+выбранного драйвера необходимо прописать команду </SPAN><span class=af5>modprobe&nbsp;&lt;имя_драйвера&gt; </SPAN><span 
+style="BACKGROUND: white; COLOR: black">в конфигурационном 
+файле </SPAN><span class=af5>/etc/init.d/boot.local</SPAN><span 
+style="BACKGROUND: white; COLOR: black">.</SPAN></P>
+<p class=MsoNormal><span 
+style="BACKGROUND: white; COLOR: black">Например, для 
+загрузки </SPAN>программного watchdog нужно<span 
+style="BACKGROUND: white; COLOR: black"> 
+прописать:</SPAN></P>
+<div 
+style="BORDER-TOP: windowtext 1pt solid; BORDER-RIGHT: windowtext 1pt solid; BACKGROUND: #c1c1c1; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 1pt; PADDING-TOP: 1pt; PADDING-LEFT: 4pt; MARGIN-LEFT: 5.65pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 4pt; MARGIN-RIGHT: 5.65pt">
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>modprobe</SPAN><span 
+lang=EN-US> </SPAN><span lang=EN-US>softdog</SPAN></P></DIV>
+<p class=aff4><span style="BACKGROUND: white">Факт загрузки драйвера можно проверить в выводе команды 
+</SPAN><span class=af5>dmesg</SPAN><span 
+style="BACKGROUND: white">.</SPAN></P>
+<p class=MsoNormal><span 
+style="BACKGROUND: white; COLOR: black">Например</SPAN><span lang=EN-US 
+style="BACKGROUND: white; COLOR: black">,</SPAN></P>
+<div 
+style="BORDER-TOP: windowtext 1pt solid; BORDER-RIGHT: windowtext 1pt solid; BACKGROUND: #c1c1c1; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 1pt; PADDING-TOP: 1pt; PADDING-LEFT: 4pt; MARGIN-LEFT: 5.65pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 4pt; MARGIN-RIGHT: 5.65pt">
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>dmesg | grep 
+dog</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>Software Watchdog 
+Timer: 0.07 initialized. soft_noboot=0 soft_margin= 60sec (nowayout= 
+0)</SPAN></P></DIV>
+<p class=af8 style="MARGIN-TOP: 6pt"><span class=afb>Примечание</SPAN><span lang=EN-US>. 
+</SPAN>Текущий список драйверов для <span lang=EN-US>watchdog, </SPAN>включенных в дистрибутив <span lang=EN-US>SLES10, </SPAN>можно посмотреть в директории <span 
+class=af5><span lang=EN-US 
+style="FONT-SIZE: 12pt; LINE-HEIGHT: 115%">/lib/modules/&lt;</SPAN></SPAN><span class=af5><span style="FONT-SIZE: 12pt; LINE-HEIGHT: 115%">версия</SPAN></SPAN><span class=af5><span lang=EN-US style="FONT-SIZE: 12pt; LINE-HEIGHT: 115%">_</SPAN></SPAN><span class=af5><span 
+style="FONT-SIZE: 12pt; LINE-HEIGHT: 115%">ядра</SPAN></SPAN><span class=af5><span lang=EN-US style="FONT-SIZE: 12pt; LINE-HEIGHT: 115%">&gt;/kernel/drivers/char/watchdog/.</SPAN></SPAN></P>
+<h2><a name=_Toc70418691></A><a 
+name=_Toc11067466>1.11 Обеспечение автоматической загрузки 
+модулей РСДУ5 при старте системы</A></H2>
+<p class=MsoNormal>Для того чтобы серверные модули РСДУ5 
+автоматически запускались при старте системы необходимо выполнить скрипт <span 
+class=af5>emaadmin</SPAN>, который необходимым образом 
+пропишет серверные модули РСДУ5 в автозагрузку, основываясь на файле 
+конфигурации <span class=af5>ema.conf</SPAN>.</P>
+<p class=MsoNormal>Например:</P>
+<div 
+style="BORDER-TOP: windowtext 1pt solid; BORDER-RIGHT: windowtext 1pt solid; BACKGROUND: #c1c1c1; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 1pt; PADDING-TOP: 1pt; PADDING-LEFT: 4pt; MARGIN-LEFT: 5.65pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 4pt; MARGIN-RIGHT: 5.65pt">
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"># <span lang=EN-US>emaadmin</SPAN><span lang=EN-US> 
+</SPAN><span lang=EN-US>reconfig</SPAN></P></DIV>
+<p class=aff4>Все операции по настройке автоматической 
+загрузки выполняются при установке серверного ПО РСДУ (если было подтверждено 
+соответствующее действие во время выполнения команды <span class=af5>make install</SPAN>).</P>
+<h2><a name=_Toc70418692></A><a 
+name=_Toc11067467>1.12 Проверка работоспособности модулей 
+РСДУ5</A></H2>
+<p class=MsoNormal>Для управления 
+стартом/остановом/перезапуском модулей РСДУ5 на хосте предназначен скрипт <span 
+class=af5>ema</SPAN>, который следует запускать с правами 
+системного пользователя <span lang=EN-US>root</SPAN>.</P>
+<p class=MsoNormal>Использование утилиты предполагается в 
+следующем формате:</P>
+<div 
+style="BORDER-TOP: windowtext 1pt solid; BORDER-RIGHT: windowtext 1pt solid; BACKGROUND: #c1c1c1; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 1pt; PADDING-TOP: 1pt; PADDING-LEFT: 4pt; MARGIN-LEFT: 5.65pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 4pt; MARGIN-RIGHT: 5.65pt">
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>ema</SPAN> 
+&lt;команда&gt;</P></DIV>
+<p class=aff4>При запуске скрипта <span class=af5>ema</SPAN> в командной строке без параметров на экран 
+терминала выведутся все доступные команды управления ПО РВ РСДУ5, в том 
+числе:</P>
+<p class=MsoNormal><span class=af5>start</SPAN><span 
+style='FONT-SIZE: 11pt; FONT-FAMILY: "Courier New"; LINE-HEIGHT: 115%'> &nbsp;&nbsp;&nbsp; </SPAN>– старт всех модулей из <span 
+class=af5>/etc/ema/ema.cfg</SPAN> </P>
+<p class=MsoNormal><span class=af5>stop</SPAN><span 
+style='FONT-SIZE: 11pt; FONT-FAMILY: "Courier New"; LINE-HEIGHT: 115%'> 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </SPAN>– останов 
+всех модулей из&nbsp; <span class=af5>/etc/ema/ema.cfg</SPAN><span 
+style='FONT-FAMILY: "Courier New"'> </SPAN></P>
+<p class=MsoNormal><span class=af5>reload</SPAN><span 
+style='FONT-SIZE: 11pt; FONT-FAMILY: "Courier New"; LINE-HEIGHT: 115%'> &nbsp;&nbsp; </SPAN>– перезагрузка всех модулей из <span 
+class=af5>/etc/ema/ema.cfg</SPAN></P>
+<p class=MsoNormal><span class=af5>status</SPAN> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; – 
+состояние запуска модулей из <span class=af5>/etc/ema/ema.cfg</SPAN></P>
+<p class=MsoNormal>Формат команды запуска отдельного 
+серверного модуля РСДУ5 следующий:</P>
+<div 
+style="BORDER-TOP: windowtext 1pt solid; BORDER-RIGHT: windowtext 1pt solid; BACKGROUND: #c1c1c1; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 1pt; PADDING-TOP: 1pt; PADDING-LEFT: 4pt; MARGIN-LEFT: 5.65pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 4pt; MARGIN-RIGHT: 5.65pt">
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>ema</SPAN><span 
+lang=EN-US> </SPAN><span lang=EN-US>start</SPAN> &lt;имя_модуля&gt;</P></DIV>
+<p class=aff4>Например,</P>
+<div 
+style="BORDER-TOP: windowtext 1pt solid; BORDER-RIGHT: windowtext 1pt solid; BACKGROUND: #c1c1c1; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 1pt; PADDING-TOP: 1pt; PADDING-LEFT: 4pt; MARGIN-LEFT: 5.65pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 4pt; MARGIN-RIGHT: 5.65pt">
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>ema</SPAN><span 
+lang=EN-US> </SPAN><span lang=EN-US>start</SPAN><span lang=EN-US> 
+</SPAN><span lang=EN-US>ssbsd</SPAN></P></DIV>
+<p class=aff4>Формат команды останова отдельного модуля 
+РСДУ5 следующий:</P>
+<div 
+style="BORDER-TOP: windowtext 1pt solid; BORDER-RIGHT: windowtext 1pt solid; BACKGROUND: #c1c1c1; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 1pt; PADDING-TOP: 1pt; PADDING-LEFT: 4pt; MARGIN-LEFT: 5.65pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 4pt; MARGIN-RIGHT: 5.65pt">
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>ema</SPAN><span 
+lang=EN-US> </SPAN><span lang=EN-US>stopww</SPAN> &lt;имя_модуля&gt;</P></DIV>
+<p class=aff4>Например,</P>
+<div 
+style="BORDER-TOP: windowtext 1pt solid; BORDER-RIGHT: windowtext 1pt solid; BACKGROUND: #c1c1c1; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 1pt; PADDING-TOP: 1pt; PADDING-LEFT: 4pt; MARGIN-LEFT: 5.65pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 4pt; MARGIN-RIGHT: 5.65pt">
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>ema</SPAN><span 
+lang=EN-US> </SPAN><span lang=EN-US>stopww</SPAN><span lang=EN-US> 
+</SPAN><span lang=EN-US>ssbsd</SPAN></P></DIV>
+<p class=aff4>Во время первоначального или отладочного 
+запуска серверных модулей рекомендуется проверять содержимое лог-файлов в 
+директории <span class=af5>/var/log/ema/</SPAN> на наличие 
+сообщений об ошибках.</P>
+<p class=MsoNormal>Возможность отправки сигналов в сеть 
+может быть проверена с помощью утилиты <span style='FONT-FAMILY: "Courier New"'>sgtest</SPAN> (только при наличии запущенного модуля 
+сервера сигнальной системы – <span lang=EN-US style='FONT-FAMILY: "Courier New"'>ssbsd</SPAN>).</P>
+<p class=MsoNormal><span lang=EN-US 
+style='FONT-FAMILY: "Courier New"'>sgtest 
+&lt;SS_user_ID&gt; &lt;user_ID&gt; &lt;signal_ID&gt; 
+&lt;signal_type&gt;</SPAN></P>
+<p class=MsoNormal><span class=af5>&lt;SS_user_ID&gt;</SPAN> – идентификатор сервера 
+сигнальной системы (посмотреть через Навигатор БД)</P>
+<p class=MsoNormal><span class=af5>&lt;user_ID&gt;</SPAN> – идентификатор пользователя (поле 
+<span class=af7><span lang=EN-US>S</SPAN></SPAN><span class=af7>_<span 
+lang=EN-US>USERS</SPAN></SPAN><span class=af7>.<span lang=EN-US>ID</SPAN></SPAN>)</P>
+<p class=MsoNormal><span class=af5>&lt;signal_ID&gt;</SPAN> – идентификатор сигнала (поле 
+<span class=af7><span lang=EN-US>SYS</SPAN></SPAN><span class=af7>_<span lang=EN-US>SIGN</SPAN></SPAN><span class=af7>.<span lang=EN-US>ID</SPAN></SPAN>)</P>
+<p class=MsoNormal><span class=af5>&lt;signal_type&gt;</SPAN> – идентификатор типа сигнала 
+(поле <span class=af7><span lang=EN-US>SYS</SPAN></SPAN><span class=af7>_<span lang=EN-US>SIGN</SPAN></SPAN><span class=af7>.<span lang=EN-US>ID</SPAN></SPAN><span class=af7>_<span 
+lang=EN-US>TYPE</SPAN></SPAN>)</P>
+<p class=MsoNormal>Например,</P>
+<div 
+style="BORDER-TOP: windowtext 1pt solid; BORDER-RIGHT: windowtext 1pt solid; BACKGROUND: #c1c1c1; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 1pt; PADDING-TOP: 1pt; PADDING-LEFT: 4pt; MARGIN-LEFT: 5.65pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 4pt; MARGIN-RIGHT: 5.65pt">
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>sgtest</SPAN> 1061 1 
+2<span lang=EN-US>&nbsp;</SPAN>909</P></DIV>
+<p class=MsoNormal>Проверку доступа к БДТИ рекомендуется 
+выполнять с помощью консольной утилиты <span class=af5>sqltest</SPAN>, которая запускается со следующими 
+параметрами:</P>
+<div 
+style="BORDER-TOP: windowtext 1pt solid; BORDER-RIGHT: windowtext 1pt solid; BACKGROUND: #c1c1c1; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 1pt; PADDING-TOP: 1pt; PADDING-LEFT: 4pt; MARGIN-LEFT: 5.65pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 4pt; MARGIN-RIGHT: 5.65pt">
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>sqltest 
+&lt;user_login&gt; &lt;user_password&gt;</SPAN></P></DIV>
+<p class=MsoNormal>Например,</P>
+<div 
+style="BORDER-TOP: windowtext 1pt solid; BORDER-RIGHT: windowtext 1pt solid; BACKGROUND: #c1c1c1; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 1pt; PADDING-TOP: 1pt; PADDING-LEFT: 4pt; MARGIN-LEFT: 5.65pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 4pt; MARGIN-RIGHT: 5.65pt">
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>sqltest</SPAN><span 
+lang=EN-US> </SPAN><span lang=EN-US>system</SPAN><span lang=EN-US> 
+</SPAN><span lang=EN-US>passme</SPAN></P></DIV>
+<p class=MsoNormal>В приглашении «SQL:» можно набрать и 
+выполнить sql-запрос. Если возвращается результат запрошенной выборки, то доступ 
+к БДТИ имеется.</P>
+<p class=MsoNormal>Более подробную информацию по работе с 
+модулями также можно прочитать в документе «Сопровождение серверного ПО для ОС 
+<span lang=EN-US>Linux</SPAN>. Руководство 
+администратора».</P>
+<h2><a name=_Toc70418693>1.13 
+Настройка общего </A><span lang=EN-US>IP</SPAN>-адреса на 
+ОИК</H2>
+<p class=MsoNormal>Скрипт <span class=af5>/etc/ema/notify_state.sh</SPAN> выполняется при смене 
+статуса хоста (Основной/Резервный).</P>
+<p class=MsoNormal>В частности, данный скрипт может 
+применяться для назначения общего IP-адреса при переходе сервера в режим 
+Основной (MASTER) и, соответственно, освобождении данного общего IP при потере 
+статуса MASTER.</P>
+<p class=MsoNormal>Выполнить на двух узлах ОИК следующие 
+пункты:</P>
+<p class=MsoListNumber2><span class=af5><span style='FONT-FAMILY: "Arial","sans-serif"'>1.<span style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; </SPAN></SPAN></SPAN>Скопировать скрипт 
+<span class=af5>notify_state.sh</SPAN> в директорию <span 
+class=af5>/etc/ema.</SPAN></P>
+<p class=MsoListNumber2>2.<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; 
+</SPAN>Выдать привилегии на запуск:</P>
+<div 
+style="BORDER-TOP: windowtext 1pt solid; BORDER-RIGHT: windowtext 1pt solid; BACKGROUND: #c1c1c1; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 1pt; PADDING-TOP: 1pt; PADDING-LEFT: 4pt; MARGIN-LEFT: 38.25pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 4pt; MARGIN-RIGHT: 5.65pt">
+<p class=16 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>chmod 744 
+notify_state.sh</SPAN></P></DIV>
+<p class=MsoListNumber2 
+style="MARGIN: 6pt 0cm 6pt 32.05pt; TEXT-INDENT: -17.85pt">3.<span style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; </SPAN>Изменить скрипт, подставив 
+требуемый общий адрес для подключения клиентов в трех местах (в примере ниже 
+<span lang=EN-US>IP</SPAN>-адреса, которые требуется 
+задать, выделены жирным начертанием):</P>
+<div 
+style="BORDER-TOP: windowtext 1pt solid; BORDER-RIGHT: windowtext 1pt solid; BACKGROUND: #c1c1c1; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 1pt; PADDING-TOP: 1pt; PADDING-LEFT: 4pt; MARGIN-LEFT: 38.25pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 4pt; MARGIN-RIGHT: 5.65pt">
+<p class=16 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><em><span lang=EN-US 
+style='FONT-FAMILY: "Courier New"'>#!/bin/bash</SPAN></EM></P>
+<p class=16 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><em><span lang=EN-US 
+style='FONT-FAMILY: "Courier New"'></SPAN></EM>&nbsp;</P>
+<p class=16 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><em><span lang=EN-US 
+style='FONT-FAMILY: "Courier New"'>STATE=$1</SPAN></EM></P>
+<p class=16 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><em><span lang=EN-US 
+style='FONT-FAMILY: "Courier New"'></SPAN></EM>&nbsp;</P>
+<p class=16 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><em><span lang=EN-US 
+style='FONT-FAMILY: "Courier New"'>mkdir -p 
+/var/run/ema</SPAN></EM></P>
+<p class=16 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><em><span lang=EN-US 
+style='FONT-FAMILY: "Courier New"'></SPAN></EM>&nbsp;</P>
+<p class=16 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><em><span lang=EN-US 
+style='FONT-FAMILY: "Courier New"'>case $STATE 
+in</SPAN></EM></P>
+<p class=16 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><em><span lang=EN-US 
+style='FONT-FAMILY: "Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "MASTER") 
+HOST_STATE="MASTER"</SPAN></EM></P>
+<p class=16 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><em><span lang=EN-US 
+style='FONT-FAMILY: "Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp; Ifconfig eth0:0 <b>192.168.12.130</B> netmask 
+255.255.255.0 up</SPAN></EM></P>
+<p class=16 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><em><span lang=EN-US 
+style='FONT-FAMILY: "Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+arping -U -w 1&nbsp;<b>192.168.12.130</B></SPAN></EM></P>
+<p class=16 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><em><span lang=EN-US 
+style='FONT-FAMILY: "Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+;;</SPAN></EM></P>
+<p class=16 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><em><span lang=EN-US 
+style='FONT-FAMILY: "Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+*)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; HOST_STATE="SLAVE"</SPAN></EM></P>
+<p class=16 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><em><span lang=EN-US 
+style='FONT-FAMILY: "Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+Ifconfig eth0:0 <b>192.168.12.130</B> netmask 255.255.255.0 
+down</SPAN></EM></P>
+<p class=16 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><em><span lang=EN-US 
+style='FONT-FAMILY: "Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+;;</SPAN></EM></P>
+<p class=16 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><em><span lang=EN-US 
+style='FONT-FAMILY: "Courier New"'>esac</SPAN></EM></P>
+<p class=16 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><em><span lang=EN-US 
+style='FONT-FAMILY: "Courier New"'></SPAN></EM>&nbsp;</P>
+<p class=16 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><em><span lang=EN-US 
+style='FONT-FAMILY: "Courier New"'>echo $HOST_STATE &gt; 
+/var/run/ema/hoststate</SPAN></EM></P>
+<p class=16 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><em><span lang=EN-US 
+style='FONT-FAMILY: "Courier New"'>echo "$(date) 
+$HOST_STATE" &gt;&gt; /var/run/ema/hoststate.log</SPAN></EM></P></DIV>
+<p class=MsoListNumber2 
+style="MARGIN: 6pt 0cm 6pt 32.05pt; TEXT-INDENT: -17.85pt">4.<span style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; </SPAN>Проверить, что скрипт подключен в 
+конфигурации РСДУ <span class=af5>host.ini</SPAN>, если 
+отсутствует, добавить строку <span class=af5>NOTIFY_STATE_SCRIPT</SPAN> в раздел <span class=af5>[SMAGENT]</SPAN> и указать полный путь до скрипта <span 
+class=af5>notify_state.sh</SPAN>.</P>
+<p class=MsoListContinue2>Пример конфигурации <span 
+class=af5>/etc/ema/host.ini</SPAN>:</P>
+<div 
+style="BORDER-TOP: windowtext 1pt solid; BORDER-RIGHT: windowtext 1pt solid; BACKGROUND: #c1c1c1; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 1pt; PADDING-TOP: 1pt; PADDING-LEFT: 4pt; MARGIN-LEFT: 38.25pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 4pt; MARGIN-RIGHT: 5.65pt">
+<p class=16 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><em><span lang=EN-US 
+style='FONT-FAMILY: "Courier New"'>[SMAGENT]</SPAN></EM></P>
+<p class=16 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><em><span lang=EN-US 
+style='FONT-FAMILY: "Courier New"'>USER_ALIAS = 
+"smagent10"</SPAN></EM></P>
+<p class=16 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><em><span lang=EN-US 
+style='FONT-FAMILY: "Courier New"'>USER_ID = 
+10864</SPAN></EM></P>
+<p class=16 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><em><span lang=EN-US 
+style='FONT-FAMILY: "Courier New"'>GROUP_ID = 
+1041</SPAN></EM></P>
+<p class=16 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><em><span lang=EN-US 
+style='FONT-FAMILY: "Courier New"'>DEBUG_LEVEL = 
+0</SPAN></EM></P>
+<p class=16 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><em><span lang=EN-US 
+style='FONT-FAMILY: "Courier New"'>SELFTEST_TIME = 
+120</SPAN></EM></P>
+<p class=16 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><em><span lang=EN-US 
+style='FONT-FAMILY: "Courier New"'>DB_HANG_COUNT = 
+10</SPAN></EM></P>
+<p class=16 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><em><span lang=EN-US 
+style='FONT-FAMILY: "Courier New"'>TIME_TO_REBOOT = 
+30</SPAN></EM></P>
+<p class=16 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><em><span lang=EN-US 
+style='FONT-FAMILY: "Courier New"'>LOG_MODE = 
+0</SPAN></EM></P>
+<p class=16 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><em><span lang=EN-US 
+style='FONT-FAMILY: "Courier New"'>DB_HOST = 
+localhost</SPAN></EM></P>
+<p class=16 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><em><span lang=EN-US 
+style='FONT-FAMILY: "Courier New"'>DB_NAME = 
+rsduadmin</SPAN></EM></P>
+<p class=16 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><em><b><span 
+lang=EN-US style='FONT-FAMILY: "Courier New"'>NOTIFY_STATE_SCRIPT = 
+/etc/ema/notify_state.sh</SPAN></B></EM></P></DIV>
+<p class=MsoListNumber2 
+style="MARGIN: 6pt 0cm 6pt 32.05pt; TEXT-INDENT: -17.85pt">5.<span style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; </SPAN>Для принятия изменений в 
+конфигурации, необходимо перезапустить РСДУ.</P>
+<div 
+style="BORDER-TOP: windowtext 1pt solid; BORDER-RIGHT: windowtext 1pt solid; BACKGROUND: #c1c1c1; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 1pt; PADDING-TOP: 1pt; PADDING-LEFT: 4pt; MARGIN-LEFT: 38.25pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 4pt; MARGIN-RIGHT: 5.65pt">
+<p class=16 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><em><span lang=EN-US># </SPAN></EM><em><span lang=EN-US 
+style='FONT-FAMILY: "Calibri","sans-serif"'>ema 
+restart</SPAN></EM></P></DIV>
+<h2 style="MARGIN: 12pt 0cm 12pt 28.9pt; TEXT-INDENT: -28.9pt"><a name=_Toc70418694></A><a 
+name=_Toc11067468>1.14 Переход на конфигурационный файл 
+</A><span lang=EN-US>ema</SPAN>.<span lang=EN-US>conf</SPAN> (введен в версии 5.16.3.0)</H2>
+<p class=MsoNormal><span class=afb><span style="FONT-SIZE: 11pt; LINE-HEIGHT: 115%">Примечание.</SPAN></SPAN> <span class=afa><span style="FONT-SIZE: 11pt; LINE-HEIGHT: 115%">Данный шаг необходимо пропустить, если предыдущая 
+установленная версия РСДУ на объекте новее 5.16.2.4 и выполняется переход на 
+другую версию, либо выполняется новая установка.</SPAN></SPAN>&nbsp; </P>
+<p class=MsoNormal>Начиная с версии 5.16.3.0, в РСДУ 
+серверного ПО для описания конфигурации серверных модулей РСДУ5 используется 
+файл <span class=af5>ema.conf</SPAN>. В ранних версиях 
+конфигурация описывалась в файле <span class=af5>ema.cfg</SPAN>. Для того чтобы конвертировать старый формат 
+конфигурации (<span class=af5>ema.cfg</SPAN>) в новый 
+формат (<span class=af5>ema.conf</SPAN>) достаточно 
+выполнить скрипт <span class=af5>emaadmin</SPAN> <span 
+lang=EN-US>c</SPAN><span lang=EN-US> 
+</SPAN>командой <span class=af5>config-convert</SPAN>.</P>
+<p class=MsoNormal>Например:</P>
+<div 
+style="BORDER-TOP: windowtext 1pt solid; BORDER-RIGHT: windowtext 1pt solid; BACKGROUND: #c1c1c1; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 1pt; PADDING-TOP: 1pt; PADDING-LEFT: 4pt; MARGIN-LEFT: 5.65pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 4pt; MARGIN-RIGHT: 5.65pt">
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"># <span lang=EN-US>emaadmin</SPAN><span lang=EN-US> 
+</SPAN><span lang=EN-US>config</SPAN>-<span lang=EN-US>convert</SPAN></P></DIV>
+<p class=aff4>После конвертации в директории <span 
+class=af5>/etc/ema/</SPAN> будет создан файл <span 
+class=af5>ema.conf</SPAN>, а старый конфигурационный файл 
+<span class=af5>ema.cfg</SPAN> будет переименован в <span 
+class=af5>ema.cfg.bak</SPAN>.</P>
+<p class=MsoNormal>В случае если конфигурационный файл 
+<span class=af5>ema.conf</SPAN> уже присутствует в 
+директории <span class=af5>/etc/ema/</SPAN>, в процессе 
+выполнения команды <span class=af5>emaadmin</SPAN> будет 
+задан вопрос, стоит ли данный файл заменить. Ответ будет ожидаться 10 секунд, по 
+истечении этого времени будет выбран ответ по умолчанию <span lang=EN-US>(Yes).</SPAN></P>
+<p class=MsoNormal>Например<span lang=EN-US>:</SPAN></P>
+<div 
+style="BORDER-TOP: windowtext 1pt solid; BORDER-RIGHT: windowtext 1pt solid; BACKGROUND: #c1c1c1; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 1pt; PADDING-TOP: 1pt; PADDING-LEFT: 4pt; MARGIN-LEFT: 5.65pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 4pt; MARGIN-RIGHT: 5.65pt">
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>File 
+'/etc/ema/ema.conf' is present.</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>Do You want to 
+replace it? </SPAN>[<span lang=EN-US>Y</SPAN>/<span 
+lang=EN-US>n</SPAN>] (<span lang=EN-US>Yes</SPAN>)</P></DIV>
+<p class=aff4>После конвертации рекомендуется проверить 
+файл <span class=af5>ema.conf</SPAN> и, в случае 
+необходимости, отредактировать его. После этого следует заново выполнить команду 
+регистрации серверного ПО РСДУ5 в автозагрузке (<span class=af5>emaadmin reconfig</SPAN>).</P>
+<p class=MsoNormal>&nbsp;</P>
+<p class=MsoNormal>&nbsp;</P>
+<p class=MsoNormal>&nbsp;</P>
+<p class=MsoNormal>&nbsp;</P>
+<p class=MsoNormal>&nbsp;</P>
+<p class=MsoHeading7 style="TEXT-INDENT: 0cm"><a 
+name=_Toc70418695></A><a name=_Ref45881161></A><a name=_Ref45880556></A><a 
+name=_Toc41984983></A><a name=_Toc41713533></A><a name=_Toc41712929>Приложение А. 
+</A><span style="POSITION: relative; Z-INDEX: 251643383"><span 
+style="HEIGHT: 72px; WIDTH: 646px; POSITION: absolute; LEFT: 0px; TOP: -7px"><IMG src="0005.files/image004.png" width=646 height=72 ></SPAN></SPAN>Структура <span lang=EN-US>ini</SPAN>-файла агента системного монитора </P>
+<p class=MsoNormal>Конфигурационный файл <span class=af5>host.ini</SPAN>, который считывается и управляется 
+серверным модулем <span lang=EN-US>lsmagentd</SPAN> (агент 
+системного монитора), обычно конфигурируется единожды, на этапе запуска системы 
+в эксплуатацию. </P>
+<p class=MsoNormal><span class=afb><span style="FONT-SIZE: 11pt; LINE-HEIGHT: 115%">Примечание.</SPAN></SPAN> <span class=afa><span style="FONT-SIZE: 11pt; LINE-HEIGHT: 115%">Данный файл помещается в директорию /etc/ema/ автоматически 
+при установке серверных модулей из дистрибутива РСДУ, если он</SPAN></SPAN> 
+отсутствует в /etc/ema (т.е. перезапись файла конфигурации не выполняется).</P>
+<p class=MsoNormal>Конфигурационный файл состоит из 
+следующих секций:</P>
+<p class=MsoListBullet2><span 
+style="FONT-FAMILY: Wingdings">ü<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp; 
+</SPAN></SPAN><span class=af5>[HOST]</SPAN>&nbsp;–&nbsp;здесь указываются общие 
+параметры, такие как «Название хоста», «Номер в кластере», «Название сетевого 
+интерфейса», а также в переменной <span class=af5>A_LOAD_PATH</SPAN> указывается путь для хранения автономной 
+схемы БД параметров. Об это есть документация – «Запуск серверов в автономном 
+режиме»;</P>
+<p class=MsoListBullet2><span 
+style="FONT-FAMILY: Wingdings">ü<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp; 
+</SPAN></SPAN><span class=af5>[SMAGENT]</SPAN>&nbsp;–&nbsp;здесь перечислены параметры 
+для функционирования модуля <span lang=EN-US>l</SPAN>smagen<span lang=EN-US>td</SPAN>;</P>
+<p class=MsoListBullet2><span 
+style="FONT-FAMILY: Wingdings">ü<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp; 
+</SPAN></SPAN><span class=af5>[WATCHDOG]</SPAN>&nbsp;–&nbsp;здесь представлена 
+конфигурация ватчдога (если он присутствует в системе);</P>
+<p class=MsoListBullet2><span 
+style="FONT-FAMILY: Wingdings">ü<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp; 
+</SPAN></SPAN><span class=af5>[PROCESSES]</SPAN>&nbsp;–&nbsp;в этом разделе описываются 
+логины и сгенерированные для них пароли, хранящиеся в зашифрованном виде.</P>
+<p class=MsoNormal>Из всех параметров, представленных в 
+конфигурационном файле <span class=af5>host.ini</SPAN>, 
+чаще всего может потребоваться редактирование содержимого в секции <span 
+class=af5>[PROCESSES]</SPAN>, когда, например, необходимо 
+выполнить сброс сгенерированных паролей для запускаемых на хосте модулей 
+РСДУ.</P>
+<p class=MsoNormal>Подробное описание конфигурационного 
+файла агента системного монитора представлено ниже.</P>
+<div 
+style="BORDER-TOP: windowtext 1pt solid; BORDER-RIGHT: windowtext 1pt solid; BACKGROUND: #c1c1c1; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 1pt; PADDING-TOP: 1pt; PADDING-LEFT: 4pt; MARGIN-LEFT: 5.65pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 4pt; MARGIN-RIGHT: 5.65pt">
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm">[<span lang=EN-US>HOST</SPAN>]</P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>HOST</SPAN>_<span 
+lang=EN-US>NAME</SPAN> = "уникальное имя хоста"</P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>HOST</SPAN>_<span 
+lang=EN-US>ID</SPAN> = "номер хоста в кластере (нумерация с 
+нуля)"</P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>LOOP</SPAN>_<span 
+lang=EN-US>NAME</SPAN> = "имя интерфейса <span lang=EN-US>loopback</SPAN>"</P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>ETH</SPAN>_<span 
+lang=EN-US>NAME</SPAN> = "имя сетевого интерфейса для 
+кластера"</P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>CLUSTER</SPAN>_<span 
+lang=EN-US>BROADCAST</SPAN>_<span lang=EN-US>ADDR</SPAN> = "широковещательный адрес, для обмена внутри 
+кластера"</P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>A</SPAN>_<span 
+lang=EN-US>LOAD</SPAN>_<span lang=EN-US>PATH</SPAN> = "полный путь к папке с файлами 
+автозагрузки"</P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm">&nbsp;</P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm">[<span lang=EN-US>SMAGENT</SPAN>]</P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>USER</SPAN>_<span 
+lang=EN-US>ALIAS</SPAN> = "уникальное имя агента (Логин 
+пользователя-агента: таблица в БД <span lang=EN-US>S</SPAN>_<span lang=EN-US>USERS</SPAN>, поле <span lang=EN-US>LOGIN</SPAN>)"</P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>USER</SPAN>_<span 
+lang=EN-US>ID</SPAN> = &lt;уникальный идентификатор агента 
+(<span lang=EN-US>ID</SPAN> пользователя-агента: таблица в 
+БД <span lang=EN-US>S</SPAN>_<span lang=EN-US>USERS</SPAN>, поле <span lang=EN-US>ID</SPAN>)&gt;</P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>GROUP</SPAN>_<span 
+lang=EN-US>ID</SPAN> = &lt;идентификатор группы агента 
+(<span lang=EN-US>ID</SPAN> группы пользователя-агента: 
+таблица в БД <span lang=EN-US>S</SPAN>_<span lang=EN-US>USERS</SPAN>, поле <span lang=EN-US>ID</SPAN>_<span lang=EN-US>NODE</SPAN>)&gt;</P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>DEBUG</SPAN>_<span 
+lang=EN-US>LEVEL</SPAN> = &lt;уровень отладки 
+агента&gt;</P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>SELFTEST</SPAN>_<span 
+lang=EN-US>TIME</SPAN> = 30 (Время в секундах, по истечении 
+которого хост отправляется в перезагрузку, в случае потери связи с системным 
+монитором и мостом)</P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>DB</SPAN>_<span 
+lang=EN-US>HANG</SPAN>_<span lang=EN-US>COUNT</SPAN> = 0 (Количество последовательных зависаний 
+вызовов <span lang=EN-US>OCCI</SPAN>, по истечении которых 
+хост будет отправлен в перезагрузку. Любой успешный вызов сбрасывает счетчик. По 
+умолчанию отключен.)</P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>TIME</SPAN>_<span 
+lang=EN-US>TO</SPAN>_<span lang=EN-US>REBOOT</SPAN> = 120 (Время в секундах, отведенное на 
+"мягкую" перезагрузку хоста по команде <span lang=EN-US>init</SPAN> 6, выдаваемой агентом при отправке хоста в 
+перезагрузку. Если агент в течение этого времени не выгрузился, он дает команду 
+"жесткой" перезагрузки <span lang=EN-US>Linux</SPAN>. 
+Данный параметр надо устанавливать экспериментально, на хосте СУБД он больше чем 
+на хостах РВ, так как там требуется много времени на гашение БД)</P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>LOG</SPAN>_<span 
+lang=EN-US>MODE</SPAN> = 0 (Режим записи логов, 0 
+соответствует прямой записи в файл, 1 – передаче логов демону <span lang=EN-US>syslog</SPAN>)</P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>DB</SPAN>_<span 
+lang=EN-US>HOST</SPAN> = <span lang=EN-US>postgreserver</SPAN> (Зарезервировано для будущего 
+использования с СУБД <span lang=EN-US>Postgres</SPAN>: имя 
+хоста, на котором работает СУБД <span lang=EN-US>PostgreSQL</SPAN> с БД РСДУ.</P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>DB</SPAN>_<span 
+lang=EN-US>NAME</SPAN> = <span lang=EN-US>rsdu</SPAN> (Зарезервировано для будущего использования с 
+СУБД <span lang=EN-US>Postgres</SPAN>: имя БД РСДУ на 
+хосте, указанного в <span lang=EN-US>DB</SPAN>_<span 
+lang=EN-US>HOST</SPAN>)</P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>NOTIFY</SPAN>_<span 
+lang=EN-US>STATE</SPAN>_<span lang=EN-US>SCRIPT</SPAN> = "полный путь к скрипту" (Параметр 
+опциональный. <a name=_Hlk37405688>Указывает </A>путь к 
+скрипту, который будет вызываться при смене статуса хоста (Основной/Резервный). 
+При вызове скрипта ему передаётся параметр - новый статус хоста: <span 
+lang=EN-US>MASTER</SPAN> или <span lang=EN-US>SLAVE</SPAN>.)</P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm">&nbsp;</P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm">[<span lang=EN-US>WATCHDOG</SPAN>]</P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>WATCHDOG</SPAN>_<span 
+lang=EN-US>TIME</SPAN> = 60 (время, в секундах, по 
+истечению которого <span lang=EN-US>watchdog</SPAN> 
+перезапустит систему, если откажет ОС, или приложение Агент системного монитора. 
+Если параметр задан 0, то контроль отключен. Для корректной работы требуется 
+наличие аппаратного <span lang=EN-US>watchdog</SPAN> и 
+поддержки этого <span lang=EN-US>watchdog</SPAN> со стороны 
+ОС)</P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm">&nbsp;</P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>[PROCESSES]</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>PRIORITY = 
+140</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>PASSWORD_LENGTH = 
+8</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>PROCESS_LOGIN1 = 
+"</SPAN>логин<span lang=EN-US>_</SPAN>зарегистрированного<span lang=EN-US>_</SPAN>модуля<span lang=EN-US>"</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>PROCESS</SPAN>_<span 
+lang=EN-US>PASSWORD</SPAN>1 = 
+"зашифрованный_пароль_модуля"</P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>PROCESS</SPAN>_<span 
+lang=EN-US>KEYTIME</SPAN>1 = ключ_генерации_пароля</P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm">...</P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>PROCESS</SPAN>_<span 
+lang=EN-US>LOGINX</SPAN> = 
+"логин_зарегистрированного_модуля"</P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>PROCESS</SPAN>_<span 
+lang=EN-US>PASSWORDX</SPAN> = 
+"зашифрованный_пароль_модуля"</P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>PROCESS_KEYTIMEX = 
+ключ_генерации_пароля</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>PROCESS_NUM = 
+X</SPAN></P></DIV>
+<p class=aff4>В том случае, когда модули РСДУ5 ни разу не 
+были запущены на хосте, <span class=af5>PROCESS_NUM = 
+0</SPAN> и соответственно ни одной записи <span class=af5>PROCESS_LOGIN</SPAN>, <span class=af5>PROCESS_PASSWORD</SPAN>, <span class=af5>PROCESS_KEYTIME</SPAN> в файле не должно быть. Когда 
+очередное приложение при загрузке регистрируется у агента, число <span class=af5>PROCESS_NUM</SPAN> увеличивается автоматически и появляется 
+тройка записей <span class=af5>PROCESS_LOGIN</SPAN>, <span 
+class=af5>PROCESS_PASSWORD</SPAN> и <span class=af5>PROCESS_KEYTIME</SPAN>.</P><span 
+style='FONT-SIZE: 12pt; FONT-FAMILY: "Arial","sans-serif"; LINE-HEIGHT: 115%'><br style="PAGE-BREAK-BEFORE: always" clear=all></SPAN>
+<p class=MsoNormal><a name=_Toc11067470>Пример </A><span lang=EN-US>ini</SPAN>-файла агента системного монитора:</P>
+<div 
+style="BORDER-TOP: windowtext 1pt solid; BORDER-RIGHT: windowtext 1pt solid; BACKGROUND: #c1c1c1; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 1pt; PADDING-TOP: 1pt; PADDING-LEFT: 4pt; MARGIN-LEFT: 5.65pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 4pt; MARGIN-RIGHT: 5.65pt">
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>[HOST]</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>HOST_NAME = 
+"LinuxRT"</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>HOST_ID = 
+0</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>LOOP_NAME = 
+"lo0"</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>ETH_NAME = 
+"eth0"</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>CLUSTER_BROADCAST_ADDR = "192.168.50.255"</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>A_LOAD_PATH = 
+/home/ema/</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US></SPAN>&nbsp;</P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>[SMAGENT]</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>USER_ALIAS = 
+"smagent10"</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>USER_ID = 
+1041</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>GROUP_ID = 
+1046</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>DEBUG_LEVEL = 
+0</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>SELFTEST_TIME = 
+120</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>DB_HANG_COUNT = 
+0</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>TIME_TO_REBOOT = 
+120</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>LOG_MODE = 
+0</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>DB_HOST = 
+postgreserver</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>DB_NAME = 
+rsdu</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>NOTIFY_STATE_SCRIPT = 
+/etc/ema/notify_state.sh</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US></SPAN>&nbsp;</P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>[WATCHDOG]</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>WATCHDOG_TIME = 
+60</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>WATCHDOG_IOADDR = 
+1091</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US></SPAN>&nbsp;</P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>[PROCESSES]</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>PRIORITY = 
+140</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>PASSWORD_LENGTH = 8 
+</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>PROCESS_NUM = 
+0</SPAN></P></DIV>
+<p class=MsoNormal><span lang=EN-US></SPAN>&nbsp;</P>
+<p class=MsoHeading7 style="TEXT-INDENT: 0cm"><a 
+name=_Toc41984984></A><a name=_Toc41713534></A><a name=_Toc41712930></A><a 
+name=_Toc70418696></A><a name=_Ref45880569>Приложение Б. </A><span 
+style="POSITION: relative; Z-INDEX: 251658743"><span 
+style="HEIGHT: 72px; WIDTH: 646px; POSITION: absolute; LEFT: 0px; TOP: -8px"><IMG src="0005.files/image003.png" width=646 height=72 ></SPAN></SPAN>Структура файла старта 
+модулей РСДУ5 (<span lang=EN-US>ema</SPAN>.<span lang=EN-US>conf</SPAN>)</P>
+<p class=MsoNormal>Файл <span class=af5>ema.conf</SPAN> служит для задания очередности и 
+дополнительных параметров запуска серверных модулей РСДУ, которые должны 
+работать на данном хосте.</P>
+<p class=MsoNormal><span class=afb><span style="FONT-SIZE: 11pt; LINE-HEIGHT: 115%">Примечание.</SPAN></SPAN> <span class=afa><span style="FONT-SIZE: 11pt; LINE-HEIGHT: 115%">Данный файл помещается в директорию /etc/ema/ автоматически 
+при установке серверных модулей из дистрибутива РСДУ, если он</SPAN></SPAN> 
+отсутствует в /etc/ema (т.е. перезапись файла конфигурации не выполняется).</P>
+<p class=MsoNormal>Конфигурационный файл состоит из 
+нескольких секций, каждая из которых описывает параметры старта серверного 
+модуля.</P>
+<p class=MsoNormal>Каждая секция в конфигурационном файле 
+может содержать несколько строк, и при этом каждая строка обязательно должна 
+заканчиваться символом перевода строки.</P>
+<p class=MsoNormal>Например:</P>
+<div 
+style="BORDER-TOP: windowtext 1pt solid; BORDER-RIGHT: windowtext 1pt solid; BACKGROUND: #c1c1c1; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 1pt; PADDING-TOP: 1pt; PADDING-LEFT: 4pt; MARGIN-LEFT: 5.65pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 4pt; MARGIN-RIGHT: 5.65pt">
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm">[&lt;имя модуля&gt;]</P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm">&lt;Параметр1&gt; = &lt;Значение1&gt;</P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm">&lt;Параметр2&gt; = &lt;Значение2&gt;</P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm">. . .</P></DIV>
+<p class=aff4>Параметры, которые могут присутствовать в 
+конфигурации:</P>
+<div 
+style="BORDER-TOP: windowtext 1pt solid; BORDER-RIGHT: windowtext 1pt solid; BACKGROUND: #c1c1c1; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 1pt; PADDING-TOP: 1pt; PADDING-LEFT: 4pt; MARGIN-LEFT: 5.65pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 4pt; MARGIN-RIGHT: 5.65pt">
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>Enable = 
+&lt;yes/no&gt;</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>Login = 
+&lt;логин&gt;</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>Debug = &lt;уровень 
+отладки&gt;</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>DelayBefore = 
+&lt;тайм-аут&gt;</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>Network</SPAN> = 
+&lt;адрес сети&gt; </P></DIV>
+<p class=aff4>где:</P>
+<p class=MsoNormal><span class=af5>&lt;имя модуля&gt;</SPAN>&nbsp; – имя исполняемого 
+модуля;</P>
+<p class=MsoNormal><span class=af5>&lt;логин&gt;</SPAN> – логин доступа к БДТИ, который 
+используется каждым модулем при подключении к БДТИ для загрузки конфигурации; 
+уникальный логин доступа к БДТИ выдается при описании серверного приложения в 
+Навигаторе БД (<span class=af5>DBView.exe</SPAN>) и можно 
+посмотреть в разделе «Процессы и персонал»;</P>
+<p class=MsoNormal><span class=af5>&lt;уровень отладки&gt;</SPAN> – уровень отладки, с которым 
+запускается модуль;</P>
+<p class=MsoNormal><span class=af5>&lt;тайм-аут&gt;</SPAN> – величина задержки перед стартом 
+модуля, в сек.;</P>
+<p class=MsoNormal><span class=af5>&lt;адрес сети&gt;</SPAN> – адрес сети, куда <b><i>не надо</I></B> транслировать 
+сигналы.</P>
+<p class=MsoNormal>Параметр <span class=af5>Network</SPAN> актуален только для модуля sbridged<i>.</I></P>
+<p class=MsoNormal>Некоторые модули не имеют доступа к БД, 
+поэтому для них не требуется задание логина во входных параметрах. Например, 
+приложение «Агент системного монитора» берет всю необходимую информацию из файла 
+<span class=af5>host.ini</SPAN>, структура которого описана 
+в настоящем документе.</P><span 
+style='FONT-SIZE: 12pt; FONT-FAMILY: "Arial","sans-serif"; LINE-HEIGHT: 115%'><br style="PAGE-BREAK-BEFORE: always" clear=all></SPAN>
+<p class=MsoNormal><a name=_Toc11067472>Пример файла старта модулей РСДУ5 (</A><span class=af5>ema.conf</SPAN>):</P>
+<div 
+style="BORDER-TOP: windowtext 1pt solid; BORDER-RIGHT: windowtext 1pt solid; BACKGROUND: #c1c1c1; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 1pt; PADDING-TOP: 1pt; PADDING-LEFT: 4pt; MARGIN-LEFT: 5.65pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 4pt; MARGIN-RIGHT: 5.65pt">
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>[lsmagentd]</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>Enable = 
+yes</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>Login = 
+lsmagentd</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>DelayBefore = 
+0</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>Debug = 0</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US></SPAN>&nbsp;</P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>[ssbsd]</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>Enable = 
+yes</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>Login = 
+ssbsd</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>DelayBefore = 
+2</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>Debug = 0</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US></SPAN>&nbsp;</P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>[bridged]</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>Enable = 
+yes</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>Login = 
+bridged</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>DelayBefore = 
+5</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>Debug = 0</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US></SPAN>&nbsp;</P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US></SPAN>&nbsp;</P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>[dcsd]</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>Enable = 
+yes</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>Login = 
+dcsd</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>DelayBefore = 
+5</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>Debug = 0</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US></SPAN>&nbsp;</P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>[sysmond]</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>Enable = 
+yes</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>Login = 
+sysmond</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>DelayBefore</SPAN> = 
+5</P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>Debug</SPAN> = 
+0</P></DIV>
+<p class=MsoNormal>&nbsp;</P>
+<p class=MsoHeading7 style="TEXT-INDENT: 0cm"><a 
+name=_Toc70418697>Приложение В. Порядок загрузки серверных 
+модулей </A><span style="POSITION: relative; Z-INDEX: 251661815"><span 
+style="HEIGHT: 72px; WIDTH: 646px; POSITION: absolute; LEFT: 0px; TOP: -8px"><IMG src="0005.files/image003.png" width=646 height=72 ></SPAN></SPAN></P>
+<p class=MsoNormal>Рекомендуемый порядок запуска серверных 
+модулей РСДУ на хосте следующий:</P>
+<p class=MsoListNumber2>1.<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; 
+</SPAN>Агент системного монитора;</P>
+<p class=MsoListNumber2>2.<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; 
+</SPAN>Сервер сигнальной системы;</P>
+<p class=MsoListNumber2>3.<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; 
+</SPAN>Мост взаимодействия комплексов;</P>
+<p class=MsoListNumber2>4.<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; 
+</SPAN>Сервер доступа к услугам подсистем;</P>
+<p class=MsoListNumber2>5.<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; 
+</SPAN>Сервер данных и управления подсистемой ОИК;</P>
+<p class=MsoListNumber2>6.<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; 
+</SPAN>Сервер записи архивов;</P>
+<p class=MsoListNumber2>7.<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; 
+</SPAN>Сервер суточных графиков;</P>
+<p class=MsoListNumber2>8.<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; 
+</SPAN>Коммуникационный сервер сбора;</P>
+<p class=MsoListNumber2>9.<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; 
+</SPAN>Силовые коммутационные аппараты;</P>
+<p class=MsoListNumber2>10.<span 
+style='FONT: 7pt "Times New Roman"'> </SPAN>Устройства РЗА 
+и сигнализации;</P>
+<p class=MsoListNumber2>11.<span 
+style='FONT: 7pt "Times New Roman"'> </SPAN>Сервер значений 
+параметров электрического режима;</P>
+<p class=MsoListNumber2>12.<span 
+style='FONT: 7pt "Times New Roman"'> </SPAN>Сервер значений 
+прочих параметров режима;</P>
+<p class=MsoListNumber2>13.<span 
+style='FONT: 7pt "Times New Roman"'> </SPAN>Системный 
+монитор.</P>
+<p class=af8><span class=afb>Примечание</SPAN>. Представленный порядок запуска может 
+отличаться от того, который настроен на конкретном хосте РСДУ. Тем не менее, 
+серверное приложение «Агент системного монитора» (<span lang=EN-US>lsmagentd</SPAN>) всегда должно стартовать первым.</P>
+<p class=MsoNormal>&nbsp;</P>
+<p class=MsoHeading7 style="TEXT-INDENT: 0cm"><a 
+name=_Toc70418698></A><a name=_Ref45880612></A><a name=_Ref45880086>Приложение Г. 
+Рекомендуемые параметры ядра ОС </A><span lang=EN-US>Linux</SPAN><span lang=EN-US> 
+</SPAN><span style="POSITION: relative; Z-INDEX: 251664887"><span 
+style="HEIGHT: 72px; WIDTH: 646px; POSITION: absolute; LEFT: 0px; TOP: -8px"><IMG src="0005.files/image003.png" width=646 height=72 ></SPAN></SPAN></P>
+<p class=MsoNormal>Дополнительные параметры ядра ОС <span 
+lang=EN-US>Linux</SPAN><span lang=EN-US> </SPAN>выставляются при запуске установочного скрипта 
+РСДУ5. Следующие системные параметры прописываются в конфигурационном файле 
+<span class=af5>/etc/sysctl.conf</SPAN>:</P>
+<div 
+style="BORDER-TOP: windowtext 1pt solid; BORDER-RIGHT: windowtext 1pt solid; BACKGROUND: #c1c1c1; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 1pt; PADDING-TOP: 1pt; PADDING-LEFT: 4pt; MARGIN-LEFT: 5.65pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 4pt; MARGIN-RIGHT: 5.65pt">
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>kernel</SPAN>.<span 
+lang=EN-US>msgmnb</SPAN>&nbsp; = 262144</P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>kernel</SPAN>.<span 
+lang=EN-US>msgmni</SPAN>&nbsp; = 256</P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>kernel</SPAN>.<span 
+lang=EN-US>msgmax</SPAN>&nbsp; = 262144</P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>kernel</SPAN>.<span 
+lang=EN-US>pid</SPAN>_<span lang=EN-US>max</SPAN> = 32768</P></DIV>
+<p class=MsoNormal>&nbsp;</P>
+<p class=MsoHeading7 style="TEXT-INDENT: 0cm"><a 
+name=_Toc70418699></A><a name=_Ref45880771>Приложение Д. </A><span 
+style="POSITION: relative; Z-INDEX: 251667959"><span 
+style="HEIGHT: 106px; WIDTH: 646px; POSITION: absolute; LEFT: 0px; TOP: -11px"><IMG src="0005.files/image005.png" width=646 height=106 ></SPAN></SPAN>Пример настройки ротации 
+файлов логов модулей РСДУ</P>
+<p class=MsoNormal>Ниже представлено содержимое 
+конфигурационного файла <span class=af5>/etc/logrotate.d/ema</SPAN> &nbsp;для задания механизма 
+ротации логов серверных модулей РСДУ.</P>
+<div 
+style="BORDER-TOP: windowtext 1pt solid; BORDER-RIGHT: windowtext 1pt solid; BACKGROUND: #c1c1c1; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 1pt; PADDING-TOP: 1pt; PADDING-LEFT: 4pt; MARGIN-LEFT: 5.65pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 4pt; MARGIN-RIGHT: 5.65pt">
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>/var/log/ema/*/*.log 
+/var/log/ema/ntp.log {</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp; 
+rotate 20</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp; 
+size=32M</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp; 
+compress</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp; 
+missingok</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp; 
+notifempty</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>&nbsp;&nbsp;&nbsp; 
+copytruncate</SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US>}</SPAN></P></DIV>
+<p class=MsoNormal>&nbsp;</P>
+<p class=MsoNormal>&nbsp;</P>
+<p class=MsoNormal>&nbsp;</P>
+
+</div>
+
+</body>
+
+</html>
