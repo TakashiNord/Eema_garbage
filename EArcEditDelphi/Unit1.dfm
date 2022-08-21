@@ -145,19 +145,159 @@ object Form1: TForm1
     007FFC00007FFC00007FFC00007FFC00007FC400004780000003000000010000
     00010000000180000003C4000047FC00007FFC00007FFC00007FFC00007FFFF8
     3FFFFFF01FFFFFF01FFFFFF01FFFFFF83FFFFFFC7FFFFFFFFFFFFFFFFFFF}
-  OldCreateOrder = False
   OnCreate = FormCreate
   OnResize = FormResize
   PixelsPerInch = 96
   TextHeight = 13
+  object StatusBar1: TStatusBar
+    Left = 0
+    Top = 535
+    Width = 873
+    Height = 19
+    Panels = <
+      item
+        Width = 150
+      end
+      item
+        Width = 300
+      end
+      item
+        Width = 120
+      end>
+  end
+  object Panel8: TPanel
+    Left = 0
+    Top = 0
+    Width = 873
+    Height = 49
+    Align = alTop
+    TabOrder = 1
+    object Label4: TLabel
+      Left = 8
+      Top = 16
+      Width = 27
+      Height = 13
+      Caption = 'TNS='
+    end
+    object Label5: TLabel
+      Left = 95
+      Top = 16
+      Width = 29
+      Height = 13
+      Caption = 'Role='
+    end
+    object Label6: TLabel
+      Left = 215
+      Top = 16
+      Width = 54
+      Height = 13
+      Caption = 'Password='
+    end
+    object Edit1: TEdit
+      Left = 41
+      Top = 13
+      Width = 48
+      Height = 21
+      TabOrder = 0
+      Text = 'rsdu2'
+    end
+    object Edit2: TEdit
+      Left = 130
+      Top = 13
+      Width = 79
+      Height = 21
+      TabOrder = 1
+      Text = 'rsduadmin'
+    end
+    object Edit3: TEdit
+      Left = 275
+      Top = 13
+      Width = 78
+      Height = 21
+      TabOrder = 2
+      Text = 'passme'
+    end
+    object Button5: TButton
+      Left = 359
+      Top = 0
+      Width = 66
+      Height = 43
+      Caption = 'Connect'
+      TabOrder = 3
+      OnClick = Button5Click
+    end
+    object Edit4: TEdit
+      Left = 768
+      Top = 11
+      Width = 101
+      Height = 21
+      TabOrder = 4
+      Text = '0'
+    end
+    object Button6: TButton
+      Left = 714
+      Top = 10
+      Width = 24
+      Height = 23
+      Caption = '>>'
+      TabOrder = 5
+      OnClick = Button6Click
+    end
+    object Button7: TButton
+      Left = 744
+      Top = 10
+      Width = 26
+      Height = 23
+      Caption = '<<'
+      TabOrder = 6
+      OnClick = Button7Click
+    end
+    object DateTimePicker1: TDateTimePicker
+      Left = 504
+      Top = 11
+      Width = 97
+      Height = 21
+      Date = 44794.000000000000000000
+      Time = 0.716767129626532600
+      TabOrder = 7
+    end
+    object DateTimePicker2: TDateTimePicker
+      Left = 603
+      Top = 11
+      Width = 105
+      Height = 21
+      Date = 42540.000000000000000000
+      Time = 0.494988425933115700
+      Kind = dtkTime
+      TabOrder = 8
+    end
+    object Button42: TButton
+      Left = 471
+      Top = 9
+      Width = 33
+      Height = 25
+      Caption = 'Calc'
+      TabOrder = 9
+      OnClick = Button42Click
+    end
+    object Button43: TButton
+      Left = 431
+      Top = 9
+      Width = 41
+      Height = 25
+      Caption = 'AppBar'
+      TabOrder = 10
+      OnClick = Button43Click
+    end
+  end
   object PageControl1: TPageControl
     Left = 0
     Top = 49
     Width = 873
     Height = 486
-    ActivePage = TabSheet1
+    ActivePage = TabSheet7
     Align = alClient
-    TabOrder = 0
+    TabOrder = 2
     OnChange = PageControl1Change
     object TabSheet1: TTabSheet
       Caption = 'Oracle (db)'
@@ -1121,11 +1261,13 @@ object Form1: TForm1
       ImageIndex = 6
       object Panel3: TPanel
         Left = 0
-        Top = 370
+        Top = 313
         Width = 865
-        Height = 88
+        Height = 145
         Align = alClient
         TabOrder = 0
+        ExplicitTop = 370
+        ExplicitHeight = 88
         object Label3: TLabel
           Left = 424
           Top = 24
@@ -1136,7 +1278,7 @@ object Form1: TForm1
         object Button1: TButton
           Left = 677
           Top = 56
-          Width = 75
+          Width = 89
           Height = 25
           Caption = #1056#1072#1089#1095#1105#1090
           Default = True
@@ -1179,210 +1321,29 @@ object Form1: TForm1
             '4 '#1075#1086#1076#1072
             '5 '#1083#1077#1090)
         end
+        object Button45: TButton
+          Left = 677
+          Top = 87
+          Width = 89
+          Height = 25
+          Caption = #1057#1086#1093#1088#1072#1085#1080#1090#1100'..'
+          TabOrder = 3
+          OnClick = Button45Click
+        end
       end
       object StringGrid1: TStringGrid
         Left = 0
         Top = 0
         Width = 865
-        Height = 370
+        Height = 313
         Align = alTop
-        ColCount = 7
+        ColCount = 12
         DrawingStyle = gdsGradient
         RowCount = 10
         Options = [goVertLine, goHorzLine, goRowSizing, goColSizing, goEditing, goAlwaysShowEditor]
         TabOrder = 1
         OnDrawCell = StringGrid1DrawCell
       end
-    end
-    object TabSheet8: TTabSheet
-      Caption = #1042#1100#1102#1096#1082#1080
-      ImageIndex = 7
-      object Splitter2: TSplitter
-        Left = 305
-        Top = 0
-        Width = 5
-        Height = 458
-        ExplicitLeft = 164
-        ExplicitHeight = 463
-      end
-      object TreeView2: TTreeView
-        Left = 0
-        Top = 0
-        Width = 305
-        Height = 458
-        Align = alLeft
-        Indent = 19
-        TabOrder = 0
-        OnClick = TreeView2Click
-      end
-      object Panel7: TPanel
-        Left = 310
-        Top = 0
-        Width = 555
-        Height = 458
-        Align = alClient
-        TabOrder = 1
-        object DBGrid7: TDBGrid
-          Left = 1
-          Top = 1
-          Width = 553
-          Height = 456
-          Align = alClient
-          DataSource = DataSource81
-          TabOrder = 0
-          TitleFont.Charset = DEFAULT_CHARSET
-          TitleFont.Color = clWindowText
-          TitleFont.Height = -11
-          TitleFont.Name = 'Tahoma'
-          TitleFont.Style = []
-          OnTitleClick = DBGrid7TitleClick
-        end
-      end
-    end
-    object TabSheet9: TTabSheet
-      Caption = #1040#1088#1093#1080#1074#1085#1099#1077' '#1087#1072#1088#1072#1084#1077#1090#1088#1099
-      ImageIndex = 8
-    end
-  end
-  object StatusBar1: TStatusBar
-    Left = 0
-    Top = 535
-    Width = 873
-    Height = 19
-    Panels = <
-      item
-        Width = 150
-      end
-      item
-        Width = 300
-      end
-      item
-        Width = 120
-      end>
-  end
-  object Panel8: TPanel
-    Left = 0
-    Top = 0
-    Width = 873
-    Height = 49
-    Align = alTop
-    TabOrder = 2
-    object Label4: TLabel
-      Left = 8
-      Top = 16
-      Width = 27
-      Height = 13
-      Caption = 'TNS='
-    end
-    object Label5: TLabel
-      Left = 95
-      Top = 16
-      Width = 29
-      Height = 13
-      Caption = 'Role='
-    end
-    object Label6: TLabel
-      Left = 215
-      Top = 16
-      Width = 54
-      Height = 13
-      Caption = 'Password='
-    end
-    object Edit1: TEdit
-      Left = 41
-      Top = 13
-      Width = 48
-      Height = 21
-      TabOrder = 0
-      Text = 'rsdu2'
-    end
-    object Edit2: TEdit
-      Left = 130
-      Top = 13
-      Width = 79
-      Height = 21
-      TabOrder = 1
-      Text = 'rsduadmin'
-    end
-    object Edit3: TEdit
-      Left = 275
-      Top = 13
-      Width = 78
-      Height = 21
-      TabOrder = 2
-      Text = 'passme'
-    end
-    object Button5: TButton
-      Left = 359
-      Top = 0
-      Width = 66
-      Height = 43
-      Caption = 'Connect'
-      TabOrder = 3
-      OnClick = Button5Click
-    end
-    object Edit4: TEdit
-      Left = 768
-      Top = 11
-      Width = 101
-      Height = 21
-      TabOrder = 4
-      Text = '0'
-    end
-    object Button6: TButton
-      Left = 714
-      Top = 10
-      Width = 24
-      Height = 23
-      Caption = '>>'
-      TabOrder = 5
-      OnClick = Button6Click
-    end
-    object Button7: TButton
-      Left = 744
-      Top = 10
-      Width = 26
-      Height = 23
-      Caption = '<<'
-      TabOrder = 6
-      OnClick = Button7Click
-    end
-    object DateTimePicker1: TDateTimePicker
-      Left = 504
-      Top = 11
-      Width = 97
-      Height = 21
-      Date = 0.716767129626532600
-      Time = 0.716767129626532600
-      TabOrder = 7
-    end
-    object DateTimePicker2: TDateTimePicker
-      Left = 603
-      Top = 11
-      Width = 105
-      Height = 21
-      Date = 42540.494988425930000000
-      Time = 42540.494988425930000000
-      Kind = dtkTime
-      TabOrder = 8
-    end
-    object Button42: TButton
-      Left = 471
-      Top = 9
-      Width = 33
-      Height = 25
-      Caption = 'Calc'
-      TabOrder = 9
-      OnClick = Button42Click
-    end
-    object Button43: TButton
-      Left = 431
-      Top = 9
-      Width = 41
-      Height = 25
-      Caption = 'AppBar'
-      TabOrder = 10
-      OnClick = Button43Click
     end
   end
   object ADOConnection1: TADOConnection
@@ -1448,8 +1409,8 @@ object Form1: TForm1
   end
   object ADOTable1: TADOTable
     Connection = ADOConnection1
-    Left = 728
-    Top = 464
+    Left = 776
+    Top = 408
   end
   object ADOTable5: TADOTable
     Connection = ADOConnection1

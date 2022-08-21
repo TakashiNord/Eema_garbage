@@ -9,68 +9,25 @@ uses
 
 type
   TForm1 = class(TForm)
-    PageControl1: TPageControl;
     StatusBar1: TStatusBar;
-    TabSheet1: TTabSheet;
-    TabSheet2: TTabSheet;
-    TabSheet3: TTabSheet;
     ADOConnection1: TADOConnection;
     ADOQuery1: TADOQuery;
     DataSource1: TDataSource;
-    DBGrid2: TDBGrid;
     DataSource2: TDataSource;
     ADOQuery2: TADOQuery;
-    DBGrid3: TDBGrid;
     DataSource3: TDataSource;
     ADOQuery3: TADOQuery;
-    TabSheet4: TTabSheet;
-    RadioGroupArcJ: TRadioGroup;
-    DBGrid4: TDBGrid;
     DataSource4: TDataSource;
     ADOQuery4: TADOQuery;
-    Label1: TLabel;
-    Label2: TLabel;
-    TabSheet5: TTabSheet;
     DataSource5: TDataSource;
-    DBGrid5: TDBGrid;
-    RadioGroupStat: TRadioGroup;
-    StaticText1: TStaticText;
-    StaticText2: TStaticText;
-    Panel2: TPanel;
-    TabSheet6: TTabSheet;
-    TreeView1: TTreeView;
-    DBGrid6: TDBGrid;
     DataSource6: TDataSource;
     ADOTable1: TADOTable;
-    DBNavigator1: TDBNavigator;
-    Panel1: TPanel;
-    TabSheet7: TTabSheet;
-    Panel3: TPanel;
-    Button1: TButton;
-    StaticText6: TStaticText;
     ADOTable5: TADOTable;
-    Panel4: TPanel;
-    DBNavigator2: TDBNavigator;
-    Panel5: TPanel;
-    Panel6: TPanel;
     Timer1: TTimer;
     ADOQuery71: TADOQuery;
-    Button4: TButton;
     SaveDialog1: TSaveDialog;
-    Memo1: TMemo;
-    Splitter1: TSplitter;
-    ComboBox1: TComboBox;
-    TabSheet8: TTabSheet;
-    TreeView2: TTreeView;
-    Splitter2: TSplitter;
-    DBGrid7: TDBGrid;
-    Splitter3: TSplitter;
-    Panel7: TPanel;
     ADOTable81: TADOTable;
     DataSource81: TDataSource;
-    TabSheet9: TTabSheet;
-    StringGrid1: TStringGrid;
-    Label3: TLabel;
     Panel8: TPanel;
     Edit1: TEdit;
     Edit2: TEdit;
@@ -79,24 +36,23 @@ type
     Label5: TLabel;
     Label6: TLabel;
     Button5: TButton;
-    Splitter4: TSplitter;
-    Memo2: TMemo;
     Timer2: TTimer;
     Edit4: TEdit;
     Button6: TButton;
     Button7: TButton;
     DateTimePicker1: TDateTimePicker;
     DateTimePicker2: TDateTimePicker;
-    DBGrid8: TDBGrid;
-    Splitter5: TSplitter;
-    DBNavigator4: TDBNavigator;
-    Panel9: TPanel;
+    ADOQuery81: TADOQuery;
+    DataSource82: TDataSource;
+    ADOTable82: TADOTable;
+    Button42: TButton;
+    Button43: TButton;
+    PageControl1: TPageControl;
+    TabSheet1: TTabSheet;
     Splitter6: TSplitter;
-    RichEdit1: TRichEdit;
-    Panel10: TPanel;
+    Panel9: TPanel;
     Button3: TButton;
     Button8: TButton;
-    DBGrid1: TDBGrid;
     Button9: TButton;
     Button10: TButton;
     Button11: TButton;
@@ -113,18 +69,11 @@ type
     Button22: TButton;
     Button23: TButton;
     Button24: TButton;
-    DBNavigator5: TDBNavigator;
-    ADOQuery81: TADOQuery;
-    DataSource82: TDataSource;
-    DBNavigator6: TDBNavigator;
-    ADOTable82: TADOTable;
-    Label7: TLabel;
     Button2: TButton;
     Button25: TButton;
     Button26: TButton;
     Button27: TButton;
     Button28: TButton;
-    Label8: TLabel;
     Button29: TButton;
     Button30: TButton;
     Button31: TButton;
@@ -139,8 +88,54 @@ type
     Button39: TButton;
     Button40: TButton;
     Button41: TButton;
-    Button42: TButton;
-    Button43: TButton;
+    Panel10: TPanel;
+    RichEdit1: TRichEdit;
+    DBGrid1: TDBGrid;
+    TabSheet2: TTabSheet;
+    Splitter4: TSplitter;
+    DBGrid2: TDBGrid;
+    Panel6: TPanel;
+    Label1: TLabel;
+    DBNavigator4: TDBNavigator;
+    Memo2: TMemo;
+    TabSheet3: TTabSheet;
+    Splitter5: TSplitter;
+    DBGrid3: TDBGrid;
+    Panel5: TPanel;
+    Label2: TLabel;
+    Label7: TLabel;
+    Label8: TLabel;
+    DBNavigator5: TDBNavigator;
+    DBNavigator6: TDBNavigator;
+    DBGrid8: TDBGrid;
+    TabSheet4: TTabSheet;
+    RadioGroupArcJ: TRadioGroup;
+    DBGrid4: TDBGrid;
+    Panel2: TPanel;
+    StaticText1: TStaticText;
+    StaticText2: TStaticText;
+    TabSheet5: TTabSheet;
+    Splitter1: TSplitter;
+    DBGrid5: TDBGrid;
+    Panel4: TPanel;
+    RadioGroupStat: TRadioGroup;
+    DBNavigator2: TDBNavigator;
+    Button4: TButton;
+    Memo1: TMemo;
+    TabSheet6: TTabSheet;
+    Splitter3: TSplitter;
+    TreeView1: TTreeView;
+    Panel1: TPanel;
+    DBNavigator1: TDBNavigator;
+    DBGrid6: TDBGrid;
+    TabSheet7: TTabSheet;
+    Panel3: TPanel;
+    Label3: TLabel;
+    Button1: TButton;
+    StaticText6: TStaticText;
+    ComboBox1: TComboBox;
+    StringGrid1: TStringGrid;
+    Button45: TButton;
     procedure FormResize(Sender: TObject);
     procedure RadioGroupArcJClick(Sender: TObject);
     procedure RadioGroupStatClick(Sender: TObject);
@@ -151,7 +146,6 @@ type
     procedure Timer1Timer(Sender: TObject);
     procedure Button4Click(Sender: TObject);
     procedure ComboBox1Change(Sender: TObject);
-    procedure TreeView2Click(Sender: TObject);
     procedure StringGrid1DrawCell(Sender: TObject; ACol, ARow: Integer;
       Rect: TRect; State: TGridDrawState);
     procedure Button5Click(Sender: TObject);
@@ -207,6 +201,7 @@ type
     procedure Button38Click(Sender: TObject);
     procedure Button42Click(Sender: TObject);
     procedure Button43Click(Sender: TObject);
+    procedure Button45Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -221,7 +216,6 @@ type
     procedure ArcHelp(Sender: TObject);
     procedure ArcUpdate(Sender: TObject);
     procedure ArcCalc(Sender: TObject);
-    procedure ArcCreateView(Sender: TObject);
   end;
 
 var
@@ -472,28 +466,6 @@ begin
  ArcHelp(Sender);
 end;
 
-procedure TForm1.TreeView2Click(Sender: TObject);
-var
- i : Integer ;
- strQry : String ;
-begin
- i:=TreeView2.Selected.AbsoluteIndex ;
- if i<=0 then Exit;
-
- strQry:=TreeView2.Selected.Text ;
-
- try
-ADOTable81.Active:=False ;
-ADOTable81.TableName:= strQry ;
-ADOTable81.Active:=True;
-StatusBar1.Panels[0].Text:='Row = ' + IntToStr(ADOTable81.RecordCount) ;
-setgridcolumnwidths(DBgrid7);
-  except
-   on e:Exception do
-  end;
-
-end;
-
 procedure TForm1.ArcStat(Sender: TObject);
 var
  strQry : String ;
@@ -740,59 +712,9 @@ begin
       FullExpand;
       Items.EndUpdate;
    end;
-  ArcCreateView(Sender);
+
   PageControl1Change(Sender);
 end;
-
-
-procedure TForm1.ArcCreateView(Sender: TObject);
-var
- strQry : String ;
-   i: integer;
-begin
-   // Запрещаем обновление TreeView
-   TreeView2.Items.BeginUpdate;
-   with TreeView2 do
-   begin
-      // Добавляем корневой узел
-      Items.Add( nil, 'Views' );
-   end;
-
-  strQry:='select * from all_views where owner like ''RSDU%'' and view_name like ''%ARC%'' ';
-
- try
-ADOQuery81.Active:=False ;
-ADOQuery81.SQL.Clear;
-ADOQuery81.SQL.Add(strQry);
-ADOQuery81.ExecSQL;
-ADOQuery81.Active:=True;
-
-ADOQuery81.Open;
-ADOQuery81.Recordset.MoveFirst;
-for i:=0 to (ADOQuery81.RecordCount-1) do
-begin
- // Добавляем 10 вложенных узлов
- TreeView2.Items.AddChild( TreeView2.Items[0], VarToStr(ADOQuery81.Recordset.Fields['VIEW_NAME'].Value) );
- ADOQuery81.Recordset.MoveNext;
-end;
-
-ADOQuery81.Close;
-
-ADOQuery81.Active:=True;
-
-  except
-   on e:Exception do
-  end;
-  // Обновляем TreeView
-  TreeView2.Items.EndUpdate;
-  with TreeView2 do
-   begin
-      Items.BeginUpdate;
-      FullExpand;
-      Items.EndUpdate;
-   end;
-end;
-
 
 
 procedure TForm1.ArcCalc(Sender: TObject);
@@ -812,16 +734,25 @@ begin
     ColWidths[4]:=5*Length(Cells[4, 0]);
     Cells[5, 0]:='Устройства  защиты';
     ColWidths[5]:=5*Length(Cells[5, 0]);
-    Cells[6, 0]:='Формула';
-    ColWidths[6]:=40*Length(Cells[6, 0]);
+	
+    Cells[6, 0]:='Внешний Сбор';
+    ColWidths[6]:=5*Length(Cells[6, 0]);
+    Cells[7, 0]:='Диспетчерские графики';
+    ColWidths[7]:=5*Length(Cells[7, 0]);	
+	
+    Cells[8, 0]:='Формула';
+    ColWidths[8]:=40*Length(Cells[8, 0]);
 
     Cells[0, 1]:='Число параметров:';
     Cells[1, 1]:='10000';
     Cells[2, 1]:='7000';
     Cells[3, 1]:='2000';
-    Cells[4, 1]:='4000';
-    Cells[5, 1]:='3000';
-    Cells[6, 1]:='п.1';
+    Cells[4, 1]:='1000';
+    Cells[5, 1]:='1000';
+	Cells[6, 1]:='100';
+    Cells[7, 1]:='50';
+	
+	Cells[8, 1]:='п.1';
 
 
   strQry:='select count (*) from DA_COLUMN_DATA_V;';
@@ -885,13 +816,40 @@ Cells[5, 1]:=IntToStr(ADOQuery71.Fields.Fields[0].AsInteger);
    on e:Exception do
   end;
 
+  strQry:='select count (*) from EXDATA_LIST_V';
+ try
+ADOQuery71.Active:=False ;
+ADOQuery71.SQL.Clear;
+ADOQuery71.SQL.Add(strQry);
+ADOQuery71.ExecSQL;
+ADOQuery71.Active:=True;
+Cells[6, 1]:=IntToStr(ADOQuery71.Fields.Fields[0].AsInteger);
+  except
+   on e:Exception do
+  end;
+
+  strQry:='select count (*) from DG_LIST';
+ try
+ADOQuery71.Active:=False ;
+ADOQuery71.SQL.Clear;
+ADOQuery71.SQL.Add(strQry);
+ADOQuery71.ExecSQL;
+ADOQuery71.Active:=True;
+Cells[7, 1]:=IntToStr(ADOQuery71.Fields.Fields[0].AsInteger);
+  except
+   on e:Exception do
+  end;
+
+
     Cells[0, 2]:='Ширина одной записи:';
     Cells[1, 2]:='90';
     Cells[2, 2]:='90';
     Cells[3, 2]:='90';
     Cells[4, 2]:='90';
     Cells[5, 2]:='90';
-    Cells[6, 2]:='п.2    = 11 + 11 + 11 + 19 + 19 + 19 = 90';
+	Cells[6, 2]:='90';
+	Cells[7, 2]:='90';
+    Cells[8, 2]:='п.2    = 11 + 11 + 11 + 19 + 19 + 19 = 90';
 
     Cells[0, 3]:='Количество записей в час:';
     Cells[1, 3]:='3600';
@@ -899,7 +857,9 @@ Cells[5, 1]:=IntToStr(ADOQuery71.Fields.Fields[0].AsInteger);
     Cells[3, 3]:='1';
     Cells[4, 3]:='1';
     Cells[5, 3]:='1';
-    Cells[6, 3]:='п.3';
+    Cells[6, 3]:='1';
+    Cells[7, 3]:='1';	
+    Cells[8, 3]:='п.3';
 
     Cells[0, 4]:='Длительность хранения архивов, в часах:';
     Cells[1, 4]:='720';
@@ -907,7 +867,9 @@ Cells[5, 1]:=IntToStr(ADOQuery71.Fields.Fields[0].AsInteger);
     Cells[3, 4]:='720';
     Cells[4, 4]:='720';
     Cells[5, 4]:='720';
-    Cells[6, 4]:='п.4';
+    Cells[6, 4]:='720';
+    Cells[7, 4]:='720';	
+    Cells[8, 4]:='п.4';
 
     Cells[0, 5]:='Объем данных, гб:';
     Cells[1, 5]:='0';
@@ -915,7 +877,9 @@ Cells[5, 1]:=IntToStr(ADOQuery71.Fields.Fields[0].AsInteger);
     Cells[3, 5]:='0';
     Cells[4, 5]:='0';
     Cells[5, 5]:='0';
-    Cells[6, 5]:='п.5 = ( n.1 * n.2 * n.3 * n.4 ) / (1024 * 1024 * 1024)';
+    Cells[6, 5]:='0';
+    Cells[7, 5]:='0';	
+    Cells[8, 5]:='п.5 = ( n.1 * n.2 * n.3 * n.4 ) / (1024 * 1024 * 1024)';
 
     Cells[0, 6]:='С учетом индексов (обслуживание поиска, построения графиков, анализа и т.п.), гб:';
     Cells[1, 6]:='0';
@@ -923,7 +887,9 @@ Cells[5, 1]:=IntToStr(ADOQuery71.Fields.Fields[0].AsInteger);
     Cells[3, 6]:='0';
     Cells[4, 6]:='0';
     Cells[5, 6]:='0';
-    Cells[6, 6]:='п.6 =  п.5 *50% ';
+    Cells[6, 6]:='0';
+    Cells[7, 6]:='0';	
+    Cells[8, 6]:='п.6 =  п.5 *50% ';
 
     Cells[0, 7]:='Дополнительный объем для системных и оперативных объектов БД, гб:';
     Cells[1, 7]:='0';
@@ -931,7 +897,9 @@ Cells[5, 1]:=IntToStr(ADOQuery71.Fields.Fields[0].AsInteger);
     Cells[3, 7]:='0';
     Cells[4, 7]:='0';
     Cells[5, 7]:='0';
-    Cells[6, 7]:='п.7 = (п.5 + п.6)*10%';
+    Cells[6, 7]:='0';
+    Cells[7, 7]:='0';	
+    Cells[8, 7]:='п.7 = (п.5 + п.6)*10%';
 
     Cells[0, 8]:='Дополнительный объем для выполнения резервного копирования БД, гб:';
     Cells[1, 8]:='0';
@@ -939,7 +907,9 @@ Cells[5, 1]:=IntToStr(ADOQuery71.Fields.Fields[0].AsInteger);
     Cells[3, 8]:='0';
     Cells[4, 8]:='0';
     Cells[5, 8]:='0';
-    Cells[6, 8]:='п.8 = (п.5 + п.6 + п.7)*50%';
+    Cells[6, 8]:='0';
+    Cells[7, 8]:='0';	
+    Cells[8, 8]:='п.8 = (п.5 + п.6 + п.7)*50%';
 
     ColWidths[0]:=4*Length(Cells[0, 8]);
 
@@ -1232,8 +1202,10 @@ begin
    Val(Cells[3, i],lVal,eCode) ; Cells[3, i]:=IntToStr(lVal);
    Val(Cells[4, i],lVal,eCode) ; Cells[4, i]:=IntToStr(lVal);
    Val(Cells[5, i],lVal,eCode) ; Cells[5, i]:=IntToStr(lVal);
+   Val(Cells[6, i],lVal,eCode) ; Cells[6, i]:=IntToStr(lVal);
+   Val(Cells[7, i],lVal,eCode) ; Cells[7, i]:=IntToStr(lVal);
   end ;
-  for I := 1 to 5 do begin
+  for I := 1 to 7 do begin
     fVal:= (StrToFloat(Cells[i, 1])*StrToFloat(Cells[i, 2])*StrToFloat(Cells[i, 3])*StrToFloat(Cells[i, 4]))/(1024*1024*1024);
     if (fVal<0.01) then fVal:=0.01;
     lInt:=StrToInt(Cells[i, 2]);
@@ -1851,6 +1823,95 @@ begin
   ShowMessage('AppBar - Ready!');
 end;
 
+function tir(n: integer): string;
+var
+  i: integer;
+  s: string;
+begin
+  s := '';
+  for i := 1 to n do
+    s := s + '-';
+  tir := s;
+end;
+ 
+function adder(s: string; n: integer): string;
+var
+  i: integer;
+  tmp: string;
+begin
+  tmp := '';
+  for i := 1 to n - length(s) do
+    tmp := tmp + ' ';
+  adder := tmp + s;
+end;
+
+procedure TForm1.Button45Click(Sender: TObject);
+var
+  a: array of integer;
+  i, j, dl: integer;
+  s1, s2: string;
+  str: tstringlist;
+  
+  Res : Integer ;
+  fStr, fStr2 : string;
+  fName : String ;
+  
+begin
+
+  DateTimeToString(fStr2, '-yyyymmdd_hhnnss', Now);
+  with SaveDialog1 do begin
+    InitialDir:=ExtractFilePath(Application.ExeName);
+    FileName:='Arc_Num'+fStr2+'.txt';
+    Filter:='txt files (*.txt)|*.txt|All files (*.*)|*.*';
+  end;
+  //Открываем диалог сохранения файла.
+  if not SaveDialog1.Execute then Exit;
+
+  fName:=SaveDialog1.FileName;
+
+//Если файл с указанным именем уже существует.
+  if FileExists(SaveDialog1.FileName) then begin
+    Res := MessageDlg(
+      'Файл с именем:' + #10
+      + '"' + SaveDialog1.FileName + '"' + #10
+      + 'Уже существует. Перезаписать?'
+      ,mtConfirmation
+      ,[mbYes, mbNo]
+      ,0
+    );
+    //Если пользователь отказался перезаписывать файл - выходим.
+    if Res = mrNo then Exit;
+  end;
+
+
+  str := tstringlist.create;
+  setlength(a, StringGRid1.ColCount);
+  for i := 0 to StringGRid1.ColCount - 1 do
+  begin
+    a[i] := 0;
+    for j := 0 to StringGRid1.rowcount - 1 do
+      if length(StringGRid1.Cells[i, j]) > a[i] then
+        a[i] := length(StringGRid1.Cells[i, j]);
+  end;
+  dl := 0;
+  for i := 0 to StringGRid1.ColCount - 1 do
+    dl := dl + a[i];
+  s1 := tir(dl + StringGRid1.ColCount + 1);
+  str.Append(s1);
+  for i := 0 to StringGRid1.rowcount - 1 do
+  begin
+    s2 := '|';
+    for j := 0 to StringGRid1.colcount - 1 do
+      s2 := s2 + adder(StringGRid1.Cells[j, i], a[j]) + '|';
+    str.Append(s2);
+    str.Append(s1);
+  end;
+  str.SaveToFile(fName);
+  setlength(a, 0);
+  str.free;
+ //
+end;
+
 procedure TForm1.Button4Click(Sender: TObject);
 var
   Res : Integer ;
@@ -2146,6 +2207,8 @@ begin
     Cells[3, 4]:=IntToStr(coef);
     Cells[4, 4]:=IntToStr(coef);
     Cells[5, 4]:=IntToStr(coef);
+	Cells[6, 4]:=IntToStr(coef);
+	Cells[7, 4]:=IntToStr(coef);
    end ;
 
 end;
