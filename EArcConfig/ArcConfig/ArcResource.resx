@@ -552,4 +552,37 @@ ORDER BY ID ASC </value>
   AND MEAS_LIST.ID=MEAS_ARC.ID_PARAM
   ORDER BY ID ASC</value>
   </data>
+  <data name="GTOPT2" xml:space="preserve">
+    <value>SELECT sgt.ID, sgt.NAME, sgt.ALIAS, sgt.DEFINE_ALIAS, sgt.INTERVAL, 
+sgtp.NAME as GTYP, sgtp.DEFINE_ALIAS as GTYPD, 
+sat.NAME AS ATYP 
+FROM SYS_GTOPT sgt, SYS_GTYP sgtp, SYS_ATYP sat 
+WHERE sgt.ID_GTYPE = sgtp.ID and sgt.ID_ATYPE = sat.ID 
+UNION 
+SELECT sgt.ID, sgt.NAME, sgt.ALIAS, sgt.DEFINE_ALIAS, sgt.INTERVAL, 
+sgtp.NAME as GTYP, sgtp.DEFINE_ALIAS as GTYPD, 
+'' AS ATYP 
+FROM SYS_GTOPT sgt, SYS_GTYP sgtp  
+WHERE sgt.ID_GTYPE = sgtp.ID and ( sgt.ID_ATYPE='' or sgt.ID_ATYPE is NULL )</value>
+  </data>
+  <data name="GTOPT1" xml:space="preserve">
+    <value>SELECT 
+  SYS_GTOPT.ID
+  ,SYS_GTOPT.NAME
+  ,SYS_GTYP.DEFINE_ALIAS as \"DataType\" 
+  ,SYS_GTOPT.INTERVAL as \"Interval (sec)\"
+  ,'0' as \"Archive Type\" 
+FROM SYS_GTOPT, SYS_GTYP 
+WHERE SYS_GTOPT.ID_ATYPE is null and SYS_GTYP.id=SYS_GTOPT.ID_GTYPE 
+ union 
+SELECT 
+  SYS_GTOPT.ID
+  ,SYS_GTOPT.NAME
+  ,SYS_GTYP.DEFINE_ALIAS as \"DataType\" 
+  ,SYS_GTOPT.INTERVAL as \"Interval (sec)\" 
+  ,SYS_ATYP.NAME as \"Archive Type\" 
+FROM SYS_GTOPT , SYS_ATYP, SYS_GTYP 
+WHERE SYS_GTOPT.ID_ATYPE=SYS_ATYP.ID  and SYS_GTYP.id=SYS_GTOPT.ID_GTYPE 
+</value>
+  </data>
 </root>

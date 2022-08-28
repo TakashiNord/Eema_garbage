@@ -562,13 +562,13 @@ namespace ArcConfig
 			// 
 			// button1
 			// 
-			this.button1.Enabled = false;
 			this.button1.Location = new System.Drawing.Point(657, 58);
 			this.button1.Name = "button1";
 			this.button1.Size = new System.Drawing.Size(23, 23);
 			this.button1.TabIndex = 39;
 			this.button1.Text = "+";
 			this.button1.UseVisualStyleBackColor = true;
+			this.button1.Click += new System.EventHandler(this.Button1Click);
 			// 
 			// groupBox5
 			// 
@@ -705,6 +705,8 @@ namespace ArcConfig
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.AutoSize = true;
+			this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
 			this.CancelButton = this.button3;
 			this.ClientSize = new System.Drawing.Size(682, 599);
 			this.Controls.Add(this.dataGridView1);

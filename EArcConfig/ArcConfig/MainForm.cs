@@ -59,6 +59,7 @@ namespace ArcConfig
     public int OptionFullName = 0;
     public int OptionCheckData = 0;
     public int OptionSchemaName = 0;
+    public int OptionTableDelete = 0;
 
     public MainForm()
     {
@@ -91,11 +92,12 @@ namespace ArcConfig
 
        toolStripButton5.Enabled=true;
        toolStripButton6.Enabled=true;
-       
+
        toolStripButton7.Enabled=true;
 
        tabControl1.Enabled=true;
        _tree21();
+       _version();
        _setDBarc();
 
     }
@@ -601,7 +603,7 @@ namespace ArcConfig
 
        toolStripButton5.Enabled=false;
        toolStripButton6.Enabled=false;
-       
+
        toolStripButton7.Enabled=false;
 
        _setDBS();
@@ -1205,8 +1207,6 @@ namespace ArcConfig
 
       cmd0.Connection=this._conn;
 
-      //AddLogString(" id_parent=" + id_parent + "  id_index=" + id_index);
-
       Application.DoEvents();
 
       this.Text = this.Text + "  :  " + Application.ProductVersion ;
@@ -1214,15 +1214,19 @@ namespace ArcConfig
       //ResourceManager r = new ResourceManager("ArcConfig.ArcResource", Assembly.GetExecutingAssembly());
 
       string DB_NAME = "" ;
-      // 1. получаем имя
-      cmd0.CommandText="SELECT id, name FROM SYS_TREE21 WHERE COALESCE(id_parent,0,0)=0 AND COALESCE(ID_LSTTBL,0,0)=0" ;
+      // 1. получаем имя   -- SELECT id, name FROM SYS_TREE21 WHERE COALESCE(id_parent,0,0)=0 AND COALESCE(ID_LSTTBL,0,0)=0
+      cmd0.CommandText="SELECT id, name FROM SYS_TREE21 " +
+                       " WHERE (( COALESCE(id_parent,0,0)=0 AND COALESCE(ID_LSTTBL,0,0)=0 ) " +
+                            " or (id_parent='' and ID_LSTTBL='')) ";
+
       try
       {
          reader = cmd0.ExecuteReader();
       }
       catch (Exception ex1)
       {
-         AddLogString("NAME Empty = " + cmd0.CommandText + " " + ex1.Message);
+         AddLogString("rsdu schema empty = " + cmd0.CommandText + " " + ex1.Message);
+         reader.Close();
          return ;
       }
       if (reader.HasRows) {
@@ -1236,7 +1240,8 @@ namespace ArcConfig
             DB_NAME = arr[1];
             break ;
          } // while
-         AddLogString("DB_NAME=" + DB_NAME );
+         AddLogString("rsdu schema =" + DB_NAME );
+
          this.Text = this.Text + "  :  " + DB_NAME ;
 
       }
@@ -1245,6 +1250,108 @@ namespace ArcConfig
     }
 
 
+/*
+ получение Имени БД и version
+oracle : select * from v$version;
+mysql :  SELECT VERSION();
+sqlite : select sqlite_version();
+Postgres : SELECT version(); 
+*/
+    void _version()
+    {
+
+      // Объект для связи между базой данных и источником данных
+      OdbcDataAdapter adapter = new OdbcDataAdapter();
+
+      // Объект для выполнения запросов к базе данных
+      OdbcCommand cmd0 = new OdbcCommand();
+      OdbcDataReader reader = null ;
+
+      cmd0.Connection=this._conn;
+
+      Application.DoEvents();
+
+      this.Text = this.Text + "  :  "  ;
+
+      string DB_VER = "" ;
+      int DB_VER_FLAG = 0 ;
+
+      cmd0.CommandText="select sqlite_version()";
+      try
+      {
+         reader = cmd0.ExecuteReader();
+      }
+      catch (Exception ex1)
+      {
+         //reader.Close();
+         DB_VER_FLAG=-1;
+      }
+      if (DB_VER_FLAG==0) {
+       if (reader.HasRows) {
+         while (reader.Read())
+         {
+            DB_VER = GetTypeValue(ref reader, 0);
+            break ;
+         } // while
+         DB_VER_FLAG=1;
+         this.Text = this.Text + " Sqlite ( " + DB_VER + " )" ;
+       }
+       reader.Close();
+       //AddLogString("sqlite =" + DB_VER );
+      }
+      if (DB_VER_FLAG>0) { return ; }
+
+      DB_VER_FLAG = 0 ;
+      cmd0.CommandText="SELECT VERSION()";
+      try
+      {
+         reader = cmd0.ExecuteReader();
+      }
+      catch (Exception ex1)
+      {
+         DB_VER_FLAG=-1;
+      }
+      if (DB_VER_FLAG==0) {
+       if (reader.HasRows) {
+         while (reader.Read())
+         {
+            DB_VER = GetTypeValue(ref reader, 0);
+            break ;
+         } // while
+         DB_VER_FLAG=1;
+         this.Text = this.Text + " mysql|Postgres ( " + DB_VER + " )" ;
+       }
+       reader.Close();
+      }
+      if (DB_VER_FLAG>0) { return ; }      
+      
+      DB_VER_FLAG = 0 ;
+      cmd0.CommandText="select banner from v$version";
+      try
+      {
+         reader = cmd0.ExecuteReader();
+      }
+      catch (Exception ex1)
+      {
+         DB_VER_FLAG=-1;
+      }
+      if (DB_VER_FLAG==0) {
+       if (reader.HasRows) {
+         while (reader.Read())
+         {
+            DB_VER = GetTypeValue(ref reader, 0);
+            break ;
+         } // while
+         DB_VER_FLAG=1;
+         //AddLogString("oracle =" + DB_VER );
+         this.Text = this.Text + " " + DB_VER ;
+       }
+       reader.Close();
+      }
+      if (DB_VER_FLAG>0) { return ; }      
+ 
+    }    
+    
 
 /*
 заполняем структуру таблиц в виде дерева
@@ -2250,12 +2357,33 @@ namespace ArcConfig
                    }
                    catch (Exception ex1)
                    {
-                     AddLogString(" ---- Регистрация архива для параметра " + ID + " не удалена , " + ex1.Message);
+                     AddLogString(" ------ Регистрация архива для параметра " + ID + " не удалена , " + ex1.Message);
+                     res1=-1;
                    }
 
-                   AddLogString(" -- DROP TABLE " + RETFNAME + " CASCADE CONSTRAINTS  PURGE ; ");
+                   if (res1>0) {
+                     sl1=" DROP TABLE " + RETFNAME + " CASCADE CONSTRAINTS PURGE ;" ;
+                     if (OptionTableDelete>0) {
+                        cmd0.CommandText=sl1;
+                        res1 = 0 ;
+                        try
+                        {
+                           res1 = cmd0.ExecuteNonQuery();
+                        }
+                        catch (Exception ex1)
+                        {
+                           AddLogString(" -- " + sl1 + " -- " + ex1.Message);
+                           res1=-1;
+                        }
+                        if (res1>0) {
+                        	AddLogString(" ---- DROP TABLE " + RETFNAME + " ; -- OK!");
+                        }
+                     } else {
+                     	AddLogString(" -- " + sl1 );
+                     }
+                   } //if (res1>0)
 
-                }
+                } // foreach
 
             } //if dlCnt>0
 
@@ -3160,14 +3288,38 @@ int ArcDel(object sender, int selRowNum , int selColNum)
       }
       catch (Exception ex1)
       {
-        AddLogString("ArcDel Тип архива для параметра не удален = " + cmd0.CommandText + " " + ex1.Message);
-        return(-7);
+        AddLogString(" ------ Регистрация архива для параметра " + ID + " не удалена , " + ex1.Message);
+        res1=-1;
       }
-      AddLogString("ArcDel удален = " + res1.ToString() );
 
-      AddLogString(" -- DROP TABLE " + SCHEMA_NAME + "." + RETFNAME + " CASCADE CONSTRAINTS PURGE ;" );
+      if (res1<=0) { return(-7); }
 
-    }
+      if (res1>0) {
+        sl1=" DROP TABLE " + SCHEMA_NAME + "." + RETFNAME + " CASCADE CONSTRAINTS PURGE ;" ;
+        if (OptionTableDelete>0) {
+           cmd0.CommandText=sl1;
+           res1 = 0 ;
+           try
+           {
+              res1 = cmd0.ExecuteNonQuery();
+           }
+           catch (Exception ex1)
+           {
+              AddLogString(" -- " + sl1 + " -- " + ex1.Message);
+              res1=-1;
+           }
+           if (res1>0) {
+           	 AddLogString(" ---- DROP TABLE " + SCHEMA_NAME + "." + RETFNAME + " ; -- OK!");
+           }
+           if (res1==0) {
+           	 AddLogString(" -- " + sl1 + " -- ERROR!");
+           }
+        } else {
+        	AddLogString(" -- " + sl1 );
+        }
+      } //if (res1>0)
+
+    } // if (vRetVal=="0")
 
     return(0);
 }
@@ -3403,6 +3555,8 @@ void OracleStat ( )
        else  ofrm._OptionCheckData = true ;
        if (OptionSchemaName==0) ofrm._OptionSchemaName = false ;
        else  ofrm._OptionSchemaName = true ;
+       if (OptionTableDelete==0) ofrm._OptionTableDelete = false ;
+       else  ofrm._OptionTableDelete = true ;
 
        ofrm.ShowDialog();
 
@@ -3416,6 +3570,8 @@ void OracleStat ( )
        if (ofrm._OptionCheckData) OptionCheckData=1 ;
        OptionSchemaName=0 ;
        if (ofrm._OptionSchemaName) OptionSchemaName=1 ;
+       OptionTableDelete=0 ;
+       if (ofrm._OptionTableDelete) OptionTableDelete=1 ;
 
        ofrm.Dispose();
     }

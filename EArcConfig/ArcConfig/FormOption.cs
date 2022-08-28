@@ -42,7 +42,13 @@ namespace ArcConfig
     {
         get { return checkBox5.Checked; }
         set { checkBox5.Checked = value; }
+    }    
+    public bool _OptionTableDelete
+    {
+        get { return checkBox6.Checked; }
+        set { checkBox6.Checked = value; }
     }
+    
 		public FormOption()
 		{
 			//

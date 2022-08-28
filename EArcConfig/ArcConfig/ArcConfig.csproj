@@ -82,6 +82,10 @@
     <Compile Include="FormGr.Designer.cs">
       <DependentUpon>FormGr.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormGTOPT.cs" />
+    <Compile Include="FormGTOPT.Designer.cs">
+      <DependentUpon>FormGTOPT.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormInfo1.cs" />
     <Compile Include="FormInfo1.Designer.cs">
       <DependentUpon>FormInfo1.cs</DependentUpon>
@@ -134,6 +138,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormGr.resx">
       <DependentUpon>FormGr.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormGTOPT.resx">
+      <DependentUpon>FormGTOPT.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormInfo1.resx">
       <DependentUpon>FormInfo1.cs</DependentUpon>

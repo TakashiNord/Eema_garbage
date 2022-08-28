@@ -806,6 +806,12 @@ sl1="" +
 	       fi.ShowDialog();
 	       
 		}
+		void Button1Click(object sender, EventArgs e)
+		{
+			//Виды характеристик параметров поддерживаемых системой
+	       FormGTOPT fgt = new FormGTOPT(_conn) ;
+	       fgt.ShowDialog();	
+		}
 
   }
 }
