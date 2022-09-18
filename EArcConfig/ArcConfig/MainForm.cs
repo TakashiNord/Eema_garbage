@@ -54,12 +54,15 @@ namespace ArcConfig
     public DataGridViewCellMouseEventArgs /*DataGridViewCellEventArgs*/ mouseLocation;
     public int PCellValueChanged = 0;
 
+    public string OptionSchemaMain = "RSDUADMIN";
     public int OptionFullDelete = 0;
     public int OptionWriteOnDelete = 0 ;
     public int OptionFullName = 0;
     public int OptionCheckData = 0;
     public int OptionSchemaName = 0;
     public int OptionTableDelete = 0;
+    public int OptionTableDisable = 0;
+
 
     public MainForm()
     {
@@ -1255,7 +1258,7 @@ namespace ArcConfig
 oracle : select * from v$version;
 mysql :  SELECT VERSION();
 sqlite : select sqlite_version();
-Postgres : SELECT version(); 
+Postgres : SELECT version();
 */
     void _version()
     {
@@ -1323,8 +1326,8 @@ Postgres : SELECT version();
        }
        reader.Close();
       }
-      if (DB_VER_FLAG>0) { return ; }      
-      
+      if (DB_VER_FLAG>0) { return ; }
+
       DB_VER_FLAG = 0 ;
       cmd0.CommandText="select banner from v$version";
       try
@@ -1348,10 +1351,10 @@ Postgres : SELECT version();
        }
        reader.Close();
       }
-      if (DB_VER_FLAG>0) { return ; }      
- 
-    }    
-    
+      if (DB_VER_FLAG>0) { return ; }
+
+    }
+
 
 /*
 заполняем структуру таблиц в виде дерева
@@ -2376,10 +2379,10 @@ Postgres : SELECT version();
                            res1=-1;
                         }
                         if (res1>0) {
-                        	AddLogString(" ---- DROP TABLE " + RETFNAME + " ; -- OK!");
+                          AddLogString(" ---- DROP TABLE " + RETFNAME + " ; -- OK!");
                         }
                      } else {
-                     	AddLogString(" -- " + sl1 );
+                      AddLogString(" -- " + sl1 );
                      }
                    } //if (res1>0)
 
@@ -3309,13 +3312,13 @@ int ArcDel(object sender, int selRowNum , int selColNum)
               res1=-1;
            }
            if (res1>0) {
-           	 AddLogString(" ---- DROP TABLE " + SCHEMA_NAME + "." + RETFNAME + " ; -- OK!");
+             AddLogString(" ---- DROP TABLE " + SCHEMA_NAME + "." + RETFNAME + " ; -- OK!");
            }
            if (res1==0) {
-           	 AddLogString(" -- " + sl1 + " -- ERROR!");
+             AddLogString(" -- " + sl1 + " -- ERROR!");
            }
         } else {
-        	AddLogString(" -- " + sl1 );
+          AddLogString(" -- " + sl1 );
         }
       } //if (res1>0)
 
@@ -3354,6 +3357,12 @@ int ArcDel(object sender, int selRowNum , int selColNum)
          AddLogString("ReadData = variable '" + st + "' not set" );
          return (strQry);
       }
+
+      // ===================================================
+      if (OptionSchemaName>0) {
+           tmpName=OptionSchemaMain + "." + tmpName ;
+      }
+      // ===================================================
 
       cmd0.CommandText=tmpName;
       try
@@ -3557,6 +3566,8 @@ void OracleStat ( )
        else  ofrm._OptionSchemaName = true ;
        if (OptionTableDelete==0) ofrm._OptionTableDelete = false ;
        else  ofrm._OptionTableDelete = true ;
+       if (OptionTableDisable==0) ofrm._OptionTableDisable = false ;
+       else  ofrm._OptionTableDisable = true ;
 
        ofrm.ShowDialog();
 
@@ -3572,6 +3583,10 @@ void OracleStat ( )
        if (ofrm._OptionSchemaName) OptionSchemaName=1 ;
        OptionTableDelete=0 ;
        if (ofrm._OptionTableDelete) OptionTableDelete=1 ;
+       OptionTableDisable=0 ;
+       if (ofrm._OptionTableDisable) OptionTableDisable=1 ;
+
+
 
        ofrm.Dispose();
     }
@@ -3715,7 +3730,7 @@ void OracleStat ( )
           string tmpName = ro.GetString(strQry);
           if (tmpName == null || tmpName.Trim().Length == 0)
           {
-             AddLogString("Test = variable '" + strQry + "' not set" );
+             AddLogString("Check = variable '" + strQry + "' not set" );
              continue ;
           }
 
@@ -3726,7 +3741,7 @@ void OracleStat ( )
           }
           catch (Exception ex1)
           {
-            AddLogString("Test =" + cmd0.CommandText + "=" + ex1.Message);
+            AddLogString("Check =" + cmd0.CommandText + "=" + ex1.Message);
             continue ;
           }
 
@@ -3750,16 +3765,21 @@ void OracleStat ( )
         listTable.Sort();
         foreach (string name in listTable) {
 
-        	fi.richTextBox1.AppendText("\n -- "+name);
+          string stName=name;
+          if (OptionSchemaName>0) {
+             stName=OptionSchemaMain + "." + stName ;
+          }
 
-          cmd0.CommandText="SELECT * FROM " + name +" ;" ;
+          fi.richTextBox1.AppendText("\n -- "+stName);
+
+          cmd0.CommandText="SELECT * FROM " + stName +" ;" ;
           try
           {
             reader = cmd0.ExecuteReader();
           }
           catch (Exception ex1)
           {
-            AddLogString("Test =" + cmd0.CommandText + "=" + ex1.Message);
+            AddLogString("Check =" + cmd0.CommandText + "=" + ex1.Message);
             continue ;
           }
 
@@ -3778,6 +3798,39 @@ void OracleStat ( )
 
 
         fi.ShowDialog();
+    }
+
+    void ButtonClearClick(object sender, EventArgs e)
+    {
+        // Объект для выполнения запросов к базе данных
+        OdbcCommand cmd0 = new OdbcCommand();
+        OdbcDataReader reader = null ;
+
+        cmd0.Connection=this._conn;
+
+        int cnt = 0;
+
+        string stName="ARC_STAT";
+        if (OptionSchemaName>0) {
+           stName=OptionSchemaMain + "." + stName ;
+        }
+
+        DialogResult result = MessageBox.Show ("Очистить таблицу " + stName + " ? ","Удаление " + stName, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+        if (result == DialogResult.Yes)
+        {
+            cmd0.CommandText="TRUNCATE TABLE " + stName ;
+            cmd0.CommandText="DELETE FROM " + stName ;
+            try
+            {
+               cnt=cmd0.ExecuteNonQuery();
+            }
+            catch (Exception ex7)
+            {
+               AddLogString("Ошибка удаления записей ="+ex7.Message);
+            }
+            AddLogString(cmd0.CommandText + " = " + cnt.ToString() + " rows ");
+        }
+        return ;
     }
 
 

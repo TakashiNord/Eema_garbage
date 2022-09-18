@@ -48,6 +48,11 @@ namespace ArcConfig
         get { return checkBox6.Checked; }
         set { checkBox6.Checked = value; }
     }
+    public bool _OptionTableDisable
+    {
+        get { return checkBox7.Checked; }
+        set { checkBox7.Checked = value; }
+    }
     
 		public FormOption()
 		{

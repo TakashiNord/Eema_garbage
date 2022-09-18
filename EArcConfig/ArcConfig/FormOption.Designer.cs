@@ -24,6 +24,7 @@ namespace ArcConfig
 		private System.Windows.Forms.CheckBox checkBox5;
 		private System.Windows.Forms.GroupBox groupBox1;
 		private System.Windows.Forms.CheckBox checkBox6;
+		private System.Windows.Forms.CheckBox checkBox7;
 		
 		/// <summary>
 		/// Disposes resources used by the form.
@@ -56,14 +57,15 @@ namespace ArcConfig
 			this.label1 = new System.Windows.Forms.Label();
 			this.checkBox1 = new System.Windows.Forms.CheckBox();
 			this.checkBox2 = new System.Windows.Forms.CheckBox();
+			this.checkBox7 = new System.Windows.Forms.CheckBox();
 			this.groupBox1.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// checkBox5
 			// 
-			this.checkBox5.Location = new System.Drawing.Point(12, 253);
+			this.checkBox5.Location = new System.Drawing.Point(12, 276);
 			this.checkBox5.Name = "checkBox5";
-			this.checkBox5.Size = new System.Drawing.Size(223, 24);
+			this.checkBox5.Size = new System.Drawing.Size(262, 24);
 			this.checkBox5.TabIndex = 9;
 			this.checkBox5.Text = "Имя обьекта с названием схемы **";
 			this.checkBox5.UseVisualStyleBackColor = true;
@@ -78,9 +80,9 @@ namespace ArcConfig
 			this.groupBox1.Controls.Add(this.label1);
 			this.groupBox1.Controls.Add(this.checkBox1);
 			this.groupBox1.Controls.Add(this.checkBox2);
-			this.groupBox1.Location = new System.Drawing.Point(12, 12);
+			this.groupBox1.Location = new System.Drawing.Point(12, 40);
 			this.groupBox1.Name = "groupBox1";
-			this.groupBox1.Size = new System.Drawing.Size(263, 235);
+			this.groupBox1.Size = new System.Drawing.Size(263, 230);
 			this.groupBox1.TabIndex = 10;
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "вкладки Главная - Параметры";
@@ -160,11 +162,21 @@ namespace ArcConfig
 			this.checkBox2.Text = "Отключение даже обязательных архивов";
 			this.checkBox2.UseVisualStyleBackColor = true;
 			// 
+			// checkBox7
+			// 
+			this.checkBox7.Location = new System.Drawing.Point(12, 3);
+			this.checkBox7.Name = "checkBox7";
+			this.checkBox7.Size = new System.Drawing.Size(264, 31);
+			this.checkBox7.TabIndex = 16;
+			this.checkBox7.Text = "Удаление регистрации архивов при отключении Профиля";
+			this.checkBox7.UseVisualStyleBackColor = true;
+			// 
 			// FormOption
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(288, 339);
+			this.Controls.Add(this.checkBox7);
 			this.Controls.Add(this.groupBox1);
 			this.Controls.Add(this.checkBox5);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;

@@ -90,6 +90,7 @@ namespace ArcConfig
 		private System.Windows.Forms.ToolStripMenuItem exportDataToolStripMenuItem;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
 		private System.Windows.Forms.ToolStripButton toolStripButton7;
+		private System.Windows.Forms.Button buttonClear;
 		
 		/// <summary>
 		/// Disposes resources used by the form.
@@ -131,8 +132,11 @@ namespace ArcConfig
 			this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
 			this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
 			this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
+			this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
+			this.toolStripButton7 = new System.Windows.Forms.ToolStripButton();
 			this.tabControl1 = new System.Windows.Forms.TabControl();
 			this.tabPage1 = new System.Windows.Forms.TabPage();
+			this.buttonClear = new System.Windows.Forms.Button();
 			this.button1 = new System.Windows.Forms.Button();
 			this.radioButton4 = new System.Windows.Forms.RadioButton();
 			this.radioButton3 = new System.Windows.Forms.RadioButton();
@@ -190,8 +194,6 @@ namespace ArcConfig
 			this.dataSetS = new System.Data.DataSet();
 			this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
 			this.timer1 = new System.Windows.Forms.Timer(this.components);
-			this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
-			this.toolStripButton7 = new System.Windows.Forms.ToolStripButton();
 			this.statusStrip1.SuspendLayout();
 			this.toolStrip1.SuspendLayout();
 			this.tabControl1.SuspendLayout();
@@ -369,6 +371,21 @@ namespace ArcConfig
 			this.toolStripButton6.ToolTipText = "Источники серверов";
 			this.toolStripButton6.Click += new System.EventHandler(this.ToolStripButton6Click);
 			// 
+			// toolStripSeparator8
+			// 
+			this.toolStripSeparator8.Name = "toolStripSeparator8";
+			this.toolStripSeparator8.Size = new System.Drawing.Size(6, 25);
+			// 
+			// toolStripButton7
+			// 
+			this.toolStripButton7.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+			this.toolStripButton7.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton7.Image")));
+			this.toolStripButton7.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.toolStripButton7.Name = "toolStripButton7";
+			this.toolStripButton7.Size = new System.Drawing.Size(33, 22);
+			this.toolStripButton7.Text = "Test";
+			this.toolStripButton7.Click += new System.EventHandler(this.ToolStripButton7Click);
+			// 
 			// tabControl1
 			// 
 			this.tabControl1.Controls.Add(this.tabPage1);
@@ -385,6 +402,7 @@ namespace ArcConfig
 			// 
 			// tabPage1
 			// 
+			this.tabPage1.Controls.Add(this.buttonClear);
 			this.tabPage1.Controls.Add(this.button1);
 			this.tabPage1.Controls.Add(this.radioButton4);
 			this.tabPage1.Controls.Add(this.radioButton3);
@@ -399,11 +417,21 @@ namespace ArcConfig
 			this.tabPage1.Text = "Статистика";
 			this.tabPage1.UseVisualStyleBackColor = true;
 			// 
+			// buttonClear
+			// 
+			this.buttonClear.Location = new System.Drawing.Point(658, 6);
+			this.buttonClear.Name = "buttonClear";
+			this.buttonClear.Size = new System.Drawing.Size(123, 23);
+			this.buttonClear.TabIndex = 6;
+			this.buttonClear.Text = "Очистить ARC_STAT";
+			this.buttonClear.UseVisualStyleBackColor = true;
+			this.buttonClear.Click += new System.EventHandler(this.ButtonClearClick);
+			// 
 			// button1
 			// 
 			this.button1.Location = new System.Drawing.Point(493, 6);
 			this.button1.Name = "button1";
-			this.button1.Size = new System.Drawing.Size(85, 23);
+			this.button1.Size = new System.Drawing.Size(100, 23);
 			this.button1.TabIndex = 5;
 			this.button1.Text = "Export ->xls";
 			this.button1.UseVisualStyleBackColor = true;
@@ -963,21 +991,6 @@ namespace ArcConfig
 			// timer1
 			// 
 			this.timer1.Tick += new System.EventHandler(this.Timer1Tick);
-			// 
-			// toolStripSeparator8
-			// 
-			this.toolStripSeparator8.Name = "toolStripSeparator8";
-			this.toolStripSeparator8.Size = new System.Drawing.Size(6, 25);
-			// 
-			// toolStripButton7
-			// 
-			this.toolStripButton7.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-			this.toolStripButton7.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton7.Image")));
-			this.toolStripButton7.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.toolStripButton7.Name = "toolStripButton7";
-			this.toolStripButton7.Size = new System.Drawing.Size(33, 22);
-			this.toolStripButton7.Text = "Test";
-			this.toolStripButton7.Click += new System.EventHandler(this.ToolStripButton7Click);
 			// 
 			// MainForm
 			// 
