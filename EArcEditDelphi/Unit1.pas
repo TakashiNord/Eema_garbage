@@ -3,6 +3,7 @@ unit Unit1;
 interface
 
 uses
+  System.UITypes ,
   Windows, Messages, SysUtils,DateUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, ComCtrls, ToolWin, DB, ADODB, Grids, DBGrids, ExtCtrls, DBCtrls,
   ImgList, StdCtrls, Buttons, Math , ShellAPI, Unit2 ;
@@ -469,7 +470,7 @@ end;
 procedure TForm1.ArcStat(Sender: TObject);
 var
  strQry : String ;
- ind, i : integer ;
+ ind : integer ;
 begin
 
  ind := RadioGroupStat.ItemIndex ;
@@ -1191,7 +1192,7 @@ var
   lVal : Longint ;
   lInt : Longint ;
   eCode : Integer ;
-  i,j: Integer ;
+  i: Integer ;
 begin
  //
  with StringGRid1 do
@@ -1400,8 +1401,8 @@ begin
   DateTimeToString(fStr2, '-yyyymmdd_hhnnss', Now);
   with SaveDialog1 do begin
     InitialDir:=ExtractFilePath(Application.ExeName);
-    FileName:='dbstat'+fStr2+'.cvs';
-    Filter:='Xls files (*.cvs)|*.cvs|All files (*.*)|*.*';
+    FileName:='dbstat'+fStr2+'.csv';
+    Filter:='Xls files (*.csv)|*.csv|All files (*.*)|*.*';
   end;
   //Открываем диалог сохранения файла.
   if not SaveDialog1.Execute then Exit;
@@ -1424,7 +1425,7 @@ begin
 
   fDt := DBGrid1.DataSource.DataSet;
   fDt.DisableControls;
-  //fName:='Arc_stat.cvs';
+  //fName:='Arc_stat.csv';
   AssignFile(fTf, fName);
   Rewrite(fTf);
   try
@@ -1853,7 +1854,7 @@ var
   str: tstringlist;
   
   Res : Integer ;
-  fStr, fStr2 : string;
+  fStr2 : string;
   fName : String ;
   
 begin
@@ -2100,6 +2101,7 @@ for i := 0 to ADOQuery1.RecordCount - 1 do
   r1_CACHE_SIZE:=ADOQuery1.Fields.Fields[4].AsInteger;
 
   done:='' ;
+  max_id:=1;
 
   strQry:='SELECT nvl(max(id), 0) from ' + r1_tblname ;
   try
