@@ -91,6 +91,7 @@ namespace ArcConfig
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
 		private System.Windows.Forms.ToolStripButton toolStripButton7;
 		private System.Windows.Forms.Button buttonClear;
+		private System.Windows.Forms.GroupBox groupBox1;
 		
 		/// <summary>
 		/// Disposes resources used by the form.
@@ -159,6 +160,7 @@ namespace ArcConfig
 			this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
 			this.deleteDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.richTextBox2 = new System.Windows.Forms.RichTextBox();
+			this.groupBox1 = new System.Windows.Forms.GroupBox();
 			this.buttonService = new System.Windows.Forms.Button();
 			this.buttonSave = new System.Windows.Forms.Button();
 			this.propertyGridA = new System.Windows.Forms.PropertyGrid();
@@ -584,6 +586,7 @@ namespace ArcConfig
 			// 
 			// splitContainer1.Panel2
 			// 
+			this.splitContainer1.Panel2.Controls.Add(this.groupBox1);
 			this.splitContainer1.Panel2.Controls.Add(this.buttonService);
 			this.splitContainer1.Panel2.Controls.Add(this.buttonSave);
 			this.splitContainer1.Panel2.Controls.Add(this.propertyGridA);
@@ -690,9 +693,17 @@ namespace ArcConfig
 			this.richTextBox2.TabIndex = 0;
 			this.richTextBox2.Text = resources.GetString("richTextBox2.Text");
 			// 
+			// groupBox1
+			// 
+			this.groupBox1.Location = new System.Drawing.Point(14, 340);
+			this.groupBox1.Name = "groupBox1";
+			this.groupBox1.Size = new System.Drawing.Size(190, 10);
+			this.groupBox1.TabIndex = 3;
+			this.groupBox1.TabStop = false;
+			// 
 			// buttonService
 			// 
-			this.buttonService.Location = new System.Drawing.Point(115, 303);
+			this.buttonService.Location = new System.Drawing.Point(119, 356);
 			this.buttonService.Name = "buttonService";
 			this.buttonService.Size = new System.Drawing.Size(85, 31);
 			this.buttonService.TabIndex = 2;
@@ -702,9 +713,9 @@ namespace ArcConfig
 			// 
 			// buttonSave
 			// 
-			this.buttonSave.Location = new System.Drawing.Point(14, 303);
+			this.buttonSave.Location = new System.Drawing.Point(119, 303);
 			this.buttonSave.Name = "buttonSave";
-			this.buttonSave.Size = new System.Drawing.Size(81, 31);
+			this.buttonSave.Size = new System.Drawing.Size(85, 31);
 			this.buttonSave.TabIndex = 1;
 			this.buttonSave.Text = "Сохранить ..";
 			this.buttonSave.UseVisualStyleBackColor = true;
