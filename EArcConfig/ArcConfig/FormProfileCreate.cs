@@ -69,7 +69,7 @@ namespace ArcConfig
      return(ret);
    }
 
-    public FormProfileCreate(OdbcConnection conn, String id_gt, String id_tbl)
+    public FormProfileCreate(OdbcConnection conn, String id_gt, String id_tbl, int SchemaName)
     {
       //
       // The InitializeComponent() call is required for Windows Forms designer support.
@@ -81,12 +81,15 @@ namespace ArcConfig
       _conn = conn ;
       _id_gpt = id_gt ;
       _id_tbl = id_tbl ;
+      _OptionSchemaName = SchemaName ;
       //
     }
 
     public OdbcConnection _conn;
     public String _id_gpt;
     public String _id_tbl;
+    public int _OptionSchemaName = 0;
+    public string OptionSchemaMain = "RSDUADMIN";
     //public string[] Dpload = new string[100];
     public List<string> Dpload = new List<string>();
     public List<string> Tech = new List<string>();
@@ -110,6 +113,13 @@ namespace ArcConfig
       OdbcDataReader reader = null ;
 
       cmd0.Connection=this._conn;
+      
+      
+      string stSchema="";
+      if (_OptionSchemaName>0) {
+        stSchema=OptionSchemaMain + "." ;
+      }      
+      
 
       string id_dest = "" ;
       string sl1 = r.GetString("ARC_SUBSYST_PROFILE_ID");
@@ -176,7 +186,7 @@ namespace ArcConfig
       // get table
       string TABLE_NAME = "" ;
 
-      sl1= "SELECT upper(lst.TABLE_NAME) FROM sys_tbllst lst WHERE lst.ID=" + _id_tbl;
+      sl1= "SELECT upper(lst.TABLE_NAME) FROM  "+stSchema+"sys_tbllst lst WHERE lst.ID=" + _id_tbl;
       cmd0.CommandText=sl1;
       try
       {
@@ -246,7 +256,7 @@ namespace ArcConfig
 
       Dpload.Clear();
       checkedListBoxDpload.Items.Clear();
-      sl1= "SELECT id, name FROM ad_service WHERE define_alias LIKE 'ADV_SRVC_DPLOADADCP_ACCESPORT%' ORDER BY id ASC" ;
+      sl1= "SELECT id, name FROM "+stSchema+"ad_service WHERE define_alias LIKE 'ADV_SRVC_DPLOADADCP_ACCESPORT%' ORDER BY id ASC" ;
       cmd0.CommandText=sl1;
       try
       {
@@ -344,7 +354,7 @@ namespace ArcConfig
 
     if (FL_rdp == 1) {
 
-      sl1= "SELECT id, name FROM ad_service WHERE define_alias LIKE 'ADV_SRVC_RDAADCP_ACCESPORT%' ORDER BY id ASC" ;
+      sl1= "SELECT id, name FROM "+stSchema+"ad_service WHERE define_alias LIKE 'ADV_SRVC_RDAADCP_ACCESPORT%' ORDER BY id ASC" ;
       cmd0.CommandText=sl1;
       try
       {
@@ -412,9 +422,16 @@ namespace ArcConfig
       OdbcDataReader reader = null ;
 
       cmd0.Connection=this._conn;
+      
+      
+      string stSchema="";
+      if (_OptionSchemaName>0) {
+        stSchema=OptionSchemaMain + "." ;
+      }      
+      
 
       string sl1= ""+
-"Insert into ARC_SUBSYST_PROFILE (ID, ID_TBLLST, ID_GINFO, IS_WRITEON, STACK_NAME, LAST_UPDATE, IS_VIEWABLE)" +
+"Insert into "+stSchema+"ARC_SUBSYST_PROFILE (ID, ID_TBLLST, ID_GINFO, IS_WRITEON, STACK_NAME, LAST_UPDATE, IS_VIEWABLE)" +
 " Values ("+id_dest+","+id_tbl+","+id_gpt+","+IS_WRITEON+",'"+ st_name + "',0," + IS_VIEWABLE + ")";
       cmd0.CommandText=sl1;
 
@@ -438,7 +455,7 @@ namespace ArcConfig
         if (checkedListBoxDpload.GetItemChecked(i)) {
           string rec_id=Dpload[i] ;
           sl1= ""+
-           "Insert into ARC_SERVICES_TUNE(ID_SPROFILE, ID_SERVICE, PRIORITY) " +
+           "Insert into "+stSchema+"ARC_SERVICES_TUNE(ID_SPROFILE, ID_SERVICE, PRIORITY) " +
            " Values ("+id_dest+","+rec_id+","+nID_PRIORITY+")";
           cmd0.CommandText=sl1;
           try
@@ -472,7 +489,7 @@ namespace ArcConfig
         if (checkedListBoxTech.GetItemChecked(i)) {
           string rec_id=Tech[i] ;
           sl1= ""+
-           "Insert into ARC_SERVICES_ACCESS(ID_SPROFILE, ID_SERVICE, RETRO_DEPTH) " +
+           "Insert into "+stSchema+"ARC_SERVICES_ACCESS(ID_SPROFILE, ID_SERVICE, RETRO_DEPTH) " +
            " Values ("+id_dest+","+rec_id+","+Period+")";
           cmd0.CommandText=sl1;
           try

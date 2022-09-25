@@ -35,7 +35,7 @@ namespace ArcConfig
 			//
 		}
 
-		public FormSource(OdbcConnection conn)
+		public FormSource(OdbcConnection conn, int SchemaName)
 		{
 			//
 			// The InitializeComponent() call is required for Windows Forms designer support.
@@ -46,6 +46,7 @@ namespace ArcConfig
 			// TODO: Add constructor code after the InitializeComponent() call.
 			//
 			 _conn = conn ;
+			 _OptionSchemaName = SchemaName ;
 		}
 		
     public string GetTypeValue(ref OdbcDataReader reader, int i)
@@ -66,6 +67,7 @@ namespace ArcConfig
 
 
     public OdbcConnection _conn;
+    public int _OptionSchemaName = 0;
 
     public OdbcConnection Conn
     {

@@ -34,7 +34,7 @@ namespace ArcConfig
       // TODO: Add constructor code after the InitializeComponent() call.
       //
     }
-    public FormStatus(OdbcConnection conn)
+    public FormStatus(OdbcConnection conn, int SchemaName)
     {
       //
       // The InitializeComponent() call is required for Windows Forms designer support.
@@ -45,9 +45,12 @@ namespace ArcConfig
       // TODO: Add constructor code after the InitializeComponent() call.
       //
       _conn = conn ;
+      _OptionSchemaName = SchemaName ;
     }
 
     public OdbcConnection _conn;
+    public int _OptionSchemaName = 0;
+    public string OptionSchemaMain = "RSDUADMIN";
 
     public OdbcConnection Conn
     {
@@ -115,8 +118,15 @@ namespace ArcConfig
 
       dataSet1.Clear();
 
+      
+      string stSchema="";
+      if (_OptionSchemaName>0) {
+        stSchema=OptionSchemaMain + "." ;
+      }      
+      
 
-      cmd0.CommandText= "SELECT id, name, DEFINE_ALIAS,  CAST(LAST_UPDATE as CHAR(40)) as LAST_UPDATE, CAST(LAST_RELINK as CHAR(40)) as LAST_RELINK,REINIT_TYPE FROM SYS_DB_PART";
+      cmd0.CommandText= "SELECT id, name, DEFINE_ALIAS,  CAST(LAST_UPDATE as CHAR(40)) as LAST_UPDATE, CAST(LAST_RELINK as CHAR(40)) as LAST_RELINK,REINIT_TYPE " + 
+      	 "FROM  "+stSchema+"SYS_DB_PART";
 
       // Указываем запрос для выполнения
       adapter.SelectCommand = cmd0;
@@ -193,6 +203,11 @@ namespace ArcConfig
         
         cmd0.Connection=this._conn;
         
+        string stSchema="";
+        if (_OptionSchemaName>0) {
+          stSchema=OptionSchemaMain + "." ;
+        }         
+        
         for (int ii = 0; ii < dataGridView1.RowCount ; ii++) {
            //
            var isChecked = Convert.ToBoolean(dataGridView1.Rows[ii].Cells[0].Value) ;
@@ -202,7 +217,7 @@ namespace ArcConfig
         
            string vl1 = Convert.ToString (dataGridView1.Rows[ii].Cells["LAST_UPDATE"].Value);
            if (vl1!="0") {
-               cmd0.CommandText=" UPDATE SYS_DB_PART SET LAST_UPDATE = 0 WHERE ID=" + id;
+               cmd0.CommandText="UPDATE "+stSchema+"SYS_DB_PART SET LAST_UPDATE = 0 WHERE ID=" + id;
                try
                {
                  reader = cmd0.ExecuteReader();
@@ -217,7 +232,7 @@ namespace ArcConfig
         
            vl1 = Convert.ToString(dataGridView1.Rows[ii].Cells["LAST_RELINK"].Value);
            if (vl1!="0") {
-               cmd0.CommandText=" UPDATE SYS_DB_PART SET LAST_RELINK = 0 WHERE ID=" + id;
+               cmd0.CommandText="UPDATE "+stSchema+"SYS_DB_PART SET LAST_RELINK = 0 WHERE ID=" + id;
                try
                {
                  reader = cmd0.ExecuteReader();

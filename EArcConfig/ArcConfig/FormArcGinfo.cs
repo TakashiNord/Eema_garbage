@@ -39,7 +39,7 @@ namespace ArcConfig
       //
     }
 
-    public FormArcGinfo(OdbcConnection conn, String id)
+    public FormArcGinfo(OdbcConnection conn, String id, int SchemaName)
     {
       //
       // The InitializeComponent() call is required for Windows Forms designer support.
@@ -50,6 +50,7 @@ namespace ArcConfig
       // TODO: Add constructor code after the InitializeComponent() call.
       _conn = conn ;
       id_arcginfo = id ;
+      OptionSchemaName = SchemaName ;
       //
     }
     
@@ -100,6 +101,7 @@ namespace ArcConfig
 
     public OdbcConnection _conn;
     public String id_arcginfo;
+    public int OptionSchemaName = 0;
 
     public OdbcConnection Conn
     {

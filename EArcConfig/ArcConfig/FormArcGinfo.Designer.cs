@@ -71,6 +71,7 @@ namespace ArcConfig
 		private System.Data.DataSet dataSet1;
 		private System.Windows.Forms.Button buttonCalc;
 		private System.Windows.Forms.Button button5;
+		private System.Windows.Forms.Label label27;
 		
 		/// <summary>
 		/// Disposes resources used by the form.
@@ -152,6 +153,7 @@ namespace ArcConfig
 			this.button4 = new System.Windows.Forms.Button();
 			this.dataGridView1 = new System.Windows.Forms.DataGridView();
 			this.dataSet1 = new System.Data.DataSet();
+			this.label27 = new System.Windows.Forms.Label();
 			this.groupBox1.SuspendLayout();
 			this.groupBox4.SuspendLayout();
 			this.groupBox2.SuspendLayout();
@@ -572,6 +574,7 @@ namespace ArcConfig
 			// 
 			// groupBox5
 			// 
+			this.groupBox5.Controls.Add(this.label27);
 			this.groupBox5.Controls.Add(this.label24);
 			this.groupBox5.Controls.Add(this.label23);
 			this.groupBox5.Controls.Add(this.label8);
@@ -582,14 +585,14 @@ namespace ArcConfig
 			this.groupBox5.Controls.Add(this.textBoxCACHE_SIZE);
 			this.groupBox5.Location = new System.Drawing.Point(276, 486);
 			this.groupBox5.Name = "groupBox5";
-			this.groupBox5.Size = new System.Drawing.Size(270, 101);
+			this.groupBox5.Size = new System.Drawing.Size(296, 101);
 			this.groupBox5.TabIndex = 40;
 			this.groupBox5.TabStop = false;
 			this.groupBox5.Text = "Опции сервера записи архивов";
 			// 
 			// label24
 			// 
-			this.label24.Location = new System.Drawing.Point(231, 68);
+			this.label24.Location = new System.Drawing.Point(246, 71);
 			this.label24.Name = "label24";
 			this.label24.Size = new System.Drawing.Size(28, 20);
 			this.label24.TabIndex = 46;
@@ -597,7 +600,7 @@ namespace ArcConfig
 			// 
 			// label23
 			// 
-			this.label23.Location = new System.Drawing.Point(231, 45);
+			this.label23.Location = new System.Drawing.Point(246, 48);
 			this.label23.Name = "label23";
 			this.label23.Size = new System.Drawing.Size(28, 20);
 			this.label23.TabIndex = 45;
@@ -623,33 +626,39 @@ namespace ArcConfig
 			// 
 			this.label6.Location = new System.Drawing.Point(8, 22);
 			this.label6.Name = "label6";
-			this.label6.Size = new System.Drawing.Size(106, 20);
+			this.label6.Size = new System.Drawing.Size(157, 20);
 			this.label6.TabIndex = 38;
-			this.label6.Text = "Число параметров:";
+			this.label6.Text = "Кэш буфер -  параметров:";
 			// 
 			// textBoxFLUSH_INTERVAL
 			// 
 			this.textBoxFLUSH_INTERVAL.Location = new System.Drawing.Point(171, 68);
 			this.textBoxFLUSH_INTERVAL.Name = "textBoxFLUSH_INTERVAL";
-			this.textBoxFLUSH_INTERVAL.Size = new System.Drawing.Size(54, 20);
+			this.textBoxFLUSH_INTERVAL.Size = new System.Drawing.Size(69, 20);
 			this.textBoxFLUSH_INTERVAL.TabIndex = 37;
 			this.textBoxFLUSH_INTERVAL.Text = "0";
+			this.toolTip1.SetToolTip(this.textBoxFLUSH_INTERVAL, "FLUSH_INTERVAL = Период (сек) чистки устаревших данных. Значение 0 - не исполняет" +
+		"ся");
 			// 
 			// textBoxCACHE_TIMEOUT
 			// 
 			this.textBoxCACHE_TIMEOUT.Location = new System.Drawing.Point(171, 45);
 			this.textBoxCACHE_TIMEOUT.Name = "textBoxCACHE_TIMEOUT";
-			this.textBoxCACHE_TIMEOUT.Size = new System.Drawing.Size(54, 20);
+			this.textBoxCACHE_TIMEOUT.Size = new System.Drawing.Size(69, 20);
 			this.textBoxCACHE_TIMEOUT.TabIndex = 36;
 			this.textBoxCACHE_TIMEOUT.Text = "0";
+			this.toolTip1.SetToolTip(this.textBoxCACHE_TIMEOUT, "CACHE_TIMEOUT  = Промежуток времени (сек), через который сервер записи архивов от" +
+		"правляет данные на вставку серверу прямого доступа");
 			// 
 			// textBoxCACHE_SIZE
 			// 
 			this.textBoxCACHE_SIZE.Location = new System.Drawing.Point(171, 19);
 			this.textBoxCACHE_SIZE.Name = "textBoxCACHE_SIZE";
-			this.textBoxCACHE_SIZE.Size = new System.Drawing.Size(54, 20);
+			this.textBoxCACHE_SIZE.Size = new System.Drawing.Size(69, 20);
 			this.textBoxCACHE_SIZE.TabIndex = 35;
 			this.textBoxCACHE_SIZE.Text = "0";
+			this.toolTip1.SetToolTip(this.textBoxCACHE_SIZE, "CACHE_SIZE = Объем данных (\"строк\"), при котором сервер записи архивов отправляет" +
+		" данные на вставку серверу прямого доступа");
 			// 
 			// button2
 			// 
@@ -700,6 +709,14 @@ namespace ArcConfig
 			// dataSet1
 			// 
 			this.dataSet1.DataSetName = "NewDataSet";
+			// 
+			// label27
+			// 
+			this.label27.Location = new System.Drawing.Point(246, 25);
+			this.label27.Name = "label27";
+			this.label27.Size = new System.Drawing.Size(43, 17);
+			this.label27.TabIndex = 47;
+			this.label27.Text = "строк";
 			// 
 			// FormArcGinfo
 			// 

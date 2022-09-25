@@ -47,6 +47,8 @@ namespace ArcConfig
     public String _TABLE_NAME ;
     public String _SCHEME_NAME ;
     public String _filename ;
+    public int _OptionSchemaName = 0;
+    public string OptionSchemaMain = "RSDUADMIN";
 
     public int valueBefore = 0;
 
@@ -58,7 +60,7 @@ namespace ArcConfig
       }
     }
 
-    public FormExport(OdbcConnection conn, String id, String name, String ginfo,String tbl)
+    public FormExport(OdbcConnection conn, String id, String name, String ginfo,String tbl, int SchemaName)
     {
       //
       // The InitializeComponent() call is required for Windows Forms designer support.
@@ -75,6 +77,7 @@ namespace ArcConfig
       _id_tbl = tbl ;
       _TABLE_NAME = "" ;
       _SCHEME_NAME = "" ;
+      _OptionSchemaName = SchemaName ;
     }
 
    public string GetTypeValue(ref OdbcDataReader reader, int i)
@@ -133,6 +136,13 @@ namespace ArcConfig
 
         cmd0.Connection=this._conn;
 
+        
+        string stSchema="";
+        if (_OptionSchemaName>0) {
+          stSchema=OptionSchemaMain + "." ;
+        }     
+        
+        
         string sl1 = r.GetString("ARH_SYSTBLLST2");
         sl1 = String.Format(sl1,_id_tbl);
 
@@ -163,7 +173,7 @@ namespace ArcConfig
         Application.DoEvents();
 
 
-        sl1 = "SELECT RETFNAME FROM " + ARC_NAME + " WHERE ID_PARAM=" +_id + " AND ID_GINFO=" +_id_gpt ;
+        sl1 = "SELECT RETFNAME FROM " + stSchema + ARC_NAME + " WHERE ID_PARAM=" +_id + " AND ID_GINFO=" +_id_gpt ;
         cmd0.CommandText=sl1;
         try
         {

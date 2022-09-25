@@ -71,7 +71,9 @@ namespace ArcConfig
     public String _id_gpt;
     public String _gpt_name;
     public String _id_tbl;
+    public int _OptionSchemaName = 0;
     public String TABLE_NAME ;
+    public string OptionSchemaMain = "RSDUADMIN";
 
     public int valueBefore = 0;
 
@@ -83,7 +85,7 @@ namespace ArcConfig
       }
     }
 
-    public FormGr(OdbcConnection conn, String id, String name, String ginfo,String gpt_name, String tbl)
+    public FormGr(OdbcConnection conn, String id, String name, String ginfo,String gpt_name, String tbl, int SchemaName)
     {
       //
       // The InitializeComponent() call is required for Windows Forms designer support.
@@ -99,6 +101,7 @@ namespace ArcConfig
       _id_gpt = ginfo ;
       _gpt_name = gpt_name ;
       _id_tbl = tbl ;
+      _OptionSchemaName = SchemaName ;
       TABLE_NAME = "" ;
     }
 
@@ -273,6 +276,11 @@ namespace ArcConfig
 
         cmd0.Connection=this._conn;
 
+        string stSchema="";
+        if (_OptionSchemaName>0) {
+           stSchema=OptionSchemaMain + "." ;
+        }           
+        
         string sl1 = r.GetString("ARH_SYSTBLLST1");
         sl1 = String.Format(sl1,_id_tbl);
 
@@ -300,7 +308,7 @@ namespace ArcConfig
         if (ARC_NAME=="") return ;
         Application.DoEvents();
 
-        sl1 = "SELECT RETFNAME FROM " + ARC_NAME + " WHERE ID_PARAM=" +_id + " AND ID_GINFO=" +_id_gpt ;
+        sl1 = "SELECT RETFNAME FROM "+stSchema + ARC_NAME + " WHERE ID_PARAM=" +_id + " AND ID_GINFO=" +_id_gpt ;
         cmd0.CommandText=sl1;
         try
         {
@@ -484,7 +492,7 @@ namespace ArcConfig
        if (TABLE_NAME=="") return ;
        Application.DoEvents();
 
-       FormExport fe = new FormExport(_conn, _id, _name, _id_gpt, _id_tbl) ;
+       FormExport fe = new FormExport(_conn, _id, _name, _id_gpt, _id_tbl, _OptionSchemaName) ;
        fe.ShowDialog();
     }
 

@@ -36,7 +36,7 @@ namespace ArcConfig
       //
     }
 
-    public FormService(OdbcConnection conn, String id, String id_tbl)
+    public FormService(OdbcConnection conn, String id, String id_tbl, int SchemaName)
     {
       //
       // The InitializeComponent() call is required for Windows Forms designer support.
@@ -48,12 +48,15 @@ namespace ArcConfig
       _conn = conn ;
       _id = id ;
       _id_tbl = id_tbl ;
+      _OptionSchemaName = SchemaName ;
       //
     }
 
     public OdbcConnection _conn;
     public String _id;
     public String _id_tbl;
+    public int _OptionSchemaName = 0;
+    public string OptionSchemaMain = "RSDUADMIN";
     //public string[] Dpload = new string[100];
     public List<string> Dpload = new List<string>();
     public List<string> Tech = new List<string>();
@@ -111,11 +114,19 @@ namespace ArcConfig
       string sl1 = "" ;
 
       buttonSave.Enabled = false ;
+      
+      
+      string stSchema="";
+      if (_OptionSchemaName>0) {
+        stSchema=OptionSchemaMain + "." ;
+      }       
+      
 
       // =============================================================================
 
       // dpload
-      sl1= "SELECT id, name FROM ad_service WHERE define_alias LIKE 'ADV_SRVC_DPLOADADCP_ACCESPORT%' ORDER BY id ASC" ;
+      sl1= "SELECT id, name FROM  "+stSchema+"ad_service " + 
+      	"WHERE define_alias LIKE 'ADV_SRVC_DPLOADADCP_ACCESPORT%' ORDER BY id ASC" ;
       cmd0.CommandText=sl1;
       try
       {
@@ -191,7 +202,8 @@ namespace ArcConfig
       }
       reader.Close();
 
-      sl1= "SELECT id, name FROM ad_service WHERE define_alias LIKE 'ADV_SRVC_RDAADCP_ACCESPORT%' ORDER BY id ASC" ;
+      sl1= "SELECT id, name FROM "+stSchema+"ad_service " +
+      	"WHERE define_alias LIKE 'ADV_SRVC_RDAADCP_ACCESPORT%' ORDER BY id ASC" ;
       cmd0.CommandText=sl1;
       try
       {
@@ -410,12 +422,18 @@ and arcs.ID_SPROFILE=5
       int ret1 = 0 ;
       int tParam1 = 0 ;
 
+      
+      string stSchema="";
+      if (_OptionSchemaName>0) {
+        stSchema=OptionSchemaMain + "." ;
+      }       
+      
       //for(int i=0;i<Tech.Count; i++) MessageBox.Show(Tech[i].ToString() );
 
       //for(int i=0;i<Dpload.Count; i++) MessageBox.Show(Dpload[i].ToString() );
 
       //Вставка в ARC_SERVICES_TUNE настроек для записи нового профиля архивов
-      sl1= "DELETE FROM ARC_SERVICES_TUNE WHERE ID_SPROFILE =" + _id ;
+      sl1= "DELETE FROM "+stSchema+"ARC_SERVICES_TUNE WHERE ID_SPROFILE=" + _id ;
       cmd0.CommandText=sl1;
       try
       {
@@ -442,7 +460,7 @@ and arcs.ID_SPROFILE=5
           rec_id = tParam1.ToString();
 
           sl1= ""+
-           "Insert into ARC_SERVICES_TUNE(ID_SPROFILE, ID_SERVICE, PRIORITY) " +
+           "Insert into "+stSchema+"ARC_SERVICES_TUNE(ID_SPROFILE, ID_SERVICE, PRIORITY) " +
            " Values ("+_id+","+rec_id+","+nID_PRIORITY+")";
           cmd0.CommandText=sl1;
           try
@@ -464,7 +482,7 @@ and arcs.ID_SPROFILE=5
 
       //Вставка в ARC_SERVICES_ACCESS настроек для чтения нового профиля архивов
 
-      sl1= "DELETE FROM ARC_SERVICES_ACCESS WHERE ID_SPROFILE =" + _id ;
+      sl1= "DELETE FROM "+stSchema+"ARC_SERVICES_ACCESS WHERE ID_SPROFILE =" + _id ;
       cmd0.CommandText=sl1;
       try
       {
@@ -495,7 +513,7 @@ and arcs.ID_SPROFILE=5
           rec_id = tParam1.ToString();
 
           sl1= ""+
-           "Insert into ARC_SERVICES_ACCESS(ID_SPROFILE, ID_SERVICE, RETRO_DEPTH) " +
+           "Insert into "+stSchema+"ARC_SERVICES_ACCESS(ID_SPROFILE, ID_SERVICE, RETRO_DEPTH) " +
            " Values ("+_id+","+rec_id+","+Period+")";
           cmd0.CommandText=sl1;
           try

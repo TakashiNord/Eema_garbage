@@ -137,6 +137,7 @@ namespace ArcConfig
     public String _id_tbl;
     public String TABLE_NAME ;
     public int OptionFullName ;
+    public int _OptionSchemaName = 0;
 
     public int valueBefore = 0;
 
@@ -148,7 +149,7 @@ namespace ArcConfig
       }
     }
 
-    public FormDel(OdbcConnection conn, String id, String name, String ginfo,String gpt_name, String tbl, int FullName)
+    public FormDel(OdbcConnection conn, String id, String name, String ginfo,String gpt_name, String tbl, int FullName, int SchemaName)
     {
       //
       // The InitializeComponent() call is required for Windows Forms designer support.
@@ -166,6 +167,7 @@ namespace ArcConfig
       _id_tbl = tbl ;
       TABLE_NAME = "" ;
       OptionFullName = FullName ;
+      _OptionSchemaName = SchemaName ;
     }
 
     //Unix -> DateTime

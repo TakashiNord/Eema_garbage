@@ -165,12 +165,17 @@ namespace ArcConfig
      String NAME = "";
      String ID = id ;
 
+     string stSchema="";
+     if (OptionSchemaName>0) {
+       stSchema=OptionSchemaMain + "." ;
+     }
+
      string[] arr = new string[3];
      int fl = 0;
      while (fl==0)
      {
        // ORA 1000 !!!!!!
-       cmd0.CommandText="SELECT ID, ID_PARENT, NAME FROM " + TableTree + " WHERE ID="+ID ;
+       cmd0.CommandText="SELECT ID, ID_PARENT, NAME FROM " + stSchema + TableTree + " WHERE ID="+ID ;
        try
        {
          reader = cmd0.ExecuteReader();
@@ -292,6 +297,12 @@ namespace ArcConfig
        cmd.Connection = this._conn; // уже созданное и открытое соединение
 
 
+       string stSchema="";
+       if (OptionSchemaName>0) {
+         stSchema=OptionSchemaMain + "." ;
+       }
+
+
        //устанавливаем редактируемый объект
        _profileData.ID="";
        _profileData.ID_TBLLST="";
@@ -311,12 +322,13 @@ namespace ArcConfig
        treeViewA.Nodes.Clear();
 
        // получаем root- id
-       cmd.CommandText="SELECT DISTINCT id_parent FROM sys_tree21 WHERE id_lsttbl IN " +
-"(SELECT id FROM sys_tbllst WHERE id_type IN " +
-"(SELECT id FROM sys_otyp WHERE define_alias like 'LST') " +
+       cmd.CommandText= "" +
+"SELECT DISTINCT id_parent FROM  "+stSchema+"sys_tree21 WHERE id_lsttbl IN " +
+"(SELECT id FROM "+stSchema+"sys_tbllst WHERE id_type IN " +
+"(SELECT id FROM "+stSchema+"sys_otyp WHERE define_alias like 'LST') " +
 "AND id_node IN  " +
-"(SELECT id FROM sys_db_part WHERE id_parent IN " +
-"(SELECT id FROM sys_db_part WHERE define_alias like 'MODEL_SUBSYST' OR define_alias like 'DA_SUBSYST' )))";
+"(SELECT id FROM "+stSchema+"sys_db_part WHERE id_parent IN " +
+"(SELECT id FROM "+stSchema+"sys_db_part WHERE define_alias like 'MODEL_SUBSYST' OR define_alias like 'DA_SUBSYST' )))";
        try
        {
           reader1 = cmd.ExecuteReader();
@@ -351,7 +363,7 @@ namespace ArcConfig
 
 
        cmd.CommandText="SELECT id, COALESCE(id_parent,0,0) as id_p, name, COALESCE(id_lsttbl,0,0) as id_l " +
-       " FROM sys_tree21 " +
+       " FROM  "+stSchema+"sys_tree21 " +
        "WHERE id IN ( " + sS + "  ) " ;
 
        try
@@ -408,7 +420,7 @@ namespace ArcConfig
        reader2.Close();
 
        cmd.CommandText="SELECT id, COALESCE(id_parent,0,0), name, COALESCE(id_lsttbl,0,0) " +
-       " FROM sys_tree21 " +
+       " FROM "+stSchema+"sys_tree21 " +
        " WHERE id_parent IN (" + sS + " ) " ;
 
        try
@@ -642,6 +654,13 @@ namespace ArcConfig
       // re-read
       //dataGridViewA.Rows.Clear();
       Application.DoEvents();
+	  
+	  
+      string stSchema="";
+      if (OptionSchemaName>0) {
+           stSchema=OptionSchemaMain + "." ;
+      }
+	  
 
       ResourceManager r = new ResourceManager("ArcConfig.ArcResource", Assembly.GetExecutingAssembly());
 
@@ -797,7 +816,7 @@ namespace ArcConfig
         // get table списка параметров для данного раздела
         string TABLE_NAME = "" ;
 
-        sl1= "SELECT UPPER(lst.TABLE_NAME) FROM sys_tbllst lst WHERE lst.ID=" + _id_tbl;
+        sl1= "SELECT UPPER(lst.TABLE_NAME) FROM  "+stSchema+"sys_tbllst lst WHERE lst.ID=" + _id_tbl;
         cmd0.CommandText=sl1;
         try
         {
@@ -830,7 +849,7 @@ namespace ArcConfig
         // определяем поле
         //ERROR [42S22] [Oracle][ODBC][Ora]ORA-00904: "IS_EXDATA": недопустимый идентификатор
         int is_exdata = 1 ;
-        sl1="SELECT is_exdata FROM meas_list" ;
+        sl1="SELECT is_exdata FROM  "+stSchema+"meas_list" ;
 
         cmd1.CommandText=sl1;
         try
@@ -1216,9 +1235,14 @@ namespace ArcConfig
 
       //ResourceManager r = new ResourceManager("ArcConfig.ArcResource", Assembly.GetExecutingAssembly());
 
+      string stSchema="";
+      if (OptionSchemaName>0) {
+           stSchema=OptionSchemaMain + "." ;
+      }
+
       string DB_NAME = "" ;
       // 1. получаем имя   -- SELECT id, name FROM SYS_TREE21 WHERE COALESCE(id_parent,0,0)=0 AND COALESCE(ID_LSTTBL,0,0)=0
-      cmd0.CommandText="SELECT id, name FROM SYS_TREE21 " +
+      cmd0.CommandText="SELECT id, name FROM  "+stSchema+"SYS_TREE21 " +
                        " WHERE (( COALESCE(id_parent,0,0)=0 AND COALESCE(ID_LSTTBL,0,0)=0 ) " +
                             " or (id_parent='' and ID_LSTTBL='')) ";
 
@@ -1229,7 +1253,7 @@ namespace ArcConfig
       catch (Exception ex1)
       {
          AddLogString("rsdu schema empty = " + cmd0.CommandText + " " + ex1.Message);
-         reader.Close();
+         //reader.Close();
          return ;
       }
       if (reader.HasRows) {
@@ -1364,74 +1388,81 @@ Postgres : SELECT version();
        treeViewS.BeginUpdate(); //добавить
        treeViewS.Nodes.Clear();
 
+
+       string stSchema="";
+       if (OptionSchemaName>0) {
+           stSchema=OptionSchemaMain + "." ;
+       }	
+
+
        TreeNode rootNode1 = new TreeNode();
        rootNode1.Name = "0";
        rootNode1.Text = "Справочники подсистемы архивов";
        treeViewS.Nodes.Add(rootNode1);
 
        TreeNode Nd0 = new TreeNode();
-       Nd0.Name = "ARC_GINFO";
+       Nd0.Name = stSchema+"ARC_GINFO";
        Nd0.Text = "Таблица групп архивов (ARC_GINFO)";
        rootNode1.Nodes.Add(Nd0);
 
        TreeNode Nd00 = new TreeNode();
-       Nd00.Name = "ARC_SUBSYST_PROFILE";
+       Nd00.Name = stSchema+"ARC_SUBSYST_PROFILE";
        Nd00.Text = "Список типов архивов, поддерживаемых подсистемами комплекса (ARC_SUBSYST_PROFILE)";
        rootNode1.Nodes.Add(Nd00);
 
        TreeNode Nd1 = new TreeNode();
-       Nd1.Name = "ARC_FTR";
+       Nd1.Name = stSchema+"ARC_FTR";
        Nd1.Text = "Справочная таблица опций записи архивов (ARC_FTR)";
        rootNode1.Nodes.Add(Nd1);
 
        TreeNode Nd2 = new TreeNode();
-       Nd2.Name = "ARC_TYPE";
+       Nd2.Name = stSchema+"ARC_TYPE";
        Nd2.Text = "Справочная таблица типов архивов (ARC_TYPE)";
        rootNode1.Nodes.Add(Nd2);
 
        TreeNode Nd3 = new TreeNode();
-       Nd3.Name = "ARC_SERVICES_TYPE";
+       Nd3.Name = stSchema+"ARC_SERVICES_TYPE";
        Nd3.Text = "Таблица типов сервисов (ARC_SERVICES_TYPE)";
        rootNode1.Nodes.Add(Nd3);
 
        TreeNode Nd31 = new TreeNode();
-       Nd31.Name = "ARC_SERVICES_TUNE";
+       Nd31.Name = stSchema+"ARC_SERVICES_TUNE";
        Nd31.Text = "Настройка хранения архивов подсистем в определенной БД Архивов (ARC_SERVICES_TUNE)";
        rootNode1.Nodes.Add(Nd31);
 
 
        TreeNode Nd4 = new TreeNode();
-       Nd4.Name = "ARC_DB_SCHEMA";
+       Nd4.Name = stSchema+"ARC_DB_SCHEMA";
        Nd4.Text = "Таблица описания схем владельцев архивов (ARC_DB_SCHEMA)";
        rootNode1.Nodes.Add(Nd4);
 
        TreeNode Nd5 = new TreeNode();
-       Nd5.Name = "ARC_READ_DEFAULTS";
+       Nd5.Name = stSchema+"ARC_READ_DEFAULTS";
        Nd5.Text = "Типы архивов, возвр. сервером оперативного доступа по умолч. (ARC_READ_DEFAULTS)";
        rootNode1.Nodes.Add(Nd5);
 
        TreeNode Nd6 = new TreeNode();
-       Nd6.Name = "ARC_INTEGRITY_DESC";
+       Nd6.Name = stSchema+"ARC_INTEGRITY_DESC";
        Nd6.Text = "Состояния - для журнала управления целостностью архивов (ARC_INTEGRITY_DESC)";
        rootNode1.Nodes.Add(Nd6);
 
        TreeNode Nd61 = new TreeNode();
-       Nd61.Name = "ARC_STORAGE_TYPE";
+       Nd61.Name = stSchema+"ARC_STORAGE_TYPE";
        Nd61.Text = "Типы хранилища (ARC_STORAGE_TYPE)";
        rootNode1.Nodes.Add(Nd61);
 
        TreeNode Nd11 = new TreeNode();
-       Nd11.Name = "ARC_SERVICES_INFO";
+       Nd11.Name = stSchema+"ARC_SERVICES_INFO";
        Nd11.Text = "Соответствия сервисов хранения архивов (ARC_SERVICES_INFO)";
        rootNode1.Nodes.Add(Nd11);
 
        TreeNode Nd12 = new TreeNode();
-       Nd12.Name = "ARC_SERVICES_ACCESS";
+       Nd12.Name = stSchema+"ARC_SERVICES_ACCESS";
        Nd12.Text = "Настройка глубины оперативного буфера серверов (ARC_SERVICES_ACCESS)";
        rootNode1.Nodes.Add(Nd12);
 
        TreeNode Nd14 = new TreeNode();
-       Nd14.Name = "ARC_READ_VIEW";
+       Nd14.Name = stSchema+"ARC_READ_VIEW";
        Nd14.Text = "Связи для доступа к архивам (ARC_READ_VIEW)";
        rootNode1.Nodes.Add(Nd14);
 
@@ -1442,27 +1473,27 @@ Postgres : SELECT version();
        treeViewS.Nodes.Add(rootNode2);
 
        TreeNode Nd7 = new TreeNode();
-       Nd7.Name = "SYS_GTOPT";
+       Nd7.Name = stSchema+"SYS_GTOPT";
        Nd7.Text = "Виды характеристик параметров поддерживаемых системой (SYS_GTOPT)";
        rootNode2.Nodes.Add(Nd7);
 
        TreeNode Nd71 = new TreeNode();
-       Nd71.Name = "SYS_ATYP";
+       Nd71.Name = stSchema+"SYS_ATYP";
        Nd71.Text = "Типы агрегированной информации (SYS_ATYP)";
        rootNode2.Nodes.Add(Nd71);
 
        TreeNode Nd8 = new TreeNode();
-       Nd8.Name = "SYS_GTYP";
+       Nd8.Name = stSchema+"SYS_GTYP";
        Nd8.Text = "Глобальные типы данных (SYS_GTYP)";
        rootNode2.Nodes.Add(Nd8);
 
        TreeNode Nd9 = new TreeNode();
-       Nd9.Name = "SYS_TBLLST";
+       Nd9.Name = stSchema+"SYS_TBLLST";
        Nd9.Text = "Глобальные типы данных (SYS_TBLLST)";
        rootNode2.Nodes.Add(Nd9);
 
        TreeNode Nd30 = new TreeNode();
-       Nd30.Name = "SYS_DB_PART";
+       Nd30.Name = stSchema+"SYS_DB_PART";
        Nd30.Text = "Каталог разделов БД и подсистем комплекса РСДУ2 (SYS_DB_PART)";
        rootNode2.Nodes.Add(Nd30);
 
@@ -1473,7 +1504,7 @@ Postgres : SELECT version();
        treeViewS.Nodes.Add(rootNode3);
 
        TreeNode Nd10 = new TreeNode();
-       Nd10.Name = "AD_SERVICE";
+       Nd10.Name = stSchema+"AD_SERVICE";
        Nd10.Text = "Таблица характеристик типовых сервисов (AD_SERVICE)";
        rootNode3.Nodes.Add(Nd10);
 
@@ -1484,12 +1515,12 @@ Postgres : SELECT version();
        treeViewS.Nodes.Add(rootNode4);
 
        TreeNode Nd13 = new TreeNode();
-       Nd13.Name = "ARC_VIEW_PARTITIONS";
+       Nd13.Name = stSchema+"ARC_VIEW_PARTITIONS";
        Nd13.Text = "Описания разделов стека для архивов мгновенных значений (ARC_VIEW_PARTITIONS)";
        rootNode4.Nodes.Add(Nd13);
 
        TreeNode Nd15 = new TreeNode();
-       Nd15.Name = "ARC_STAT";
+       Nd15.Name = stSchema+"ARC_STAT";
        Nd15.Text = "Статистика записи архивов (ARC_STAT)";
        rootNode4.Nodes.Add(Nd15);
 
@@ -1500,32 +1531,32 @@ Postgres : SELECT version();
        treeViewS.Nodes.Add(rootNode5);
 
        TreeNode Nd16 = new TreeNode();
-       Nd16.Name = "ARC_INTEGRITY";
+       Nd16.Name = stSchema+"ARC_INTEGRITY";
        Nd16.Text = "Журнал управления целостностью архивов (ARC_INTEGRITY)";
        rootNode5.Nodes.Add(Nd16);
 
        TreeNode Nd17 = new TreeNode();
-       Nd17.Name = "J_ARC_HIST_CLEAR";
+       Nd17.Name = stSchema+"J_ARC_HIST_CLEAR";
        Nd17.Text = "Журнал выполнения чисток архивов параметров по разделам (J_ARC_HIST_CLEAR)";
        rootNode5.Nodes.Add(Nd17);
 
        TreeNode Nd18 = new TreeNode();
-       Nd18.Name = "J_ARC_RESTORE";
+       Nd18.Name = stSchema+"J_ARC_RESTORE";
        Nd18.Text = "Журнал восстановления пропусков архивных таблиц параметров (J_ARC_RESTORE)";
        rootNode5.Nodes.Add(Nd18);
 
        TreeNode Nd19 = new TreeNode();
-       Nd19.Name = "J_ARC_VAL_CHANGE";
+       Nd19.Name = stSchema+"J_ARC_VAL_CHANGE";
        Nd19.Text = "Журнал изменения значений архивных таблиц параметров (J_ARC_VAL_CHANGE)";
        rootNode5.Nodes.Add(Nd19);
 
        TreeNode Nd20 = new TreeNode();
-       Nd20.Name = "J_MOVE_STACK";
+       Nd20.Name = stSchema+"J_MOVE_STACK";
        Nd20.Text = "Журнал разбора подсистемы архивов (J_MOVE_STACK)";
        rootNode5.Nodes.Add(Nd20);
 
        TreeNode Nd21 = new TreeNode();
-       Nd21.Name = "J_RSDU_ERROR";
+       Nd21.Name = stSchema+"J_RSDU_ERROR";
        Nd21.Text = "Журнал ошибок РСДУ (J_RSDU_ERROR)";
        rootNode5.Nodes.Add(Nd21);
 
@@ -1536,22 +1567,22 @@ Postgres : SELECT version();
        treeViewS.Nodes.Add(rootNode8);
 
        TreeNode Nd22 = new TreeNode();
-       Nd22.Name = "MEAS_ARC";
+       Nd22.Name = stSchema+"MEAS_ARC";
        Nd22.Text = "Описание таблиц хранения архивов измерений (MEAS_ARC)";
        rootNode8.Nodes.Add(Nd22);
 
        TreeNode Nd23 = new TreeNode();
-       Nd23.Name = "DG_ARC";
+       Nd23.Name = stSchema+"DG_ARC";
        Nd23.Text = "Описание таблиц хранения архивов диспетчерских графиков (DG_ARC)";
        rootNode8.Nodes.Add(Nd23);
 
        TreeNode Nd24 = new TreeNode();
-       Nd24.Name = "DA_ARC";
+       Nd24.Name = stSchema+"DA_ARC";
        Nd24.Text = "Описание таблиц хранения архивов параметров подсистемы сбора (DA_ARC)";
        rootNode8.Nodes.Add(Nd24);
 
        TreeNode Nd25 = new TreeNode();
-       Nd25.Name = "CALC_ARC";
+       Nd25.Name = stSchema+"CALC_ARC";
        Nd25.Text = "Описание таблиц хранения архивов универсального дорасчета (CALC_ARC)";
        rootNode8.Nodes.Add(Nd25);
 
@@ -1562,27 +1593,27 @@ Postgres : SELECT version();
        treeViewS.Nodes.Add(rootNode6);
 
        TreeNode rootNode61 = new TreeNode();
-       rootNode61.Name = "CALC_SOURCE";
+       rootNode61.Name = stSchema+"CALC_SOURCE";
        rootNode61.Text = "Получения значений параметров (CALC_SOURCE)";
        rootNode6.Nodes.Add(rootNode61);
 
        TreeNode rootNode62 = new TreeNode();
-       rootNode62.Name = "DA_SOURCE";
+       rootNode62.Name = stSchema+"DA_SOURCE";
        rootNode62.Text = "Для рапределенной системы сбора (DA_SOURCE)";
        rootNode6.Nodes.Add(rootNode62);
 
        TreeNode rootNode63 = new TreeNode();
-       rootNode63.Name = "DG_SOURCE";
+       rootNode63.Name = stSchema+"DG_SOURCE";
        rootNode63.Text = "Получения значений параметров ДГ (DG_SOURCE)";
        rootNode6.Nodes.Add(rootNode63);
 
        TreeNode rootNode64 = new TreeNode();
-       rootNode64.Name = "EA_SOURCE";
+       rootNode64.Name = stSchema+"EA_SOURCE";
        rootNode64.Text = "Для параметров учета электроэнергии (EA_SOURCE)";
        rootNode6.Nodes.Add(rootNode64);
 
        TreeNode rootNode65 = new TreeNode();
-       rootNode65.Name = "MEAS_SOURCE";
+       rootNode65.Name = stSchema+"MEAS_SOURCE";
        rootNode65.Text = "Получения значений параметров (MEAS_SOURCE)";
        rootNode6.Nodes.Add(rootNode65);
 
@@ -1619,7 +1650,14 @@ Postgres : SELECT version();
        //while (0 != dataGridViewS.Columns.Count)
        //        dataGridViewS.Columns.RemoveAt(0);
 
-       cmd0.CommandText="SELECT * FROM " + id_parent;
+   
+       string stSchema="";
+       if (OptionSchemaName>0) {
+           stSchema=OptionSchemaMain + "." ;
+       }	
+   
+
+       cmd0.CommandText="SELECT * FROM " + stSchema + id_parent;
        Application.DoEvents();
 
        dataSetS.Clear();
@@ -1828,12 +1866,18 @@ Postgres : SELECT version();
       //Получить Имя выделенного элемента
       string ID_TBLLST=treeViewA.SelectedNode.Name;
 
-      //AddLogString("DataGridViewACellContentClick-> ID_TBLLST=" + ID_TBLLST + "  ID_GINFO=" + ID_GINFO);
 
-      string sl1="SELECT  ARC_SUBSYST_PROFILE.ID,ARC_SUBSYST_PROFILE.ID_TBLLST,ARC_SUBSYST_PROFILE.ID_GINFO," +
-      "ARC_SUBSYST_PROFILE.IS_WRITEON, ARC_SUBSYST_PROFILE.STACK_NAME,ARC_SUBSYST_PROFILE.LAST_UPDATE,ARC_SUBSYST_PROFILE.IS_VIEWABLE  " +
-      "FROM ARC_SUBSYST_PROFILE " +
-      "WHERE ARC_SUBSYST_PROFILE.ID_TBLLST=" + ID_TBLLST + " AND ARC_SUBSYST_PROFILE.ID_GINFO="+ID_GINFO ;
+      string stSchema="";
+      if (OptionSchemaName>0) {
+           stSchema=OptionSchemaMain + "." ;
+      }	 
+
+
+      //AddLogString("SelectionChanged-> ID_TBLLST=" + ID_TBLLST + "  ID_GINFO=" + ID_GINFO);
+
+      string sl1="SELECT  ID, ID_TBLLST, ID_GINFO, IS_WRITEON, STACK_NAME, LAST_UPDATE, IS_VIEWABLE  " +
+      "FROM  "+stSchema+"ARC_SUBSYST_PROFILE " +
+      "WHERE ID_TBLLST=" + ID_TBLLST + " AND ID_GINFO="+ID_GINFO ;
 
       cmd0.CommandText=sl1;
       try
@@ -1842,7 +1886,7 @@ Postgres : SELECT version();
       }
       catch (Exception ex1)
       {
-        AddLogString(" DataGridViewASelectionChanged-> выполнение алгоритма  - прервано.. = " + cmd0.CommandText + " " + ex1.Message);
+        AddLogString(" SelectionChanged-> выполнение алгоритма  - прервано.. = " + cmd0.CommandText + " " + ex1.Message);
         return ;
       }
 
@@ -1907,7 +1951,7 @@ Postgres : SELECT version();
       int selRowNum = dataGridViewA.CurrentCell.RowIndex;
       string ID_GINFO = dataGridViewA.Rows[selRowNum].Cells[1].Value.ToString() ;
 
-      Form ifrm = new FormArcGinfo(this._conn, ID_GINFO);
+      Form ifrm = new FormArcGinfo(this._conn, ID_GINFO, OptionSchemaName);
       ifrm.ShowDialog();
       TreeViewAAfterSelect(treeViewA, null);
       // dataGridViewA.FirstDisplayedScrollingRowIndex=selRowNum;
@@ -1929,8 +1973,15 @@ Postgres : SELECT version();
 
       cmd0.Connection=this._conn;
 
-      string sl1= "SELECT ID+1 FROM ARC_GINFO WHERE ID+1 NOT IN (SELECT ID FROM ARC_GINFO )" ; //  AND id > 3
-      AddLogString(" sql  = " + sl1);
+
+      string stSchema="";
+      if (OptionSchemaName>0) {
+           stSchema=OptionSchemaMain + "." ;
+      }	 
+
+
+      string sl1= "SELECT ID+1 FROM "+stSchema+"ARC_GINFO WHERE ID+1 NOT IN (SELECT ID FROM ARC_GINFO )" ; //  AND id > 3
+      AddLogString(" copy = " + sl1);
       cmd0.CommandText=sl1;
       try
       {
@@ -1938,7 +1989,7 @@ Postgres : SELECT version();
       }
       catch (Exception ex1)
       {
-        AddLogString(" ToolStripMenuItem2Click-> выполнение алгоритма  - прервано.. = " + cmd0.CommandText + " " + ex1.Message);
+        AddLogString(" copy-> выполнение алгоритма  - прервано.. = " + cmd0.CommandText + " " + ex1.Message);
         return ;
       }
 
@@ -1953,11 +2004,11 @@ Postgres : SELECT version();
 
       if (id_dest=="")
       {
-        AddLogString(" ToolStripMenuItem2Click-> выполнение алгоритма  - прервано.. id_dest = " + id_dest);
+        AddLogString(" copy-> выполнение алгоритма  - прервано.. id_dest = " + id_dest);
         return ;
       }
 
-      sl1="INSERT INTO  ARC_GINFO (" +
+      sl1="INSERT INTO  "+stSchema+"ARC_GINFO (" +
 "    ID ,  " +
 "    ID_GTOPT ,  " +
 "    ID_TYPE, " +
@@ -1976,23 +2027,23 @@ Postgres : SELECT version();
 "    RESTORE_TIME_LOCAL ) " +
 "SELECT  " +
 "    " + id_dest + " , " +
-"    ARC_GINFO.ID_GTOPT ,  " +
-"    ARC_GINFO.ID_TYPE, " +
-"    ARC_GINFO.DEPTH , " +
-"    ARC_GINFO.DEPTH_LOCAL , " +
-"    ARC_GINFO.CACHE_SIZE , " +
-"    ARC_GINFO.CACHE_TIMEOUT , " +
-"    ARC_GINFO.FLUSH_INTERVAL , " +
-"    ARC_GINFO.RESTORE_INTERVAL , " +
-"    ARC_GINFO.STACK_INTERVAL , " +
-"    ARC_GINFO.WRITE_MINMAX  , " +
-"    ARC_GINFO.RESTORE_TIME , " +
-"    ARC_GINFO.NAME , " +
-"    ARC_GINFO.STATE , " +
-"    ARC_GINFO.DEPTH_PARTITION  , " +
-"    ARC_GINFO.RESTORE_TIME_LOCAL " +
-" FROM ARC_GINFO " +
-" WHERE ARC_GINFO.ID=" + ID_GINFO + " ;";
+"    "+stSchema+"ARC_GINFO.ID_GTOPT ,  " +
+"    "+stSchema+"ARC_GINFO.ID_TYPE, " +
+"    "+stSchema+"ARC_GINFO.DEPTH , " +
+"    "+stSchema+"ARC_GINFO.DEPTH_LOCAL , " +
+"    "+stSchema+"ARC_GINFO.CACHE_SIZE , " +
+"    "+stSchema+"ARC_GINFO.CACHE_TIMEOUT , " +
+"    "+stSchema+"ARC_GINFO.FLUSH_INTERVAL , " +
+"    "+stSchema+"ARC_GINFO.RESTORE_INTERVAL , " +
+"    "+stSchema+"ARC_GINFO.STACK_INTERVAL , " +
+"    "+stSchema+"ARC_GINFO.WRITE_MINMAX  , " +
+"    "+stSchema+"ARC_GINFO.RESTORE_TIME , " +
+"    "+stSchema+"ARC_GINFO.NAME , " +
+"    "+stSchema+"ARC_GINFO.STATE , " +
+"    "+stSchema+"ARC_GINFO.DEPTH_PARTITION  , " +
+"    "+stSchema+"ARC_GINFO.RESTORE_TIME_LOCAL " +
+" FROM "+stSchema+"ARC_GINFO " +
+" WHERE "+stSchema+"ARC_GINFO.ID=" + ID_GINFO + " ;";
 
       cmd0.CommandText=sl1;
       try
@@ -2001,7 +2052,7 @@ Postgres : SELECT version();
       }
       catch (Exception ex1)
       {
-        AddLogString(" ToolStripMenuItem2Click-> выполнение алгоритма  - прервано.. = " + cmd0.CommandText + " " + ex1.Message);
+        AddLogString(" copy-> выполнение алгоритма  - прервано.. = " + cmd0.CommandText + " " + ex1.Message);
         reader.Close();
         return ;
       }
@@ -2023,7 +2074,12 @@ Postgres : SELECT version();
 
       cmd0.Connection=this._conn;
 
-      string sl1="SELECT count(*) FROM ARC_SUBSYST_PROFILE WHERE ID_GINFO="+ID_GINFO ;
+      string stSchema="";
+      if (OptionSchemaName>0) {
+           stSchema=OptionSchemaMain + "." ;
+      }	  
+
+      string sl1="SELECT count(*) FROM "+stSchema+"ARC_SUBSYST_PROFILE WHERE ID_GINFO="+ID_GINFO ;
 
       cmd0.CommandText=sl1;
       try
@@ -2032,7 +2088,7 @@ Postgres : SELECT version();
       }
       catch (Exception ex1)
       {
-        AddLogString(" ToolStripMenuItem3Click-> выполнение алгоритма  - прервано.. = " + cmd0.CommandText + " " + ex1.Message);
+        AddLogString(" удаление строки -> выполнение алгоритма  - прервано.. = " + cmd0.CommandText + " " + ex1.Message);
         return ;
       }
 
@@ -2050,7 +2106,7 @@ Postgres : SELECT version();
         DialogResult result = MessageBox.Show ("Действительно удалить ? строку профиля архива id=" +ID_GINFO ,"Удаление строки", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
         if (result == DialogResult.Yes)
         {
-          cmd0.CommandText="DELETE FROM ARC_GINFO WHERE ID="+ID_GINFO ;
+          cmd0.CommandText="DELETE FROM "+stSchema+"ARC_GINFO WHERE ID="+ID_GINFO ;
           try
           {
             reader = cmd0.ExecuteReader();
@@ -2059,7 +2115,7 @@ Postgres : SELECT version();
           {
             AddLogString(" ToolStripMenuItem3Click-> delete - прервано.. = " + cmd0.CommandText + " " + ex1.Message);
             MessageBox.Show ("Ошибка удаления !" ,"Удаление строки", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            reader.Close();
+            //reader.Close();
             return ;
           }
           reader.Close();
@@ -2083,6 +2139,11 @@ Postgres : SELECT version();
 
       ResourceManager r = new ResourceManager("ArcConfig.ArcResource", Assembly.GetExecutingAssembly());
       List<MEAS1> dp = new List<MEAS1>();
+	  
+      string stSchema="";
+      if (OptionSchemaName>0) {
+           stSchema=OptionSchemaMain + "." ;
+      }	  
 
       int chkBoxColumnIndex = 0;
       var dataGridView = (DataGridView)sender;
@@ -2128,7 +2189,7 @@ Postgres : SELECT version();
           // get table
           string TABLE_NAME = "" ;
 
-          sl1= "SELECT UPPER(lst.TABLE_NAME) FROM sys_tbllst lst WHERE lst.ID=" + id_tbl;
+          sl1= "SELECT UPPER(lst.TABLE_NAME) FROM "+stSchema+"sys_tbllst lst WHERE lst.ID=" + id_tbl;
           cmd0.CommandText=sl1;
           try
           {
@@ -2156,7 +2217,7 @@ Postgres : SELECT version();
           // определяем поле
           //ERROR [42S22] [Oracle][ODBC][Ora]ORA-00904: "IS_EXDATA": недопустимый идентификатор
           int is_exdata = 1 ;
-          sl1="SELECT is_exdata FROM meas_list" ;
+          sl1="SELECT is_exdata FROM "+stSchema+"meas_list" ;
 
           cmd0.CommandText=sl1;
           try
@@ -2273,7 +2334,8 @@ Postgres : SELECT version();
           " id PROFILE = " + ID + ", '" + nm2 + "'\n" +
           " id GINFO   = " + ID_GINFO + ", '"+ nm1 + "'\n" +
           " id TBLLST  = " + id_tbl + "\n\n" +
-          " Архив будет отключен у " + dlCnt.ToString() + " параметров." ,
+          " Архив включен у " + dlCnt.ToString() + " параметров.\n\n" +
+          " **Опция отключения архива у параметров : " + ((OptionTableDisable>0)?"ВКЛ":"ОТКЛ") ,
            "Деактивация..", MessageBoxButtons.YesNo,MessageBoxIcon.Warning,
            MessageBoxDefaultButton.Button2);
           if (result == DialogResult.Yes)
@@ -2294,8 +2356,8 @@ Postgres : SELECT version();
             //    ID
             //----------------------
 
-            // 4. отключаем архив у параметра
-            if (dlCnt>0) {
+            // 4. отключаем архив у параметра ! если опция активирована
+            if ( dlCnt>0 && OptionTableDisable>0 ) {
                 sl1 = r.GetString("TABLE_ARC");
                 sl1 = String.Format(sl1, id_tbl) ;
                 cmd0.CommandText=sl1;
@@ -2324,7 +2386,7 @@ Postgres : SELECT version();
 
                    string RETFNAME = "dual"  ;
 
-                   sl1="SELECT RETFNAME FROM " + TABLE_NAME +
+                   sl1="SELECT RETFNAME FROM " + stSchema + TABLE_NAME +
                         " WHERE ID_PARAM=" + ID_param + " AND " + " ID_GINFO=" + ID_GINFO +" ;" ;
 
                    cmd0.CommandText=sl1;
@@ -2347,7 +2409,7 @@ Postgres : SELECT version();
                     }
 
 
-                   sl1="DELETE FROM " + TABLE_NAME +
+                   sl1="DELETE FROM " + stSchema + TABLE_NAME +
                        " WHERE ID_PARAM=" + ID_param + " AND " + " ID_GINFO=" + ID_GINFO +" ;" ;
 
                    AddLogString(" ---- " + sl1);
@@ -2391,7 +2453,7 @@ Postgres : SELECT version();
             } //if dlCnt>0
 
 
-            cmd0.CommandText="DELETE FROM ARC_SERVICES_TUNE WHERE ID_SPROFILE="+ID ;
+            cmd0.CommandText="DELETE FROM "+stSchema+"ARC_SERVICES_TUNE WHERE ID_SPROFILE="+ID ;
             try
             {
               reader = cmd0.ExecuteReader();
@@ -2403,7 +2465,7 @@ Postgres : SELECT version();
             }
             reader.Close();
 
-            cmd0.CommandText="DELETE FROM ARC_SERVICES_ACCESS WHERE ID_SPROFILE="+ID ;
+            cmd0.CommandText="DELETE FROM "+stSchema+"ARC_SERVICES_ACCESS WHERE ID_SPROFILE="+ID ;
             try
             {
               reader = cmd0.ExecuteReader();
@@ -2415,7 +2477,7 @@ Postgres : SELECT version();
             }
             reader.Close();
 
-            cmd0.CommandText="DELETE FROM ARC_SUBSYST_PROFILE WHERE ID="+ID ;
+            cmd0.CommandText="DELETE FROM "+stSchema+"ARC_SUBSYST_PROFILE WHERE ID="+ID ;
             try
             {
               reader = cmd0.ExecuteReader();
@@ -2455,7 +2517,7 @@ Postgres : SELECT version();
               if (id_tbl=="0" || id_tbl=="") return ;
 
               DialogResult result1;
-              Form ifrmC = new FormProfileCreate(this._conn, ID_GINFO, id_tbl);
+              Form ifrmC = new FormProfileCreate(this._conn, ID_GINFO, id_tbl, OptionSchemaName);
               result1=ifrmC.ShowDialog();
 
               // (result1 == DialogResult.Yes)
@@ -2501,8 +2563,13 @@ Postgres : SELECT version();
        String STACK_NAME = _profileData.STACK_NAME.Trim() ;
        if (STACK_NAME.Equals("")) { return ; }
 
-       string strS = "UPDATE ARC_SUBSYST_PROFILE SET " +
-          " IS_WRITEON="+ IS_WRITEON +
+       string stSchema="";
+       if (OptionSchemaName>0) {
+           stSchema=OptionSchemaMain + "." ;
+       }	  
+
+       string strS = "UPDATE "+stSchema+"ARC_SUBSYST_PROFILE SET " +
+          " IS_WRITEON=" + IS_WRITEON +
           ", IS_VIEWABLE=" + IS_VIEWABLE +
           ", STACK_NAME='" + STACK_NAME + "'" +
           " WHERE ID=" + ID;
@@ -2523,7 +2590,7 @@ Postgres : SELECT version();
        catch (Exception ex1)
        {
          AddLogString("Button2 SAVE -> выполнение алгоритма  - прервано." + ex1.Message);
-         reader.Close();
+         //reader.Close();
          return ;
        }
        reader.Close();
@@ -2613,7 +2680,7 @@ Postgres : SELECT version();
        dataGridViewP.Rows[selRowNum].Cells[selColNum].Style.ForeColor  = Color.Cyan ;
 
        //DialogResult result1;
-       Form ifrgr = new FormGr(_conn, ID, IDNAME, IDGINFO, NAMEHEADER, id_tbl);
+       Form ifrgr = new FormGr(_conn, ID, IDNAME, IDGINFO, NAMEHEADER, id_tbl, OptionSchemaName);
        //ifrgr.StartPosition=Start​Position.CenterParent;
        ifrgr.Show();
 
@@ -2825,6 +2892,10 @@ int ArcAdd(object sender, int selRowNum , int selColNum)
 
    ResourceManager r = new ResourceManager("ArcConfig.ArcResource", Assembly.GetExecutingAssembly());
 
+   string stSchema="";
+   if (OptionSchemaName>0) {
+      stSchema=OptionSchemaMain + "." ;
+   }
 
    // 1. получаем имя схемы
    string SCHEMA_NAME = "";
@@ -2904,7 +2975,7 @@ int ArcAdd(object sender, int selRowNum , int selColNum)
    // 3. проверяем что в таблице архивов есть колонка ID_GTOPT
    string idgopt = "";
    int exists_idgopt = 1;
-   sl1 = "SELECT COUNT(ID_GTOPT) FROM " + TABLE_NAME ;
+   sl1 = "SELECT COUNT(ID_GTOPT) FROM " + stSchema + TABLE_NAME ;
    cmd0.CommandText=sl1;
    try
    {
@@ -3040,7 +3111,7 @@ int ArcAdd(object sender, int selRowNum , int selColNum)
 
    if (vRetVal=="0") {
      // проверяем , есть ли в таблице TABLE_NAME уже запись о регистрации архива
-     sl1="SELECT COUNT(*) FROM " + TABLE_NAME + " WHERE " +
+     sl1="SELECT COUNT(*) FROM " + stSchema + TABLE_NAME + " WHERE " +
          "ID_PARAM="+ID+" AND RETFNAME='"+retname+"' AND ID_GINFO="+IDGINFO ;
      if (exists_idgopt==1) {
        sl1=sl1+" AND ID_GTOPT="+idgopt ;
@@ -3066,10 +3137,10 @@ int ArcAdd(object sender, int selRowNum , int selColNum)
      if (crec1==0) {
 
          if (exists_idgopt==1) {
-           sl1="INSERT INTO " + TABLE_NAME + " (ID_PARAM, ID_GTOPT, RETFNAME, ID_GINFO) VALUES " +
+           sl1="INSERT INTO " + stSchema + TABLE_NAME + " (ID_PARAM, ID_GTOPT, RETFNAME, ID_GINFO) VALUES " +
                " (" + ID + "," + idgopt + ",'" + retname + "'," + IDGINFO +");" ;
          } else {
-           sl1="INSERT INTO " + TABLE_NAME + " (ID_PARAM, RETFNAME, ID_GINFO) VALUES " +
+           sl1="INSERT INTO " + stSchema + TABLE_NAME + " (ID_PARAM, RETFNAME, ID_GINFO) VALUES " +
                " (" + ID +  ",'" + retname + "'," + IDGINFO +");" ;
          }
 
@@ -3118,6 +3189,12 @@ int ArcDel(object sender, int selRowNum , int selColNum)
     //AddLogString("ArcDel =id_tbl=" + id_tbl);
 
     ResourceManager r = new ResourceManager("ArcConfig.ArcResource", Assembly.GetExecutingAssembly());
+
+
+    string stSchema="";
+    if (OptionSchemaName>0) {
+      stSchema=OptionSchemaMain + "." ;
+    }
 
     // 1. получаем имя схемы
     string SCHEMA_NAME = "";
@@ -3258,7 +3335,7 @@ int ArcDel(object sender, int selRowNum , int selColNum)
 
       string RETFNAME = "dual"  ;
 
-      sl1="SELECT RETFNAME FROM " + TABLE_NAME +
+      sl1="SELECT RETFNAME FROM " + stSchema + TABLE_NAME +
            " WHERE ID_PARAM=" + ID + " AND " + " ID_GINFO=" + IDGINFO +" ;" ;
 
       cmd0.CommandText=sl1;
@@ -3281,7 +3358,7 @@ int ArcDel(object sender, int selRowNum , int selColNum)
        }
 
 
-      sl1="DELETE FROM " + TABLE_NAME +
+      sl1="DELETE FROM " + stSchema + TABLE_NAME +
           " WHERE ID_PARAM=" + ID + " AND " + " ID_GINFO=" + IDGINFO +" ;" ;
       cmd0.CommandText=sl1;
       int res1 = 0 ;
@@ -3544,7 +3621,7 @@ void OracleStat ( )
 
        //DialogResult result1;
        //
-       Form ifdel = new FormDel(_conn, ID, IDNAME, IDGTOPT, NAMEHEADER, id_tbl,OptionFullName);
+       Form ifdel = new FormDel(_conn, ID, IDNAME, IDGTOPT, NAMEHEADER, id_tbl,OptionFullName, OptionSchemaName);
        ifdel.StartPosition=FormStartPosition.CenterParent ;
        ifdel.Show();
     }
@@ -3607,7 +3684,7 @@ void OracleStat ( )
        String ID= _profileData.ID ;
 
        //DialogResult result1;
-       FormService frmServ = new FormService(this._conn, ID, id_tbl);
+       FormService frmServ = new FormService(this._conn, ID, id_tbl, OptionSchemaName);
        frmServ.ShowDialog();
        frmServ.Dispose();
 
@@ -3615,14 +3692,14 @@ void OracleStat ( )
     void ToolStripButton5Click(object sender, EventArgs e)
     {
         // show form Status
-        FormStatus frmSt = new FormStatus(this._conn); //(this._conn);
+        FormStatus frmSt = new FormStatus(this._conn, OptionSchemaName); //(this._conn);
         frmSt.Show();
         //frmSt.Dispose();
     }
     void ToolStripButton6Click(object sender, EventArgs e)
     {
         // установка источников
-        FormSource frmSo = new FormSource(this._conn); //(this._conn);
+        FormSource frmSo = new FormSource(this._conn, OptionSchemaName); //(this._conn);
         frmSo.ShowDialog();
         frmSo.Dispose();
     }
@@ -3690,7 +3767,7 @@ void OracleStat ( )
        dataGridViewP.Rows[selRowNum].Cells[selColNum].Style.ForeColor = Color.Cyan ;
 
        //DialogResult result1;
-       FormExport ifex = new FormExport(_conn, ID, IDNAME, IDGINFO, id_tbl);
+       FormExport ifex = new FormExport(_conn, ID, IDNAME, IDGINFO, id_tbl, OptionSchemaName);
        ifex.Show();
 
     }
@@ -3804,7 +3881,6 @@ void OracleStat ( )
     {
         // Объект для выполнения запросов к базе данных
         OdbcCommand cmd0 = new OdbcCommand();
-        OdbcDataReader reader = null ;
 
         cmd0.Connection=this._conn;
 
@@ -3815,7 +3891,11 @@ void OracleStat ( )
            stName=OptionSchemaMain + "." + stName ;
         }
 
-        DialogResult result = MessageBox.Show ("Очистить таблицу " + stName + " ? ","Удаление " + stName, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+        DialogResult result = MessageBox.Show ("Очистить " + stName + " ? ",
+                                               "Удаление содержимого " + stName,
+                                               MessageBoxButtons.YesNo, 
+                                               MessageBoxIcon.Question,
+                                               MessageBoxDefaultButton.Button2);
         if (result == DialogResult.Yes)
         {
             cmd0.CommandText="TRUNCATE TABLE " + stName ;
