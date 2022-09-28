@@ -136,13 +136,13 @@ namespace ArcConfig
 
         cmd0.Connection=this._conn;
 
-        
+
         string stSchema="";
         if (_OptionSchemaName>0) {
           stSchema=OptionSchemaMain + "." ;
-        }     
-        
-        
+        }
+
+
         string sl1 = r.GetString("ARH_SYSTBLLST2");
         sl1 = String.Format(sl1,_id_tbl);
 
@@ -235,7 +235,7 @@ namespace ArcConfig
 
         dateTimePicker1.Value = t1;
         dateTimePicker2.Value = t2;
-        
+
         toolStripStatusLabel1.Text = "Total="+ext1[2];
         int rq = 86400;
         int.TryParse(ext1[2], out rq);
@@ -364,7 +364,7 @@ namespace ArcConfig
          break;
          default : break;
       }
-       
+
        Application.DoEvents();
 
       if (reader.HasRows) {
@@ -420,9 +420,9 @@ namespace ArcConfig
             break;
             default : break;
            }
-          
+
           Application.DoEvents();
-          
+
           toolStripProgressBar1.PerformStep();
 
            // ограничение на общее колич выводимых строк
@@ -456,7 +456,7 @@ namespace ArcConfig
         break;
          default : break;
       }
-      
+
       Application.DoEvents();
 
       // выбрасываем в файл
@@ -466,7 +466,7 @@ namespace ArcConfig
 
       return(Cnt);
   }
-    
+
     int Export2()
     {
         ResourceManager r = new ResourceManager("ArcConfig.ArcResource", Assembly.GetExecutingAssembly());
@@ -523,12 +523,12 @@ namespace ArcConfig
        // выбрасываем в файл
        StreamWriter wr = new StreamWriter(_filename, false, Encoding.UTF8); // Encoding.GetEncoding("windows-1251")
        wr.WriteLine(fileContent);
-        
+
        //формируем заголовок
        switch(comboBoxFormat.SelectedIndex)
        {
          case 0 : //csv
-       		wr.WriteLine( DelimiterSE + "TIME1970" + Colon + "VAL"+ Colon + "STATE" + DelimiterSE);
+          wr.WriteLine( DelimiterSE + "TIME1970" + Colon + "VAL"+ Colon + "STATE" + DelimiterSE);
          break;
          case 1 : //html
                 wr.WriteLine( "<!doctype html>");
@@ -555,7 +555,7 @@ namespace ArcConfig
          break;
          default : break;
       }
-       
+
        Application.DoEvents();
 
       if (reader.HasRows) {
@@ -607,9 +607,9 @@ namespace ArcConfig
             break;
             default : break;
            }
-          
+
           Application.DoEvents();
-          
+
           toolStripProgressBar1.PerformStep();
 
            // ограничение на общее колич выводимых строк
@@ -643,15 +643,15 @@ namespace ArcConfig
         break;
          default : break;
       }
-      
+
       Application.DoEvents();
 
       wr.Close();
 
       return(Cnt);
-  }    
-    
-    
+  }
+
+
     void ButtonOpenClick(object sender, EventArgs e)
     {
        saveFileDialog1.Filter = "CSV files(*.csv)|*.csv|Sql files(*.sql)|*.sql|html files(*.html)|*.html|All files(*.*)|*.*";
@@ -675,19 +675,19 @@ namespace ArcConfig
        int ret = Export2();
        if (ret>0) MessageBox.Show("Export to \n " + _filename + " \n done \n Total = " +ret.ToString());
     }
-		void ButtonCancelClick(object sender, EventArgs e)
-		{
-			this.Close();
-		}
-		void ComboBoxFormatSelectedIndexChanged(object sender, EventArgs e)
-		{
-			String s1 = textBoxFile.Text.Trim() ;
-			String result1 = s1;
-			
+    void ButtonCancelClick(object sender, EventArgs e)
+    {
+      this.Close();
+    }
+    void ComboBoxFormatSelectedIndexChanged(object sender, EventArgs e)
+    {
+      String s1 = textBoxFile.Text.Trim() ;
+      String result1 = s1;
+
       switch(comboBoxFormat.SelectedIndex)
       {
         case 0 : //csv
-      		result1 = Path.ChangeExtension(s1, ".csv");
+          result1 = Path.ChangeExtension(s1, ".csv");
         break;
         case 1 : //html
             result1 = Path.ChangeExtension(s1, ".html");
@@ -701,9 +701,9 @@ namespace ArcConfig
          default : break;
       }
       textBoxFile.Text = result1 ;
-      
-      
-		}
+
+
+    }
 
 
 

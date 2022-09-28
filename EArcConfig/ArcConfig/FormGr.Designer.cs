@@ -62,9 +62,9 @@ namespace ArcConfig
 		{
 			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormGr));
-			System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-			System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-			System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+			System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+			System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+			System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
 			this.toolStrip1 = new System.Windows.Forms.ToolStrip();
 			this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
 			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -268,7 +268,7 @@ namespace ArcConfig
 			// 
 			this.dateTimePicker1.Location = new System.Drawing.Point(54, 12);
 			this.dateTimePicker1.Name = "dateTimePicker1";
-			this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
+			this.dateTimePicker1.Size = new System.Drawing.Size(218, 20);
 			this.dateTimePicker1.TabIndex = 0;
 			// 
 			// tabControl1
@@ -311,17 +311,17 @@ namespace ArcConfig
 			// 
 			// myChart
 			// 
-			chartArea1.Name = "ChartArea1";
-			this.myChart.ChartAreas.Add(chartArea1);
+			chartArea3.Name = "ChartArea1";
+			this.myChart.ChartAreas.Add(chartArea3);
 			this.myChart.Dock = System.Windows.Forms.DockStyle.Fill;
-			legend1.Name = "Legend1";
-			this.myChart.Legends.Add(legend1);
+			legend3.Name = "Legend1";
+			this.myChart.Legends.Add(legend3);
 			this.myChart.Location = new System.Drawing.Point(0, 0);
 			this.myChart.Name = "myChart";
-			series1.ChartArea = "ChartArea1";
-			series1.Legend = "Legend1";
-			series1.Name = "Series1";
-			this.myChart.Series.Add(series1);
+			series3.ChartArea = "ChartArea1";
+			series3.Legend = "Legend1";
+			series3.Name = "Series1";
+			this.myChart.Series.Add(series3);
 			this.myChart.Size = new System.Drawing.Size(484, 238);
 			this.myChart.TabIndex = 0;
 			this.myChart.Text = "chart1";

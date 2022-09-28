@@ -50,10 +50,10 @@ namespace ArcConfig
       // TODO: Add constructor code after the InitializeComponent() call.
       _conn = conn ;
       id_arcginfo = id ;
-      OptionSchemaName = SchemaName ;
+      _OptionSchemaName = SchemaName ;
       //
     }
-    
+
     int ErrInput ;
     public string StrToIntVal (string text)
     {
@@ -63,25 +63,25 @@ namespace ArcConfig
        text = text.Trim();
        if (int.TryParse(text, out number))
        {
-       	  ret = number.ToString();
-       	  ErrInput = 0 ;
+          ret = number.ToString();
+          ErrInput = 0 ;
        }
        return (ret);
     }
-    
+
    public string GetTypeValue(ref OdbcDataReader reader, int i)
    {
-   	 object obj ;
-   	 string ret="";
+     object obj ;
+     string ret="";
      if (reader.IsDBNull(i)) {
           ;
      } else {
-   	 	obj = reader.GetValue(i) ;
-   	 	string stype= reader.GetDataTypeName(i).ToUpper();
+      obj = reader.GetValue(i) ;
+      string stype= reader.GetDataTypeName(i).ToUpper();
         //AddLogString("reader.GetDataTypeName = " + stype);
         ret = obj.ToString();
-                  
-    /*  if (stype=="DECIMAL") ret = reader.GetValue(i).ToString(); 
+
+    /*  if (stype=="DECIMAL") ret = reader.GetValue(i).ToString();
         if (stype=="NUMBER") ret = reader.GetValue(i).ToString(); //GetDecimal(i).ToString();
         if (stype=="VARCHAR2") ret = reader.GetString(i);
         if (stype=="NVARCHAR") ret = reader.GetString(i);
@@ -91,17 +91,18 @@ namespace ArcConfig
         if (stype=="CHAR") ret = reader.GetString(i);
         if (stype=="NCHAR") ret = reader.GetString(i);
         if (stype=="DATE") ret = reader.GetString(i);
-        if (stype=="TIME") ret = reader.GetString(i); 
-        if (stype=="DOUBLE PRECISION") ret = reader.GetValue(i).ToString(); 
+        if (stype=="TIME") ret = reader.GetString(i);
+        if (stype=="DOUBLE PRECISION") ret = reader.GetValue(i).ToString();
      */
-       
+
      }
      return(ret);
    }
 
     public OdbcConnection _conn;
     public String id_arcginfo;
-    public int OptionSchemaName = 0;
+    public int _OptionSchemaName = 0;
+    public string OptionSchemaMain = "RSDUADMIN";
 
     public OdbcConnection Conn
     {
@@ -124,10 +125,17 @@ namespace ArcConfig
 
       cmd0.Connection=this._conn;
 
+
+      string stSchema="";
+      if (_OptionSchemaName>0) {
+        stSchema=OptionSchemaMain + "." ;
+      }
+
+
       checkedListBoxSTATE.Items.Clear();
 
       // "select * from ARC_FTR";
-      cmd0.CommandText="SELECT  ID ,  NAME , DEFINE_ALIAS,  MASK FROM ARC_FTR ORDER BY ID"  ;
+      cmd0.CommandText="SELECT  ID, NAME, DEFINE_ALIAS, MASK FROM "+stSchema+"ARC_FTR ORDER BY ID"  ;
 
       Application.DoEvents();
 
@@ -156,25 +164,25 @@ namespace ArcConfig
 
       // "select * from ARC_GINFO";
       cmd0.CommandText="" +
-"SELECT  " +
-"    ARC_GINFO.ID ,  " +
-"    ARC_GINFO.ID_GTOPT ,  " +
-"    ARC_GINFO.ID_TYPE, " +
-"    ARC_GINFO.DEPTH , " +
-"    ARC_GINFO.DEPTH_LOCAL , " +
-"    ARC_GINFO.CACHE_SIZE , " +
-"    ARC_GINFO.CACHE_TIMEOUT , " +
-"    ARC_GINFO.FLUSH_INTERVAL , " +
-"    ARC_GINFO.RESTORE_INTERVAL , " +
-"    ARC_GINFO.STACK_INTERVAL , " +
-"    ARC_GINFO.WRITE_MINMAX  , " +
-"    ARC_GINFO.RESTORE_TIME , " +
-"    ARC_GINFO.NAME , " +
-"    ARC_GINFO.STATE , " +
-"    ARC_GINFO.DEPTH_PARTITION  , " +
-"    ARC_GINFO.RESTORE_TIME_LOCAL " +
-" FROM ARC_GINFO " +
-"WHERE ARC_GINFO.ID=" + id_arcginfo ;
+"SELECT " +
+" ID,  " +
+" ID_GTOPT, " +
+" ID_TYPE, " +
+" DEPTH, " +
+" DEPTH_LOCAL, " +
+" CACHE_SIZE, " +
+" CACHE_TIMEOUT, " +
+" FLUSH_INTERVAL, " +
+" RESTORE_INTERVAL, " +
+" STACK_INTERVAL, " +
+" WRITE_MINMAX, " +
+" RESTORE_TIME, " +
+" NAME, " +
+" STATE, " +
+" DEPTH_PARTITION, " +
+" RESTORE_TIME_LOCAL " +
+" FROM "+stSchema+"ARC_GINFO " +
+" WHERE ID=" + id_arcginfo ;
 
       Application.DoEvents();
 
@@ -285,37 +293,32 @@ namespace ArcConfig
       OdbcDataAdapter adapter = new OdbcDataAdapter();
 
 
-      // "select * from ;
-String  sl1="" +
+string  sl1="" +
 "SELECT "  +
-"  SYS_GTOPT.ID      , " +
-"  SYS_GTOPT.NAME    , " +
-"  SYS_GTYP.DEFINE_ALIAS as \"DataType\", " +
-"  SYS_GTOPT.INTERVAL as \"Interval (sec)\", " +
-"  SYS_ATYP.NAME as \"Archive Type\" " +
-"FROM SYS_GTOPT, SYS_GTYP, SYS_ATYP " +
-"WHERE SYS_GTYP.id=SYS_GTOPT.ID_GTYPE " +
-"AND SYS_GTOPT.ID_ATYPE=SYS_ATYP.ID " +
-"ORDER BY SYS_GTOPT.ID " ;
+"  sg1.ID, sg1.NAME, " +
+"  sg2.DEFINE_ALIAS as \"DataType\", " +
+"  sg1.INTERVAL as \"Interval (sec)\", " +
+"  sa.NAME as \"Archive Type\" " +
+"FROM "+stSchema+"SYS_GTOPT sg1, "+stSchema+"SYS_GTYP sg2, "+stSchema+"SYS_ATYP sa" +
+"WHERE sg2.id=sg1.ID_GTYPE AND sg1.ID_ATYPE=sa.ID " +
+"ORDER BY sg1.ID " ;
 
 sl1="" +
 "SELECT "+
-"  SYS_GTOPT.ID"+
-"  ,SYS_GTOPT.NAME"+
-"  ,SYS_GTYP.DEFINE_ALIAS as \"DataType\" "+
-"  ,SYS_GTOPT.INTERVAL as \"Interval (sec)\" "+
+"  sg1.ID,sg1.NAME"+
+"  ,sg2.DEFINE_ALIAS as \"DataType\" "+
+"  ,sg1.INTERVAL as \"Interval (sec)\" "+
 "  ,'0' as \"Archive Type\" "+
-"FROM SYS_GTOPT, SYS_GTYP "+
-"WHERE SYS_GTOPT.ID_ATYPE is null and SYS_GTYP.id=SYS_GTOPT.ID_GTYPE "+
+" FROM "+stSchema+"SYS_GTOPT sg1, "+stSchema+"SYS_GTYP sg2"+
+" WHERE sg1.ID_ATYPE is null and sg2.id=sg1.ID_GTYPE"+
 " union "+
 "SELECT "+
-"  SYS_GTOPT.ID"+
-"  ,SYS_GTOPT.NAME"+
-"  ,SYS_GTYP.DEFINE_ALIAS as \"DataType\" "+
-"  ,SYS_GTOPT.INTERVAL as \"Interval (sec)\" "+
-"  ,SYS_ATYP.NAME as \"Archive Type\" "+
-"FROM SYS_GTOPT , SYS_ATYP, SYS_GTYP "+
-"WHERE SYS_GTOPT.ID_ATYPE=SYS_ATYP.ID  and SYS_GTYP.id=SYS_GTOPT.ID_GTYPE" ;
+"  sg1.ID,sg1.NAME"+
+"  ,sg2.DEFINE_ALIAS as \"DataType\" "+
+"  ,sg1.INTERVAL as \"Interval (sec)\" "+
+"  ,sa.NAME as \"Archive Type\" "+
+" FROM "+stSchema+"SYS_GTOPT sg1, "+stSchema+"SYS_ATYP sa, "+stSchema+"SYS_GTYP sg2"+
+" WHERE sg1.ID_ATYPE=sa.ID and sg2.id=sg1.ID_GTYPE" ;
 
 
       cmd0.CommandText=sl1;
@@ -515,13 +518,18 @@ sl1="" +
         // ok
         //check
 
+        string stSchema="";
+        if (_OptionSchemaName>0) {
+          stSchema=OptionSchemaMain + "." ;
+        }
+
         String strS = "" ;
         // UPDATE ARC_GINFO
         // SET street = 'Лизюкова', city = 'Воронеж'
         // WHERE ID=" + id_arcginfo;
 
         Application.DoEvents();
-        
+
         ErrInput = 0 ;
 
         //textBoxID.Text=VL[0] ;
@@ -546,72 +554,72 @@ sl1="" +
             if (strS!="") { strS += " , " ; }
             strS = strS + "ID_TYPE =" + s0 ;
         }
-        
+
         textBoxDEPTH.Text = StrToIntVal(textBoxDEPTH.Text) ;
         if (ErrInput<0) {
-        	MessageBox.Show("Ошибка ввода данных!\n Сохранение прервано.","Ошибка ввода...",MessageBoxButtons.OK, MessageBoxIcon.Error);
-        	return ;
+          MessageBox.Show("Ошибка ввода данных!\n Сохранение прервано.","Ошибка ввода...",MessageBoxButtons.OK, MessageBoxIcon.Error);
+          return ;
         }
         if (textBoxDEPTH.Text!=VL[3]) {
           if (strS!="") { strS += " , " ; }
           strS = strS + "DEPTH =" + textBoxDEPTH.Text;
         }
-        
+
         textBoxDEPTH_LOCAL.Text = StrToIntVal(textBoxDEPTH_LOCAL.Text) ;
         if (ErrInput<0) {
-        	MessageBox.Show("Ошибка ввода данных!\n Сохранение прервано.","Ошибка ввода...",MessageBoxButtons.OK, MessageBoxIcon.Error);
-        	return ;
-        }       
+          MessageBox.Show("Ошибка ввода данных!\n Сохранение прервано.","Ошибка ввода...",MessageBoxButtons.OK, MessageBoxIcon.Error);
+          return ;
+        }
         if (textBoxDEPTH_LOCAL.Text!=VL[4]) {
           if (strS!="") { strS += " , " ; }
           strS = strS + "DEPTH_LOCAL =" + textBoxDEPTH_LOCAL.Text;
         }
-        
+
         textBoxCACHE_SIZE.Text = StrToIntVal(textBoxCACHE_SIZE.Text) ;
         if (ErrInput<0) {
-        	MessageBox.Show("Ошибка ввода данных!\n Сохранение прервано.","Ошибка ввода...",MessageBoxButtons.OK, MessageBoxIcon.Error);
-        	return ;
-        }       
+          MessageBox.Show("Ошибка ввода данных!\n Сохранение прервано.","Ошибка ввода...",MessageBoxButtons.OK, MessageBoxIcon.Error);
+          return ;
+        }
         if (textBoxCACHE_SIZE.Text!=VL[5]) {
           if (strS!="") { strS += " , " ; }
           strS = strS + "CACHE_SIZE =" + textBoxCACHE_SIZE.Text;
         }
-        
+
         textBoxCACHE_TIMEOUT.Text = StrToIntVal(textBoxCACHE_TIMEOUT.Text) ;
         if (ErrInput<0) {
-        	MessageBox.Show("Ошибка ввода данных!\n Сохранение прервано.","Ошибка ввода...",MessageBoxButtons.OK, MessageBoxIcon.Error);
-        	return ;
-        }        
+          MessageBox.Show("Ошибка ввода данных!\n Сохранение прервано.","Ошибка ввода...",MessageBoxButtons.OK, MessageBoxIcon.Error);
+          return ;
+        }
         if (textBoxCACHE_TIMEOUT.Text!=VL[6]) {
           if (strS!="") { strS += " , " ; }
           strS = strS + "CACHE_TIMEOUT =" + textBoxCACHE_TIMEOUT.Text;
         }
-        
+
         textBoxFLUSH_INTERVAL.Text = StrToIntVal(textBoxFLUSH_INTERVAL.Text) ;
         if (ErrInput<0) {
-        	MessageBox.Show("Ошибка ввода данных!\n Сохранение прервано.","Ошибка ввода...",MessageBoxButtons.OK, MessageBoxIcon.Error);
-        	return ;
-        }        
+          MessageBox.Show("Ошибка ввода данных!\n Сохранение прервано.","Ошибка ввода...",MessageBoxButtons.OK, MessageBoxIcon.Error);
+          return ;
+        }
         if (textBoxFLUSH_INTERVAL.Text!=VL[7]) {
           if (strS!="") { strS += " , " ; }
           strS = strS + "FLUSH_INTERVAL =" + textBoxFLUSH_INTERVAL.Text;
         }
-        
+
         textBoxRESTORE_INTERVAL.Text = StrToIntVal(textBoxRESTORE_INTERVAL.Text) ;
         if (ErrInput<0) {
-        	MessageBox.Show("Ошибка ввода данных!\n Сохранение прервано.","Ошибка ввода...",MessageBoxButtons.OK, MessageBoxIcon.Error);
-        	return ;
-        }        
+          MessageBox.Show("Ошибка ввода данных!\n Сохранение прервано.","Ошибка ввода...",MessageBoxButtons.OK, MessageBoxIcon.Error);
+          return ;
+        }
         if (textBoxRESTORE_INTERVAL.Text!=VL[8]) {
           if (strS!="") { strS += " , " ; }
           strS = strS + "RESTORE_INTERVAL =" + textBoxRESTORE_INTERVAL.Text;
         }
-        
+
         textBoxSTACK_INTERVAL.Text = StrToIntVal(textBoxSTACK_INTERVAL.Text) ;
         if (ErrInput<0) {
-        	MessageBox.Show("Ошибка ввода данных!\n Сохранение прервано.","Ошибка ввода...",MessageBoxButtons.OK, MessageBoxIcon.Error);
-        	return ;
-        }       
+          MessageBox.Show("Ошибка ввода данных!\n Сохранение прервано.","Ошибка ввода...",MessageBoxButtons.OK, MessageBoxIcon.Error);
+          return ;
+        }
         if (textBoxSTACK_INTERVAL.Text!=VL[9]) {
           if (strS!="") { strS += " , " ; }
           strS = strS + "STACK_INTERVAL =" + textBoxSTACK_INTERVAL.Text;
@@ -628,12 +636,12 @@ sl1="" +
           if (strS!="") { strS += " , " ; }
           strS = strS + "STATE =" + textBoxSTATE.Text;
         }
-        
+
         textBoxRESTORE_TIME.Text = StrToIntVal(textBoxRESTORE_TIME.Text) ;
         if (ErrInput<0) {
-        	MessageBox.Show("Ошибка ввода данных!\n Сохранение прервано.","Ошибка ввода...",MessageBoxButtons.OK, MessageBoxIcon.Error);
-        	return ;
-        }        
+          MessageBox.Show("Ошибка ввода данных!\n Сохранение прервано.","Ошибка ввода...",MessageBoxButtons.OK, MessageBoxIcon.Error);
+          return ;
+        }
         if (textBoxRESTORE_TIME.Text!=VL[11]) {
           if (strS!="") { strS += " , " ; }
           strS = strS + "RESTORE_TIME =" + textBoxRESTORE_TIME.Text;
@@ -644,22 +652,22 @@ sl1="" +
           if (strS!="") { strS += " , " ; }
           strS = strS + "Name ='" + textBoxName.Text +"'";
         }
-        
+
         textBoxDEPTH_PARTITION.Text = StrToIntVal(textBoxDEPTH_PARTITION.Text) ;
         if (ErrInput<0) {
-        	MessageBox.Show("Ошибка ввода данных!\n Сохранение прервано.","Ошибка ввода...",MessageBoxButtons.OK, MessageBoxIcon.Error);
-        	return ;
-        }        
+          MessageBox.Show("Ошибка ввода данных!\n Сохранение прервано.","Ошибка ввода...",MessageBoxButtons.OK, MessageBoxIcon.Error);
+          return ;
+        }
         if (textBoxDEPTH_PARTITION.Text!=VL[14]) {
           if (strS!="") { strS += " , " ; }
           strS = strS + "DEPTH_PARTITION =" + textBoxDEPTH_PARTITION.Text;
         }
-        
+
         textBoxRESTORE_TIME_LOCAL.Text = StrToIntVal(textBoxRESTORE_TIME_LOCAL.Text) ;
         if (ErrInput<0) {
-        	MessageBox.Show("Ошибка ввода данных!\n Сохранение прервано.","Ошибка ввода...",MessageBoxButtons.OK, MessageBoxIcon.Error);
-        	return ;
-        }        
+          MessageBox.Show("Ошибка ввода данных!\n Сохранение прервано.","Ошибка ввода...",MessageBoxButtons.OK, MessageBoxIcon.Error);
+          return ;
+        }
         if (textBoxRESTORE_TIME_LOCAL.Text!=VL[15]) {
           if (strS!="") { strS += " , " ; }
           strS = strS + "RESTORE_TIME_LOCAL =" + textBoxRESTORE_TIME_LOCAL.Text;
@@ -678,7 +686,7 @@ sl1="" +
 
                cmd0.Connection=this._conn;
 
-               cmd0.CommandText=" UPDATE ARC_GINFO " +  " SET " + strS + " WHERE ID=" + id_arcginfo;
+               cmd0.CommandText=" UPDATE "+stSchema+"ARC_GINFO " +  " SET " + strS + " WHERE ID=" + id_arcginfo;
 
                try
                {
@@ -795,25 +803,25 @@ sl1="" +
 
        textBoxSTATE.Text=val1.ToString();
     }
-		void ButtonCalcClick(object sender, EventArgs e)
-		{
+    void ButtonCalcClick(object sender, EventArgs e)
+    {
            System.Diagnostics.Process p = System.Diagnostics.Process.Start("calc.exe");
            p.WaitForInputIdle();
            //NativeMethods.SetParent(p.MainWindowHandle, this.Handle);
-		}
-		void Button5Click(object sender, EventArgs e)
-		{
-	       // if > 63
-	       FormInfo1 fi = new FormInfo1() ;
-	       fi.ShowDialog();
-	       
-		}
-		void Button1Click(object sender, EventArgs e)
-		{
-			//Виды характеристик параметров поддерживаемых системой
-	       FormGTOPT fgt = new FormGTOPT(_conn) ;
-	       fgt.ShowDialog();	
-		}
+    }
+    void Button5Click(object sender, EventArgs e)
+    {
+         // if > 63
+         FormInfo1 fi = new FormInfo1() ;
+         fi.ShowDialog();
+
+    }
+    void Button1Click(object sender, EventArgs e)
+    {
+      //Виды характеристик параметров поддерживаемых системой
+      FormGTOPT fgt = new FormGTOPT(_conn,_OptionSchemaName) ;
+      fgt.ShowDialog();
+    }
 
   }
 }

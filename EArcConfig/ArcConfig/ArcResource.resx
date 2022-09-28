@@ -555,13 +555,13 @@ ORDER BY ID ASC </value>
   <data name="GTOPT2" xml:space="preserve">
     <value>SELECT sgt.ID, sgt.NAME, sgt.ALIAS, sgt.DEFINE_ALIAS, sgt.INTERVAL, 
 sgtp.NAME as GTYP, sgtp.DEFINE_ALIAS as GTYPD, 
-sat.NAME AS ATYP 
+sat.NAME AS ATYP , sat.DEFINE_ALIAS AS ADEF 
 FROM SYS_GTOPT sgt, SYS_GTYP sgtp, SYS_ATYP sat 
 WHERE sgt.ID_GTYPE = sgtp.ID and sgt.ID_ATYPE = sat.ID 
 UNION 
 SELECT sgt.ID, sgt.NAME, sgt.ALIAS, sgt.DEFINE_ALIAS, sgt.INTERVAL, 
 sgtp.NAME as GTYP, sgtp.DEFINE_ALIAS as GTYPD, 
-'' AS ATYP 
+'' AS ATYP , '' AS ADEF
 FROM SYS_GTOPT sgt, SYS_GTYP sgtp  
 WHERE sgt.ID_GTYPE = sgtp.ID and ( sgt.ID_ATYPE='' or sgt.ID_ATYPE is NULL )</value>
   </data>

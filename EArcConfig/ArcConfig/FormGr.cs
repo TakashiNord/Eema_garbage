@@ -376,11 +376,17 @@ namespace ArcConfig
 
         DateTime date1 = DateTime.Today; // DateTime.Now; // DateTime.UtcNow  DateTime.Today
         //dateTimePicker1.Value.ToShortDateString();
+        
+        //Set a custom format containing the string "of the year"
+        dateTimePicker1.Format = DateTimePickerFormat.Custom;
+        dateTimePicker1.CustomFormat = "dd'.'MM'.'yyyyy hh':'mm tt";
         // from
-        DateTime d01 = date1.AddDays(-1);
-        dateTimePicker1.Value = d01; //  AddHours(-24) ;
+        DateTime d01 = date1.AddHours(-6); //  AddHours(-24) ; AddDays(-1);
+        dateTimePicker1.Value = d01; 
         // to
-        dateTimePicker2.Value = date1.AddSeconds(86400-1);
+        dateTimePicker2.Format = DateTimePickerFormat.Custom;
+        dateTimePicker2.CustomFormat = "dd'.'MM'.'yyyyy hh':'mm tt";
+        dateTimePicker2.Value = date1.AddSeconds(6*60*60-1);
 
         trackBar1.Minimum=-31;
         trackBar1.Maximum=+31;

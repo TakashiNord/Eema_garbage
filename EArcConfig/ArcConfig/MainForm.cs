@@ -1006,7 +1006,7 @@ namespace ArcConfig
 
                    int err_cnt = 0 ;
                    string RETFNAME = "dual"  ;
-                   sl1 = "SELECT RETFNAME FROM " + ARC_NAME + " WHERE ID_PARAM=" + p.ID.ToString() + " AND ID_GINFO=" + p.ID_GINFO.ToString() + " ;" ;
+                   sl1 = "SELECT RETFNAME FROM " + stSchema+ARC_NAME + " WHERE ID_PARAM=" + p.ID.ToString() + " AND ID_GINFO=" + p.ID_GINFO.ToString() + " ;" ;
                    cmd0.CommandText=sl1;
                    try
                    {
@@ -1980,7 +1980,7 @@ Postgres : SELECT version();
       }	 
 
 
-      string sl1= "SELECT ID+1 FROM "+stSchema+"ARC_GINFO WHERE ID+1 NOT IN (SELECT ID FROM ARC_GINFO )" ; //  AND id > 3
+      string sl1= "SELECT ID+1 FROM "+stSchema+"ARC_GINFO WHERE ID+1 NOT IN (SELECT ID FROM "+stSchema+"ARC_GINFO )" ; //  AND id > 3
       AddLogString(" copy = " + sl1);
       cmd0.CommandText=sl1;
       try
