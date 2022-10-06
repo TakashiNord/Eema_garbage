@@ -538,12 +538,32 @@ newDS.Tables.Add(newDT);
        }
        String gdefinealias=comboBoxDEFINE_ALIAS.Text.Trim() ;
 
+       
+       
+       int ret = 0 ;
+       cmd0.CommandText="select count(*) from "+stSchema+"SYS_GTOPT WHERE DEFINE_ALIAS='"+gdefinealias+"' ;" ;
+       try
+       {
+         ret=cmd0.ExecuteNonQuery();
+       }
+       catch (Exception ex1)
+       {
+       	;
+       }
+       
+       String gdefine = "" ;
+       if (ret>0) {
+       	  gdefine = " - имеются повторения уникальных индентификаторов !!" ;
+       }
+
+       
+       
        DialogResult result = MessageBox.Show ("Вставить новый тип ? \n\n" +
 "id='"+gid+"'\n" +
 "name='"+gname+"'\n" +
 "alias='"+galias+"'\n" +
 "interval='"+ginterval+"'\n" +
-"definealias='"+gdefinealias+"'\n" +
+"definealias='"+gdefinealias+"' " + gdefine + "\n" +
 "gtype='"+ID_GTYPE_DEFINE_ALIAS+"'\n" + "atype='"+ID_ATYPE_DEFINE_ALIAS+"'\n" ,
                                                "Вставка нового Типа",
                                                MessageBoxButtons.YesNo,
@@ -559,8 +579,7 @@ newDS.Tables.Add(newDT);
               " ("+gid+",'"+gname+"','"+galias+"',"+ID_GTYPE+",'"+gdefinealias+"',"+ginterval+","+ID_ATYPE+");" ;
 
          cmd0.CommandText=sl1;
-         int ret = 0 ;
-
+         ret=0;
          try
          {
            ret=cmd0.ExecuteNonQuery();
