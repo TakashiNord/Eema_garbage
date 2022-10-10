@@ -1351,8 +1351,95 @@ setgridcolumnwidths(DBgrid1);
 end;
 
 procedure TForm1.Button26Click(Sender: TObject);
+var
+  strQry : String ;
+  fDt : TDataSet;
+  fStr, fStr2 , fStr3: string;
+  fStrNode: string;
+  i : Integer;
 begin
- //
+RichEdit1.Lines.Add(' ');
+RichEdit1.Lines.Add('>>UnLock\Change Password');
+  strQry:=' ' +
+'select id,id_node,login from s_users, db_s_users ' +
+'  where db_s_users.s_id = s_users.id ' +
+'  and login is not null ' +
+'  and db_id is not null and id_type = 1011 ' +
+' order by s_users.id_node' ;
+
+RichEdit1.Lines.Add(strQry);
+ try
+ADOQuery1.Active:=False ;
+ADOQuery1.SQL.Clear;
+ADOQuery1.SQL.Add(strQry);
+ADOQuery1.ExecSQL;
+ADOQuery1.Active:=True;
+setgridcolumnwidths(DBgrid1);
+  except
+   on e:Exception do
+  end;
+
+  RichEdit1.Lines.Add('------------------------------------');
+
+  fDt := DBGrid1.DataSource.DataSet;
+  fDt.DisableControls;
+
+  try
+    fStrNode:='';
+    fDt.First;
+    while not fDt.Eof do begin
+      for i := 0 to Pred(DBGrid1.Columns.Count) do begin
+        if not DBGrid1.Columns[i].Visible then // Пропускаем невидимые столбцы
+          Continue;
+
+        if (DBGrid1.Columns[i].FieldName='ID_NODE') then begin
+            fStr3:=fDt.FieldByName(DBGrid1.Columns[i].FieldName).AsString ;
+            if (fStrNode<>fStr3) then
+               RichEdit1.Lines.Add('--  ');
+            fStrNode:=fStr3;
+        end;
+
+        if (DBGrid1.Columns[i].FieldName='LOGIN') then begin
+            fStr:=fDt.FieldByName(DBGrid1.Columns[i].FieldName).AsString ;
+            fStr2:=Format('ALTER USER %-16s ACCOUNT UNLOCK ;',[fStr]);
+            RichEdit1.Lines.Add(fStr2);
+        end;
+      end;
+      fDt.Next
+    end;
+
+    RichEdit1.Lines.Add('------------------------------------');
+
+    fStrNode:='';
+    fDt.First;
+    while not fDt.Eof do begin
+      for i := 0 to Pred(DBGrid1.Columns.Count) do begin
+        if not DBGrid1.Columns[i].Visible then // Пропускаем невидимые столбцы
+          Continue;
+
+        if (DBGrid1.Columns[i].FieldName='ID_NODE') then begin
+            fStr3:=fDt.FieldByName(DBGrid1.Columns[i].FieldName).AsString ;
+            if (fStrNode<>fStr3) then
+               RichEdit1.Lines.Add('--  ');
+            fStrNode:=fStr3;
+        end;
+
+        if (DBGrid1.Columns[i].FieldName='LOGIN') then begin
+            fStr:=fDt.FieldByName(DBGrid1.Columns[i].FieldName).AsString ;
+            fStr2:=Format('ALTER USER %-16s IDENTIFIED BY RSDU_211 ;',[fStr]);
+            RichEdit1.Lines.Add(fStr2);
+        end;
+      end;
+      fDt.Next
+    end;
+
+  finally
+    fDt.EnableControls;
+
+  end;
+
+  RichEdit1.Lines.Add('------------------------------------');
+
 end;
 
 procedure TForm1.Button27Click(Sender: TObject);

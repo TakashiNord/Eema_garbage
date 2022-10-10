@@ -295,7 +295,7 @@ object Form1: TForm1
     Top = 49
     Width = 873
     Height = 486
-    ActivePage = TabSheet7
+    ActivePage = TabSheet1
     Align = alClient
     TabOrder = 2
     OnChange = PageControl1Change
@@ -497,11 +497,11 @@ object Form1: TForm1
           OnClick = Button25Click
         end
         object Button26: TButton
-          Left = 85
+          Left = 4
           Top = 165
-          Width = 75
+          Width = 156
           Height = 25
-          Caption = '........'
+          Caption = 'UnLock\Change Password'
           TabOrder = 20
           OnClick = Button26Click
         end
