@@ -252,6 +252,33 @@ select DISTINCT y.ID id_tbllst, y.table_name lst_tblname, x.table_name arc_tblna
 
 
 
+#define SRV_ARCSUBSYSTEM_SQL "SELECT y.ID id_tbllst, y.table_name lst_tblname, x.table_name arc_tblname, sch.SCHEMA_NAME arc_schema_name \
+  FROM sys_tbllnk st \
+  inner join sys_tbllst x on x.ID = st.id_dsttbl \
+  inner join sys_tbllst y on y.ID = st.id_lsttbl \
+  left join arc_services_info si on si.ID_LSTTBL = y.ID \
+  left join arc_db_schema sch on si.ID_DB_SCHEMA = sch.ID \
+  inner join sys_otyp ot on x.id_type = ot.ID \
+  WHERE ot.define_alias = 'ARH' \
+  ORDER BY y.ID"
+
+
+define SRV_ARCSUBSYSTEM_SQL 
+SELECT y.ID id_tbllst, y.table_name lst_tblname, x.table_name arc_tblname, sch.SCHEMA_NAME arc_schema_name 
+    FROM sys_tbllst x, sys_tbllst y, sys_tbllnk st, sys_otyp ot, arc_db_schema sch, arc_services_info si 
+    WHERE y.ID = st.id_lsttbl 
+        AND x.ID = st.id_dsttbl 
+        AND x.id_type = ot.ID \
+        AND ot.define_alias = 'ARH' 
+        AND si.ID_DB_SCHEMA = sch.ID(+) 
+        AND si.ID_LSTTBL(+) = y.ID 
+    ORDER BY y.ID
+
+
+
+
+
+
 
 SELECT 
    ad_pinfo.portnumber,ad_pinfo.id_proto,ad_sinfo.id_lsttbl,ad_list.id_type,
@@ -432,4 +459,61 @@ end loop;
 
 
 
+SELECT SYS_GTOPT.* , SYS_GTYP.* , SYS_ATYP.*
+FROM SYS_GTOPT , SYS_GTYP, SYS_ATYP
+WHERE SYS_GTOPT.ID_GTYPE = SYS_GTYP.ID 
+and SYS_GTOPT.ID_ATYPE = SYS_ATYP.ID
+
+
+SELECT max(ID+1) FROM SYS_GTOPT WHERE ID+1 NOT IN (SELECT ID FROM SYS_GTOPT )
+
+SELECT * FROM SYS_GTOPT 
+WHERE ID_ATYPE in ( select id from SYS_ATYP where DEFINE_ALIAS like  'AGREGAT_TYPE_AVERAGE%' )
+ORDER BY ID
+
+SELECT * FROM SYS_GTOPT 
+WHERE ID_ATYPE not in ( select id from SYS_ATYP ) or ID_ATYPE is null
+ORDER BY ID
+
+SELECT SYS_GTOPT.* , SYS_GTYP.NAME
+FROM SYS_GTOPT , SYS_GTYP
+WHERE SYS_GTOPT.ID_GTYPE = SYS_GTYP.ID
+
+
+
+
+-- Незавершенные транзакции
+
+SELECT COUNT(*)
+       FROM v$transaction t, v$session s, v$mystat m
+      WHERE t.ses_addr = s.saddr
+        AND s.sid = m.sid
+        AND ROWNUM = 1;
+
+
+select s.sid
+      ,s.serial#
+      ,s.username
+      ,s.machine
+      ,s.status
+      ,s.lockwait
+      ,t.used_ublk
+      ,t.used_urec
+      ,t.start_time
+from v$transaction t
+inner join v$session s on t.addr = s.taddr;
+
+
+select t.inst_id 
+       ,s.sid
+      ,s.serial#
+      ,s.username
+      ,s.machine
+      ,s.status
+      ,s.lockwait
+      ,t.used_ublk
+      ,t.used_urec
+      ,t.start_time
+from gv$transaction t
+inner join gv$session s on t.addr = s.taddr;
 

@@ -2819,7 +2819,7 @@ Postgres : SELECT version();
         object obj1 = checkCell.Value;
         object obj2 = checkCell.EditedFormattedValue ;
 
-        AddLogString("Выкл|вкл архив = before status =" + obj1.ToString());
+        // AddLogString("Выкл|вкл архив = before status =" + obj1.ToString());
 
         // если пытаемся выключить - обьязательный архив - Checked or True
         if (obj1.ToString()=="Unchecked" || obj1.ToString()=="False") {
@@ -2852,12 +2852,12 @@ Postgres : SELECT version();
               AddLogString("Выкл|вкл архив = delete = " + obj2.ToString());
               int ret1 = ArcDel( sender, selRowNum , selColNum) ;
               if (ret1!=0) { checkCell.Value = true ; /*checkCell.EditingCellFormattedValue=true; */}
-              AddLogString( "Выкл|вкл удаления завершен." );
+              //AddLogString( "Выкл|вкл удаления завершен." );
             } else {
                   AddLogString("Выкл|вкл архив = turn on = " + obj2.ToString());
                   int ret2 = ArcAdd( sender, selRowNum , selColNum) ;
                   if (ret2!=0) { checkCell.Value = false ; /*checkCell.EditingCellFormattedValue=false;*/ }
-                  AddLogString( "Выкл|вкл добавления завершен." );
+                  //AddLogString( "Выкл|вкл добавления завершен." );
                 }
 
             dataGridView.CurrentCell = checkCell;
@@ -2876,8 +2876,10 @@ int ArcAdd(object sender, int selRowNum , int selColNum)
 
    // Объект для выполнения запросов к базе данных
    OdbcCommand cmd0 = new OdbcCommand();
+   OdbcCommand cmd1 = new OdbcCommand();
    OdbcDataReader reader = null ;
    cmd0.Connection=this._conn;
+   cmd1.Connection=this._conn;
 
    string vRetVal = "";
    string retname = "" ;
@@ -3120,14 +3122,14 @@ int ArcAdd(object sender, int selRowNum , int selColNum)
 
      object rec1 = null ;
 
-     cmd0.CommandText=sl1;
+     cmd1.CommandText=sl1;
      try
      {
-      rec1 = cmd0.ExecuteScalar();
+      rec1 = cmd1.ExecuteScalar();
      }
      catch (Exception ex1)
      {
-       AddLogString("ArcAdd - " + cmd0.CommandText + " " + ex1.Message);
+       AddLogString("ArcAdd - " + cmd1.CommandText + " " + ex1.Message);
      }
 
      int crec1=Convert.ToInt32(rec1) ;
@@ -3144,17 +3146,18 @@ int ArcAdd(object sender, int selRowNum , int selColNum)
                " (" + ID +  ",'" + retname + "'," + IDGINFO +");" ;
          }
 
-         cmd0.CommandText=sl1;
+         crec1 = 0;
+		 cmd1.CommandText=sl1;
          try
          {
-           reader = cmd0.ExecuteReader();
+         	crec1=cmd1.ExecuteNonQuery();
          }
          catch (Exception ex1)
          {
-           AddLogString("ArcAdd регистрация отменена, " + cmd0.CommandText + ", " + ex1.Message);
+           AddLogString("ArcAdd регистрация отменена, " + cmd1.CommandText + ", " + ex1.Message);
            return(-7) ;
          }
-         reader.Close();
+         AddLogString("ArcAdd регистрация архива " + retname + " = " + crec1.ToString() );
 
      }
 
@@ -3174,8 +3177,10 @@ int ArcDel(object sender, int selRowNum , int selColNum)
 
     // Объект для выполнения запросов к базе данных
     OdbcCommand cmd0 = new OdbcCommand();
+    OdbcCommand cmd1 = new OdbcCommand();
     OdbcDataReader reader = null ;
     cmd0.Connection=this._conn;
+    cmd1.Connection=this._conn;
 
     string vRetVal = "";
     string retname = "" ;
@@ -3338,10 +3343,10 @@ int ArcDel(object sender, int selRowNum , int selColNum)
       sl1="SELECT RETFNAME FROM " + stSchema + TABLE_NAME +
            " WHERE ID_PARAM=" + ID + " AND " + " ID_GINFO=" + IDGINFO +" ;" ;
 
-      cmd0.CommandText=sl1;
+      cmd1.CommandText=sl1;
       try
       {
-        reader = cmd0.ExecuteReader();
+        reader = cmd1.ExecuteReader();
       }
       catch (Exception ex1)
       {
@@ -3360,11 +3365,11 @@ int ArcDel(object sender, int selRowNum , int selColNum)
 
       sl1="DELETE FROM " + stSchema + TABLE_NAME +
           " WHERE ID_PARAM=" + ID + " AND " + " ID_GINFO=" + IDGINFO +" ;" ;
-      cmd0.CommandText=sl1;
+      cmd1.CommandText=sl1;
       int res1 = 0 ;
       try
       {
-        res1 = cmd0.ExecuteNonQuery();
+        res1 = cmd1.ExecuteNonQuery();
       }
       catch (Exception ex1)
       {
@@ -3376,27 +3381,21 @@ int ArcDel(object sender, int selRowNum , int selColNum)
 
       if (res1>0) {
         sl1=" DROP TABLE " + SCHEMA_NAME + "." + RETFNAME + " CASCADE CONSTRAINTS PURGE ;" ;
+        AddLogString(" -- " + sl1 );
         if (OptionTableDelete>0) {
-           cmd0.CommandText=sl1;
+           cmd1.CommandText=sl1;
            res1 = 0 ;
            try
            {
-              res1 = cmd0.ExecuteNonQuery();
+              res1 = cmd1.ExecuteNonQuery();
            }
            catch (Exception ex1)
            {
               AddLogString(" -- " + sl1 + " -- " + ex1.Message);
-              res1=-1;
+              res1=0;
            }
-           if (res1>0) {
-             AddLogString(" ---- DROP TABLE " + SCHEMA_NAME + "." + RETFNAME + " ; -- OK!");
-           }
-           if (res1==0) {
-             AddLogString(" -- " + sl1 + " -- ERROR!");
-           }
-        } else {
-          AddLogString(" -- " + sl1 );
-        }
+        } 
+
       } //if (res1>0)
 
     } // if (vRetVal=="0")
