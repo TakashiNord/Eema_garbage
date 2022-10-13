@@ -435,18 +435,16 @@ namespace ArcConfig
 " Values ("+id_dest+","+id_tbl+","+id_gpt+","+IS_WRITEON+",'"+ st_name + "',0," + IS_VIEWABLE + ")";
       cmd0.CommandText=sl1;
 
+      int crec1 = 0 ;
       try
       {
-        reader = cmd0.ExecuteReader();
+        crec1=cmd0.ExecuteNonQuery();
       }
       catch (Exception ex1)
       {
         MessageBox.Show(ex1.ToString() );
-        reader.Close();
         return ;
       }
-      reader.Close();
-
 
       //Вставка в ARC_SERVICES_TUNE настроек для записи нового профиля архивов
       int nID_PRIORITY = 1 ;
@@ -458,16 +456,16 @@ namespace ArcConfig
            "Insert into "+stSchema+"ARC_SERVICES_TUNE(ID_SPROFILE, ID_SERVICE, PRIORITY) " +
            " Values ("+id_dest+","+rec_id+","+nID_PRIORITY+")";
           cmd0.CommandText=sl1;
+          crec1 = 0 ;
           try
           {
-            reader = cmd0.ExecuteReader();
+             crec1=cmd0.ExecuteNonQuery();
           }
           catch (Exception ex1)
           {
             MessageBox.Show(ex1.ToString() );
             return ;
           }
-          reader.Close();
 
           nID_PRIORITY++;
         }
@@ -492,18 +490,18 @@ namespace ArcConfig
            "Insert into "+stSchema+"ARC_SERVICES_ACCESS(ID_SPROFILE, ID_SERVICE, RETRO_DEPTH) " +
            " Values ("+id_dest+","+rec_id+","+Period+")";
           cmd0.CommandText=sl1;
+          crec1=0;
           try
           {
-            reader = cmd0.ExecuteReader();
+            crec1=cmd0.ExecuteNonQuery();
           }
           catch (Exception ex1)
           {
-            reader.Close();
           	MessageBox.Show(ex1.ToString() );
             return ;
           }
-          reader.Close();
-        }
+
+      	}
       }
 
       Close();

@@ -589,12 +589,14 @@ namespace ArcConfig
     }
     void MainFormLoad(object sender, EventArgs e)
     {
+
+       this.Text = this.Text + "  :  " + Application.ProductVersion ;
+
        timer1.Interval = 1000;
        timer1.Enabled = true ;
 
        tabControl1.Enabled=false;
        tabControl1.SelectedIndex=0;
-
 
        dp.Capacity=250000;
        typeof(Control).GetProperty("DoubleBuffered", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.SetProperty).SetValue(dataGridViewP, true, null);
@@ -1231,7 +1233,7 @@ namespace ArcConfig
 
       Application.DoEvents();
 
-      this.Text = this.Text + "  :  " + Application.ProductVersion ;
+      //this.Text = this.Text + "  :  " + Application.ProductVersion ;
 
       //ResourceManager r = new ResourceManager("ArcConfig.ArcResource", Assembly.GetExecutingAssembly());
 
@@ -1981,7 +1983,7 @@ Postgres : SELECT version();
 
 
       string sl1= "SELECT ID+1 FROM "+stSchema+"ARC_GINFO WHERE ID+1 NOT IN (SELECT ID FROM "+stSchema+"ARC_GINFO )" ; //  AND id > 3
-      AddLogString(" copy = " + sl1);
+      //AddLogString(" copy-> = " + sl1);
       cmd0.CommandText=sl1;
       try
       {
@@ -2045,21 +2047,22 @@ Postgres : SELECT version();
 " FROM "+stSchema+"ARC_GINFO " +
 " WHERE "+stSchema+"ARC_GINFO.ID=" + ID_GINFO + " ;";
 
+      int crec1 = 0 ;
       cmd0.CommandText=sl1;
       try
       {
-        reader = cmd0.ExecuteReader();
+        crec1=cmd0.ExecuteNonQuery();
       }
       catch (Exception ex1)
       {
-        AddLogString(" copy-> выполнение алгоритма  - прервано.. = " + cmd0.CommandText + " " + ex1.Message);
-        reader.Close();
+        AddLogString(" copy-> Ошибка. " + cmd0.CommandText + " , " + ex1.Message);
         return ;
       }
-      reader.Close();
-      TreeViewAAfterSelect(sender, null);
-      AddLogString(" Копия создана в id = " + id_dest );
-      MessageBox.Show ("Профиль id=" +ID_GINFO + "\n скопирован в id = " + id_dest ,"Копирование строк", MessageBoxButtons.OK, MessageBoxIcon.Information);
+      AddLogString(" copy-> в id = " + id_dest + " (статус = " + crec1.ToString() + " )");
+      if (crec1>0) {
+        TreeViewAAfterSelect(sender, null);
+        MessageBox.Show ("Профиль id=" +ID_GINFO + "\n скопирован в id = " + id_dest ,"Копирование строк", MessageBoxButtons.OK, MessageBoxIcon.Information);
+      }
 
     }
     void ToolStripMenuItem3Click(object sender, EventArgs e)
@@ -2107,21 +2110,21 @@ Postgres : SELECT version();
         if (result == DialogResult.Yes)
         {
           cmd0.CommandText="DELETE FROM "+stSchema+"ARC_GINFO WHERE ID="+ID_GINFO ;
+          int crec1 = 0 ;
           try
           {
-            reader = cmd0.ExecuteReader();
+            crec1=cmd0.ExecuteNonQuery();
           }
           catch (Exception ex1)
           {
             AddLogString(" ToolStripMenuItem3Click-> delete - прервано.. = " + cmd0.CommandText + " " + ex1.Message);
             MessageBox.Show ("Ошибка удаления !" ,"Удаление строки", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            //reader.Close();
             return ;
           }
-          reader.Close();
-
-          TreeViewAAfterSelect(sender, null );
-          MessageBox.Show ("Профиль архива id=" +ID_GINFO + " удален!" ,"Удаление строки", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+          if (crec1>0) {
+            TreeViewAAfterSelect(sender, null );
+            MessageBox.Show ("Профиль архива id=" +ID_GINFO + " удален!" ,"Удаление строки", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+          }
         }
       } else {
        MessageBox.Show ("Профиль id=" +ID_GINFO + " используется, удаление невозможно." ,"Удаление строки", MessageBoxButtons.OK, MessageBoxIcon.Stop);
@@ -3133,7 +3136,7 @@ int ArcAdd(object sender, int selRowNum , int selColNum)
      }
 
      int crec1=Convert.ToInt32(rec1) ;
-     AddLogString("ArcAdd record insert =" + crec1.ToString() );
+     AddLogString("ArcAdd record count =" + crec1.ToString() );
 
      // записей нет, вставляем
      if (crec1==0) {
