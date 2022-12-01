@@ -656,13 +656,13 @@ namespace ArcConfig
       // re-read
       //dataGridViewA.Rows.Clear();
       Application.DoEvents();
-	  
-	  
+
+
       string stSchema="";
       if (OptionSchemaName>0) {
            stSchema=OptionSchemaMain + "." ;
       }
-	  
+
 
       ResourceManager r = new ResourceManager("ArcConfig.ArcResource", Assembly.GetExecutingAssembly());
 
@@ -1394,7 +1394,7 @@ Postgres : SELECT version();
        string stSchema="";
        if (OptionSchemaName>0) {
            stSchema=OptionSchemaMain + "." ;
-       }	
+       }
 
 
        TreeNode rootNode1 = new TreeNode();
@@ -1652,12 +1652,12 @@ Postgres : SELECT version();
        //while (0 != dataGridViewS.Columns.Count)
        //        dataGridViewS.Columns.RemoveAt(0);
 
-   
+
        string stSchema="";
        if (OptionSchemaName>0) {
            stSchema=OptionSchemaMain + "." ;
-       }	
-   
+       }
+
 
        cmd0.CommandText="SELECT * FROM " + stSchema + id_parent;
        Application.DoEvents();
@@ -1872,7 +1872,7 @@ Postgres : SELECT version();
       string stSchema="";
       if (OptionSchemaName>0) {
            stSchema=OptionSchemaMain + "." ;
-      }	 
+      }
 
 
       //AddLogString("SelectionChanged-> ID_TBLLST=" + ID_TBLLST + "  ID_GINFO=" + ID_GINFO);
@@ -1951,9 +1951,12 @@ Postgres : SELECT version();
     {
       // modify - создание окна для модификаций профиля архивов
       int selRowNum = dataGridViewA.CurrentCell.RowIndex;
+      if (selRowNum<0) return ;
+      string id_tbl = Convert.ToString(treeViewA.SelectedNode.Tag) ;
+      if (id_tbl=="0" || id_tbl=="") return ;
       string ID_GINFO = dataGridViewA.Rows[selRowNum].Cells[1].Value.ToString() ;
 
-      Form ifrm = new FormArcGinfo(this._conn, ID_GINFO, OptionSchemaName);
+      Form ifrm = new FormArcGinfo(this._conn, ID_GINFO, id_tbl, OptionSchemaName);
       ifrm.ShowDialog();
       TreeViewAAfterSelect(treeViewA, null);
       // dataGridViewA.FirstDisplayedScrollingRowIndex=selRowNum;
@@ -1979,7 +1982,7 @@ Postgres : SELECT version();
       string stSchema="";
       if (OptionSchemaName>0) {
            stSchema=OptionSchemaMain + "." ;
-      }	 
+      }
 
 
       string sl1= "SELECT ID+1 FROM "+stSchema+"ARC_GINFO WHERE ID+1 NOT IN (SELECT ID FROM "+stSchema+"ARC_GINFO )" ; //  AND id > 3
@@ -2080,7 +2083,7 @@ Postgres : SELECT version();
       string stSchema="";
       if (OptionSchemaName>0) {
            stSchema=OptionSchemaMain + "." ;
-      }	  
+      }
 
       string sl1="SELECT count(*) FROM "+stSchema+"ARC_SUBSYST_PROFILE WHERE ID_GINFO="+ID_GINFO ;
 
@@ -2142,11 +2145,11 @@ Postgres : SELECT version();
 
       ResourceManager r = new ResourceManager("ArcConfig.ArcResource", Assembly.GetExecutingAssembly());
       List<MEAS1> dp = new List<MEAS1>();
-	  
+
       string stSchema="";
       if (OptionSchemaName>0) {
            stSchema=OptionSchemaMain + "." ;
-      }	  
+      }
 
       int chkBoxColumnIndex = 0;
       var dataGridView = (DataGridView)sender;
@@ -2569,7 +2572,7 @@ Postgres : SELECT version();
        string stSchema="";
        if (OptionSchemaName>0) {
            stSchema=OptionSchemaMain + "." ;
-       }	  
+       }
 
        string strS = "UPDATE "+stSchema+"ARC_SUBSYST_PROFILE SET " +
           " IS_WRITEON=" + IS_WRITEON +
@@ -3397,7 +3400,7 @@ int ArcDel(object sender, int selRowNum , int selColNum)
               AddLogString(" -- " + sl1 + " -- " + ex1.Message);
               res1=0;
            }
-        } 
+        }
 
       } //if (res1>0)
 
@@ -3895,7 +3898,7 @@ void OracleStat ( )
 
         DialogResult result = MessageBox.Show ("Очистить " + stName + " ? ",
                                                "Удаление содержимого " + stName,
-                                               MessageBoxButtons.YesNo, 
+                                               MessageBoxButtons.YesNo,
                                                MessageBoxIcon.Question,
                                                MessageBoxDefaultButton.Button2);
         if (result == DialogResult.Yes)

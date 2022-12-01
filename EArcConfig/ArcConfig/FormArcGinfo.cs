@@ -13,6 +13,9 @@ using System.Windows.Forms;
 using System.ComponentModel;
 using System.Data.Odbc;
 
+using System.Reflection;
+using System.Resources;
+
 using System.Diagnostics;
 
 namespace ArcConfig
@@ -39,7 +42,7 @@ namespace ArcConfig
       //
     }
 
-    public FormArcGinfo(OdbcConnection conn, String id, int SchemaName)
+    public FormArcGinfo(OdbcConnection conn, String id, String id_tbl,int SchemaName)
     {
       //
       // The InitializeComponent() call is required for Windows Forms designer support.
@@ -50,6 +53,8 @@ namespace ArcConfig
       // TODO: Add constructor code after the InitializeComponent() call.
       _conn = conn ;
       id_arcginfo = id ;
+      _id_tbl = id_tbl ;
+      ARC_NAME = "" ;
       _OptionSchemaName = SchemaName ;
       //
     }
@@ -102,7 +107,9 @@ namespace ArcConfig
     public OdbcConnection _conn;
     public String id_arcginfo;
     public int _OptionSchemaName = 0;
+    public String _id_tbl ;
     public string OptionSchemaMain = "RSDUADMIN";
+    public String ARC_NAME ;
 
     public OdbcConnection Conn
     {
@@ -134,6 +141,35 @@ namespace ArcConfig
 
       checkedListBoxSTATE.Items.Clear();
 
+      // get arc_name table
+      ARC_NAME = "LIST_ARC" ;
+      ResourceManager r = new ResourceManager("ArcConfig.ArcResource", Assembly.GetExecutingAssembly());
+
+      string sl2 = r.GetString("ARH_SYSTBLLST1");
+      sl2 = String.Format(sl2,_id_tbl);
+
+      cmd0.CommandText=sl2;
+      try
+      {
+          reader = cmd0.ExecuteReader();
+      }
+      catch (Exception ex1)
+      {
+      	;
+      }
+
+      if (reader.HasRows) {
+          while (reader.Read())
+          {
+            ARC_NAME = GetTypeValue(ref reader, 0).ToUpper() ;
+            break ;
+          } // while
+      }
+      reader.Close();
+
+      Application.DoEvents();
+
+
       // "select * from ARC_FTR";
       cmd0.CommandText="SELECT  ID, NAME, DEFINE_ALIAS, MASK FROM "+stSchema+"ARC_FTR ORDER BY ID"  ;
 
@@ -161,6 +197,8 @@ namespace ArcConfig
         } // while
       }
       reader.Close();
+
+      Application.DoEvents();
 
       // "select * from ARC_GINFO";
       cmd0.CommandText="" +
@@ -259,6 +297,8 @@ namespace ArcConfig
        } // while
       }
       reader.Close();
+
+      Application.DoEvents();
 
       int val1 = Convert.ToInt32(textBoxSTATE.Text);
       for (int i = 0; i < checkedListBoxSTATE.Items.Count; i++)
@@ -373,6 +413,8 @@ sl1="" +
         }
 
       }
+
+      Application.DoEvents();
 
       dataGridView1.Update();
 
@@ -534,6 +576,7 @@ sl1="" +
 
         //textBoxID.Text=VL[0] ;
 
+        int flag_gtopt = -1 ;
         int ID_GTOPT=-1;
         for (int ii = 0; ii < dataGridView1.RowCount ; ii++) {
           if (Convert.ToBoolean(dataGridView1.Rows[ii].Cells[0].Value)) {
@@ -545,6 +588,7 @@ sl1="" +
           if (ID_GTOPT.ToString() !=VL[1]) {
             if (strS!="") { strS += " , " ; }
             strS = strS + "ID_GTOPT =" + ID_GTOPT.ToString();
+            flag_gtopt = ID_GTOPT ; // флаг смены типа архива в архивной таблице
          }
         }
 
@@ -677,26 +721,77 @@ sl1="" +
 
         //save
         if (strS!="") {
-            DialogResult result = MessageBox.Show ("Изменить профиль архива id=" +id_arcginfo ,"Change ...", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+        	String Add_gtopt = "" ;
+        	// флаг смены типа архива в архивной таблице
+        	if (flag_gtopt>0) {
+              // flag_gtopt=ID_GTOPT.ToString() - new
+              // VL[1] - old
+              // Объект для выполнения запросов к базе данных
+              OdbcCommand cmd0 = new OdbcCommand();
+
+              cmd0.Connection=this._conn;
+
+              cmd0.CommandText=" SELECT count(*) FROM "+stSchema+ ARC_NAME +
+              	" WHERE ID_GTOPT=" + VL[1].ToString() + " AND ID_GINFO=" + id_arcginfo ; // VL[0].ToString() ;
+
+              object crec1 = null ;
+              try
+              {
+              	crec1=cmd0.ExecuteScalar() ;
+              }
+              catch (Exception ex1)
+              {
+              	//ID_GTOPT - нет
+              	flag_gtopt=-1; //MessageBox.Show(ex1.ToString() );
+              }
+              cmd0.Dispose();
+              if (flag_gtopt>0) {
+                String s1 = Convert.ToString(crec1);
+                Add_gtopt = "\n----------------\nТип архива будет изменен у " + s1 + " параметра(-ов) \n в архивной таблице " + ARC_NAME ;
+              }
+            }
+
+            DialogResult result = MessageBox.Show ("Изменить профиль архива id=" +id_arcginfo + "   ? \n" + Add_gtopt  ,"Change ...", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
                // Объект для выполнения запросов к базе данных
                OdbcCommand cmd0 = new OdbcCommand();
-               OdbcDataReader reader = null ;
 
                cmd0.Connection=this._conn;
 
-               cmd0.CommandText=" UPDATE "+stSchema+"ARC_GINFO " +  " SET " + strS + " WHERE ID=" + id_arcginfo;
+               cmd0.CommandText=" UPDATE "+stSchema+"ARC_GINFO " +
+               	" SET " + strS +
+               	" WHERE ID=" + id_arcginfo;
 
+               int crec2 = 0 ;
                try
                {
-                 reader = cmd0.ExecuteReader();
+                 crec2 = cmd0.ExecuteNonQuery();
                }
                catch (Exception ex1)
                {
                  MessageBox.Show(ex1.ToString() );
                }
-               reader.Close();
+
+
+        	   if (flag_gtopt>0) {
+                  cmd0.CommandText=" UPDATE "+stSchema+ ARC_NAME +
+                 	" SET ID_GTOPT=" + flag_gtopt.ToString() +
+                  	" WHERE ID_GTOPT=" + VL[1].ToString() + " AND ID_GINFO=" + id_arcginfo ; // VL[0].ToString() ;
+
+                  int crec3 = 0 ;
+                  try
+                  {
+                     crec3=cmd0.ExecuteNonQuery();
+                  }
+                  catch (Exception ex1)
+                  {
+                     MessageBox.Show(ex1.ToString() );
+                  }
+
+                }
+
             }
 
         }

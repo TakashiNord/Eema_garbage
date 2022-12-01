@@ -246,7 +246,7 @@ namespace ArcConfig
       /*
       -- clear_one_schema_job:
       --   внешняя процедура для вызова из приложения
-      --   Создает джобы чистrи для указанного раздела (по Id_tbllst) и указанных через запятую ID_GINFO
+      --   Создает джобы чистки для указанного раздела (по Id_tbllst) и указанных через запятую ID_GINFO
         PROCEDURE clear_one_schema_job( pID_tbllst NUMBER, pID_ginfo VARCHAR2, pEndDate VARCHAR2, pToFile
       */
 
