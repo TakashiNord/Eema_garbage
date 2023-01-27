@@ -20,9 +20,6 @@ C:\Users\gal\Documents\SharpDevelop Projects\ArcConfig\ArcConfig\obj\Debug\ArcCo
 C:\Users\gal\Documents\SharpDevelop Projects\ArcConfig\ArcConfig\obj\Debug\ArcConfig.csproj.GenerateResource.Cache
 C:\Users\gal\Documents\SharpDevelop Projects\ArcConfig\ArcConfig\obj\Debug\ArcConfig.exe
 C:\Users\gal\Documents\SharpDevelop Projects\ArcConfig\ArcConfig\obj\Debug\ArcConfig.pdb
-C:\Users\Tanuki\Documents\SharpDevelop Projects\ArcConfig\ArcConfig\bin\Debug\ArcConfig.exe.config
-C:\Users\Tanuki\Documents\SharpDevelop Projects\ArcConfig\ArcConfig\bin\Debug\ArcConfig.exe
-C:\Users\Tanuki\Documents\SharpDevelop Projects\ArcConfig\ArcConfig\bin\Debug\ArcConfig.pdb
 C:\Users\Tanuki\Documents\SharpDevelop Projects\ArcConfig\ArcConfig\obj\Debug\ArcConfig.csprojResolveAssemblyReference.cache
 C:\Users\Tanuki\Documents\SharpDevelop Projects\ArcConfig\ArcConfig\obj\Debug\ArcConfig.ArcResource.resources
 C:\Users\Tanuki\Documents\SharpDevelop Projects\ArcConfig\ArcConfig\obj\Debug\ArcConfig.ConnectDB.resources
@@ -40,5 +37,8 @@ C:\Users\Tanuki\Documents\SharpDevelop Projects\ArcConfig\ArcConfig\obj\Debug\Ar
 C:\Users\Tanuki\Documents\SharpDevelop Projects\ArcConfig\ArcConfig\obj\Debug\ArcConfig.MainForm.resources
 C:\Users\Tanuki\Documents\SharpDevelop Projects\ArcConfig\ArcConfig\obj\Debug\ArcConfig.StatOracle.resources
 C:\Users\Tanuki\Documents\SharpDevelop Projects\ArcConfig\ArcConfig\obj\Debug\ArcConfig.csproj.GenerateResource.Cache
+C:\Users\Tanuki\Documents\SharpDevelop Projects\ArcConfig\ArcConfig\bin\Debug\ArcConfig.exe.config
+C:\Users\Tanuki\Documents\SharpDevelop Projects\ArcConfig\ArcConfig\bin\Debug\ArcConfig.exe
+C:\Users\Tanuki\Documents\SharpDevelop Projects\ArcConfig\ArcConfig\bin\Debug\ArcConfig.pdb
 C:\Users\Tanuki\Documents\SharpDevelop Projects\ArcConfig\ArcConfig\obj\Debug\ArcConfig.exe
 C:\Users\Tanuki\Documents\SharpDevelop Projects\ArcConfig\ArcConfig\obj\Debug\ArcConfig.pdb

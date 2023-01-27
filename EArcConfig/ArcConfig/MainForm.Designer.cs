@@ -92,6 +92,9 @@ namespace ArcConfig
 		private System.Windows.Forms.ToolStripButton toolStripButton7;
 		private System.Windows.Forms.Button buttonClear;
 		private System.Windows.Forms.GroupBox groupBox1;
+		private System.Windows.Forms.ToolStripSeparator toolStripSeparator9;
+		private System.Windows.Forms.ToolStripMenuItem addForALLToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem delByALLToolStripMenuItem;
 		
 		/// <summary>
 		/// Disposes resources used by the form.
@@ -170,6 +173,9 @@ namespace ArcConfig
 			this.graphicsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
 			this.exportDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
+			this.addForALLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.delByALLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.tabPage3 = new System.Windows.Forms.TabPage();
 			this.splitContainer4 = new System.Windows.Forms.SplitContainer();
 			this.treeViewS = new System.Windows.Forms.TreeView();
@@ -763,30 +769,52 @@ namespace ArcConfig
 			this.contextMenuStripP.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
 			this.graphicsToolStripMenuItem,
 			this.toolStripSeparator5,
-			this.exportDataToolStripMenuItem});
+			this.exportDataToolStripMenuItem,
+			this.toolStripSeparator9,
+			this.addForALLToolStripMenuItem,
+			this.delByALLToolStripMenuItem});
 			this.contextMenuStripP.Name = "contextMenuStripP";
-			this.contextMenuStripP.Size = new System.Drawing.Size(135, 54);
+			this.contextMenuStripP.Size = new System.Drawing.Size(184, 126);
 			// 
 			// graphicsToolStripMenuItem
 			// 
 			this.graphicsToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("graphicsToolStripMenuItem.Image")));
 			this.graphicsToolStripMenuItem.Name = "graphicsToolStripMenuItem";
-			this.graphicsToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+			this.graphicsToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
 			this.graphicsToolStripMenuItem.Text = "Graphics";
 			this.graphicsToolStripMenuItem.Click += new System.EventHandler(this.GraphicsToolStripMenuItemClick);
 			// 
 			// toolStripSeparator5
 			// 
 			this.toolStripSeparator5.Name = "toolStripSeparator5";
-			this.toolStripSeparator5.Size = new System.Drawing.Size(131, 6);
+			this.toolStripSeparator5.Size = new System.Drawing.Size(180, 6);
 			// 
 			// exportDataToolStripMenuItem
 			// 
 			this.exportDataToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("exportDataToolStripMenuItem.Image")));
 			this.exportDataToolStripMenuItem.Name = "exportDataToolStripMenuItem";
-			this.exportDataToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+			this.exportDataToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
 			this.exportDataToolStripMenuItem.Text = "Export Data";
 			this.exportDataToolStripMenuItem.Click += new System.EventHandler(this.ExportDataToolStripMenuItemClick);
+			// 
+			// toolStripSeparator9
+			// 
+			this.toolStripSeparator9.Name = "toolStripSeparator9";
+			this.toolStripSeparator9.Size = new System.Drawing.Size(180, 6);
+			// 
+			// addForALLToolStripMenuItem
+			// 
+			this.addForALLToolStripMenuItem.Name = "addForALLToolStripMenuItem";
+			this.addForALLToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+			this.addForALLToolStripMenuItem.Text = "Add for EVERYONE";
+			this.addForALLToolStripMenuItem.Click += new System.EventHandler(this.AddForALLToolStripMenuItemClick);
+			// 
+			// delByALLToolStripMenuItem
+			// 
+			this.delByALLToolStripMenuItem.Name = "delByALLToolStripMenuItem";
+			this.delByALLToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+			this.delByALLToolStripMenuItem.Text = "Delete by EVERYONE";
+			this.delByALLToolStripMenuItem.Click += new System.EventHandler(this.DelByALLToolStripMenuItemClick);
 			// 
 			// tabPage3
 			// 
