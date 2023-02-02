@@ -419,16 +419,12 @@ namespace ArcConfig
 
       // Объект для выполнения запросов к базе данных
       OdbcCommand cmd0 = new OdbcCommand();
-      OdbcDataReader reader = null ;
-
       cmd0.Connection=this._conn;
-      
       
       string stSchema="";
       if (_OptionSchemaName>0) {
         stSchema=OptionSchemaMain + "." ;
       }      
-      
 
       string sl1= ""+
 "Insert into "+stSchema+"ARC_SUBSYST_PROFILE (ID, ID_TBLLST, ID_GINFO, IS_WRITEON, STACK_NAME, LAST_UPDATE, IS_VIEWABLE)" +

@@ -759,7 +759,7 @@ namespace ArcConfig
            column4.CellTemplate = new DataGridViewCheckBoxCell();   */
 
           DataGridViewCheckBoxColumn column4 = new DataGridViewCheckBoxColumn();
-          column4.HeaderText = "Profile=" +arr[0] + " , " + arr[3] + ", " + arr[4] + " (" + arr[1] + ")" ;
+          column4.HeaderText = "Profile [" +arr[0] + "] , " + arr[3] + ", " + arr[4] + " (" + arr[1] + ")" ;
           column4.TrueValue = true;
           column4.FalseValue = false;
           column4.Name = arr[1];
@@ -3929,147 +3929,265 @@ void OracleStat ( )
         }
         return ;
     }
-		void AddForALLToolStripMenuItemClick(object sender, EventArgs e)
-		{
-			//
-	        int selRowNum , selColNum ; // = dataGridViewP.CurrentCell.RowIndex;
-            selRowNum = dataGridViewP.CurrentCell.RowIndex; //mouseLocation.RowIndex ;
-            selColNum = dataGridViewP.CurrentCell.ColumnIndex ; //mouseLocation.ColumnIndex ;
+    void AddForALLToolStripMenuItemClick(object sender, EventArgs e)
+    {
+      //
+      // Объект для выполнения запросов к базе данных
+      OdbcCommand cmd0 = new OdbcCommand();
+      OdbcDataReader reader = null ;
+      cmd0.Connection=this._conn;
 
-            if (selRowNum<0) return ;
-            // group id name type {}
-            if (selColNum<=3) return ;
+      int selRowNum , selColNum ; // = dataGridViewP.CurrentCell.RowIndex;
+      selRowNum = dataGridViewP.CurrentCell.RowIndex; //mouseLocation.RowIndex ;
+      selColNum = dataGridViewP.CurrentCell.ColumnIndex ; //mouseLocation.ColumnIndex ;
 
-            //Получить Имя выделенного элемента
-            string id_parent=treeViewA.SelectedNode.Name;
-            if (id_parent=="0") return ;
-            string id_tbl =Convert.ToString(treeViewA.SelectedNode.Tag) ;
-            //AddLogString("AddForALL=id_tbl=" + id_tbl);
-            if (id_tbl=="0" || id_tbl=="") return ;
+      if (selRowNum<0) return ;
+      // group id name type {}
+      if (selColNum<=3) return ;
 
-            DialogResult result = MessageBox.Show ("Включить архивы у всех параметров ?",
-                                               "Включение архивов....",
-                                               MessageBoxButtons.YesNo,
-                                               MessageBoxIcon.Question,
-                                               MessageBoxDefaultButton.Button2);
-            if (result == DialogResult.No)
-            {
-            	return ;
-            }
- 
-            int flag = 0 ; // флаг для алгоритма
-            int sflag = 0 ; // число вкл архивов
-            //А теперь простой пройдемся циклом по всем ячейкам
-            for (int i = 0 ; i < dataGridViewP.Rows.Count; ++i)
-            {
-            	flag = 0 ;
-            	object obj1=dataGridViewP.Rows[i].Cells[selColNum].Value ;
-                try
-                {
-                  /*
-                    unchecked   true   - включение
-                    checked false   - выключение
-                    false  true  - включение
-                    true false - выключение
-                  */
+      //Получить Имя выделенного элемента
+      string id_parent=treeViewA.SelectedNode.Name;
+      if (id_parent=="0") return ;
+      string id_tbl =Convert.ToString(treeViewA.SelectedNode.Tag) ;
+      //AddLogString("AddForALL=id_tbl=" + id_tbl);
+      if (id_tbl=="0" || id_tbl=="") return ;
 
-                 // если ячейка Unchecked - активация
-                 if (  obj1.ToString()=="Unchecked" ) { flag = 1 ; }
-                 if (  obj1.ToString()=="False" ) { flag = 1 ; }
-               }
-               catch (Exception ex1)
-               {
-               	continue ;
-               }
-               if ( flag == 1 ) {
-               	 int ret2 = ArcAdd( dataGridViewP, i , selColNum) ;
-               	 if (ret2>=0) sflag++;
-               	 else AddLogString("AddForALL=(" + i.ToString() + ")= " + ret2.ToString() );
-               }
-            	
-            } 
-            
-            if ( sflag >0 ) {
-            	MessageBox.Show (" Включено архивов = " + sflag.ToString() + "\n" +
-            	                 " Необходимо обновить вкладку 'Параметры'",
-                                 "Включение архивов....",
-                                 MessageBoxButtons.OK,
-                                 MessageBoxIcon.Asterisk);            	
-            	tabControlAP.SelectTab(0);
-                //tabControlAP.SelectedIndex=0;
-            }
-	
-		}
-		void DelByALLToolStripMenuItemClick(object sender, EventArgs e)
-		{
-			//
-	        int selRowNum , selColNum ; // = dataGridViewP.CurrentCell.RowIndex;
-            selRowNum = dataGridViewP.CurrentCell.RowIndex; //mouseLocation.RowIndex ;
-            selColNum = dataGridViewP.CurrentCell.ColumnIndex ; //mouseLocation.ColumnIndex ;
+      DialogResult result = MessageBox.Show ("Включить архивы у всех параметров ?",
+                                         "Включение архивов....",
+                                         MessageBoxButtons.YesNo,
+                                         MessageBoxIcon.Question,
+                                         MessageBoxDefaultButton.Button2);
+      if (result == DialogResult.No)
+      {
+        return ;
+      }
 
-            if (selRowNum<0) return ;
-            // group id name type {}
-            if (selColNum<=3) return ;
+      string stName = "" ;
+      if (OptionSchemaName>0) {
+         stName=OptionSchemaMain + "." ;
+      }
 
-            //Получить Имя выделенного элемента
-            string id_parent=treeViewA.SelectedNode.Name;
-            if (id_parent=="0") return ;
-            string id_tbl =Convert.ToString(treeViewA.SelectedNode.Tag) ;
-            //AddLogString("AddForALL=id_tbl=" + id_tbl);
-            if (id_tbl=="0" || id_tbl=="") return ;
+      string IDGINFO = dataGridViewP.Columns[selColNum].Name ;
 
-            DialogResult result = MessageBox.Show ("Отключить архивы у всех параметров ?",
-                                               "Отключение архивов....",
-                                               MessageBoxButtons.YesNo,
-                                               MessageBoxIcon.Question,
-                                               MessageBoxDefaultButton.Button2);
-            if (result == DialogResult.No)
-            {
-            	return ;
-            }
-            
-            int flag = 0 ; // флаг для алгоритма
-            int sflag = 0 ; // число вкл архивов
-            //А теперь простой пройдемся циклом по всем ячейкам
-            for (int i = 0 ; i < dataGridViewP.Rows.Count; ++i)
-            {
-            	flag = 0 ;
-            	object obj1=dataGridViewP.Rows[i].Cells[selColNum].Value ;
-                try
-                {
-                  /*
-                    unchecked   true   - включение
-                    checked false   - выключение
-                    false  true  - включение
-                    true false - выключение
-                  */
+      cmd0.CommandText="select sg.DEFINE_ALIAS from "+stName+"arc_ginfo ag, "+stName+"sys_gtopt sg" +
+" where ag.ID_GTOPT=sg.ID and ag.id=" + IDGINFO ;
+      try
+      {
+        reader = cmd0.ExecuteReader();
+      }
+      catch (Exception ex1)
+      {
+        AddLogString("AddForALL =" + cmd0.CommandText + "=" + ex1.Message);
+      }
 
-                 // если ячейка Unchecked - активация
-                 if (  obj1.ToString()=="Checked" ) { flag = 1 ; }
-                 if (  obj1.ToString()=="True" ) { flag = 1 ; }
-               }
-               catch (Exception ex1)
-               {
-               	continue ;
-               }
-               if ( flag == 1 ) {
-               	 int ret2 = ArcDel( dataGridViewP, i , selColNum) ;
-               	 if (ret2>=0) sflag++;
-               	 else AddLogString("DelByALL=(" + i.ToString() + ")= " + ret2.ToString() );
-               }
-            	
-            } 
-            
-            if ( sflag >0 ) {
-            	MessageBox.Show (" Отключено архивов = " + sflag.ToString() + "\n" +
-            	                 " Необходимо обновить вкладку 'Параметры'",
-                                 "Отключение архивов....",
-                                 MessageBoxButtons.OK,
-                                 MessageBoxIcon.Asterisk);            	
-            	tabControlAP.SelectTab(0);
-                //tabControlAP.SelectedIndex=0;
-            }
-		}
+      string DEFINE_ALIAS="";
+      if (!reader.IsClosed )
+       if (reader.HasRows) {
+        while (reader.Read())
+        {
+          DEFINE_ALIAS = GetTypeValue(ref reader, 0).ToUpper() ;
+          break ;
+        } // while
+        reader.Close();
+       }
+
+      int bool_flag = 0 ;
+      if (DEFINE_ALIAS.IndexOf("BOOL")>=0) {
+        bool_flag = 1 ;
+      }
+
+      tabControlAP.Enabled = false ;
+      int flag = 0 ; // флаг для алгоритма
+      int sflag = 0 ; // число вкл архивов
+      //А теперь простой пройдемся циклом по всем ячейкам
+      for (int i = 0 ; i < dataGridViewP.Rows.Count; ++i)
+      {
+        string typestr = "";
+        object typeobj=dataGridViewP.Rows[i].Cells[selColNum-1].Value ;
+        try
+        {
+          typestr=typeobj.ToString();
+        }
+        catch (Exception ex1)
+        {
+          ;
+        }
+
+        if ( typestr=="ТС" || typestr=="ТУ" ) {
+          if (bool_flag == 0) continue ;
+        }
+        if ( typestr=="ТИ" ) {
+          if (bool_flag == 1) continue ;
+        }
+
+        flag = 0 ;
+        object obj1=dataGridViewP.Rows[i].Cells[selColNum].Value ;
+        try
+        {
+            /*
+              unchecked   true   - включение
+              checked false   - выключение
+              false  true  - включение
+              true false - выключение
+            */
+
+           // если ячейка Unchecked - активация
+           if (  obj1.ToString()=="Unchecked" ) { flag = 1 ; }
+           if (  obj1.ToString()=="False" ) { flag = 1 ; }
+        }
+        catch (Exception ex1)
+        {
+          continue ;
+        }
+        if ( flag == 1 ) {
+           int ret2 = ArcAdd( dataGridViewP, i , selColNum) ;
+           if (ret2>=0) sflag++;
+           else AddLogString("AddForALL=(" + i.ToString() + ")= " + ret2.ToString() );
+        }
+
+      }
+      tabControlAP.Enabled = true ;
+
+      if ( sflag >0 ) {
+        MessageBox.Show (" Включено архивов = " + sflag.ToString() + "\n" +
+                         " Необходимо обновить вкладку 'Параметры'",
+                           "Включение архивов....",
+                           MessageBoxButtons.OK,
+                           MessageBoxIcon.Asterisk);
+        tabControlAP.SelectTab(0);
+        //tabControlAP.SelectedIndex=0;
+      }
+
+    }
+    void DelByALLToolStripMenuItemClick(object sender, EventArgs e)
+    {
+      // Объект для выполнения запросов к базе данных
+      OdbcCommand cmd0 = new OdbcCommand();
+      OdbcDataReader reader = null ;
+      cmd0.Connection=this._conn;
+
+      //
+      int selRowNum , selColNum ; // = dataGridViewP.CurrentCell.RowIndex;
+      selRowNum = dataGridViewP.CurrentCell.RowIndex; //mouseLocation.RowIndex ;
+      selColNum = dataGridViewP.CurrentCell.ColumnIndex ; //mouseLocation.ColumnIndex ;
+
+      if (selRowNum<0) return ;
+      // group id name type {}
+      if (selColNum<=3) return ;
+
+      //Получить Имя выделенного элемента
+      string id_parent=treeViewA.SelectedNode.Name;
+      if (id_parent=="0") return ;
+      string id_tbl =Convert.ToString(treeViewA.SelectedNode.Tag) ;
+      //AddLogString("AddForALL=id_tbl=" + id_tbl);
+      if (id_tbl=="0" || id_tbl=="") return ;
+
+      DialogResult result = MessageBox.Show ("Отключить архивы у всех параметров ?",
+                                         "Отключение архивов....",
+                                         MessageBoxButtons.YesNo,
+                                         MessageBoxIcon.Question,
+                                         MessageBoxDefaultButton.Button2);
+      if (result == DialogResult.No)
+      {
+        return ;
+      }
+
+      string stName = "" ;
+      if (OptionSchemaName>0) {
+         stName=OptionSchemaMain + "." ;
+      }
+
+      string IDGINFO = dataGridViewP.Columns[selColNum].Name ;
+
+      cmd0.CommandText="select sg.DEFINE_ALIAS from "+stName+"arc_ginfo ag, "+stName+"sys_gtopt sg" +
+" where ag.ID_GTOPT=sg.ID and ag.id=" + IDGINFO ;
+      try
+      {
+        reader = cmd0.ExecuteReader();
+      }
+      catch (Exception ex1)
+      {
+        AddLogString("DelByALL =" + cmd0.CommandText + "=" + ex1.Message);
+      }
+
+      string DEFINE_ALIAS="";
+      if (!reader.IsClosed )
+       if (reader.HasRows) {
+        while (reader.Read())
+        {
+          DEFINE_ALIAS = GetTypeValue(ref reader, 0).ToUpper() ;
+          break ;
+        } // while
+        reader.Close();
+       }
+
+      int bool_flag = 0 ;
+      if (DEFINE_ALIAS.IndexOf("BOOL")>=0) {
+        bool_flag = 1 ;
+      }
+
+      tabControlAP.Enabled = false ;
+      int flag = 0 ; // флаг для алгоритма
+      int sflag = 0 ; // число вкл архивов
+      //А теперь простой пройдемся циклом по всем ячейкам
+      for (int i = 0 ; i < dataGridViewP.Rows.Count; ++i)
+      {
+        string typestr = "";
+        object typeobj=dataGridViewP.Rows[i].Cells[selColNum-1].Value ;
+        try
+        {
+          typestr=typeobj.ToString();
+        }
+        catch (Exception ex1)
+        {
+          ;
+        }
+
+        if ( typestr=="ТС" || typestr=="ТУ" ) {
+          if (bool_flag == 0) continue ;
+        }
+        if ( typestr=="ТИ" ) {
+          if (bool_flag == 1) continue ;
+        }
+
+        flag = 0 ;
+        object obj1=dataGridViewP.Rows[i].Cells[selColNum].Value ;
+        try
+        {
+            /*
+              unchecked   true   - включение
+              checked false   - выключение
+              false  true  - включение
+              true false - выключение
+            */
+
+           // если ячейка Unchecked - активация
+           if (  obj1.ToString()=="Checked" ) { flag = 1 ; }
+           if (  obj1.ToString()=="True" ) { flag = 1 ; }
+        }
+        catch (Exception ex1)
+        {
+          continue ;
+        }
+        if ( flag == 1 ) {
+           int ret2 = ArcDel( dataGridViewP, i , selColNum) ;
+           if (ret2>=0) sflag++;
+           else AddLogString("DelByALL=(" + i.ToString() + ")= " + ret2.ToString() );
+        }
+
+      }
+      tabControlAP.Enabled = true ;
+
+      if ( sflag >0 ) {
+        MessageBox.Show (" Отключено архивов = " + sflag.ToString() + "\n" +
+                         " Необходимо обновить вкладку 'Параметры'",
+                           "Отключение архивов....",
+                           MessageBoxButtons.OK,
+                           MessageBoxIcon.Asterisk);
+        tabControlAP.SelectTab(0);
+        //tabControlAP.SelectedIndex=0;
+      }
+    }
 
 
 
