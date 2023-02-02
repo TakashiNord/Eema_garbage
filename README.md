@@ -26,12 +26,6 @@
 
   **E_AGo** -  эскиз проект.(C) Reverse.
 
-  **EmaRsdu** -  эскиз Help chm-формат.(chm)
-
-  **DGhelp** -  эскиз DG chm-формат.(chm).
-  
-  **RabbitMQhelp** -  эскиз Rabbit chm-формат.(chm)
-  
   **km5d** -  эскиз проект.(C) счетчики km5d.
 
   **CviPanelParser2022v1** -  эскиз проект.(C) Cvi Panel Parser to json 2022 v1.
