@@ -1,4 +1,0 @@
-        string tempPath = System.IO.Path.GetTempPath() + "test.chm";
-        File.WriteAllBytes(tempPath, ConsoleApplication25.Resource1.HelpFile);
-        Process.Start(tempPath).WaitForExit();
-        File.Delete(tempPath);
