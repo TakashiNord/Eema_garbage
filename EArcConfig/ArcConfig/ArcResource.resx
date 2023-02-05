@@ -321,15 +321,15 @@ WHERE  {0}=ARC_SUBSYST_PROFILE.ID_TBLLST</value>
   <data name="ARC_SUBSYST_PROFILE2" xml:space="preserve">
     <value>SELECT  ARC_SUBSYST_PROFILE.ID, ARC_SUBSYST_PROFILE.ID_GINFO, ARC_SUBSYST_PROFILE.IS_WRITEON, ARC_GINFO.NAME, SYS_GTOPT.NAME
 FROM  ARC_SUBSYST_PROFILE , ARC_GINFO, SYS_GTOPT
-WHERE {0}=ARC_SUBSYST_PROFILE.ID_TBLLST
-AND ARC_SUBSYST_PROFILE.ID_GINFO=ARC_GINFO.ID
-AND SYS_GTOPT.ID=ARC_GINFO.ID_GTOPT </value>
+WHERE ARC_SUBSYST_PROFILE.ID_GINFO=ARC_GINFO.ID
+AND SYS_GTOPT.ID=ARC_GINFO.ID_GTOPT 
+AND ARC_SUBSYST_PROFILE.ID_TBLLST={0}</value>
   </data>
   <data name="ARH_SYSTBLLST1" xml:space="preserve">
-    <value>SELECT upper(table_name) , lnk.ID_LSTTBL
+    <value>SELECT upper(lst.table_name) , lnk.ID_LSTTBL
 FROM sys_tbllst lst, sys_tbllnk lnk, sys_otyp t
-WHERE lnk.id_lsttbl ={0}
- AND lnk.id_dsttbl = lst.ID  AND lst.id_type = t.ID AND t.define_alias LIKE 'ARH'</value>
+WHERE lnk.id_dsttbl = lst.ID  AND lst.id_type = t.ID AND t.define_alias LIKE 'ARH'
+ AND  lnk.id_lsttbl = {0}</value>
   </data>
   <data name="TABLEOPTION" xml:space="preserve">
     <value>SELECT 'min' as num, TIME1970 as T FROM {0} WHERE TIME1970 = (SELECT MIN(TIME1970) FROM {0} )
@@ -583,6 +583,24 @@ SELECT
   ,SYS_ATYP.NAME as \"Archive Type\" 
 FROM SYS_GTOPT , SYS_ATYP, SYS_GTYP 
 WHERE SYS_GTOPT.ID_ATYPE=SYS_ATYP.ID  and SYS_GTYP.id=SYS_GTOPT.ID_GTYPE 
+</value>
+  </data>
+  <data name="ARH_SYSTBLLST3" xml:space="preserve">
+    <value>select DISTINCT y.ID id_tbllst, sch.SCHEMA_NAME, ast.DEFINE_ALIAS
+from sys_tbllst x, sys_tbllst y, sys_tbllnk st, sys_otyp ot, arc_db_schema sch, arc_services_info si, ARC_STORAGE_TYPE ast
+where y.ID = st.id_lsttbl
+                and x.ID = st.id_dsttbl
+                and x.id_type = ot.id
+                and ot.define_alias = 'ARH'
+                and si.ID_DB_SCHEMA = sch.ID
+                and si.ID_LSTTBL = y.ID
+                and ast.ID = sch.ID_STORAGE_TYPE
+                and y.ID = {0}
+              order by y.id</value>
+  </data>
+  <data name="ARC_SUBSYST_PROFILE_ALL" xml:space="preserve">
+    <value>SELECT  asp.ID,asp.ID_TBLLST,asp.ID_GINFO
+FROM  ARC_SUBSYST_PROFILE asp
 </value>
   </data>
 </root>

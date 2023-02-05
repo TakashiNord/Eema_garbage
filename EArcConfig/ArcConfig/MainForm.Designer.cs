@@ -551,6 +551,7 @@ namespace ArcConfig
 			this.treeViewA.HideSelection = false;
 			this.treeViewA.Location = new System.Drawing.Point(0, 0);
 			this.treeViewA.Name = "treeViewA";
+			this.treeViewA.ShowNodeToolTips = true;
 			this.treeViewA.Size = new System.Drawing.Size(290, 544);
 			this.treeViewA.TabIndex = 0;
 			this.treeViewA.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.TreeViewAAfterSelect);
@@ -774,7 +775,7 @@ namespace ArcConfig
 			this.addForALLToolStripMenuItem,
 			this.delByALLToolStripMenuItem});
 			this.contextMenuStripP.Name = "contextMenuStripP";
-			this.contextMenuStripP.Size = new System.Drawing.Size(184, 126);
+			this.contextMenuStripP.Size = new System.Drawing.Size(184, 104);
 			// 
 			// graphicsToolStripMenuItem
 			// 
