@@ -53,6 +53,23 @@ namespace ArcConfig
         get { return checkBox7.Checked; }
         set { checkBox7.Checked = value; }
     }
+    public string _OptionTableConntime
+    {
+        get { 
+    	  int v0 = 30;
+    	  if (int.TryParse(textBox6.Text, out v0))
+          {
+    	    if (v0<0) v0 = 30 ;
+    	    if (v0==0) v0 = 30 ;
+    	    if (v0>600) v0 = 30 ;          		    
+    	  } else { 
+    	    v0 = 30 ;   
+    	  }
+          textBox6.Text = v0.ToString();		
+    	  return textBox6.Text;
+    	}
+    	set { textBox6.Text = value ; }
+    }    
     
 		public FormOption()
 		{

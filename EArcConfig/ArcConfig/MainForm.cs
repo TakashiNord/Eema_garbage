@@ -62,6 +62,7 @@ namespace ArcConfig
     public int OptionSchemaName = 0;
     public int OptionTableDelete = 0;
     public int OptionTableDisable = 0;
+    public int OptionTableConntime = 30;
 
 
     public MainForm()
@@ -3154,7 +3155,8 @@ int ArcAdd(object sender, int selRowNum , int selColNum)
 
    cmd0.Parameters.Add(param4);
 
-   cmd0.CommandTimeout = 90;
+   cmd0.CommandTimeout = OptionTableConntime; // 30..90
+   AddLogString("ArcAdd OptionTableConntime = " + OptionTableConntime.ToString() );
 
    try
    {
@@ -3356,7 +3358,9 @@ int ArcDel(object sender, int selRowNum , int selColNum)
 
       AddLogString("ArcDel Вызов процедуры arc_arh_pkg.drop_arh (parnum,sname) ..");
 
-      cmd0.CommandTimeout = 90;
+      cmd0.CommandTimeout = OptionTableConntime; // 30..90
+      
+      AddLogString("ArcDel CommandTimeout =  " + OptionTableConntime.ToString() );
 
       try
       {
@@ -3690,7 +3694,8 @@ void OracleStat ( )
        else  ofrm._OptionTableDelete = true ;
        if (OptionTableDisable==0) ofrm._OptionTableDisable = false ;
        else  ofrm._OptionTableDisable = true ;
-
+       ofrm._OptionTableConntime = OptionTableConntime.ToString() ;
+       
        ofrm.ShowDialog();
 
        OptionFullDelete=0 ;
@@ -3707,8 +3712,10 @@ void OracleStat ( )
        if (ofrm._OptionTableDelete) OptionTableDelete=1 ;
        OptionTableDisable=0 ;
        if (ofrm._OptionTableDisable) OptionTableDisable=1 ;
-
-
+       int val0 = 30 ;
+       if ( int.TryParse(ofrm._OptionTableConntime, out val0 ) )
+           OptionTableConntime = val0 ;
+       else OptionTableConntime = 30 ;
 
        ofrm.Dispose();
     }
