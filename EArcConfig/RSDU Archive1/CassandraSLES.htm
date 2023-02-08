@@ -1,0 +1,2271 @@
+﻿<html>
+
+<head>
+<title>Конфигурация Cassandra</title>
+
+<meta http-equiv=Content-Type content="text/html; charset=UTF-8">
+<meta name=Generator content="Microsoft Word 14 (filtered)">
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Courier;
+	panose-1:2 7 4 9 2 2 5 2 4 4;}
+@font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:"Bookshelf Symbol 7";
+	panose-1:5 1 1 1 1 1 1 1 1 1;}
+@font-face
+	{font-family:"Calibri Light";
+	panose-1:2 15 3 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:"Segoe UI";
+	panose-1:2 11 5 2 4 2 4 2 2 3;}
+@font-face
+	{font-family:"Wingdings 3";
+	panose-1:5 4 1 2 1 8 7 7 7 7;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	text-align:justify;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+h1
+	{margin-top:0cm;
+	margin-right:164.45pt;
+	margin-bottom:12.0pt;
+	margin-left:14.2pt;
+	text-indent:0cm;
+	line-height:115%;
+	page-break-before:always;
+	font-size:16.0pt;
+	font-family:"Arial","sans-serif";
+	color:#17365D;
+	font-weight:bold;}
+h2
+	{mso-style-link:"Заголовок 2 Знак";
+	margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:12.0pt;
+	margin-left:0cm;
+	text-indent:0cm;
+	line-height:115%;
+	page-break-after:avoid;
+	font-size:14.0pt;
+	font-family:"Arial","sans-serif";
+	font-weight:bold;}
+h3
+	{mso-style-link:"Заголовок 3 Знак";
+	margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	text-indent:0cm;
+	line-height:115%;
+	page-break-after:avoid;
+	font-size:13.0pt;
+	font-family:"Arial","sans-serif";
+	font-weight:bold;}
+h4
+	{mso-style-link:"Заголовок 4 Знак";
+	margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:0cm;
+	text-indent:0cm;
+	line-height:115%;
+	page-break-after:avoid;
+	font-size:12.5pt;
+	font-family:"Arial","sans-serif";
+	font-weight:bold;}
+h5
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:0cm;
+	text-indent:0cm;
+	line-height:115%;
+	page-break-after:avoid;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";
+	font-weight:bold;}
+h6
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:57.55pt;
+	text-align:justify;
+	text-indent:-57.55pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";
+	font-weight:normal;}
+p.MsoHeading7, li.MsoHeading7, div.MsoHeading7
+	{margin-top:0cm;
+	margin-right:164.45pt;
+	margin-bottom:12.0pt;
+	margin-left:14.2pt;
+	text-indent:0cm;
+	line-height:115%;
+	page-break-before:always;
+	font-size:16.0pt;
+	font-family:"Arial","sans-serif";
+	color:#17365D;
+	font-weight:bold;}
+p.MsoHeading8, li.MsoHeading8, div.MsoHeading8
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:12.0pt;
+	margin-left:0cm;
+	text-indent:0cm;
+	line-height:115%;
+	page-break-after:avoid;
+	font-size:14.0pt;
+	font-family:"Arial","sans-serif";
+	font-weight:bold;}
+p.MsoHeading9, li.MsoHeading9, div.MsoHeading9
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	text-indent:0cm;
+	line-height:115%;
+	page-break-after:avoid;
+	font-size:13.0pt;
+	font-family:"Arial","sans-serif";
+	font-weight:bold;}
+p.MsoToc1, li.MsoToc1, div.MsoToc1
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoToc2, li.MsoToc2, div.MsoToc2
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:21.55pt;
+	margin-bottom:.0001pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoToc3, li.MsoToc3, div.MsoToc3
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:48.2pt;
+	margin-bottom:.0001pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoToc4, li.MsoToc4, div.MsoToc4
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:61.25pt;
+	margin-bottom:.0001pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoToc5, li.MsoToc5, div.MsoToc5
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:44.0pt;
+	text-align:justify;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoToc6, li.MsoToc6, div.MsoToc6
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:55.0pt;
+	text-align:justify;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoToc7, li.MsoToc7, div.MsoToc7
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:66.0pt;
+	text-align:justify;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoToc8, li.MsoToc8, div.MsoToc8
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:77.0pt;
+	text-align:justify;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoToc9, li.MsoToc9, div.MsoToc9
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:88.0pt;
+	text-align:justify;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoNormalIndent, li.MsoNormalIndent, div.MsoNormalIndent
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:35.4pt;
+	text-align:justify;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoFootnoteText, li.MsoFootnoteText, div.MsoFootnoteText
+	{mso-style-link:"Текст сноски Знак";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	line-height:115%;
+	font-size:11.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoCommentText, li.MsoCommentText, div.MsoCommentText
+	{mso-style-link:"Текст примечания Знак";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	text-align:justify;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoHeader, li.MsoHeader, div.MsoHeader
+	{mso-style-link:"Верхний колонтитул Знак";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	text-align:justify;
+	line-height:115%;
+	font-size:9.0pt;
+	font-family:"Arial","sans-serif";
+	font-style:italic;}
+p.MsoFooter, li.MsoFooter, div.MsoFooter
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	text-align:justify;
+	line-height:115%;
+	font-size:9.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoCaption, li.MsoCaption, div.MsoCaption
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:12.0pt;
+	margin-left:0cm;
+	text-align:center;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";
+	font-weight:bold;}
+span.MsoFootnoteReference
+	{vertical-align:super;}
+span.MsoPageNumber
+	{font-family:"Arial","sans-serif";
+	font-weight:bold;}
+p.MsoEndnoteText, li.MsoEndnoteText, div.MsoEndnoteText
+	{mso-style-link:"Текст концевой сноски Знак";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoList, li.MsoList, div.MsoList
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:14.15pt;
+	text-align:justify;
+	text-indent:-14.15pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoListCxSpFirst, li.MsoListCxSpFirst, div.MsoListCxSpFirst
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:14.15pt;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-indent:-14.15pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoListCxSpMiddle, li.MsoListCxSpMiddle, div.MsoListCxSpMiddle
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:14.15pt;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-indent:-14.15pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoListCxSpLast, li.MsoListCxSpLast, div.MsoListCxSpLast
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:14.15pt;
+	text-align:justify;
+	text-indent:-14.15pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoListBullet, li.MsoListBullet, div.MsoListBullet
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:32.05pt;
+	text-align:justify;
+	text-indent:-17.85pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+p.MsoListNumber, li.MsoListNumber, div.MsoListNumber
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:159.75pt;
+	text-align:justify;
+	text-indent:-18.0pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoListBullet2, li.MsoListBullet2, div.MsoListBullet2
+	{mso-style-name:"Маркированный список 2\,р_мар1";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:32.15pt;
+	text-align:justify;
+	text-indent:-18.0pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoListBullet3, li.MsoListBullet3, div.MsoListBullet3
+	{mso-style-name:"Маркированный список 3\,р_мар2";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:46.3pt;
+	text-align:justify;
+	text-indent:-18.0pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoListBullet4, li.MsoListBullet4, div.MsoListBullet4
+	{mso-style-name:"Маркированный список 4\,р_мар3";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:60.45pt;
+	text-align:justify;
+	text-indent:-18.0pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoListNumber2, li.MsoListNumber2, div.MsoListNumber2
+	{mso-style-name:"Нумерованный список 2\,р_нум1";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:32.15pt;
+	text-align:justify;
+	text-indent:-18.0pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoListNumber3, li.MsoListNumber3, div.MsoListNumber3
+	{mso-style-name:"Нумерованный список 3\,р_нум2";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:46.3pt;
+	text-align:justify;
+	text-indent:-18.0pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoListNumber4, li.MsoListNumber4, div.MsoListNumber4
+	{mso-style-name:"Нумерованный список 4\,р_нум3";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:60.45pt;
+	text-align:justify;
+	text-indent:-18.0pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoClosing, li.MsoClosing, div.MsoClosing
+	{mso-style-link:"Прощание Знак";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:212.6pt;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoBodyText, li.MsoBodyText, div.MsoBodyText
+	{mso-style-link:"Основной текст Знак";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	line-height:115%;
+	font-size:8.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoBodyTextIndent, li.MsoBodyTextIndent, div.MsoBodyTextIndent
+	{mso-style-link:"Основной текст с отступом Знак";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	text-align:justify;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";
+	layout-grid-mode:line;}
+p.MsoListContinue2, li.MsoListContinue2, div.MsoListContinue2
+	{mso-style-name:"Продолжение списка 2\,р_прод1";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:32.05pt;
+	text-align:justify;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoListContinue3, li.MsoListContinue3, div.MsoListContinue3
+	{mso-style-name:"Продолжение списка 3\,р_прод2";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:46.2pt;
+	text-align:justify;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoListContinue4, li.MsoListContinue4, div.MsoListContinue4
+	{mso-style-name:"Продолжение списка 4\,р_прод3";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:60.4pt;
+	text-align:justify;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoBodyText2, li.MsoBodyText2, div.MsoBodyText2
+	{mso-style-link:"Основной текст 2 Знак";
+	margin-top:3.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:0cm;
+	line-height:115%;
+	font-size:9.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoBodyText3, li.MsoBodyText3, div.MsoBodyText3
+	{mso-style-link:"Основной текст 3 Знак";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	text-align:justify;
+	line-height:115%;
+	font-size:8.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoBodyTextIndent3, li.MsoBodyTextIndent3, div.MsoBodyTextIndent3
+	{mso-style-link:"Основной текст с отступом 3 Знак";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	text-align:justify;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";
+	layout-grid-mode:line;
+	font-style:italic;}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:#954F72;
+	text-decoration:underline;}
+em
+	{font-family:Courier;
+	font-style:normal;}
+p
+	{margin-right:0cm;
+	margin-left:0cm;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+address
+	{mso-style-link:"Адрес HTML Знак";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";
+	font-style:italic;}
+kbd
+	{font-family:"Courier New";}
+p.MsoAcetate, li.MsoAcetate, div.MsoAcetate
+	{mso-style-link:"Текст выноски Знак";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	line-height:115%;
+	font-size:9.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoListParagraph, li.MsoListParagraph, div.MsoListParagraph
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:36.0pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoListParagraphCxSpFirst, li.MsoListParagraphCxSpFirst, div.MsoListParagraphCxSpFirst
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	margin-bottom:.0001pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoListParagraphCxSpMiddle, li.MsoListParagraphCxSpMiddle, div.MsoListParagraphCxSpMiddle
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	margin-bottom:.0001pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoListParagraphCxSpLast, li.MsoListParagraphCxSpLast, div.MsoListParagraphCxSpLast
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:36.0pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoQuote, li.MsoQuote, div.MsoQuote
+	{mso-style-link:"Цитата 2 Знак";
+	margin-top:10.0pt;
+	margin-right:43.2pt;
+	margin-bottom:8.0pt;
+	margin-left:43.2pt;
+	text-align:center;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";
+	color:#404040;
+	font-style:italic;}
+span.MsoSubtleEmphasis
+	{color:#404040;
+	font-style:italic;}
+span.MsoIntenseEmphasis
+	{color:#4472C4;
+	font-style:italic;}
+span.MsoBookTitle
+	{letter-spacing:.25pt;
+	font-weight:bold;
+	font-style:italic;}
+p.MsoTocHeading, li.MsoTocHeading, div.MsoTocHeading
+	{margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:14.2pt;
+	margin-bottom:.0001pt;
+	text-indent:0cm;
+	line-height:107%;
+	font-size:16.0pt;
+	font-family:"Calibri Light","sans-serif";
+	color:#2F5496;}
+p.a, li.a, div.a
+	{mso-style-name:р_дисплейсерый;
+	mso-style-link:"р_дисплейсерый Знак";
+	margin-top:0cm;
+	margin-right:5.65pt;
+	margin-bottom:0cm;
+	margin-left:5.65pt;
+	margin-bottom:.0001pt;
+	line-height:115%;
+	background:#C1C1C1;
+	border:none;
+	padding:0cm;
+	font-size:10.0pt;
+	font-family:"Courier New";}
+p.a0, li.a0, div.a0
+	{mso-style-name:Маркированный;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:155.95pt;
+	text-align:justify;
+	text-indent:-14.2pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.2, li.2, div.2
+	{mso-style-name:"Маркированный 2";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:171.0pt;
+	text-align:justify;
+	text-indent:-14.2pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.3, li.3, div.3
+	{mso-style-name:"Маркированный 3";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:186.0pt;
+	text-align:justify;
+	text-indent:-14.2pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.a1, li.a1, div.a1
+	{mso-style-name:Нумерованный;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	text-align:justify;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+span.a2
+	{mso-style-name:"Основной текст Знак";
+	mso-style-link:"Основной текст";
+	font-family:"Arial","sans-serif";}
+span.20
+	{mso-style-name:"Основной текст 2 Знак";
+	mso-style-link:"Основной текст 2";
+	font-family:"Arial","sans-serif";}
+span.30
+	{mso-style-name:"Основной текст 3 Знак";
+	mso-style-link:"Основной текст 3";
+	font-family:"Arial","sans-serif";}
+span.a3
+	{mso-style-name:"Основной текст с отступом Знак";
+	mso-style-link:"Основной текст с отступом";
+	font-family:"Arial","sans-serif";
+	layout-grid-mode:both;}
+span.31
+	{mso-style-name:"Основной текст с отступом 3 Знак";
+	mso-style-link:"Основной текст с отступом 3";
+	font-family:"Arial","sans-serif";
+	layout-grid-mode:both;
+	font-style:italic;}
+span.1
+	{mso-style-name:"Неразрешенное упоминание1";
+	color:#605E5C;
+	background:#E1DFDD;}
+p.a4, li.a4, div.a4
+	{mso-style-name:"Нумерованный список широкий";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:18.0pt;
+	text-align:justify;
+	text-indent:-18.0pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+span.a5
+	{mso-style-name:"Текст сноски Знак";
+	mso-style-link:"Текст сноски";
+	font-family:"Arial","sans-serif";}
+span.a6
+	{mso-style-name:"Текст выноски Знак";
+	mso-style-link:"Текст выноски";
+	font-family:"Arial","sans-serif";}
+p.a7, li.a7, div.a7
+	{mso-style-name:р_определение;
+	mso-style-link:"р_определение Знак";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:36.0pt;
+	text-align:justify;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.a8, li.a8, div.a8
+	{mso-style-name:"Обычный широкий";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	text-align:justify;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+span.a9
+	{mso-style-name:"р_определение Знак";
+	mso-style-link:р_определение;
+	font-family:"Arial","sans-serif";}
+span.21
+	{mso-style-name:"Заголовок 2 Знак";
+	mso-style-link:"Заголовок 2";
+	font-family:"Arial","sans-serif";
+	font-weight:bold;}
+span.32
+	{mso-style-name:"Заголовок 3 Знак";
+	mso-style-link:"Заголовок 3";
+	font-family:"Arial","sans-serif";
+	font-weight:bold;}
+span.10
+	{mso-style-name:"Неразрешенное упоминание1";
+	color:#605E5C;
+	background:#E1DFDD;}
+span.4
+	{mso-style-name:"Заголовок 4 Знак";
+	mso-style-link:"Заголовок 4";
+	font-family:"Arial","sans-serif";
+	font-weight:bold;}
+p.aa, li.aa, div.aa
+	{mso-style-name:Нумерация;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:32.2pt;
+	text-align:justify;
+	text-indent:-18.0pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+p.ab, li.ab, div.ab
+	{mso-style-name:р_верхкол;
+	mso-style-link:"р_верхкол Знак";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	line-height:115%;
+	border:none;
+	padding:0cm;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";
+	font-style:italic;}
+span.11
+	{mso-style-name:"Неразрешенное упоминание1";
+	color:#605E5C;
+	background:#E1DFDD;}
+span.ac
+	{mso-style-name:"Верхний колонтитул Знак";
+	mso-style-link:"Верхний колонтитул";
+	font-family:"Arial","sans-serif";
+	font-style:italic;}
+span.ad
+	{mso-style-name:"р_верхкол Знак";
+	mso-style-link:р_верхкол;
+	font-family:"Arial","sans-serif";
+	font-style:italic;}
+p.ae, li.ae, div.ae
+	{mso-style-name:р_марИ;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";
+	color:black;}
+p.af, li.af, div.af
+	{mso-style-name:р_табТекст;
+	mso-style-link:"р_табТекст Знак";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	line-height:115%;
+	font-size:11.0pt;
+	font-family:"Arial","sans-serif";}
+p.12, li.12, div.12
+	{mso-style-name:Стиль1;
+	mso-style-link:"Стиль1 Знак";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:14.2pt;
+	text-align:justify;
+	line-height:115%;
+	font-size:14.0pt;
+	font-family:"Arial","sans-serif";
+	color:white;
+	font-weight:bold;}
+p.13, li.13, div.13
+	{mso-style-name:р_тит1;
+	mso-style-link:"р_тит1 Знак";
+	margin-top:0cm;
+	margin-right:2.85pt;
+	margin-bottom:12.0pt;
+	margin-left:0cm;
+	line-height:115%;
+	font-size:18.0pt;
+	font-family:"Arial","sans-serif";
+	color:#17365D;
+	text-transform:uppercase;
+	font-weight:bold;}
+span.14
+	{mso-style-name:"Стиль1 Знак";
+	mso-style-link:Стиль1;
+	font-family:"Arial","sans-serif";
+	color:white;
+	font-weight:bold;}
+p.22, li.22, div.22
+	{mso-style-name:р_тит2;
+	mso-style-link:"р_тит2 Знак";
+	margin-top:0cm;
+	margin-right:2.85pt;
+	margin-bottom:12.0pt;
+	margin-left:0cm;
+	line-height:115%;
+	font-size:18.0pt;
+	font-family:"Arial","sans-serif";
+	color:#17365D;
+	font-weight:bold;}
+span.15
+	{mso-style-name:"р_тит1 Знак";
+	mso-style-link:р_тит1;
+	font-family:"Arial","sans-serif";
+	color:#17365D;
+	text-transform:uppercase;
+	font-weight:bold;}
+span.23
+	{mso-style-name:"р_тит2 Знак";
+	mso-style-link:р_тит2;
+	font-family:"Arial","sans-serif";
+	color:#17365D;
+	text-transform:none;
+	font-weight:bold;}
+p.af0, li.af0, div.af0
+	{mso-style-name:"";
+	margin-right:0cm;
+	margin-left:0cm;
+	text-indent:14.2pt;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	color:black;}
+p.af1, li.af1, div.af1
+	{mso-style-name:р_выделить;
+	mso-style-link:"р_выделить Знак";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	text-align:justify;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";
+	font-weight:bold;
+	font-style:italic;}
+p.af2, li.af2, div.af2
+	{mso-style-name:р_клав;
+	mso-style-link:"р_клав Знак";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	text-align:justify;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";
+	text-transform:uppercase;}
+span.af3
+	{mso-style-name:"р_выделить Знак";
+	mso-style-link:р_выделить;
+	font-family:"Arial","sans-serif";
+	font-weight:bold;
+	font-style:italic;}
+span.af4
+	{mso-style-name:"р_клав Знак";
+	mso-style-link:р_клав;
+	font-family:"Arial","sans-serif";
+	text-transform:uppercase;}
+span.af5
+	{mso-style-name:р_дисплей;
+	font-family:"Courier New";}
+p.af6, li.af6, div.af6
+	{mso-style-name:р_выноска;
+	mso-style-link:"р_выноска Знак";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	line-height:115%;
+	font-size:11.0pt;
+	font-family:"Arial","sans-serif";}
+span.af7
+	{mso-style-name:р_БД;
+	text-transform:uppercase;
+	font-weight:bold;
+	font-style:italic;}
+p.af8, li.af8, div.af8
+	{mso-style-name:р_примТекст;
+	mso-style-link:"р_примТекст Знак";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	text-align:justify;
+	line-height:115%;
+	font-size:11.0pt;
+	font-family:"Arial","sans-serif";}
+p.af9, li.af9, div.af9
+	{mso-style-name:р_прим;
+	mso-style-link:"р_прим Знак";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	text-align:justify;
+	line-height:115%;
+	font-size:11.0pt;
+	font-family:"Arial","sans-serif";
+	letter-spacing:1.0pt;
+	font-weight:bold;}
+span.afa
+	{mso-style-name:"р_примТекст Знак";
+	mso-style-link:р_примТекст;
+	font-family:"Arial","sans-serif";}
+span.afb
+	{mso-style-name:"р_прим Знак";
+	mso-style-link:р_прим;
+	font-family:"Arial","sans-serif";
+	letter-spacing:1.0pt;
+	font-weight:bold;}
+p.afc, li.afc, div.afc
+	{mso-style-name:р_пред;
+	mso-style-link:"р_пред Знак";
+	margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	line-height:115%;
+	page-break-after:avoid;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";
+	text-transform:uppercase;
+	letter-spacing:1.0pt;
+	font-weight:bold;}
+span.afd
+	{mso-style-name:"р_пред Знак";
+	mso-style-link:р_пред;
+	font-family:"Arial","sans-serif";
+	text-transform:uppercase;
+	letter-spacing:1.0pt;
+	font-weight:bold;}
+span.afe
+	{mso-style-name:"Текст концевой сноски Знак";
+	mso-style-link:"Текст концевой сноски";
+	font-family:"Arial","sans-serif";}
+span.aff
+	{mso-style-name:"Текст примечания Знак";
+	mso-style-link:"Текст примечания";
+	font-family:"Arial","sans-serif";}
+span.24
+	{mso-style-name:"Цитата 2 Знак";
+	mso-style-link:"Цитата 2";
+	font-family:"Arial","sans-serif";
+	color:#404040;
+	font-style:italic;}
+span.aff0
+	{mso-style-name:"р_дисплейсерый Знак";
+	mso-style-link:р_дисплейсерый;
+	font-family:"Courier New";
+	background:#C1C1C1;}
+p.aff1, li.aff1, div.aff1
+	{mso-style-name:р_содерж;
+	mso-style-link:"р_содерж Знак";
+	margin-top:0cm;
+	margin-right:7.0cm;
+	margin-bottom:24.0pt;
+	margin-left:14.2pt;
+	line-height:115%;
+	page-break-before:always;
+	font-size:16.0pt;
+	font-family:"Arial","sans-serif";
+	color:#17365D;
+	font-weight:bold;}
+span.aff2
+	{mso-style-name:"р_содерж Знак";
+	mso-style-link:р_содерж;
+	font-family:"Arial","sans-serif";
+	color:#17365D;
+	font-weight:bold;}
+p.aff3, li.aff3, div.aff3
+	{mso-style-name:р_табЗаг;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	text-align:center;
+	line-height:115%;
+	font-size:11.0pt;
+	font-family:"Arial","sans-serif";
+	font-weight:bold;}
+p.aff4, li.aff4, div.aff4
+	{mso-style-name:р_обычАбзац;
+	mso-style-link:"р_обычАбзац Знак";
+	margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	text-align:justify;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+span.aff5
+	{mso-style-name:"р_обычАбзац Знак";
+	mso-style-link:р_обычАбзац;
+	font-family:"Arial","sans-serif";}
+p.aff6, li.aff6, div.aff6
+	{mso-style-name:р_табНум;
+	mso-style-link:"р_табНум Знак";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	text-align:center;
+	line-height:115%;
+	font-size:11.0pt;
+	font-family:"Arial","sans-serif";}
+p.aff7, li.aff7, div.aff7
+	{mso-style-name:р_нумТаб;
+	mso-style-link:"р_нумТаб Знак";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	text-align:center;
+	text-indent:0cm;
+	line-height:115%;
+	font-size:9.0pt;
+	font-family:"Arial","sans-serif";}
+span.aff8
+	{mso-style-name:"р_табТекст Знак";
+	mso-style-link:р_табТекст;
+	font-family:"Arial","sans-serif";}
+span.aff9
+	{mso-style-name:"р_табНум Знак";
+	mso-style-link:р_табНум;
+	font-family:"Arial","sans-serif";}
+span.affa
+	{mso-style-name:"р_нумТаб Знак";
+	mso-style-link:р_нумТаб;
+	font-family:"Arial","sans-serif";}
+span.HTML
+	{mso-style-name:"Адрес HTML Знак";
+	mso-style-link:"Адрес HTML";
+	font-family:"Arial","sans-serif";
+	font-style:italic;}
+span.affb
+	{mso-style-name:"Прощание Знак";
+	mso-style-link:Прощание;
+	font-family:"Arial","sans-serif";}
+p.16, li.16, div.16
+	{mso-style-name:р_1дисплейсерый;
+	mso-style-link:"р_1дисплейсерый Знак";
+	margin-top:0cm;
+	margin-right:5.65pt;
+	margin-bottom:0cm;
+	margin-left:38.25pt;
+	margin-bottom:.0001pt;
+	line-height:115%;
+	background:#C1C1C1;
+	border:none;
+	padding:0cm;
+	font-size:10.0pt;
+	font-family:"Courier New";}
+p.25, li.25, div.25
+	{mso-style-name:р_2дисплейсерый;
+	mso-style-link:"р_2дисплейсерый Знак";
+	margin-top:0cm;
+	margin-right:5.65pt;
+	margin-bottom:0cm;
+	margin-left:52.45pt;
+	margin-bottom:.0001pt;
+	line-height:115%;
+	background:#C1C1C1;
+	border:none;
+	padding:0cm;
+	font-size:10.0pt;
+	font-family:"Courier New";}
+span.17
+	{mso-style-name:"р_1дисплейсерый Знак";
+	mso-style-link:р_1дисплейсерый;
+	font-family:"Courier New";
+	background:#C1C1C1;}
+span.26
+	{mso-style-name:"р_2дисплейсерый Знак";
+	mso-style-link:р_2дисплейсерый;
+	font-family:"Courier New";
+	background:#C1C1C1;}
+span.affc
+	{mso-style-name:"р_выноска Знак";
+	mso-style-link:р_выноска;
+	font-family:"Arial","sans-serif";}
+p.affd, li.affd, div.affd
+	{mso-style-name:р_обычный;
+	mso-style-link:"р_обычный Знак";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	text-align:justify;
+	line-height:normal;
+	font-size:10.0pt;
+	font-family:"Arial","sans-serif";}
+span.affe
+	{mso-style-name:"р_обычный Знак";
+	mso-style-link:р_обычный;
+	font-family:"Arial","sans-serif";}
+p.afff, li.afff, div.afff
+	{mso-style-name:р_табОбъед;
+	mso-style-link:"р_табОбъед Знак";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	line-height:115%;
+	font-size:11.0pt;
+	font-family:"Arial","sans-serif";}
+span.afff0
+	{mso-style-name:"р_табОбъед Знак";
+	mso-style-link:р_табОбъед;
+	font-family:"Arial","sans-serif";}
+p.afff1, li.afff1, div.afff1
+	{mso-style-name:"Нумерованный многоуровневый";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:159.75pt;
+	text-align:justify;
+	text-indent:-18.0pt;
+	line-height:normal;
+	font-size:10.0pt;
+	font-family:"Arial","sans-serif";}
+span.extended-textshort
+	{mso-style-name:extended-text__short;}
+span.27
+	{mso-style-name:"Неразрешенное упоминание2";
+	color:#605E5C;
+	background:#E1DFDD;}
+.MsoChpDefault
+	{font-size:10.0pt;}
+ /* Page Definitions */
+ @page WordSection1
+	{size:595.3pt 841.9pt;
+	margin:3.0cm 2.0cm 70.9pt 2.0cm;}
+div.WordSection1
+	{page:WordSection1;}
+ /* List Definitions */
+ ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
+-->
+</style>
+
+</head>
+
+<body lang=RU link=blue vlink="#954f72">
+
+<div class=WordSection1>
+
+<p class=MsoNormal><a
+ name="_Toc521142556"></a><a name="_Toc41200689"></a><a name="_Toc41194303"></a><a
+ name="_Toc41190549"></a><a name="_Toc41190422"></a><a name="_Toc41151993"></a><a
+ name="_Toc41151875"></a><a name="_Toc41149718"></a><a name="_Toc41138842"><FONT size=2><STRONG>Содержание</STRONG></FONT></a></p>
+
+<p class=MsoToc1><A
+ href="#_Toc67927312" ><FONT size=2>1 Термины, определения, обозначения и сокращения<span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">. </span><span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">2</span></FONT></A></p>
+
+<p class=MsoToc1><A href="#_Toc67927313"><FONT size=2>2 Общие сведения<span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">. </span><span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">3</span></FONT></A></p>
+
+<p class=MsoToc2><A href="#_Toc67927314"><FONT size=2>2.1 Необходимые условия<span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">. </span><span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">3</span></FONT></A></p>
+
+<p class=MsoToc2><A href="#_Toc67927315"><FONT size=2>2.2 Необходимые знания<span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">. </span><span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">4</span></FONT></A></p>
+
+<p class=MsoToc2><A href="#_Toc67927316"><FONT size=2>2.3 Ссылки<span style="TEXT-DECORATION:
+ none; COLOR: windowtext; DISPLAY: none">.. </span><span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">4</span></FONT></A></p>
+
+<p class=MsoToc1><A href="#_Toc67927317"><FONT size=2>3 Конфигурирование РСДУ<span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">.. </span><span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">5</span></FONT></A></p>
+
+<p class=MsoToc2><A href="#_Toc67927318"><FONT size=2>3.1 Рекомендации по конфигурированию<span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">.. </span><span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">5</span></FONT></A></p>
+
+<p class=MsoToc2><A href="#_Toc67927319"><FONT size=2>3.2 Описание в информационной модели<span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">.. </span><span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">6</span></FONT></A></p>
+
+<p class=MsoToc1><A href="#_Toc67927320"><FONT size=2>4 Настройка РСДУ на хостах ОИК<span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">. </span><span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">8</span></FONT></A></p>
+
+<p class=MsoToc2><A href="#_Toc67927321"><FONT size=2>4.1 Установка драйвера Cassandra<span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">. </span><span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">8</span></FONT></A></p>
+
+<p class=MsoToc2><A href="#_Toc67927322"><FONT size=2>4.2 Установка переменных окружения<span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">. </span><span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">9</span></FONT></A></p>
+
+<p class=MsoToc2><A href="#_Toc67927323"><FONT size=2>4.3 Сборка <span lang=EN-US>LinuxRT</span><span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">. </span><span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">9</span></FONT></A></p>
+
+<p class=MsoToc1><A href="#_Toc67927324"><FONT size=2>5 Настройка <span lang=EN-US>ODBC</span>
+на хостах с СУБД <span lang=EN-US>Oracle</span> и <span lang=EN-US>MS</span><span
+ lang=EN-US> </span><span lang=EN-US>SQL</span><span style="TEXT-DECORATION:
+ none; COLOR: windowtext; DISPLAY: none">. </span><span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">11</span></FONT></A></p>
+
+<p class=MsoToc2><A href="#_Toc67927325"><FONT size=2>5.1 Установка и настройка ODBC
+Cassandra на SLES12 SP3 x64<span style="TEXT-DECORATION:
+ none; COLOR: windowtext; DISPLAY: none">. </span><span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">11</span></FONT></A></p>
+
+<p class=MsoToc2><A href="#_Toc67927326"><FONT size=2>5.2 Установка и настройка ODBC
+Cassandra на <span lang=EN-US>Windows</span><span lang=EN-US> </span><span
+ lang=EN-US>Server</span><span style="TEXT-DECORATION:
+ none; COLOR: windowtext; DISPLAY: none"> </span><span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">13</span></FONT></A></p>
+
+<p class=MsoToc1><A href="#_Toc67927327"><FONT size=2>6 Способы доступа к архивам,
+хранящимся в <span lang=EN-US>Cassandra</span><span style="TEXT-DECORATION:
+ none; COLOR: windowtext; DISPLAY: none">. </span><span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">14</span></FONT></A></p>
+
+<p class=MsoToc2><A href="#_Toc67927328"><FONT size=2>6.1 Доступ к архивам из РСДУ<span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">.. </span><span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">14</span></FONT></A></p>
+
+<p class=MsoToc3><A href="#_Toc67927329"><FONT size=2>6.1.1 Клиент просмотра архивов<span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">. </span><span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">14</span></FONT></A></p>
+
+<p class=MsoToc3><A href="#_Toc67927330"><FONT size=2>6.1.2 Отчеты РСДУ<span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">.. </span><span
+ style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">14</span></FONT></A></p>
+
+<p class=MsoToc2><A href="#_Toc67927331"><FONT size=2>6.2 Доступ к архивам из клиента СУБД <span
+ lang=EN-US>Cassandra</span><span 
+style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">. </SPAN><span 
+style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">14</SPAN></FONT></A></p>
+<p class=MsoToc3><A href="#_Toc67927332" ><FONT size=2>6.2.1 Установка клиента<span 
+style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">. </SPAN><span 
+style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">14</SPAN></FONT></A></P>
+<p class=MsoToc3><A href="#_Toc67927333" ><FONT size=2>6.2.2 Настройка часового пояса в клиенте<span 
+style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">. </SPAN><span 
+style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">15</SPAN></FONT></A></P>
+<p class=MsoToc3><A href="#_Toc67927334" ><FONT size=2>6.2.3 Пример получения данных из архивов<span 
+style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">. </SPAN><span 
+style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">16</SPAN></FONT></A></P>
+<p class=MsoToc2><A href="#_Toc67927335" ><FONT size=2>6.3 Доступ к архивам из стороннего ПО через <span 
+lang=EN-US>ODBC</SPAN><span 
+style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">.. </SPAN><span 
+style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">16</SPAN></FONT></A></P>
+<p class=MsoToc3><A href="#_Toc67927336" ><FONT size=2><span lang=EN-US>6.3.1</SPAN> 
+Настройка <span lang=EN-US>ODBC</SPAN><span 
+style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">.. </SPAN><span 
+style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">17</SPAN></FONT></A></P>
+<p class=MsoToc3><A href="#_Toc67927337" ><FONT size=2>6.3.2 Пример запроса данных<span 
+style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">. </SPAN><span 
+style="TEXT-DECORATION: none; COLOR: windowtext; DISPLAY: none">18</SPAN></FONT></A></P>
+<p class=MsoNormal><FONT size=2></FONT>&nbsp;</P>
+<p class=MsoNormal><FONT size=2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</FONT></P>
+<h1 style="TEXT-INDENT: 0cm"><a name=_Toc67927312><FONT size=2>1 Термины, определения, 
+обозначения и сокращения</FONT> </A></H1>
+<p class=MsoNormal><a name=_Hlk39060785><span style="COLOR: black"><FONT size=2>В настоящем документе приняты следующие термины, 
+определения, обозначения и сокращения</FONT> </SPAN></A><span 
+style="COLOR: black"><FONT size=2>:</FONT></SPAN></P>
+<p class=a7><FONT size=2><b>Cassandra</B><b> </B>– распределённая 
+</FONT><A title="Система управления базами данных" href="https://ru.wikipedia.org/wiki/%D0%A1%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0_%D1%83%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F_%D0%B1%D0%B0%D0%B7%D0%B0%D0%BC%D0%B8_%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85" ><span 
+style="TEXT-DECORATION: none; COLOR: windowtext"><FONT size=2>система управления базами данных</FONT> 
+</SPAN></A><FONT size=2>, относящаяся к классу </FONT><A title=NoSQL href="https://ru.wikipedia.org/wiki/NoSQL" ><span 
+style="TEXT-DECORATION: none; COLOR: windowtext"><FONT size=2>NoSQL</FONT></SPAN></A><FONT size=2>-систем и рассчитанная на создание высокомасштабируемых и 
+надёжных хранилищ огромных массивов данных, представленных в виде хэша.</FONT> 
+</P>
+<p class=a7><FONT size=2><b>CQL</B><b> (Cassandra Query 
+Language)</B><i> – </I>язык, <span style="COLOR: black">сходный с </SPAN></FONT><A title=SQL href="https://ru.wikipedia.org/wiki/SQL" ><span 
+style="TEXT-DECORATION: none; COLOR: black"><FONT size=2>SQL</FONT></SPAN></A><FONT size=2><span style="COLOR: black">, но 
+существенно урезанный по функциональным возможностям. Описание языка 
+</SPAN><span lang=EN-US style="COLOR: black">CQL</SPAN><span style="COLOR: black"> 
+размещено по адресу: </SPAN></FONT><a 
+href="http://cassandra.apache.org/doc/latest/cql/index.html"><FONT size=2>http://cassandra.apache.org/doc/latest/cql/index.html</FONT></A><span 
+style="COLOR: black"><FONT size=2>.</FONT></SPAN></P>
+<p class=a7><FONT size=2><b>Партиция</B> – это таблица в <span lang=EN-US>Oracle</SPAN>, в которой хранится архив группы параметров 
+за определенный интервал (например, 3 часа).</FONT> </P>
+<p class=a7><FONT size=2></FONT>&nbsp;</P>
+<h1 style="TEXT-INDENT: 0cm"><a name=_Toc67927313><FONT size=2>2 Общие сведения</FONT> 
+</A></H1>
+<p class=MsoNormal><a name=_Toc11145431></A><a name=_Toc462055435><FONT size=2>Инструкция описывает настройку и конфигурирование РСДУ для 
+следующего архитектурного решения: СУБД </FONT></A><FONT size=2><span lang=EN-US>Oracle</SPAN><span 
+lang=EN-US> </SPAN>хранит информационную модель предприятия 
+(включая журналы событий), а архивная информация оперативно-информационного 
+комплекса (ОИК) содержится в СУБД <span lang=EN-US>Cassandra</SPAN>.</FONT></P>
+<h2 style="MARGIN-LEFT: 0cm; TEXT-INDENT: 0cm"><a 
+name=_Toc67927314></A><a name=_Toc11145432></A><a name=_Toc462055436><FONT size=2>2.1 Необходимые условия</FONT> </A></H2>
+<p class=MsoNormal><FONT size=2>Перед 
+переходом к действиям, описанным ниже в руководстве, должны быть выполнены 
+следующие необходимые условия:</FONT> </P>
+<p class=MsoListBullet2><FONT size=2><FONT face=Arial><span 
+style="FONT-FAMILY: Wingdings">ü<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp; 
+</SPAN></SPAN>установлено системное ПО:</FONT></FONT> </P>
+<p class=MsoListBullet3><FONT size=2><FONT face=Arial><span 
+style='FONT-FAMILY: "Courier New"'>o<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp; 
+</SPAN></SPAN>СУБД <span lang=EN-US>Cassandra</SPAN><span 
+lang=EN-US> </SPAN>версии 3.11.2 (хранение архивной 
+информации);</FONT></FONT> </P>
+<p class=MsoListBullet3><FONT size=2><FONT face=Arial><span 
+style='FONT-FAMILY: "Courier New"'>o<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp; 
+</SPAN></SPAN>СУБД <span lang=EN-US>Oracle</SPAN> (хранение 
+информационной модели);</FONT></FONT> </P>
+<p class=MsoListBullet3><FONT size=2><FONT face=Arial><span 
+style='FONT-FAMILY: "Courier New"'>o<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp; 
+</SPAN></SPAN>ОС <span lang=EN-US>Linux</SPAN><span 
+lang=EN-US> </SPAN>не ниже <span lang=EN-US>SLES</SPAN> 12 <span lang=EN-US>SP</SPAN>3 <span lang=EN-US>x</SPAN>64 
+(на серверах ОИК);</FONT></FONT> </P>
+<p class=MsoListBullet3><FONT size=2><FONT face=Arial><span 
+style='FONT-FAMILY: "Courier New"'>o<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp; 
+</SPAN></SPAN><span lang=EN-US>Oracle</SPAN><span 
+lang=EN-US> </SPAN><span lang=EN-US>Client</SPAN> 11.2.0.4 (на хостах для работы серверного 
+ПО).</FONT></FONT> </P>
+<p class=MsoListBullet2><FONT size=2><FONT face=Arial><span 
+style="FONT-FAMILY: Wingdings">ü<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp; </SPAN></SPAN>на 
+серверах ОИК установлено серверное ПО РСДУ5 под Linux (см. инструкцию «Установка 
+и конфигурация РСДУ5 для SLES. Руководство администратора»);</FONT></FONT> </P>
+<p class=MsoListBullet2><FONT size=2><FONT face=Arial><span 
+style="FONT-FAMILY: Wingdings">ü<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp; 
+</SPAN></SPAN>установлен клиент РСДУ5 на компьютере, с которого производится 
+конфигурирование РСДУ;</FONT></FONT> </P>
+<p class=MsoListBullet2><FONT size=2><FONT face=Arial><span 
+style="FONT-FAMILY: Wingdings">ü<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp; 
+</SPAN></SPAN>если в качестве СУБД для хранения информационной модели 
+используется <span lang=EN-US>Oracle</SPAN><span lang=EN-US> </SPAN><span lang=EN-US>Express</SPAN><span lang=EN-US> 
+</SPAN><span lang=EN-US>Edition</SPAN> (<span lang=EN-US>XE</SPAN>), то в сборке <span class=af5>LinuxRT/trunk/Scripts</SPAN> необходимо проверить наличие 
+файлов <span class=af5>RSDUENV.default</SPAN> и <span 
+class=af5>RSDUENV.template</SPAN>.</FONT></FONT></P>
+<p class=MsoNormal><FONT size=2>Перед 
+началом работ по конфигурированию комплекса для работы с <span lang=EN-US>Cassandra</SPAN> необходимо иметь рабочую БДТИ РСДУ, откуда 
+серверные модули при загрузке должны прочитать конфигурацию для своей дальнейшей 
+работы. </FONT></P>
+<p class=MsoNormal><FONT size=2>Необходимо наличие следующих дистрибутивов:</FONT> </P>
+<p class=MsoListBullet2><FONT size=2><FONT face=Arial><span 
+style="FONT-FAMILY: Wingdings">ü<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp; 
+</SPAN></SPAN>Дистрибутив<span class=MsoFootnoteReference>1</SPAN> <span lang=EN-US>SuSe</SPAN><span lang=EN-US> 
+</SPAN><span lang=EN-US>Linux</SPAN><span lang=EN-US> </SPAN><span lang=EN-US>Enterprise</SPAN><span lang=EN-US> 
+</SPAN><span lang=EN-US>Server</SPAN> 12 (<span lang=EN-US>SP</SPAN>3) <span lang=EN-US>x</SPAN>64 (для установки драйвера <span lang=EN-US>Cassandra</SPAN>);</FONT></FONT></P>
+<p class=MsoListBullet2><FONT size=2><FONT face=Arial><span lang=EN-US 
+style="FONT-FAMILY: Wingdings">ü<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp; 
+</SPAN></SPAN>Архив</FONT></FONT><a name=_Ref520801982></A><A title="" href="#_ftn1" name=_ftnref1 ><span class=MsoFootnoteReference><span class=MsoFootnoteReference><span 
+style='FONT-SIZE: 12pt; FONT-FAMILY: "Arial","sans-serif"; LINE-HEIGHT: 115%'><FONT size=2>[1]</FONT></SPAN></SPAN></SPAN></A><FONT size=2> с библиотекой <span lang=EN-US>libuv;</SPAN></FONT></P>
+<p class=MsoListBullet2><FONT size=2><FONT face=Arial><span 
+style="FONT-FAMILY: Wingdings">ü<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp; 
+</SPAN></SPAN>Архив<span class=MsoFootnoteReference>1</SPAN><span class=MsoFootnoteReference> </SPAN>с драйвером <span lang=EN-US>cpp</SPAN>-<span lang=EN-US>driver</SPAN>;</FONT></FONT></P>
+<p class=MsoListBullet2><FONT size=2><FONT face=Arial><span 
+style="FONT-FAMILY: Wingdings">ü<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp; 
+</SPAN></SPAN>Дистрибутив<span class=MsoFootnoteReference>1</SPAN><span class=MsoFootnoteReference> </SPAN>с драйвером <span lang=EN-US>ODBC</SPAN> для <span lang=EN-US>Cassandra</SPAN> (для доступа к данным из отчетов 
+РСДУ);</FONT></FONT> </P>
+<p class=MsoListBullet2><FONT size=2><FONT face=Arial><span 
+style="FONT-FAMILY: Wingdings">ü<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp; 
+</SPAN></SPAN>Дистрибутив</FONT></FONT><A title="" href="#_ftn2" name=_ftnref2 ><span class=MsoFootnoteReference><span class=MsoFootnoteReference><span 
+style='FONT-SIZE: 12pt; FONT-FAMILY: "Arial","sans-serif"; LINE-HEIGHT: 115%'><FONT size=2>[2]</FONT></SPAN></SPAN></SPAN></A><FONT size=2> &nbsp;Java SE Runtime Environment 8 для ОС <span 
+lang=EN-US>Windows</SPAN><span lang=EN-US> </SPAN>(для клиента <span lang=EN-US>Cassandra</SPAN>);</FONT></P>
+<p class=MsoListBullet2><FONT size=2><FONT face=Arial><span 
+style="FONT-FAMILY: Wingdings">ü<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp; 
+</SPAN></SPAN>Дистрибутив<span class=MsoFootnoteReference> 
+</SPAN>клиента <span lang=EN-US>Cassandra</SPAN><span 
+lang=EN-US> </SPAN><span lang=EN-US>DevCenter<A title="" href="#_ftn3" name=_ftnref3 ><span class=MsoFootnoteReference><span class=MsoFootnoteReference><span 
+lang=EN-US 
+style='FONT-SIZE: 12pt; FONT-FAMILY: "Arial","sans-serif"; LINE-HEIGHT: 115%'>[3]</SPAN></SPAN></SPAN></A></SPAN><span lang=EN-US> </SPAN>(для доступа к данным <span lang=EN-US>Cassandra</SPAN> посредством языка <span lang=EN-US>CQL</SPAN>).</FONT></FONT></P>
+<p class=MsoListBullet2><FONT size=2></FONT>&nbsp;</P>
+<p class=MsoNormal><FONT size=2>Также 
+необходимо наличие скриптов обновления 2018_07_24_RSDU_CASSANDRA.</FONT> </P>
+<h2 style="MARGIN-LEFT: 0cm; TEXT-INDENT: 0cm"><a 
+name=_Toc67927315></A><a name=_Toc11145433></A><a name=_Toc462055437><FONT size=2>2.2 Необходимые знания</FONT> </A></H2>
+<p class=MsoNormal><FONT size=2>Для 
+выполнения действий, описанных ниже в руководстве, требуются следующие 
+знания:</FONT> </P>
+<p class=MsoListNumber2><FONT size=2>1.<FONT face=Arial><span 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; 
+</SPAN>IP-адрес сервера, на котором установлена Cassandra;</FONT></FONT> </P>
+<p class=MsoListNumber2><FONT size=2>2.<FONT face=Arial><span 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; 
+</SPAN>логин/пароль администратора комплекса.</FONT></FONT> </P>
+<p class=MsoNormal><FONT size=2>Пользователю, выполняющему конфигурирование РСДУ для записи 
+архивной информации в СУБД <span lang=EN-US>Cassandra</SPAN>, необходимо обладать минимальными навыками 
+работы в ОС <span lang=EN-US>Linux</SPAN>.</FONT></P>
+<h2 style="MARGIN-LEFT: 0cm; TEXT-INDENT: 0cm"><a 
+name=_Toc67927316><FONT size=2>2.3 
+Ссылки</FONT> </A></H2>
+<p class=MsoNormal><FONT size=2>В 
+руководстве используются ссылки на следующую документацию к комплексу 
+РСДУ:</FONT> </P>
+<p class=MsoListBullet2><FONT size=2><FONT face=Arial><span 
+style="FONT-FAMILY: Wingdings">ü<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp; 
+</SPAN></SPAN>«Установка и конфигурация РСДУ5 для SLES. Руководство 
+администратора».</FONT></FONT> </P>
+<h1 style="TEXT-INDENT: 0cm"><a name=_Toc67927317><FONT size=2>3 Конфигурирование 
+РСДУ</FONT> </A><FONT size=2></FONT></H1>
+<h2 style="MARGIN-LEFT: 0cm; TEXT-INDENT: 0cm"><a 
+name=_Toc67927318><FONT size=2>3.1 
+Рекомендации по конфигурированию</FONT> </A></H2>
+<p class=MsoNormal><FONT size=2>Обновление 2018_07_24_RSDU_CASSANDRA включает в себя 
+изменение архивных пакетов, добавление информации о СУБД для хранения архивов 
+для разных типов архивов, изменение в настройке профилей архивов, добавление 
+необходимых <span lang=EN-US>ini</SPAN>-параметров 
+существующим серверам, описание новой точки доступа для <span lang=EN-US>Cassandra</SPAN> и описание самого сервера <span lang=EN-US>Cassandra</SPAN> в приложениях РСДУ и в разделе 
+«Оборудование и точки доступа».</FONT> </P>
+<p class=MsoNormal><FONT size=2>Отличие в настройке профилей архивов от хранения их <span 
+lang=EN-US>Oracle</SPAN> следующее:</FONT> </P>
+<p class=MsoListBullet2><FONT size=2><FONT face=Arial><span 
+style="FONT-FAMILY: Wingdings">ü<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp; 
+</SPAN></SPAN><span class=af7><span lang=EN-US>ARC</SPAN></SPAN><span class=af7>_<span lang=EN-US>GINFO</SPAN></SPAN><span class=af7>.<span lang=EN-US>DEPTH</SPAN></SPAN> 
+– глубина записи архивов, задается в часах (как и для <span lang=EN-US>Oracle</SPAN>). Может быть задана для <span class=af3>всех </SPAN>видов архивов (в отличие от <span lang=EN-US>Oracle</SPAN>).</FONT></FONT></P>
+<p class=MsoListContinue2><FONT size=2>Например, если глубина записи 5-минутных архивов 5 лет, то 
+можно задать <span class=af7><span lang=EN-US>arc</SPAN></SPAN><span class=af7>_<span lang=EN-US>ginfo</SPAN></SPAN><span class=af7>.<span lang=EN-US>depth</SPAN></SPAN> 
+= 43848 часов (24x365x5+2x24 на 2 високосных года) и архивы старше 5 лет будут 
+чиститься автоматически.</FONT> </P>
+<p class=MsoListContinue2><FONT size=2>Если задать </FONT><a name=OLE_LINK13></A><a name=OLE_LINK12><FONT size=2><span class=af7><span lang=EN-US>arc</SPAN></SPAN><span class=af7>_<span lang=EN-US>ginfo</SPAN></SPAN><span class=af7>.<span lang=EN-US>depth</SPAN></SPAN> 
+= 0</FONT> </A><FONT size=2>, то архив будет храниться 
+всегда (до ручной чистки, как в Oracle).</FONT> </P>
+<p class=MsoListBullet2><FONT size=2><FONT face=Arial><span 
+style="FONT-FAMILY: Wingdings">ü<span 
+style='FONT: 7pt "Times New Roman"'>&nbsp; 
+</SPAN></SPAN><span class=af7><span lang=EN-US>ARC</SPAN></SPAN><span class=af7>_<span lang=EN-US>GINFO</SPAN></SPAN><span class=af7>.<span lang=EN-US>DEPTH</SPAN></SPAN><span class=af7>_<span lang=EN-US>PARTITION</SPAN></SPAN> – это размер окна 
+compaction_window_size в Cassandra, задается в минутах (в Oracle - глубина 
+партиции). Для эффективной работы уплотнения архивов необходимо подбирать размер 
+окна около 1/30 (1/25-1/35, не меньше 1/50) от глубины записи данного типа 
+архивов.</FONT></FONT> </P>
+<p class=MsoListContinue2><FONT size=2>Например, для типа архива <span class=af7><span lang=EN-US>arc</SPAN></SPAN><span class=af7>_<span lang=EN-US>ginfo</SPAN></SPAN><span class=af7>.<span lang=EN-US>id</SPAN></SPAN>=28 
+(Мгновенные ТИ на границе 1 сек), с глубиной 720 часов (30 дней) необходимо 
+задать размер окна 1440 минут (1/30 от глубины записи = 1 день).</P>
+<p class=MsoListContinue2><FONT size=2>Для неограниченных долговременных архивов с <span class=af7><span lang=EN-US>arc</SPAN></SPAN><span class=af7>_<span lang=EN-US>ginfo</SPAN></SPAN><span class=af7>.<span lang=EN-US>depth</SPAN></SPAN> 
+= 0 рекомендуется задавать <span class=af7><span lang=EN-US>arc</SPAN></SPAN><span class=af7>_<span lang=EN-US>ginfo</SPAN></SPAN><span class=af7>.<span lang=EN-US>depth</SPAN></SPAN><span class=af7>_<span lang=EN-US>partition</SPAN></SPAN> = 132480 минут (92 дня).</FONT> 
+</P>
+<p class=MsoNormal><FONT size=2>Обновление 2018_07_24_RSDU_CASSANDRA, о выполнении которого 
+указано в главе «Описание в информационной модели», заполняет поля <b><span lang=EN-US>ARC</SPAN>_</B><b><span lang=EN-US>GINFO</SPAN>.</B><b><span lang=EN-US>DEPTH</SPAN></B> и <b><span lang=EN-US>ARC</SPAN>_</B><b><span lang=EN-US>GINFO</SPAN>.</B><b><span lang=EN-US>DEPTH</SPAN>_</B><b><span lang=EN-US>PARTITION</SPAN>,</B> 
+следуя приведенным выше рекомендациям.</FONT> </P><span 
+style='FONT-SIZE: 12pt; FONT-FAMILY: "Arial","sans-serif"'><br style="PAGE-BREAK-BEFORE: always" clear=all></SPAN>
+<p class=MsoNormal 
+style="MARGIN-BOTTOM: 0pt; TEXT-ALIGN: left; LINE-HEIGHT: normal" align=left><FONT size=2></FONT>&nbsp;</P>
+<h2 style="MARGIN-LEFT: 0cm; TEXT-INDENT: 0cm"><a 
+name=_Toc67927319></A><a name=_Ref67584351></A><a name=_Toc521490176><FONT size=2>3.2 Описание в информационной модели</FONT> </A></H2>
+<p class=MsoListNumber2><FONT size=2>1.<FONT face=Arial><span 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; 
+</SPAN>Выполнить обновление 2018_07_24_RSDU_CASSANDRA.</FONT></FONT> </P>
+<p class=MsoListContinue2><FONT size=2>После выполнения обновления информацию о распределении 
+архивных данных в текущей версии ПО РСДУ5 можно увидеть, выполнив следующий 
+запрос из любого стороннего ПО, <span class=extended-textshort>используемого для работы с СУБД </SPAN><span 
+class=extended-textshort><span lang=EN-US>Oracle</SPAN>:</SPAN></FONT></P>
+<div 
+style="BORDER-TOP: windowtext 1pt solid; BORDER-RIGHT: windowtext 1pt solid; BACKGROUND: #c1c1c1; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 1pt; PADDING-TOP: 1pt; PADDING-LEFT: 4pt; MARGIN-LEFT: 38.25pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 4pt; MARGIN-RIGHT: 5.65pt">
+<p class=16 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US><FONT face=Arial>select a.name, a.schema_name, b.name from ARC_DB_SCHEMA a, 
+arc_storage_type b where A.ID_STORAGE_TYPE=b.id</SPAN></P></DIV>
+<p class=MsoListNumber2 
+style="MARGIN: 6pt 0cm 6pt 32.05pt; TEXT-INDENT: -17.85pt"><FONT size=2>2.<FONT face=Arial><span style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; </SPAN>В Навигаторе БД в разделе 
+«Оборудование и точки доступа» проверить наличие кластера <span lang=EN-US>Cassandra</SPAN> с двумя хостами (аналогично кластеру БДРВ 
+РСДУ). Задать IP-адрес у сетевой карты хоста. Он должен соответствовать адресу 
+сервера, где установлена СУБД Cassandra.</FONT></FONT> </P>
+<p class=MsoListContinue2><FONT size=2>На Рисунок 1 и Рисунок 2 приведен пример описания хоста 
+кластера и точки доступа.</FONT> </P>
+<p class=MsoNormal style="PAGE-BREAK-AFTER: avoid; TEXT-ALIGN: center" 
+align=center><FONT size=2><IMG id="Рисунок 6" border=0 src="Caimage002.png" width=644 height=444 ></FONT></P>
+<p class=MsoCaption><a name=_Ref67301090><FONT size=2>Рисунок </FONT></A><FONT size=2>1 – Пример описания хоста <span lang=EN-US>c</SPAN><span lang=EN-US> </SPAN><span 
+lang=EN-US>Cassandra</SPAN></FONT></P>
+<p class=MsoNormal style="PAGE-BREAK-AFTER: avoid; TEXT-ALIGN: center" 
+align=center><FONT size=2><IMG id="Рисунок 7" border=0 src="Caimage003.png" width=645 height=349 ></FONT></P>
+<p class=MsoCaption><a name=_Ref67301149><FONT size=2>Рисунок </FONT></A><FONT size=2>2 – Точки доступа сервиса <span lang=EN-US>Cassandra</SPAN></FONT></P>
+<p class=af8><FONT size=2><span 
+class=afb>Примечание</SPAN><b>.</B> 
+Если в процессе работы подсистемы архивов станет понятно, что требуется 
+распределить нагрузку, то можно описать вручную третий, четвёртый (максимальное 
+количество узлов неограниченно) хост (узел) кластера <span lang=EN-US>Cassandra</SPAN>.</FONT></P>
+<p class=MsoNormal><FONT size=2></FONT>&nbsp;</P>
+<h1 style="TEXT-INDENT: 0cm"><a name=_Toc67927320><FONT size=2>4 Настройка РСДУ на 
+хостах ОИК</FONT> </A></H1>
+<h2 style="MARGIN-LEFT: 0cm; TEXT-INDENT: 0cm"><a 
+name=_Toc67927321></A><a name=_Toc521490178><FONT size=2>4.1 Установка драйвера 
+Cassandra</FONT> </A></H2>
+<p class=MsoNormal><FONT size=2>Установка драйвера <span lang=EN-US>Cassandra</SPAN><span lang=EN-US> 
+</SPAN>выполняется на хостах ОИК (то есть на тех хостах, где функционирует 
+Сервер прямого доступа к БД <span lang=EN-US>Oracle</SPAN> 
+(<span lang=EN-US>dpload</SPAN>) и Сервер оперативного 
+доступа к архивам (<span lang=EN-US>rdarchd</SPAN>)).</FONT></P>
+<p class=af8><FONT size=2><span 
+class=afb>Примечание</SPAN><b><i>. </I></B>Все команды ниже приведены для ПО следующих 
+версий:</FONT> </P>
+<p class=MsoListBullet2><FONT size=2><FONT face=Arial><span 
+style="FONT-SIZE: 11pt; FONT-FAMILY: Wingdings; LINE-HEIGHT: 115%">ü<span style='FONT: 7pt "Times New Roman"'>&nbsp; </SPAN></SPAN><span lang=EN-US 
+style="FONT-SIZE: 11pt; LINE-HEIGHT: 115%">SLES</SPAN><span 
+style="FONT-SIZE: 11pt; LINE-HEIGHT: 115%"> 12 </SPAN><span 
+lang=EN-US style="FONT-SIZE: 11pt; LINE-HEIGHT: 115%">SP</SPAN><span style="FONT-SIZE: 11pt; LINE-HEIGHT: 115%">3 </SPAN><span lang=EN-US 
+style="FONT-SIZE: 11pt; LINE-HEIGHT: 115%">x</SPAN><span 
+style="FONT-SIZE: 11pt; LINE-HEIGHT: 115%">64;</SPAN></FONT></FONT></P>
+<p class=MsoListBullet2><FONT size=2><FONT face=Arial><span lang=EN-US 
+style="FONT-SIZE: 11pt; FONT-FAMILY: Wingdings; LINE-HEIGHT: 115%">ü<span style='FONT: 7pt "Times New Roman"'>&nbsp; </SPAN></SPAN><span lang=EN-US 
+style="FONT-SIZE: 11pt; LINE-HEIGHT: 115%">cpp driver 
+2.9.0</SPAN><span style="FONT-SIZE: 11pt; LINE-HEIGHT: 115%">;</SPAN></FONT></FONT></P>
+<p class=MsoListBullet2><FONT size=2><FONT face=Arial><span 
+style="FONT-SIZE: 11pt; FONT-FAMILY: Wingdings; LINE-HEIGHT: 115%">ü<span style='FONT: 7pt "Times New Roman"'>&nbsp; </SPAN></SPAN><span lang=EN-US 
+style="FONT-SIZE: 11pt; LINE-HEIGHT: 115%">libuv 
+1.20.1</SPAN><span style="FONT-SIZE: 11pt; LINE-HEIGHT: 115%">.</SPAN></FONT></FONT></P>
+<p class=MsoListNumber2><FONT size=2>1.<FONT face=Arial><span 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; 
+</SPAN>Для сборки установить <span lang=EN-US>cmake</SPAN> 
+(с основного диска <span lang=EN-US>SLE</SPAN>-12-<span 
+lang=EN-US>SP</SPAN>3-<span lang=EN-US>Server</SPAN>-<span lang=EN-US>DVD</SPAN>-<span lang=EN-US>x</SPAN>86_64-<span lang=EN-US>GM</SPAN>-<span lang=EN-US>DVD</SPAN>1.<span lang=EN-US>iso</SPAN>):</FONT></FONT></P>
+<div 
+style="BORDER-TOP: windowtext 1pt solid; BORDER-RIGHT: windowtext 1pt solid; BACKGROUND: #c1c1c1; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 1pt; PADDING-TOP: 1pt; PADDING-LEFT: 4pt; MARGIN-LEFT: 38.25pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 4pt; MARGIN-RIGHT: 5.65pt">
+<p class=16 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US><FONT face=Arial># zypper install cmake</FONT> </SPAN></P>
+<p class=16 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US><FONT face=Arial>Loading repository data...</FONT> </SPAN></P>
+<p class=16 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US><FONT face=Arial>Reading installed packages...</FONT> </SPAN></P>
+<p class=16 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US><FONT face=Arial>Resolving package dependencies...</FONT> </SPAN></P>
+<p class=16 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US><FONT face=Arial>The following NEW package is going to be installed:</FONT> 
+</SPAN></P>
+<p class=16 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US><FONT face=Arial>&nbsp; cmake</FONT> </SPAN></P>
+<p class=16 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US><FONT face=Arial>1 new package to install.</FONT> </SPAN></P>
+<p class=16 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US><FONT face=Arial>Overall download size: 4.1 MiB. Already cached: 0 B. After 
+the operation, additional 22.3 MiB will be used.</FONT> </SPAN></P>
+<p class=16 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US><FONT face=Arial>Continue? [y/n/...? shows all options] (y):</FONT> 
+</SPAN></P>
+<p class=16 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US><FONT face=Arial>Retrieving package cmake-3.5.2-18.3.x86_64<br>(1/1),&nbsp;&nbsp; 4.1 MiB ( 22.3 MiB unpacked)</FONT> 
+</SPAN></P>
+<p class=16 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US><FONT face=Arial>Checking for file 
+conflicts:......................[done]</FONT> </SPAN></P>
+<p class=16 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US><FONT face=Arial>(1/1) Installing: cmake-3.5.2 
+....................[done]</FONT> </SPAN></P></DIV>
+<p class=MsoListNumber2 
+style="MARGIN: 6pt 0cm 6pt 32.05pt; TEXT-INDENT: -17.85pt"><FONT size=2>2.<FONT face=Arial><span style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; </SPAN>Скопировать на сервер и 
+распаковать библиотеку libuv:</FONT></FONT> </P>
+<div 
+style="BORDER-TOP: windowtext 1pt solid; BORDER-RIGHT: windowtext 1pt solid; BACKGROUND: #c1c1c1; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 1pt; PADDING-TOP: 1pt; PADDING-LEFT: 4pt; MARGIN-LEFT: 38.25pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 4pt; MARGIN-RIGHT: 5.65pt">
+<p class=16 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US><FONT face=Arial># tar xf libuv-1.20.1.tar.gz </FONT></SPAN></P>
+<p class=16 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US><FONT face=Arial># cd libuv-1.20.1</FONT> </SPAN></P>
+<p class=16 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US><FONT face=Arial># sh autogen.sh</FONT> </SPAN></P>
+<p class=16 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US><FONT face=Arial># ./configure</FONT> </SPAN></P>
+<p class=16 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US><FONT face=Arial># make</FONT> </SPAN></P>
+<p class=16 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US><FONT face=Arial># make install</FONT> </SPAN></P></DIV>
+<p class=MsoListContinue2 style="MARGIN-TOP: 6pt"><FONT size=2>Ошибок при выполнении операций быть не 
+должно!</FONT> </P><span 
+style='FONT-SIZE: 12pt; FONT-FAMILY: "Arial","sans-serif"'><br style="PAGE-BREAK-BEFORE: always" clear=all></SPAN>
+<p class=MsoNormal 
+style="MARGIN-BOTTOM: 0pt; TEXT-ALIGN: left; LINE-HEIGHT: normal" align=left><FONT size=2></FONT>&nbsp;</P>
+<p class=MsoListNumber2><FONT size=2>3.<FONT face=Arial><span 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; 
+</SPAN>Скопировать на сервер и распаковать драйвер:</FONT></FONT> </P>
+<div 
+style="BORDER-TOP: windowtext 1pt solid; BORDER-RIGHT: windowtext 1pt solid; BACKGROUND: #c1c1c1; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 1pt; PADDING-TOP: 1pt; PADDING-LEFT: 4pt; MARGIN-LEFT: 38.25pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 4pt; MARGIN-RIGHT: 5.65pt">
+<p class=16 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><a name=OLE_LINK2></A><a 
+name=OLE_LINK1><span lang=EN-US><FONT face=Arial># tar xf cpp-driver-2.9.0.tar.gz</FONT> 
+</SPAN></A></P>
+<p class=16 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US><FONT face=Arial># cd cpp-driver-2.9.0</FONT> </SPAN></P>
+<p class=16 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US><FONT face=Arial># mkdir build</FONT> </SPAN></P>
+<p class=16 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US><FONT face=Arial># cd build</FONT> </SPAN></P>
+<p class=16 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><FONT face=Arial># <span lang=EN-US>cmake</SPAN> ..</FONT> </P>
+<p class=16 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><FONT face=Arial># <span lang=EN-US>make</SPAN></FONT></P>
+<p class=16 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><FONT face=Arial># <span lang=EN-US>make</SPAN><span lang=EN-US> 
+</SPAN><span lang=EN-US>install</SPAN></FONT></P></DIV>
+<p class=MsoListContinue2 style="MARGIN-TOP: 6pt"><FONT size=2>Ошибок при выполнении операций быть не 
+должно!</FONT> </P>
+<p class=MsoListNumber2><FONT size=2>4.<FONT face=Arial><span 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; 
+</SPAN>Прокешировать установленные библиотеки:</FONT></FONT> </P>
+<div 
+style="BORDER-TOP: windowtext 1pt solid; BORDER-RIGHT: windowtext 1pt solid; BACKGROUND: #c1c1c1; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 1pt; PADDING-TOP: 1pt; PADDING-LEFT: 4pt; MARGIN-LEFT: 38.25pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 4pt; MARGIN-RIGHT: 5.65pt">
+<p class=16 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US><FONT face=Arial># ldconfig /usr/local/lib /usr/local/lib64</FONT> 
+</SPAN></P></DIV>
+<p class=MsoListNumber2 
+style="MARGIN: 6pt 0cm 6pt 32.05pt; TEXT-INDENT: -17.85pt"><FONT size=2>5.<FONT face=Arial><span style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; </SPAN>Установка драйвера Cassandra 
+завершена.</FONT></FONT> </P>
+<h2 style="MARGIN-LEFT: 0cm; TEXT-INDENT: 0cm"><a 
+name=_Toc67927322></A><a name=_Toc521490179><FONT size=2>4.2 Установка переменных 
+окружения</FONT> </A></H2>
+<p class=MsoNormal><FONT size=2>Проверить значение переменной окружения <FONT face=Arial><span class=af5>NLS_LANG</SPAN>, 
+выполнив команду:</FONT></FONT> </P>
+<div 
+style="BORDER-TOP: windowtext 1pt solid; BORDER-RIGHT: windowtext 1pt solid; BACKGROUND: #c1c1c1; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 1pt; PADDING-TOP: 1pt; PADDING-LEFT: 4pt; MARGIN-LEFT: 5.65pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 4pt; MARGIN-RIGHT: 5.65pt">
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><FONT face=Arial><span lang=EN-US>env</SPAN> | <span lang=EN-US>grep</SPAN><span lang=EN-US> 
+</SPAN><span lang=EN-US>NLS</SPAN>_<span lang=EN-US>LANG</SPAN></FONT></P></DIV>
+<p class=aff4><FONT size=2>Переменная 
+окружения <FONT face=Arial><span class=af5>NLS_LANG</SPAN> должна быть равна <span class=af5>AMERICAN_AMERICA.CL8MSWIN1251</SPAN>.</FONT></FONT></P>
+<p class=MsoNormal><FONT size=2>Изменить переменную окружения, если задано другое значение, 
+можно командой:</FONT> </P>
+<div 
+style="BORDER-TOP: windowtext 1pt solid; BORDER-RIGHT: windowtext 1pt solid; BACKGROUND: #c1c1c1; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 1pt; PADDING-TOP: 1pt; PADDING-LEFT: 4pt; MARGIN-LEFT: 5.65pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 4pt; MARGIN-RIGHT: 5.65pt">
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US><FONT face=Arial>export NLS_LANG=AMERICAN_AMERICA.CL8MSWIN1251&lt; 
+/FONT&gt;</SPAN></P></DIV>
+<h2 style="MARGIN: 12pt 0cm; TEXT-INDENT: 0cm"><a 
+name=_Toc67927323></A><a name=_Toc521490180><FONT size=2>4.3 Сборка 
+</FONT></A><span lang=EN-US><FONT size=2>LinuxRT</FONT></SPAN></H2>
+<p class=af8><FONT size=2><span 
+class=afb>Примечание</SPAN>. Дальнейшие шаги подразумевают, 
+что установка и сборка серверного ПО РСДУ5 под Linux уже выполнена в 
+соответствии с инструкцией «Установка и конфигурация РСДУ5 для SLES» и 
+установлен <span lang=EN-US>Oracle</SPAN><span lang=EN-US> </SPAN><span lang=EN-US>Client</SPAN> 
+11.2.0.4.</FONT> </P>
+<p class=MsoNormal><FONT size=2>Необходимо внести изменения в файл <FONT face=Arial><span class=af5>rsdu.config</SPAN> 
+(задаваемые значения выделены полужирным начертанием):</FONT></FONT> </P>
+<div 
+style="BORDER-TOP: windowtext 1pt solid; BORDER-RIGHT: windowtext 1pt solid; BACKGROUND: #c1c1c1; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 1pt; PADDING-TOP: 1pt; PADDING-LEFT: 4pt; MARGIN-LEFT: 5.65pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 4pt; MARGIN-RIGHT: 5.65pt">
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US><FONT face=Arial>[modules]</FONT></SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US><FONT face=Arial>rsducass=<b>yes</B></FONT></SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US><FONT face=Arial>[dpload]</FONT></SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US><FONT face=Arial>defines=<b>CASS</B>,CHANGE_PARTS_VIA_PROCS</FONT></SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US><FONT face=Arial>[rdarch]</FONT></SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US><FONT face=Arial>defines=<b>CASS</B>,ACCESS_INSTARC_PROC</FONT></SPAN></P></DIV>
+<p class=aff4><FONT size=2>Пересобрать 
+и запустить серверное ПО РСДУ5 под <span lang=EN-US>Linux</SPAN>.</FONT></P><span 
+style='FONT-SIZE: 12pt; FONT-FAMILY: "Arial","sans-serif"'><br style="PAGE-BREAK-BEFORE: always" clear=all></SPAN>
+<p class=MsoNormal 
+style="MARGIN-BOTTOM: 0pt; TEXT-ALIGN: left; LINE-HEIGHT: normal" align=left><a name=_Hlk67503307><FONT size=2></FONT></A>&nbsp;</P>
+<p class=MsoNormal><FONT size=2>С СУБД 
+<span lang=EN-US>Cassandra</SPAN> работают два сервиса 
+РСДУ5: <span lang=EN-US>dpload</SPAN> (Сервер прямого 
+доступа к БД <span lang=EN-US>Oracle</SPAN>) и <span 
+lang=EN-US>rdarchd</SPAN> (Сервер оперативного доступа к 
+архивам). При успешном подключении к СУБД <span lang=EN-US>Cassandra</SPAN><span lang=EN-US> 
+</SPAN>в логах обоих серверов должно отобразиться сообщение следующего 
+вида:</FONT> </P>
+<div 
+style="BORDER-TOP: windowtext 1pt solid; BORDER-RIGHT: windowtext 1pt solid; BACKGROUND: #c1c1c1; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 1pt; PADDING-TOP: 1pt; PADDING-LEFT: 4pt; MARGIN-LEFT: 5.65pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 4pt; MARGIN-RIGHT: 5.65pt">
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US><FONT face=Arial>16.12.2016 10:53:57.667 [INFO ] CASSANDRA test connection 
+successful, system info:</FONT> </SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US><FONT face=Arial>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; release_version: 
+3.9</FONT> </SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US><FONT face=Arial>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cql_version: 
+3.4.2</FONT> </SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US><FONT face=Arial>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+native_protocol_version: 4</FONT> </SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US><FONT face=Arial>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; thrift_version: 
+20.1.0</FONT> </SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US><FONT face=Arial>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cluster_name: 
+RSDU Archive Cluster</FONT> </SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US><FONT face=Arial>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; data_center: 
+datacenter1</FONT> </SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US><FONT face=Arial>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; rack: 
+rack1</FONT> </SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US><FONT face=Arial>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; listen_address: 
+10.20.50.22</FONT> </SPAN></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US><FONT face=Arial>16.12.2016 10:53:57.749 [INFO ] Receive processing 
+started</FONT> </SPAN></P></DIV>
+<h1 style="TEXT-INDENT: 0cm"><a name=_Toc67927324><FONT size=2>5 Настройка 
+</FONT></A><FONT size=2><span lang=EN-US>ODBC</SPAN><span lang=EN-US> </SPAN>на 
+хостах с СУБД <span lang=EN-US>Oracle</SPAN><span 
+lang=EN-US> </SPAN>и <span lang=EN-US>MS</SPAN><span lang=EN-US> 
+</SPAN><span lang=EN-US>SQL</SPAN></FONT></H1>
+<p class=MsoNormal><FONT size=2>Для 
+работы отчетов РСДУ на хостах с СУБД Oracle и СУБД MS SQL (только при 
+использовании отчетов формата <span lang=EN-US>MS</SPAN><span lang=EN-US> 
+</SPAN><span lang=EN-US>SQL</SPAN><span lang=EN-US> </SPAN><span lang=EN-US>Reporting</SPAN><span lang=EN-US> 
+</SPAN><span lang=EN-US>Server</SPAN>) необходимо настроить 
+ODBC-драйвера к СУБД Cassandra.</FONT> </P>
+<h2 style="MARGIN-LEFT: 0cm; TEXT-INDENT: 0cm"><a 
+name=_Toc67927325><FONT size=2>5.1 
+Установка и настройка ODBC Cassandra на SLES12 SP3 x64</FONT> </A></H2>
+<p class=MsoListNumber2><FONT size=2>1.<FONT face=Arial><span 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; 
+</SPAN>Установить и настроить unixODBC с установочного DVD SLES12 SP3 
+x64:</FONT></FONT> </P>
+<p class=MsoListNumber3><FONT size=2>A.<FONT face=Arial><span 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp; 
+</SPAN>Выполнить команду установки:</FONT></FONT> </P>
+<div 
+style="BORDER-TOP: windowtext 1pt solid; BORDER-RIGHT: windowtext 1pt solid; BACKGROUND: #c1c1c1; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 1pt; PADDING-TOP: 1pt; PADDING-LEFT: 4pt; MARGIN-LEFT: 52.45pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 4pt; MARGIN-RIGHT: 5.65pt">
+<p class=25 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US><FONT face=Arial># zypper install unixodbc</FONT> </SPAN></P></DIV>
+<p class=MsoListNumber3 
+style="MARGIN: 6pt 0cm 6pt 46.2pt; TEXT-INDENT: -17.85pt"><FONT size=2>B.<FONT face=Arial><span style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp; </SPAN>Настроить ссылки:</FONT></FONT> </P>
+<div 
+style="BORDER-TOP: windowtext 1pt solid; BORDER-RIGHT: windowtext 1pt solid; BACKGROUND: #c1c1c1; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 1pt; PADDING-TOP: 1pt; PADDING-LEFT: 4pt; MARGIN-LEFT: 52.45pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 4pt; MARGIN-RIGHT: 5.65pt">
+<p class=25 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US><FONT face=Arial># ln -s /usr/lib64/libodbc.so.2 
+/usr/lib64/libodbc.so.1</FONT> </SPAN></P>
+<p class=25 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US><FONT face=Arial># ln -s /usr/lib64/libodbcinst.so.2 
+/usr/lib64/libodbcinst.so.1</FONT> </SPAN></P>
+<p class=25 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US><FONT face=Arial># ln -s /etc/unixODBC/odbc.ini /etc/odbc.ini</FONT> 
+</SPAN></P>
+<p class=25 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US><FONT face=Arial># ln -s /etc/unixODBC/odbcinst.ini /etc/odbcinst.ini</FONT> 
+</SPAN></P></DIV>
+<p class=MsoListNumber2 
+style="MARGIN: 6pt 0cm 6pt 32.05pt; TEXT-INDENT: -17.85pt"><FONT size=2>2.<FONT face=Arial><span style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; </SPAN>Установить 64-разрядный драйвер 
+Cassandra ODBC: </FONT></FONT></P>
+<div 
+style="BORDER-TOP: windowtext 1pt solid; BORDER-RIGHT: windowtext 1pt solid; BACKGROUND: #c1c1c1; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 1pt; PADDING-TOP: 1pt; PADDING-LEFT: 4pt; MARGIN-LEFT: 52.45pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 4pt; MARGIN-RIGHT: 5.65pt">
+<p class=25 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><FONT face=Arial># <span lang=EN-US>zypper</SPAN><span lang=EN-US> 
+</SPAN><span lang=EN-US>install</SPAN><span lang=EN-US> </SPAN><span lang=EN-US>DatastaxCassandraODBC</SPAN>-64<span lang=EN-US>bit</SPAN>-2.4.1.1001.<span lang=EN-US>rpm</SPAN><span lang=EN-US> 
+</SPAN></FONT></P></DIV>
+<p class=MsoListNumber2 
+style="MARGIN: 6pt 0cm 6pt 32.05pt; TEXT-INDENT: -17.85pt"><FONT size=2>3.<FONT face=Arial><span style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; </SPAN>Скопировать дефолтные <span 
+class=af5>odbc.ini</SPAN>, <span class=af5>odbcinst.ini</SPAN> из каталога <span class=af5>/opt/datastax/cassandraodbc/Setup</SPAN> в <span class=af5>/etc/unixODBC</SPAN></FONT></FONT></P>
+<p class=MsoListNumber2><FONT size=2>4.<FONT face=Arial><span 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; 
+</SPAN>Настроить <span class=af5>odbc.ini</SPAN>:</FONT></FONT></P>
+<p class=MsoListNumber3><FONT size=2>A.<FONT face=Arial><span 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp; 
+</SPAN>Удалить настройку 32-разрядного источника:</FONT></FONT> </P>
+<div 
+style="BORDER-TOP: windowtext 1pt solid; BORDER-RIGHT: windowtext 1pt solid; BACKGROUND: #c1c1c1; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 1pt; PADDING-TOP: 1pt; PADDING-LEFT: 4pt; MARGIN-LEFT: 52.45pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 4pt; MARGIN-RIGHT: 5.65pt">
+<p class=25 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US><FONT face=Arial>[Datastax Cassandra ODBC DSN 32]</FONT> </SPAN></P></DIV>
+<p class=MsoListNumber3 
+style="MARGIN: 6pt 0cm 6pt 46.2pt; TEXT-INDENT: -17.85pt"><FONT size=2>B.<FONT face=Arial><span style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp; </SPAN>Переименовать для упрощения 
+64-разрядный источник в CASS:</FONT></FONT> </P>
+<p class=MsoListContinue3><FONT size=2>Было<span lang=EN-US>:</SPAN></FONT></P>
+<div 
+style="BORDER-TOP: windowtext 1pt solid; BORDER-RIGHT: windowtext 1pt solid; BACKGROUND: #c1c1c1; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 1pt; PADDING-TOP: 1pt; PADDING-LEFT: 4pt; MARGIN-LEFT: 52.45pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 4pt; MARGIN-RIGHT: 5.65pt">
+<p class=25 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US><FONT face=Arial>[ODBC Data Sources]</FONT> </SPAN></P>
+<p class=25 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US><FONT face=Arial>Datastax Cassandra ODBC DSN 64=Datastax Cassandra ODBC 
+Driver 64-bit&lt; /FONT&gt; </SPAN></P>
+<p class=25 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US><FONT face=Arial>&nbsp; </FONT></SPAN></P>
+<p class=25 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US><FONT face=Arial>[Datastax Cassandra ODBC DSN 64]</FONT> </SPAN></P></DIV>
+<p class=MsoListContinue3 style="MARGIN-TOP: 6pt"><FONT size=2>Стало<span lang=EN-US>:</SPAN></FONT></P>
+<div 
+style="BORDER-TOP: windowtext 1pt solid; BORDER-RIGHT: windowtext 1pt solid; BACKGROUND: #c1c1c1; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 1pt; PADDING-TOP: 1pt; PADDING-LEFT: 4pt; MARGIN-LEFT: 52.45pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 4pt; MARGIN-RIGHT: 5.65pt">
+<p class=25 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US><FONT face=Arial>[ODBC Data Sources]</FONT> </SPAN></P>
+<p class=25 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US><FONT face=Arial>CASS=Datastax Cassandra ODBC Driver 64-bit</FONT> 
+</SPAN></P>
+<p class=25 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US><FONT face=Arial>&nbsp;&nbsp;&nbsp; </FONT></SPAN></P>
+<p class=25 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US><FONT face=Arial>[CASS]</FONT></SPAN></P></DIV><span 
+style='FONT-SIZE: 12pt; FONT-FAMILY: "Arial","sans-serif"'><br style="PAGE-BREAK-BEFORE: always" clear=all></SPAN>
+<p class=MsoNormal 
+style="MARGIN-BOTTOM: 0pt; TEXT-ALIGN: left; LINE-HEIGHT: normal" align=left><FONT size=2></FONT>&nbsp;</P>
+<p class=MsoListNumber3 
+style="MARGIN: 6pt 0cm 6pt 46.2pt; TEXT-INDENT: -17.85pt"><FONT size=2><span lang=EN-US>C.<span style='FONT: 7pt "Times New Roman"'><FONT face=Arial>&nbsp;&nbsp; 
+</FONT></SPAN></SPAN>Задать настройки подключения<span lang=EN-US>:</SPAN></FONT></P>
+<div 
+style="BORDER-TOP: windowtext 1pt solid; BORDER-RIGHT: windowtext 1pt solid; BACKGROUND: #c1c1c1; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 1pt; PADDING-TOP: 1pt; PADDING-LEFT: 4pt; MARGIN-LEFT: 52.45pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 4pt; MARGIN-RIGHT: 5.65pt">
+<p class=25 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US><FONT face=Arial>&nbsp;&nbsp;&nbsp; # Required: These values can also be 
+specified in the connection string.</FONT> </SPAN></P>
+<p class=25 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US><FONT face=Arial>&nbsp;&nbsp;&nbsp; 
+Host=10.168.100.208,10.168.100.209</SPAN></P>
+<p class=25 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US><FONT face=Arial>&nbsp;&nbsp;&nbsp; Port=9042</SPAN></P>
+<p class=25 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US><FONT face=Arial>&nbsp;&nbsp;&nbsp; DefaultKeyspace=arc</SPAN></P>
+<p class=25 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US><FONT face=Arial>&nbsp;&nbsp;&nbsp; uid=""</SPAN></P></DIV>
+<p class=MsoListNumber3 
+style="MARGIN: 6pt 0cm 6pt 46.2pt; TEXT-INDENT: -17.85pt"><FONT size=2>D.<FONT face=Arial><span style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp; </SPAN>Закомментировать (обязательно!) 
+настройки "белого" и "чёрного" списка хостов:</FONT></FONT> </P>
+<div 
+style="BORDER-TOP: windowtext 1pt solid; BORDER-RIGHT: windowtext 1pt solid; BACKGROUND: #c1c1c1; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 1pt; PADDING-TOP: 1pt; PADDING-LEFT: 4pt; MARGIN-LEFT: 52.45pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 4pt; MARGIN-RIGHT: 5.65pt">
+<p class=25 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><FONT face=Arial>&nbsp;&nbsp;&nbsp; 
+<span lang=EN-US>#BlacklistFilteringHosts=""</SPAN></FONT></P>
+<p class=25 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US><FONT face=Arial>&nbsp;&nbsp;&nbsp; #WhitelistFilteringHosts=""</SPAN></P>
+<p class=25 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US><FONT face=Arial>&nbsp;&nbsp;&nbsp; 
+#BlacklistDatacenterFilteringHosts=""</SPAN></P>
+<p class=25 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US><FONT face=Arial>&nbsp;&nbsp;&nbsp; 
+#WhitelistDatacenterFilteringHosts=""</SPAN></P></DIV>
+<p class=MsoListNumber2 
+style="MARGIN: 6pt 0cm 6pt 32.05pt; TEXT-INDENT: -17.85pt"><FONT size=2><span lang=EN-US>5.<span style='FONT: 7pt "Times New Roman"'><FONT face=Arial>&nbsp;&nbsp;&nbsp; 
+</FONT></SPAN></SPAN>Настроить <span class=af5><span 
+lang=EN-US><FONT face=Arial>datastax.cassandraodbc.ini</FONT></SPAN></SPAN></FONT><A title="" href="#_ftn4" name=_ftnref4 ><span class=MsoFootnoteReference><span lang=EN-US><span 
+class=MsoFootnoteReference><span lang=EN-US 
+style='FONT-SIZE: 12pt; FONT-FAMILY: "Arial","sans-serif"; LINE-HEIGHT: 115%'><FONT size=2>[4]</FONT></SPAN></SPAN></SPAN></SPAN></A><FONT size=2>:</FONT></P>
+<p class=MsoListNumber2 
+style="MARGIN: 6pt 0cm 6pt 32.05pt; TEXT-INDENT: -17.85pt"><FONT size=2></FONT>&nbsp;</P>
+<p class=MsoListContinue2><FONT size=2>в <span class=af5><span lang=EN-US><FONT face=Arial>/opt/datastax/cassandraodbc/lib/64/datastax.cassandraodbc.ini</FONT></SPAN></SPAN></FONT></P>
+<p class=MsoListContinue2><FONT size=2>закомментировать<span lang=EN-US>:</SPAN></FONT></P>
+<div 
+style="BORDER-TOP: windowtext 1pt solid; BORDER-RIGHT: windowtext 1pt solid; BACKGROUND: #c1c1c1; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 1pt; PADDING-TOP: 1pt; PADDING-LEFT: 4pt; MARGIN-LEFT: 38.25pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 4pt; MARGIN-RIGHT: 5.65pt">
+<p class=16 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US><FONT face=Arial>&nbsp;&nbsp;&nbsp;&nbsp; # Generic ODBCInstLib</FONT> 
+</SPAN></P>
+<p class=16 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US><FONT face=Arial>&nbsp;&nbsp;&nbsp;&nbsp; #&nbsp;&nbsp; iODBC</FONT> 
+</SPAN></P>
+<p class=16 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US><FONT face=Arial>&nbsp;&nbsp;&nbsp;&nbsp; #<b>ODBCInstLib=libiodbcinst.so</B></FONT></SPAN></P></DIV>
+<p class=MsoListContinue2 style="MARGIN-TOP: 6pt"><FONT size=2>и раскомментировать<span lang=EN-US>:</SPAN></FONT></P>
+<div 
+style="BORDER-TOP: windowtext 1pt solid; BORDER-RIGHT: windowtext 1pt solid; BACKGROUND: #c1c1c1; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 1pt; PADDING-TOP: 1pt; PADDING-LEFT: 4pt; MARGIN-LEFT: 38.25pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 4pt; MARGIN-RIGHT: 5.65pt">
+<p class=16 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US><FONT face=Arial>&nbsp;&nbsp;&nbsp;&nbsp; #&nbsp;&nbsp; SimbaDM / 
+unixODBC</FONT> </SPAN></P>
+<p class=16 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US><FONT face=Arial>&nbsp;&nbsp;&nbsp;&nbsp; ODBCInstLib=libodbcinst.so&lt; 
+/FONT&gt;</SPAN></P></DIV>
+<p class=MsoListNumber2 
+style="MARGIN: 6pt 0cm 6pt 32.05pt; TEXT-INDENT: -17.85pt"><FONT size=2><span lang=EN-US>6.<span style='FONT: 7pt "Times New Roman"'><FONT face=Arial>&nbsp;&nbsp;&nbsp; 
+</FONT></SPAN></SPAN>Проверка работы<span lang=EN-US>:</SPAN></FONT></P>
+<div 
+style="BORDER-TOP: windowtext 1pt solid; BORDER-RIGHT: windowtext 1pt solid; BACKGROUND: #c1c1c1; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 1pt; PADDING-TOP: 1pt; PADDING-LEFT: 4pt; MARGIN-LEFT: 38.25pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 4pt; MARGIN-RIGHT: 5.65pt">
+<p class=16 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US><FONT face=Arial>cus-db1:/etc/unixODBC # isql CASS -v</FONT> </SPAN></P>
+<p class=16 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US><FONT face=Arial>+---------------------------------------+</FONT></SPAN></P>
+<p class=16 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US><FONT face=Arial>| 
+Connected!&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+|</FONT> </SPAN></P>
+<p class=16 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US><FONT face=Arial>|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|</FONT> 
+</SPAN></P>
+<p class=16 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US><FONT face=Arial>| 
+sql-statement&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+|</FONT> </SPAN></P>
+<p class=16 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US><FONT face=Arial>| help 
+[tablename]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+|</FONT> </SPAN></P>
+<p class=16 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US><FONT face=Arial>| 
+quit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+|</FONT> </SPAN></P>
+<p class=16 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US><FONT face=Arial>|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+|</FONT> </SPAN></P>
+<p class=16 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US><FONT face=Arial>+---------------------------------------+</FONT></SPAN></P>
+<p class=16 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US><FONT face=Arial>SQL&gt; select id_tbllst, id, time1970, max_val, min_val, 
+state, val from arc.profile_3 where id_tbllst = 29 and id = 6438 and time1970 
+&gt; = '2019-01-14 15:00:00' and time1970 &lt; = '2019-01-14 16:00:00'; &lt; 
+/FONT&gt; </SPAN></P>
+<p class=16 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US><FONT face=Arial>+------------+------------+---------------------------+-------------------------+-------------------------+---------------------+-------------------------+</FONT></SPAN></P>
+<p class=16 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US><FONT face=Arial>| id_tbllst&nbsp; | 
+id&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | 
+time1970&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+| 
+max_val&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+| 
+min_val&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+| 
+state&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+| 
+val&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+|</FONT> </SPAN></P>
+<p class=16 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US><FONT face=Arial>+------------+------------+---------------------------+-------------------------+-------------------------+---------------------+-------------------------+</FONT></SPAN></P>
+<p class=16 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US><FONT face=Arial>| 29&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | 
+6438&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | 2019-01-14 
+16:00:00&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | 
+3.507&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+| 
+3.2158&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+| 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| 
+3.35043&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+|</FONT> </SPAN></P>
+<p class=16 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US><FONT face=Arial>| 29&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | 
+6438&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | 2019-01-14 
+15:50:00&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | 
+3.535&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+| 
+3.2928&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+| 
+0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+| 
+3.35055&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+|</FONT> </SPAN></P>
+<p class=16 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US><FONT face=Arial>| 29&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | 
+6438&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | 2019-01-14 
+15:40:00&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | 
+3.5448&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+| 
+3.2886&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+| 
+0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+| 
+3.36875&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+|</FONT> </SPAN></P>
+<p class=16 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US><FONT face=Arial>| 29&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | 
+6438&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | 2019-01-14 
+15:30:00&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | 
+3.5098&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+| 
+3.2774&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+| 
+0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+| 
+3.42627&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+|</FONT> </SPAN></P>
+<p class=16 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US><FONT face=Arial>| 29&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | 
+6438&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | 2019-01-14 
+15:20:00&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | 
+3.5686&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+| 
+3.3348&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+| 
+0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+| 
+3.40258&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+|</FONT> </SPAN></P>
+<p class=16 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US><FONT face=Arial>| 29&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | 
+6438&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | 2019-01-14 
+15:10:00&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | 
+3.5854&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+| 
+3.3558&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;| 
+0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+| 
+3.4615&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+|</FONT> </SPAN></P>
+<p class=16 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US><FONT face=Arial>| 29&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | 
+6438&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | 2019-01-14 
+15:00:00&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | 
+3.542&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+| 
+3.3446&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+| 
+0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+| 
+3.47842&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+|</FONT> </SPAN></P>
+<p class=16 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US><FONT face=Arial>+------------+------------+---------------------------+-------------------------+-------------------------+---------------------+-------------------------+</FONT></SPAN></P>
+<p class=16 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US><FONT face=Arial>SQLRowCount returns -1</FONT> </SPAN></P>
+<p class=16 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><span lang=EN-US><FONT face=Arial>7 rows fetched</FONT> </SPAN></P></DIV>
+<h2 style="MARGIN: 12pt 0cm; TEXT-INDENT: 0cm"><a 
+name=_Toc67927326><FONT size=2>5.2 
+Установка и настройка ODBC Cassandra на </FONT></A><FONT size=2><span lang=EN-US>Windows</SPAN><span 
+lang=EN-US> </SPAN><span lang=EN-US>Server</SPAN></FONT></H2>
+<p class=MsoNormal><FONT size=2>Установка и настройка <span lang=EN-US>ODBC</SPAN><span lang=EN-US> 
+</SPAN><span lang=EN-US>Cassandra</SPAN><span lang=EN-US> </SPAN>на <span lang=EN-US>Windows</SPAN><span lang=EN-US> 
+</SPAN><span lang=EN-US>Server</SPAN><span lang=EN-US> </SPAN>осуществляется согласно пунктам главы «Настройка 
+<span lang=EN-US>ODBC</SPAN>».</FONT></P>
+<p class=MsoNormal><FONT size=2></FONT>&nbsp;</P>
+<h1 style="TEXT-INDENT: 0cm"><a name=_Toc41984984></A><a name=_Toc41713534></A><a 
+name=_Toc41712930></A><a name=_Toc67927327><FONT size=2>6 Способы доступа к 
+архивам, хранящимся в </FONT></A><span lang=EN-US><FONT size=2>Cassandra</FONT></SPAN></H1>
+<h2 style="MARGIN-LEFT: 0cm; TEXT-INDENT: 0cm"><a 
+name=_Toc521490182></A><a name=_Toc67927328></A><a name=_Toc521490189><FONT size=2>6.1 Доступ к архивам из РСДУ</FONT> </A></H2>
+<h3 style="MARGIN-LEFT: 0cm; TEXT-INDENT: 0cm"><a 
+name=_Toc67927329></A><a name=_Toc521490190><FONT size=2>6.1.1 Клиент просмотра 
+архивов</FONT> </A></H3>
+<p class=MsoNormal><FONT size=2>Доступ 
+к архивам РСДУ, хранящимся в <span lang=EN-US>Cassandra</SPAN>, реализован через приложение Просмотр 
+архивов в оперативном режиме (<FONT face=Arial> <span 
+class=af5>Retroview_live.exe</SPAN>). Клиент получает 
+данные от сервера доступа к архивам.</FONT></FONT> </P>
+<h3 style="MARGIN-LEFT: 0cm; TEXT-INDENT: 0cm"><a 
+name=_Toc67927330></A><a name=_Toc521490191><FONT size=2>6.1.2 Отчеты РСДУ</FONT> 
+</A></H3>
+<p class=MsoNormal><FONT size=2>Доступ 
+к архивам, хранящимся в СУБД <span lang=EN-US>Cassandra</SPAN>, возможен из отчетов РСДУ. На АРМ клиентов 
+для этого никаких настроек выполнять не требуется. Настройка на доступ к СУБД 
+<span lang=EN-US>Cassandra</SPAN><span lang=EN-US> </SPAN>за данными осуществляется непосредственно из 
+процедур отчетов, хранящихся в СУБД <span lang=EN-US>Oracle</SPAN><span lang=EN-US> 
+</SPAN>или <span lang=EN-US>MS</SPAN><span lang=EN-US> </SPAN><span lang=EN-US>SQL</SPAN><span lang=EN-US> 
+</SPAN><span lang=EN-US>Server</SPAN>.</FONT></P>
+<h2 style="MARGIN-LEFT: 0cm; TEXT-INDENT: 0cm"><a 
+name=_Toc67927331><FONT size=2>6.2 
+Доступ к архивам из клиента СУБД </FONT></A><span lang=EN-US><FONT size=2>Cassandra</FONT></SPAN></H2>
+<h3 style="MARGIN-LEFT: 0cm; TEXT-INDENT: 0cm"><a 
+name=_Toc67927332></A><a name=_Toc521490183><FONT size=2>6.2.1 Установка</FONT> 
+</A><FONT size=2>клиента</FONT> </H3>
+<p class=MsoNormal><FONT size=2>Для 
+удобства работы с БД <span lang=EN-US>Cassandra</SPAN><span 
+lang=EN-US> </SPAN>на ОС <span lang=EN-US>Windows</SPAN><span lang=EN-US> 
+</SPAN>можно установить клиента, который будет подключаться к базе данных. 
+Запросы данных в клиенте пишутся на языке <span lang=EN-US>CQL</SPAN>. Для установки клиента необходимо выполнить 
+следующие действия:</FONT> </P>
+<p class=MsoListNumber2><FONT size=2>1.<FONT face=Arial><span 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; 
+</SPAN>установить Java на компьютер из дистрибутива <span class=af5>jre-8u111-windows-x64</SPAN>;</FONT></FONT></P>
+<p class=MsoListNumber2><FONT size=2>2.<FONT face=Arial><span 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; 
+</SPAN>распаковать архив <span class=af5>DevCenter-1.6.0-win-x86_64.zip</SPAN> (клиент СУБД <span 
+lang=EN-US>Cassandra</SPAN>) на компьютер;</FONT></FONT> 
+</P>
+<p class=MsoListNumber2><FONT size=2>3.<FONT face=Arial><span 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; 
+</SPAN>запустить файл </FONT></FONT><a name=_Hlk67503569><span class=af5><FONT size=2 face=Arial>DevCenter.exe</FONT></SPAN></A><FONT size=2>. Откроется окно клиента БД <span lang=EN-US>Cassandra</SPAN>.</FONT></P>
+<p class=MsoNormal style="TEXT-ALIGN: center" align=center><FONT size=2><IMG id="Рисунок&#13;&#10;&#13;&#10; 3" border=0 src="Caimage004.jpg" width=647 height=392 ></FONT></P>
+<p class=MsoCaption><FONT size=2>Рисунок 3 – Окно приложения <span lang=EN-US>Datastax</SPAN><span lang=EN-US> 
+</SPAN><span lang=EN-US>DevCenter</SPAN></FONT></P>
+<h3 style="MARGIN-LEFT: 0cm; TEXT-INDENT: 0cm"><a 
+name=_Toc67927333></A><a name=_Toc521490184><FONT size=2>6.2.2 Настройка часового 
+пояса</FONT> </A><FONT size=2>в клиенте</FONT> </H3>
+<p class=MsoNormal><FONT size=2>Для 
+настройки часового пояса в клиенте <span lang=EN-US>Cassandra</SPAN> (например, чтобы в запросах возвращалось 
+локальное время, а не по Гринвичу) или формата даты/времени необходимо в 
+директории, где установлен <FONT face=Arial><span class=af5>DevCenter</SPAN>, изменить конфигурационный файл <span 
+class=af5>configuration\config.ini</SPAN>, добавив 2 строки 
+в конце файла (ниже пример):</FONT></FONT> </P>
+<div 
+style="BORDER-TOP: windowtext 1pt solid; BORDER-RIGHT: windowtext 1pt solid; BACKGROUND: #c1c1c1; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 1pt; PADDING-TOP: 1pt; PADDING-LEFT: 4pt; MARGIN-LEFT: 5.65pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 4pt; MARGIN-RIGHT: 5.65pt">
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><FONT face=Arial>#Часовой пояс</FONT> 
+</P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><FONT face=Arial><b><span lang=EN-US>devcenter</SPAN></B><b>.<span 
+lang=EN-US>timezone</SPAN></B><b>.<span lang=EN-US>id</SPAN></B><b>=<span lang=EN-US>Asia</SPAN></B><b>/<span lang=EN-US>Novosibirsk</SPAN></B></FONT></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><FONT face=Arial>#Формат 
+даты/времени:</FONT> </P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><FONT face=Arial><span lang=EN-US>devcenter</SPAN>.<span lang=EN-US>date</SPAN>.<span lang=EN-US>format</SPAN>=<b><span lang=EN-US>yyyy</SPAN></B><b>.<span lang=EN-US>MM</SPAN></B><b>.<span lang=EN-US>dd</SPAN></B><b><span lang=EN-US> </SPAN><span lang=EN-US>HH</SPAN></B><b>:<span lang=EN-US>mm</SPAN></B><b>:<span lang=EN-US>ss</SPAN></B><b>.<span lang=EN-US>S</SPAN></B><b><span lang=EN-US> </SPAN><span lang=EN-US>Z</SPAN></B></FONT></P></DIV>
+<p class=aff4><FONT size=2>Возможные 
+варианты часовых поясов:</FONT> </P>
+<p class=MsoNormal><A href="https://en.wikipedia.org/wiki/List_of_tz_database_time_zones" ><FONT size=2>https://en.wikipedia.org/wiki/List_of_tz_database_time_zones</FONT></A></P>
+<p class=MsoNormal><FONT size=2>Шаблон 
+формата даты/времени:</FONT> </P>
+<p class=MsoNormal><A href="https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html#patterns" ><FONT size=2>https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html#patterns</FONT></A></P>
+<p class=MsoNormal><FONT size=2>После 
+изменения файла необходимо перезапустить <FONT face=Arial><span class=af5>DevCenter</SPAN>.</FONT></FONT></P>
+<h3 style="MARGIN-LEFT: 0cm; TEXT-INDENT: 0cm"><a 
+name=_Toc67927334></A><a name=_Toc521490185><FONT size=2>6.2.3 Пример получения 
+данных из архивов</FONT> </A></H3>
+<p class=MsoNormal><FONT size=2>Для 
+подключения к БД <span lang=EN-US>Cassandra</SPAN><span 
+lang=EN-US> </SPAN>необходимо нажать на иконку «Create a 
+new connection»<IMG id="Рисунок 5" border=0 src="Caimage005.jpg" width=32 height=26 > и ввести <span 
+lang=EN-US>IP</SPAN>-адрес хоста, на котором установлена 
+Cassandra. Подключение отображается в левой части окна. В средней части окна 
+можно писать запросы, а в правой создавать (удалять, редактировать) 
+таблицы.</FONT> </P>
+<p class=MsoNormal><FONT size=2>Пример 
+запроса для <span lang=EN-US>Cassandra:</SPAN></FONT></P>
+<div 
+style="BORDER-TOP: windowtext 1pt solid; BORDER-RIGHT: windowtext 1pt solid; BACKGROUND: #c1c1c1; BORDER-BOTTOM: windowtext 1pt solid; PADDING-BOTTOM: 1pt; PADDING-TOP: 1pt; PADDING-LEFT: 4pt; MARGIN-LEFT: 5.65pt; BORDER-LEFT: windowtext 1pt solid; PADDING-RIGHT: 4pt; MARGIN-RIGHT: 5.65pt">
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><FONT face=Arial><span lang=EN-US>SELECT</SPAN><span lang=EN-US> 
+</SPAN><span lang=EN-US>id_tbllst</SPAN><span lang=EN-US>, </SPAN><span lang=EN-US>id</SPAN><span lang=EN-US>, 
+</SPAN><span lang=EN-US>time1970</SPAN><span lang=EN-US>, </SPAN><span lang=EN-US>max_val</SPAN><span lang=EN-US>, 
+</SPAN><span lang=EN-US>min_val</SPAN><span lang=EN-US>, </SPAN><span lang=EN-US>state, 
+val</SPAN><span lang=EN-US>, </SPAN><span lang=EN-US>TTL</SPAN><span lang=EN-US>(</SPAN><span lang=EN-US>state</SPAN><span lang=EN-US>)</SPAN></FONT></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><FONT face=Arial><span lang=EN-US>FROM</SPAN><span lang=EN-US> 
+</SPAN><span lang=EN-US>arc.profile_70</SPAN><span 
+lang=EN-US> </SPAN><span lang=EN-US>where</SPAN><span lang=EN-US> 
+</SPAN><span lang=EN-US>id_tbllst=29 and</SPAN><span 
+lang=EN-US> </SPAN><span lang=EN-US>id</SPAN><span lang=EN-US>=</SPAN><span lang=EN-US>244 
+and</SPAN></FONT></P>
+<p class=a 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: #c1c1c1; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 0cm; MARGIN: 0cm 0cm 0pt; BORDER-LEFT: medium none; PADDING-RIGHT: 0cm"><FONT face=Arial><span lang=EN-US>time1970</SPAN><span lang=EN-US> 
+</SPAN><span lang=EN-US>&gt; '2017-01-31 06:00:00 +0700' 
+and</SPAN><span lang=EN-US> </SPAN><span lang=EN-US>time1970</SPAN><span lang=EN-US> 
+</SPAN><span lang=EN-US>&lt; '2017-01-31 07:00:00 
++0700';</SPAN></FONT></P></DIV>
+<p class=aff4><FONT size=2>где: <FONT face=Arial><span class=af5>TTL</SPAN> 
+– время жизни, можно не запрашивать, <span class=af5>+0700</SPAN> – часовой пояс.</FONT></FONT> </P>
+<p class=MsoNormal><FONT size=2>В 
+нашем примере запрос вернул время по Гринвичу (в поле <FONT face=Arial><span class=af5>time1970</SPAN> будет 
++0000), т.к. локальный часовой пояс не был установлен.</FONT></FONT> </P>
+<p class=MsoNormal style="TEXT-ALIGN: center" align=center><FONT size=2><IMG id="Рисунок&#13;&#10;&#13;&#10; 10" border=0 src="Caimage006.jpg" width=644 height=181 ></FONT></P>
+<p class=MsoCaption><FONT size=2>Рисунок 4 – Пример результата запроса</FONT> </P>
+<h2 style="MARGIN-LEFT: 0cm; TEXT-INDENT: 0cm"><a 
+name=_Toc67927335></A><a name=_Toc521490186><FONT size=2>6.3 Доступ к архивам из 
+стороннего ПО через </FONT></A><span lang=EN-US><FONT size=2>ODBC</FONT></SPAN></H2>
+<p class=MsoNormal><FONT size=2>Доступ 
+к данным СУБД <span lang=EN-US>Cassandra</SPAN><span 
+lang=EN-US> </SPAN>можно получить из любых клиентов, 
+работающих с СУБД через <span lang=EN-US>ODBC</SPAN>, 
+например, </FONT><a name=_Hlk67503546><FONT size=2>из приложения </FONT></A><FONT size=2><span lang=EN-US>Database</SPAN> 
+.<span lang=EN-US>NET</SPAN>. В этом случае запросы к 
+данным пишутся на языке <span lang=EN-US>SQL</SPAN>. Для 
+этого необходимо установить и настроить <span lang=EN-US>ODBC</SPAN>-драйвер <span lang=EN-US>Cassandra.</SPAN></FONT></P><span 
+style='FONT-SIZE: 12pt; FONT-FAMILY: "Arial","sans-serif"'><br style="PAGE-BREAK-BEFORE: always" clear=all></SPAN>
+<p class=MsoNormal 
+style="MARGIN-BOTTOM: 0pt; TEXT-ALIGN: left; LINE-HEIGHT: normal" align=left><FONT size=2></FONT>&nbsp;</P>
+<h3 style="MARGIN-LEFT: 0cm; TEXT-INDENT: 0cm"><a 
+name=_Toc67927336></A><a name=_Toc521490187></A><a name=_Ref520806741><FONT size=2><span lang=EN-US>6.3.1 
+</SPAN>Настройка </FONT></A><span lang=EN-US><FONT size=2>ODBC</FONT></SPAN></H3>
+<p class=MsoListNumber2><FONT size=2>1.<FONT face=Arial><span 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; 
+</SPAN>Выполнить установку драйвера <span lang=EN-US>ODBC</SPAN><span lang=EN-US> 
+</SPAN><span lang=EN-US>Cassandra</SPAN><span lang=EN-US> </SPAN>из дистрибутива.</FONT></FONT> </P>
+<p class=MsoListNumber2><FONT size=2>2.<FONT face=Arial><span 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; 
+</SPAN>Открыть Источники данных ODBC («Панель управления&nbsp;<span 
+style='FONT-FAMILY: "Wingdings 3"'>"</SPAN> 
+Администрирование»).</FONT></FONT> </P>
+<p class=MsoListNumber2><FONT size=2>3.<FONT face=Arial><span 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; 
+</SPAN>Добавить системный <span lang=EN-US>DSN</SPAN> с 
+именем <span class=af5>CASS</SPAN>, выбрав драйвер <span 
+class=af5>Datastax Cassandra ODBC Driver</SPAN>. В <span 
+lang=EN-US>hosts</SPAN> перечислить <span lang=EN-US>IP</SPAN>-адреса хостов с СУБД <span lang=EN-US>Cassandra</SPAN>, <span lang=EN-US>Port</SPAN> указать 9042, <span lang=EN-US>default</SPAN><span lang=EN-US> 
+</SPAN><span lang=EN-US>keyspace</SPAN>: <span class=af5>arc</SPAN>. Механизм аутентификации – выбрать без 
+аутентификации. Нажать ОК.</FONT></FONT> </P>
+<p class=MsoListContinue2><FONT size=2>Пример настроенного <span lang=EN-US>ODBC</SPAN><span lang=EN-US> 
+</SPAN>приведен на Рисунок 5.</FONT> </P>
+<p class=MsoListNumber2><FONT size=2>4.<FONT face=Arial><span 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; 
+</SPAN>Настройка <span lang=EN-US>ODBC</SPAN> 
+завершена.</FONT></FONT> </P>
+<p class=MsoNormal style="PAGE-BREAK-AFTER: avoid; TEXT-ALIGN: center" 
+align=center><FONT size=2><IMG id="Рисунок 17" border=0 alt="Описание: ODBC_source" src="Caimage007.png" width=597 height=588 ></FONT></P>
+<p class=MsoCaption><a name=_Ref67301788><FONT size=2>Рисунок </FONT></A><FONT size=2>5 – Пример настроенного <span lang=EN-US>ODBC</SPAN>-драйвера <span lang=EN-US>Cassandra</SPAN></FONT></P>
+<h3 style="MARGIN-LEFT: 0cm; TEXT-INDENT: 0cm"><a 
+name=_Toc67927337></A><a name=_Toc521490188><FONT size=2>6.3.2 Пример запроса 
+данных</FONT> </A></H3>
+<p class=MsoNormal><FONT size=2>На 
+Рисунок 6 приведен пример запроса для чтения данных из клиента <span lang=EN-US>Database</SPAN><span lang=EN-US> 
+</SPAN>.<span lang=EN-US>NET</SPAN>.</FONT></P>
+<p class=MsoNormal style="PAGE-BREAK-AFTER: avoid; TEXT-ALIGN: center" 
+align=center><FONT size=2><IMG id="Рисунок 18" border=0 alt="Описание: test query (example)" src="Caimage008.jpg" width=642 height=506 ></FONT></P>
+<p class=MsoCaption><a name=_Ref67341656><FONT size=2>Рисунок </FONT></A><FONT size=2>6 – Пример запроса для чтения данных в приложении 
+<span lang=EN-US>Database</SPAN> .<span lang=EN-US>NET</SPAN></FONT></P>
+<p class=MsoNormal><FONT size=2></FONT>&nbsp;</P>
+
+</div>
+<div><br clear=all><FONT size=2 face=Arial>
+<hr align=left SIZE=1 width="33%">
+</FONT>
+<div id=ftn1>
+<p class=MsoFootnoteText><FONT size=2><br></FONT><a 
+href="http://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html"><FONT size=2>http://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html</FONT></A><span 
+class=MsoHyperlink><FONT size=2>.</FONT></SPAN></P></DIV>
+<div id=ftn2>
+<p class=MsoFootnoteText><FONT size=2>для скачивания файлов необходимо принять лицензионное 
+соглашение.</FONT></P></DIV>
+<div id=ftn4>
+<p class=MsoFootnoteText><FONT size=2>подробное описание настроек можно посмотреть в инструкции 
+из установленного каталога: /<span lang=EN-US>opt</SPAN>/<span lang=EN-US>datastax</SPAN>/<span lang=EN-US>cassandraodbc</SPAN>/<span lang=EN-US>DataStax</SPAN><span lang=EN-US> 
+</SPAN><span lang=EN-US>ODBC</SPAN><span lang=EN-US> </SPAN><span lang=EN-US>Driver</SPAN><span lang=EN-US> 
+</SPAN><span lang=EN-US>for</SPAN><span lang=EN-US> </SPAN><span lang=EN-US>Cassandra</SPAN><span lang=EN-US> 
+</SPAN><span lang=EN-US>Install</SPAN><span lang=EN-US> </SPAN><span lang=EN-US>Guide</SPAN>.<span lang=EN-US>pdf</SPAN></FONT></P></DIV></DIV></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT>
+
+</body>
+
+</html>

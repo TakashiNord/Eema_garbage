@@ -72,6 +72,7 @@ namespace ArcConfig
 		private System.Windows.Forms.Button buttonCalc;
 		private System.Windows.Forms.Button button5;
 		private System.Windows.Forms.Label label27;
+		private System.Windows.Forms.Button buttonCass;
 		
 		/// <summary>
 		/// Disposes resources used by the form.
@@ -111,6 +112,7 @@ namespace ArcConfig
 			this.label17 = new System.Windows.Forms.Label();
 			this.label11 = new System.Windows.Forms.Label();
 			this.groupBox4 = new System.Windows.Forms.GroupBox();
+			this.buttonCass = new System.Windows.Forms.Button();
 			this.label19 = new System.Windows.Forms.Label();
 			this.label18 = new System.Windows.Forms.Label();
 			this.textBoxSTACK_INTERVAL = new System.Windows.Forms.TextBox();
@@ -138,22 +140,22 @@ namespace ArcConfig
 			this.checkedListBoxSTATE = new System.Windows.Forms.CheckedListBox();
 			this.label2 = new System.Windows.Forms.Label();
 			this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+			this.textBoxFLUSH_INTERVAL = new System.Windows.Forms.TextBox();
+			this.textBoxCACHE_TIMEOUT = new System.Windows.Forms.TextBox();
+			this.textBoxCACHE_SIZE = new System.Windows.Forms.TextBox();
 			this.button1 = new System.Windows.Forms.Button();
 			this.groupBox5 = new System.Windows.Forms.GroupBox();
+			this.label27 = new System.Windows.Forms.Label();
 			this.label24 = new System.Windows.Forms.Label();
 			this.label23 = new System.Windows.Forms.Label();
 			this.label8 = new System.Windows.Forms.Label();
 			this.label7 = new System.Windows.Forms.Label();
 			this.label6 = new System.Windows.Forms.Label();
-			this.textBoxFLUSH_INTERVAL = new System.Windows.Forms.TextBox();
-			this.textBoxCACHE_TIMEOUT = new System.Windows.Forms.TextBox();
-			this.textBoxCACHE_SIZE = new System.Windows.Forms.TextBox();
 			this.button2 = new System.Windows.Forms.Button();
 			this.button3 = new System.Windows.Forms.Button();
 			this.button4 = new System.Windows.Forms.Button();
 			this.dataGridView1 = new System.Windows.Forms.DataGridView();
 			this.dataSet1 = new System.Data.DataSet();
-			this.label27 = new System.Windows.Forms.Label();
 			this.groupBox1.SuspendLayout();
 			this.groupBox4.SuspendLayout();
 			this.groupBox2.SuspendLayout();
@@ -247,7 +249,7 @@ namespace ArcConfig
 			// button5
 			// 
 			this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.button5.Location = new System.Drawing.Point(238, 81);
+			this.button5.Location = new System.Drawing.Point(238, 82);
 			this.button5.Name = "button5";
 			this.button5.Size = new System.Drawing.Size(51, 23);
 			this.button5.TabIndex = 46;
@@ -258,7 +260,7 @@ namespace ArcConfig
 			// buttonCalc
 			// 
 			this.buttonCalc.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.buttonCalc.Location = new System.Drawing.Point(238, 51);
+			this.buttonCalc.Location = new System.Drawing.Point(238, 13);
 			this.buttonCalc.Name = "buttonCalc";
 			this.buttonCalc.Size = new System.Drawing.Size(51, 23);
 			this.buttonCalc.TabIndex = 45;
@@ -309,6 +311,7 @@ namespace ArcConfig
 			// 
 			// groupBox4
 			// 
+			this.groupBox4.Controls.Add(this.buttonCass);
 			this.groupBox4.Controls.Add(this.label19);
 			this.groupBox4.Controls.Add(this.label18);
 			this.groupBox4.Controls.Add(this.textBoxSTACK_INTERVAL);
@@ -321,6 +324,17 @@ namespace ArcConfig
 			this.groupBox4.TabIndex = 39;
 			this.groupBox4.TabStop = false;
 			this.groupBox4.Text = "Партиции для мгновенных";
+			// 
+			// buttonCass
+			// 
+			this.buttonCass.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.buttonCass.Location = new System.Drawing.Point(231, 42);
+			this.buttonCass.Name = "buttonCass";
+			this.buttonCass.Size = new System.Drawing.Size(51, 22);
+			this.buttonCass.TabIndex = 43;
+			this.buttonCass.Text = "Cass";
+			this.buttonCass.UseVisualStyleBackColor = true;
+			this.buttonCass.Click += new System.EventHandler(this.ButtonCassClick);
 			// 
 			// label19
 			// 
@@ -562,6 +576,36 @@ namespace ArcConfig
 			this.label2.TabIndex = 36;
 			this.label2.Text = "Тип хранимых данных:";
 			// 
+			// textBoxFLUSH_INTERVAL
+			// 
+			this.textBoxFLUSH_INTERVAL.Location = new System.Drawing.Point(171, 68);
+			this.textBoxFLUSH_INTERVAL.Name = "textBoxFLUSH_INTERVAL";
+			this.textBoxFLUSH_INTERVAL.Size = new System.Drawing.Size(69, 20);
+			this.textBoxFLUSH_INTERVAL.TabIndex = 37;
+			this.textBoxFLUSH_INTERVAL.Text = "0";
+			this.toolTip1.SetToolTip(this.textBoxFLUSH_INTERVAL, "FLUSH_INTERVAL = Период (сек) чистки устаревших данных. Значение 0 - не исполняет" +
+		"ся");
+			// 
+			// textBoxCACHE_TIMEOUT
+			// 
+			this.textBoxCACHE_TIMEOUT.Location = new System.Drawing.Point(171, 45);
+			this.textBoxCACHE_TIMEOUT.Name = "textBoxCACHE_TIMEOUT";
+			this.textBoxCACHE_TIMEOUT.Size = new System.Drawing.Size(69, 20);
+			this.textBoxCACHE_TIMEOUT.TabIndex = 36;
+			this.textBoxCACHE_TIMEOUT.Text = "0";
+			this.toolTip1.SetToolTip(this.textBoxCACHE_TIMEOUT, "CACHE_TIMEOUT  = Промежуток времени (сек), через который сервер записи архивов от" +
+		"правляет данные на вставку серверу прямого доступа");
+			// 
+			// textBoxCACHE_SIZE
+			// 
+			this.textBoxCACHE_SIZE.Location = new System.Drawing.Point(171, 19);
+			this.textBoxCACHE_SIZE.Name = "textBoxCACHE_SIZE";
+			this.textBoxCACHE_SIZE.Size = new System.Drawing.Size(69, 20);
+			this.textBoxCACHE_SIZE.TabIndex = 35;
+			this.textBoxCACHE_SIZE.Text = "0";
+			this.toolTip1.SetToolTip(this.textBoxCACHE_SIZE, "CACHE_SIZE = Объем данных (\"строк\"), при котором сервер записи архивов отправляет" +
+		" данные на вставку серверу прямого доступа");
+			// 
 			// button1
 			// 
 			this.button1.Location = new System.Drawing.Point(657, 58);
@@ -589,6 +633,14 @@ namespace ArcConfig
 			this.groupBox5.TabIndex = 40;
 			this.groupBox5.TabStop = false;
 			this.groupBox5.Text = "Опции сервера записи архивов";
+			// 
+			// label27
+			// 
+			this.label27.Location = new System.Drawing.Point(246, 25);
+			this.label27.Name = "label27";
+			this.label27.Size = new System.Drawing.Size(43, 17);
+			this.label27.TabIndex = 47;
+			this.label27.Text = "строк";
 			// 
 			// label24
 			// 
@@ -629,36 +681,6 @@ namespace ArcConfig
 			this.label6.Size = new System.Drawing.Size(157, 20);
 			this.label6.TabIndex = 38;
 			this.label6.Text = "Кэш буфер -  параметров:";
-			// 
-			// textBoxFLUSH_INTERVAL
-			// 
-			this.textBoxFLUSH_INTERVAL.Location = new System.Drawing.Point(171, 68);
-			this.textBoxFLUSH_INTERVAL.Name = "textBoxFLUSH_INTERVAL";
-			this.textBoxFLUSH_INTERVAL.Size = new System.Drawing.Size(69, 20);
-			this.textBoxFLUSH_INTERVAL.TabIndex = 37;
-			this.textBoxFLUSH_INTERVAL.Text = "0";
-			this.toolTip1.SetToolTip(this.textBoxFLUSH_INTERVAL, "FLUSH_INTERVAL = Период (сек) чистки устаревших данных. Значение 0 - не исполняет" +
-		"ся");
-			// 
-			// textBoxCACHE_TIMEOUT
-			// 
-			this.textBoxCACHE_TIMEOUT.Location = new System.Drawing.Point(171, 45);
-			this.textBoxCACHE_TIMEOUT.Name = "textBoxCACHE_TIMEOUT";
-			this.textBoxCACHE_TIMEOUT.Size = new System.Drawing.Size(69, 20);
-			this.textBoxCACHE_TIMEOUT.TabIndex = 36;
-			this.textBoxCACHE_TIMEOUT.Text = "0";
-			this.toolTip1.SetToolTip(this.textBoxCACHE_TIMEOUT, "CACHE_TIMEOUT  = Промежуток времени (сек), через который сервер записи архивов от" +
-		"правляет данные на вставку серверу прямого доступа");
-			// 
-			// textBoxCACHE_SIZE
-			// 
-			this.textBoxCACHE_SIZE.Location = new System.Drawing.Point(171, 19);
-			this.textBoxCACHE_SIZE.Name = "textBoxCACHE_SIZE";
-			this.textBoxCACHE_SIZE.Size = new System.Drawing.Size(69, 20);
-			this.textBoxCACHE_SIZE.TabIndex = 35;
-			this.textBoxCACHE_SIZE.Text = "0";
-			this.toolTip1.SetToolTip(this.textBoxCACHE_SIZE, "CACHE_SIZE = Объем данных (\"строк\"), при котором сервер записи архивов отправляет" +
-		" данные на вставку серверу прямого доступа");
 			// 
 			// button2
 			// 
@@ -709,14 +731,6 @@ namespace ArcConfig
 			// dataSet1
 			// 
 			this.dataSet1.DataSetName = "NewDataSet";
-			// 
-			// label27
-			// 
-			this.label27.Location = new System.Drawing.Point(246, 25);
-			this.label27.Name = "label27";
-			this.label27.Size = new System.Drawing.Size(43, 17);
-			this.label27.TabIndex = 47;
-			this.label27.Text = "строк";
 			// 
 			// FormArcGinfo
 			// 

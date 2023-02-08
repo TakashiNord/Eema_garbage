@@ -49,7 +49,6 @@ namespace ArcConfig
 			this.richTextBox1.Size = new System.Drawing.Size(493, 325);
 			this.richTextBox1.TabIndex = 0;
 			this.richTextBox1.Text = resources.GetString("richTextBox1.Text");
-
 			// 
 			// FormInfo1
 			// 
@@ -59,7 +58,7 @@ namespace ArcConfig
 			this.Controls.Add(this.richTextBox1);
 			this.Name = "FormInfo1";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-			this.Text = "Партиций очень большое число";
+			this.Text = "Партиций очень большое число [для Oracle]";
 			this.ResumeLayout(false);
 
 		}
