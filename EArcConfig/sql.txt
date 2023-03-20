@@ -517,3 +517,19 @@ select t.inst_id
 from gv$transaction t
 inner join gv$session s on t.addr = s.taddr;
 
+
+
+COMMENT ON TABLE AD_SERV_INI_V IS 'Представление для просмотра инициализационных параметров модулей РВ';
+CREATE OR REPLACE FORCE VIEW ad_serv_ini_v (login, parameter, VALUE)
+AS
+   (
+SELECT
+       u.ID       ID_USER,
+       u.login login, r.NAME parameter, i.VALUE VALUE
+      FROM ad_sinfo_ini i, ad_sinfo s, s_users u, rsdu_ini_param r
+     WHERE s.id_server_node = i.id_server_node
+       AND u.ID = s.id_user
+       AND r.ID = i.id_ini_param);
+
+
+

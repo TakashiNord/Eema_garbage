@@ -334,4 +334,13 @@ select 'ACTIVE', count(*) from v$session where status = 'ACTIVE'</value>
   <data name="DG_LIST" xml:space="preserve">
     <value>select count (*) from DG_LIST</value>
   </data>
+  <data name="ad_serv_ini_v" xml:space="preserve">
+    <value>SELECT
+       u.ID       ID_USER,
+       u.login login, r.NAME parameter, i.VALUE VALUE
+      FROM ad_sinfo_ini i, ad_sinfo s, s_users u, rsdu_ini_param r
+     WHERE s.id_server_node = i.id_server_node
+       AND u.ID = s.id_user
+       AND r.ID = i.id_ini_param</value>
+  </data>
 </root>

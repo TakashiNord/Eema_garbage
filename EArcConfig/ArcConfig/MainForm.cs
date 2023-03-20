@@ -119,6 +119,20 @@ namespace ArcConfig
          }
        Application.DoEvents();
     }
+   
+   public void AddLogStringNoTime(string s)
+   {
+       string strout = "\n"+ s ;
+       if(InvokeRequired) {
+           richTextBox1.Invoke((Action)delegate { richTextBox1.AppendText(strout); });
+           richTextBox1.Invoke((Action)delegate { richTextBox1.Update(); });
+       } else {
+           richTextBox1.AppendText(strout);
+           richTextBox1.Update();
+         }
+       Application.DoEvents();
+    }
+   
 
    public string GetTypeValue(ref OdbcDataReader reader, int i)
    {
@@ -3508,7 +3522,7 @@ int ArcDel(object sender, int selRowNum , int selColNum)
          {
            strQry+=GetTypeValue(ref reader, i) +  ";";
          }
-         if (reader.FieldCount>1) AddLogString(strQry);
+         if (reader.FieldCount>1) AddLogStringNoTime(strQry);
       } // while
       reader.Close();
 
@@ -3520,111 +3534,111 @@ int ArcDel(object sender, int selRowNum , int selColNum)
 void OracleStat ( )
 {
     //=========================================================
-    AddLogString("========================");
-    AddLogString(">> RSDU <<");
-    AddLogString("========================");
-    AddLogString(";Число параметров:;;");
-    AddLogString(";  Параметры Сбора = " + ReadData( "DA_COLUMN_DATA_V" ));
-    AddLogString(";  Электрические параметры = " + ReadData( "elreg_list_v" ));
-    AddLogString(";  Прочие параметры = " + ReadData( "phreg_list_v" ));
-    AddLogString(";  Коммутационные аппараты = " + ReadData( "pswt_list_v" ));
-    AddLogString(";  Дополнительные параметры = " + ReadData( "EXDATA_LIST_V" ));
-    AddLogString(";  Диспетчерские графики = " + ReadData( "DG_LIST" ));
-    AddLogString(";  Количество отчетов = " + ReadData( "RPT_LST_V" ));
-    AddLogString(";  Количество отчетов веб-сервера = " + ReadData( "RPT_LST_WWW_V" ));
-    AddLogString("========================");
-    AddLogString(">>RSDU_UPDATE");
+    AddLogStringNoTime("------------------------");
+    AddLogStringNoTime(">> RSDU <<");
+    AddLogStringNoTime("------------------------");
+    AddLogStringNoTime(";Число параметров:;;");
+    AddLogStringNoTime(";  Параметры Сбора = " + ReadData( "DA_COLUMN_DATA_V" ));
+    AddLogStringNoTime(";  Электрические параметры = " + ReadData( "elreg_list_v" ));
+    AddLogStringNoTime(";  Прочие параметры = " + ReadData( "phreg_list_v" ));
+    AddLogStringNoTime(";  Коммутационные аппараты = " + ReadData( "pswt_list_v" ));
+    AddLogStringNoTime(";  Дополнительные параметры = " + ReadData( "EXDATA_LIST_V" ));
+    AddLogStringNoTime(";  Диспетчерские графики = " + ReadData( "DG_LIST" ));
+    AddLogStringNoTime(";  Количество отчетов = " + ReadData( "RPT_LST_V" ));
+    AddLogStringNoTime(";  Количество отчетов веб-сервера = " + ReadData( "RPT_LST_WWW_V" ));
+    AddLogStringNoTime("------------------------");
+    AddLogStringNoTime(">>RSDU_UPDATE");
     ReadData( "RSDU_UPDATE" );
-    AddLogString("========================");
-    //AddLogString(">>dba_tab_privs-RSDUADMIN");
+    AddLogStringNoTime("------------------------");
+    //AddLogStringNoTime(">>dba_tab_privs-RSDUADMIN");
     //ReadData( "dba_tab_privs" ) ;
-    //AddLogString(">>Users Serv");
+    //AddLogStringNoTime(">>Users Serv");
     //ReadData( "UsersServ" ) ;
 
     //=========================================================
-    AddLogString("========================");
-    AddLogString(">> Instance <<");
-    AddLogString("========================");
-    AddLogString(">>Status");
+    AddLogStringNoTime("------------------------");
+    AddLogStringNoTime(">> Instance <<");
+    AddLogStringNoTime("------------------------");
+    AddLogStringNoTime(">>Status");
     ReadData( "Status0" ) ;
-    AddLogString("========================");
-    AddLogString(">>dbtimezone");
+    AddLogStringNoTime("------------------------");
+    AddLogStringNoTime(">>dbtimezone");
     ReadData( "dbtimezone" ) ;
-    AddLogString("========================");
-    AddLogString(">>v$version");
+    AddLogStringNoTime("------------------------");
+    AddLogStringNoTime(">>v$version");
     ReadData( "version" ) ;
-    AddLogString("========================");
-    AddLogString(">>Размер и свободное место");
+    AddLogStringNoTime("------------------------");
+    AddLogStringNoTime(">>Размер и свободное место");
     ReadData( "datafile1" ) ;
-    AddLogString("========================");
-    AddLogString(">>tablespace size");
+    AddLogStringNoTime("------------------------");
+    AddLogStringNoTime(">>tablespace size");
     ReadData( "tablespace size" ) ;
-    AddLogString("========================");
-    AddLogString(">>gv$database");
+    AddLogStringNoTime("------------------------");
+    AddLogStringNoTime(">>gv$database");
     ReadData( "database" ) ;
-    AddLogString("========================");
-    AddLogString(">>gv$asm_diskgroup");
+    AddLogStringNoTime("------------------------");
+    AddLogStringNoTime(">>gv$asm_diskgroup");
     ReadData( "asm_diskgroup" ) ;
-    AddLogString("========================");
-    AddLogString(">>dba_directories - информацию о Oracle-directories: владелец, имя, путь в файловой системе ОС");
+    AddLogStringNoTime("------------------------");
+    AddLogStringNoTime(">>dba_directories - Oracle-directories: владелец, имя, путь в файловой системе ОС");
     ReadData( "dba_directories" ) ;
-    AddLogString("========================");
-    AddLogString(">>dba_db_links - о database links: владелец, имя линка, имя схемы....");
+    AddLogStringNoTime("------------------------");
+    AddLogStringNoTime(">>dba_db_links - database links: владелец, имя линка, имя схемы....");
     ReadData( "dba_db_links" ) ;
-    AddLogString("========================");
-    AddLogString(">>v$resource_limit");
+    AddLogStringNoTime("------------------------");
+    AddLogStringNoTime(">>v$resource_limit");
     ReadData( "resource_limit" ) ;
-    AddLogString("========================");
-    AddLogString(">>v$parameter");
+    AddLogStringNoTime("------------------------");
+    AddLogStringNoTime(">>v$parameter");
     ReadData( "parameter" ) ;
-    AddLogString("========================");
-    AddLogString(">>nls_session_parameters");
+    AddLogStringNoTime("------------------------");
+    AddLogStringNoTime(">>nls_session_parameters");
     ReadData( "nls_session_parameters" ) ;
-    AddLogString("========================");
-    AddLogString(">>Процент использования FRA:");
+    AddLogStringNoTime("------------------------");
+    AddLogStringNoTime(">>Процент использования FRA:");
     ReadData( "RECOVERY_FILE_DEST" ) ;
-    AddLogString("========================");
-    AddLogString(">>UNDO");
+    AddLogStringNoTime("------------------------");
+    AddLogStringNoTime(">>UNDO");
     ReadData( "UNDO" ) ;
-    AddLogString("========================");
+    AddLogStringNoTime("------------------------");
     //=========================================================
 
-    AddLogString(">>v$sga_dynamic_components");
+    AddLogStringNoTime(">>v$sga_dynamic_components");
     ReadData( "sga_dynamic_components" ) ;
-    AddLogString("========================");
-    AddLogString(">>v$pgastat");
+    AddLogStringNoTime("------------------------");
+    AddLogStringNoTime(">>v$pgastat");
     ReadData( "pgastat" ) ;
-    AddLogString("========================");
+    AddLogStringNoTime("------------------------");
     //=========================================================
 
-    AddLogString(">>v$locked_object");
+    AddLogStringNoTime(">>v$locked_object");
     ReadData( "locked_object" ) ;
-    AddLogString("========================");
-    AddLogString(">>dba_recyclebin");
+    AddLogStringNoTime("------------------------");
+    AddLogStringNoTime(">>dba_recyclebin");
     ReadData( "dba_recyclebin" ) ;
-    AddLogString("========================");
-    AddLogString(">>v$session");
+    AddLogStringNoTime("------------------------");
+    AddLogStringNoTime(">>v$session");
     ReadData( "session1" ) ;
-    AddLogString("========================");
-    AddLogString(">>gv$session");
+    AddLogStringNoTime("------------------------");
+    AddLogStringNoTime(">>gv$session");
     ReadData( "session2" ) ;
-    AddLogString("========================");
-    AddLogString(">>v$process");
+    AddLogStringNoTime("------------------------");
+    AddLogStringNoTime(">>v$process");
     ReadData( "process" ) ;
-    AddLogString("========================");
-    AddLogString(">>Количество открытых курсоров = "+ ReadData( "open_cursor" )) ;
-    AddLogString(">>v$open_cursor");
+    AddLogStringNoTime("------------------------");
+    AddLogStringNoTime(">>Количество открытых курсоров = "+ ReadData( "open_cursor" )) ;
+    AddLogStringNoTime(">>v$open_cursor");
     ReadData( "open_cursor1" ) ;
-    AddLogString("========================");
-    AddLogString(">>opened cursors current");
+    AddLogStringNoTime("------------------------");
+    AddLogStringNoTime(">>opened cursors current");
     ReadData( "openedcursorscurrent" ) ;
-    AddLogString("========================");
-    AddLogString(">>v$sysstat");
+    AddLogStringNoTime("------------------------");
+    AddLogStringNoTime(">>v$sysstat");
     ReadData( "sysstat" ) ;
-    AddLogString("========================");
-    AddLogString(">>Сессии - CPU used by this session");
+    AddLogStringNoTime("------------------------");
+    AddLogStringNoTime(">>Сессии - CPU used by this session");
     ReadData( "GPU" ) ;
-    AddLogString("========================");
+    AddLogStringNoTime("------------------------");
     //=========================================================
 
     toolStripStatusLabel2.Text = "Output Stat to Logs - End";
@@ -3837,7 +3851,7 @@ void OracleStat ( )
 
         List<string> listOfNames = new List<string>()
         {
-            "datafile1",  "tablespace size"
+            "datafile1",  "tablespace size"  , "ad_serv_ini_v"
         };
 
         ResourceManager ro = new ResourceManager("ArcConfig.StatOracle", Assembly.GetExecutingAssembly());
