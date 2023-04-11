@@ -1,6 +1,6 @@
 [Workspace Header]
 Version = 901
-Pathname = "/c/Users/gal/Desktop/CviPanelParser2022v2/CviPanelParser.cws"
+Pathname = "/g/CviPanelParser2022v2/CviPanelParser.cws"
 CVI Dir = "/c/program files (x86)/national instruments/cvi90"
 CVI Shared Dir = "/C/Program Files (x86)/National Instruments/Shared/CVI"
 CVI Pub Local Dir = "/C/ProgramData/National Instruments/CVI90"
@@ -12,9 +12,9 @@ Active Project = 1
 Project 0001 = "CviPanelParser.prj"
 Drag Bar Left = 284
 Window Top = 51
-Window Left = 263
-Window Bottom = 885
-Window Right = 1687
+Window Left = 92
+Window Bottom = 1021
+Window Right = 1689
 Maximized = False
 Maximized Children = True
 Max Number Of Errors = 20
@@ -45,18 +45,18 @@ Batch Build Debug = False
 Force Rebuild = False
 
 [File 0001]
-Path = "/c/Users/gal/Desktop/CviPanelParser2022v2/CviPanelParser.c"
+Path = "/g/CviPanelParser2022v2/CviPanelParser.c"
 File Type = "CSource"
-Disk Date = 3734070774
+Disk Date = 3764044112
 In Projects = "1,"
 Window Top = 32
 Window Left = 10
 Source Window State = "1,325,326,326,0,12,12,0,0,0,0,0,0,0,0,0,785,0,794,16,258,527,1,0,"
 
 [File 0002]
-Path = "/c/Users/gal/Desktop/CviPanelParser2022v2/CviPanelParser.h"
+Path = "/g/CviPanelParser2022v2/CviPanelParser.h"
 File Type = "Include"
-Disk Date = 3729685693
+Disk Date = 3762166336
 In Projects = "1,"
 Window Top = 32
 Window Left = 10

@@ -41,6 +41,9 @@
 
   int  ic = 0 ;
   char ac[9999][MAX_STRING_SIZE];
+
+
+  int font_output = 0;  // вывод ohbanf
 //==============================================================================
 // Global functions
 
@@ -110,9 +113,12 @@ void PanelTextMsg(FILE *outfile, char * textId, int x, int y,int h, int w, char 
     fprintf(outfile ,"width:%d,\n",w);
   }
 
-  // Courier  "Times New Roman", serif  Geneva, Arial, Helvetica, sans-serif
+  // Courier  "Times New Roman", serif  Geneva, Arial, Helvetica, sans-serif  font-family: Arial
 
-  fprintf(outfile ,"style: 'padding:1px 0 2px 4px;z-index: %d;font-family: Arial",zplane);
+  if (font_output==0)
+    fprintf(outfile ,"style: 'padding:1px 0 2px 4px;z-index: %d",zplane);
+  else
+  	fprintf(outfile ,"style: 'padding:1px 0 2px 4px;z-index: %d;font-family: Arial",zplane);
 
   flagColumn = 1;
 
@@ -281,7 +287,7 @@ void PanelSquareBorder(FILE *outfile, char * textId, int x, int y, int h, int w,
   fprintf(outfile ,"height: %d,\n",h);
   fprintf(outfile ,"width: %d,\n",w);
 
-  fprintf(outfile ,"style: 'margin: 0; padding:0;;z-index: %d",zplane);
+  fprintf(outfile ,"style: 'margin: 0; padding:0;;z-index: 0"); // ,zplane  = 0 - важн порядок отрисовки панелей декора
   if(attr_fr_thick != 0) //border: 2px solid #f0f0f0
   {
     fprintf(outfile ,";border: %dpx solid %s",attr_fr_thick, Int2HexWeb(attr_fr_color) );
@@ -824,6 +830,12 @@ int main (int argc, char *argv[])
     if (argc > 2)
     {
       showPanel = 1;
+    }
+
+    // вывод ohbanf
+    if (argc > 3)
+    {
+      font_output = 1;
     }
 
     if (InitCVIRTE(0, 0, 0) == 0)
