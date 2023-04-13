@@ -118,7 +118,7 @@ void PanelTextMsg(FILE *outfile, char * textId, int x, int y,int h, int w, char 
   if (font_output==0)
     fprintf(outfile ,"style: 'padding:1px 0 2px 4px;z-index: %d",zplane);
   else
-  	fprintf(outfile ,"style: 'padding:1px 0 2px 4px;z-index: %d;font-family: Arial",zplane);
+    fprintf(outfile ,"style: 'padding:1px 0 2px 4px;z-index: %d;font-family: Arial",zplane);
 
   flagColumn = 1;
 
