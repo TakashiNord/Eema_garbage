@@ -63,6 +63,7 @@ namespace ArcConfig
     public int OptionTableDelete = 0;
     public int OptionTableDisable = 0;
     public int OptionTableConntime = 30;
+	public int OptionSaveFormat = 0;
 
 
     public MainForm()
@@ -119,7 +120,7 @@ namespace ArcConfig
          }
        Application.DoEvents();
     }
-   
+
    public void AddLogStringNoTime(string s)
    {
        string strout = "\n"+ s ;
@@ -132,7 +133,7 @@ namespace ArcConfig
          }
        Application.DoEvents();
     }
-   
+
 
    public string GetTypeValue(ref OdbcDataReader reader, int i)
    {
@@ -1834,15 +1835,40 @@ Postgres : SELECT version();
                 for (int f = 0; f < dataGridView.ColumnCount; f++)
                     fileCSV += (dataGridView.Columns[f].HeaderText + ";");
                 fileCSV += "\t" + Environment.NewLine;
+                string st , tst ;
                 for (int i = 0; i < dataGridView.RowCount ; i++)
                 {
                     for (int j = 0; j < dataGridView.ColumnCount; j++)
                     {
-                      string st = (dataGridView[j, i].Value).ToString() ;
-                      if ("System.Windows.Forms.CheckState"==dataGridView[j, i].Value.GetType().ToString()) {
+                      st = "" ;
+					  try
+                      {
+                        st = (dataGridView[j, i].Value).ToString() ;
+                      }
+                      catch (Exception ex1)
+                      {
+                        st = "" ;
+                      }
+                      
+                      tst = "" ;
+					  try
+                      {
+                        tst = dataGridView[j, i].Value.GetType().ToString() ;
+                      }
+                      catch (Exception ex1)
+                      {
+                        tst = "" ;
+                      }                      
+                      
+                      if ("System.Windows.Forms.CheckState"==tst) {
                         //Checked Unchecked
-                        if (st=="Checked") st="1";
-                        if (st=="Unchecked") st="0";
+                        if (OptionSaveFormat>0) {
+						  if (st=="Checked") st="1";
+                          if (st=="Unchecked") st="0";
+						} else {
+						  if (st=="Checked") st="x";
+                          if (st=="Unchecked") st="";
+						}
                       }
                       fileCSV += st + ";";
                         //fileCSV += ( dataGridView[j, i].Value).ToString() + ";";
@@ -3373,7 +3399,7 @@ int ArcDel(object sender, int selRowNum , int selColNum)
       AddLogString("ArcDel Вызов процедуры arc_arh_pkg.drop_arh (parnum,sname) ..");
 
       cmd0.CommandTimeout = OptionTableConntime; // 30..90
-      
+
       AddLogString("ArcDel CommandTimeout =  " + OptionTableConntime.ToString() );
 
       try
@@ -3474,7 +3500,8 @@ int ArcDel(object sender, int selRowNum , int selColNum)
       Action th = new Action( OracleStat ) ;
       Task tsk = new Task(th);
       tsk.Start();
-      MessageBox.Show(" Задача вывода в Лог Статистистики по БД - запущена...",toolStripStatusLabel2.Text,MessageBoxButtons.OK , MessageBoxIcon.Information);
+      tabControl1.SelectedIndex = 4; // tabPage5
+      MessageBox.Show(" Задача вывода в лог Статистики по БД - запущена...",toolStripStatusLabel2.Text,MessageBoxButtons.OK , MessageBoxIcon.Information);
     }
 
 
@@ -3684,7 +3711,7 @@ void OracleStat ( )
 
        //DialogResult result1;
        //
-       Form ifdel = new FormDel(_conn, ID, IDNAME, IDGTOPT, NAMEHEADER, id_tbl,OptionFullName, OptionSchemaName);
+       Form ifdel = new FormDel(_conn, ID, IDNAME, IDGTOPT, NAMEHEADER, id_tbl,OptionFullName, OptionSchemaName, OptionSaveFormat);
        ifdel.StartPosition=FormStartPosition.CenterParent ;
        ifdel.Show();
     }
@@ -3709,7 +3736,9 @@ void OracleStat ( )
        if (OptionTableDisable==0) ofrm._OptionTableDisable = false ;
        else  ofrm._OptionTableDisable = true ;
        ofrm._OptionTableConntime = OptionTableConntime.ToString() ;
-       
+       if (OptionSaveFormat==0) ofrm._OptionSaveFormat = false ;
+       else  ofrm._OptionSaveFormat = true ;
+
        ofrm.ShowDialog();
 
        OptionFullDelete=0 ;
@@ -3730,6 +3759,8 @@ void OracleStat ( )
        if ( int.TryParse(ofrm._OptionTableConntime, out val0 ) )
            OptionTableConntime = val0 ;
        else OptionTableConntime = 30 ;
+       OptionSaveFormat=0 ;
+       if (ofrm._OptionSaveFormat) OptionSaveFormat=1 ;
 
        ofrm.Dispose();
     }

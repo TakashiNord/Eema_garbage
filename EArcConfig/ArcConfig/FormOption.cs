@@ -70,7 +70,11 @@ namespace ArcConfig
     	}
     	set { textBox6.Text = value ; }
     }    
-    
+    public bool _OptionSaveFormat
+    {
+        get { return checkBox8.Checked; }
+        set { checkBox8.Checked = value; }
+    }    
 		public FormOption()
 		{
 			//

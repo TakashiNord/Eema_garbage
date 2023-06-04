@@ -81,7 +81,6 @@ namespace ArcConfig
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
 		private System.Windows.Forms.ToolStripMenuItem deleteDataToolStripMenuItem;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
-		private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
 		private System.Windows.Forms.ToolStripButton toolStripButton4;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
 		private System.Windows.Forms.Button buttonService;
@@ -96,6 +95,7 @@ namespace ArcConfig
 		private System.Windows.Forms.ToolStripMenuItem addForALLToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem delByALLToolStripMenuItem;
 		private System.Windows.Forms.TabPage tabPage4;
+		private System.Windows.Forms.ToolStripSeparator toolStripSeparator11;
 		
 		/// <summary>
 		/// Disposes resources used by the form.
@@ -131,14 +131,13 @@ namespace ArcConfig
 			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
 			this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
 			this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-			this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
-			this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
 			this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
 			this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
 			this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
 			this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
 			this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
 			this.toolStripButton7 = new System.Windows.Forms.ToolStripButton();
+			this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
 			this.tabControl1 = new System.Windows.Forms.TabControl();
 			this.tabPage1 = new System.Windows.Forms.TabPage();
 			this.buttonClear = new System.Windows.Forms.Button();
@@ -197,13 +196,14 @@ namespace ArcConfig
 			this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
 			this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
 			this.toolStripButtonCommit = new System.Windows.Forms.ToolStripButton();
+			this.tabPage4 = new System.Windows.Forms.TabPage();
 			this.tabPage5 = new System.Windows.Forms.TabPage();
 			this.dataSet1 = new System.Data.DataSet();
 			this.dataSetA = new System.Data.DataSet();
 			this.dataSetS = new System.Data.DataSet();
 			this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
 			this.timer1 = new System.Windows.Forms.Timer(this.components);
-			this.tabPage4 = new System.Windows.Forms.TabPage();
+			this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
 			this.statusStrip1.SuspendLayout();
 			this.toolStrip1.SuspendLayout();
 			this.tabControl1.SuspendLayout();
@@ -285,14 +285,14 @@ namespace ArcConfig
 			this.toolStripSeparator1,
 			this.toolStripButton2,
 			this.toolStripSeparator3,
-			this.toolStripButton3,
-			this.toolStripSeparator6,
 			this.toolStripButton4,
 			this.toolStripSeparator7,
 			this.toolStripButton5,
 			this.toolStripButton6,
 			this.toolStripSeparator8,
-			this.toolStripButton7});
+			this.toolStripButton7,
+			this.toolStripSeparator11,
+			this.toolStripButton3});
 			this.toolStrip1.Location = new System.Drawing.Point(0, 0);
 			this.toolStrip1.Name = "toolStrip1";
 			this.toolStrip1.Size = new System.Drawing.Size(1190, 25);
@@ -328,21 +328,6 @@ namespace ArcConfig
 			// 
 			this.toolStripSeparator3.Name = "toolStripSeparator3";
 			this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
-			// 
-			// toolStripButton3
-			// 
-			this.toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-			this.toolStripButton3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton3.Image")));
-			this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.toolStripButton3.Name = "toolStripButton3";
-			this.toolStripButton3.Size = new System.Drawing.Size(23, 22);
-			this.toolStripButton3.Text = "Oracle :Статистика в Лог";
-			this.toolStripButton3.Click += new System.EventHandler(this.ToolStripButton3Click);
-			// 
-			// toolStripSeparator6
-			// 
-			this.toolStripSeparator6.Name = "toolStripSeparator6";
-			this.toolStripSeparator6.Size = new System.Drawing.Size(6, 25);
 			// 
 			// toolStripButton4
 			// 
@@ -392,9 +377,19 @@ namespace ArcConfig
 			this.toolStripButton7.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton7.Image")));
 			this.toolStripButton7.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.toolStripButton7.Name = "toolStripButton7";
-			this.toolStripButton7.Size = new System.Drawing.Size(33, 22);
-			this.toolStripButton7.Text = "Test";
+			this.toolStripButton7.Size = new System.Drawing.Size(75, 22);
+			this.toolStripButton7.Text = "Oracle: Тест";
 			this.toolStripButton7.Click += new System.EventHandler(this.ToolStripButton7Click);
+			// 
+			// toolStripButton3
+			// 
+			this.toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+			this.toolStripButton3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton3.Image")));
+			this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.toolStripButton3.Name = "toolStripButton3";
+			this.toolStripButton3.Size = new System.Drawing.Size(144, 22);
+			this.toolStripButton3.Text = "Oracle :Статистика в Лог";
+			this.toolStripButton3.Click += new System.EventHandler(this.ToolStripButton3Click);
 			// 
 			// tabControl1
 			// 
@@ -1009,6 +1004,16 @@ namespace ArcConfig
 			this.toolStripButtonCommit.Text = "Commit";
 			this.toolStripButtonCommit.Click += new System.EventHandler(this.ToolStripButtonCommitClick);
 			// 
+			// tabPage4
+			// 
+			this.tabPage4.Location = new System.Drawing.Point(4, 22);
+			this.tabPage4.Name = "tabPage4";
+			this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+			this.tabPage4.Size = new System.Drawing.Size(1182, 550);
+			this.tabPage4.TabIndex = 5;
+			this.tabPage4.Text = "Сервера";
+			this.tabPage4.UseVisualStyleBackColor = true;
+			// 
 			// tabPage5
 			// 
 			this.tabPage5.Controls.Add(this.richTextBox1);
@@ -1035,15 +1040,10 @@ namespace ArcConfig
 			// 
 			this.timer1.Tick += new System.EventHandler(this.Timer1Tick);
 			// 
-			// tabPage4
+			// toolStripSeparator11
 			// 
-			this.tabPage4.Location = new System.Drawing.Point(4, 22);
-			this.tabPage4.Name = "tabPage4";
-			this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPage4.Size = new System.Drawing.Size(1182, 550);
-			this.tabPage4.TabIndex = 5;
-			this.tabPage4.Text = "Сервера";
-			this.tabPage4.UseVisualStyleBackColor = true;
+			this.toolStripSeparator11.Name = "toolStripSeparator11";
+			this.toolStripSeparator11.Size = new System.Drawing.Size(6, 25);
 			// 
 			// MainForm
 			// 

@@ -138,6 +138,7 @@ namespace ArcConfig
     public String TABLE_NAME ;
     public int OptionFullName ;
     public int _OptionSchemaName = 0;
+    public int OptionSaveFormat = 0;
 
     public int valueBefore = 0;
 
@@ -149,7 +150,7 @@ namespace ArcConfig
       }
     }
 
-    public FormDel(OdbcConnection conn, String id, String name, String ginfo,String gpt_name, String tbl, int FullName, int SchemaName)
+    public FormDel(OdbcConnection conn, String id, String name, String ginfo,String gpt_name, String tbl, int FullName, int SchemaName, int SaveFormat)
     {
       //
       // The InitializeComponent() call is required for Windows Forms designer support.
@@ -168,6 +169,7 @@ namespace ArcConfig
       TABLE_NAME = "" ;
       OptionFullName = FullName ;
       _OptionSchemaName = SchemaName ;
+      OptionSaveFormat = SaveFormat ;
     }
 
     //Unix -> DateTime
@@ -969,7 +971,7 @@ namespace ArcConfig
 
        DialogResult result = MessageBox.Show (" Начать процесс удаления данных до T= " + dt0.ToString()
          + "\n ? \n - процесс удаления использует цикл по всем параметрам и команду DDL DELETE" +
-         "\n и может занять много времени. "  ,
+         "\n и может занять много времени. После потребуется перестроить Индексы. "  ,
          "Удаление данных из таблиц",
          MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2 );
        if (result == DialogResult.No)
@@ -1037,18 +1039,41 @@ namespace ArcConfig
                 for (int f = 0; f < dataGridView.ColumnCount; f++)
                     fileCSV += (dataGridView.Columns[f].HeaderText + ";");
                 fileCSV += "\t\n";
+                string st , tst;
                 for (int i = 0; i < dataGridView.RowCount ; i++)
                 {
                     for (int j = 0; j < dataGridView.ColumnCount; j++)
                     {
-                      string st = (dataGridView[j, i].Value).ToString() ;
-                      if ("System.Windows.Forms.CheckState"==dataGridView[j, i].Value.GetType().ToString()) {
-                        //Checked Unchecked
-                        if (st=="Checked") st="1";
-                        if (st=="Unchecked") st="0";
+                      st = "" ;
+					  try
+                      {
+                        st = (dataGridView[j, i].Value).ToString() ;
+                      }
+                      catch (Exception ex1)
+                      {
+                        st = "" ;
+                      }
+                      
+                      tst = "" ;
+					  try
+                      {
+					  	tst = (dataGridView[j, i].Value).GetType().ToString() ;
+                      }
+                      catch (Exception ex2)
+                      {
+                        tst = "" ;
+                      }                      
+                      
+                      if ("System.Windows.Forms.CheckState"==tst) {
+                        if (OptionSaveFormat>0) {
+						  if (st=="Checked") st="1";
+                          if (st=="Unchecked") st="0";
+						} else {
+						  if (st=="Checked") st="x";
+                          if (st=="Unchecked") st="";
+						}
                       }
                       fileCSV += st + ";";
-                        //fileCSV += ( dataGridView[j, i].Value).ToString() + ";";
                     }
                     fileCSV += "\t\n";
                 }

@@ -28,6 +28,7 @@ namespace ArcConfig
 		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.Label label5;
 		private System.Windows.Forms.TextBox textBox6;
+		private System.Windows.Forms.CheckBox checkBox8;
 		
 		/// <summary>
 		/// Disposes resources used by the form.
@@ -52,6 +53,9 @@ namespace ArcConfig
 		{
 			this.checkBox5 = new System.Windows.Forms.CheckBox();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
+			this.label5 = new System.Windows.Forms.Label();
+			this.textBox6 = new System.Windows.Forms.TextBox();
+			this.label3 = new System.Windows.Forms.Label();
 			this.checkBox6 = new System.Windows.Forms.CheckBox();
 			this.label4 = new System.Windows.Forms.Label();
 			this.checkBox4 = new System.Windows.Forms.CheckBox();
@@ -61,9 +65,7 @@ namespace ArcConfig
 			this.checkBox1 = new System.Windows.Forms.CheckBox();
 			this.checkBox2 = new System.Windows.Forms.CheckBox();
 			this.checkBox7 = new System.Windows.Forms.CheckBox();
-			this.label3 = new System.Windows.Forms.Label();
-			this.textBox6 = new System.Windows.Forms.TextBox();
-			this.label5 = new System.Windows.Forms.Label();
+			this.checkBox8 = new System.Windows.Forms.CheckBox();
 			this.groupBox1.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -94,7 +96,31 @@ namespace ArcConfig
 			this.groupBox1.Size = new System.Drawing.Size(263, 252);
 			this.groupBox1.TabIndex = 10;
 			this.groupBox1.TabStop = false;
-			this.groupBox1.Text = "вкладки Главная - Параметры";
+			this.groupBox1.Text = "вкладка Главная - Параметры";
+			// 
+			// label5
+			// 
+			this.label5.Location = new System.Drawing.Point(209, 218);
+			this.label5.Name = "label5";
+			this.label5.Size = new System.Drawing.Size(34, 20);
+			this.label5.TabIndex = 17;
+			this.label5.Text = "сек";
+			// 
+			// textBox6
+			// 
+			this.textBox6.Location = new System.Drawing.Point(151, 218);
+			this.textBox6.Name = "textBox6";
+			this.textBox6.Size = new System.Drawing.Size(52, 20);
+			this.textBox6.TabIndex = 16;
+			this.textBox6.Text = "30";
+			// 
+			// label3
+			// 
+			this.label3.Location = new System.Drawing.Point(17, 218);
+			this.label3.Name = "label3";
+			this.label3.Size = new System.Drawing.Size(128, 20);
+			this.label3.TabIndex = 15;
+			this.label3.Text = "Тайм-аут соединения =";
 			// 
 			// checkBox6
 			// 
@@ -180,35 +206,21 @@ namespace ArcConfig
 			this.checkBox7.Text = "Удаление регистрации архивов при отключении Профиля";
 			this.checkBox7.UseVisualStyleBackColor = true;
 			// 
-			// label3
+			// checkBox8
 			// 
-			this.label3.Location = new System.Drawing.Point(17, 218);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(128, 20);
-			this.label3.TabIndex = 15;
-			this.label3.Text = "Тайм-аут соединения =";
-			// 
-			// textBox6
-			// 
-			this.textBox6.Location = new System.Drawing.Point(151, 218);
-			this.textBox6.Name = "textBox6";
-			this.textBox6.Size = new System.Drawing.Size(52, 20);
-			this.textBox6.TabIndex = 16;
-			this.textBox6.Text = "30";
-			// 
-			// label5
-			// 
-			this.label5.Location = new System.Drawing.Point(209, 218);
-			this.label5.Name = "label5";
-			this.label5.Size = new System.Drawing.Size(34, 20);
-			this.label5.TabIndex = 17;
-			this.label5.Text = "сек";
+			this.checkBox8.Location = new System.Drawing.Point(13, 329);
+			this.checkBox8.Name = "checkBox8";
+			this.checkBox8.Size = new System.Drawing.Size(263, 36);
+			this.checkBox8.TabIndex = 17;
+			this.checkBox8.Text = "Формат при сохранении (1\\0) (иначе (x\\\'\')";
+			this.checkBox8.UseVisualStyleBackColor = true;
 			// 
 			// FormOption
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(288, 329);
+			this.ClientSize = new System.Drawing.Size(288, 377);
+			this.Controls.Add(this.checkBox8);
 			this.Controls.Add(this.checkBox7);
 			this.Controls.Add(this.groupBox1);
 			this.Controls.Add(this.checkBox5);
