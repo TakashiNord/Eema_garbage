@@ -4040,7 +4040,7 @@ void OracleStat ( )
       tabControlAP.Enabled = false ;
       int flag = 0 ; // флаг для алгоритма
       int sflag = 0 ; // число вкл архивов
-      //А теперь простой пройдемся циклом по всем ячейкам
+      //А теперь просто пройдемся циклом по всем ячейкам
       for (int i = 0 ; i < dataGridViewP.Rows.Count; ++i)
       {
         string typestr = "";

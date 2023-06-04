@@ -334,16 +334,6 @@ namespace ArcConfig
 
 
 string  sl1="" +
-"SELECT "  +
-"  sg1.ID, sg1.NAME, " +
-"  sg2.DEFINE_ALIAS as \"DataType\", " +
-"  sg1.INTERVAL as \"Interval (sec)\", " +
-"  sa.NAME as \"Archive Type\" " +
-"FROM "+stSchema+"SYS_GTOPT sg1, "+stSchema+"SYS_GTYP sg2, "+stSchema+"SYS_ATYP sa" +
-"WHERE sg2.id=sg1.ID_GTYPE AND sg1.ID_ATYPE=sa.ID " +
-"ORDER BY sg1.ID " ;
-
-sl1="" +
 "SELECT "+
 "  sg1.ID,sg1.NAME"+
 "  ,sg2.DEFINE_ALIAS as \"DataType\" "+
@@ -360,6 +350,7 @@ sl1="" +
 " FROM "+stSchema+"SYS_GTOPT sg1, "+stSchema+"SYS_ATYP sa, "+stSchema+"SYS_GTYP sg2"+
 " WHERE sg1.ID_ATYPE=sa.ID and sg2.id=sg1.ID_GTYPE" ;
 
+      sl1 = r.GetString("SYS_GTOPT_LIST_V");
 
       cmd0.CommandText=sl1;
 

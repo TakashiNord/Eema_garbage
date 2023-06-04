@@ -603,4 +603,23 @@ where y.ID = st.id_lsttbl
 FROM  ARC_SUBSYST_PROFILE asp
 </value>
   </data>
+  <data name="SYS_GTOPT_LIST_V" xml:space="preserve">
+    <value>SELECT 
+  sg1.ID,sg1.NAME
+  ,sg1.DEFINE_ALIAS
+  ,sg1.INTERVAL as "Interval (sec)" 
+  ,'0' as "Archive Type"
+  ,sg2.DEFINE_ALIAS as "DataType" 
+ FROM SYS_GTOPT sg1, SYS_GTYP sg2
+ WHERE sg1.ID_ATYPE is null and sg2.id=sg1.ID_GTYPE
+ union 
+SELECT 
+  sg1.ID,sg1.NAME
+  ,sg1.DEFINE_ALIAS
+  ,sg1.INTERVAL as "Interval (sec)" 
+  ,sa.NAME as "Archive Type" 
+  ,sg2.DEFINE_ALIAS as "DataType" 
+FROM SYS_GTOPT sg1, SYS_ATYP sa, SYS_GTYP sg2
+ WHERE sg1.ID_ATYPE=sa.ID and sg2.id=sg1.ID_GTYPE</value>
+  </data>
 </root>
