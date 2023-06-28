@@ -201,6 +201,8 @@ namespace ArcConfig
         } // while
       }
       reader.Close();
+      
+      //++++++ ??? ADV_SRVC_OICOPC_ACCESSPORT%
 
       sl1= "SELECT id, name FROM "+stSchema+"ad_service " +
       	"WHERE define_alias LIKE 'ADV_SRVC_RDAADCP_ACCESPORT%' ORDER BY id ASC" ;
