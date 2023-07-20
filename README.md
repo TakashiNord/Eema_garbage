@@ -34,4 +34,12 @@
 
   **104_readfile** -  эскиз проект.(C#). МЭК-104 сервер + источник данных текстовой файл.
 
+  **2022_11_00_DORASCHET_MINMAX** -(C)  добавление функций Min2, Max2, Min3, Max3 
+
+  **2018_00_00_DORASCHET**  - (C) добавление функций Mod, Trunc, Max3, GetTime, AccidentTimeDate, AccidentFrequency0, min10, max10
+
+  **2016_DORASCHET_ReferenceValue** - (C) добавление функций AccidentTimeDate и AccidentTime (2016)
+
+  **2023_DORASCHET_sgk_3procent** - (C) (Lua) добавление функций расчета 3%
+
 -----------------------------------  
