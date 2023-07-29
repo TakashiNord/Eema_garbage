@@ -1,4 +1,4 @@
-// ConsoleApplication4.cpp: определяет точку входа для консольного приложения.
+// ConsoleApplication3.cpp:
 //
 
 #include "stdafx.h"
@@ -67,31 +67,14 @@ double tec2_3procent ( double val, int mode ) // mode = 1 ( первая колонка) mode
       {  8,  75, 48}
    } ;
 
-
-   if (val>=0) val = floor(val);
-   else val = ceil(val);
-   std::cout << "val="<<val << std::endl;
-
-   if (mode<0 || mode>2) mode = 0 ;
-
    size_t larr = sizeof arr / sizeof arr[0]; // 48
 
-   int k = 0 ;
-   double diff = fabs(val-arr[0][0]);
-
    for (int ii=0 ; ii<larr; ii++ ) {
-       if(fabs(val-arr[ii][0]) <= diff)
-       {
-           diff = fabs(val-arr[ii][0]);
-           k = ii;
-       }
+    if (arr[ii][0]==val) {
+      if (mode==1) { ret=arr[ii][1] ; break ; }
+      if (mode==2) { ret=arr[ii][2] ; break ; }
+    }
    }
-   std::cout << "k="<<k << std::endl;
-   if (k<0) k=0;
-   if (arr[k][0]<val || arr[k][0]>val)
-     std::cout << "LIMIT"<< std::endl;
-
-   ret=arr[k][mode] ;
 
    return (ret);
 }
@@ -99,7 +82,7 @@ double tec2_3procent ( double val, int mode ) // mode = 1 ( первая колонка) mode
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-  double temperature = +0.8 ;
+  double temperature = -25 ;
   std::cout << "T="<<temperature << std::endl;
   double v1 = tec2_3procent ( temperature, 1 ) ;
   std::cout << "T(before)="<<v1 << std::endl;
