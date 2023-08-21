@@ -14,19 +14,9 @@
 
   **Eda_list** -  эскиз проект. (Object pascal). Удаление или Добавление Раздела сбора.
 
-  **eemasm** - эскиз проект. (C). Посредством UNITRANS_HEADER (GCMD_GET_GLOBAL_STATE), ip:2003 опрос на состояние.
-  
-  **eemasm2** - эскиз проект. (C).
- 
-* 1. SizeStruct(C) - test-unit
-* 2. smget2_cs(C#)  - эскиз проект. Аналогичен eemasm.
-* 3. emasmget.py (Python) - эскиз проект. Аналогичен eemasm.
-* 4. emasm_tcp.py (Python) - эскиз проект. Управление sysmon через TCP (смена статуса, запрос данных).
-* 5. emasm_udp.py (Python) - эскиз проект. Управление sysmon через UDP (получение состояний).
-
   **E_AGo** -  эскиз проект. (C). Reverse.
 
-  **km5d** -  эскиз проект. (C). счетчики km5d.
+  **km5d** -  эскиз проект. (C). счетчики km5d. НЕДОДЕЛАН. БЕЗ МЕНЯ все СДЕЛАЛИ.
 
   **CviPanelParser2022v1** -  эскиз проект. (C). Cvi Panel Parser to json 2022 v1.
 
@@ -41,5 +31,18 @@
   **2016_DORASCHET_ReferenceValue** - (C) добавление функций AccidentTimeDate и AccidentTime (2016)
 
   **2023_DORASCHET_sgk_3procent** - (C) (Lua) добавление функций расчета 3%
+  
+  **ustavki** -  эскиз проект. (C). Для моделирования уставок. НЕДОДЕЛАН. НЕТ ИДЕЙ. 
+
+  **eemasm** - эскиз проект. (C). Посредством UNITRANS_HEADER (GCMD_GET_GLOBAL_STATE), ip:2003 опрос на состояние.
+  
+  **eemasm2** - эскиз проект. (C).
+ 
+* 1. SizeStruct(C) - test-unit
+* 2. smget2_cs(C#)  - эскиз проект. Аналогичен eemasm.
+* 3. emasmget.py (Python) - эскиз проект. Аналогичен eemasm.
+* 4. emasm_tcp.py (Python) - эскиз проект. Управление sysmon через TCP (смена статуса, запрос данных).
+* 5. emasm_udp.py (Python) - эскиз проект. Управление sysmon через UDP (получение состояний).
+
 
 -----------------------------------  

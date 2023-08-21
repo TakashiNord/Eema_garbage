@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>1899.12.30 00:00:00.000.892,C:\Users\Tanuki\Documents\Embarcadero\Studio\Projects\UstavkiProjPCH1.h=C:\Users\Tanuki\Documents\Embarcadero\Studio\Projects\Project1PCH1.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.091,=C:\Users\Tanuki\Documents\Embarcadero\Studio\Projects\Project1PCH1.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.327,=C:\Users\Tanuki\Desktop\ustavki\Unit2.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.281,=C:\Users\Tanuki\Documents\Embarcadero\Studio\Projects\Unit1.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.912,C:\Users\Tanuki\Documents\Embarcadero\Studio\Projects\UstavkiProj.cbproj=C:\Users\Tanuki\Documents\Embarcadero\Studio\Projects\Project1.cbproj</Transaction>
+  </Transactions>
+</BorlandProject>
