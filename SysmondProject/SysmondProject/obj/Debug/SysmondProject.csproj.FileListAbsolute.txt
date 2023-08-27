@@ -1,0 +1,6 @@
+C:\Users\tanuki\Documents\SharpDevelop Projects\SysmondProject\SysmondProject\bin\Debug\SysmondProject.exe.config
+C:\Users\tanuki\Documents\SharpDevelop Projects\SysmondProject\SysmondProject\bin\Debug\SysmondProject.exe
+C:\Users\tanuki\Documents\SharpDevelop Projects\SysmondProject\SysmondProject\bin\Debug\SysmondProject.pdb
+C:\Users\tanuki\Documents\SharpDevelop Projects\SysmondProject\SysmondProject\obj\Debug\SysmondProject.csprojResolveAssemblyReference.cache
+C:\Users\tanuki\Documents\SharpDevelop Projects\SysmondProject\SysmondProject\obj\Debug\SysmondProject.exe
+C:\Users\tanuki\Documents\SharpDevelop Projects\SysmondProject\SysmondProject\obj\Debug\SysmondProject.pdb
