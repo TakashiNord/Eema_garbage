@@ -1,0 +1,914 @@
+
+
+Imports System.Text.RegularExpressions
+
+    Private Sub TextBox1_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles TextBox1.KeyPress
+        e.Handled = Not Char.IsControl(e.KeyChar) AndAlso Not New Regex("^(\d{1,3}\.)?(\d{1,3}\.)?(\d{1,3}\.)?(\d{1,3})?$").IsMatch(TextBox1.Text.Insert(TextBox1.SelectionStart, e.KeyChar.ToString))
+    End Sub
+
+    Private Sub TextBox1_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TextBox1.TextChanged
+        Static oldText As String = ""
+        If Not New Regex("^(\d{1,3}\.)?(\d{1,3}\.)?(\d{1,3}\.)?(\d{1,3})?$").IsMatch(TextBox1.Text) Then TextBox1.Text = oldText
+        oldText = TextBox1.Text
+    End Sub
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+ 
+class Program
+{
+    static void Main(string[] args)
+    {
+        System.Net.NetworkInformation.Ping ping =
+            new System.Net.NetworkInformation.Ping();
+        System.Net.NetworkInformation.PingReply pingReply = ping.Send("www.cyberforum.ru");
+        Console.WriteLine(pingReply.RoundtripTime); //время ответа
+        Console.WriteLine(pingReply.Status);        //статус
+        Console.WriteLine(pingReply.Address);       //IP
+        Console.ReadKey(true);
+    }
+}
+
+
+
+using System.Net.NetworkInformation;    
+
+public static bool PingHost(string nameOrAddress)
+{
+    bool pingable = false;
+    Ping pinger = null;
+
+    try
+    {
+        pinger = new Ping();
+        PingReply reply = pinger.Send(nameOrAddress);
+        pingable = reply.Status == IPStatus.Success;
+    }
+    catch (PingException)
+    {
+        // Discard PingExceptions and return false;
+    }
+    finally
+    {
+        if (pinger != null)
+        {
+            pinger.Dispose();
+        }
+    }
+
+    return pingable;
+}
+
+
+
+using System;
+    using System.Net.NetworkInformation;
+    using System.Windows.Forms;
+
+    namespace PingTest1
+    {
+        public partial class Form1 : Form
+        {
+            public Form1()
+            {
+                InitializeComponent();
+            }
+
+            private void button1_Click(object sender, EventArgs e)
+            {
+                Ping p = new Ping();
+                PingReply r;
+                string s;
+                s = textBox1.Text;
+                r = p.Send(s);
+
+                if (r.Status == IPStatus.Success)
+                {
+                    lblResult.Text = "Ping to " + s.ToString() + "[" + r.Address.ToString() + "]" + " Successful"
+                       + " Response delay = " + r.RoundtripTime.ToString() + " ms" + "\n";
+                }
+            }
+
+            private void textBox1_Validated(object sender, EventArgs e)
+            {
+                if (string.IsNullOrWhiteSpace(textBox1.Text) || textBox1.Text == "")
+                {
+                    MessageBox.Show("Please use valid IP or web address!!");
+                }
+            }
+        }
+    }
+
+
+
+
+
+using System;
+using System.Net;
+using System.Net.NetworkInformation;
+using System.Text;
+
+namespace Examples.System.Net.NetworkInformation.PingTest
+{
+    public class PingExample
+    {
+        // args[0] can be an IPaddress or host name.
+        public static void Main (string[] args)
+        {
+            Ping pingSender = new Ping ();
+            PingOptions options = new PingOptions ();
+
+            // Use the default Ttl value which is 128,
+            // but change the fragmentation behavior.
+            options.DontFragment = true;
+
+            // Create a buffer of 32 bytes of data to be transmitted.
+            string data = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+            byte[] buffer = Encoding.ASCII.GetBytes (data);
+            int timeout = 120;
+            PingReply reply = pingSender.Send (args[0], timeout, buffer, options);
+            if (reply.Status == IPStatus.Success)
+            {
+                Console.WriteLine ("Address: {0}", reply.Address.ToString ());
+                Console.WriteLine ("RoundTrip time: {0}", reply.RoundtripTime);
+                Console.WriteLine ("Time to live: {0}", reply.Options.Ttl);
+                Console.WriteLine ("Don't fragment: {0}", reply.Options.DontFragment);
+                Console.WriteLine ("Buffer size: {0}", reply.Buffer.Length);
+            }
+        }
+    }
+}
+
+
+
+
+using System;
+using System.Text;
+using System.Net;
+using System.Net.NetworkInformation;
+using System.ComponentModel;
+using System.Threading;
+
+namespace Examples.System.Net.NetworkInformation.PingTest
+{
+    public class PingExample
+    {
+        public static void Main (string[] args)
+        {
+            if (args.Length == 0)
+                throw new ArgumentException ("Ping needs a host or IP Address.");
+
+            string who = args[0];
+            AutoResetEvent waiter = new AutoResetEvent (false);
+
+            Ping pingSender = new Ping ();
+
+            // When the PingCompleted event is raised,
+            // the PingCompletedCallback method is called.
+            pingSender.PingCompleted += new PingCompletedEventHandler (PingCompletedCallback);
+
+            // Create a buffer of 32 bytes of data to be transmitted.
+            string data = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+            byte[] buffer = Encoding.ASCII.GetBytes (data);
+
+            // Wait 12 seconds for a reply.
+            int timeout = 12000;
+
+            // Set options for transmission:
+            // The data can go through 64 gateways or routers
+            // before it is destroyed, and the data packet
+            // cannot be fragmented.
+            PingOptions options = new PingOptions (64, true);
+
+            Console.WriteLine ("Time to live: {0}", options.Ttl);
+            Console.WriteLine ("Don't fragment: {0}", options.DontFragment);
+
+            // Send the ping asynchronously.
+            // Use the waiter as the user token.
+            // When the callback completes, it can wake up this thread.
+            pingSender.SendAsync(who, timeout, buffer, options, waiter);
+
+            // Prevent this example application from ending.
+            // A real application should do something useful
+            // when possible.
+            waiter.WaitOne ();
+            Console.WriteLine ("Ping example completed.");
+        }
+
+        private static void PingCompletedCallback (object sender, PingCompletedEventArgs e)
+        {
+            // If the operation was canceled, display a message to the user.
+            if (e.Cancelled)
+            {
+                Console.WriteLine ("Ping canceled.");
+
+                // Let the main thread resume.
+                // UserToken is the AutoResetEvent object that the main thread
+                // is waiting for.
+                ((AutoResetEvent)e.UserState).Set ();
+            }
+
+            // If an error occurred, display the exception to the user.
+            if (e.Error != null)
+            {
+                Console.WriteLine ("Ping failed:");
+                Console.WriteLine (e.Error.ToString ());
+
+                // Let the main thread resume.
+                ((AutoResetEvent)e.UserState).Set();
+            }
+
+            PingReply reply = e.Reply;
+
+            DisplayReply (reply);
+
+            // Let the main thread resume.
+            ((AutoResetEvent)e.UserState).Set();
+        }
+
+        public static void DisplayReply (PingReply reply)
+        {
+            if (reply == null)
+                return;
+
+            Console.WriteLine ("ping status: {0}", reply.Status);
+            if (reply.Status == IPStatus.Success)
+            {
+                Console.WriteLine ("Address: {0}", reply.Address.ToString ());
+                Console.WriteLine ("RoundTrip time: {0}", reply.RoundtripTime);
+                Console.WriteLine ("Time to live: {0}", reply.Options.Ttl);
+                Console.WriteLine ("Don't fragment: {0}", reply.Options.DontFragment);
+                Console.WriteLine ("Buffer size: {0}", reply.Buffer.Length);
+            }
+        }
+    }
+}
+
+
+
+
+
+private async void Ping_Click(object sender, RoutedEventArgs e)
+{
+    Ping pingSender = new Ping();
+    string host = @"stackoverflow.com";
+    await Task.Run(() =>{
+         PingReply reply = pingSender.Send(host);
+         if (reply.Status == IPStatus.Success)
+         {
+            Console.WriteLine("Address: {0}", reply.Address.ToString());
+            Console.WriteLine("RoundTrip time: {0}", reply.RoundtripTime);
+            Console.WriteLine("Time to live: {0}", reply.Options.Ttl);
+            Console.WriteLine("Don't fragment: {0}", reply.Options.DontFragment);
+            Console.WriteLine("Buffer size: {0}", reply.Buffer.Length);
+         }
+         else
+         {
+            Console.WriteLine("Address: {0}", reply.Status);
+         }
+   });           
+}
+
+
+
+
+// Подключаем пространства имён
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.IO;
+using System.Net.NetworkInformation;
+ 
+namespace PingSystemAndCheckAdminShare
+{
+    class Program
+    {
+        // данная коллекция будет содержать имена рабочих станций
+        private static List<string> hosts = new List<string>();
+ 
+        public static void Main()
+        {
+            // В переменную hosts записываем все рабочие станции из файла
+            hosts = getComputersListFromTxtFile("D:\\computersList.txt");
+            // Создаём Action типизированный string, данный Action будет запускать функцию Pinger
+            Action<string> asyn = new Action<string>(Pinger);
+            // Для каждой рабочей станции запускаем Pinger'а
+            hosts.ForEach(e =>
+            {
+                asyn.Invoke(e);
+            });
+            Console.ReadKey();
+ 
+        }
+         
+        // Функция получения списка рабочих станций из файла
+        private static List<string> getComputersListFromTxtFile(string pathToFile)
+        {
+            List<string> computersList = new List<string>();
+            using (StreamReader sr = new StreamReader(pathToFile, Encoding.Default))
+            {
+                string line = "";
+                while ((line = sr.ReadLine()) != null)
+                {
+                    computersList.Add(line);
+                }
+            }
+            return computersList;
+        }
+         
+        // Функция записи проблемных рабочих станций в файл
+        private static void writeProblemComputersToFile(string fullPathToFile, List<string> problemComputersList)
+        {
+            using (StreamWriter sw = new StreamWriter(fullPathToFile, true, Encoding.Default))
+            {
+                problemComputersList.ForEach(e => {sw.WriteLine(e);});    
+            }
+        }
+         
+        // Проверяем доступна ли папка admin$
+        private static bool checkAdminShare(string computerName)
+        {
+            if (Directory.Exists("\\\\" + computerName + "\\admin$"))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+         
+        // Наш основной класс, который будет отправлять команду ping
+        async private static void Pinger(string hostAdress)
+        {
+            // Создаём экземпляр класса Ping
+            Ping png = new Ping();
+            try
+            {
+                // Пингуем рабочую станцию hostAdress
+                PingReply pr = await png.SendPingAsync(hostAdress);
+                List<string> problemComputersList = new List<string>();
+                Console.WriteLine(string.Format("Status for {0} = {1}, ip-адрес: {2}", hostAdress, pr.Status, pr.Address));
+                // Если рабочая станция пингуется и папка admin$ недоступна,
+                // то такую машину заносим в список
+                if (pr.Status == IPStatus.Success && !checkAdminShare(hostAdress)) 
+                {
+                    problemComputersList.Add(hostAdress);
+                }
+                // Записываем в файл все проблемные машины
+                writeProblemComputersToFile("D:\\problemsWithAdminShare.txt", problemComputersList);
+            }
+            catch
+            {
+                Console.WriteLine("Возникла ошибка! " + hostAdress);
+            }
+        }
+    }
+}
+
+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Net.NetworkInformation;
+using System.IO;
+ 
+namespace ConsoleApplication2
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            List<string> serversList = new List<string>();
+            serversList.Add("microsoft.com");
+            serversList.Add("google.com");
+            serversList.Add("192.168.1.1");
+ 
+ 
+            using (TextWriter tw = new StreamWriter("d:\\MyLog.txt"))
+            {
+                Ping ping = new System.Net.NetworkInformation.Ping();
+                PingReply pingReply = null;
+ 
+                foreach (string server in serversList)
+                {
+                    pingReply = ping.Send(server);
+ 
+                    if (pingReply.Status != IPStatus.TimedOut)
+                    {
+                        tw.WriteLine(server); //server
+                        tw.WriteLine(pingReply.Address); //IP
+                        tw.WriteLine(pingReply.Status); //Статус
+                        tw.WriteLine(pingReply.RoundtripTime); //Время ответа
+                        tw.WriteLine(pingReply.Options.Ttl); //TTL
+                        tw.WriteLine(pingReply.Options.DontFragment); //Фрагментирование
+                        tw.WriteLine(pingReply.Buffer.Length); //Размер буфера
+                        tw.WriteLine();
+                    }
+                    else
+                    {
+                        tw.WriteLine(server); //server
+                        tw.WriteLine(pingReply.Status);
+                        tw.WriteLine();
+                    }
+        	}
+            }
+ 
+            Console.ReadKey();
+        }
+    }
+}
+
+
+using (Ping newPing = new Ping())
+        {
+            PingReply reply = newPing.Send([Target Site],[Timeout]);
+            if(reply.Status == IPStatus.Success)
+            {
+                state.PingOK = true;
+            }
+            else if(reply.Status == IPStatus.TimedOut)
+            {
+                state.PingOK = false;
+                state.PingUpdateState = " Timed Out";                   
+            }
+            else if(reply.Status != IPStatus.Success)
+            {
+                state.PingOK = false;
+                state.PingUpdateState = " FAILED";                          
+            }
+            else
+            {
+                state.PingOK = false;
+                state.PingUpdateState = " UNKNOWN";                     
+            }
+            worker.ReportProgress(0, state.PingOK);
+        }
+
+
+using System.Net.NetworkInformation;
+
+Ping pingSender = new Ping ();
+        PingOptions options = new PingOptions ();
+        options.DontFragment = true;
+        string data = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+        byte[] buffer = Encoding.ASCII.GetBytes (data);
+        int timeout = 1000; //to timeout after 1s
+        PingReply reply = pingSender.Send (args[0], timeout, buffer, options);
+        if (reply.Status == IPStatus.Success)
+        {
+            Console.WriteLine ("Address: {0}", reply.Address.ToString ());
+            Console.WriteLine ("RoundTrip time: {0}", reply.RoundtripTime);
+            Console.WriteLine ("Time to live: {0}", reply.Options.Ttl);
+            Console.WriteLine ("Don't fragment: {0}", reply.Options.DontFragment);
+            Console.WriteLine ("Buffer size: {0}", reply.Buffer.Length);
+        }
+
+
+
+sing System.Threading;
+using System.Threading.Tasks;
+using System.Net.NetworkInformation;
+ 
+namespace PingTest {
+    public partial class Form1 : Form {
+        public Form1() {
+            InitializeComponent();
+            this.Load += new EventHandler(Form1_Load);
+        }
+ 
+        void Form1_Load(object sender, EventArgs e) {
+            var timer = new System.Windows.Forms.Timer();
+            timer.Interval = 3000;
+            timer.Tick += new EventHandler(timer_Tick);
+            timer.Start();
+        }
+ 
+        void timer_Tick(object sender, EventArgs e) {
+            string[] urls = { "www.yandex.ru", "www.google.com", "www.mail.ru", "www.rambler.ru" };
+            PingAddressesAsync(urls);
+        }
+ 
+        public async void PingAddressesAsync(string[] urls) {
+            listBox1.Items.Clear();
+            foreach (string url in urls) {
+                var result = await new Ping().SendTaskAsync(url);
+                listBox1.Items.Add(string.Format("Доступность: {0}, время: {1}мс", 
+                    result.Status == IPStatus.Success ? "Да" : "Нет", result.RoundtripTime));
+            }
+        }
+    }
+}
+
+
+
+
+
+
+using System.Net.NetworkInformation;
+publicstaticboolPingHost(string nameOrAddress)
+{
+    bool pingable = false;
+    Ping pinger = null;
+    try
+    {
+        pinger = new Ping();
+        PingReply reply = pinger.Send(nameOrAddress);
+        pingable = reply.Status == IPStatus.Success;
+    }
+    catch (PingException)
+    {
+        // Discard PingExceptions and return false;
+    }
+    finally
+    {
+        if (pinger != null)
+        {
+            pinger.Dispose();
+        }
+    }
+    return pingable;
+}
+
+
+
+async private void PingButton_Click(object sender, EventArgs e)
+        {
+            List<string> urls = new List<string>()
+            {
+                "www.habitat-spokane.org",
+                "www.partnersintl.org",
+                "www.iassist.org",
+                "www.fh.org",
+                "www.worldvision.org"
+            };
+
+            IPStatus status;
+
+            Func<string, Task<IPStatus>> func =
+                    async (localUrl) =>
+                    {
+                        Random random = new Random();
+                        Ping ping = new Ping();
+                        PingReply pingReply =
+                            await ping.SendPingAsync(localUrl);
+                        return pingReply.Status;
+                    };
+
+            StatusLabel.Text = "Pinging…";
+
+            foreach(string url in urls)
+            {
+                status = await func(url);
+                StatusLabel.Text +=
+                    $@"{ Environment.NewLine 
+                    }{ url }: { status.ToString() } ({
+                    Thread.CurrentThread.ManagedThreadId 
+                    })";
+            }
+        }
+
+
+
+
+
+
+
+https://www.cyberforum.ru/windows-forms/thread1346209.html
+
+
+
+using System.Net.NetworkInformation;
+ 
+namespace ConsoleApplication1 {
+    class Program {
+        static void Main(string[] args) {
+            if (CheckServers("www.yandex.ru", "www.goole.com", "www.mail.ru")) {
+                Console.WriteLine("Success!");
+            }
+            else {
+                Console.WriteLine("Fail!");
+            }
+            Console.ReadLine();
+        }
+        static bool CheckServers(params string[] uris) {
+            if (uris.Length == 0) {
+                throw new ArgumentNullException("uris");
+            }
+            var result = from uri in uris.AsParallel()
+                         .WithDegreeOfParallelism(uris.Length)
+                         let p = new Ping().Send(uri)
+                         select new {
+                             uri,
+                             p.Status
+                         };
+            foreach (var r in result) {
+                if (r.Status == IPStatus.TimedOut)
+                    return false;
+            }
+            return true;
+        }
+    }
+}
+
+
+public async void dwnMyPage()
+    {
+        var serviceCollection = new ServiceCollection();
+        serviceCollection.AddAudioBypass();
+        String alltracks = Microsoft.VisualBasic.Interaction.InputBox("Сколько у Вас всего треков?", "Введите число", "", 100, 100);
+        int num = Convert.ToInt32(alltracks);
+        listBox1.Items.Add("-> Идёт подготовка...");
+        int i = 0;
+        var audios = _api.Audio.Get(new AudioGetParams { Count = num });
+        string res = null;
+        //////////////////
+        await Task.Run(() =>
+        {
+
+            foreach (var audio in audios)
+            {
+                i += 1;
+                //artist = audio.Artist.ToString();
+                // name = audio.Title.ToString();
+                // number = i.ToString();
+                //Thread LbWrite = new Thread(lbWrite);
+                //LbWrite.Start();
+                //Thread.Sleep(500);
+                //MessageBox.Show(_api.Token);
+                listBox1.Items.Add(i.ToString() + ". " + audio.Artist.ToString() + " - " + audio.Title.ToString());
+            //listBox1.GetSelected(listBox1.Items.Count - 1);//автопрокрутка
+            ////listBox1.TopIndex = listBox1.Items.Count - 1;
+            //listBox1.Refresh();
+
+                try
+                {
+                    //MessageBox.Show(audio.Url.ToString());
+                    AudioDownloadExt.Download(audioCategory: _api.Audio, audio.Url, path + i.ToString() + ". " + audio.Artist.ToString() + " - " + audio.Title.ToString() + ".mp3");
+                    listBox1.Items.Add("Загружено "+i.ToString() + ". " + audio.Artist.ToString() + " - " + audio.Title.ToString());
+                }
+                catch (System.Net.WebException ex)
+                {
+                    i -= 1;
+                    //listBox1.Refresh();
+                    //Console.ForegroundColor = ConsoleColor.Red;
+                    //listBox1.ForeColor = Color.Red;
+                   // listBox1.Items.Add("Трек не поддерживается!!!!");
+                   // listBox1.ForeColor = Color.Yellow;
+                   // listBox1.Refresh();
+                    //Console.ForegroundColor = ConsoleColor.Yellow;
+                }
+                catch (System.ArgumentNullException eeee)
+                {
+                    i -= 1;
+                   // listBox1.Refresh();
+                   // listBox1.ForeColor = Color.Red;
+                    //Console.ForegroundColor = ConsoleColor.Red;
+                   // listBox1.Items.Add("Ошибка.");
+                   // listBox1.ForeColor = Color.Yellow;
+                   // listBox1.Refresh();
+                    //Console.ForegroundColor = ConsoleColor.Yellow;
+                }
+
+            }
+        });
+        // listBox1.Items.Add(res);
+        // listBox1.Refresh();
+        //////////////////
+
+        listBox1.Items.Add(res);
+        //listBox1.Refresh();
+        //listBox1.ForeColor = Color.Green;
+        //listBox1.Items.Add("-> ЗАВЕРШЕНО!!!");
+        //listBox1.ForeColor = Color.Yellow;
+        listBox1.Refresh();
+    }//НЕ ДОРАБОТАНО!!!!!!!!!
+
+
+необходимо 
+
+listBox1.Invoke(new Action(() => { listBox1.Items.Add("Загружено "+res); }));
+
+https://habr.com/ru/post/107583/
+
+В случае WinForms, достаточно у любого контрола вызвать метод Invoke и передать ему делегат с кодом, который необходимо выполнить в gui потоке. В случае WPF, нужно обратиться к свойству Dispatcher любого контрола и вызвать метод Invoke, опять же передав ему делегат.
+
+void addText(Form frm, int res) {
+  if (frm.InvokeRequired)    // true - если вызван не из UI-потока
+     frm.BeginInvoke(
+        new Action<Form, int>((f, r) => addText(f, r)),
+        frm, res);   // передается в (f, r)
+  else
+     frm.Controls.Add(new TextBox() { Text = res.ToString(), Dock = DockStyle.Top });
+}
+
+var f = new Form();
+
+f.Load += (s, e) => {
+   Task.Run(() => {
+      for (var result = 0; result< 5; result++)
+         addText(f, result);
+    });
+};
+
+f.ShowDialog();
+
+https://youtu.be/vcT-GeLC_Nk
+
+
+
+
+
+namespace WindowsFormsApplication1
+{
+    public partial class Form1 : Form
+    {
+        CancellationTokenSource cts = new CancellationTokenSource();
+        SynchronizationContext synContext;
+        public Form1()
+        {
+            InitializeComponent();
+            synContext = SynchronizationContext.Current;
+        }
+
+        private async void StartButton_Click(object sender, EventArgs e)
+        {
+            string text = await Task.Run<string>(()=> SomeClass.Work(new object(), cts.Token), cts.Token);
+            synContext.Post(delegate { textBox1.Text = text;}, null);
+        }
+
+        private void CancellButton_Click(object sender, EventArgs e)
+        {
+           if(cts.Token.CanBeCanceled)
+            {
+                cts.Cancel();
+            }
+        }
+    }
+}
+
+class SomeClass
+{
+    public static string Work(object o, CancellationToken ct)
+    {
+        try
+        {
+            Thread.Sleep(1000);
+            ct.ThrowIfCancellationRequested();
+            return "Задача завершена успешно";
+        }
+        catch (Exception ex)
+        {
+            if (ex is OperationCanceledException)
+            {
+                return "Задание было отменено";
+            }
+            else
+            {
+                return "Error";
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Добрый день.
+
+Конкретно в вашем случае, я бы не использовал Task, а остановился на каком нибудь BackgrounWorker, там в конце есть пример.
+
+Ну а если на Task, то вот везде, где вам нужно поработать с визуальными компонентами, придется писать вот так:
+
+//Например тут что-то добавить в richtextbox
+this.BeginInvoke((Action)(() => richtextbox1.AppendText = "Error ..."));
+
+
+
+public partial class Form1 : Form
+    {
+        public Form1()
+        {
+
+            InitializeComponent();
+        }
+
+        private Worker _worker;
+private async void button1_Click(object sender, EventArgs e)
+        {           
+            await Task.Factory.StartNew(_worker.Work);
+        }
+
+public class Worker
+        {
+            private bool _cancelled = false;
+            public void Cancel()
+            {
+                _cancelled = true;
+            }
+            public void Work()
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    if (_cancelled)
+                    break;
+                    Thread.Sleep(100); 
+                   //Например тут что-то добавить в richtextbox
+                   //richtextbox1.AppendText = "Error ...";
+                }               
+            }
+        }
+}
+
+
+
+
+
+
+https://docs.microsoft.com/ru-ru/dotnet/api/system.componentmodel.backgroundworker?redirectedfrom=MSDN&view=net-5.0
+
+
+
+
+
+namespace PingExample
+{
+    public partial class Form1 : Form
+    {
+        private Timer _pingTimer;
+        private IPAddress _ipAddress;
+
+        public Form1()
+        {
+            InitializeComponent();
+            _pingTimer = new Timer { Interval = 2000 };
+            _pingTimer.Tick += Timer_Tick;
+
+        }
+
+        private void UpdateControls()
+        {
+            IpAddress.Enabled = !_pingTimer.Enabled;
+            Start.Enabled = !_pingTimer.Enabled;
+            Stop.Enabled = _pingTimer.Enabled;
+        }
+
+        private void Start_Click(object sender, EventArgs e)
+        {
+            _pingTimer.Start();
+            _ipAddress = IPAddress.Parse(IpAddress.Text);
+            UpdateControls();
+        }
+
+        private void Stop_Click(object sender, EventArgs e)
+        {
+            _pingTimer.Stop();
+            UpdateControls();
+        }
+
+        private async void Timer_Tick(object sender, EventArgs e)
+        {
+            await SendPing(_ipAddress, 1000);
+        }
+
+
+        private async Task SendPing(IPAddress txtIP, int timeOut)
+        {
+            using (Ping pingSender = new Ping())
+            {
+                byte[] packetData = Encoding.ASCII.GetBytes("................................");
+                PingOptions packetOptions = new PingOptions(255, false);
+                var result = await pingSender.SendPingAsync(txtIP, timeOut, packetData, packetOptions);
+                Status.Text = result.Status.ToString();
+            }
+        }
+    }
+}
+
+
