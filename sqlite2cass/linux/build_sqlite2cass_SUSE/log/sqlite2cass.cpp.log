@@ -1,0 +1,14 @@
+src/sqlite2cass.cpp: In function ‘int CsvSqlite(std::string, time_t, time_t, int, int)’:
+src/sqlite2cass.cpp:422:25: warning: unused variable ‘bval’ [-Wunused-variable]
+                unsigned bval = 0;
+                         ^~~~
+src/sqlite2cass.cpp: In function ‘int main(int, char**)’:
+src/sqlite2cass.cpp:1272:15: warning: unused variable ‘totalArchives’ [-Wunused-variable]
+        size_t totalArchives = 0;
+               ^~~~~~~~~~~~~
+src/sqlite2cass.cpp:1292:13: warning: variable ‘beginLoad’ set but not used [-Wunused-but-set-variable]
+        auto beginLoad = std::chrono::high_resolution_clock::now();
+             ^~~~~~~~~
+src/sqlite2cass.cpp:978:11: warning: unused variable ‘pErrMsg’ [-Wunused-variable]
+     char *pErrMsg = 0 ;
+           ^~~~~~~

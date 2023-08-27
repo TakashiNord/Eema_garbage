@@ -1,0 +1,11 @@
+src/sqlite2cass.cpp: In function ‘int CsvSqlite(std::string, time_t, time_t, int, int)’:
+src/sqlite2cass.cpp:413:25: warning: unused variable ‘bval’ [-Wunused-variable]
+                unsigned bval = 0;
+                         ^~~~
+src/sqlite2cass.cpp: In function ‘int main(int, char**)’:
+src/sqlite2cass.cpp:1382:32: warning: unused variable ‘flag_cn’ [-Wunused-variable]
+                            int flag_cn = 0;
+                                ^~~~~~~
+src/sqlite2cass.cpp:943:11: warning: unused variable ‘pErrMsg’ [-Wunused-variable]
+     char *pErrMsg = 0 ;
+           ^~~~~~~

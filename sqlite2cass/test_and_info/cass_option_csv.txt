@@ -1,0 +1,110 @@
+
+COPY cycling.cyclist_catgory FROM 'cyclist_category.csv' WITH DELIMITER='|' AND HEADER=TRUE
+
+Copy options set in the COPY statement take precedence over the cqlshrc file and the default settings. If an option is not set on the command line, the cqlshrc file takes precedence over the default settings.
+
+BOOLSTYLE
+    Boolean indicators for true and false. The values are case-insensitive. For example, yes,no and YES,NO are the same.
+
+    Default: True,False
+CONFIGFILE
+    Specify a directory that contains the cqlshrc configuration file.
+    Note: Command line options always override the cqlshrc file.
+DATETIMEFORMAT
+    Time format for reading or writing CSV time data. The timestamp uses the strftime format. If not set, the default value is set to the datetimeformat value in the cqlshrc file.
+
+    Default: %Y-%m-%d %H:%M:%S%z
+DECIMALSEP
+    Decimal value separator.
+
+    Default: . (period)
+DELIMITER
+    Field separator.
+
+    Default: , (comma)
+ESCAPE
+    Single character that escapes literal uses of the QUOTE character.
+
+    Default: \ (backslash)
+HEADER
+
+        true - first row contains headers (column names)
+        false - first row does not have headers
+
+    Default: false
+MAXATTEMPTS
+    Maximum number of attempts for errors.
+
+    Default: 5
+NULL
+    Value used when no value is in the field.
+
+    Default: <empty>
+NUMPROCESSES
+    Number of worker processes. Maximum value is 16.
+
+    Default: -1
+QUOTE
+    Encloses field values.
+
+    Default: " (double quotation mark)
+REPORTFREQUENCY
+    Frequency with which status is displayed in seconds.
+
+    Default: 0.25
+RATEFILE
+    Print output statistics to this file.
+SKIPCOLS
+    Name of column to skip.
+SKIPROWS
+    Number of rows starting from the first row of data to skip.
+THOUSANDSSEP
+    Separator for thousands digit groups.
+
+BEGINTOKEN
+    Minimum token string for exporting data. 
+DOUBLEPRECISION
+    Number of digits to display after the decimal point for CQL double precision values.
+
+    Default: 12
+ENCODING
+    Output string type.
+
+    Default: UTF8
+ENDTOKEN
+    Maximum token string for exporting data. 
+ERRFILE
+    File to store all rows that are not imported. If no value is set, the information is stored in import_ks_table.err where ks is the keyspace and table is the table name. 
+FLOATPRECISION
+    Number of digits to display after the decimal point for CQL float (single precision) values.
+
+    Default: 5
+MAXOUTPUTSIZE
+    Maximum size of the output file, measured in number of lines. When set, the output file is split into segment when the value is exceeded. Use -1 for no maximum.
+
+    Default: -1
+MAXREQUESTS
+    Maximum number of requests each worker can process in parallel.
+
+    Default: 6
+PAGESIZE
+    Page size for fetching results.
+
+    Default: 1000
+PAGETIMEOUT
+    Page timeout for fetching results.
+
+    Default: 10
+TTL
+    Time to live in seconds. By default, data will not expire.
+
+    Default: 3600
+
+
+
+Now you can use DataStax's bulk loader to import or export big amounts of data in CSV/JSON formats. This tool is very flexible regarding the mapping of data in CSV/JSON into tables. In simplest case, when you have columns in CSV matching the columns in table you can just use:
+
+dsbulk load -url file.csv -k keyspace -t table
+
+If columns in table have different names than in CSV, then you'll need to provide mapping with -m command line switch. You can find more examples of usage in following series of blog posts.
+

@@ -1,0 +1,538 @@
+#!/bin/bash
+
+#defines
+DEF_DBOracle=Oracle
+DEF_DBMySQL=MySQL
+
+#default values
+libdirname=lib
+build_library=no
+var_prefix=/usr
+var_prefix_bin=$prefix/bin
+var_prefix_lib=$prefix/${libdirname}
+var_prefix_inc=$prefix/include
+var_rsdu_topdir=../../..
+var_rsdu_path=/usr
+var_build_platform=SUSE
+var_gcc4_presents=no
+var_cpp11_presents=no
+var_dir_dist=.dist
+var_db_type=${DEF_DBOracle}
+var_db_host=localhost
+var_config_build_filename=build_config.h
+current_dir=$(dirname $0)
+var_project_dir=${current_dir}
+
+
+################################################################################
+# Echo colors defines
+################################################################################
+
+ECHO="/bin/echo"
+ECHO_ESC="${ECHO} -e"
+
+ESC=\\e
+
+BGCL_BLACK=40
+BGCL_RED=41
+BGCL_GREEN=42
+BGCL_YELLOW=43
+BGCL_BLUE=44
+BGCL_MAGENTA=45
+BGCL_CYAN=46
+BGCL_WHITE=47
+
+TCL_BLACK=30
+TCL_RED=31
+TCL_GREEN=32
+TCL_YELLOW=33
+TCL_BLUE=34
+TCL_MAGENTA=35
+TCL_CYAN=36
+TCL_WHITE=37
+
+EBOLD_ON="${ESC}[1m"
+EBOLD_OFF="${ESC}[0m"
+
+EUL_ON="${ESC}[4m"
+EUL_OFF="${ESC}[0m"
+
+
+ETCL_BLACK="${ESC}[${TCL_BLACK}m"
+ETCL_RED="${ESC}[${TCL_RED}m"
+ETCL_GREEN="${ESC}[${TCL_GREEN}m"
+ETCL_YELLOW="${ESC}[${TCL_YELLOW}m"
+ETCL_BLUE="${ESC}[${TCL_BLUE}m"
+ETCL_MAGENTA="${ESC}[${TCL_MAGENTA}m"
+ETCL_CYAN="${ESC}[${TCL_CYAN}m"
+ETCL_WHITE="${ESC}[${TCL_WHITE}m"
+ETCL_NORMAL="${ECTL_WHITE}${EBOLD_OFF}"
+
+################################################################################
+# END. Echo colors defines
+################################################################################
+
+# get current hardware platform
+hw_platform=`uname -m`
+if [ $hw_platform = "x86_64" ]; then
+    libdirname=lib64;
+else
+    libdirname=lib;
+fi;
+
+# check version of gcc for select build platform
+vercomp()
+{
+    if [[ $1 == $2 ]]
+    then
+        return 0
+    fi
+    local IFS=.
+    local i ver1=($1) ver2=($2)
+    # fill empty fields in ver1 with zeros
+    for ((i=${#ver1[@]}; i<${#ver2[@]}; i++))
+    do
+        ver1[i]=0
+    done
+    for ((i=0; i<${#ver1[@]}; i++))
+    do
+        if [[ -z ${ver2[i]} ]]
+        then
+            # fill empty fields in ver2 with zeros
+            ver2[i]=0
+        fi
+        if [[ 10#${ver1[i]} > 10#${ver2[i]} ]]
+        then
+            return 1
+        fi
+        if [[ 10#${ver1[i]} < 10#${ver2[i]} ]]
+        then
+            return 2
+        fi
+    done
+    return 0
+}
+
+print_usage()
+{
+cat <<_EOF
+Usage: $0 [OPTION]
+
+Installation directories:
+  --prefix=PREFIX         install architecture-independent files in PREFIX
+                          [$var_prefix]
+
+By default, \`make install' will install all the files in
+\`$var_prefix/bin', \`$var_prefix/lib' etc.  You can specify
+an installation prefix other than \`$var_prefix' using \`--prefix',
+for instance \`--prefix=\$HOME'.
+
+For better control, use the options below.
+
+Fine tuning of the installation directories:
+  --prefix-bin=DIR        user executables [PREFIX/bin]
+  --prefix-lib=DIR        object code libraries [PREFIX/lib]
+  --prefix-inc=DIR        C header files [PREFIX/include]
+
+  --module-name=NAME
+
+  -i FILE, --in-makefile=FILE       Makefile template for build Makefile [Makefile.in]
+  -o FILE, --out-makefile=FILE      Output Makefile name [Makefile]
+
+  --build-platform=NAME   Platform for build (SLES, REDHAT, DEBIAN, etc.) Default is determined automatically
+  --rsdu-topdir=DIR       Top directory of RSDU project. [../../..]
+  --rsdu-path=DIR         Path to installed library of RSDU project. [/usr]
+  --dir-dist=NAME         Name of directory for build distrib. [.dist]
+
+  --defines=[definition1[,definition2[,...]]]
+                          Add defines to compiler as keys -D
+
+  --rfcopy=[filename1[,filename2[,...]]]
+                          Makes copies of result files
+_EOF
+}
+
+GCC_VERSION=`gcc -v 2>&1 | tail -1 | awk '{print $3}'`;
+vercomp $GCC_VERSION "4.1.3"
+if [[ $? != 2 ]]
+then
+	var_gcc4_presents=yes
+else
+	var_gcc4_presents=no
+fi
+
+vercomp $GCC_VERSION "4.7.0"
+if [[ $? != 2 ]]
+then
+	var_cpp11_presents=yes
+else
+	var_cpp11_presents=no
+fi
+
+
+ac_prev=
+ac_dashdash=
+
+for ac_option
+do
+  # If the previous option needs an argument, assign it.
+  if test -n "$ac_prev"; then
+    eval $ac_prev=\$ac_option
+    ac_prev=
+    continue
+  fi
+
+  case $ac_option in
+  *=?*) ac_optarg=`expr "X$ac_option" : '[^=]*=\(.*\)'` ;;
+  *=)   ac_optarg= ;;
+  *)    ac_optarg=yes ;;
+  esac
+
+  # Accept the important Cygnus configure options, so we can diagnose typos.
+
+  case $ac_dashdash$ac_option in
+  --)
+    ac_dashdash=yes ;;
+
+  --help)
+    print_usage;
+    exit 0;;
+
+  -i | --in-makefile)
+    ac_prev=in_makefile ;;
+  -i=* | --in-makefile=*)
+    in_makefile=$ac_optarg;;
+
+  -o | --out-makefile)
+    ac_prev=out_makefile ;;
+  -o=* | --out-makefile=*)
+    out_makefile=$ac_optarg;;
+
+  -prefix | --prefix)
+    ac_prev=prefix ;;
+  -prefix=* | --prefix=*)
+    prefix=$ac_optarg;;
+
+  -prefix-bin | --prefix-bin)
+    ac_prev=prefix_bin ;;
+  -prefix-bin=* | --prefix-bin=*)
+    prefix_bin=$ac_optarg ;;
+
+  -prefix-lib | --prefix-lib)
+    ac_prev=prefix_lib ;;
+  -prefix-lib=* | --prefix-lib=*)
+    prefix_lib=$ac_optarg ;;
+
+  -prefix-inc | --prefix-inc)
+    ac_prev=prefix_inc ;;
+  -prefix-inc=* | --prefix-inc=*)
+    prefix_inc=$ac_optarg ;;
+
+  -module-name | --module-name)
+    ac_prev=key_module_name ;;
+  -module-name=* | --module-name=*)
+    key_module_name=$ac_optarg;;
+
+  -build-platform | --build-platform)
+    ac_prev=build_platform ;;
+  -build-platform=* | --build-platform=* | -bp=* | --bp=*)
+    build_platform=$ac_optarg ;;
+
+  -rsdu-topdir | --rsdu-topdir)
+    ac_prev=rsdu_topdir ;;
+  -rsdu-topdir=* | --rsdu-topdir=* | -rtd=* | --rtd=*)
+    rsdu_topdir=$ac_optarg ;;
+
+  -rsdu-path | --rsdu-path)
+    ac_prev=rsdu_path ;;
+  -rsdu-path=* | --rsdu-path=* | -rp=* | --rp=*)
+    rsdu_path=$ac_optarg ;;
+
+  -dir-dist | --dir-dist)
+    ac_prev=dir_dist ;;
+  -dir-dist=* | --dir-dist=* | -dst=*  | --dst=* )
+    dir_dist=$ac_optarg;;
+
+  -build-static-library | --build-static-library)
+    ac_prev=
+    build_static_library=yes ;;
+
+  -defines | --defines)
+    ac_prev=config_defines ;;
+  -defines=* | --defines=*)
+    config_defines=$ac_optarg;;
+
+  -rfcopy | --rfcopy)
+    ac_prev=resfile_copies ;;
+  -rfcopy=* | --rfcopy=*)
+    resfile_copies=$ac_optarg;;
+
+  -db-type | --db-type)
+    ac_prev=key_db_type ;;
+  -db-type=* | --db-type=*)
+    key_db_type=$ac_optarg;;
+
+  -db-host | --db-host)
+    ac_prev=key_db_host ;;
+  -db-host=* | --db-host=*)
+    key_db_host=$ac_optarg;;
+
+  -use-rsduenv | --use-rsduenv)
+    ac_prev=key_use_rsduenv ;;
+  -use-rsduenv=* | --use-rsduenv=*)
+    key_use_rsduenv=$ac_optarg ;;
+  esac
+done
+
+cs_module_name=${key_module_name};
+
+#echo configure starts
+echo -e "\e[32;01m----------------------------------------------------------------\e[0m"
+echo -e "\e[33;01m  configuring '${cs_module_name}'...\e[0m"
+
+#include rsduutils functions
+. $rsdu_topdir/Scripts/admin_scripts/usr/share/ema/bin/rsduutils.inc.sh
+
+var_build_platform=`get_platform`;
+
+
+###########################################################
+# Getting version
+cs_version_text=`head -n1 ${var_project_dir}/version.txt | cut -c-255`
+
+
+###########################################################
+# Getting revision
+
+cs_revision=`get_revision ${var_project_dir}`
+
+###########################################################
+# Generate Makefile
+makefiletmp=$(mktemp);
+
+if [ -z "$in_makefile" ]; then \
+	makefilein="./Makefile.in"; \
+else \
+	makefilein=$in_makefile; \
+fi;
+
+if [ -z "$out_makefile" ]; then \
+	makefileout="./Makefile"; \
+else \
+	makefileout=$out_makefile; \
+fi;
+
+if [ "x$build_library" = "xyes" ]; then
+	all_target="library" ;
+else
+	all_target="binary" ;
+fi
+
+if [ ! -f $makefilein ]; then \
+	echo "Cannot be found '$makefilein'."; \
+	${ECHO_ESC} "${ETCL_RED}Aborted.${ETCL_NORMAL}"; \
+	exit 1; \
+fi;
+
+if [ ! -z "$key_module_name" ]; then var_module_name=$key_module_name; fi;
+if [ ! -z "$build_platform" ]; then var_build_platform=$build_platform; fi;
+if [ ! -z "$rsdu_topdir" ]; then var_rsdu_topdir=$rsdu_topdir; fi;
+if [ ! -z "$rsdu_path" ]; then var_rsdu_path=$rsdu_path; fi;
+if [ ! -z "$prefix" ]; then var_prefix=$prefix; fi;
+if [ ! -z "$prefix_bin" ]; then var_prefix_bin=$prefix_bin; else var_prefix_bin="$var_prefix/bin"; fi;
+if [ ! -z "$prefix_lib" ]; then var_prefix_lib=$prefix_lib; else var_prefix_lib="$var_prefix/${libdirname}"; fi;
+if [ ! -z "$prefix_inc" ]; then var_prefix_inc=$prefix_inc; else var_prefix_inc="$var_prefix/include"; fi;
+if [ ! -z "$dir_dist" ]; then var_dir_dist=$dir_dist; fi;
+if [ ! -z "$key_db_type" ]; then var_db_type=$key_db_type; fi;
+if [ ! -z "$key_db_host" ]; then var_db_host=$key_db_host; fi;
+if [ ! -z "$key_use_rsduenv" ]; then var_use_rsduenv=$key_use_rsduenv; fi;
+
+if [ ! -z "$config_defines" ]; then
+	ar_defs=( `echo $config_defines | tr ',' ' '` )
+#	echo ${ar_defs[@]}
+	idx=0;
+	while [ $idx -lt  ${#ar_defs[@]} ];
+	do
+#		echo "Index: $idx;  Value: ${ar_defs[$idx]}"
+		var_config_defines=$var_config_defines" "-D${ar_defs[$idx]}
+		let idx=idx+1
+	done
+fi;
+if [ ! -z "$resfile_copies" ]; then
+	var_resfile_copies=`echo $resfile_copies | tr ',' ' '`
+fi;
+
+#calculate some variables
+var_script_dir=$var_rsdu_topdir/Scripts
+
+if [ -f "${var_script_dir}/admin_scripts/usr/share/ema/etc/ema/rsdu_config_defines.inc" ]; then
+. ${var_script_dir}/admin_scripts/usr/share/ema/etc/ema/rsdu_config_defines.inc
+fi
+
+eval curval=\$RCD_${var_module_name}_ENABLE;
+if [ "x${curval}" == "xyes" ]; then
+  var_module_enable='.build'
+else
+  var_module_enable='.void';
+fi
+
+# echo all variables
+echo "Product version    = $cs_version_text";
+echo "Module name        = ${var_module_name}";
+echo "Module enable      = ${var_module_enable}";
+echo "Source revision    = $cs_revision";
+echo "Build Platform     = $var_build_platform";
+echo "Hardware platform  = $hw_platform";
+echo "GCC >=4.x.x        = $var_gcc4_presents";
+echo "c++11              = $var_cpp11_presents";
+echo "RSDU Top dir       = $var_rsdu_topdir";
+echo "RSDU Path          = $var_rsdu_path";
+echo "prefix             = $var_prefix";
+echo "prefix-bin         = $var_prefix_bin";
+echo "prefix-lib         = $var_prefix_lib";
+echo "prefix-inc         = $var_prefix_inc";
+echo "dir-dist           = $var_dir_dist";
+echo "DB Type            = $var_db_type";
+echo "DB Host            = $var_db_host";
+echo "config defines     = $var_config_defines";
+echo "result file copies = $var_resfile_copies";
+echo "Use RSDUENV        = $var_use_rsduenv";
+echo "all-target         = $all_target";
+
+echo  $(basename $makefileout) " was generated in " `date +'%Y-%m-%d %H:%M:%S %z'` > $0.$(basename $makefileout).log
+echo "" >> $0.$(basename $makefileout).log
+echo "command line : $0 $@" >> $0.$(basename $makefileout).log
+
+cp $makefilein $makefiletmp
+
+sed -i -e "1idefault: all\n" ${makefiletmp};
+
+# Check is variables presents
+Module_Name_presents=`cat $makefiletmp | grep -c -e"^MODULE_NAME\s*="`
+Module_Enable_presents=`cat $makefiletmp | grep -c -e"^MODULE_ENABLE\s*="`
+Project_Dir_presents=`cat $makefiletmp | grep -c -e"^PROJECT_DIR\s*="`
+Build_Platform_presents=`cat $makefiletmp | grep -c -e"^BUILD_PLATFORM\s*="`
+HW_Platform_presents=`cat $makefiletmp | grep -c -e"^HW_PLATFORM\s*="`
+GCC4_presents=`cat $makefiletmp | grep -c -e"^GCC4_PRESENTS\s*="`
+cpp11_presents=`cat $makefiletmp | grep -c -e"^CPP11_PRESENTS\s*="`
+Prefix_presents=`cat $makefiletmp | grep -c -e"^PREFIXS\s*="`
+Prefix_Bin_presents=`cat $makefiletmp | grep -c -e"^PREFIX_BINS\s*="`
+Prefix_Lib_presents=`cat $makefiletmp | grep -c -e"^PREFIX_LIBS\s*="`
+Prefix_Inc_presents=`cat $makefiletmp | grep -c -e"^PREFIX_INCS\s*="`
+RSDU_Topdir_presents=`cat $makefiletmp | grep -c -e"^RSDU_TOPDIRS\s*="`
+RSDU_Path_presents=`cat $makefiletmp | grep -c -e"^RSDU_PATHS\s*="`
+Dir_Dist_presents=`cat $makefiletmp | grep -c -e"^DIR_DISTS\s*="`
+Config_Defines_presents=`cat $makefiletmp | grep -c -e"^CONF_DEFINES\s*="`
+Resfile_Copies_presents=`cat $makefiletmp | grep -c -e"^RESFILE_COPIES\s*="`
+DB_Type_presents=`cat $makefiletmp | grep -c -e"^DB_TYPE\s*="`
+DB_Host_presents=`cat $makefiletmp | grep -c -e"^DB_HOST\s*="`
+Use_RSDUENV_presents=`cat $makefiletmp | grep -c -e"^USE_RSDUENV\s*="`
+AllTarget_presents=`cat $makefiletmp | grep -c -e"^ALL_TARGETS\s*="`
+
+# Inserts default variables if it absent
+if [ "$Module_Name_presents" == "0" ]; then sed -i -e "1i\MODULE_NAME = @MODULE_NAME@" $makefiletmp; fi;
+if [ "$Module_Enable_presents" == "0" ]; then sed -i -e "1i\MODULE_ENABLE = @MODULE_ENABLE@" $makefiletmp; fi;
+if [ "$Project_Dir_presents" == "0" ]; then sed -i -e "1i\PROJECT_DIR = @PROJECT_DIR@" $makefiletmp; fi;
+if [ "$Build_Platform_presents" == "0" ]; then sed -i -e "1i\BUILD_PLATFORM = @BUILD_PLATFORM@" $makefiletmp; fi;
+if [ "$HW_Platform_presents" == "0" ]; then sed -i -e "1i\HW_PLATFORM = @HW_PLATFORM@" $makefiletmp; fi;
+if [ "$GCC4_presents" == "0" ]; then sed -i -e "1i\GCC4_PRESENTS = @GCC4_PRESENTS@" $makefiletmp; fi;
+if [ "$cpp11_presents" == "0" ]; then sed -i -e "1i\CPP11_PRESENTS = @CPP11_PRESENTS@" $makefiletmp; fi;
+if [ "$Prefix_presents" == "0" ]; then sed -i -e "1i\PREFIX = @PREFIX@" $makefiletmp; fi;
+if [ "$Prefix_Bin_presents" == "0" ]; then sed -i -e "1i\PREFIX_BIN = @PREFIX_BIN@" $makefiletmp; fi;
+if [ "$Prefix_Lib_presents" == "0" ]; then sed -i -e "1i\PREFIX_LIB = @PREFIX_LIB@" $makefiletmp; fi;
+if [ "$Prefix_Inc_presents" == "0" ]; then sed -i -e "1i\PREFIX_INC = @PREFIX_INC@" $makefiletmp; fi;
+if [ "$RSDU_Topdir_presents" == "0" ]; then sed -i -e "1i\RSDU_TOPDIR = @RSDU_TOPDIR@" $makefiletmp; fi;
+if [ "$RSDU_Path_presents" == "0" ]; then sed -i -e "1i\RSDU_PATH = @RSDU_PATH@" $makefiletmp; fi;
+if [ "$HW_Platform_presents" == "0" ]; then sed -i -e "1i\DIR_DIST = @DIR_DIST@" $makefiletmp; fi;
+if [ "$Dir_Dist_presents" == "0" ]; then sed -i -e "1i\ALL_TARGET = @ALL_TARGET@" $makefiletmp; fi;
+if [ "$Config_Defines_presents" == "0" ]; then sed -i -e "1i\CONF_DEFINES = @CONF_DEFINES@" $makefiletmp; fi;
+if [ "$Resfile_Copies_presents" == "0" ]; then sed -i -e "1i\RESFILE_COPIES = @RESFILE_COPIES@" $makefiletmp; fi;
+if [ "$DB_Type_presents" == "0" ]; then sed -i -e "1i\DB_TYPE = @DB_TYPE@" $makefiletmp; fi;
+if [ "$DB_Host_presents" == "0" ]; then sed -i -e "1i\DB_HOST = @DB_HOST@" $makefiletmp; fi;
+if [ "$Use_RSDUENV_presents" == "0" ]; then sed -i -e "1i\USE_RSDUENV = @USE_RSDUENV@" $makefiletmp; fi;
+
+
+sed -i \
+	-e "s#@MODULE_NAME@#$var_module_name#g" \
+	-e "s#@MODULE_ENABLE@#$var_module_enable#g" \
+	-e "s#@PROJECT_DIR@#$var_project_dir#g" \
+	-e "s#@BUILD_PLATFORM@#$var_build_platform#g" \
+	-e "s#@HW_PLATFORM@#$hw_platform#g" \
+	-e "s#@GCC4_PRESENTS@#$var_gcc4_presents#g" \
+	-e "s#@CPP11_PRESENTS@#$var_cpp11_presents#g" \
+	-e "s#@PREFIX@#$var_prefix#g" \
+	-e "s#@PREFIX_BIN@#$var_prefix_bin#g" \
+	-e "s#@PREFIX_LIB@#$var_prefix_lib#g" \
+	-e "s#@PREFIX_INC@#$var_prefix_inc#g" \
+	-e "s#@RSDU_TOPDIR@#$var_rsdu_topdir#g" \
+	-e "s#@RSDU_PATH@#$var_rsdu_path#g" \
+	-e "s#@DIR_DIST@#$var_dir_dist#g" \
+	-e "s#@CONF_DEFINES@#$var_config_defines#g" \
+	-e "s#@RESFILE_COPIES@#$var_resfile_copies#g" \
+	-e "s#@DB_TYPE@#$var_db_type#g" \
+	-e "s#@DB_HOST@#$var_db_host#g" \
+	-e "s#@USE_RSDUENV@#$var_use_rsduenv#g" \
+	-e "s#@ALL_TARGET@#$all_target#g" \
+	$makefiletmp;
+
+# Additional steps
+
+# No steps
+
+# End additionanl steps
+
+# Added Makefile.base to Makefile
+
+echo -e "\n# Makefile.base included.\n" >> ${makefiletmp}
+cat ${var_script_dir}/Makefile.base >> ${makefiletmp}
+
+mv $makefiletmp $makefileout
+
+
+#############################################################
+# Generate build_config.h
+
+mkdir -p ${current_dir}/src
+
+config_build_path=${current_dir}/src/${var_config_build_filename}
+echo "/**" > ${config_build_path}
+echo " * This file was generated automatically in configure process." >> ${config_build_path}
+echo " * Please don't edit it." >> ${config_build_path}
+echo " **/" >> ${config_build_path}
+echo >> ${config_build_path}
+echo "#ifndef __BUILD_CONFIG_H__INCLUDED__" >> ${config_build_path}
+echo "#define __BUILD_CONFIG_H__INCLUDED__" >> ${config_build_path}
+
+echo >> ${config_build_path}
+echo "// Define product version" >> ${config_build_path}
+echo "#define CFG_VERSION \"${cs_version_text}\"" >> ${config_build_path}
+
+echo >> ${config_build_path}
+echo "// Source code revision for this build" >> ${config_build_path}
+echo "#define CFG_REVISION \"${cs_revision}\"" >> ${config_build_path}
+
+
+echo >> ${config_build_path}
+if [ "x$hw_platform" == "xx86_64" ]; then
+    echo "#define ARCH_X86_64 1" >> ${config_build_path}
+else
+    echo "#define ARCH_X86 1" >> ${config_build_path}
+fi
+
+echo >> ${config_build_path}
+if [ "x${var_db_type}" == "x${DEF_DBOracle}" ]; then
+    echo "#define DB_ORACLE 1" >> ${config_build_path}
+elif [ "x${var_db_type}" == "x${DEF_DBMySQL}" ]; then
+    echo "#define DB_MYSQL 1" >> ${config_build_path}
+else
+    echo "#define DB_NONE 1" >> ${config_build_path}
+fi
+
+echo >> ${config_build_path}
+echo "#endif // __BUILD_CONFIG_H__INCLUDED__" >> ${config_build_path}
+
+
+#echo -e "\e[32;02m+ Configure project has finished successfully.\e[0m";
+${ECHO_ESC} "${ETCL_GREEN}+ Configuring of the project has finished successfully.${ETCL_NORMAL}"
+echo
+

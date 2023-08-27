@@ -1,0 +1,431 @@
+USE_RSDUENV = yes
+DB_HOST = localhost
+DB_TYPE = Oracle
+RESFILE_COPIES = 
+CONF_DEFINES = 
+ALL_TARGET = binary
+RSDU_PATH = /root/LinuxRT/RSDU5_RT_5.23.1.0_20230330_145720_RTConfig/.buildlib
+RSDU_TOPDIR = /root/LinuxRT/RSDU5_RT_5.23.1.0_20230330_145720_RTConfig
+PREFIX_INC = /usr/include
+PREFIX_LIB = /usr/lib64
+PREFIX_BIN = /usr/bin
+PREFIX = /usr
+CPP11_PRESENTS = yes
+BUILD_PLATFORM = SUSE
+PROJECT_DIR = /root/LinuxRT/RSDU5_RT_5.23.1.0_20230330_145720_RTConfig/Others/oracle2cass/linux
+MODULE_ENABLE = .build
+MODULE_NAME = sqlite2cass
+default: all
+
+PRJNAME = sqlite2cass
+DIST = SUSE
+HW_PLATFORM = x86_64
+GCC4_PRESENTS = yes
+RSDU_TOPDIR = /root/LinuxRT/RSDU5_RT_5.23.1.0_20230330_145720_RTConfig
+RSDU_PATH = /root/LinuxRT/RSDU5_RT_5.23.1.0_20230330_145720_RTConfig/.buildlib
+PREFIX = /usr
+PREFIX_BIN = /usr/bin
+PREFIX_LIB = /usr/lib64
+PREFIX_INC = /usr/include
+DIR_DIST = .dist
+
+SRCDIR = ./src
+CC = $(CXX)
+LD = $(CXX)
+
+$(PRJNAME)_CFLAGS = -Wall -ggdb -DPOSIX_THREADS -DASKD -DLINUX -D_FILE_OFFSET_BITS=64 $(CFLAGS_RSDU) $(CFLAGS_DB)
+$(PRJNAME)_LDFLAGS = $(RSDU_PATH)/$(LIBDIRNAME)/libsqlite3.a $(LDFLAGS_RSDU) $(LDFLAGS_DB) -lrt -lpthread -lutils
+
+$(PRJNAME)_CFLAGS_GCC4 = -fstack-protector
+$(PRJNAME)_LDFLAGS_GCC4 =
+
+$(PRJNAME)_CFLAGS_CPP11 = -std=c++17
+$(PRJNAME)_LDFLAGS_CPP11 = -lcassandra -lrsducass
+
+$(PRJNAME)_CFLAGS_SUSE =
+$(PRJNAME)_LDFLAGS_SUSE =
+
+$(PRJNAME)_CFLAGS_DEBIAN =
+$(PRJNAME)_LDFLAGS_DEBIAN =
+
+$(PRJNAME)_CFLAGS_REDHAT =
+$(PRJNAME)_LDFLAGS_REDHAT =
+
+$(PRJNAME)_SOURCES = sqlite2cass.cpp version.c
+$(PRJNAME)_HEADERS = oracle2cass.h version.h
+
+$(PRJNAME)_SRCDIST_FILES = Makefile.in
+
+ALL_TARGET = binary
+
+# Makefile.base included.
+
+
+#CC = gcc
+#CXX = g++
+#LD = ld
+
+ifeq ($(MODULE_ENABLE), .void)
+MODULE_INSTALL = .void
+else
+MODULE_INSTALL = .install
+endif
+
+ifndef AR
+AR = ar
+endif
+
+ifndef RANLIB
+RANLIB = ranlib
+endif
+
+ifndef RSDU_TOPDIR
+RSDU_TOPDIR = ../../..
+endif
+SCRIPT_DIR = $(RSDU_TOPDIR)/Scripts
+SCRIPT_VERSION = mkver_lnx2.sh
+SCRIPT_GENCALCSRC = gencalcsrc.sh
+
+include $(SCRIPT_DIR)/admin_scripts/usr/share/ema/etc/ema/rsdu_config_defines.inc
+
+
+ifndef DIST
+DIST = SUSE
+endif
+ifndef GCC4_PRESENTS
+GCC4_PRESENTS = no
+endif
+ifndef PROJECT_DIR
+PROJECT_DIR = .
+endif
+ifndef SRCDIR
+SRCDIR = $(PROJECT_DIR)/src
+endif
+
+BUILDDIR = ./.build_$(PRJNAME)_$(BUILD_PLATFORM)
+LOGDIR = ./.log
+
+ifeq ($(HW_PLATFORM), x86_64)
+LIBDIRNAME = lib64
+DEFS_HWPLATFORM = -DX86_64
+else
+LIBDIRNAME = lib
+DEFS_HWPLATFORM = -DX86
+endif
+
+
+ifndef PREFIX
+PREFIX = /usr
+endif
+
+ifndef PREFIX_BIN
+PREFIX_BIN = $(PREFIX)/bin
+endif
+ifndef PREFIX_LIB
+PREFIX_LIB = $(PREFIX)/$(LIBDIRNAME)
+endif
+ifndef PREFIX_INC
+PREFIX_INC = $(PREFIX)/include
+endif
+ifndef RSDU_PATH
+RSDU_PATH = $(RSDU_TOPDIR)
+endif
+
+ifdef DCHROOTDIR
+INST_PREFIX = $(DCHROOTDIR)/$(shell readlink -m $(PREFIX))
+INST_PREFIX_BIN = $(DCHROOTDIR)/$(shell readlink -m $(PREFIX_BIN))
+INST_PREFIX_LIB = $(DCHROOTDIR)/$(shell readlink -m $(PREFIX_LIB))
+INST_PREFIX_INC = $(DCHROOTDIR)/$(shell readlink -m $(PREFIX_INC))
+else
+INST_PREFIX = $(shell readlink -m $(PREFIX))
+INST_PREFIX_BIN = $(shell readlink -m $(PREFIX_BIN))
+INST_PREFIX_LIB = $(shell readlink -m $(PREFIX_LIB))
+INST_PREFIX_INC = $(shell readlink -m $(PREFIX_INC))
+endif
+
+ifndef DIR_DIST
+DIR_DIST = .dist
+endif
+
+ifndef RSDU_SRCDIST_PATH
+RSDU_SRCDIST_PATH = /usr/src/ema/RSDU_srcdist
+endif
+
+ifndef PRJ_SRCDIST
+PRJ_SRCDIST = ./$(DIR_SRCDIST)
+endif
+ifndef PRJ_DIST
+PRJ_DIST = ./$(DIR_DIST)
+endif
+
+ifndef CONF_DEFINES
+CONF_DEFINES = 
+endif
+
+ifndef RESFILE_COPIES
+RESFILE_COPIES = 
+endif
+
+ifndef DB_TYPE
+DB_TYPE = Oracle
+endif
+
+ifndef DB_HOST
+DB_HOST = localhost
+endif
+
+ifeq "$(GCC4_PRESENTS)" "yes"
+$(PRJNAME)_CFLAGS += $($(PRJNAME)_CFLAGS_GCC4)
+$(PRJNAME)_LDFLAGS += $($(PRJNAME)_LDFLAGS_GCC4)
+endif
+
+ifeq "$(CPP11_PRESENTS)" "yes"
+$(PRJNAME)_CFLAGS += $($(PRJNAME)_CFLAGS_CPP11)
+$(PRJNAME)_LDFLAGS += $($(PRJNAME)_LDFLAGS_CPP11)
+endif
+
+## Compiling flags
+CFLAGS_MYSQL = $(shell mysql_config --cflags)
+CFLAGS_ORACLE = 
+CFLAGS_ORACLE_INCLUDES_PATH = 
+CFLAGS_ORACLE_INCLUDES_PATH_BASE = -I$(ORACLE_HOME)/include -I$(ORACLE_HOME)/sdk/include -I$(ORACLE_HOME)/rdbms/public
+
+CFLAGS_RSDU   = -I$(SRCDIR) -I$(RSDU_TOPDIR)/Include -I$(RSDU_PATH)/include
+DEFS = $(DEFS_HWPLATFORM) $(CONF_DEFINES) -DUSE_SMNEW
+
+## Linking flags
+LDFLAGS_MYSQL = $(shell mysql_config --libs)
+LDFLAGS_ORACLE  = -locci -lclntsh
+LDFLAGS_ORACLE_LIBS_PATH = 
+LDFLAGS_ORACLE_LIBS_PATH_BASE  = -L$(ORACLE_HOME)/lib
+LDFLAGS_RSDU    = -lpthread -L$(RSDU_PATH)/lib
+LDFLAGS =
+
+## Adding headers path
+ifneq "$(RCD_ORACLE_HEADERS_PATH)" ""
+CFLAGS_ORACLE_INCLUDES_PATH += -I$(RCD_ORACLE_HEADERS_PATH)
+endif
+
+CFLAGS_ORACLE_INCLUDES_PATH += $(CFLAGS_ORACLE_INCLUDES_PATH_BASE)
+
+CFLAGS_ORACLE += $(CFLAGS_ORACLE_INCLUDES_PATH)
+
+## Adding library path
+ifneq "$(RCD_ORACLE_LIBS_PATH)" ""
+LDFLAGS_ORACLE_LIBS_PATH += -L$(RCD_ORACLE_LIBS_PATH)
+endif
+
+LDFLAGS_ORACLE_LIBS_PATH += $(LDFLAGS_ORACLE_LIBS_PATH_BASE)
+
+LDFLAGS_ORACLE += $(LDFLAGS_ORACLE_LIBS_PATH)
+
+
+
+ifeq ($(HW_PLATFORM), x86_64)
+LDFLAGS_RSDU    += -L$(RSDU_PATH)/lib64
+endif
+
+
+ifeq "$(DB_TYPE)" "Oracle"
+CFLAGS_DB = $(CFLAGS_ORACLE)
+LDFLAGS_DB = $(LDFLAGS_ORACLE)
+DEFS += -DWITH_DB_ORACLE -D_GLIBCXX_USE_CXX11_ABI=0
+endif
+
+ifeq "$(DB_TYPE)" "MySQL"
+CFLAGS_DB = $(CFLAGS_MYSQL)
+LDFLAGS_DB = $(LDFLAGS_MYSQL)
+DEFS += -DWITH_DB_MYSQL
+endif
+
+CFLAGS = $(DEFS)
+
+
+$(PRJNAME)_BINARY = $(PRJNAME)
+$(PRJNAME)_STATIC_LIBRARY_NAME = lib$(PRJNAME).a
+
+$(PRJNAME)_INSTALL_BINARY = $($(PRJNAME)_BINARY)
+$(PRJNAME)_INSTALL_LIBRARY = $($(PRJNAME)_STATIC_LIBRARY_NAME)
+$(PRJNAME)_INSTALL_HEADER += 
+
+$(PRJNAME)_CFLAGS +=
+$(PRJNAME)_LDFLAGS +=
+
+#$(PRJNAME)_SOURCES = except.c
+
+$(PRJNAME)_OBJECTS = $(patsubst %.cpp,%.o,$(patsubst %.c,%.o,$(filter %.c %.cpp,$($(PRJNAME)_SOURCES))))
+$(PRJNAME)_OBJECTS_PATHS = $(patsubst %,$(BUILDDIR)/obj/%,$($(PRJNAME)_OBJECTS))
+
+.PHONY: srcdist help helpme .build .void
+
+.void:
+
+all: $(MODULE_ENABLE)
+
+.build: $(ALL_TARGET)
+
+install i: $(MODULE_INSTALL)
+
+binary: $(PRJNAME)_binary
+
+library: $(PRJNAME)_static_library
+
+$(PRJNAME)_binary: _prebuild $(BUILDDIR)/bin/$($(PRJNAME)_BINARY) _postbuild
+
+$(PRJNAME)_static_library: _prebuild $(BUILDDIR)/lib/$($(PRJNAME)_STATIC_LIBRARY_NAME) _postbuild
+
+#pre-build
+_prebuild_base:
+	@echo "Pre-Build..."
+	mkdir -p $(BUILDDIR)
+	mkdir -p $(BUILDDIR)/bin
+	mkdir -p $(BUILDDIR)/obj
+	mkdir -p $(BUILDDIR)/lib
+	mkdir -p $(BUILDDIR)/log
+
+_prebuild: _prebuild_base $(PRE_BUILD)
+
+#post-build
+_postbuild_base:
+	@echo "Post-Build..."
+
+_postbuild: _postbuild_base $(POST_BUILD)
+
+#build binary
+$(BUILDDIR)/bin/$($(PRJNAME)_BINARY): $($(PRJNAME)_OBJECTS_PATHS)
+	@if [ -f $(SCRIPT_DIR)/RSDUENV.default ]; then \
+		echo "Using '$(SCRIPT_DIR)/RSDUENV.default'"; \
+		. $(SCRIPT_DIR)/RSDUENV.default; \
+	fi;
+	@echo "$(LD) -o $@  $($(PRJNAME)_OBJECTS_PATHS) $(LDFLAGS) $($(PRJNAME)_LDFLAGS) $($(PRJNAME)_LDFLAGS_$(BUILD_PLATFORM)) 2> $(BUILDDIR)/log/$(@F).log"; \
+	$(LD) -o $@  $($(PRJNAME)_OBJECTS_PATHS) $(LDFLAGS) $($(PRJNAME)_LDFLAGS) $($(PRJNAME)_LDFLAGS_$(BUILD_PLATFORM)) 2> $(BUILDDIR)/log/$(@F).log || \
+	(echo; echo "--[ Error link to '$@' ]------------------"; cat $(BUILDDIR)/log/$(@F).log; exit 1)
+
+#build library
+$(BUILDDIR)/lib/$($(PRJNAME)_STATIC_LIBRARY_NAME): $($(PRJNAME)_OBJECTS_PATHS)
+	$(AR) cr $@ $($(PRJNAME)_OBJECTS_PATHS)
+	$(RANLIB) $@
+
+#compile sources
+$(BUILDDIR)/obj/%.o: $(SRCDIR)/%.c
+	@if [ -f $(SCRIPT_DIR)/RSDUENV.default ]; then \
+		echo "Using '$(SCRIPT_DIR)/RSDUENV.default'"; \
+		. $(SCRIPT_DIR)/RSDUENV.default; \
+	fi;
+	mkdir -p $(dir $@);
+	@echo "$(CC) $(CFLAGS) $($(PRJNAME)_CFLAGS) $($(PRJNAME)_CFLAGS_$(BUILD_PLATFORM)) -c $^ -o $@ 2> $(BUILDDIR)/log/$(^F).log"; \
+	$(CC) $(CFLAGS) $($(PRJNAME)_CFLAGS) $($(PRJNAME)_CFLAGS_$(BUILD_PLATFORM)) -c $^ -o $@ 2> $(BUILDDIR)/log/$(^F).log || \
+	(echo; echo "--[ Error compile file '$^' ]-------------"; cat $(BUILDDIR)/log/$(^F).log; exit 1)
+
+$(BUILDDIR)/obj/%.o: $(SRCDIR)/%.cpp
+	@if [ -f $(SCRIPT_DIR)/RSDUENV.default ]; then \
+		echo "Using '$(SCRIPT_DIR)/RSDUENV.default'"; \
+		. $(SCRIPT_DIR)/RSDUENV.default; \
+	fi;
+	mkdir -p $(dir $@);
+	@echo "$(CXX) $(CFLAGS) $($(PRJNAME)_CFLAGS) $($(PRJNAME)_CFLAGS_$(BUILD_PLATFORM)) -c $^ -o $@ 2> $(BUILDDIR)/log/$(^F).log"; \
+	$(CXX) $(CFLAGS) $($(PRJNAME)_CFLAGS) $($(PRJNAME)_CFLAGS_$(BUILD_PLATFORM)) -c $^ -o $@ 2> $(BUILDDIR)/log/$(^F).log || \
+	(echo; echo "--[ Error compile file '$^' ]-------------"; cat $(BUILDDIR)/log/$(^F).log; exit 1)
+
+$(SRCDIR)/version.c $(SRCDIR)/.revision: gen_ver
+
+gen_ver:
+	$(SCRIPT_DIR)/$(SCRIPT_VERSION) $(PROJECT_DIR);
+
+
+#install
+ifeq ($(ALL_TARGET), binary)
+INSTALL_LIST = $(PRJNAME)_install_binary_base
+endif
+ifeq ($(ALL_TARGET), library)
+INSTALL_LIST = $(PRJNAME)_install_library_base $(PRJNAME)_install_header_base
+endif
+
+.install: $(INSTALL_LIST) $(PRJNAME)_post_install_common $(PRJNAME)_post_install
+
+#$(PRJNAME)_install_binary: $(patsubst %,$(BUILDDIR)/bin/%,$($(PRJNAME)_INSTALL_BINARY))
+$(PRJNAME)_install_binary_base:
+	mkdir -p $(INST_PREFIX_BIN);
+	$(foreach binfile,$(patsubst %,$(BUILDDIR)/bin/%,$($(PRJNAME)_INSTALL_BINARY)),`cp $(binfile) $(INST_PREFIX_BIN)/$(notdir $(binfile))`)
+
+#$(PRJNAME)_install_library: $(patsubst %,$(SRCDIR)/%,$($(PRJNAME)_INSTALL_HEADER))
+$(PRJNAME)_install_library_base:
+	mkdir -p $(INST_PREFIX_LIB);
+	$(foreach libfile,$(patsubst %,$(BUILDDIR)/lib/%,$($(PRJNAME)_INSTALL_LIBRARY)),`cp $(libfile) $(INST_PREFIX_LIB)/$(notdir $(libfile))`)
+
+#$(PRJNAME)_install_header: $(patsubst %,$(SRCDIR)/%,$($(PRJNAME)_INSTALL_HEADER))
+$(PRJNAME)_install_header_base:
+	mkdir -p $(INST_PREFIX_INC);
+	$(foreach incfile,$(patsubst %,$(SRCDIR)/%,$($(PRJNAME)_INSTALL_HEADER)),`cp $(incfile) $(INST_PREFIX_INC)/$(notdir $(incfile))`)
+
+#common post-install steps
+$(PRJNAME)_post_install_common:
+	$(foreach resfile,$(RESFILE_COPIES),`cp $(BUILDDIR)/bin/$($(PRJNAME)_BINARY) $(INST_PREFIX_BIN)/$(resfile)`)
+
+# virtual target
+$(PRJNAME)_post_install:
+
+#rebuild
+rebuild r: clean all
+
+#upgrade
+upgrade: clean all install
+
+#clean
+$(PRJNAME)_preclean:
+$(PRJNAME)_postclean:
+
+.PHONY clean:
+clean c: $(PRJNAME)_preclean $(PRJNAME)_clean $(PRJNAME)_postclean
+
+$(PRJNAME)_clean:
+	rm -rf $(BUILDDIR)
+
+clean-all:
+	rm -rf ./.build_$(PRJNAME)_*
+
+#################################################################
+# Make source distrib
+dist: gen_ver base_dist $(PRJNAME)_dist
+
+base_dist:
+#	rm -r -f $(PRJ_DIST);
+	mkdir -p $(PRJ_DIST);
+#	if [ -e ./Makefile ]; then cp -f ./Makefile $(PRJ_DIST)/; fi
+#	cp ./Makefile.in ./.srcdist/
+#	rm -f $(PRJ_DIST)/configure
+#	cp -f -l ./configure $(PRJ_DIST)/
+	for itsrc in $($(PRJNAME)_SOURCES) $($(PRJNAME)_HEADERS); do \
+		mkdir -p $$(dirname $(PRJ_DIST)/$(SRCDIR)/$$itsrc); \
+		rm -f $(PRJ_DIST)/$(SRCDIR)/$$itsrc; \
+		cp -f $(SRCDIR)/$$itsrc $(PRJ_DIST)/$(SRCDIR)/$$itsrc; \
+	done;
+	for itfile in $($(PRJNAME)_SRCDIST_FILES); do \
+		mkdir -p $(dir $(PRJ_DIST)/$$itfile); \
+		rm -f $(PRJ_DIST)/$$itfile; \
+		cp -f ./$$itfile $(PRJ_DIST)/$$itfile; \
+	done;
+	cp -f $(PROJECT_DIR)/.revision $(PRJ_DIST)/.revision
+
+$(PRJNAME)_dist:
+
+dist-clean:
+	rm -r -f $(PRJ_DIST);
+#	rm -f ./Makefile;
+
+#######################################
+## Help information
+help helpme:
+	@echo "Usage: make [goal]";
+	@echo "  Possible goals:";
+	@echo "  all           Build the project. Default goal.";
+	@echo;
+	@echo "  clean         Clean the project.";
+	@echo "  rebuild       Clean and rebuild the project. Same as 'make clean && make'.";
+	@echo;
+	@echo "  dist          Create a distrib of the project in the dir '$DIR_DIST'.";
+	@echo "  dist-clean    Clean the project distrib directory.";
+	@echo;
+	@echo "  install       Install built files.";
+	@echo;
+	@echo "  help, helpme  Show this help information.";

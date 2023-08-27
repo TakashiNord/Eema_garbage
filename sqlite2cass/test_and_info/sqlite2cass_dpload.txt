@@ -1,0 +1,46 @@
+The minimum number of seconds after which an SSTable is created before Cassandra considers the SSTable for tombstone compaction. An SSTable is eligible for tombstone compaction if the table exceeds the tombstone_threshold ratio. Default value: 86400.
+ 
+c_grace_seconds
+Seconds after data is marked with a tombstone (deletion marker) before it is eligible for garbage-collection. Default value: 864000 (10 days). The default value allows time for Cassandra to maximize consistency prior to deletion.
+Note: Tombstoned records within the grace period are excluded from hints or batched mutations.
+In a single-node cluster, this property can safely be set to zero. You can also reduce this value for tables whose data is not explicitly deleted — for example, tables containing only data with TTL set, or tables with default_time_to_live set.
+
+dclocal_read_repair_chance
+Probability that a successful read operation triggers a read repair, between 0 and 1; default value: 0.01. Unlike the repair controlled by read_repair_chance, this repair is limited to replicas in the same DC as the coordinator.
+
+read_repair_chance
+The probability that a successful read operation triggers a read repair. Unlike the repair controlled by dclocal_read_repair_chance, this repair is not limited to replicas in the same DC as the coordinator. The value must be between 0 and 1; default value: 0.0.
+
+
+          if (it->second.isNeedToUpdate)
+            {
+                recreate_table_query << "ALTER TABLE arc." << it->first <<
+                                        " WITH compaction = {'compaction_window_unit': 'MINUTES', 'compaction_window_size': '" << it->second.CompactionWindowSize << "',"
+                                        " 'tombstone_compaction_interval': '86400',"
+                                        " 'class': 'org.apache.cassandra.db.compaction.TimeWindowCompactionStrategy'}"
+                                        " AND gc_grace_seconds = " << CASS_DEFAULT_GC_GRACE_SECONDS <<
+                                        " AND dclocal_read_repair_chance = " << CASS_DEFAULT_DCLOCAL_READ_REPAIR_CHANCE <<
+                                        " AND read_repair_chance = " << CASS_DEFAULT_READ_REPAIR_CHANCE << ";";
+            }
+            else
+            if (!it->second.isInitialized)
+            {
+                RSDURTGUtils_UnilogMessage(LOG_INFO, m_pLogFile, "A new profile will be created: '%s'", it->first.c_str());
+                recreate_table_query << "CREATE TABLE arc." << it->first << " ("
+                                        " id_tbllst int,"
+                                        " id int,"
+                                        " time1970 timestamp,"
+                                        " val double,"
+                                        " state bigint,"
+                                        " min_val double,"
+                                        " max_val double,"
+                                        " PRIMARY KEY ((id_tbllst, id), time1970)"
+                                        " ) WITH CLUSTERING ORDER BY (time1970 DESC)"
+                                        " AND compaction = {'compaction_window_unit': 'MINUTES', 'compaction_window_size': '" << it->second.CompactionWindowSize << "',"
+                                        " 'tombstone_compaction_interval': '86400',"
+                                        " 'class': 'org.apache.cassandra.db.compaction.TimeWindowCompactionStrategy'}"
+                                        " AND gc_grace_seconds = " << CASS_DEFAULT_GC_GRACE_SECONDS <<
+                                        " AND dclocal_read_repair_chance = " << CASS_DEFAULT_DCLOCAL_READ_REPAIR_CHANCE <<
+                                        " AND read_repair_chance = " << CASS_DEFAULT_READ_REPAIR_CHANCE << ";";
+            }
+ 
