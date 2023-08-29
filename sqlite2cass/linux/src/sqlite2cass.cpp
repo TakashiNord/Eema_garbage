@@ -1,5 +1,5 @@
 /*
- project: sqlile2cass v2
+ project: sqlile2cass v2 from 02.08.2023
 
 
 */
@@ -31,7 +31,7 @@
 #include <rsduoracle.h>
 #include <rsdusql.h>
 #include <rsducass.h>
-#include <rsducpp/log.h>
+#include <rsducpp/log.h> // для версий 5.19.000 - не используется
 
 #include "oracle2cass.h"
 
@@ -79,12 +79,20 @@ bool FileExists( const std::string &Filename )
 
 
 // Static variable
-std::string   JobName = "SQLite utility";
+std::string   JobName = "SQLite to Cassandra";
 sqlite3       *db_handle = NULL;
 std::ofstream outFile ;
-//DB_ACCES_INFO *ui ;
+DB_ACCES_INFO *ui ;
 
 
+
+/*
+ Функция создания csv-файла
+ bdname  - файл БД SQLite
+ input_start_time, input_end_time - время (от и до)
+ start_id_param, end_id_param  - id параметры
+ **** Ограничение на создание файла = 2 млн строк
+*/
 int CsvSqlite( std::string bdname, time_t input_start_time, time_t input_end_time, int start_id_param, int end_id_param)
 {
     //sqlite3       *db_handle = NULL; // !!!!! перемещено в static
@@ -116,7 +124,6 @@ int CsvSqlite( std::string bdname, time_t input_start_time, time_t input_end_tim
 
     TableNames.reserve(10);
     TableNameCols.reserve(20);
-
 
 // ---------------------------------------------------------------------------
 
@@ -163,7 +170,7 @@ int CsvSqlite( std::string bdname, time_t input_start_time, time_t input_end_tim
 
     std::cout <<  " Time period = [ " << input_start_time << " , " << input_end_time  << " ] " << std::endl;
 
-// получение имен таблиц в файле
+    // получение имен таблиц в файле
     std::cout << std::endl << " Tables :" << std::endl;
     QuerySql[0]='\0';
     sprintf(QuerySql, "SELECT name FROM sqlite_master WHERE type='table' ORDER BY name");
@@ -187,6 +194,7 @@ int CsvSqlite( std::string bdname, time_t input_start_time, time_t input_end_tim
     sqlite3_finalize( ppStmt );
 
 
+    //цикл по таблицам - в файле
     for (auto &tb : TableNames)
     {
        TableNameCols.clear();
@@ -228,7 +236,8 @@ int CsvSqlite( std::string bdname, time_t input_start_time, time_t input_end_tim
            }
        } else {
            std::cout <<  "PRAGMA table_info error = " << sqlite3_errmsg(db_handle) ;
-           break ;
+           sqlite3_finalize( ppStmt );
+           continue ; // переходим к след таблице
        }
        sqlite3_finalize( ppStmt );
 
@@ -294,14 +303,15 @@ int CsvSqlite( std::string bdname, time_t input_start_time, time_t input_end_tim
        time(&ltime0);
 
        QSQLite ="";
-       sizeFile = 0 ;
-       rows = 0;
+       sizeFile = 0 ; // размер файла в символах
+       rows = 0;  // подсчет числа строк
        strpartfile[0]='\0';sprintf(strpartfile,"%04d",partfile);
        std::string tbfile=tb+"_" + strpartfile + ".csv" ; // partfile
        outFile.open(tbfile.c_str(), std::ios::out | std::ios::trunc );
        if (outFile.fail())
        {
-          std::cout << "The file [ " << tbfile << " ] was not successfully opened for saving" << std::endl;
+          std::cout << "The file [ " << tbfile << " ] was \e[1;31m not successfully opened \e[0m for saving" << std::endl;
+          std::cout << std::endl;
           return(1);
        }
        outFile << std::setprecision(12) ; // точность 12 знаков
@@ -311,75 +321,63 @@ int CsvSqlite( std::string bdname, time_t input_start_time, time_t input_end_tim
        unsigned progressDot = 0;
        header_flag = 0 ;
 
-
        time_t tSplitDateFrom = input_start_time;
        time_t tSplitDateTo = input_end_time;
 
-/*
-       time_t tSplitDateFrom = input_start_time;
-       time_t tSplitDateTo = tSplitDateFrom + 1 * MaxDataCountinResult;
-       time_t tDateTo = input_end_time;
-
-       while (tSplitDateFrom <= tDateTo)
+       QuerySql[0]='\0';
+       sprintf(QuerySql, "%s ",sqls.c_str());
+       rc = sqlite3_prepare_v2( db_handle, QuerySql , strlen(QuerySql), &ppStmt, NULL );
+       if ( rc == SQLITE_OK )
        {
-           if (tSplitDateTo > tDateTo)
-               tSplitDateTo = input_end_time;
+          sqlite3_reset(ppStmt);
+          sqlite3_clear_bindings(ppStmt);
 
-*/
+          rc = sqlite3_bind_int64(ppStmt, 1, tSplitDateFrom);
+          if( rc != SQLITE_OK ) {
+            std::cout << " sqlite3_bind_int error = " << sqlite3_errmsg(db_handle) << std::endl;
+            break;
+          }
+          rc = sqlite3_bind_int64(ppStmt, 2, tSplitDateTo);
+          if( rc != SQLITE_OK ) {
+            std::cout << " sqlite3_bind_int error = " << sqlite3_errmsg(db_handle) << std::endl;
+            break;
+          }
 
-           QuerySql[0]='\0';
-           sprintf(QuerySql, "%s ",sqls.c_str());
-           rc = sqlite3_prepare_v2( db_handle, QuerySql , strlen(QuerySql), &ppStmt, NULL );
-           if ( rc == SQLITE_OK )
-           {
-              sqlite3_reset(ppStmt);
-              sqlite3_clear_bindings(ppStmt);
-
-              rc = sqlite3_bind_int64(ppStmt, 1, tSplitDateFrom);
-              if( rc != SQLITE_OK ) {
-                std::cout << " sqlite3_bind_int error = " << sqlite3_errmsg(db_handle) << std::endl;
-                break;
-              }
-              rc = sqlite3_bind_int64(ppStmt, 2, tSplitDateTo);
-              if( rc != SQLITE_OK ) {
-                std::cout << " sqlite3_bind_int error = " << sqlite3_errmsg(db_handle) << std::endl;
-                break;
-              }
-
-              if (tsql==3) {
-                rc = sqlite3_bind_int(ppStmt, 3, start_id_param);
-                if( rc != SQLITE_OK ) {
-                  std::cout << " sqlite3_bind_int error = " << sqlite3_errmsg(db_handle) << std::endl;
-                  break;
-                }
-              }
-              if (tsql==4) {
-                rc = sqlite3_bind_int(ppStmt, 3, end_id_param);
-                if( rc != SQLITE_OK ) {
-                  std::cout << " sqlite3_bind_int error = " << sqlite3_errmsg(db_handle) << std::endl;
-                  break;
-                }
-              }
-              if (tsql==2) {
-                rc = sqlite3_bind_int(ppStmt, 3, start_id_param);
-                if( rc != SQLITE_OK ) {
-                   std::cout << " sqlite3_bind_int error = " << sqlite3_errmsg(db_handle) << std::endl;
-                   break;
-                }
-                rc = sqlite3_bind_int(ppStmt, 4, end_id_param);
-                if( rc != SQLITE_OK ) {
-                   std::cout << " sqlite3_bind_int error = " << sqlite3_errmsg(db_handle) << std::endl;
-                   break;
-                }
-              }
-
-           } else {
-               std::cout <<  "Prepare to exec = " << sqlite3_errmsg(db_handle) << std::endl;
+          if (tsql==3) {
+            rc = sqlite3_bind_int(ppStmt, 3, start_id_param);
+            if( rc != SQLITE_OK ) {
+              std::cout << " sqlite3_bind_int error = " << sqlite3_errmsg(db_handle) << std::endl;
+              break;
+            }
+          }
+          if (tsql==4) {
+            rc = sqlite3_bind_int(ppStmt, 3, end_id_param);
+            if( rc != SQLITE_OK ) {
+              std::cout << " sqlite3_bind_int error = " << sqlite3_errmsg(db_handle) << std::endl;
+              break;
+            }
+          }
+          if (tsql==2) {
+            rc = sqlite3_bind_int(ppStmt, 3, start_id_param);
+            if( rc != SQLITE_OK ) {
+               std::cout << " sqlite3_bind_int error = " << sqlite3_errmsg(db_handle) << std::endl;
                break;
-           }
+            }
+            rc = sqlite3_bind_int(ppStmt, 4, end_id_param);
+            if( rc != SQLITE_OK ) {
+               std::cout << " sqlite3_bind_int error = " << sqlite3_errmsg(db_handle) << std::endl;
+               break;
+            }
+          }
+
+       } else {
+           std::cout <<  "Prepare to exec = " << sqlite3_errmsg(db_handle) << std::endl;
+           sqlite3_finalize( ppStmt );
+           continue ; // следующая таблица
+       }
 
 
-           // output header
+       // output header
 /*(
   id_tbllst int,
   id int,
@@ -391,135 +389,129 @@ int CsvSqlite( std::string bdname, time_t input_start_time, time_t input_end_tim
   PRIMARY KEY ((id_tbllst, id), time1970)
   ) WITH CLUSTERING ORDER BY (time1970 DESC)
 */
-           if (header && header_flag==0) {
-             QSQLite = "ID_TBLLST" ;
-             if ( std::find(TableNameCols.begin(), TableNameCols.end(), "ID") != TableNameCols.end() )
-                QSQLite=QSQLite+delimiter+"ID";
-             if ( std::find(TableNameCols.begin(), TableNameCols.end(), "TIME1970") != TableNameCols.end() )
-                QSQLite=QSQLite+delimiter+"TIME1970";
-             if ( std::find(TableNameCols.begin(), TableNameCols.end(), "VAL") != TableNameCols.end() )
-                QSQLite=QSQLite+delimiter+"VAL";
-             if ( std::find(TableNameCols.begin(), TableNameCols.end(), "STATE") != TableNameCols.end() )
-                QSQLite=QSQLite+delimiter+"STATE";
-             if ( std::find(TableNameCols.begin(), TableNameCols.end(), "MIN_VAL") != TableNameCols.end() )
-                QSQLite=QSQLite+delimiter+"MIN_VAL";
-             if ( std::find(TableNameCols.begin(), TableNameCols.end(), "MAX_VAL") != TableNameCols.end() )
-                QSQLite=QSQLite+delimiter+"MAX_VAL";
+       if (header && header_flag==0) {
+         QSQLite = "ID_TBLLST" ;
+         if ( std::find(TableNameCols.begin(), TableNameCols.end(), "ID") != TableNameCols.end() )
+            QSQLite=QSQLite+delimiter+"ID";
+         if ( std::find(TableNameCols.begin(), TableNameCols.end(), "TIME1970") != TableNameCols.end() )
+            QSQLite=QSQLite+delimiter+"TIME1970";
+         if ( std::find(TableNameCols.begin(), TableNameCols.end(), "VAL") != TableNameCols.end() )
+            QSQLite=QSQLite+delimiter+"VAL";
+         if ( std::find(TableNameCols.begin(), TableNameCols.end(), "STATE") != TableNameCols.end() )
+            QSQLite=QSQLite+delimiter+"STATE";
+         if ( std::find(TableNameCols.begin(), TableNameCols.end(), "MIN_VAL") != TableNameCols.end() )
+            QSQLite=QSQLite+delimiter+"MIN_VAL";
+         if ( std::find(TableNameCols.begin(), TableNameCols.end(), "MAX_VAL") != TableNameCols.end() )
+            QSQLite=QSQLite+delimiter+"MAX_VAL";
 
-             std::cout <<  "CSV Header = " << QSQLite << std::endl;
+         std::cout <<  "CSV Header = " << QSQLite << std::endl;
 
-             if (outFile.is_open()) { /* ok, proceed with output */
+         if (outFile.is_open()) { /* ok, proceed with output */
+           outFile <<  QSQLite << std::endl;
+           sizeFile = sizeFile + QSQLite.size() + 1;
+           header_flag = 1 ;
+         }
+       }
+
+       // основной цикл
+       while ( sqlite3_step( ppStmt ) == SQLITE_ROW ) // SQLITE_DONE
+       {
+           unsigned id = 0, time1970 = 0, time_mks = 0, state = 0;
+           unsigned bval = 0;
+           double   aval = 0, min_val = 0, max_val = 0;
+
+           id = sqlite3_column_int64(ppStmt, 0);
+           time1970 = sqlite3_column_int64(ppStmt, 1);
+           time_mks = sqlite3_column_int(ppStmt, 2);
+           state = sqlite3_column_int64(ppStmt, 3);
+           aval = sqlite3_column_double(ppStmt, 4);
+           min_val = sqlite3_column_double(ppStmt, 5);
+           max_val = sqlite3_column_double(ppStmt, 6);
+
+           mbstr[0]='\0';
+           t = static_cast<time_t>(time1970) ;
+           if (std::strftime(mbstr, sizeof(mbstr), "%Y-%m-%d %H:%M:%S", std::gmtime(&t))) // std::gmtime(&t) std::localtime(&t)
+             ;
+           else
+             sprintf(mbstr,"%u",time1970 );
+
+           // cannot make
+           std::string tmstr(mbstr);
+           if (time_mks>0) {
+              char buf_time_mks[40];
+              buf_time_mks[0]='\0';
+              sprintf(buf_time_mks,"%03d", (int)time_mks/1000 );
+              std::string str_time_mks(buf_time_mks);
+              tmstr = tmstr + "." + str_time_mks + "+0000" ;
+           } else {
+              tmstr = tmstr + ".000+0000" ;
+           }
+
+           std::string fstr = "" ; // строка вывода данных
+           fstr = "" + std::to_string(LstTblID) ;
+           if ( std::find(TableNameCols.begin(), TableNameCols.end(), "ID") != TableNameCols.end() )
+              fstr = fstr + delimiter + std::to_string(id) ;
+           if ( std::find(TableNameCols.begin(), TableNameCols.end(), "TIME1970") != TableNameCols.end() )
+              fstr = fstr + delimiter + tmstr ;
+           if ( std::find(TableNameCols.begin(), TableNameCols.end(), "VAL") != TableNameCols.end() )
+              fstr = fstr + delimiter + std::to_string(aval) ;
+           if ( std::find(TableNameCols.begin(), TableNameCols.end(), "STATE") != TableNameCols.end() )
+              fstr = fstr + delimiter + std::to_string(static_cast<int64_t>(state)) ;
+           if ( std::find(TableNameCols.begin(), TableNameCols.end(), "MIN_VAL") != TableNameCols.end() )
+              fstr = fstr + delimiter + std::to_string(min_val) ;
+           if ( std::find(TableNameCols.begin(), TableNameCols.end(), "MAX_VAL") != TableNameCols.end() )
+              fstr = fstr + delimiter + std::to_string(max_val) ;
+
+           if (outFile.is_open()) { /* ok, proceed with output */
+             if (outFile.fail())
+             {
+               std::cout << ".....Error write to file" << std::endl;
+             } else {
+               outFile << fstr << std::endl; // строка HEADER
+               sizeFile = sizeFile + fstr.size()+ 1;
+               rows++;
+             }
+           }
+
+           // число строк около 2 млн строк
+           if ( rows > 1999990 ) // (sizeFile/(1024*1024)) > 1024  // 1024 mb
+           {
+             outFile.flush();
+             outFile.close();
+             std::cout << std::endl << "Rows = " << rows << " , FileSize=" << sizeFile << " bytes" << std::endl;
+
+             partfile++;
+
+             sizeFile = 0 ;
+             rows = 0 ;
+             header_flag = 0 ;
+
+             strpartfile[0]='\0';sprintf(strpartfile,"%04d",partfile);
+             std::string tbfile=tb+"_" + strpartfile + ".csv" ; // partfile
+             outFile.open(tbfile.c_str(), std::ios::out | std::ios::trunc );
+             if (outFile.fail())
+             {
+                std::cout << "The file [ " << tbfile << " ] was \e[1;31m not successfully opened \e[0m for saving" << std::endl;
+                std::cout << std::endl;
+                sqlite3_finalize( ppStmt );
+                sqlite3_close( db_handle );
+                return(1); // break ;
+             }
+             outFile << std::setprecision(12) ; // точность 12 знаков
+             time(&ltime0);
+             std::cout << "Create file = [ " << tbfile << " ] ...." << ctime(&ltime0) << std::endl;
+
+             if (outFile.is_open()) {
                outFile <<  QSQLite << std::endl;
                sizeFile = sizeFile + QSQLite.size() + 1;
                header_flag = 1 ;
              }
            }
 
-
-           while ( sqlite3_step( ppStmt ) == SQLITE_ROW ) // SQLITE_DONE
-           {
-               unsigned id = 0, time1970 = 0, time_mks = 0, state = 0;
-               unsigned bval = 0;
-               double   aval = 0, min_val = 0, max_val = 0;
-
-               id = sqlite3_column_int64(ppStmt, 0);
-               time1970 = sqlite3_column_int64(ppStmt, 1);
-               time_mks = sqlite3_column_int(ppStmt, 2);
-               state = sqlite3_column_int64(ppStmt, 3);
-               aval = sqlite3_column_double(ppStmt, 4);
-               min_val = sqlite3_column_double(ppStmt, 5);
-               max_val = sqlite3_column_double(ppStmt, 6);
-
-               mbstr[0]='\0';
-               t = static_cast<time_t>(time1970) ;
-               if (std::strftime(mbstr, sizeof(mbstr), "%Y-%m-%d %H:%M:%S", std::gmtime(&t))) // std::gmtime(&t) std::localtime(&t)
-                 ;
-               else
-                 sprintf(mbstr,"%u",time1970 );
-
-               // cannot make
-               std::string tmstr(mbstr);
-               if (time_mks>0) {
-                  char buf_time_mks[40];
-                  buf_time_mks[0]='\0';
-                  sprintf(buf_time_mks,"%03d", (int)time_mks/1000 );
-                  std::string str_time_mks(buf_time_mks);
-                  tmstr = tmstr + "." + str_time_mks + "+0000" ;
-               } else {
-                  tmstr = tmstr + ".000+0000" ;
-               }
-
-               std::string fstr = "" ;
-               fstr = "" + std::to_string(LstTblID) ;
-               if ( std::find(TableNameCols.begin(), TableNameCols.end(), "ID") != TableNameCols.end() )
-                  fstr = fstr + delimiter + std::to_string(id) ;
-               if ( std::find(TableNameCols.begin(), TableNameCols.end(), "TIME1970") != TableNameCols.end() )
-                  fstr = fstr + delimiter + tmstr ;
-               if ( std::find(TableNameCols.begin(), TableNameCols.end(), "VAL") != TableNameCols.end() )
-                  fstr = fstr + delimiter + std::to_string(aval) ;
-               if ( std::find(TableNameCols.begin(), TableNameCols.end(), "STATE") != TableNameCols.end() )
-                  fstr = fstr + delimiter + std::to_string(static_cast<int64_t>(state)) ;
-               if ( std::find(TableNameCols.begin(), TableNameCols.end(), "MIN_VAL") != TableNameCols.end() )
-                  fstr = fstr + delimiter + std::to_string(min_val) ;
-               if ( std::find(TableNameCols.begin(), TableNameCols.end(), "MAX_VAL") != TableNameCols.end() )
-                  fstr = fstr + delimiter + std::to_string(max_val) ;
-
-               if (outFile.is_open()) { /* ok, proceed with output */
-                 if (outFile.fail())
-                 {
-                   std::cout << ".....Error write to file" << std::endl;
-                 } else {
-                   outFile << fstr << std::endl;
-                   sizeFile = sizeFile + fstr.size()+ 1;
-                   rows++;
-                 }
-               }
-
-               // число строк около 2 млн строк
-               if ( rows > 1999990 ) // (sizeFile/(1024*1024)) > 1024  // 1024 mb
-               {
-                 outFile.flush();
-                 outFile.close();
-                 std::cout << std::endl << "Rows = " << rows << " , FileSize=" << sizeFile << " bytes" << std::endl;
-
-                 partfile++;
-
-                 sizeFile = 0 ;
-                 rows = 0 ;
-                 header_flag = 0 ;
-
-                 strpartfile[0]='\0';sprintf(strpartfile,"%04d",partfile);
-                 std::string tbfile=tb+"_" + strpartfile + ".csv" ; // partfile
-                 outFile.open(tbfile.c_str(), std::ios::out | std::ios::trunc );
-                 if (outFile.fail())
-                 {
-                    std::cout << "The file [ " << tbfile << " ] was not successfully opened for saving" << std::endl;
-                    sqlite3_finalize( ppStmt );
-                    sqlite3_close( db_handle );
-                    return(1); // break ;
-                 }
-                 outFile << std::setprecision(12) ; // точность 12 знаков
-                 time(&ltime0);
-                 std::cout << "Create file = [ " << tbfile << " ] ...." << ctime(&ltime0) << std::endl;
-
-                 if (outFile.is_open()) {
-                   outFile <<  QSQLite << std::endl;
-                   sizeFile = sizeFile + QSQLite.size() + 1;
-                   header_flag = 1 ;
-                 }
-               }
-
-               if (++progressDot % 10000 == 0)
-                       std::cout << "." << std::flush;
-           }//while
-           sqlite3_finalize( ppStmt );
-
-/*
-           // Calculate RestoreDate from and to.
-           tSplitDateFrom = tSplitDateTo + 1;
-           tSplitDateTo = tSplitDateFrom + 1 * MaxDataCountinResult;
-       }// while (tSplitDateFrom <= tDateTo)
-*/
+           if (++progressDot % 10000 == 0)
+               std::cout << "." << std::flush;
+       }//while
+       sqlite3_finalize( ppStmt );
 
        outFile.flush();
        outFile.close();
@@ -532,16 +524,22 @@ int CsvSqlite( std::string bdname, time_t input_start_time, time_t input_end_tim
 
     sqlite3_close( db_handle );
 
-    std::cout << " .... csv finished.." <<std::endl;
+    std::cout << std::endl;
+    std::cout << "Procedure creating csv files \e[1;31m finished \e[0m" << std::endl;
+    std::cout << std::endl;
 
     return (0);
 }
 
 
-
+/*
+ Функция получения информации из sqlite файла
+ bdname  - файл БД SQLite
+ create_index  - 1 создавать индексацию на таблицах, 0 - нет
+*/
 int InfoSqlite( std::string bdname , int create_index)
 {
-    //sqlite3       *db_handle = NULL;
+    //sqlite3       *db_handle = NULL; // убрана в статичную область
     sqlite3_stmt  *ppStmt = NULL;
     int rc = 0 ;
     char *pErrMsg = 0 ;
@@ -786,14 +784,14 @@ int InfoSqlite( std::string bdname , int create_index)
 */
 void OnExit(int sig) // C++17
 {
-    if (outFile.is_open()) { /* ok, proceed with output */
+  if (outFile.is_open()) { /* ok, proceed with output */
       outFile.flush();
       outFile.close();
   }
 
-    if (db_handle!=NULL) sqlite3_close( db_handle );
+  if (db_handle!=NULL) sqlite3_close( db_handle );
 
-  //if (ui!=NULL) RSDURTGUtils_DBClose(ui);
+  if (ui!=NULL) RSDURTGUtils_DBClose(ui);
 
   std::cout << std::endl << " Program break ! " << std::endl;
 }
@@ -972,7 +970,7 @@ int main(int argc, char* argv[])
     //////////////////////////////////////////////////////////////////////////
 
     //Read input parameters from the Sqlite DB
-    sqlite3       *db_handle = NULL;
+    //sqlite3       *db_handle = NULL; // убрана в статичную область
     sqlite3_stmt  *ppStmt = NULL;
     int ReturnCode = 0 ;
     char *pErrMsg = 0 ;
@@ -1023,7 +1021,7 @@ int main(int argc, char* argv[])
         std::cout <<  "'PRAGMA journal_mode=OFF' error = " << sqlite3_errmsg(db_handle) << std::endl;
     }
 
-// получение имен таблиц в файле
+    // получение имен таблиц в файле
     QuerySql[0]='\0';
     sprintf(QuerySql, "SELECT name FROM sqlite_master WHERE type='table' ORDER BY name");
     ReturnCode = sqlite3_prepare_v2( db_handle, QuerySql , strlen(QuerySql), &ppStmt, NULL );
@@ -1044,14 +1042,12 @@ int main(int argc, char* argv[])
     sqlite3_finalize( ppStmt );
 
 
-
- // обход всех таблиц в sqlite БД
+    // обход всех таблиц в sqlite БД ( 1 ФАЙЛ = 1 ТАБЛИЦА)
     for (auto &tb : TableNames)
     {
        TableNameCols.clear();
 
        //  выделение из имени таблицы - id раздела и id архива
-       // 1 ФАЙЛ = 1 ТАБЛИЦА
        std::string TmpCacheTableName (tb.length()+1, ' ') ;
 
        for(int i = 0, l = tb.length(); i < l; ++i)
@@ -1145,7 +1141,8 @@ int main(int argc, char* argv[])
        char             sql[MAX_QUERY_LEN] = {0};
 
        //Подключение к БД
-       DB_ACCES_INFO *ui = RSDURTGUtils_DBOpenConnectionWithTns(loginDBOracle.c_str(), passwordDBOracle.c_str(), newTNS.c_str(), DBTimeout, log.getPointer());
+       //DB_ACCES_INFO * - убрана в статичную область
+       ui = RSDURTGUtils_DBOpenConnectionWithTns(loginDBOracle.c_str(), passwordDBOracle.c_str(), newTNS.c_str(), DBTimeout, log.getPointer());
        if (ui == NULL)
        {
          std::cerr << "Error open connection with DB '" << newTNS << "' with User Login '" << loginDBOracle <<"' and Password '" << passwordDBOracle << "'" << std::endl;
@@ -1309,7 +1306,6 @@ int main(int argc, char* argv[])
                unsigned progressDot = 0;
                auto start = std::chrono::high_resolution_clock::now();
 
-//============================================================================
                time_t cur_time = RSDURTGUtils_Time70();
 
                std::cout << "R" << std::flush;
@@ -1351,7 +1347,8 @@ int main(int argc, char* argv[])
 
                } else {
                    std::cout <<  "Prepare to exec = " << sqlite3_errmsg(db_handle) << std::endl;
-                   break;
+                   sqlite3_finalize( ppStmt );
+                   continue; // обработка нового профиля
                }
 
 
@@ -1361,7 +1358,7 @@ int main(int argc, char* argv[])
                int REC_MAX = 100 * MaxDataCountinResult; //8640000
                REC_MAX = REC_MAX + 2 ;
 
-
+               // обр и заполнение  vector<ARC_STRUCT> oracle_archive числом REC_MAX
 
                std::vector<ARC_STRUCT> oracle_archive; // Значения текущего считываемого/записываемого архива Oracle
                oracle_archive.reserve(REC_MAX);
@@ -1528,7 +1525,9 @@ int main(int argc, char* argv[])
 
     sqlite3_close( db_handle );
 
-    std::cout << " .... finished.." << std::endl;
+    std::cout << std::endl;
+    std::cout << "Procedure loading to Cassandra \e[1;31m finished \e[0m" << std::endl;
+    std::cout << std::endl;
 
     return 0;
 }
