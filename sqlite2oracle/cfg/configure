@@ -1,0 +1,2246 @@
+#!/bin/bash
+
+libs_names=(
+libuuid
+libamqpcpp
+rsdurmq
+utils
+rsduss
+RSDUcrypto
+serial
+iec60870
+calclib
+sqlite3
+librabbitmq
+curl
+libmodbus
+tekon
+lua
+rsducass
+libiec61850
+libtase2
+)
+
+libs_makefiles=(
+Libs/libuuid/Makefile
+Libs/libamqpcpp/Makefile
+Libs/rsdurmq/Makefile
+Libs/utils/linux/Makefile
+Libs/rsduss/linux/Makefile
+Libs/RSDUCrypto/linux/Makefile
+Libs/serial/linux/Makefile
+Libs/IEC60870/linux/Makefile
+Libs/CalcLib/linux/Makefile
+Libs/sqlite3/Makefile
+Libs/librabbitmq/Makefile
+Libs/curl/Makefile
+Libs/libmodbus/Makefile
+Libs/tekon/Makefile
+Libs/lua/Makefile
+Libs/rsducass/Makefile
+Libs/libiec61850/Makefile
+Libs/libtase2/Makefile
+)
+
+
+others_names=(
+Filegen
+mbadmin
+inpsendsign
+sgtest
+sqltest
+sysutil
+rtquery
+rtsetcontr
+DebugManage
+cid2profile
+oracle2cass
+sqlite2cass
+sqlite2oracle
+)
+
+others_makefiles=(
+Others/FileGen_Linux/linux/Makefile
+Others/mbadmin/linux/Makefile
+Others/inpsendsign/linux/Makefile
+Others/sgtest/linux/Makefile
+Others/sqltest/linux/Makefile
+Others/sysutil/linux/Makefile
+Others/rtquery/linux/Makefile
+Others/rtsetcontr/linux/Makefile
+Others/DebugManage/linux/Makefile
+Others/cid2profile/linux/Makefile
+Others/oracle2cass/linux/Makefile
+Others/oracle2cass/linux/Makefile.sqlite2cass
+Others/oracle2cass/linux/Makefile.sqlite2oracle
+)
+
+
+servers_names=(
+smagent
+ssbs
+bridge
+acserv
+acservlight
+arcwrite
+arcwritelight
+arcread
+arcrestore
+automat
+ai_rpl
+ai_wostoic
+calcd
+datasrv
+dbrtsrv
+dcs
+dsgw
+dpload
+elreg
+enmacsrv
+fdstsrv
+graph50
+layout
+loutadcp
+oicdcp
+phreg
+pwswitch
+rdarch
+rtarch
+rtqueryd
+sakura
+schit40
+sbridge
+tmdap
+tmsrv
+sysmon
+iccp
+topology
+)
+
+servers_bin_names=(
+lsmagentd
+ssbsd
+bridged
+acsrvd
+acsrvdl
+arcwrite
+arcwritelight
+arcread
+arcrestore
+automatd
+ai_rpl
+ai_wostoic
+calcd
+datasrvd
+dbrtsrvd
+dcsd
+dsgwd
+dpload
+elregd
+enmacsrvd
+fdstsrvd
+hgd
+layoutd
+loadcpd
+oicdcpd
+phregd
+pwswtd
+rdarchd
+rtarchd
+rtqueryd
+sakura
+schitd
+sbridged
+tmdap
+tmsrvd
+sysmond
+iccpd
+topologyd
+)
+
+servers_makefiles=(
+Servers/smagent/linux/Makefile
+Servers/signal3/linux/Makefile
+Servers/Bridge/linux/Makefile
+Servers/ac_serv/linux/Makefile.acserv
+Servers/ac_serv/linux/Makefile.acservlight
+Servers/ArcWrite/linux/Makefile
+Servers/ArcWriteLight/linux/Makefile
+Servers/ArcRead/linux/Makefile
+Servers/ArcRestore/linux/Makefile
+Servers/pwswitch/linux/Makefile.automat
+Servers/ai_rpl/linux/Makefile
+Servers/ai_wostoic/linux/Makefile
+Servers/calcd/linux/Makefile
+Servers/DataSrv/linux/Makefile
+Servers/dbrtsrv/linux/Makefile
+Servers/DCS/linux/Makefile
+Servers/dsgw/linux/Makefile
+Servers/dpload/linux/Makefile
+Servers/Oictech/linux/Makefile.elreg
+Servers/Enmacsrv/linux/Makefile
+Servers/fdstsrv/linux/Makefile
+Servers/graph50/linux/Makefile
+Servers/layout/linux/Makefile
+Servers/loutadcp/linux/Makefile
+Servers/oicdcp/linux/Makefile
+Servers/Oictech/linux/Makefile.phreg
+Servers/pwswitch/linux/Makefile.pwswitch
+Servers/rdarch/linux/Makefile
+Servers/rtarch/linux/Makefile
+Servers/rtqueryd/linux/Makefile
+Servers/sakura/linux/Makefile
+Servers/schit40/linux/Makefile
+Servers/signal_bridge/linux/Makefile
+Servers/tmdap/linux/Makefile
+Servers/tmsrvd/linux/Makefile
+Servers/sysmon/linux/Makefile
+Servers/iccp/linux/Makefile
+Servers/topology/linux/Makefile
+)
+
+allprojects_names=(${libs_names[@]} ${others_names[@]} ${servers_names[@]})
+allprojects_makefiles=(${libs_makefiles[@]} ${others_makefiles[@]} ${servers_makefiles[@]})
+
+# Avoid depending upon Character Ranges.
+as_cr_letters='abcdefghijklmnopqrstuvwxyz'
+as_cr_LETTERS='ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+as_cr_Letters=$as_cr_letters$as_cr_LETTERS
+as_cr_digits='0123456789'
+as_cr_alnum=$as_cr_Letters$as_cr_digits
+
+ECHO=/bin/echo
+
+
+
+###########
+# configure script defines
+cs_uname_arch=`uname -m`
+cs_curdir=`pwd`
+cs_rsdu_configure_script_path=`readlink -f $0`
+cs_rsdu_topdir=`dirname $cs_rsdu_configure_script_path`
+cs_topdir=${cs_rsdu_topdir}
+cs_scripts_dir=${cs_rsdu_topdir}/Scripts
+cs_config_defines_filename="rsdu_config_defines.inc"
+cs_config_defines_file_path=${cs_scripts_dir}/admin_scripts/usr/share/ema/etc/ema/${cs_config_defines_filename}
+cs_ema_conf_template_file_path=${cs_scripts_dir}/admin_scripts/usr/share/ema/etc/ema/ema.conf.template
+cs_makefile_filename="Makefile"
+cs_makefile_in_filename="Makefile.in"
+
+#include rsduutils functions
+if [ -f "${cs_scripts_dir}/rsduutils.inc.sh" ]; then
+  . ${cs_scripts_dir}/rsduutils.inc.sh
+else
+  echo "File '${cs_scripts_dir}/rsduutils.inc.sh' not found."
+  exit 1
+fi
+
+cs_linux_distrib_name=`get_platform`;
+
+
+####echo "RSDU top dir : ${cs_rsdu_topdir}"
+####echo "RSDU config defines : ${cs_rsdu_topdir}/${cs_config_defines_filename}"
+####exit 1
+
+# prefix for installing builded RSDU libraryes
+cs_buildlib_prefix=${cs_rsdu_topdir}/.buildlib
+
+
+####ema_cfg_default_name="ema.cfg.default"
+
+# default libraries dir names
+cs_lib_x86_dirname=lib
+cs_lib_x86_64_dirname=lib64
+
+# Checking current RSDU architecture
+if [ ${cs_uname_arch} = "x86_64" ]; then
+	cs_arch=x86_64;
+	cs_lib_dirname=lib64;
+else
+	cs_arch=x86;
+	cs_lib_dirname=lib;
+fi
+
+#mkdir -p $lib_prefix/lib
+
+#############
+# Defaults values
+def_prefix=/usr
+def_prefix_bin=${def_prefix}/bin
+def_prefix_lib=${def_prefix}/${cs_lib_dirname}
+def_prefix_inc=${def_prefix}/include
+
+def_rsdu_config_file="rsdu.config"
+def_rsdu_config_file_out="rsdu.config"
+def_ema_cfg_filename="ema.cfg.default"
+def_ema_conf_filename="ema.conf.template"
+def_rsduenv_template_filename="RSDUENV.template"
+def_rsduenv_default_filename="RSDUENV.default"
+def_rsduenv_filename="RSDUENV"
+
+def_dbtype_oracle="Oracle"
+def_dbtype_mysql="MySQL"
+
+def_product_name_rsdu5="RSDU5"
+def_product_name_isms="iSMS"
+
+def_use_rsdu_config=yes
+
+#############
+# Default values for rsdu.config variable
+defrc_common_product_name=${def_product_name_rsdu5}
+defrc_common_config_name="Common"
+defrc_common_config_desc="Common RT config"
+
+defrc_common_prefix=${def_prefix}
+defrc_common_prefix_bin=${def_prefix_bin}
+defrc_common_prefix_lib=${def_prefix_lib}
+defrc_common_prefix_inc=${def_prefix_inc}
+
+defrc_prefix=${def_prefix}
+defrc_prefix_bin=${def_prefix_bin}
+defrc_prefix_lib=${def_prefix_lib}
+defrc_prefix_inc=${var_prefix_inc}
+
+defrc_common_install_ema_script=yes
+defrc_common_install_ema_autoload_script=yes
+defrc_common_ema_cfg_file='ema.cfg.default'
+defrc_common_ema_conf_file='ema.conf.template'
+defrc_common_install_ema_cfg_file=yes
+defrc_common_host_ini_file='host.ini.default'
+defrc_common_install_host_ini_file=yes
+defrc_common_install_rsduenv_script=yes
+defrc_common_install_ematime_script=yes
+defrc_common_update_sysctl_conf=yes
+defrc_common_install_logrotate=yes
+defrc_common_wait_db_delay=0
+defrc_common_db_type=Oracle
+defrc_common_db_host=localhost
+defrc_common_use_rsduenv=no
+
+# oracle section
+defrc_oracle_base=${ORACLE_BASE:=/opt/oracle}
+defrc_oracle_home=${ORACLE_HOME:=\$\{ORACLE_BASE\}/product/11g}
+defrc_oracle_tns_admin=${ORACLE_TNS_ADMIN:=\$\{ORACLE_HOME\}/network/admin}
+defrc_oracle_headers_path=${ORACLE_HEADERS_PATH:=\$\{ORACLE_HOME\}/include}
+defrc_oracle_libs_path=${ORACLE_LIBS_PATH:=\$\{ORACLE_HOME\}/lib}
+
+# default config for elrag and phreg calc generate
+defrc_elreg_mkcalc_out_file='calc_el.cfg'
+defrc_elreg_mkcalc_server='elreg'
+defrc_elreg_mkcalc_db_login='rsduadmin'
+defrc_elreg_mkcalc_db_password='passme'
+defrc_elreg_mkcalc_srcdir='.'
+defrc_elreg_mkcalc_from_file='no'
+defrc_elreg_mkcalc_samba='no'
+defrc_elreg_mkcalc_smb_username='admin'
+defrc_elreg_mkcalc_smb_password='passme'
+defrc_elreg_mkcalc_smb_sname='//RESOURCE/Resource/src'
+defrc_elreg_mkcalc_smb_mpoint='/tmp/smb'
+defrc_elreg_mkcalc_fsrcdir='/root/LinuxRT/Formula'
+
+defrc_phreg_mkcalc_out_file='calc_ph.cfg'
+defrc_phreg_mkcalc_server='phreg'
+defrc_phreg_mkcalc_db_login='rsduadmin'
+defrc_phreg_mkcalc_db_password='passme'
+defrc_phreg_mkcalc_srcdir='.'
+defrc_phreg_mkcalc_from_file='no'
+defrc_phreg_mkcalc_samba='no'
+defrc_phreg_mkcalc_smb_username='admin'
+defrc_phreg_mkcalc_smb_password='passme'
+defrc_phreg_mkcalc_smb_sname='//RESOURCE/Resource/src'
+defrc_phreg_mkcalc_smb_mpoint='/tmp/smb'
+defrc_phreg_mkcalc_fsrcdir='/root/LinuxRT/Formula'
+
+defrc_all_enable=no
+defrc_libs_enable=yes
+defrc_others_enable=no
+defrc_servers_enable=no
+
+for module in ${allprojects_names[@]}; do
+	if [ "x${defrc_all_enable}" = "xyes" ]; then
+		eval defrc_${module}_enable=yes
+	else
+		eval defrc_${module}_enable=no
+	fi
+done
+
+if [ "x${defrc_libs_enable}" = "xyes" ]; then
+	for module in ${libs_names[@]}; do
+		eval defrc_${module}_enable=yes
+	done
+fi
+
+if [ "x${defrc_others_enable}" = "xyes" ]; then
+	for module in ${others_names[@]}; do
+		eval defrc_${module}_enable=yes
+	done
+fi
+
+if [ "x${defrc_enable_servers}" = "xyes" ]; then
+	for module in ${servers_names[@]}; do
+		eval defrc_${module}_enable=yes
+	done
+fi
+
+#############
+# Ask about continue the process of configuration
+continue_configuration_request()
+{
+    req_res=Yes
+    echo -e "You are going to configure projects for '${rc_common_config_name}' (${rc_common_config_desc})"
+    echo -n "Do You want to continue configuration? [Y/n] ("$req_res")"
+
+    read req_input
+    if [ ! -z $req_input ]; then req_res=$req_input; fi
+
+    if [ "x$req_res" = "xYes" ] || [ "x$req_res" = "xyes" ] || [ "x$req_res" = "xY" ] || [ "x$req_res" = "xy" ]
+    then
+        echo "Starting configuration..."
+    else
+        exit 0
+    fi
+}
+
+#############
+# Print usage information
+print_usage()
+{
+cat <<_ACEOF
+Usage: $0 [OPTION]
+
+Installation directories:
+  --prefix=PREFIX         install architecture-independent files in PREFIX
+                          [${def_prefix}]
+
+By default, \`make install' will install all the files in
+\`${def_prefix}/bin', \`${def_prefix_lib}' etc.  You can specify
+an installation prefix other than \`${def_prefix}' using \`--prefix',
+for instance \`--prefix=\$HOME'.
+
+For better control, use the options below.
+
+Fine tuning of the installation directories:
+  --prefix-bin=DIR         user executables [PREFIX/bin]
+  --prefix-lib=DIR         object code libraries [PREFIX/lib]
+  --prefix-inc=DIR         C header files [PREFIX/include]
+
+Using config file for configure rsdu
+  --product-name=<product_name>
+                           Set product name 'RSDU5' or 'iSMS'
+
+  --rsdu-config=<config-file>
+
+  --rsdu-config-out=<config-file>
+
+Projects properties:
+  --enable-<Project Name>[=(yes|no)]
+                           enable project with pointed name [yes]
+  --disable-<Project Name>
+                           disable project with pointed name
+
+  --defines-<Project Name>=[definition1[,definition2[,...]]]
+                          Add defines to project to compiler as keys -D
+
+  --rfcopy-<Project Name>=[filename1[,filename2[,...]]]
+                          Makes copies of result files of project
+
+Default instalation params:
+  --install-ema-script[=(yes|no)]
+                          Install or not \'ema\' script.
+
+  --install-ema-autoload-script[=(yes|no)]
+                          Install or not \'ema_autoload\' script.
+
+  --install-ema-cfg-file[=(yes|no)]
+                          Install or not \'ema.cfg.default\' file.
+
+  --install-host-ini-file[=(yes|no)]
+                          Install or not \'host.ini.default\' file.
+
+  --install-rsduenv-script[=(yes|no)]
+                          Install or not \'RSDU\' script and \'RSDUENV.default\' file.
+
+  --install-ematime-script[=(yes|no)]
+                          Install or not \'ema_time.sh\' script.
+
+  --update-sysctl-conf[=(yes|no)]
+                          Edit or not \'sysctl.conf\' config file.
+
+  --install-logrotate[=(yes|no)]
+                          Add or not ema logs in logrotate.
+
+  --wait-db-delay[=<seconds>]
+                          Wait delay for start database.
+
+
+Possible project names :
+_ACEOF
+idx=0;
+while [ $idx -lt ${#allprojects_names[@]} ]; do
+	echo "  ${allprojects_names[$idx]}";
+	let idx=idx+1;
+done;
+}
+
+#################
+# parsing command line
+
+ac_prev=
+ac_dashdash=
+
+for ac_option
+do
+  # If the previous option needs an argument, assign it.
+
+####  echo "============================================"
+####  echo "prev_opt : $ac_prev"
+####  echo "cur_opt  : $ac_option"
+  ac_optfst=${ac_option%${ac_option#?}}
+####  echo "fst_opt  : $ac_optfst"
+
+  if test -n "$ac_prev"; then
+    if test "x-" != "x$ac_optfst"; then
+      eval $ac_prev=\$ac_option
+    else
+      eval $ac_prev=yes
+    fi;
+
+    ac_prev=
+    continue
+  fi
+
+  case $ac_option in
+  *=?*) ac_optarg=`expr "X$ac_option" : '[^=]*=\(.*\)'` ;;
+  *=)   ac_optarg= ;;
+  *)    ac_optarg=yes ;;
+  esac
+####  echo "arg: $ac_optarg"
+
+  # Accept the important Cygnus configure options, so we can diagnose typos.
+
+####  echo "ddopt: $ac_dashdash$ac_option";
+  
+  case $ac_dashdash$ac_option in
+  --)
+    ac_dashdash=yes;;
+####    echo "Dashdash --";;
+
+  --help)
+    print_usage;
+    exit 0;;
+
+  -prefix | --prefix)
+    ac_prev=key_prefix ;;
+  -prefix=* | --prefix=*)
+    key_prefix=$ac_optarg;;
+
+  -prefix-bin | --prefix-bin)
+    ac_prev=key_prefix_bin ;;
+  -prefix-bin=* | --prefix-bin=*)
+    key_prefix_bin=$ac_optarg ;;
+
+  -prefix-lib | --prefix-lib)
+    ac_prev=key_prefix_lib ;;
+  -prefix-lib=* | --prefix-lib=*)
+    key_prefix_lib=$ac_optarg ;;
+
+  -prefix-inc | --prefix-inc)
+    ac_prev=key_prefix_inc ;;
+  -prefix-inc=* | --prefix-inc=*)
+    key_prefix_inc=$ac_optarg ;;
+
+  -product-name | --product-name)
+    ac_prev=key_product_name ;;
+  -product-name=* | --product-name=*)
+    key_product_name=$ac_optarg;;
+
+  -rsdu-config | --rsdu-config)
+    ac_prev=key_rsdu_config_file ;;
+  -rsdu-config=* | --rsdu-config=*)
+    key_rsdu_config_file=$ac_optarg ;;
+
+  -rsdu-config-out | --rsdu-config-out)
+    ac_prev=key_rsdu_config_file_out
+    key_rsdu_config_out_enabled=yes ;;
+  -rsdu-config-out=* | --rsdu-config-out=*)
+    key_rsdu_config_file_out=$ac_optarg
+    key_rsdu_config_out_enabled=yes ;;
+
+  -no-config | --no-config | -g)
+    key_use_rsdu_config=no ;;
+
+  -config-name | --config-name)
+    ac_prev=key_config_name ;;
+  -config-name=* | --config-name=*)
+    key_config_name=$ac_optarg ;;
+
+  -config-desc | --config-desc)
+    ac_prev=key_config_desc ;;
+  -config-desc=* | --config-desc=*)
+    key_config_desc=$ac_optarg ;;
+
+  -install-ema-script | --install-ema-script)
+    ac_prev=key_install_ema_script ;;
+  -install-ema-script=* | --install-ema-script=*)
+    key_install_ema_script=$ac_optarg ;;
+
+  -install-ema-autoload-script | --install-ema-autoload-script)
+    ac_prev=key_install_ema_autoload_script ;;
+  -install-ema-autoload-script=* | --install-ema-autoload-script=*)
+    key_install_ema_autoload_script=$ac_optarg ;;
+
+  -install-ema-cfg-file | --install-ema-cfg-file)
+    ac_prev=key_install_ema_cfg_file ;;
+  -install-ema-cfg-file=* | --install-ema-cfg-file=*)
+    key_install_ema_cfg_file=$ac_optarg ;;
+
+  -install-host-ini-file | --install-host-ini-file)
+    ac_prev=key_install_host_ini_file ;;
+  -install-host-ini-file=* | --install-host-ini-file=*)
+    key_install_host_ini_file=$ac_optarg ;;
+
+  -install-rsduenv-script | --install-rsduenv-script)
+    ac_prev=key_install_rsduenv_script ;;
+  -install-rsduenv-script=* | --install-rsduenv-script=*)
+    key_install_rsduenv_script=$ac_optarg ;;
+
+  -install-ematime-script | --install-ematime-script)
+    ac_prev=key_install_ematime_script ;;
+  -install-ematime-script=* | --install-ematime-script=*)
+    key_install_ematime_script=$ac_optarg ;;
+
+  -update-sysctl-conf | --update-sysctl-conf)
+    ac_prev=key_update_sysctl_conf ;;
+  -update-sysctl-conf=* | --update-sysctl-conf=*)
+    key_update_sysctl_conf=$ac_optarg ;;
+
+  -install-logrotate | --install-logrotate)
+    ac_prev=key_install_logrotate ;;
+  -install-logrotate=* | --install-logrotate=*)
+    key_install_logrotate=$ac_optarg ;;
+
+  -wait-db-delay | --wait-db-delay)
+    ac_prev=key_wait_db_delay ;;
+  -wait-db-delay=* | --wait-db-delay=*)
+    key_wait_db_delay=$ac_optarg ;;
+
+  -db-type | --db-type)
+    ac_prev=key_db_type ;;
+  -db-type=* | --db-type=*)
+    key_db_type=$ac_optarg ;;
+
+  -db-host | --db-host)
+    ac_prev=key_db_host ;;
+  -db-host=* | --db-host=*)
+    key_db_host=$ac_optarg ;;
+
+  -use-rsduenv | --use-rsduenv)
+    ac_prev=key_use_rsduenv ;;
+  -use-rsduenv=* | --use-rsduenv=*)
+    key_use_rsduenv=$ac_optarg ;;
+
+
+  -oracle-base | --oracle-base)
+    ac_prev=key_oracle_base ;;
+  -oracle-base=* | --oracle-base=*)
+    key_oracle_base=$ac_optarg ;;
+
+  -oracle-home | --oracle-home)
+    ac_prev=key_oracle_home ;;
+  -oracle-home=* | --oracle-home=*)
+    key_oracle_home=$ac_optarg ;;
+
+  -oracle-tns-admin | --oracle-tns-admin)
+    ac_prev=key_oracle_tns_admin ;;
+  -oracle-tns-admin=* | --oracle-tns-admin=*)
+    key_oracle_tns_admin=$ac_optarg ;;
+
+  -oracle-headers-path | --oracle-headers-path)
+    ac_prev=key_oracle_headers_path ;;
+  -oracle-headers-path=* | --oracle-headers-path=*)
+    key_oracle_headers_path=$ac_optarg ;;
+
+  -oracle-libs-path | --oracle-libs-path)
+    ac_prev=key_oracle_libs_path ;;
+  -oracle-libs-path=* | --oracle-libs-path=*)
+    key_oracle_libs_path=$ac_optarg ;;
+
+
+  -disable-* | --disable-*)
+    ac_useropt=`expr "x$ac_option" : 'x-*disable-\(.*\)'`
+    # Reject names that are not valid shell variable names.
+    expr "x$ac_useropt" : ".*[^-+._$as_cr_alnum]" >/dev/null &&
+      as_fn_error "invalid feature name: $ac_useropt"
+    ac_useropt_orig=$ac_useropt
+    ac_useropt=`echo "$ac_useropt" | sed 's/[-+.]/_/g'`
+    case $ac_user_opts in
+      *"
+"enable_$ac_useropt"
+"*) ;;
+      *) ac_unrecognized_opts="$ac_unrecognized_opts$ac_unrecognized_sep--disable-$ac_useropt_orig"
+	 ac_unrecognized_sep=', ';;
+    esac
+    eval key_enable_$ac_useropt=no ;;
+
+  -enable-* | --enable-*)
+    ac_useropt=`expr "x$ac_option" : 'x-*enable-\([^=]*\)'`
+    # Reject names that are not valid shell variable names.
+    expr "x$ac_useropt" : ".*[^-+._$as_cr_alnum]" >/dev/null &&
+      as_fn_error "invalid feature name: $ac_useropt"
+    ac_useropt_orig=$ac_useropt
+    ac_useropt=`echo "$ac_useropt" | sed 's/[-+.]/_/g'`
+    case $ac_user_opts in
+      *"
+"enable_$ac_useropt"
+"*) ;;
+      *) ac_unrecognized_opts="$ac_unrecognized_opts$ac_unrecognized_sep--enable-$ac_useropt_orig"
+	 ac_unrecognized_sep=', ';;
+    esac
+    eval key_enable_$ac_useropt=\$ac_optarg ;;
+
+  -defines-* | --defines-*)
+    ac_useropt=`expr "x$ac_option" : 'x-*defines-\([^=]*\)'`
+    # Reject names that are not valid shell variable names.
+    expr "x$ac_useropt" : ".*[^-+._$as_cr_alnum]" >/dev/null &&
+      as_fn_error "invalid feature name: $ac_useropt"
+    ac_useropt_orig=$ac_useropt
+    ac_useropt=`echo "$ac_useropt" | sed 's/[-+.]/_/g'`
+    case $ac_user_opts in
+      *"
+"defines_$ac_useropt"
+"*) ;;
+      *) ac_unrecognized_opts="$ac_unrecognized_opts$ac_unrecognized_sep--defines-$ac_useropt_orig"
+	 ac_unrecognized_sep=', ';;
+    esac
+    eval key_defines_$ac_useropt=\$ac_optarg ;;
+
+  -bincopy-* | --bincopy-*)
+    ac_useropt=`expr "x$ac_option" : 'x-*rfcopy-\([^=]*\)'`
+    # Reject names that are not valid shell variable names.
+    expr "x$ac_useropt" : ".*[^-+._$as_cr_alnum]" >/dev/null &&
+      as_fn_error "invalid feature name: $ac_useropt"
+    ac_useropt_orig=$ac_useropt
+    ac_useropt=`echo "$ac_useropt" | sed 's/[-+.]/_/g'`
+    case $ac_user_opts in
+      *"
+"bincopy_$ac_useropt"
+"*) ;;
+      *) ac_unrecognized_opts="$ac_unrecognized_opts$ac_unrecognized_sep--bincopy-$ac_useropt_orig"
+	 ac_unrecognized_sep=', ';;
+    esac
+    eval key_bincopy_$ac_useropt=\$ac_optarg ;;
+
+
+  esac
+done
+
+####echo "install ematime script : $key_install_ematime_script";
+#exit 5;
+
+##############
+# Parse config file
+
+get_sections() {
+	for i in "${section_set[@]}"; do
+		echo -n  "$i "
+	done
+}
+
+get_keys()
+{
+	section=s__$1
+	eval keys=\${!${section}[@]};
+	for i in $keys;
+	do 
+		echo -n "$i ";  
+	done
+}
+
+get_value() {
+	section=s__$1
+	key=$2
+	eval v=\${${section}__${key}}
+	echo -n $v 
+}
+
+## getting rsdu config file name
+if [ -z "${key_use_rsdu_config}" ]; then
+	csrc_use_rsdu_config=${def_use_rsdu_config}
+else
+	csrc_use_rsdu_config=${key_use_rsdu_config}
+fi
+
+
+if [ -z "${key_rsdu_config_file}" ]; then
+	csrc_rsdu_config_file=${def_rsdu_config_file}
+else
+	csrc_rsdu_config_file=${key_rsdu_config_file}
+fi
+
+if [ -z "${key_rsdu_config_file_out}" ]; then
+	csrc_rsdu_config_file_out=${def_rsdu_config_file_out}
+else
+	csrc_rsdu_config_file_out=${key_rsdu_config_file_out}
+fi
+
+# Gets configure from config file
+if [ -f "${csrc_rsdu_config_file}" ] && [ "x${csrc_use_rsdu_config}" == "xyes" ] ; then
+	echo -e "Reading RSDU config from the file '${csrc_rsdu_config_file}'";
+
+inifile=$1
+if [ ! -r "${csrc_rsdu_config_file}" ]
+then
+	exit 1;
+fi
+
+idx=0
+while read line
+do
+#	echo ">> $line"
+	case $line in
+	[a-zA-Z]*=*)
+		key="`echo $line | sed 's/\(.*\)\(=.*\)/\1/' `"
+		val="`echo $line | sed 's/\(.*=\)\(.*\)/\2/' `"
+#		eval ${section}__${key}="\"${val}\""
+		eval ${section}__${key}='${val}'
+#		echo ">> ${val}"
+#		eval v=${section}__${key}
+#		echo "==>> $v"
+		;;
+	\[*\])
+		section=s__"`echo $line | sed 's/\[\(.*\)\]/\1/'`"
+		eval unset $section 
+		eval declare -a $section
+		idx=`expr $idx + 1`
+		section_set[$idx]="$section"
+		;;
+	\#*)
+		;;
+	*)
+		;;
+	esac
+done < ${csrc_rsdu_config_file}
+
+else
+	if [ -z "${key_enable_all}" ]; then
+		csrc_enable_all=yes
+	fi
+fi
+
+# Getting config readed from the file
+	rc_common_product_name=`get_value "common" "product_name"`
+	rc_common_config_name=`get_value "common" "config_name"`
+	rc_common_config_desc=`get_value "common" "config_desc"`
+
+	rc_common_prefix=`get_value "common" "prefix"`
+	rc_common_prefix_bin=`get_value "common" "prefix_bin"`
+	rc_common_prefix_lib=`get_value "common" "prefix_lib"`
+	rc_common_prefix_inc=`get_value "common" "prefix_inc"`
+
+	rc_common_install_ema_script=`get_value "common" "install_ema_script"`
+	rc_common_install_ema_autoload_script=`get_value "common" "install_ema_autoload_script"`
+	rc_common_ema_cfg_file=`get_value "common" "ema_cfg_file"`
+	rc_common_install_ema_cfg_file=`get_value "common" "install_ema_cfg_file"`
+	rc_common_host_ini_file=`get_value "common" "host_ini_file"`
+	rc_common_install_host_ini_file=`get_value "common" "install_host_ini_file"`
+	rc_common_install_rsduenv_script=`get_value "common" "install_rsduenv_script"`
+	rc_common_install_ematime_script=`get_value "common" "install_ematime_script"`
+	rc_common_update_sysctl_conf=`get_value "common" "update_sysctl_conf"`
+	rc_common_install_logrotate=`get_value "common" "install_logrotate"`
+	rc_common_wait_db_delay=`get_value "common" "wait_db_delay"`
+	rc_common_db_type=`get_value "common" "db_type"`
+	rc_common_db_host=`get_value "common" "db_host"`
+	rc_common_use_rsduenv=`get_value "common" "use_rsduenv"`
+
+	rc_oracle_base=`get_value "oracle" "client_base"`
+	rc_oracle_home=`get_value "oracle" "client_home"`
+	rc_oracle_tns_admin=`get_value "oracle" "client_tns_admin"`
+	rc_oracle_headers_path=`get_value "oracle" "headers_path"`
+	rc_oracle_libs_path=`get_value "oracle" "libs_path"`
+
+#	continue_configuration_request
+
+# Set current using rsdu config values
+#	if [ -z "$cfg_common_confname" ]; then cfg_common_confname=$def_common_confname; fi
+#	if [ -z "$cfg_common_confdesc" ]; then cfg_common_confdesc=$def_common_confdesc; fi
+#
+#	if [ -z $cfg_common_inst_libsqlite3 ]; then cfg_common_inst_libsqlite3=$def_cfg_common_inst_libsqlite3; fi
+#	if [ -z $cfg_common_inst_ema_script ]; then cfg_common_inst_ema_script=$def_cfg_common_inst_ema_script; fi
+#	if [ -z $cfg_common_inst_ema_autoload_script ]; then cfg_common_inst_ema_autoload_script=$def_cfg_common_inst_ema_autoload_script; fi
+#	if [ -z $cfg_common_ema_cfg_file ]; then cfg_common_ema_cfg_file=$def_cfg_common_ema_cfg_file; fi
+#	if [ -z $cfg_common_inst_ema_cfg_file ]; then cfg_common_inst_ema_cfg_file=$def_cfg_common_inst_ema_cfg_file; fi
+#	if [ -z $cfg_common_host_ini_file ]; then cfg_common_host_ini_file=$def_cfg_common_host_ini_file; fi
+#	if [ -z $cfg_common_inst_host_ini_file ]; then cfg_common_inst_host_ini_file=$def_cfg_common_inst_host_ini_file; fi
+#	if [ -z $cfg_common_inst_rsduenv_script ]; then cfg_common_inst_rsduenv_script=$def_cfg_common_inst_rsduenv_script; fi
+#	if [ -z $cfg_common_inst_ema_time_script ]; then cfg_common_inst_ema_time_script=$def_cfg_common_inst_ema_time_script; fi
+#	if [ -z $cfg_common_update_sysctl_conf ]; then cfg_common_update_sysctl_conf=$def_cfg_common_update_sysctl_conf; fi
+#	if [ -z $cfg_common_wait_oracle_delay ]; then cfg_common_wait_oracle_delay=$def_cfg_common_wait_oracle_delay; fi
+#	if [ -z $cfg_common_db_type ]; then cfg_common_db_type=$def_cfg_common_db_type; fi
+#	if [ -z $cfg_common_db_host ]; then cfg_common_db_host=$def_cfg_common_db_host; fi
+#	if [ -z $cfg_common_use_rsduenv ]; then cfg_common_use_rsduenv=$def_cfg_common_use_rsduenv; fi
+#
+#	if [ -z $cfg_oracle_base ]; then cfg_oracle_base=$def_cfg_oracle_base; fi
+#	if [ -z $cfg_oracle_home ]; then cfg_oracle_home=$def_cfg_oracle_home; fi
+#	if [ -z $cfg_oracle_tns_admin ]; then cfg_oracle_tns_admin=$def_cfg_oracle_tns_admin; fi
+#
+
+# Getting modules configuration
+	for module in ${allprojects_names[@]}
+	do
+		eval rc_${module}_enable=`get_value "modules" $module`
+		eval rc_${module}_defines=`get_value "$module" "defines"`
+		eval rc_${module}_bincopy=`get_value "$module" "bincopy"`
+		eval csrc_enable_${module}=\$rc_${module}_enable
+		eval csrc_defines_${module}=\$rc_${module}_defines
+		eval csrc_bincopy_${module}=\$rc_${module}_bincopy
+		eval module_presents=\$rc_${module}_enable
+		eval module_defines=\$rc_${module}_defines
+		eval module_bincopy=\$rc_${module}_bincopy
+		echo "--Module '$module' -- ${module_presents}"
+#		echo "  defines = "${module_defines}
+#		echo "  bincopy = "${module_bincopy}
+
+##		if [ "x$module" == "xelreg" ]; then
+##			rc_elreg_mkcalc_out_file=`get_value "$module" "mkcalc_out_file"`
+##			rc_elreg_mkcalc_server=`get_value "$module" "mkcalc_server"`
+##			rc_elreg_mkcalc_db_login=`get_value "$module" "mkcalc_db_login"`
+##			rc_elreg_mkcalc_db_password=`get_value "$module" "mkcalc_db_password"`
+##			rc_elreg_mkcalc_srcdir=`get_value "$module" "mkcalc_srcdir"`
+##			rc_elreg_mkcalc_from_file=`get_value "$module" "mkcalc_from_file"`
+##			rc_elreg_mkcalc_samba=`get_value "$module" "mkcalc_samba"`
+##			rc_elreg_mkcalc_smb_username=`get_value "$module" "mkcalc_smb_username"`
+##			rc_elreg_mkcalc_smb_password=`get_value "$module" "mkcalc_smb_password"`
+##			rc_elreg_mkcalc_smb_sname=`get_value "$module" "mkcalc_smb_sname"`
+##			rc_elreg_mkcalc_smb_mpoint=`get_value "$module" "mkcalc_smb_mpoint"`
+##			rc_elreg_mkcalc_fsrcdir=`get_value "$module" "mkcalc_fsrcdir"`
+
+#			echo ">> $cfg_elreg_mkcalc_out_file"
+#			echo ">> $cfg_elreg_mkcalc_server"
+#			echo ">> $cfg_elreg_mkcalc_db_login"
+#			echo ">> $cfg_elreg_mkcalc_db_password"
+#			echo ">> $cfg_elreg_mkcalc_srcdir"
+#			echo ">> $cfg_elreg_mkcalc_from_file"
+#			echo ">> $cfg_elreg_mkcalc_samba"
+#			echo ">> $cfg_elreg_mkcalc_smb_username"
+#			echo ">> $cfg_elreg_mkcalc_smb_password"
+#			echo ">> $cfg_elreg_mkcalc_smb_sname"
+#			echo ">> $cfg_elreg_mkcalc_smb_mpoint"
+#			echo ">> $cfg_elreg_mkcalc_fsrcdir"
+
+##			if [ -z ${cfg_elreg_mkcalc_out_file} ]; then eval cfg_${module}_mkcalc_out_file="calc_el.cfg"; fi
+##			if [ -z ${cfg_elreg_mkcalc_server} ]; then eval cfg_${module}_mkcalc_server="${module}"; fi
+##			if [ -z ${cfg_elreg_mkcalc_db_login} ]; then eval cfg_${module}_mkcalc_db_login="rsduadmin"; fi
+##			if [ -z ${cfg_elreg_mkcalc_db_password} ]; then eval cfg_${module}_mkcalc_db_password="passme"; fi
+##			if [ -z ${cfg_elreg_mkcalc_srcdir} ]; then eval cfg_${module}_mkcalc_srcdir="."; fi
+##			if [ -z ${cfg_elreg_mkcalc_from_file} ]; then eval cfg_${module}_mkcalc_from_file="no"; fi
+##			if [ -z ${cfg_elreg_mkcalc_samba} ]; then eval cfg_${module}_mkcalc_samba="no"; fi
+##			if [ -z ${cfg_elreg_mkcalc_smb_username} ]; then eval cfg_${module}_mkcalc_smb_username="admin"; fi
+##			if [ -z ${cfg_elreg_mkcalc_smb_password} ]; then eval cfg_${module}_mkcalc_smb_password="passme"; fi
+##			if [ -z ${cfg_elreg_mkcalc_smb_sname} ]; then eval cfg_${module}_mkcalc_smb_sname="//RESOURCE/Resource/src"; fi
+##			if [ -z ${cfg_elreg_mkcalc_smb_mpoint} ]; then eval cfg_${module}_mkcalc_smb_mpoint="/tmp/smb"; fi
+##			if [ -z ${cfg_elreg_mkcalc_fsrcdir} ]; then eval cfg_${module}_mkcalc_fsrcdir="/root/LinuxRT/Formula"; fi
+##		fi
+
+		if [ "x$module" == "xelreg" ] || [ "x$module" == "xphreg" ]; then
+			eval rc_${module}_mkcalc_out_file=`get_value "$module" "mkcalc_out_file"`
+			eval rc_${module}_mkcalc_server=`get_value "$module" "mkcalc_server"`
+			eval rc_${module}_mkcalc_db_login=`get_value "$module" "mkcalc_db_login"`
+			eval rc_${module}_mkcalc_db_password=`get_value "$module" "mkcalc_db_password"`
+			eval rc_${module}_mkcalc_srcdir=`get_value "$module" "mkcalc_srcdir"`
+			eval rc_${module}_mkcalc_from_file=`get_value "$module" "mkcalc_from_file"`
+			eval rc_${module}_mkcalc_samba=`get_value "$module" "mkcalc_samba"`
+			eval rc_${module}_mkcalc_smb_username=`get_value "$module" "mkcalc_smb_username"`
+			eval rc_${module}_mkcalc_smb_password=`get_value "$module" "mkcalc_smb_password"`
+			eval rc_${module}_mkcalc_smb_sname=`get_value "$module" "mkcalc_smb_sname"`
+			eval rc_${module}_mkcalc_smb_mpoint=`get_value "$module" "mkcalc_smb_mpoint"`
+			eval rc_${module}_mkcalc_fsrcdir=`get_value "$module" "mkcalc_fsrcdir"`
+
+			eval csrc_${module}_mkcalc_out_file=\$rc_${module}_mkcalc_out_file
+			eval csrc_${module}_mkcalc_server=\$rc_${module}_mkcalc_server
+			eval csrc_${module}_mkcalc_db_login=\$rc_${module}_mkcalc_db_login
+			eval csrc_${module}_mkcalc_db_password=\$rc_${module}_mkcalc_db_password
+			eval csrc_${module}_mkcalc_srcdir=\$rc_${module}_mkcalc_srcdir
+			eval csrc_${module}_mkcalc_from_file=\$rc_${module}_mkcalc_from_file
+			eval csrc_${module}_mkcalc_samba=\$rc_${module}_mkcalc_samba
+			eval csrc_${module}_mkcalc_smb_username=\$rc_${module}_mkcalc_smb_username
+			eval csrc_${module}_mkcalc_smb_password=\$rc_${module}_mkcalc_smb_password
+			eval csrc_${module}_mkcalc_smb_sname=\$rc_${module}_mkcalc_smb_sname
+			eval csrc_${module}_mkcalc_smb_mpoint=\$rc_${module}_mkcalc_smb_mpoint
+			eval csrc_${module}_mkcalc_fsrcdir=\$rc_${module}_mkcalc_fsrcdir
+
+##			if [ -z ${cfg_phreg_mkcalc_out_file} ]; then eval cfg_${module}_mkcalc_out_file="calc_ph.cfg"; fi
+##			if [ -z ${cfg_phreg_mkcalc_server} ]; then eval cfg_${module}_mkcalc_server="${module}"; fi
+##			if [ -z ${cfg_phreg_mkcalc_db_login} ]; then eval cfg_${module}_mkcalc_db_login="rsduadmin"; fi
+##			if [ -z ${cfg_phreg_mkcalc_db_password} ]; then eval cfg_${module}_mkcalc_db_password="passme"; fi
+##			if [ -z ${cfg_phreg_mkcalc_srcdir} ]; then eval cfg_${module}_mkcalc_srcdir="."; fi
+##			if [ -z ${cfg_phreg_mkcalc_from_file} ]; then eval cfg_${module}_mkcalc_from_file="no"; fi
+##			if [ -z ${cfg_phreg_mkcalc_samba} ]; then eval cfg_${module}_mkcalc_samba="no"; fi
+##			if [ -z ${cfg_phreg_mkcalc_smb_username} ]; then eval cfg_${module}_mkcalc_smb_username="admin"; fi
+##			if [ -z ${cfg_phreg_mkcalc_smb_password} ]; then eval cfg_${module}_mkcalc_smb_password="passme"; fi
+##			if [ -z ${cfg_phreg_mkcalc_smb_sname} ]; then eval cfg_${module}_mkcalc_smb_sname="//RESOURCE/Resource/src"; fi
+##			if [ -z ${cfg_phreg_mkcalc_smb_mpoint} ]; then eval cfg_${module}_mkcalc_smb_mpoint="/tmp/smb"; fi
+##			if [ -z ${cfg_phreg_mkcalc_fsrcdir} ]; then eval cfg_${module}_mkcalc_fsrcdir="/root/LinuxRT/Formula"; fi
+		fi
+
+#		eval enable_${module}=${!module_presents}
+#		eval defines_$module=${!module_defines}
+#		eval rfcopy_$module=${!module_copyexec}
+	done
+
+
+####exit 1
+
+##############
+# Calculating current config values
+	if [ -n "${key_product_name}" ]; then
+		csrc_common_product_name=${key_product_name}
+	elif [ -n "${rc_common_product_name}" ]; then
+		csrc_common_product_name=${rc_common_product_name}
+	else
+		csrc_common_product_name=${defrc_common_product_name}
+	fi
+
+	if [ "x${csrc_common_product_name}" != "x${def_product_name_rsdu5}" ] && [ "x${csrc_common_product_name}" != "x${def_product_name_isms}" ]; then
+		csrc_common_product_name=${def_product_name_rsdu5}
+	fi
+
+	if [ -n "${key_config_name}" ]; then
+		csrc_common_config_name=${key_config_name}
+	elif [ -n "${rc_common_config_name}" ]; then
+		csrc_common_config_name=${rc_common_config_name}
+	else
+		csrc_common_config_name=${defrc_common_config_name}
+	fi
+
+	if [ -n "${key_config_desc}" ]; then
+		csrc_common_config_desc=${key_config_desc}
+	elif [ -n "${rc_common_config_desc}" ]; then
+		csrc_common_config_desc=${rc_common_config_desc}
+	else
+		csrc_common_config_desc=${defrc_common_config_desc}
+	fi
+
+	if [ -n "${key_prefix}" ]; then
+		csrc_common_prefix=${key_prefix}
+		csrc_common_prefix_bin=${key_prefix}/bin
+		csrc_common_prefix_lib=${key_prefix}/${cs_lib_dirname}
+		csrc_common_prefix_inc=${key_prefix}/include
+	elif [ -n "${rc_common_prefix}" ]; then
+		csrc_common_prefix=${rc_common_prefix}
+		csrc_common_prefix_bin=${rc_common_prefix}/bin
+		csrc_common_prefix_lib=${rc_common_prefix}/${cs_lib_dirname}
+		csrc_common_prefix_inc=${rc_common_prefix}/include
+	else
+		csrc_common_prefix=${defrc_common_prefix}
+	fi
+
+	if [ -n "${key_prefix_bin}" ]; then
+		csrc_common_prefix_bin=${key_prefix_bin}
+	elif [ -n "${rc_common_prefix_bin}" ]; then
+		if [ -z "${key_prefix}" ]; then
+			csrc_common_prefix_bin=${rc_common_prefix_bin}
+		fi
+	else
+		if [ -z "${key_prefix}" ] && [ -z "${rc_common_prefix}" ]; then
+			csrc_common_prefix_bin=${defrc_common_prefix_bin}
+		fi
+	fi
+
+	if [ -n "${key_prefix_lib}" ]; then
+		csrc_common_prefix_lib=${key_prefix_lib}
+	elif [ -n "${rc_common_prefix_lib}" ]; then
+		if [ -z "${key_prefix}" ]; then
+			csrc_common_prefix_lib=${rc_common_prefix_lib}
+		fi
+	else
+		if [ -z "${key_prefix}" ] && [ -z "${rc_common_prefix}" ]; then
+			csrc_common_prefix_lib=${defrc_common_prefix_lib}
+		fi
+	fi
+
+	if [ -n "${key_prefix_inc}" ]; then
+		csrc_common_prefix_inc=${key_prefix_inc}
+	elif [ -n "${rc_common_prefix_inc}" ]; then
+		if [ -z "${key_prefix}" ]; then
+			csrc_common_prefix_inc=${rc_common_prefix_inc}
+		fi
+	else
+		if [ -z "${key_prefix}" ] && [ -z "${rc_common_prefix}" ]; then
+			csrc_common_prefix_inc=${defrc_common_prefix_inc}
+		fi
+	fi
+
+	if [ -n "${key_install_ema_script}" ]; then
+		csrc_common_install_ema_script=${key_install_ema_script}
+	elif [ -n "${rc_common_install_ema_script}" ]; then
+		csrc_common_install_ema_script=${rc_common_install_ema_script}
+	else
+		csrc_common_install_ema_script=${defrc_common_install_ema_script}
+	fi
+
+	if [ -n "${key_install_ema_autoload_script}" ]; then
+		csrc_common_install_ema_autoload_script=${key_install_ema_autoload_script}
+	elif [ -n "${rc_common_install_ema_autoload_script}" ]; then
+		csrc_common_install_ema_autoload_script=${rc_common_install_ema_autoload_script}
+	else
+		csrc_common_install_ema_autoload_script=${defrc_common_install_ema_autoload_script}
+	fi
+
+	if [ -n "${key_ema_cfg_file}" ]; then
+		csrc_common_ema_cfg_file=${key_ema_cfg_file}
+	elif [ -n "${rc_common_ema_cfg_file}" ]; then
+		csrc_common_ema_cfg_file=${rc_common_ema_cfg_file}
+	else
+		csrc_common_ema_cfg_file=${defrc_common_ema_cfg_file}
+	fi
+
+	if [ -n "${key_ema_conf_file}" ]; then
+		csrc_common_ema_conf_file=${key_ema_conf_file}
+	elif [ -n "${rc_common_ema_conf_file}" ]; then
+		csrc_common_ema_conf_file=${rc_common_ema_conf_file}
+	else
+		csrc_common_ema_conf_file=${defrc_common_ema_conf_file}
+	fi
+
+	if [ -n "${key_install_ema_cfg_file}" ]; then
+		csrc_common_install_ema_cfg_file=${key_install_ema_cfg_file}
+	elif [ -n "${rc_common_install_ema_cfg_file}" ]; then
+		csrc_common_install_ema_cfg_file=${rc_common_install_ema_cfg_file}
+	else
+		csrc_common_install_ema_cfg_file=${defrc_common_install_ema_cfg_file}
+	fi
+
+	if [ -n "${key_host_ini_file}" ]; then
+		csrc_common_host_ini_file=${key_host_ini_file}
+	elif [ -n "${rc_common_host_ini_file}" ]; then
+		csrc_common_host_ini_file=${rc_common_host_ini_file}
+	else
+		csrc_common_host_ini_file=${defrc_common_host_ini_file}
+	fi
+
+	if [ -n "${key_install_host_ini_file}" ]; then
+		csrc_common_install_host_ini_file=${key_install_host_ini_file}
+	elif [ -n "${rc_common_install_host_ini_file}" ]; then
+		csrc_common_install_host_ini_file=${rc_common_install_host_ini_file}
+	else
+		csrc_common_install_host_ini_file=${defrc_common_install_host_ini_file}
+	fi
+
+	if [ -n "${key_install_rsduenv_script}" ]; then
+		csrc_common_install_rsduenv_script=${key_install_rsduenv_script}
+	elif [ -n "${rc_common_install_rsduenv_script}" ]; then
+		csrc_common_install_rsduenv_script=${rc_common_install_rsduenv_script}
+	else
+		csrc_common_install_rsduenv_script=${defrc_common_install_rsduenv_script}
+	fi
+
+	if [ -n "${key_install_ematime_script}" ]; then
+		csrc_common_install_ematime_script=${key_install_ematime_script}
+	elif [ -n "${rc_common_install_ematime_script}" ]; then
+		csrc_common_install_ematime_script=${rc_common_install_ematime_script}
+	else
+		csrc_common_install_ematime_script=${defrc_common_install_ematime_script}
+	fi
+
+	if [ -n "${key_update_sysctl_conf}" ]; then
+		csrc_common_update_sysctl_conf=${key_update_sysctl_conf}
+	elif [ -n "${rc_common_update_sysctl_conf}" ]; then
+		csrc_common_update_sysctl_conf=${rc_common_update_sysctl_conf}
+	else
+		csrc_common_update_sysctl_conf=${defrc_common_update_sysctl_conf}
+	fi
+
+	if [ -n "${key_install_logrotate}" ]; then
+		csrc_common_install_logrotate=${key_install_logrotate}
+	elif [ -n "${rc_common_install_logrotate}" ]; then
+		csrc_common_install_logrotate=${rc_common_install_logrotate}
+	else
+		csrc_common_install_logrotate=${defrc_common_install_logrotate}
+	fi
+
+	if [ -n "${key_wait_db_delay}" ]; then
+		csrc_common_wait_db_delay=${key_wait_db_delay}
+	elif [ -n "${rc_common_wait_db_delay}" ]; then
+		csrc_common_wait_db_delay=${rc_common_wait_db_delay}
+	else
+		csrc_common_wait_db_delay=${defrc_common_wait_db_delay}
+	fi
+
+	if [ -n "${key_db_type}" ]; then
+		csrc_common_db_type=${key_db_type}
+	elif [ -n "${rc_common_db_type}" ]; then
+		csrc_common_db_type=${rc_common_db_type}
+	else
+		csrc_common_db_type=${defrc_common_db_type}
+	fi
+
+	if [ -n "${key_db_host}" ]; then
+		csrc_common_db_host=${key_db_host}
+	elif [ -n "${rc_common_db_host}" ]; then
+		csrc_common_db_host=${rc_common_db_host}
+	else
+		csrc_common_db_host=${defrc_common_db_host}
+	fi
+
+	if [ -n "${key_use_rsduenv}" ]; then
+		csrc_common_use_rsduenv=${key_use_rsduenv}
+	elif [ -n "${rc_common_use_rsduenv}" ]; then
+		csrc_common_use_rsduenv=${rc_common_use_rsduenv}
+	else
+		csrc_common_use_rsduenv=${defrc_common_use_rsduenv}
+	fi
+
+	if [ ${csrc_common_use_rsduenv} = 'yes' ]; then
+		csrc_rsduenv_oracle_base=`if [ -f /etc/ema/${def_rsduenv_filename} ]; then back_ORACLE_BASE=$ORACLE_BASE; unset ORACLE_BASE; . /etc/ema/${def_rsduenv_filename}; echo $ORACLE_BASE; export ORACLE_BASE=${back_ORACLE_BASE}; fi;`
+		csrc_rsduenv_oracle_home=`if [ -f /etc/ema/${def_rsduenv_filename} ]; then back_ORACLE_HOME=$ORACLE_HOME; unset ORACLE_HOME; . /etc/ema/${def_rsduenv_filename}; echo $ORACLE_HOME; export ORACLE_HOME=${back_ORACLE_HOME}; fi;`
+		csrc_rsduenv_oracle_tns_admin=`if [ -f /etc/ema/${def_rsduenv_filename} ]; then back_TNS_ADMIN=$TNS_ADMIN; unset TNS_ADMIN; . /etc/ema/${def_rsduenv_filename}; echo $TNS_ADMIN; export TNS_ADMIN=${back_TNS_ADMIN}; fi;`
+
+		if [ -z "${csrc_rsduenv_oracle_base}" ] || [ -z "${csrc_rsduenv_oracle_home}" ] || [ -z "${csrc_rsduenv_oracle_tns_admin}" ]; then
+			csrc_rsduenv_oracle_base="";
+			csrc_rsduenv_oracle_home="";
+			csrc_rsduenv_oracle_tns_admin="";
+		fi
+	fi
+
+#  echo "csrc_rsduenv_oracle_base       = ${csrc_rsduenv_oracle_base}";
+#  echo "csrc_rsduenv_oracle_home       = ${csrc_rsduenv_oracle_home}";
+#  echo "csrc_rsduenv_oracle_tns_admin  = ${csrc_rsduenv_oracle_tns_admin}";
+
+	if [ -n "${key_oracle_base}" ]; then
+		csrc_oracle_base=${key_oracle_base}
+	elif [ -n "${rc_oracle_base}" ]; then
+		csrc_oracle_base=${rc_oracle_base}
+	elif [ ${csrc_common_use_rsduenv} = 'yes' ] && [ -n "${csrc_rsduenv_oracle_base}" ]; then
+		csrc_oracle_base=${csrc_rsduenv_oracle_base}
+	else
+		csrc_oracle_base=${defrc_oracle_base}
+	fi
+
+	if [ -n "${key_oracle_home}" ]; then
+		csrc_oracle_home=${key_oracle_home}
+	elif [ -n "${rc_oracle_home}" ]; then
+		csrc_oracle_home=${rc_oracle_home}
+	elif [ ${csrc_common_use_rsduenv} = 'yes' ] && [ -n "${csrc_rsduenv_oracle_home}" ]; then
+		csrc_oracle_home=${csrc_rsduenv_oracle_home}
+	else
+		csrc_oracle_home=${defrc_oracle_home}
+	fi
+
+	if [ -n "${key_oracle_tns_admin}" ]; then
+		csrc_oracle_tns_admin=${key_oracle_tns_admin}
+	elif [ -n "${rc_oracle_tns_admin}" ]; then
+		csrc_oracle_tns_admin=${rc_oracle_tns_admin}
+	elif [ ${csrc_common_use_rsduenv} = 'yes' ] && [ -n "${csrc_rsduenv_tns_admin}" ]; then
+		csrc_oracle_tns_admin=${csrc_rsduenv_tns_admin}
+	else
+		csrc_oracle_tns_admin=${defrc_oracle_tns_admin}
+	fi
+
+	if [ -n "${key_oracle_headers_path}" ]; then
+		csrc_oracle_headers_path=${key_oracle_headers_path}
+	elif [ -n "${rc_oracle_headers_path}" ]; then
+		csrc_oracle_headers_path=${rc_oracle_headers_path}
+	else
+		csrc_oracle_headers_path=${defrc_oracle_headers_path}
+	fi
+
+	if [ -n "${key_oracle_libs_path}" ]; then
+		csrc_oracle_libs_path=${key_oracle_libs_path}
+	elif [ -n "${rc_oracle_libs_path}" ]; then
+		csrc_oracle_libs_path=${rc_oracle_libs_path}
+	else
+		csrc_oracle_libs_path=${defrc_oracle_libs_path}
+	fi
+
+  eval csrc_oracle_base=${csrc_oracle_base}
+  eval csrc_oracle_home=${csrc_oracle_home}
+  eval csrc_oracle_tns_admin=${csrc_oracle_tns_admin}
+  eval csrc_oracle_headers_path=${csrc_oracle_headers_path}
+  eval csrc_oracle_libs_path=${csrc_oracle_libs_path}
+
+#  echo "csrc_oracle_base         = ${csrc_oracle_base}";
+#  echo "csrc_oracle_home         = ${csrc_oracle_home}";
+#  echo "csrc_oracle_tns_admin    = ${csrc_oracle_tns_admin}";
+#  echo "csrc_oracle_headers_path = ${csrc_oracle_headers_path}";
+#  echo "csrc_oracle_libs_path    = ${csrc_oracle_libs_path}";
+
+#exit 1
+
+# for modules
+for module in ${allprojects_names[@]}; do
+	eval cur_key_enable=\$key_enable_${module}
+	eval cur_rc_enable=\$rc_${module}_enable
+	eval cur_defrc_enable=\$defrc_${module}_enable
+
+	echo "1- Module '$module' = [${cur_key_enable} : ${cur_rc_enable} : ${cur_defrc_enable}]"
+
+	if [ -n "${cur_key_enable}" ]; then
+		eval csrc_enable_$module=\$cur_key_enable
+	elif [ -n "${cur_rc_enable}" ]; then
+		eval csrc_enable_$module=\$cur_rc_enable
+	else
+		eval csrc_enable_$module=\$cur_defrc_enable
+	fi
+
+
+#	if [ -n "${cur_rc_enable}" ]; then
+#		eval csrc_enable_$module=\$cur_rc_enable
+#	else
+#		eval csrc_enable_$module=\$cur_defrc_enable
+#	fi
+
+	eval cur_csrc_enable=\$csrc_enable_$module
+	echo "== Module '$module' = ${cur_csrc_enable}"
+done
+
+
+	if [ -n "${key_enable_all}" ]; then
+		csrc_enable_all=${key_enable_all}
+		for module in ${allprojects_names[@]}; do
+			eval csrc_enable_${module}=${key_enable_all}
+		done
+#	elif [ -n "${rc_enable_all}" ]; then
+#		csrc_enable_all=${rc_enable_all}
+#	else
+#		csrc_enable_all=${defrc_enable_all}
+	fi
+
+	if [ -n "${key_enable_libs}" ]; then
+		csrc_enable_libs=${key_enable_libs}
+		for module in ${libs_names[@]}; do
+			eval csrc_enable_${module}=${key_enable_libs}
+		done
+#	elif [ -n "${rc_enable_libs}" ]; then
+#		csrc_enable_libs=${rc_enable_libs}
+#	else
+#		csrc_enable_libs=${defrc_enable_libs}
+	fi
+
+	if [ -n "${key_enable_others}" ]; then
+		csrc_enable_others=${key_enable_others}
+		for module in ${others_names[@]}; do
+			eval csrc_enable_${module}=${key_enable_others}
+		done
+#	elif [ -n "${rc_enable_others}" ]; then
+#		csrc_enable_others=${rc_enable_others}
+#	else
+#		csrc_enable_others=${defrc_enable_others}
+	fi
+
+	if [ -n "${key_enable_servers}" ]; then
+		csrc_enable_servers=${key_enable_servers}
+		for module in ${servers_names[@]}; do
+			eval csrc_enable_${module}=${key_enable_servers}
+		done
+#	elif [ -n "${rc_enable_servers}" ]; then
+#		csrc_enable_servers=${rc_enable_servers}
+#	else
+#		csrc_enable_servers=${defrc_enable_servers}
+	fi
+
+for module in ${allprojects_names[@]}; do
+	eval cur_key_enable=\$key_enable_${module}
+	eval cur_rc_enable=\$rc_${module}_enable
+	eval cur_defrc_enable=\$defrc_${module}_enable
+
+	eval cur_key_defines=\$key_defines_${module}
+	eval cur_key_bincopy=\$key_bincopy_${module}
+
+	echo "2- Module '$module' = [${cur_key_enable} : ${cur_rc_enable} : ${cur_defrc_enable}]"
+
+#	eval cur_rc_module_enable=cfg_modules_$module
+#	eval cur_module_defines=cfg_${module}_defines
+#	eval cur_module_copyexec=cfg_${module}_copyexec
+
+	if [ -n "${cur_key_enable}" ]; then
+		eval csrc_enable_${module}=\$cur_key_enable
+	fi
+	if [ -n "${cur_key_defines}" ]; then
+		eval csrc_defines_${module}=\$cur_key_defines
+	fi
+	if [ -n "${cur_key_bincopy}" ]; then
+		eval csrc_bincopy_${module}=\$cur_key_bincopy
+	fi
+
+	eval cur_csrc_enable=\$csrc_enable_${module}
+	echo "== Module '$module' = ${cur_csrc_enable}"
+done
+
+	if [ "x${csrc_common_db_type}" == "x${def_dbtype_oracle}" ]; then
+		cs_version_filename="rsdu5.version.txt"
+	elif [ "x${csrc_common_db_type}" == "x${def_dbtype_mysql}" ]; then
+		cs_version_filename="isms.version.txt"
+	else
+		cs_version_filename="version.txt"
+	fi
+
+	cs_product_version=`cat ${cs_rsdu_topdir}/${cs_version_filename} | head -n1`
+
+####exit 111
+
+# Show modules
+#	for module in ${allprojects_names[@]}
+#	do
+#		eval trc_modules_${module}=`get_value "modules" $module`
+#		eval trc_${module}_defines=`get_value "$module" "defines"`
+#		eval trc_${module}_bincopy=`get_value "$module" "bincopy"`
+#		module_presents=trc_modules_${module}
+#		module_defines=trc_${module}_defines
+#		module_bincopy=trc_${module}_bincopy
+#		echo "Module '$module': ${!module_presents}"
+#		echo "  defines = ${!module_defines}"
+#		echo "  bincopy = ${!module_bincopy}"
+#	done
+
+##############
+# showing Default values
+	echo "====================================================================================="
+	echo "Defaults:"
+	echo "Product_name = "$defrc_common_product_name
+	echo "Confname = "$defrc_common_config_name
+	echo "Confdesc = "$defrc_common_config_desc
+	echo "Prefix = "$defrc_common_prefix
+	echo "Prefix_bin = "$defrc_common_prefix_bin
+	echo "Prefix_lib = "$defrc_common_prefix_lib
+	echo "Prefix_inc = "$defrc_common_prefix_inc
+	echo "Install_ema_script = "$defrc_common_install_ema_script
+	echo "Install_ema_autoload_script = "$defrc_common_install_ema_autoload_script
+	echo "Ema_cfg_file = $defrc_common_ema_cfg_file"
+	echo "Ema_conf_file = $defrc_common_ema_conf_file"
+	echo "Install_ema_cfg_file = "$defrc_common_install_ema_cfg_file
+	echo "Host_ini_file = "$defrc_common_host_ini_file
+	echo "Install_host_ini_file = "$defrc_common_install_host_ini_file
+	echo "Install_ema_time_script = "$defrc_common_install_ematime_script
+	echo "Update_sysctl_conf = "$defrc_common_update_sysctl_conf
+	echo "Install_logrotate = "$defrc_common_install_logrotate
+	echo "DB type = "$defrc_common_db_type
+	echo "Use RSDUENV = "$defrc_common_use_rsduenv
+	echo "Oracle base path = "$defrc_oracle_base
+	echo "Oracle home path = "$defrc_oracle_home
+	echo "Oracle tns admin path = "$defrc_oracle_tns_admin
+	echo "Oracle headers path = "$defrc_oracle_headers_path
+	echo "Oracle libs path = "$defrc_oracle_libs_path
+
+	echo "====================================================================================="
+	echo "Rsdu.config:"
+	echo "Product name = "$rc_common_product_name
+	echo "Confname = "$rc_common_config_name
+	echo "Confdesc = "$rc_common_config_desc
+	echo "Prefix = "$rc_common_prefix
+	echo "Prefix_bin = "$rc_common_prefix_bin
+	echo "Prefix_lib = "$rc_common_prefix_lib
+	echo "Prefix_inc = "$rc_common_prefix_inc
+	echo "Install_ema_script = "$rc_common_install_ema_script
+	echo "Install_ema_autoload_script = "$rc_common_install_ema_autoload_script
+	echo "Ema_cfg_file = "$rc_common_ema_cfg_file
+	echo "Ema_conf_file = "$rc_common_ema_conf_file
+	echo "Install_ema_cfg_file = "$rc_common_install_ema_cfg_file
+	echo "Host_ini_file = "$rc_common_host_ini_file
+	echo "Install_host_ini_file = "$rc_common_install_host_ini_file
+	echo "Install_ematime_script = "$rc_common_install_ematime_script
+	echo "Update_sysctl_conf = "$rc_common_update_sysctl_conf
+	echo "Install_logrotate = "$rc_common_install_logrotate
+	echo "DB type = "$rc_common_db_type
+	echo "Use RSDUENV = "$rc_common_use_rsduenv
+	echo "Oracle base path = "$rc_oracle_base
+	echo "Oracle home path = "$rc_oracle_home
+	echo "Oracle tns admin path = "$rc_oracle_tns_admin
+	echo "Oracle headers path = "$rc_oracle_headers_path
+	echo "Oracle libs path = "$rc_oracle_libs_path
+
+# showing modules from the rsdu.config
+	for module in ${allprojects_names[@]}
+	do
+#		eval rc_modules_${module}=`get_value "modules" $module`
+#		eval trc_${module}_defines=`get_value "$module" "defines"`
+#		eval trc_${module}_bincopy=`get_value "$module" "bincopy"`
+		eval module_enable=\$rc_${module}_enable
+		eval module_defines=\$rc_${module}_defines
+		eval module_bincopy=\$rc_${module}_bincopy
+		echo "Module '$module': ${module_enable}"
+		echo "  defines = ${module_defines}"
+		echo "  bincopy = ${module_bincopy}"
+	done
+
+####exit 1
+
+# Showing keys values
+	echo "====================================================================================="
+	echo "Keys:"
+	echo "Product name = "$key_product_name
+	echo "Confname = "$key_config_name
+	echo "Confdesc = "$key_config_desc
+	echo "Prefix = "$key_prefix
+	echo "Prefix_bin = "$key_prefix_bin
+	echo "Prefix_lib = "$key_prefix_lib
+	echo "Prefix_inc = "$key_prefix_inc
+	echo "Install_ema_script = "$key_install_ema_script
+	echo "Install_ema_autoload_script = "$key_install_ema_autoload_script
+	echo "Ema_cfg_file = "$key_ema_cfg_file
+	echo "Ema_conf_file = "$key_ema_conf_file
+	echo "Install_ema_cfg_file = "$key_install_ema_cfg_file
+	echo "Host_ini_file = "$key_host_ini_file
+	echo "Install_host_ini_file = "$key_install_host_ini_file
+	echo "Install_ematime_script = "$key_install_ematime_script
+	echo "Update_sysctl_conf = "$key_update_sysctl_conf
+	echo "Install_logrotate = "$key_install_logrotate
+	echo "DB type = "$key_db_type
+	echo "Use RSDUENV = "$key_use_rsduenv
+	echo "Oracle base path = "$key_oracle_base
+	echo "Oracle home path = "$key_oracle_home
+	echo "Oracle tns admin path = "$key_oracle_tns_admin
+	echo "Oracle headers path = "$key_oracle_headers_path
+	echo "Oracle libs path = "$key_oracle_libs_path
+
+# showing enable keys
+	echo "Module 'all': ${key_enable_all}"
+	echo "Module 'libs': ${key_enable_libs}"
+	echo "Module 'others': ${key_enable_others}"
+	echo "Module 'servers': ${key_enable_servers}"
+	for module in ${allprojects_names[@]}
+	do
+		eval module_enable=\$key_enable_${module}
+		eval module_defines=\$key_defines_${module}
+		eval module_bincopy=\$key_bincopy_${module}
+		echo "Module '$module': ${module_enable}"
+		echo "  defines = ${module_defines}"
+		echo "  bincopy = ${module_bincopy}"
+	done
+
+
+#exit 1
+
+	echo "====================================================================================="
+	echo "Current config using in the script:"
+	echo "Product name = "$csrc_common_product_name
+	echo "Confname = "$csrc_common_config_name
+	echo "Confdesc = "$csrc_common_config_desc
+	echo "Prefix = "$csrc_common_prefix
+	echo "Prefix_bin = "$csrc_common_prefix_bin
+	echo "Prefix_lib = "$csrc_common_prefix_lib
+	echo "Prefix_inc = "$csrc_common_prefix_inc
+	echo "Install_ema_script = "$csrc_common_install_ema_script
+	echo "Install_ema_autoload_script = "$csrc_common_install_ema_autoload_script
+	echo "Ema_cfg_file = "$csrc_common_ema_cfg_file
+	echo "Ema_conf_file = "$csrc_common_ema_conf_file
+	echo "Install_ema_cfg_file = "$csrc_common_install_ema_cfg_file
+	echo "Host_ini_file = "$csrc_common_host_ini_file
+	echo "Install_host_ini_file = "$csrc_common_install_host_ini_file
+	echo "Install_ematime_script = "$csrc_common_install_ematime_script
+	echo "Update_sysctl_conf = "$csrc_common_update_sysctl_conf
+	echo "Install_logrotate = "$csrc_common_install_logrotate
+	echo "DB type = "$csrc_common_db_type
+	echo "Use RSDUENV = "$csrc_common_use_rsduenv
+	echo "Oracle base path = "$csrc_oracle_base
+	echo "Oracle home path = "$csrc_oracle_home
+	echo "Oracle tns admin path = "$csrc_oracle_tns_admin
+	echo "Oracle headers path = "$csrc_oracle_headers_path
+	echo "Oracle libs path = "$csrc_oracle_libs_path
+
+# showing using modules config
+	echo "Module 'all': ${csrc_enable_all}"
+	echo "Module 'libs': ${csrc_enable_libs}"
+	echo "Module 'others': ${csrc_enable_others}"
+	echo "Module 'servers': ${csrc_enable_servers}"
+	for module in ${allprojects_names[@]}
+	do
+		eval module_enable=\$csrc_enable_${module}
+		eval module_defines=\$csrc_defines_${module}
+		eval module_bincopy=\$csrc_bincopy_${module}
+		echo "Module '$module': ${module_enable}"
+		echo "  defines = ${module_defines}"
+		echo "  bincopy = ${module_bincopy}"
+	done
+
+
+#exit 2
+
+###################
+# Applying default values for modules
+
+#if [ -z "$enable_all" ]; then
+## Mark all modules as disabled
+#	for module in ${allprojects_names[@]}; do
+#		eval cfg_modules_${module}=no
+#	done
+#fi
+#
+#
+#if [ "x$enable_all" != "x" ]; then
+##	echo "Enable all : "$enable_all
+#	for module in ${allprojects_names[@]}; do
+#		eval cfg_modules_$module=$enable_all
+#	done
+#fi
+#
+#if [ "x$enable_libs" != "x" ]; then
+##	echo "Enable libs : "$enable_libs
+#	for module in ${libs_names[@]}; do
+#		eval cfg_modules_$module=$enable_libs
+#	done
+#fi
+#
+#if [ "x$enable_others" != "x" ]; then
+##	echo "Enable others : "$enable_others
+#	for module in ${others_names[@]}; do
+#		eval cfg_modules_$module=$enable_others
+#	done
+#fi
+
+#if [ "x$enable_servers" != "x" ]; then
+##	echo "Enable servers : "$enable_servers
+#	for module in ${servers_names[@]}; do
+#		eval cfg_modules_$module=$enable_servers
+#	done
+#fi
+
+#for module in ${allprojects_names[@]}; do
+#	eval cur_module=enable_$module
+#	eval cur_cfg_module_enable=cfg_modules_$module
+#	eval cur_cfg_module_defines=cfg_${module}_defines
+#	eval cur_cfg_module_copyexec=cfg_${module}_copyexec
+
+#	echo "Module '"$module"' = "${!cur_cfg_module_enable}":"${!cur_module}
+#	if [ "x${!cur_module}" != "x" ]; then
+#		module_defines=defines_${module}
+#		module_copyexec=rfcopy_${module}
+#		eval cfg_modules_$module=${!cur_module}
+#		if [ "x${!module_defines}" != "x" ]; then
+#			eval cfg_${module}_defines=${!module_defines}
+#		fi
+#		if [ "x${!module_copyexec}" != "x" ]; then
+#			eval cfg_${module}_copyexec=${!module_copyexec}
+#		fi
+#	else
+#		eval cfg_modules_$module=yes
+#	fi
+
+#	if [ "x${!cur_cfg_module_enable}" == "xyes" ]; then
+#		echo -en " . . . . . . . . . . . . [\e[32;01m${!cur_cfg_module_enable}\e[0m] defines=${!cur_cfg_module_defines}\r\e[0;97m${module}\e[0m ";
+#	else
+#		echo -en " . . . . . . . . . . . . [\e[31;01m${!cur_cfg_module_enable}\e[0m] defines=${!cur_cfg_module_defines}\r\e[0;37m${module}\e[0m ";
+#	fi
+#	echo
+#	eval ttt=\$cfg_modules_$module
+#	echo "  Config module enable = "$ttt
+#done
+
+################################################################################
+# Check for needed libraries and applications
+
+echo -n "Checking libmodbus... "
+
+${cs_scripts_dir}/check_libmodbus.sh >/dev/null 1>/dev/null 2>/dev/null
+chklib_res=$?
+
+if [ ${chklib_res} != 0 ]; then
+  echo -e "[ \e[31;01mno\e[0m ]";
+  case ${chklib_res} in
+    1)
+    echo "Not found libmodbus header files (modbus/modbus-version.h).";
+    ;;
+
+    2)
+    echo "Libmodbus version less than needed (3.0.6).";
+    ;;
+
+    *)
+    echo "Unknown error.";
+    ;;
+  esac
+
+  if [ "x${key_enable_libmodbus}" == "xno" ]; then
+    exit 1;
+  fi
+
+  csrc_enable_libmodbus=yes
+else
+
+#  if [ "x${key_enable_libmodbus}" != "xyes" ]; then
+#    csrc_enable_libmodbus=no
+#  fi
+
+  csrc_enable_libmodbus=yes
+
+  echo -e "[ \e[32;01myes\e[0m ]";
+fi
+
+echo;
+
+#echo "csrc_enable_libmodbus=${csrc_enable_libmodbus}"
+
+#exit 1;
+
+
+# Output configured parameters to the file
+	mkdir -p $cs_scripts_dir
+	$ECHO "# RSDU configure defines." > ${cs_config_defines_file_path}
+	$ECHO "# Don't edit this file please." >> ${cs_config_defines_file_path}
+	$ECHO >> ${cs_config_defines_file_path}
+	$ECHO "" >> ${cs_config_defines_file_path}
+	$ECHO "RCD_UNAME_ARCH=${cs_uname_arch}" >> ${cs_config_defines_file_path}
+	$ECHO "RCD_CURDIR=${cs_curdir}" >> ${cs_config_defines_file_path}
+	$ECHO "RCD_CONFIGURE_PATH=${cs_rsdu_configure_script_path}" >> ${cs_config_defines_file_path}
+	$ECHO "RCD_RSDU_TOPDIR=${cs_rsdu_topdir}" >> ${cs_config_defines_file_path}
+	$ECHO "RCD_TOPDIR=${cs_topdir}" >> ${cs_config_defines_file_path}
+	$ECHO "RCD_SCRIPTS_DIR=${cs_scripts_dir}" >> ${cs_config_defines_file_path}
+	$ECHO "RCD_CONFIG_DEFINES_FILENAME=${cs_config_defines_filename}" >> ${cs_config_defines_file_path}
+	$ECHO "RCD_BUILDLIB_PREFIX=${cs_buildlib_prefix}" >> ${cs_config_defines_file_path}
+	$ECHO "RCD_ARCH=${cs_arch}" >> ${cs_config_defines_file_path}
+	$ECHO "RCD_LIB_DIRNAME=${cs_lib_dirname}" >> ${cs_config_defines_file_path}
+	$ECHO "RCD_RSDU_CONFIG_FILENAME=${def_rsdu_config_file}" >> ${cs_config_defines_file_path}
+	$ECHO "RCD_RSDU_CONFIG_FILENAME_OUT=${def_rsdu_config_file_out}" >> ${cs_config_defines_file_path}
+	$ECHO "RCD_USE_RSDU_CONFIG=${def_use_rsdu_config}" >> ${cs_config_defines_file_path}
+	$ECHO >> ${cs_config_defines_file_path}
+	$ECHO "RCD_PRODUCT_NAME='$csrc_common_product_name'" >> ${cs_config_defines_file_path}
+	$ECHO "RCD_CONFIG_NAME='$csrc_common_config_name'" >> ${cs_config_defines_file_path}
+	$ECHO "RCD_CONFIG_DESC='$csrc_common_config_desc'" >> ${cs_config_defines_file_path}
+	$ECHO "RCD_PREFIX=$csrc_common_prefix" >> ${cs_config_defines_file_path}
+	$ECHO "RCD_PREFIX_BIN=$csrc_common_prefix_bin" >> ${cs_config_defines_file_path}
+	$ECHO "RCD_PREFIX_LIB=$csrc_common_prefix_lib" >> ${cs_config_defines_file_path}
+	$ECHO "RCD_PREFIX_INC=$csrc_common_prefix_inc" >> ${cs_config_defines_file_path}
+	$ECHO "RCD_INSTALL_EMA_SCRIPT=$csrc_common_install_ema_script" >> ${cs_config_defines_file_path}
+	$ECHO "RCD_INSTALL_EMA_AUTOLOAD_SCRIPT=$csrc_common_install_ema_autoload_script" >> ${cs_config_defines_file_path}
+	$ECHO "RCD_EMA_CFG_FILENAME=$csrc_common_ema_cfg_file" >> ${cs_config_defines_file_path}
+	$ECHO "RCD_EMA_CONF_FILENAME=${csrc_common_ema_conf_filename}" >> ${cs_config_defines_file_path}
+	$ECHO "RCD_INSTALL_EMA_CFG_FILE=$csrc_common_install_ema_cfg_file" >> ${cs_config_defines_file_path}
+	$ECHO "RCD_HOST_INI_FILENAME=$csrc_common_host_ini_file" >> ${cs_config_defines_file_path}
+	$ECHO "RCD_INSTALL_HOST_INI_FILE=$csrc_common_install_host_ini_file" >> ${cs_config_defines_file_path}
+	$ECHO "RCD_INSTALL_RSDUENV_SCRIPT=${csrc_common_install_rsduenv_script}" >> ${cs_config_defines_file_path}
+	$ECHO "RCD_INSTALL_EMATIME_SCRIPT=$csrc_common_install_ematime_script" >> ${cs_config_defines_file_path}
+	$ECHO "RCD_UPDATE_SYSCTL_CONF=$csrc_common_update_sysctl_conf" >> ${cs_config_defines_file_path}
+	$ECHO "RCD_INSTALL_LOGROTATE=$csrc_common_install_logrotate" >> ${cs_config_defines_file_path}
+	$ECHO "RCD_WAIT_DB_DELAY=${csrc_common_wait_db_delay}" >> ${cs_config_defines_file_path}
+	$ECHO "RCD_DB_TYPE=${csrc_common_db_type}" >> ${cs_config_defines_file_path}
+	$ECHO "RCD_DB_HOST=${csrc_common_db_host}" >> ${cs_config_defines_file_path}
+	$ECHO "RCD_USE_RSDUENV=$csrc_common_use_rsduenv" >> ${cs_config_defines_file_path}
+	$ECHO "RCD_ORACLE_BASE_PATH=$csrc_oracle_base" >> ${cs_config_defines_file_path}
+	$ECHO "RCD_ORACLE_HOME_PATH=$csrc_oracle_home" >> ${cs_config_defines_file_path}
+	$ECHO "RCD_ORACLE_TNS_ADMIN_PATH=$csrc_oracle_tns_admin" >> ${cs_config_defines_file_path}
+	$ECHO "RCD_ORACLE_HEADERS_PATH=$csrc_oracle_headers_path" >> ${cs_config_defines_file_path}
+	$ECHO "RCD_ORACLE_LIBS_PATH=$csrc_oracle_libs_path" >> ${cs_config_defines_file_path}
+	$ECHO "RCD_VERSION_FILENAME=$cs_version_filename" >> ${cs_config_defines_file_path}
+	$ECHO "RCD_PRODUCT_VERSION=$cs_product_version" >> ${cs_config_defines_file_path}
+
+# showing using modules config
+#	echo "Module 'all': ${csrc_enable_all}"
+#	echo "Module 'libs': ${csrc_enable_libs}"
+#	echo "Module 'others': ${csrc_enable_others}"
+#	echo "Module 'servers': ${csrc_enable_servers}"
+	$ECHO >> ${cs_config_defines_file_path}
+	$ECHO "# Modules" >> ${cs_config_defines_file_path}
+	for module in ${allprojects_names[@]}
+	do
+		eval module_presents=\$csrc_enable_${module}
+		eval module_defines=\$csrc_defines_${module}
+		eval module_bincopy=\$csrc_bincopy_${module}
+		$ECHO "RCD_${module}_ENABLE=${module_presents}" >> ${cs_config_defines_file_path}
+		$ECHO "RCD_${module}_DEFINES=${module_defines}" >> ${cs_config_defines_file_path}
+		$ECHO "RCD_${module}_BINCOPY=${module_bincopy}" >> ${cs_config_defines_file_path}
+
+		if [ "x${module}" == "xelreg" ] || [ "x${module}" == "xphreg" ]; then
+			eval $ECHO "RCD_${module}_OUT_FILE=\${csrc_${module}_mkcalc_out_file}" >> ${cs_config_defines_file_path}
+			eval $ECHO "RCD_${module}_SERVER=\${csrc_${module}_mkcalc_server}" >> ${cs_config_defines_file_path}
+			eval $ECHO "RCD_${module}_DB_LOGIN=\${csrc_${module}_mkcalc_db_login}" >> ${cs_config_defines_file_path}
+			eval module_mkcalc_db_password=\${csrc_${module}_mkcalc_db_password}
+			$ECHO "RCD_${module}_DB_PASSWORD=\"${module_mkcalc_db_password}\"" >> $cs_scripts_dir/$cs_config_defines_filename
+			eval $ECHO "RCD_${module}_SRCDIR=\${csrc_${module}_mkcalc_srcdir}" >> ${cs_config_defines_file_path}
+			eval $ECHO "RCD_${module}_FROM_FILE=\${csrc_${module}_mkcalc_from_file}" >> ${cs_config_defines_file_path}
+			eval $ECHO "RCD_${module}_SAMBA=\${csrc_${module}_mkcalc_samba}" >> ${cs_config_defines_file_path}
+			eval $ECHO "RCD_${module}_SMB_USERNAME=\${csrc_${module}_mkcalc_smb_username}" >> ${cs_config_defines_file_path}
+			eval $ECHO "RCD_${module}_SMB_PASSWORD=\${csrc_${module}_mkcalc_smb_password}" >> ${cs_config_defines_file_path}
+			eval $ECHO "RCD_${module}_SMB_SNAME=\${csrc_${module}_mkcalc_smb_sname}" >> ${cs_config_defines_file_path}
+			eval $ECHO "RCD_${module}_SMB_MPOINT=\${csrc_${module}_mkcalc_smb_mpoint}" >> ${cs_config_defines_file_path}
+			eval $ECHO "RCD_${module}_SMB_FSRCDIR=\${csrc_${module}_mkcalc_fsrcdir}" >> ${cs_config_defines_file_path}
+		fi
+
+	done
+
+
+####exit 1;
+
+# Generate Makefile
+	echo "Product name = "$csrc_common_product_name
+	echo "Confname = "$csrc_common_confname
+	echo "Confdesc = "$csrc_common_confdesc
+	echo "Prefix = "$csrc_common_prefix
+	echo "Prefix_bin = "$csrc_common_prefix_bin
+	echo "Prefix_lib = "$csrc_common_prefix_lib
+	echo "Prefix_inc = "$csrc_common_prefix_inc
+	echo "Inst_ema_script = "$csrc_common_inst_ema_script
+	echo "Inst_ema_autoload_script = "$csrc_common_inst_ema_autoload_script
+	echo "Ema_cfg_file = "$csrc_common_ema_cfg_file
+	echo "Inst_ema_cfg_file = "$csrc_common_inst_ema_cfg_file
+	echo "Host_ini_file = "$csrc_common_host_ini_file
+	echo "Inst_host_ini_file = "$csrc_common_inst_host_ini_file
+	echo "Inst_ema_time_script = "$csrc_common_inst_ema_time_script
+	echo "Update_sysctl_conf = "$csrc_common_update_sysctl_conf
+  echo "Install_logrotate = "$csrc_common_install_logrotate
+	echo "DB type = "${csrc_common_db_type}
+	echo "DB host = "${csrc_common_db_host}
+	echo "Use RSDUENV = "$csrc_common_use_rsduenv
+	echo "Oracle base path = "$csrc_oracle_base
+	echo "Oracle home path = "$csrc_oracle_home
+	echo "Oracle tns admin path = "$csrc_oracle_tns_admin
+	echo "Oracle headers path = "$csrc_oracle_headers_path
+	echo "Oracle libs path = "$csrc_oracle_libs_path
+
+echo
+
+
+
+echo "Makefile was generated in " `date +'%Y-%m-%d %H:%M:%S %z'` > $0.Makefile.log
+echo "" >> $0.Makefile.log
+echo "command line : $0 $@" >> $0.Makefile.log
+
+
+##if [ ! -z "$cfg_common_prefix" ]; then
+##	var_prefix=$cfg_common_prefix;
+###	cfg_common_prefix=$prefix;
+##fi;
+##if [ ! -z "$cfg_common_prefix_bin" ]; then
+##	var_prefix_bin=$cfg_common_prefix_bin;
+###	cfg_common_prefix_bin=$prefix_bin;
+##else
+##	var_prefix_bin="$var_prefix/bin";
+##fi;
+##if [ ! -z "$cfg_common_prefix_lib" ]; then
+##	var_prefix_lib=$cfg_common_prefix_lib;
+###	cfg_common_prefix_lib=$prefix_lib;
+##else
+##	var_prefix_lib="$var_prefix/${libdirname}";
+##fi;
+##if [ ! -z "$cfg_common_prefix_inc" ]; then
+##	var_prefix_inc=$cfg_common_prefix_inc;
+###	cfg_common_prefix_inc=$prefix_inc;
+##else
+##	var_prefix_inc="$var_prefix/include";
+##fi;
+
+#var_prefix=`readlink -m $var_prefix`;
+#var_prefix_bin=`readlink -m $var_prefix_bin`;
+#var_prefix_lib=`readlink -m $var_prefix_lib`;
+#var_prefix_inc=`readlink -m $var_prefix_inc`;
+
+##curdir=`pwd`
+##rsdu_topdir=$curdir
+##topdir=$curdir
+
+#### lib_prefix=$rsdu_topdir/.buildlib # Deleted
+
+### Make ema.cfg.default
+##echo "# This file was generated automatically." > ${cs_scripts_dir}/${def_ema_cfg_filename}
+##echo "# Edit the file and rename it to /etc/ema/ema.cfg for correct starting of RSDU modules." >> ${cs_scripts_dir}/${def_ema_cfg_filename}
+##echo "" >> ${cs_scripts_dir}/${def_ema_cfg_filename}
+
+idx=0;
+while [ $idx -lt ${#servers_names[@]} ]; do
+	eval curval=\$cfg_modules_${servers_names[$idx]};
+	if [ "x$curval" == "xyes" ]; then
+		echo "sleep 10" >> ${ema_cfg_def_file_path};
+		if [ "x${servers_names[$idx]}" == "xsmagent" ]; then
+			echo "${servers_bin_names[$idx]}" >> ${ema_cfg_def_file_path};
+		else
+			echo "${servers_bin_names[$idx]} ${servers_bin_names[$idx]}_login 0" >> ${ema_cfg_def_file_path};
+		fi;
+	fi;
+	let idx=idx+1;
+done
+
+# Generating RSDUENV.default
+cat ${cs_scripts_dir}/${def_rsduenv_template_filename} | sed -e "s#@ORACLE_BASE@#${csrc_oracle_base}#g" \
+  -e "s#@ORACLE_HOME@#${csrc_oracle_home}#g" \
+  -e "s#@TNS_ADMIN@#${csrc_oracle_tns_admin}#g" \
+  -e "s#@LD_LIBRARY_PATH@#${csrc_oracle_libs}:${csrc_oracle_home}/lib#g" > ${cs_scripts_dir}/${def_rsduenv_default_filename}
+
+
+#####
+# to cut
+# Checking is needed to use RSDUENV
+##if [ "x$cfg_common_use_rsduenv" == "xyes" ]; then
+#	var_use_rsduenv=yes
+##		echo "Using RSDUENV..."
+##	if [ ! -f /etc/ema/RSDUENV ]; then
+#		var_rsduenv_path=". /etc/ema/RSDUENV; "
+#	else
+##		echo "File '/etc/ema/RSDUENV' not found!"
+#		echo "Please, check is it exists, before start 'make'."
+#		var_rsduenv_path=""
+##	fi
+##fi
+#####
+
+
+##############################################################################################
+# prepare Makefile
+
+##echo "TOPDIR = $topdir" > ${cs_rsdu_topdir}/${cs_makefile_filename}
+##echo "PREFIX = $var_prefix" >> ${cs_rsdu_topdir}/${cs_makefile_filename}
+##echo "PREFIX_BIN = $var_prefix_bin" >> ${cs_rsdu_topdir}/${cs_makefile_filename}
+##echo "PREFIX_LIB = $var_prefix_lib" >> ${cs_rsdu_topdir}/${cs_makefile_filename}
+##echo "PREFIX_INC = $var_prefix_inc" >> ${cs_rsdu_topdir}/${cs_makefile_filename}
+##echo "HW_PLATFORM = $var_hw_platform" >> ${cs_rsdu_topdir}/${cs_makefile_filename}
+##echo "RSDU_CONFIG_FILE = $rsdu_config_file_out" >> ${cs_rsdu_topdir}/${cs_makefile_filename}
+##echo "USE_RSDUENV = $cfg_common_use_rsduenv" >> ${cs_rsdu_topdir}/${cs_makefile_filename}
+##echo "CFG_ORACLE_BASE = $cfg_oracle_base" >> ${cs_rsdu_topdir}/${cs_makefile_filename}
+##echo "CFG_ORACLE_HOME = $cfg_oracle_home" >> ${cs_rsdu_topdir}/${cs_makefile_filename}
+##echo "CFG_ORACLE_TNS_ADMIN = $cfg_oracle_tns_admin" >> ${cs_rsdu_topdir}/${cs_makefile_filename}
+##echo "" >> ${cs_rsdu_topdir}/${cs_makefile_filename}
+##echo "INST_LIBSQLITE3 = "$cfg_common_inst_libsqlite3 >> ${cs_rsdu_topdir}/${cs_makefile_filename}
+##echo "INST_EMA_SCRIPT = "$cfg_common_inst_ema_script >> ${cs_rsdu_topdir}/${cs_makefile_filename}
+##echo "INST_EMA_AUTOLOAD_SCRIPT = "$cfg_common_inst_ema_autoload_script >> ${cs_rsdu_topdir}/${cs_makefile_filename}
+##echo "INST_EMA_CFG_FILE = "$cfg_common_inst_ema_cfg_file >> ${cs_rsdu_topdir}/${cs_makefile_filename}
+##echo "INST_HOST_INI_FILE = "$cfg_common_inst_host_ini_file >> ${cs_rsdu_topdir}/${cs_makefile_filename}
+##echo "INST_EMA_TIME_SCRIPT = "$cfg_common_inst_ema_time_script >> ${cs_rsdu_topdir}/${cs_makefile_filename}
+##echo "INST_RSDUENV_SCRIPT = "$cfg_common_inst_rsduenv_script >> ${cs_rsdu_topdir}/${cs_makefile_filename}
+##echo "UPDATE_SYSCLT_CONF = "$cfg_common_update_sysctl_conf >> ${cs_rsdu_topdir}/${cs_makefile_filename}
+##echo "WAIT_ORACLE_DELAY = "$cfg_common_wait_oracle_delay >> ${cs_rsdu_topdir}/${cs_makefile_filename}
+##echo "DB_TYPE = "$cfg_common_db_type >> ${cs_rsdu_topdir}/${cs_makefile_filename}
+##echo "DB_HOST = "$cfg_common_db_host >> ${cs_rsdu_topdir}/${cs_makefile_filename}
+##echo "CONFIG_NAME = '$cfg_common_confname'" >> ${cs_rsdu_topdir}/${cs_makefile_filename}
+##echo "CONFIG_DESC = '$cfg_common_confdesc'" >> ${cs_rsdu_topdir}/${cs_makefile_filename}
+##echo "" >> ${cs_rsdu_topdir}/${cs_makefile_filename}
+
+echo "include ${cs_config_defines_file_path}" > ${cs_rsdu_topdir}/${cs_makefile_filename}
+echo "" >> ${cs_rsdu_topdir}/${cs_makefile_filename}
+
+
+#write to makefile only needed projects
+idx=0;
+while [ $idx -lt ${#libs_names[@]} ]; do
+####	eval curval=\$enable_${libs_names[$idx]};
+#	eval curval=\$csrc_enable_${libs_names[$idx]};
+#	if [ "x$curval" == "xyes" ] && [ -f "${libs_makefiles[$idx]}.in" ]; then
+#		echo "SUBDIRS_LIBS += ${libs_makefiles[$idx]}" >> ${cs_rsdu_topdir}/${cs_makefile_filename};
+#	else
+#		echo "#SUBDIRS_LIBS += ${libs_makefiles[$idx]}" >> ${cs_rsdu_topdir}/${cs_makefile_filename};
+#	fi;
+#	let idx=idx+1;
+
+	if [ -f "${libs_makefiles[$idx]}.in" ]; then
+		echo "SUBDIRS_LIBS += ${libs_makefiles[$idx]}" >> ${cs_rsdu_topdir}/${cs_makefile_filename};
+#	else
+#		echo "#SUBDIRS_LIBS += ${libs_makefiles[$idx]}" >> ${cs_rsdu_topdir}/${cs_makefile_filename};
+	fi;
+	let idx=idx+1;
+done;
+echo "" >> ${cs_rsdu_topdir}/${cs_makefile_filename};
+
+idx=0;
+while [ $idx -lt ${#others_names[@]} ]; do
+#	eval curval=\$enable_${others_names[$idx]};
+	eval curval=\$csrc_enable_${others_names[$idx]};
+	if [ "x$curval" == "xyes" ] && [ -f "${others_makefiles[$idx]}.in" ]; then
+		echo "SUBDIRS_OTHERS += ${others_makefiles[$idx]}" >> ${cs_rsdu_topdir}/${cs_makefile_filename};
+	else
+		echo "#SUBDIRS_OTHERS += ${others_makefiles[$idx]}" >> ${cs_rsdu_topdir}/${cs_makefile_filename};
+	fi;
+	let idx=idx+1;
+done;
+echo "" >> ${cs_rsdu_topdir}/${cs_makefile_filename};
+
+idx=0;
+while [ $idx -lt ${#servers_names[@]} ]; do
+#	eval curval=\$enable_${servers_names[$idx]};
+	eval curval=\$csrc_enable_${servers_names[$idx]};
+	if [ "x$curval" == "xyes" ] && [ -f "${servers_makefiles[$idx]}.in" ]; then
+		echo "SUBDIRS_SERVERS += ${servers_makefiles[$idx]}" >> ${cs_rsdu_topdir}/${cs_makefile_filename};
+	else
+		echo "#SUBDIRS_SERVERS += ${servers_makefiles[$idx]}" >> ${cs_rsdu_topdir}/${cs_makefile_filename};
+	fi;
+	let idx=idx+1;
+done;
+echo "" >> ${cs_rsdu_topdir}/${cs_makefile_filename};
+
+cat ${cs_rsdu_topdir}/${cs_makefile_in_filename} >> ${cs_rsdu_topdir}/${cs_makefile_filename};
+
+# prepare Makefile. End.
+##############################################################################################
+
+
+###################################################################################################
+# Generating ema.conf.template
+
+echo "; This file was generated automatically." > ${cs_scripts_dir}/admin_scripts/usr/share/ema/etc/ema/${csrc_common_ema_conf_file}
+echo "; Edit the file and rename it to /etc/ema/ema.conf for correct starting of RSDU modules." >> ${cs_scripts_dir}/admin_scripts/usr/share/ema/etc/ema/${csrc_common_ema_conf_file}
+echo >> ${cs_scripts_dir}/admin_scripts/usr/share/ema/etc/ema/${csrc_common_ema_conf_file}
+
+idx=0;
+while [ $idx -lt ${#servers_names[@]} ]; do
+  eval curval=\$csrc_enable_${servers_names[$idx]};
+  if [ "x$curval" == "xyes" ]; then
+    echo "[${servers_bin_names[$idx]}]" >> ${cs_scripts_dir}/admin_scripts/usr/share/ema/etc/ema/${csrc_common_ema_conf_file}
+    echo "Enable = yes" >> ${cs_scripts_dir}/admin_scripts/usr/share/ema/etc/ema/${csrc_common_ema_conf_file}
+    echo "Login = ${servers_bin_names[$idx]}" >> ${cs_scripts_dir}/admin_scripts/usr/share/ema/etc/ema/${csrc_common_ema_conf_file}
+    echo "Debug = 0" >> ${cs_scripts_dir}/admin_scripts/usr/share/ema/etc/ema/${csrc_common_ema_conf_file}
+    echo >> ${cs_scripts_dir}/admin_scripts/usr/share/ema/etc/ema/${csrc_common_ema_conf_file}
+  fi;
+  let idx=idx+1;
+done;
+
+
+# Generating ema.conf.template. End
+###################################################################################################
+
+
+
+###################################################################################################
+# Configuring libraries
+
+idx=0
+#for itlib in ${libs_makefiles[*]}; do
+while [ $idx -lt ${#libs_names[@]} ]; do
+#	eval curval=\$enable_${libs_names[$idx]};
+	eval curval=\$csrc_enable_${libs_names[$idx]};
+#	if [ "x$curval" != "xyes" ]; then
+#		let idx=idx+1;
+#		continue;
+#	fi;
+	itlib=${libs_makefiles[$idx]};
+	if [ -f ${cs_rsdu_topdir}/$itlib.in ]; then
+		prjdir=$(dirname ${cs_rsdu_topdir}/$itlib);
+		prjmfin=$(basename ${cs_rsdu_topdir}/$itlib).in;
+		prjmfout=$(basename ${cs_rsdu_topdir}/$itlib);
+	else
+		prjdir=${cs_rsdu_topdir}/$itlib;
+		prjmfin="Makefile.in";
+		prjmfout="Makefile";
+	fi;
+#	eval defines_name=\$defines_${libs_names[$idx]}
+#	eval rfcopy_name=\$rfcopy_${libs_names[$idx]}
+	eval defines_name=\$csrc_defines_${libs_names[$idx]}
+	eval rfcopy_name=\$csrc_bincopy_${libs_names[$idx]}
+	configure_script_name="$prjdir/configure"
+
+# Make conigure files for each module
+	cat ${cs_scripts_dir}/configure | sed "s/@BUILD_LIBRARY@/yes/g" | sed "s/@CUSTOM_STEPS@/# No steps/g" > ${configure_script_name}
+	chmod 755 ${configure_script_name}
+
+	if [ -e $prjdir/configure ]; then 
+		echo -e "Configuring \e[32;01m$itlib\e[0m ...";
+#		prjmfout="${prjmfin%.*}";
+#		echo "$prjdir/configure --in-makefile=$prjdir/$prjmfin --out-makefile=$prjdir/$prjmfout --prefix=${cs_buildlib_prefix} --rsdu-topdir=${cs_rsdu_topdir} --rsdu-path=${cs_buildlib_prefix} --defines=$defines_name --rfcopy=$rfcopy_name --db-type=${csrc_common_db_type} --db-host=${csrc_common_db_host} --use-rsduenv=${csrc_common_use_rsduenv}";
+		cp -f ${cs_rsdu_topdir}/${cs_version_filename} ${prjdir}/"version.txt"
+		$prjdir/configure --module-name=${libs_names[$idx]} --in-makefile=$prjdir/$prjmfin --out-makefile=$prjdir/$prjmfout --prefix=${cs_buildlib_prefix} --rsdu-topdir=${cs_rsdu_topdir} --rsdu-path=${cs_buildlib_prefix} --defines=$defines_name --rfcopy=$rfcopy_name --db-type=${csrc_common_db_type} --db-host=${csrc_common_db_host} --use-rsduenv=${csrc_common_use_rsduenv};
+		echo "Res : $?";
+		if [ "$?" != "0" ]; then
+			echo -e "\e[31;01mError in configure project '$itlib'\e[0m";
+			exit 1;
+		fi
+		echo ;
+	fi
+	let idx=idx+1;
+done;
+
+###################################################################################################
+# Configuring Others
+
+#for itother in ${others_makefiles[*]}; do
+idx=0
+while [ $idx -lt ${#others_names[@]} ]; do
+#	eval curval=\$enable_${others_names[$idx]};
+	eval curval=\$csrc_enable_${others_names[$idx]};
+	if [ "x$curval" != "xyes" ]; then
+		let idx=idx+1;
+		continue;
+	fi;
+	itother=${others_makefiles[$idx]};
+	if [ -f ${cs_rsdu_topdir}/$itother.in ]; then
+		prjdir=$(dirname ${cs_rsdu_topdir}/$itother);
+		prjmfin=$(basename ${cs_rsdu_topdir}/$itother).in;
+		prjmfout=$(basename ${cs_rsdu_topdir}/$itother);
+	else
+		prjdir=${cs_rsdu_topdir}/$itother;
+		prjmfin="Makefile.in";
+		prjmfout="Makefile";
+	fi;
+#	eval defines_name=\$defines_${others_names[$idx]}
+#	eval rfcopy_name=\$rfcopy_${others_names[$idx]}
+	eval defines_name=\$csrc_defines_${others_names[$idx]}
+	eval rfcopy_name=\$csrc_bincopy_${others_names[$idx]}
+	configure_script_name="$prjdir/configure"
+
+	cat ${cs_scripts_dir}/configure | sed "s/@BUILD_LIBRARY@/no/g" | sed "s/@CUSTOM_STEPS@/# No steps/g" > ${configure_script_name}
+	chmod 755 ${configure_script_name}
+
+	if [ -e $prjdir/configure ]; then 
+		echo -e "Configuring \e[32;01m$itother\e[0m ...";
+#		prjmfout="${prjmfin%.*}";
+#		echo "$prjdir/configure --in-makefile=$prjdir/$prjmfin --out-makefile=$prjdir/$prjmfout --prefix=${csrc_common_prefix} --rsdu-topdir=${cs_rsdu_topdir} --rsdu-path=${cs_buildlib_prefix} --defines=$defines_name --rfcopy=$rfcopy_name --db-type=${csrc_common_db_type} --db-host=${csrc_common_db_host} --use-rsduenv=${csrc_common_use_rsduenv}";
+		cp -f ${cs_rsdu_topdir}/${cs_version_filename} ${prjdir}/"version.txt"
+		$prjdir/configure --module-name=${others_names[$idx]} --in-makefile=$prjdir/$prjmfin --out-makefile=$prjdir/$prjmfout --prefix=${csrc_common_prefix} --rsdu-topdir=${cs_rsdu_topdir} --rsdu-path=${cs_buildlib_prefix} --defines=$defines_name --rfcopy=$rfcopy_name --db-type=${csrc_common_db_type} --db-host=${csrc_common_db_host} --use-rsduenv=${csrc_common_use_rsduenv};
+		echo "Res : $?";
+		if [ "$?" != "0" ]; then
+			echo -e "\e[31;01mError in configure project '$itother'\e[0m";
+			exit 1;
+		fi
+		echo ;
+	fi
+	let idx=idx+1;
+done;
+
+###################################################################################################
+# Configuring Servers
+
+#for itserver in ${servers_makefiles[*]}; do
+idx=0
+while [ $idx -lt ${#servers_names[@]} ]; do
+#	eval curval=\$enable_${servers_names[$idx]};
+	eval curval=\$csrc_enable_${servers_names[$idx]};
+
+	if [ "x$curval" != "xyes" ]; then
+		let idx=idx+1;
+		continue;
+	fi;
+
+	itserver=${servers_makefiles[$idx]};
+	if [ -f ${cs_rsdu_topdir}/$itserver.in ]; then
+		prjdir=$(dirname ${cs_rsdu_topdir}/$itserver);
+		prjmfin=$(basename ${cs_rsdu_topdir}/$itserver).in;
+		prjmfout=$(basename ${cs_rsdu_topdir}/$itserver);
+	else
+		prjdir=${cs_rsdu_topdir}/$itserver;
+		prjmfin="Makefile.in";
+		prjmfout="Makefile";
+	fi;
+
+#	eval defines_name=\$defines_${servers_names[$idx]}
+#	eval rfcopy_name=\$rfcopy_${servers_names[$idx]}
+	eval defines_name=\$csrc_defines_${servers_names[$idx]}
+	eval rfcopy_name=\$csrc_bincopy_${servers_names[$idx]}
+	configure_script_name="$prjdir/configure"
+
+	echo "Current server: ${servers_names[$idx]}"
+	if [ "x${servers_names[$idx]}" == "xelreg" ] || [ "x${servers_names[$idx]}" == "xphreg" ]; then
+		eval mkcalc_out_file="\${csrc_${servers_names[$idx]}_mkcalc_out_file}"
+		eval mkcalc_server="\${csrc_${servers_names[$idx]}_mkcalc_server}"
+		eval mkcalc_db_login="\${csrc_${servers_names[$idx]}_mkcalc_db_login}"
+		eval mkcalc_db_password="\${csrc_${servers_names[$idx]}_mkcalc_db_password}"
+		eval mkcalc_srcdir="\${csrc_${servers_names[$idx]}_mkcalc_srcdir}"
+		eval mkcalc_from_file="\${csrc_${servers_names[$idx]}_mkcalc_from_file}"
+		eval mkcalc_samba="\${csrc_${servers_names[$idx]}_mkcalc_samba}"
+		eval mkcalc_smb_username="\${csrc_${servers_names[$idx]}_mkcalc_smb_username}"
+		eval mkcalc_smb_password="\${csrc_${servers_names[$idx]}_mkcalc_smb_password}"
+		eval mkcalc_smb_sname="\${csrc_${servers_names[$idx]}_mkcalc_smb_sname}"
+		eval mkcalc_smb_mpoint="\${csrc_${servers_names[$idx]}_mkcalc_smb_mpoint}"
+		eval mkcalc_fsrcdir="\${csrc_${servers_names[$idx]}_mkcalc_fsrcdir}"
+		custom_step="${cs_scripts_dir}/mkcalcelph.sh --out-file=${prjdir}/src/${mkcalc_out_file} --server=${mkcalc_server} --db-host=${csrc_common_db_host} --db-login=${mkcalc_db_login} --db-password=\"${mkcalc_db_password}\" --srcdir=${prjdir}/src --from-file=${mkcalc_from_file} --samba=${mkcalc_samba} --smb-username=${mkcalc_smb_username} --smb-password=\"${mkcalc_smb_password}\" --smb-sname=${mkcalc_smb_sname} --smb-mpoint=${mkcalc_smb_mpoint} --fsrcdir=${mkcalc_fsrcdir}"
+		custom_step=`echo $custom_step | sed "s/\//\\\\\\\\\//g"`
+#		echo "Custom steps : $custom_step";
+		cat ${cs_scripts_dir}/configure | sed "s/@BUILD_LIBRARY@/no/g" | sed "s/@CUSTOM_STEPS@/$custom_step/g" > $prjdir/configure.tmp
+		eval configure_script_name="$prjdir/configure.${servers_names[$idx]}"
+	else
+		cat ${cs_scripts_dir}/configure | sed "s/@BUILD_LIBRARY@/no/g" | sed "s/@CUSTOM_STEPS@/# No steps/g" > $prjdir/configure.tmp
+	fi
+	mv -f $prjdir/configure.tmp ${configure_script_name}
+	chmod 755 ${configure_script_name}
+
+	if [ -e ${configure_script_name} ]; then 
+		echo -e "Configuring \e[32;01m$itserver\e[0m ...";
+#		prjmfout="${prjmfin%.*}"; 
+		cp -f ${cs_rsdu_topdir}/${cs_version_filename} ${prjdir}/"version.txt"
+		${configure_script_name} --module-name=${servers_names[$idx]} --in-makefile=$prjdir/$prjmfin --out-makefile=$prjdir/$prjmfout --prefix=${csrc_common_prefix} --rsdu-topdir=${cs_rsdu_topdir} --rsdu-path=$cs_buildlib_prefix --defines=$defines_name --rfcopy=$rfcopy_name --db-type=${csrc_common_db_type} --db-host=${csrc_common_db_host} --use-rsduenv=${csrc_common_use_rsduenv};
+		if [ "$?" != "0" ]; then
+			echo -e "\e[31;01mError in configure project '$itserver'\e[0m";
+			exit 1;
+		fi
+		echo ;
+	fi
+	let idx=idx+1;
+done;
+
+#########################################################3
+# Write configure file
+#if [ -z "$rsdu_config_file_out" ]; then
+#	rsdu_config_file_out=rsdu.config
+#fi
+
+
+if [ "x$key_rsdu_config_out_enabled" = "xyes" ] || [ ! -e ${csrc_rsdu_config_file_out} ] ; then
+	echo -e "\e[32;01m================================================================\e[0m";
+	echo -e "\e[32;01m  Generating RSDU config file for ${csrc_common_config_name}\e[0m";
+	echo -e "\e[32;01m================================================================\e[0m";
+
+	echo "Config file name is '${csrc_rsdu_config_file_out}'"
+	echo
+
+	echo "; This file was generated automatically by RSDU configure script" > ${csrc_rsdu_config_file_out}
+	echo "; ${csrc_common_config_name}. ${csrc_common_config_desc}" >> ${csrc_rsdu_config_file_out}
+	echo >> ${csrc_rsdu_config_file_out}
+	echo "[common]" >> ${csrc_rsdu_config_file_out}
+	echo "product_name="${csrc_common_product_name} >> ${csrc_rsdu_config_file_out}
+	echo "config_name="${csrc_common_config_name} >> ${csrc_rsdu_config_file_out}
+	echo "config_desc="${csrc_common_config_desc} >> ${csrc_rsdu_config_file_out}
+	echo "prefix="${csrc_common_prefix} >> ${csrc_rsdu_config_file_out}
+	echo "prefix_bin="${csrc_common_prefix_bin} >> ${csrc_rsdu_config_file_out}
+	echo "prefix_lib="${csrc_common_prefix_lib} >> ${csrc_rsdu_config_file_out}
+	echo "prefix_inc="${csrc_common_prefix_inc} >> ${csrc_rsdu_config_file_out}
+	echo "install_ema_script="${csrc_common_install_ema_script} >> ${csrc_rsdu_config_file_out}
+	echo "install_ema_autoload_script="${csrc_common_install_ema_autoload_script} >> ${csrc_rsdu_config_file_out}
+	echo "install_ema_cfg_file="${csrc_common_install_ema_cfg_file} >> ${csrc_rsdu_config_file_out}
+	echo "install_host_ini_file="${csrc_common_install_host_ini_file} >> ${csrc_rsdu_config_file_out}
+	echo "install_ematime_script="${csrc_common_install_ematime_script} >> ${csrc_rsdu_config_file_out}
+	echo "inst_rsduenv_script="${csrc_common_install_rsduenv_script} >> ${csrc_rsdu_config_file_out}
+	echo "update_sysctl_conf="${csrc_common_update_sysctl_conf} >> ${csrc_rsdu_config_file_out}
+	echo "install_logrotate="${csrc_common_install_logrotate} >> ${csrc_rsdu_config_file_out}
+	echo "wait_database_delay="${csrc_common_wait_db_delay} >> ${csrc_rsdu_config_file_out}
+	echo "db_type="${csrc_common_db_type} >> ${csrc_rsdu_config_file_out}
+	echo "db_host="${csrc_common_db_host} >> ${csrc_rsdu_config_file_out}
+	echo "use_rsduenv="${csrc_common_use_rsduenv} >> ${csrc_rsdu_config_file_out}
+	echo >> ${csrc_rsdu_config_file_out}
+
+	echo "[oracle]" >> ${csrc_rsdu_config_file_out}
+	echo "client_base="${csrc_oracle_base} >> ${csrc_rsdu_config_file_out}
+	echo "client_home="${csrc_oracle_home} >> ${csrc_rsdu_config_file_out}
+	echo "client_tns_admin="${csrc_oracle_tns_admin} >> ${csrc_rsdu_config_file_out}
+	echo "headers_path="${csrc_oracle_headers_path} >> ${csrc_rsdu_config_file_out}
+	echo "libs_path="${csrc_oracle_libs_path} >> ${csrc_rsdu_config_file_out}
+	echo >> ${csrc_rsdu_config_file_out}
+
+# Write 'modules' section
+	echo "[modules]" >> ${csrc_rsdu_config_file_out}
+	for module in ${allprojects_names[@]}; do
+		eval module_presents=\$csrc_enable_${module}
+		if [ "x$module_presents" == "xYes" ] || [ "x$module_presents" == "xyes" ]; then
+			echo "$module=yes" >> ${csrc_rsdu_config_file_out}
+		else
+			echo "$module=no" >> ${csrc_rsdu_config_file_out}
+		fi
+	done
+
+# Write section for each module
+	for module in ${allprojects_names[@]}; do
+		eval module_presents=\$csrc_enable_${module}
+		if [ "x$module_presents" == "xYes" ] || [ "x$module_presents" == "xyes" ]; then
+			module_defines=csrc_defines_${module}
+			module_bincopy=csrc_bincopy_${module}
+			echo >> ${csrc_rsdu_config_file_out}
+			echo "[$module]" >> ${csrc_rsdu_config_file_out}
+			echo "defines="${!module_defines} >> ${csrc_rsdu_config_file_out}
+			echo "bincopy="${!module_bincopy} >> ${csrc_rsdu_config_file_out}
+
+			if [ "x$module" == "xelreg" ] || [ "x$module" == "xphreg"  ]; then
+				eval echo "mkcalc_out_file=\${csrc__${module}_mkcalc_out_file}" >> ${csrc_rsdu_config_file_out}
+				eval echo "mkcalc_server=\${csrc_${module}_mkcalc_server}" >> ${csrc_rsdu_config_file_out}
+				eval echo "mkcalc_db_login=\${csrc_${module}_mkcalc_db_login}" >> ${csrc_rsdu_config_file_out}
+				eval echo "mkcalc_db_password=\${csrc_${module}_mkcalc_db_password}" >> ${csrc_rsdu_config_file_out}
+				eval echo "mkcalc_srcdir=\${csrc_${module}_mkcalc_srcdir}" >> ${csrc_rsdu_config_file_out}
+				eval echo "mkcalc_from_file=\${csrc_${module}_mkcalc_from_file}" >> ${csrc_rsdu_config_file_out}
+				eval echo "mkcalc_samba=\${csrc_${module}_mkcalc_samba}" >> ${csrc_rsdu_config_file_out}
+				eval echo "mkcalc_smb_username=\${csrc_${module}_mkcalc_smb_username}" >> ${csrc_rsdu_config_file_out}
+				eval echo "mkcalc_smb_password=\${csrc_${module}_mkcalc_smb_password}" >> ${csrc_rsdu_config_file_out}
+				eval echo "mkcalc_smb_sname=\${csrc_${module}_mkcalc_smb_sname}" >> ${csrc_rsdu_config_file_out}
+				eval echo "mkcalc_smb_mpoint=\${csrc_${module}_mkcalc_smb_mpoint}" >> ${csrc_rsdu_config_file_out}
+				eval echo "mkcalc_fsrcdir=\${csrc_${module}_mkcalc_fsrcdir}" >> ${csrc_rsdu_config_file_out}
+			fi
+		fi
+	done
+
+	echo >> ${csrc_rsdu_config_file_out}
+fi
+
+echo -e "\e[32;01m================================================================\e[0m";
+echo -e "\e[32;01m  ${csrc_common_config_name}. (${csrc_common_config_desc})\e[0m";
+echo -e "\e[32;01m  Configuring of all projects has finished successfully.\e[0m";
+echo -e "\e[32;01m================================================================\e[0m";

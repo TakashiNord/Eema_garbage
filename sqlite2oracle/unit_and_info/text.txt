@@ -1,0 +1,439 @@
+
+
+           // Если пишем в Oracle
+           // 1/ Открываем соединение
+           // 2/ Устанавливаем роли
+           // 3/ Вызываем arc_writer_pkg.prepare_table
+           // 5/  вставляем записи insert.
+           // 6/ Вызываем перенос (arc_writer_pkg.MOVE_DATA) из таблицы стэка
+           // 7/ завершаем
+
+
+
+void jn_null(COMMON_SIGNAL *cs, uint32_t cs_len, char *qr, LOG_HEADER* fp)
+{
+    J_PSTATE_STR    *pr_st = NULL;
+    char             buf[J_PSTATE_STR_DESC_SIZE];
+    time_t           ct;
+
+    pr_st = (J_PSTATE_STR *)cs;
+    memset(buf, 0, J_PSTATE_STR_DESC_SIZE);
+    if (cs_len == sizeof(J_PSTATE_STR))
+        strncpy(buf, (*pr_st).description, J_PSTATE_STR_DESC_SIZE);
+    buf[J_PSTATE_STR_DESC_SIZE-1] = '\0';
+
+    ct = RSDURTGUtils_Time70();
+    sprintf(qr, J_PSTATE_SQL_FMT,
+        (*pr_st).sh.signal,
+        (uint32_t)(*pr_st).sh.id_src_user,
+        (uint32_t)(*pr_st).sh.id_cause_user,
+        (uint32_t)ct,
+        buf);
+
+    return;
+}
+
+
+       // for (col = 0; col < sqlite3_column_count(stmt); col++) {
+       //     fprintf(f, "%s ", sqlite3_column_name(stmt, col));
+       // }
+
+        while ((result = sqlite3_step(stmt)) == SQLITE_ROW) {
+            fprintf(f, "\n");
+            for (col = 0; col < sqlite3_column_count(stmt); col++) {
+                switch (sqlite3_column_type(stmt, col)) {
+                case 1:
+                    fprintf(f, "%i ", sqlite3_column_int(stmt, col));
+                    break;
+                case 2:
+                    fprintf(f, "%f ",
+                            sqlite3_column_double(stmt, col));
+                    break;
+                case 3:
+                    fprintf(f, "%s ",
+                            sqlite3_column_text(stmt, col));
+                    break;
+                case 4:
+                    fprintf(f, "%s ",
+                            (char *)sqlite3_column_blob(stmt, col));
+                    break;
+                case 5:
+                    fprintf(f, "(null) ");
+                    break;
+                }
+            }
+
+
+         
+         for ( ossim_int32 i = 0; i < nCol; ++i )
+         {
+            colName = sqlite3_column_name(pStmt, i);
+            type = sqlite3_column_type(pStmt, i);
+
+            if ( colName.size() )
+            {
+               if ( ( colName == "id" ) && ( type == SQLITE_INTEGER ) )
+               {
+                  m_id = sqlite3_column_int(pStmt, i);
+                  ++columnsFound;
+               }
+               else if ( ( colName == "zoom_level" ) && ( type == SQLITE_INTEGER ) )
+               {
+                  m_zoom_level = sqlite3_column_int(pStmt, i);
+                  ++columnsFound;
+               }
+               else if ( ( colName == "tile_column" ) && ( type == SQLITE_INTEGER ) )
+               {
+                  m_tile_column = sqlite3_column_int(pStmt, i);
+                  ++columnsFound;
+               }
+               else if ( ( colName == "tile_row" ) && ( type == SQLITE_INTEGER ) )
+               {
+                  m_tile_row = sqlite3_column_int(pStmt, i);
+                  ++columnsFound;
+               }
+               else if ( ( colName == "tile_data" ) && ( type == SQLITE_BLOB ) )
+               {
+                  ++columnsFound;
+
+                  if ( m_copy_tile_flag )
+                  {
+                     ossim_int32 bytes = sqlite3_column_bytes( pStmt, i );
+                     if ( bytes )
+                     {
+                        //---
+                        // Copy the tile data as it will go away on the next:
+                        // sqlite3_step(), sqlite3_reset() or sqlite3_finalize()
+                        //---
+                        m_tile_data.resize( bytes );
+                        std::memcpy( (void*)&m_tile_data.front(),
+                                     sqlite3_column_blob( pStmt, i ), bytes );
+                     }
+                  }
+               }
+               else
+               {
+                  ossimNotify(ossimNotifyLevel_WARN)
+                     << M << " Unexpected column type[" << i << "]: " << type << std::endl;
+                  break;
+               }
+            } // Matches: if ( colName.size() )
+            
+            if ( columnsFound == EXPECTED_COLUMNS )
+            {
+               status = true;
+               break;
+            }
+
+
+
+
+        sprintf(buf, J_PSTATE_SQL_FMT, curr_sign.ss.signal, (uint32_t)curr_sign.ph.src_uid, (uint32_t)curr_sign.ph.src_uid,
+            (uint32_t)curr_sign.ss.timetick.tv_sec, "");
+
+        ui = RSDURTGUtils_DBOpenConnection(Env->UserAlias, Env->password, ODBC_WAIT, LogFile);
+        if (ui != (DB_ACCES_INFO *)0)
+        {
+            if (RSDURTGUtils_DBSQLExec(ui, buf, ODBC_WAIT, LogFile) < 0)
+            {
+                RSDURTGUtils_UnilogMessage(LOG_ERR, LogFile, "Main task: %s, %s", buf, RSDURTGUtils_DBGetError(ui));
+                RSDURTGUtils_LogTimeOff(LogFile);
+                RSDURTGUtils_UnilogMessage(LOG_ERR, LogFile, "%s", buf);
+                RSDURTGUtils_LogTimeOn(LogFile);
+            }
+            else
+            {
+                if (RSDURTGUtils_DBSQLExec(ui, "COMMIT", 100, LogFile) < 0)
+                {
+                    RSDURTGUtils_UnilogMessage(LOG_ERR, LogFile, "Main task: COMMIT failed to save APLOADINIT signal %s", RSDURTGUtils_DBGetError(ui));
+                }
+            }
+            RSDURTGUtils_DBDataDispose(ui);
+            RSDURTGUtils_DBClose(ui);
+        }
+        else
+        {
+            RSDURTGUtils_UnilogMessage(LOG_ERR, LogFile, "Main task: Error open DB Connection");
+            RSDURTGUtils_LogTimeOff(LogFile);
+            RSDURTGUtils_UnilogMessage(LOG_ERR, LogFile, "%s", buf);
+            RSDURTGUtils_LogTimeOn(LogFile);
+        }
+
+ string passwd;
+  int res;
+  …
+Statement *stmt = conn->createStatement("BEGIN :v1 := insclient(:v2,:v3,:v4); END;");
+// устанавливаем параметры
+stmt->setString(2,login);
+// регистрируем выходные параметры
+stmt->registerOutParam(1,OCCIINT,sizeof(res));
+stmt->registerOutParam(3,OCCISTRING,pass_length+2);
+// устанавливаем значение параметров для IN/OUT после регистрации !!!
+stmt->setString(3,pass_syms.c_str());
+stmt->setString(4,command);
+stmt->execute();
+// получаем результат выполнения
+res = stmt->getInt(1);
+// получаем указатель на результат
+passwd = stmt->getString(3);
+// освобождение ресурсов
+conn->terminateStatement(stmt);
+env->terminateConnection(conn);	
+
+#if defined(WITH_DB_ORACLE)
+#define SQL_CHANGE_PASSWD "declare \
+retval NUMBER; \
+begin \
+retval:= user_change_pswd('%s'); \
+end;"
+#elif defined(WITH_DB_MYSQL)
+#define SQL_CHANGE_PASSWD "SET PASSWORD = PASSWORD('%s')"
+#else
+#error "DB not defined"
+#endif
+
+int32_t  RSDURTGUtils_DBChangePasswd(DB_ACCES_INFO * ui, char *new_passwd)
+{
+    int32_t  res = 0;
+    char buf[255];
+
+    if (ui == (DB_ACCES_INFO *)0)
+        return -1;
+
+    sprintf(buf, SQL_CHANGE_PASSWD, new_passwd);
+    res = RSDURTGUtils_DBSQLExec( ui, buf,(uint16_t)1000, (*ui).lfp);
+    RSDURTGUtils_DBDataDispose(ui);
+
+    return res;
+}
+
+
+
+                           arcstruct.id_tbllst = static_cast<int32_t>(profile.LstTblID);
+                           arcstruct.id_ginfo = static_cast<int32_t>(ID_profile);
+                           arcstruct.id = static_cast<int32_t>(id);
+                           arcstruct.time1970 = static_cast<int64_t>(time1970) * 1000LL + static_cast<int64_t>(time_mks) / 1000LL;
+                           arcstruct.state = static_cast<int64_t>(state);
+                           arcstruct.min_val = min_val;
+                           arcstruct.max_val = max_val;
+                           if (profile.Depth)//Если глубина хранения не ноль (0 = хранить неограниченное время)
+                           {
+                               //Расчёт сдвига для глубины хранения (относительно текущего времени) на случай, если метка времени у данных за прошлое (восстановление данных)
+                               cass_int32_t time_diff = static_cast<cass_int32_t>(cur_time) - static_cast<cass_int32_t>(time1970);
+                               arcstruct.depth = static_cast<cass_int32_t>(profile.Depth) - time_diff;
+                           }
+
+                           oracle_archive.push_back(arcstruct);
+
+                           count_rec ++ ; // подсчет числа вставленных записей
+						   
+
+
+
+int InitRsduDBVersion(DB_ACCES_INFO &ui, RSDUDBVersion_t &rsduDbVer, LOG_CONTAINER *plog, bool autoload)
+{
+  char *rec = NULL;
+  int32_t result = 0;
+  int nscan = 0;
+  int db_read_err = 0;
+  RSDUDBUpdateDesc_t DbUpdDesc;
+
+  RsduDbVersionClean(rsduDbVer);
+
+  if( autoload )
+    result = RSDURTGUtils_DBSQLExecAL(&ui, RSDUDB_GET_VERSION_SQL, DEFAULT_RSDUDB_QUERY_TIMEOUT, plog);
+  else
+    result = RSDURTGUtils_DBSQLExec(&ui, RSDUDB_GET_VERSION_SQL, DEFAULT_RSDUDB_QUERY_TIMEOUT, plog);
+
+  if( result >= 0 )
+  {
+
+    while( (rec = (( autoload ) ? RSDURTGUtils_DBFetchAL(&ui) : RSDURTGUtils_DBFetch(&ui) )) != NULL )
+    {
+      if( (nscan = sscanf(rec, RSDUDB_GET_VERSION_FMT,
+          &(DbUpdDesc.id),
+          &(DbUpdDesc.upddt),
+          DbUpdDesc.alias,
+          &(DbUpdDesc.state))) != RSDUDB_GET_VERSION_NUM)
+      {
+          RSDURTGUtils_UnilogMessage(LOG_ERR, plog, "InitRsduDBVersion(): DBUpdate scanf error, need - %d, scan - %d",
+                                     RSDUDB_GET_VERSION_NUM,
+                                     nscan);
+          ++db_read_err;
+          continue;
+      }
+
+      *strchr(DbUpdDesc.alias, ' ') = '\0'; /* set first space occurrence to 0 */
+
+      RSDURTGUtils_UnilogMessage(LOG_DEBUG, plog, "InitRsduDBVersion(): DBUpd: % 9d % 9d % 3d '%s'",
+                                 DbUpdDesc.id,
+                                 DbUpdDesc.upddt,
+                                 DbUpdDesc.state,
+                                 DbUpdDesc.alias);
+
+      for(int i = DBUpd_Undefined+1; i < DBUpd_Max; ++i)
+      {
+        RSDURTGUtils_UnilogMessage(LOG_DEBUG, plog, "InitRsduDBVersion(): % 3d Compare name '%s' with readed '%s'...", i, RSDUDBUpdatesNames[i], DbUpdDesc.alias);
+        if( strcmp(RSDUDBUpdatesNames[i], DbUpdDesc.alias) == 0 )
+        {
+          SetRsduDBUpdateState(rsduDbVer, static_cast<DBUpdatesIds_t>(i), true);
+          RSDURTGUtils_UnilogMessage(LOG_DEBUG, plog, "InitRsduDBVersion():   ...found");
+          break;
+        }
+      }
+
+    }
+
+    RSDURTGUtils_DBDataDispose(&ui);
+  }
+  else
+  {
+    RSDURTGUtils_UnilogMessage(LOG_ERR, plog, "InitRsduDBVersion(): Error in executing sql='%s'", RSDUDB_GET_VERSION_SQL);
+    ++db_read_err;
+  }
+
+
+  return db_read_err;
+}
+
+
+
+
+
+ cmd.CommandText="SET ROLE BASE_EXT_CONNECT_OIK , ARC_STAND_ADMIN";
+
+
+                try
+              {
+                 cmd.ExecuteNonQuery();
+                 vRetVal = cmd.Parameters["vRetVal"].Value.ToString() ;
+              }
+              catch (Exception ex8)
+              {
+                 AddLogString("Не удалось вызвать процедуру очистки таблицы стэка.");
+                 AddLogString("Ошибка вызова процедуры ="+ex8.Message);
+                 cnn.Close(); // закрываем oRacle
+                 connection.Close(); // закрываем sqlite
+                 continue ; // продолжаем со следующего файла
+              }
+
+              if (vRetVal!="") {
+                 AddLogString("Ошибка при работе процедуры(arc_writer_pkg.prepare_table) = " + vRetVal );
+                 cnn.Close();// закрываем oRacle
+                 connection.Close();// закрываем sqlite
+                 continue ; // продолжаем со следующего файла
+              }
+
+              AddLogString("Вызов процедуры очистки таблицы стэка прошел успешно.");
+              AddLogString("Идет перенос данных в таблицу = "+tblName+". Подождите...");
+
+            }
+
+
+              AddLogString("Вызов процедуры переноса данных (arc_writer_pkg.MOVE_DATA) из таблицы стэка. Подождите......");
+
+              cmd.CommandType = System.Data.CommandType.StoredProcedure;
+              cmd.Parameters.Clear();
+              cmd.CommandText = "{? = call arc_writer_pkg.move_data( ? )}";
+
+              OdbcParameter parOut = new OdbcParameter();
+              parOut.Direction = System.Data.ParameterDirection.ReturnValue;
+              parOut.OdbcType = OdbcType.NChar;
+              parOut.ParameterName = "vRetVal";
+              parOut.Size = 1024;
+
+              cmd.Parameters.Add(parOut);
+
+              OdbcParameter param = new OdbcParameter();
+              param.Direction = System.Data.ParameterDirection.Input;
+              param.OdbcType = OdbcType.NChar;
+              param.ParameterName = "pTname";
+              param.Value = tblName;
+              param.Size = 1024 ;
+
+              cmd.Parameters.Add(param);
+
+              vRetVal = "" ;
+              try
+              {
+                cmd.ExecuteNonQuery();
+                vRetVal = cmd.Parameters["vRetVal"].Value.ToString() ;
+              }
+              catch (Exception ex11)
+              {
+                AddLogString("Не удалось вызвать процедуру переноса данных из таблицы стэка.");
+                AddLogString("Ошибка вызова процедуры ="+ex11.Message);
+              }
+
+              if (vRetVal!="") {
+                  AddLogString("Ошибка при работе процедуры (arc_writer_pkg.MOVE_DATA) = " + vRetVal );
+              } else {
+                  AddLogString("Вызов процедуры переноса данных из таблицы стэка прошел успешно." );
+              }
+
+              cnn.Close();
+
+
+
+
+       //Чтение информации о хостах кластера Cassandra
+       if (0 == db_err)
+       {
+           std::cout << "Reading Cassandra cluster hosts' addresses:" << std::endl;
+           sprintf(sql, SRV_CASSHOSTS_SQL);
+           int cn = RSDURTGUtils_DBSQLExec(ui, sql, DBTimeout, log.getPointer());
+           if (cn > 0)
+           {
+               listCassHosts.reserve(cn);
+               int i = 0;
+               char *psz = NULL;
+               while ((psz = RSDURTGUtils_DBFetch(ui)) != NULL)
+               {
+                   if (sscanf((const char *)psz, SRV_CASSHOSTS_FMT, host_addr, &port_num) != SRV_CASSHOSTS_NUM)
+                   {
+                       std::cerr << "Error scan DB row" << std::endl;
+                       ++db_err;
+                   }
+                   else
+                   {
+                       rtrim(host_addr, sizeof(host_addr));
+                       strcpy(cass_host.host_addr, host_addr);
+                       cass_host.host_port = port_num;
+                       listCassHosts.push_back(cass_host);
+                       std::cout << "Cassandra host #"<< i++ <<": " << cass_host.host_addr << ":" << cass_host.host_port << std::endl;
+                   }
+               }
+           }
+           else
+           if (cn < 0)
+           {
+              std::cerr << "DB error SQL: <" << sql <<  ">, Error message: " << RSDURTGUtils_DBGetError(ui) << std::endl;
+              ++db_err;
+           }
+           RSDURTGUtils_DBDataDispose(ui);
+       }//if (0 == db_err)
+
+       RsduCassCluster cass_cluster;
+       if (0 == db_err)
+       {
+           if (listCassHosts.empty()) //Нет информации о хостах Cassandra - серверу некуда подключаться
+           {
+               std::cerr << "Error: No CASSANDRA hosts!" << std::endl;
+               ++db_err;
+           }
+           else
+           try
+           {
+               cass_cluster.Init(listCassHosts.data(), listCassHosts.size(), log.getPointer(), 0);
+               RsduCassSession cass_session(&cass_cluster, CassWriteTimeout);
+               std::string versioninfostr;
+               stringmap mapCassVersionInfo;
+               cass_session.CheckConnection(versioninfostr, mapCassVersionInfo);
+               std::cout << "CASSANDRA test connection successful, system info:\n" << versioninfostr.c_str() << std::endl;
+           }
+           catch (RsduCassException &e)
+           {
+               std::cerr << "CASSANDRA test connection failed, error: " << e.what() << std::endl;
+               ++db_err;
+           }
+       }

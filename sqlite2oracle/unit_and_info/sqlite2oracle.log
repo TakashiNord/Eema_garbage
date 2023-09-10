@@ -1,0 +1,12 @@
+29.08.2023 18:04:34.895 [INFO ] Reading the DB start
+29.08.2023 18:04:35.271 [INFO ] Вызов процедуры очистки таблицы стэка (arc_writer_pkg.prepare_table)..., db_err = 0
+29.08.2023 18:04:36.805 [INFO ] Reading the DB end, db_err = 0
+29.08.2023 18:04:36.805 [INFO ] Starting Data reading and loading to Oracle
+29.08.2023 18:04:37.473 [INFO ] Вызываем перенос (arc_writer_pkg.move_data) из таблицы стэка..., db inserts = 98
+29.08.2023 18:04:38.683 [INFO ] End loading to Oracle
+29.08.2023 18:26:51.830 [INFO ] Reading the DB start
+29.08.2023 18:26:51.923 [INFO ] Вызов процедуры очистки таблицы стэка (arc_writer_pkg.prepare_table)..., db_err = 0
+29.08.2023 18:26:52.632 [INFO ] Reading the DB end, db_err = 0
+29.08.2023 18:26:52.633 [INFO ] Starting Data reading and loading to Oracle
+29.08.2023 18:26:53.150 [INFO ] Вызываем перенос (arc_writer_pkg.move_data) из таблицы стэка..., db inserts = 98
+29.08.2023 18:26:53.231 [INFO ] End loading to Oracle

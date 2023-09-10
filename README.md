@@ -40,7 +40,9 @@
   
   **SysmondProject** -  эскиз проект. (C#). Управление хостом через сервис. НЕДОДЕЛАН. НЕТ ИДЕЙ. ПРОПАЛ ИНТЕРЕС.
 
-  **sqlite2cass** -  проект. (C++). Загрузка данных из БД SQLite в Cassandra. 
+  **sqlite2cass** -  проект. (C++). Загрузка данных из БД SQLite в Cassandra.
+  
+  **sqlite2oracle** -  проект. (C++). Загрузка данных из БД SQLite в Oracle.   
 
   **eemasm** - эскиз проект. (C). Посредством UNITRANS_HEADER (GCMD_GET_GLOBAL_STATE), ip:2003 опрос на состояние.
   
