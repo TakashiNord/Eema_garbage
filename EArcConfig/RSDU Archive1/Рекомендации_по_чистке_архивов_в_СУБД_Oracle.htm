@@ -116,16 +116,12 @@ ARC_STAT_CURRENT_V</FONT>
  style="mso-spacerun: yes">&nbsp; </span>as sysdba" под oracle), </FONT><FONT size=2>Сразу<span style="mso-spacerun: yes">&nbsp; </span>дали для удобства работы в нем ряд команд</FONT>         
  </p>
 
-<p  ><span style="BACKGROUND: white; mso-highlight: white"><FONT color=#0000ff>set linesize 140</FONT>
- </span></p>
-
-<p  ><span style="BACKGROUND: white; mso-highlight: white"><FONT color=#0000ff>set pagesize 999</FONT>
- </span></p>
-
-<p  ><span style="BACKGROUND: white; mso-highlight: white"><FONT color=#0000ff>alter session set 
-nls_date_format =   'dd.mm.yyyy 
-hh24:mi:ss';&lt; /FONT
-  &gt;  </span></p>
+<p  ><span style="BACKGROUND: white; mso-highlight: white"><FONT color=#0000ff>set linesize 140</FONT> <BR>
+ </span><span style="BACKGROUND: white; mso-highlight: white"><FONT color=#0000ff>set pagesize 999</FONT> <BR>
+ </span><span style="BACKGROUND: white; mso-highlight: white"><FONT color=#0000ff>alter session set 
+nls_date_format =    
+ 'dd.mm.yyyy
+  hh24:mi:ss';  </span></p>
 
 <p  ><FONT size=2>И мониторим вью ARC_STAT_CURRENT_V – вот 
 хороший запрос </FONT>        </p>
@@ -141,47 +137,30 @@ ARC_STAT_CURRENT_V;</FONT>
 
 <p  ><span style="BACKGROUND: white; mso-highlight: white"><FONT color=#000080 size=1>LAST_UPDATE<span
  style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>CUR_PROCESS<span
- style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </span>CUR_ROW ALIAS</FONT> </span></p>
-
-<p  ><span style="BACKGROUND: white; mso-highlight: white"><FONT color=#000080 size=1>------------------- ----------- 
----------- ------------------------------</FONT>
-  </span></p>
-
-<p  ><span style="BACKGROUND: white; mso-highlight: white"><FONT color=#000080 size=1>29.09.2016
+ style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </span>CUR_ROW ALIAS</FONT> 
+<BR> </span><span style="BACKGROUND: white; mso-highlight: white"><FONT color=#000080 size=1>------------------- ----------- 
+---------- ------------------------------</FONT> <BR>
+  </span><span style="BACKGROUND: white; mso-highlight: white"><FONT color=#000080 size=1>29.09.2016
 12:00:00<span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>6<span
  style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </span><span
  style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;</span>2823 ELREG_LIST_V - Уср. 
-час</FONT>    </span></p>
-
-<p  ><span style="BACKGROUND: white; mso-highlight: white"><FONT color=#000080 size=1>29.09.2016
+час</FONT> <BR>    </span><span style="BACKGROUND: white; mso-highlight: white"><FONT color=#000080 size=1>29.09.2016
 12:10:00<span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>3<span
  style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>2823 
-ELREG_LIST_V - Уср. 10</FONT>    </span></p>
-
-<p  ><span style="BACKGROUND: white; mso-highlight: white"><FONT color=#000080 size=1>29.09.2016
+ELREG_LIST_V - Уср. 10</FONT> <BR>    </span><span style="BACKGROUND: white; mso-highlight: white"><FONT color=#000080 size=1>29.09.2016
 12:00:00<span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>0<span
- style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>7 ELREG_LIST_V - Интеграл</FONT>   </span></p>
-
-<p  ><span style="BACKGROUND: white; mso-highlight: white"><FONT color=#000080 size=1>29.09.2016
+ style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>7 ELREG_LIST_V - Интеграл</FONT> <BR>   </span><span style="BACKGROUND: white; mso-highlight: white"><FONT color=#000080 size=1>29.09.2016
 12:14:55<span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>2<span
  style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp; </span>169380 ELREG_LIST_V - 
-Мгновенные5S</FONT>   </span></p>
-
-<p  ><span style="BACKGROUND: white; mso-highlight: white"><FONT color=#000080 size=1>29.09.2016
+Мгновенные5S</FONT> <BR>   </span><span style="BACKGROUND: white; mso-highlight: white"><FONT color=#000080 size=1>29.09.2016
 12:15:00 <span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>0<span
- style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>1 ELREG_LIST_V - Интеграл3мин</FONT>   </span></p>
-
-<p  ><span style="BACKGROUND: white; mso-highlight: white"><FONT color=#000080 size=1>29.09.2016
+ style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>1 ELREG_LIST_V - Интеграл3мин</FONT> <BR>   </span><span style="BACKGROUND: white; mso-highlight: white"><FONT color=#000080 size=1>29.09.2016
 12:00:00<span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>3<span
  style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>1606 
-PSWT_LIST_V - Состояния60</FONT>   </span></p>
-
-<p  ><span style="BACKGROUND: white; mso-highlight: white"><FONT color=#000080 size=1>29.09.2016
+PSWT_LIST_V - Состояния60</FONT> <BR>   </span><span style="BACKGROUND: white; mso-highlight: white"><FONT color=#000080 size=1>29.09.2016
 12:00:00<span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>2<span
  style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>158 
-PHREG_LIST_V - Уср. час</FONT>    </span></p>
-
-<p  ><span style="BACKGROUND: white; mso-highlight: white"><FONT color=#000080 size=1>29.09.2016
+PHREG_LIST_V - Уср. час</FONT> <BR>    </span><span style="BACKGROUND: white; mso-highlight: white"><FONT color=#000080 size=1>29.09.2016
 12:10:00<span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>2<span
  style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>158 
 PHREG_LIST_V - Уср. 10</FONT>    </span></p>
@@ -231,23 +210,14 @@ PHREG_LIST_V - Уср. 10</FONT>    </span></p>
 команды:</FONT>
 </p>
 
-<p  ><span style="BACKGROUND: white; mso-highlight: white">shutdown
-immediate</span></p>
-
-<p  ><span style="BACKGROUND: white; mso-highlight: white">startup
-mount</span></p>
-
-<p  ><span style="BACKGROUND: white; mso-highlight: white">alter
+<p  ><span style="BACKGROUND: white; mso-highlight: white">shutdown immediate<BR>
+</span><span style="BACKGROUND: white; mso-highlight: white">startup 
+mount<BR>
+</span><span style="BACKGROUND: white; mso-highlight: white">alter
 database NO<a name="OLE_LINK3"></a><a name="OLE_LINK2"><span style="mso-bookmark:
- OLE_LINK3">ARCHIVELOG;</span></a></span><span style="mso-bookmark: OLE_LINK2"><span
- style="mso-bookmark: OLE_LINK3"></span></span></p>
-
-<span style="mso-bookmark: OLE_LINK3"></span><span style="mso-bookmark: OLE_LINK2"></span>
-
-<p  ><span style="BACKGROUND: white; mso-highlight: white">shutdown
-immediate</span></p>
-
-<p  ><span style="BACKGROUND: white; mso-highlight: white">startup</span></p>
+ OLE_LINK3">ARCHIVELOG;</span></a><BR></span><span style="BACKGROUND: white; mso-highlight: white">shutdown 
+immediate<BR>
+</span><span style="BACKGROUND: white; mso-highlight: white">startup</span></p>
 
 <p  ><FONT color=#000000 size=2>Таким образом, мы попадаем в 
 интервал наименьшей загрузки БД и эти команды пройдут менее чем за пару минут. 
@@ -280,19 +250,17 @@ NOARCHIVELOG;</span> делаем<span style="mso-spacerun: yes">&nbsp;&nbsp; </
 ARCHIVELOG последовательность команд </FONT>       
  </p>
 
-<p  ><span style="BACKGROUND: white; mso-highlight: white">shutdown
-immediate</span></p>
+<p  ><span style="BACKGROUND: white; mso-highlight: white">shutdown immediate<BR>
+</span><span style="BACKGROUND: white; mso-highlight: white">startup 
+mount<BR>
+</span><span style="BACKGROUND: white; mso-highlight: white">alter database ARCHIVELOG;<BR>
+ </span><span style="BACKGROUND: white; mso-highlight: white">shutdown 
+immediate<BR>
+</span><span style="BACKGROUND: white; mso-highlight: white">startup</span></p>
 
-<p  ><span style="BACKGROUND: white; mso-highlight: white">startup
-mount</span></p>
+<p  ><span style="BACKGROUND: white; mso-highlight: white"></span>&nbsp;</p>
 
-<p  ><span style="BACKGROUND: white; mso-highlight: white">alter
-database ARCHIVELOG;</span></p>
-
-<p  ><span style="BACKGROUND: white; mso-highlight: white">shutdown
-immediate</span></p>
-
-<p  ><span style="BACKGROUND: white; mso-highlight: white">startup</span></p></FONT>
+<p  ><span style="BACKGROUND: white; mso-highlight: white"></span>&nbsp;</p></FONT>
 
 </body>
 
