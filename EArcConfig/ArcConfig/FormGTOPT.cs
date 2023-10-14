@@ -309,13 +309,13 @@ newDS.Tables.Add(newDT);
       {
          String hd = dataGridView1.Columns[i].HeaderText ;
          if ("DEFINE_ALIAS"==hd) {
-          comboBoxDEFINE_ALIAS.Items.Clear();
-          for (int j = 0; j < dataGridView1.RowCount ; j++)
-            {
-            var v1 = dataGridView1.Rows[j].Cells[i].Value ;
-            comboBoxDEFINE_ALIAS.Items.Insert(j,v1.ToString());
-          }
-          break ;
+           comboBoxDEFINE_ALIAS.Items.Clear();
+           for (int j = 0; j < dataGridView1.RowCount ; j++)
+             {
+             var v1 = dataGridView1.Rows[j].Cells[i].Value ;
+             comboBoxDEFINE_ALIAS.Items.Insert(j,v1.ToString());
+           }
+           break ;
          }
       }
 
@@ -538,8 +538,8 @@ newDS.Tables.Add(newDT);
        }
        String gdefinealias=comboBoxDEFINE_ALIAS.Text.Trim() ;
 
-       
-       
+
+
        int ret = 0 ;
        cmd0.CommandText="select count(*) from "+stSchema+"SYS_GTOPT WHERE DEFINE_ALIAS='"+gdefinealias+"' ;" ;
        try
@@ -548,16 +548,16 @@ newDS.Tables.Add(newDT);
        }
        catch (Exception ex1)
        {
-       	;
-       }
-       
-       String gdefine = "" ;
-       if (ret>0) {
-       	  gdefine = " - имеются повторения уникальных индентификаторов !!" ;
+        ;
        }
 
-       
-       
+       String gdefine = "" ;
+       if (ret>0) {
+          gdefine = " - имеются повторения уникальных индентификаторов !!" ;
+       }
+
+
+
        DialogResult result = MessageBox.Show ("Вставить новый тип ? \n\n" +
 "id='"+gid+"'\n" +
 "name='"+gname+"'\n" +

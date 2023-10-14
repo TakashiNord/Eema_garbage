@@ -76,25 +76,10 @@ namespace ArcConfig
      if (reader.IsDBNull(i)) {
           ;
      } else {
-      obj = reader.GetValue(i) ;
-      string stype= reader.GetDataTypeName(i).ToUpper();
+        obj = reader.GetValue(i) ;
+        string stype= reader.GetDataTypeName(i).ToUpper();
         //AddLogString("reader.GetDataTypeName = " + stype);
         ret = obj.ToString();
-
-    /*  if (stype=="DECIMAL") ret = reader.GetValue(i).ToString();
-        if (stype=="NUMBER") ret = reader.GetValue(i).ToString(); //GetDecimal(i).ToString();
-        if (stype=="VARCHAR2") ret = reader.GetString(i);
-        if (stype=="NVARCHAR") ret = reader.GetString(i);
-        if (stype=="WVARCHAR") ret = reader.GetString(i);
-        if (stype=="TEXT") ret = reader.GetString(i);
-        if (stype=="INTEGER") ret = reader.GetValue(i).ToString();
-        if (stype=="CHAR") ret = reader.GetString(i);
-        if (stype=="NCHAR") ret = reader.GetString(i);
-        if (stype=="DATE") ret = reader.GetString(i);
-        if (stype=="TIME") ret = reader.GetString(i);
-        if (stype=="DOUBLE PRECISION") ret = reader.GetValue(i).ToString();
-     */
-
      }
      return(ret);
    }

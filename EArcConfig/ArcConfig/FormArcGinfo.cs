@@ -81,25 +81,10 @@ namespace ArcConfig
      if (reader.IsDBNull(i)) {
           ;
      } else {
-      obj = reader.GetValue(i) ;
-      string stype= reader.GetDataTypeName(i).ToUpper();
+        obj = reader.GetValue(i) ;
+        string stype= reader.GetDataTypeName(i).ToUpper();
         //AddLogString("reader.GetDataTypeName = " + stype);
         ret = obj.ToString();
-
-    /*  if (stype=="DECIMAL") ret = reader.GetValue(i).ToString();
-        if (stype=="NUMBER") ret = reader.GetValue(i).ToString(); //GetDecimal(i).ToString();
-        if (stype=="VARCHAR2") ret = reader.GetString(i);
-        if (stype=="NVARCHAR") ret = reader.GetString(i);
-        if (stype=="WVARCHAR") ret = reader.GetString(i);
-        if (stype=="TEXT") ret = reader.GetString(i);
-        if (stype=="INTEGER") ret = reader.GetValue(i).ToString();
-        if (stype=="CHAR") ret = reader.GetString(i);
-        if (stype=="NCHAR") ret = reader.GetString(i);
-        if (stype=="DATE") ret = reader.GetString(i);
-        if (stype=="TIME") ret = reader.GetString(i);
-        if (stype=="DOUBLE PRECISION") ret = reader.GetValue(i).ToString();
-     */
-
      }
      return(ret);
    }
@@ -155,7 +140,7 @@ namespace ArcConfig
       }
       catch (Exception ex1)
       {
-      	;
+        ;
       }
 
       if (reader.HasRows) {
@@ -713,9 +698,9 @@ string  sl1="" +
         //save
         if (strS!="") {
 
-        	String Add_gtopt = "" ;
-        	// флаг смены типа архива в архивной таблице
-        	if (flag_gtopt>0) {
+          String Add_gtopt = "" ;
+          // флаг смены типа архива в архивной таблице
+          if (flag_gtopt>0) {
               // flag_gtopt=ID_GTOPT.ToString() - new
               // VL[1] - old
               // Объект для выполнения запросов к базе данных
@@ -724,17 +709,17 @@ string  sl1="" +
               cmd0.Connection=this._conn;
 
               cmd0.CommandText=" SELECT count(*) FROM "+stSchema+ ARC_NAME +
-              	" WHERE ID_GTOPT=" + VL[1].ToString() + " AND ID_GINFO=" + id_arcginfo ; // VL[0].ToString() ;
+                " WHERE ID_GTOPT=" + VL[1].ToString() + " AND ID_GINFO=" + id_arcginfo ; // VL[0].ToString() ;
 
               object crec1 = null ;
               try
               {
-              	crec1=cmd0.ExecuteScalar() ;
+                crec1=cmd0.ExecuteScalar() ;
               }
               catch (Exception ex1)
               {
-              	//ID_GTOPT - нет
-              	flag_gtopt=-1; //MessageBox.Show(ex1.ToString() );
+                //ID_GTOPT - нет
+                flag_gtopt=-1; //MessageBox.Show(ex1.ToString() );
               }
               cmd0.Dispose();
               if (flag_gtopt>0) {
@@ -752,8 +737,8 @@ string  sl1="" +
                cmd0.Connection=this._conn;
 
                cmd0.CommandText=" UPDATE "+stSchema+"ARC_GINFO " +
-               	" SET " + strS +
-               	" WHERE ID=" + id_arcginfo;
+                " SET " + strS +
+                " WHERE ID=" + id_arcginfo;
 
                int crec2 = 0 ;
                try
@@ -766,10 +751,10 @@ string  sl1="" +
                }
 
 
-        	   if (flag_gtopt>0) {
+             if (flag_gtopt>0) {
                   cmd0.CommandText=" UPDATE "+stSchema+ ARC_NAME +
-                 	" SET ID_GTOPT=" + flag_gtopt.ToString() +
-                  	" WHERE ID_GTOPT=" + VL[1].ToString() + " AND ID_GINFO=" + id_arcginfo ; // VL[0].ToString() ;
+                  " SET ID_GTOPT=" + flag_gtopt.ToString() +
+                    " WHERE ID_GTOPT=" + VL[1].ToString() + " AND ID_GINFO=" + id_arcginfo ; // VL[0].ToString() ;
 
                   int crec3 = 0 ;
                   try
@@ -908,26 +893,26 @@ string  sl1="" +
       FormGTOPT fgt = new FormGTOPT(_conn,_OptionSchemaName) ;
       fgt.ShowDialog();
     }
-		void ButtonCassClick(object sender, EventArgs e)
-		{
+    void ButtonCassClick(object sender, EventArgs e)
+    {
            // if > 63
            FormInfo1 fi = new FormInfo1() ;
            fi.Text = "Отличие в настройке профилей архивов для Cassandra" ;
-           fi.richTextBox1.Text="\n" + 
+           fi.richTextBox1.Text="\n" +
 "[Рекомендации для БД Cassandra]\n" +
 "-------------------------------------------------------------------------------------------------\n" +
 "Отличие в настройке профилей архивов от хранения их в Oracle\n\n\n" +
 "ARC_GINFO.DEPTH – глубина записи архивов, задается в часах (как и для Oracle). \n" +
 "\tМожет быть задана для всех видов архивов (в отличие от Oracle). \n" +
-"\tНапример, если глубина записи 5-минутных архивов 5 лет, то можно задать\n\tarc_ginfo.depth = 43848 часов (24x365x5+2x24 на 2 високосных года) и архивы старше 5 лет будут чиститься автоматически. \n" + 
+"\tНапример, если глубина записи 5-минутных архивов 5 лет, то можно задать\n\tarc_ginfo.depth = 43848 часов (24x365x5+2x24 на 2 високосных года) и архивы старше 5 лет будут чиститься автоматически. \n" +
 "\tЕсли задать arc_ginfo.depth = 0 , то архив будет храниться всегда (до ручной чистки, как в Oracle).\n\n" +
-"ARC_GINFO.DEPTH_PARTITION – это размер окна compaction_window_size в Cassandra,\n\tзадается в минутах (в Oracle - глубина партиции).\n" + 
+"ARC_GINFO.DEPTH_PARTITION – это размер окна compaction_window_size в Cassandra,\n\tзадается в минутах (в Oracle - глубина партиции).\n" +
 "\tДля эффективной работы уплотнения архивов необходимо подбирать размер окна около 1/30 (1/25-1/35, не меньше 1/50) от глубины записи данного типа архивов. \n" +
 "\tНапример, для типа архива arc_ginfo.id=28 (Мгновенные ТИ на границе 1 сек), с глубиной 720 часов (30 дней) необходимо задать размер окна 1440 минут (1/30 от глубины записи = 1 день). \n" +
 "\tДля неограниченных долговременных архивов с arc_ginfo.depth = 0 рекомендуется задавать arc_ginfo.depth_partition = 132480 минут (92 дня). \n" ;
 
            fi.ShowDialog();
-		}
+    }
 
   }
 }

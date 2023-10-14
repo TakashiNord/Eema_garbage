@@ -91,21 +91,6 @@ namespace ArcConfig
         string stype= reader.GetDataTypeName(i).ToUpper();
         //AddLogString("reader.GetDataTypeName = " + stype);
         ret = obj.ToString();
-
-    /*  if (stype=="DECIMAL") ret = reader.GetValue(i).ToString();
-        if (stype=="NUMBER") ret = reader.GetValue(i).ToString(); //GetDecimal(i).ToString();
-        if (stype=="VARCHAR2") ret = reader.GetString(i);
-        if (stype=="NVARCHAR") ret = reader.GetString(i);
-        if (stype=="WVARCHAR") ret = reader.GetString(i);
-        if (stype=="TEXT") ret = reader.GetString(i);
-        if (stype=="INTEGER") ret = reader.GetValue(i).ToString();
-        if (stype=="CHAR") ret = reader.GetString(i);
-        if (stype=="NCHAR") ret = reader.GetString(i);
-        if (stype=="DATE") ret = reader.GetString(i);
-        if (stype=="TIME") ret = reader.GetString(i);
-        if (stype=="DOUBLE PRECISION") ret = reader.GetValue(i).ToString();
-     */
-
      }
      return(ret);
    }
@@ -241,7 +226,7 @@ namespace ArcConfig
         int.TryParse(ext1[2], out rq);
         toolStripProgressBar1.Maximum = rq ;
 
-      }
+    }
 
 
     void FormExportLoad(object sender, EventArgs e)
@@ -365,7 +350,7 @@ namespace ArcConfig
          default : break;
       }
 
-       Application.DoEvents();
+      Application.DoEvents();
 
       if (reader.HasRows) {
         string v0,v1,v2 ;
@@ -425,8 +410,8 @@ namespace ArcConfig
 
           toolStripProgressBar1.PerformStep();
 
-           // ограничение на общее колич выводимых строк
-           if (checkBoxOnly500.Checked)
+          // ограничение на общее колич выводимых строк
+          if (checkBoxOnly500.Checked)
                 if (Cnt>=500) break ;
 
        } // while
@@ -556,7 +541,7 @@ namespace ArcConfig
          default : break;
       }
 
-       Application.DoEvents();
+      Application.DoEvents();
 
       if (reader.HasRows) {
         string v0,v1,v2 ;
@@ -612,8 +597,8 @@ namespace ArcConfig
 
           toolStripProgressBar1.PerformStep();
 
-           // ограничение на общее колич выводимых строк
-           if (checkBoxOnly500.Checked)
+          // ограничение на общее колич выводимых строк
+          if (checkBoxOnly500.Checked)
                 if (Cnt>=500) break ;
 
        } // while

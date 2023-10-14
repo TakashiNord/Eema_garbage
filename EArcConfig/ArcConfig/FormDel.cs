@@ -45,25 +45,10 @@ namespace ArcConfig
      if (reader.IsDBNull(i)) {
           ;
      } else {
-      obj = reader.GetValue(i) ;
-      string stype= reader.GetDataTypeName(i).ToUpper();
-        //AddLogString("reader.GetDataTypeName = " + stype);
-        ret = obj.ToString();
-
-    /*  if (stype=="DECIMAL") ret = reader.GetValue(i).ToString();
-        if (stype=="NUMBER") ret = reader.GetValue(i).ToString(); //GetDecimal(i).ToString();
-        if (stype=="VARCHAR2") ret = reader.GetString(i);
-        if (stype=="NVARCHAR") ret = reader.GetString(i);
-        if (stype=="WVARCHAR") ret = reader.GetString(i);
-        if (stype=="TEXT") ret = reader.GetString(i);
-        if (stype=="INTEGER") ret = reader.GetValue(i).ToString();
-        if (stype=="CHAR") ret = reader.GetString(i);
-        if (stype=="NCHAR") ret = reader.GetString(i);
-        if (stype=="DATE") ret = reader.GetString(i);
-        if (stype=="TIME") ret = reader.GetString(i);
-        if (stype=="DOUBLE PRECISION") ret = reader.GetValue(i).ToString();
-     */
-
+       obj = reader.GetValue(i) ;
+       string stype= reader.GetDataTypeName(i).ToUpper();
+       //AddLogString("reader.GetDataTypeName = " + stype);
+       ret = obj.ToString();
      }
      return(ret);
    }
@@ -1035,17 +1020,21 @@ namespace ArcConfig
             dataGridView.ClearSelection();
          break;
          default :
-                string fileCSV = "";
-                for (int f = 0; f < dataGridView.ColumnCount; f++)
-                    fileCSV += (dataGridView.Columns[f].HeaderText + ";");
-                fileCSV += "\t\n";
-                string st , tst;
+            string fileCSV = "";
+            for (int f = 0; f < dataGridView.ColumnCount; f++)
+                fileCSV += (dataGridView.Columns[f].HeaderText + ";");
+            fileCSV += "\t\n";
+            string st , tst;
+
+            using (StreamWriter wr = new StreamWriter(filename, false, Encoding.UTF8) )  // Encoding.GetEncoding("windows-1251"))
+            {
+
                 for (int i = 0; i < dataGridView.RowCount ; i++)
                 {
                     for (int j = 0; j < dataGridView.ColumnCount; j++)
                     {
                       st = "" ;
-					  try
+					            try
                       {
                         st = (dataGridView[j, i].Value).ToString() ;
                       }
@@ -1053,33 +1042,37 @@ namespace ArcConfig
                       {
                         st = "" ;
                       }
-                      
+
                       tst = "" ;
-					  try
+					            try
                       {
-					  	tst = (dataGridView[j, i].Value).GetType().ToString() ;
+					  	          tst = (dataGridView[j, i].Value).GetType().ToString() ;
                       }
                       catch (Exception ex2)
                       {
                         tst = "" ;
-                      }                      
-                      
+                      }
+
                       if ("System.Windows.Forms.CheckState"==tst) {
                         if (OptionSaveFormat>0) {
-						  if (st=="Checked") st="1";
+						              if (st=="Checked") st="1";
                           if (st=="Unchecked") st="0";
-						} else {
-						  if (st=="Checked") st="x";
+						            } else {
+						              if (st=="Checked") st="x";
                           if (st=="Unchecked") st="";
-						}
+						            }
                       }
                       fileCSV += st + ";";
                     }
-                    fileCSV += "\t\n";
+                    //fileCSV += "\t\n";
+                    wr.WriteLine(fileCSV);
+                    fileCSV="";
                 }
-                StreamWriter wr = new StreamWriter(filename, false, Encoding.UTF8); // Encoding.GetEncoding("windows-1251")
-                wr.Write(fileCSV);
-                wr.Close();
+
+			      } // using
+			      //    StreamWriter wr = new StreamWriter(filename, false, Encoding.UTF8); // Encoding.GetEncoding("windows-1251")
+            //    wr.Write(fileCSV);
+            //    wr.Close();
           break ;
       }
       String s1="filename="+filename + " -> Save";
@@ -1088,12 +1081,12 @@ namespace ArcConfig
     }
     void DataGridView1Sorted(object sender, EventArgs e)
     {
-            // после сортировки заново перенумеровать
-            dataGridView1.RowHeadersWidth = 90;
-            for (int i = 0; i < dataGridView1.Rows.Count; i++)
-            {
-               dataGridView1.Rows[i].HeaderCell.Value = (i + 1).ToString();
-            }
+        // после сортировки заново перенумеровать
+        dataGridView1.RowHeadersWidth = 90;
+        for (int i = 0; i < dataGridView1.Rows.Count; i++)
+        {
+           dataGridView1.Rows[i].HeaderCell.Value = (i + 1).ToString();
+        }
     }
     void Button4Click(object sender, EventArgs e)
     {
@@ -1188,7 +1181,7 @@ namespace ArcConfig
            } //check
         } // for
 
-    fdi1.ShowDialog();
+        fdi1.ShowDialog();
 
     }
 

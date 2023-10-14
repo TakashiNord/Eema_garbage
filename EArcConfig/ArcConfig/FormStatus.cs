@@ -67,25 +67,10 @@ namespace ArcConfig
      if (reader.IsDBNull(i)) {
           ;
      } else {
-      obj = reader.GetValue(i) ;
-      string stype= reader.GetDataTypeName(i).ToUpper();
+        obj = reader.GetValue(i) ;
+        string stype= reader.GetDataTypeName(i).ToUpper();
         //AddLogString("reader.GetDataTypeName = " + stype);
         ret = obj.ToString();
-
-    /*  if (stype=="DECIMAL") ret = reader.GetValue(i).ToString();
-        if (stype=="NUMBER") ret = reader.GetValue(i).ToString(); //GetDecimal(i).ToString();
-        if (stype=="VARCHAR2") ret = reader.GetString(i);
-        if (stype=="NVARCHAR") ret = reader.GetString(i);
-        if (stype=="WVARCHAR") ret = reader.GetString(i);
-        if (stype=="TEXT") ret = reader.GetString(i);
-        if (stype=="INTEGER") ret = reader.GetValue(i).ToString();
-        if (stype=="CHAR") ret = reader.GetString(i);
-        if (stype=="NCHAR") ret = reader.GetString(i);
-        if (stype=="DATE") ret = reader.GetString(i);
-        if (stype=="TIME") ret = reader.GetString(i);
-        if (stype=="DOUBLE PRECISION") ret = reader.GetValue(i).ToString();
-     */
-
      }
      return(ret);
    }
@@ -118,15 +103,15 @@ namespace ArcConfig
 
       dataSet1.Clear();
 
-      
+
       string stSchema="";
       if (_OptionSchemaName>0) {
         stSchema=OptionSchemaMain + "." ;
-      }      
-      
+      }
 
-      cmd0.CommandText= "SELECT id, name, DEFINE_ALIAS,  CAST(LAST_UPDATE as CHAR(40)) as LAST_UPDATE, CAST(LAST_RELINK as CHAR(40)) as LAST_RELINK,REINIT_TYPE " + 
-      	 "FROM  "+stSchema+"SYS_DB_PART";
+
+      cmd0.CommandText= "SELECT id, name, DEFINE_ALIAS,  CAST(LAST_UPDATE as CHAR(40)) as LAST_UPDATE, CAST(LAST_RELINK as CHAR(40)) as LAST_RELINK,REINIT_TYPE " +
+         "FROM  "+stSchema+"SYS_DB_PART";
 
       // Указываем запрос для выполнения
       adapter.SelectCommand = cmd0;
@@ -200,21 +185,21 @@ namespace ArcConfig
         // Объект для выполнения запросов к базе данных
         OdbcCommand cmd0 = new OdbcCommand();
         OdbcDataReader reader = null ;
-        
+
         cmd0.Connection=this._conn;
-        
+
         string stSchema="";
         if (_OptionSchemaName>0) {
           stSchema=OptionSchemaMain + "." ;
-        }         
-        
+        }
+
         for (int ii = 0; ii < dataGridView1.RowCount ; ii++) {
            //
            var isChecked = Convert.ToBoolean(dataGridView1.Rows[ii].Cells[0].Value) ;
            if (isChecked==false) continue ;
-        
+
            string id = Convert.ToString (dataGridView1.Rows[ii].Cells["ID"].Value);
-        
+
            string vl1 = Convert.ToString (dataGridView1.Rows[ii].Cells["LAST_UPDATE"].Value);
            if (vl1!="0") {
                cmd0.CommandText="UPDATE "+stSchema+"SYS_DB_PART SET LAST_UPDATE = 0 WHERE ID=" + id;
@@ -228,8 +213,8 @@ namespace ArcConfig
                }
                reader.Close();
            }
-        
-        
+
+
            vl1 = Convert.ToString(dataGridView1.Rows[ii].Cells["LAST_RELINK"].Value);
            if (vl1!="0") {
                cmd0.CommandText="UPDATE "+stSchema+"SYS_DB_PART SET LAST_RELINK = 0 WHERE ID=" + id;
@@ -243,7 +228,7 @@ namespace ArcConfig
                }
                reader.Close();
            }
-        
+
         }
         StatusLoad( ) ;
 

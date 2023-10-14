@@ -41,30 +41,14 @@ namespace ArcConfig
 
    public string GetTypeValue(ref OdbcDataReader reader, int i)
    {
-   	 object obj ;
-   	 string ret="";
+     object obj ;
+     string ret="";
      if (reader.IsDBNull(i)) {
           ;
      } else {
-   	 	obj = reader.GetValue(i) ;
-   	 	string stype= reader.GetDataTypeName(i).ToUpper();
-        //AddLogString("reader.GetDataTypeName = " + stype);
-        ret = obj.ToString();
-                  
-    /*  if (stype=="DECIMAL") ret = reader.GetValue(i).ToString(); 
-        if (stype=="NUMBER") ret = reader.GetValue(i).ToString(); //GetDecimal(i).ToString();
-        if (stype=="VARCHAR2") ret = reader.GetString(i);
-        if (stype=="NVARCHAR") ret = reader.GetString(i);
-        if (stype=="WVARCHAR") ret = reader.GetString(i);
-        if (stype=="TEXT") ret = reader.GetString(i);
-        if (stype=="INTEGER") ret = reader.GetValue(i).ToString();
-        if (stype=="CHAR") ret = reader.GetString(i);
-        if (stype=="NCHAR") ret = reader.GetString(i);
-        if (stype=="DATE") ret = reader.GetString(i);
-        if (stype=="TIME") ret = reader.GetString(i); 
-        if (stype=="DOUBLE PRECISION") ret = reader.GetValue(i).ToString(); 
-     */
-       
+      obj = reader.GetValue(i) ;
+      string stype= reader.GetDataTypeName(i).ToUpper();
+      ret = obj.ToString();
      }
      return(ret);
    }
@@ -113,13 +97,13 @@ namespace ArcConfig
       OdbcDataReader reader = null ;
 
       cmd0.Connection=this._conn;
-      
-      
+
+
       string stSchema="";
       if (_OptionSchemaName>0) {
         stSchema=OptionSchemaMain + "." ;
-      }      
-      
+      }
+
 
       string id_dest = "" ;
       string sl1 = r.GetString("ARC_SUBSYST_PROFILE_ID");
@@ -338,7 +322,7 @@ namespace ArcConfig
               Tech.Add(arr[0]);
               string id_sn = arr[0] + " (UDP) " + arr[5] ;
               checkedListBoxTech.Items.Add(id_sn,CheckState.Unchecked );
-            }            
+            }
           }
 
         } // while
@@ -400,10 +384,10 @@ namespace ArcConfig
       //----------------------
       // ARC_SUBSYST_PROFILE
       //    ID
-      //ARC_SERVICES_TUNE
+      // ARC_SERVICES_TUNE
       //  ID_SPROFILE = ID
       //
-      //ARC_SERVICES_ACCESS
+      // ARC_SERVICES_ACCESS
       //  ID_SPROFILE=ID
       //
       //-----------------------
@@ -420,11 +404,11 @@ namespace ArcConfig
       // Объект для выполнения запросов к базе данных
       OdbcCommand cmd0 = new OdbcCommand();
       cmd0.Connection=this._conn;
-      
+
       string stSchema="";
       if (_OptionSchemaName>0) {
         stSchema=OptionSchemaMain + "." ;
-      }      
+      }
 
       string sl1= ""+
 "Insert into "+stSchema+"ARC_SUBSYST_PROFILE (ID, ID_TBLLST, ID_GINFO, IS_WRITEON, STACK_NAME, LAST_UPDATE, IS_VIEWABLE)" +
@@ -467,17 +451,17 @@ namespace ArcConfig
         }
       }
 
-      
+
       //Вставка в ARC_SERVICES_ACCESS настроек для чтения нового профиля архивов:');
-      
+
       string Period = BoxPeriod.Text.Trim() ;
       int tParam1 = 0 ;
       if (!Int32.TryParse(Period, out tParam1)) {
-      	tParam1 = 3660 ;
+        tParam1 = 3660 ;
       }
       tParam1 = Math.Abs(tParam1);
       Period = tParam1.ToString();
-      
+
       for (int i = 0; i < checkedListBoxTech.Items.Count; i++)
       {
         if (checkedListBoxTech.GetItemChecked(i)) {
@@ -493,11 +477,11 @@ namespace ArcConfig
           }
           catch (Exception ex1)
           {
-          	MessageBox.Show(ex1.ToString() );
+            MessageBox.Show(ex1.ToString() );
             return ;
           }
 
-      	}
+        }
       }
 
       Close();

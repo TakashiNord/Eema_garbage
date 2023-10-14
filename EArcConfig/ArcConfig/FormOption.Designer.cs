@@ -29,6 +29,13 @@ namespace ArcConfig
 		private System.Windows.Forms.Label label5;
 		private System.Windows.Forms.TextBox textBox6;
 		private System.Windows.Forms.CheckBox checkBox8;
+		private System.Windows.Forms.Label label6;
+		private System.Windows.Forms.ComboBox comboBox1;
+		private System.Windows.Forms.TextBox textBox1;
+		private System.Windows.Forms.TextBox textBox2;
+		private System.Windows.Forms.Label label7;
+		private System.Windows.Forms.Label label8;
+		private System.Windows.Forms.GroupBox groupBox2;
 		
 		/// <summary>
 		/// Disposes resources used by the form.
@@ -66,7 +73,15 @@ namespace ArcConfig
 			this.checkBox2 = new System.Windows.Forms.CheckBox();
 			this.checkBox7 = new System.Windows.Forms.CheckBox();
 			this.checkBox8 = new System.Windows.Forms.CheckBox();
+			this.groupBox2 = new System.Windows.Forms.GroupBox();
+			this.label8 = new System.Windows.Forms.Label();
+			this.label7 = new System.Windows.Forms.Label();
+			this.textBox2 = new System.Windows.Forms.TextBox();
+			this.textBox1 = new System.Windows.Forms.TextBox();
+			this.comboBox1 = new System.Windows.Forms.ComboBox();
+			this.label6 = new System.Windows.Forms.Label();
 			this.groupBox1.SuspendLayout();
+			this.groupBox2.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// checkBox5
@@ -96,7 +111,7 @@ namespace ArcConfig
 			this.groupBox1.Size = new System.Drawing.Size(263, 252);
 			this.groupBox1.TabIndex = 10;
 			this.groupBox1.TabStop = false;
-			this.groupBox1.Text = "вкладка Главная - Параметры";
+			this.groupBox1.Text = "вкладка Главная [Параметры]";
 			// 
 			// label5
 			// 
@@ -208,18 +223,82 @@ namespace ArcConfig
 			// 
 			// checkBox8
 			// 
-			this.checkBox8.Location = new System.Drawing.Point(13, 329);
+			this.checkBox8.Location = new System.Drawing.Point(13, 328);
 			this.checkBox8.Name = "checkBox8";
-			this.checkBox8.Size = new System.Drawing.Size(263, 36);
+			this.checkBox8.Size = new System.Drawing.Size(255, 22);
 			this.checkBox8.TabIndex = 17;
-			this.checkBox8.Text = "Формат при сохранении (1\\0) (иначе (x\\\'\')";
+			this.checkBox8.Text = "Формат при экспорте (1\\0) (иначе (x\\\'\')";
 			this.checkBox8.UseVisualStyleBackColor = true;
+			// 
+			// groupBox2
+			// 
+			this.groupBox2.Controls.Add(this.label8);
+			this.groupBox2.Controls.Add(this.label7);
+			this.groupBox2.Controls.Add(this.textBox2);
+			this.groupBox2.Controls.Add(this.textBox1);
+			this.groupBox2.Controls.Add(this.comboBox1);
+			this.groupBox2.Controls.Add(this.label6);
+			this.groupBox2.Location = new System.Drawing.Point(13, 356);
+			this.groupBox2.Name = "groupBox2";
+			this.groupBox2.Size = new System.Drawing.Size(166, 103);
+			this.groupBox2.TabIndex = 25;
+			this.groupBox2.TabStop = false;
+			this.groupBox2.Text = "DB Link";
+			// 
+			// label8
+			// 
+			this.label8.Location = new System.Drawing.Point(6, 74);
+			this.label8.Name = "label8";
+			this.label8.Size = new System.Drawing.Size(43, 20);
+			this.label8.TabIndex = 30;
+			this.label8.Text = "passw";
+			// 
+			// label7
+			// 
+			this.label7.Location = new System.Drawing.Point(20, 48);
+			this.label7.Name = "label7";
+			this.label7.Size = new System.Drawing.Size(29, 20);
+			this.label7.TabIndex = 29;
+			this.label7.Text = "login";
+			// 
+			// textBox2
+			// 
+			this.textBox2.Location = new System.Drawing.Point(55, 74);
+			this.textBox2.Name = "textBox2";
+			this.textBox2.Size = new System.Drawing.Size(100, 20);
+			this.textBox2.TabIndex = 28;
+			// 
+			// textBox1
+			// 
+			this.textBox1.Location = new System.Drawing.Point(55, 48);
+			this.textBox1.Name = "textBox1";
+			this.textBox1.Size = new System.Drawing.Size(100, 20);
+			this.textBox1.TabIndex = 27;
+			this.textBox1.Text = "cassandra";
+			// 
+			// comboBox1
+			// 
+			this.comboBox1.FormattingEnabled = true;
+			this.comboBox1.Location = new System.Drawing.Point(53, 16);
+			this.comboBox1.Name = "comboBox1";
+			this.comboBox1.Size = new System.Drawing.Size(102, 21);
+			this.comboBox1.TabIndex = 26;
+			this.comboBox1.Text = "CASS";
+			// 
+			// label6
+			// 
+			this.label6.Location = new System.Drawing.Point(6, 19);
+			this.label6.Name = "label6";
+			this.label6.Size = new System.Drawing.Size(43, 18);
+			this.label6.TabIndex = 25;
+			this.label6.Text = "ODBC";
 			// 
 			// FormOption
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(288, 377);
+			this.ClientSize = new System.Drawing.Size(284, 469);
+			this.Controls.Add(this.groupBox2);
 			this.Controls.Add(this.checkBox8);
 			this.Controls.Add(this.checkBox7);
 			this.Controls.Add(this.groupBox1);
@@ -232,6 +311,8 @@ namespace ArcConfig
 			this.Text = "Опции вывода";
 			this.groupBox1.ResumeLayout(false);
 			this.groupBox1.PerformLayout();
+			this.groupBox2.ResumeLayout(false);
+			this.groupBox2.PerformLayout();
 			this.ResumeLayout(false);
 
 		}

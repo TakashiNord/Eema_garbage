@@ -12,11 +12,11 @@ using System.Windows.Forms;
 
 namespace ArcConfig
 {
-	/// <summary>
-	/// Description of FormOption.
-	/// </summary>
-	public partial class FormOption : Form
-	{
+  /// <summary>
+  /// Description of FormOption.
+  /// </summary>
+  public partial class FormOption : Form
+  {
 
     public bool _OptionFullDelete
     {
@@ -42,7 +42,7 @@ namespace ArcConfig
     {
         get { return checkBox5.Checked; }
         set { checkBox5.Checked = value; }
-    }    
+    }
     public bool _OptionTableDelete
     {
         get { return checkBox6.Checked; }
@@ -55,38 +55,56 @@ namespace ArcConfig
     }
     public string _OptionTableConntime
     {
-        get { 
-    	  int v0 = 30;
-    	  if (int.TryParse(textBox6.Text, out v0))
+        get {
+        int v0 = 30;
+        if (int.TryParse(textBox6.Text, out v0))
           {
-    	    if (v0<0) v0 = 30 ;
-    	    if (v0==0) v0 = 30 ;
-    	    if (v0>600) v0 = 30 ;          		    
-    	  } else { 
-    	    v0 = 30 ;   
-    	  }
-          textBox6.Text = v0.ToString();		
-    	  return textBox6.Text;
-    	}
-    	set { textBox6.Text = value ; }
-    }    
+          if (v0<0) v0 = 0 ;
+          if (v0==0) v0 = 30 ;
+          if (v0>600) v0 = 600 ;
+        } else {
+          v0 = 30 ;
+        }
+          textBox6.Text = v0.ToString();
+        return textBox6.Text;
+      }
+      set { textBox6.Text = value ; }
+    }
     public bool _OptionSaveFormat
     {
         get { return checkBox8.Checked; }
         set { checkBox8.Checked = value; }
-    }    
-		public FormOption()
-		{
-			//
-			// The InitializeComponent() call is required for Windows Forms designer support.
-			//
-			InitializeComponent();
+    }  
 
-			//
-			// TODO: Add constructor code after the InitializeComponent() call.
-			//
-		}
+    public string _OptionDBlink1
+    {
+        get { return comboBox1.Text; }
+        set { comboBox1.Text = value; }
+    }
+    public string _OptionDBlink1login
+    {
+        get { return textBox1.Text; }
+        set { textBox1.Text = value; }
+    }
+    public string _OptionDBlink1pass
+    {
+        get { return textBox2.Text; }
+        set { textBox2.Text = value; }
+    }
+
+    
+    public FormOption()
+    {
+      //
+      // The InitializeComponent() call is required for Windows Forms designer support.
+      //
+      InitializeComponent();
+
+      //
+      // TODO: Add constructor code after the InitializeComponent() call.
+      //
+    }
 
 
-	}
+  }
 }

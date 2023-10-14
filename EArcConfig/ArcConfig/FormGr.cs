@@ -41,25 +41,10 @@ namespace ArcConfig
      if (reader.IsDBNull(i)) {
           ;
      } else {
-      obj = reader.GetValue(i) ;
-      string stype= reader.GetDataTypeName(i).ToUpper();
-        //AddLogString("reader.GetDataTypeName = " + stype);
-        ret = obj.ToString();
-
-    /*  if (stype=="DECIMAL") ret = reader.GetValue(i).ToString();
-        if (stype=="NUMBER") ret = reader.GetValue(i).ToString(); //GetDecimal(i).ToString();
-        if (stype=="VARCHAR2") ret = reader.GetString(i);
-        if (stype=="NVARCHAR") ret = reader.GetString(i);
-        if (stype=="WVARCHAR") ret = reader.GetString(i);
-        if (stype=="TEXT") ret = reader.GetString(i);
-        if (stype=="INTEGER") ret = reader.GetValue(i).ToString();
-        if (stype=="CHAR") ret = reader.GetString(i);
-        if (stype=="NCHAR") ret = reader.GetString(i);
-        if (stype=="DATE") ret = reader.GetString(i);
-        if (stype=="TIME") ret = reader.GetString(i);
-        if (stype=="DOUBLE PRECISION") ret = reader.GetValue(i).ToString();
-     */
-
+       obj = reader.GetValue(i) ;
+       string stype= reader.GetDataTypeName(i).ToUpper();
+       //AddLogString("reader.GetDataTypeName = " + stype);
+       ret = obj.ToString();
      }
      return(ret);
    }
@@ -279,8 +264,8 @@ namespace ArcConfig
         string stSchema="";
         if (_OptionSchemaName>0) {
            stSchema=OptionSchemaMain + "." ;
-        }           
-        
+        }
+
         string sl1 = r.GetString("ARH_SYSTBLLST1");
         sl1 = String.Format(sl1,_id_tbl);
 
@@ -376,13 +361,13 @@ namespace ArcConfig
 
         DateTime date1 = DateTime.Today; // DateTime.Now; // DateTime.UtcNow  DateTime.Today
         //dateTimePicker1.Value.ToShortDateString();
-        
+
         //Set a custom format containing the string "of the year"
         dateTimePicker1.Format = DateTimePickerFormat.Custom;
         dateTimePicker1.CustomFormat = "dd'.'MM'.'yyyyy hh':'mm tt";
         // from
         DateTime d01 = date1.AddHours(-6); //  AddHours(-24) ; AddDays(-1);
-        dateTimePicker1.Value = d01; 
+        dateTimePicker1.Value = d01;
         // to
         dateTimePicker2.Format = DateTimePickerFormat.Custom;
         dateTimePicker2.CustomFormat = "dd'.'MM'.'yyyyy hh':'mm tt";
@@ -402,13 +387,13 @@ namespace ArcConfig
 
         comboBox1.SelectedIndex=5;
 
-       try {
-         GrLoad(i1,i2) ;
-       }
-       catch (Exception)
-       {
-          ;
-       }
+        try {
+          GrLoad(i1,i2) ;
+        }
+        catch (Exception)
+        {
+           ;
+        }
 
       }
     void Button1Click(object sender, EventArgs e)
@@ -429,25 +414,25 @@ namespace ArcConfig
     }
     void TrackBar1Scroll(object sender, EventArgs e)
     {
-        DateTime dt = DateTime.Now;
-        int hr = 0 ;
+       DateTime dt = DateTime.Now;
+       int hr = 0 ;
 
-        // уменьшаем
-        if (trackBar1.Value < valueBefore)
-        {
-            hr = -24 ;
-        } else {
-          // увеличиваем
-          hr = 24 ;
-        }
-        valueBefore = trackBar1.Value;
+       // уменьшаем
+       if (trackBar1.Value < valueBefore)
+       {
+           hr = -24 ;
+       } else {
+         // увеличиваем
+         hr = 24 ;
+       }
+       valueBefore = trackBar1.Value;
 
-        dt = dateTimePicker1.Value ;
-        dateTimePicker1.Value = dt.AddHours(hr) ;
-        dt= dateTimePicker2.Value ;
-        dateTimePicker2.Value = dt.AddHours(hr) ;
+       dt = dateTimePicker1.Value ;
+       dateTimePicker1.Value = dt.AddHours(hr) ;
+       dt= dateTimePicker2.Value ;
+       dateTimePicker2.Value = dt.AddHours(hr) ;
 
-        Button1Click(null,  e) ;
+       Button1Click(null,  e) ;
     }
 
     void ToolStripButton1Click(object sender, EventArgs e)

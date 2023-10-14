@@ -61,9 +61,12 @@ namespace ArcConfig
     public int OptionCheckData = 0;
     public int OptionSchemaName = 0;
     public int OptionTableDelete = 0;
-    public int OptionTableDisable = 0;
+    public int OptionTableDisable = 1;
     public int OptionTableConntime = 30;
-	public int OptionSaveFormat = 0;
+    public int OptionSaveFormat = 0;
+    public string OptionDBlink1 = "CASS";
+    public string OptionDBlink1login = "cassandra";
+    public string OptionDBlink1pass = "";
 
 
     public MainForm()
@@ -119,7 +122,7 @@ namespace ArcConfig
            richTextBox1.Update();
          }
        Application.DoEvents();
-    }
+   }
 
    public void AddLogStringNoTime(string s)
    {
@@ -132,7 +135,7 @@ namespace ArcConfig
            richTextBox1.Update();
          }
        Application.DoEvents();
-    }
+   }
 
 
    public string GetTypeValue(ref OdbcDataReader reader, int i)
@@ -198,10 +201,10 @@ namespace ArcConfig
        }
        catch (Exception )
        {
-        fl=1;
-        reader.Close();
-        //MessageBox.Show("Error ="+ex1.Message + "  id=" + id);
-        continue ;
+         fl=1;
+         reader.Close();
+         //MessageBox.Show("Error ="+ex1.Message + "  id=" + id);
+         continue ;
        }
 
        if (reader.HasRows) {
@@ -504,15 +507,15 @@ namespace ArcConfig
 
        if (reader2.HasRows)
        {
-        while (reader2.Read())
+         while (reader2.Read())
          {
            for ( int i = 0; i<4; i++) {
              arr[i]= GetTypeValue(ref reader2, i);
            }
 
-          if (arr[3]=="") { arr[3]="0" ; }
+           if (arr[3]=="") { arr[3]="0" ; }
 
-          if (arr[3]=="0") {
+           if (arr[3]=="0") {
              TreeNode rootNode = new TreeNode();
              rootNode.Name = arr[0]; // arr[0];
              rootNode.Text = arr[2];
@@ -535,8 +538,8 @@ namespace ArcConfig
                     ndl.Nodes.Add(Nd);
                     AddLogString(" >> " +Nd.Name + " " + Nd.Text);
                 }
-              } // foreach
-          } // if
+             } // foreach
+           } // if
 
          } // while
 
@@ -561,7 +564,7 @@ namespace ArcConfig
 
        if (reader3.HasRows)
        {
-        while (reader3.Read())
+         while (reader3.Read())
          {
            for ( int i = 0; i<4; i++) {
              arr[i]= GetTypeValue(ref reader3, i);
@@ -1831,17 +1834,19 @@ Postgres : SELECT version();
             dataGridView.ClearSelection();
          break;
          default :
-                string fileCSV = "";
-                for (int f = 0; f < dataGridView.ColumnCount; f++)
-                    fileCSV += (dataGridView.Columns[f].HeaderText + ";");
-                fileCSV += "\t" + Environment.NewLine;
-                string st , tst ;
+              string fileCSV = "";
+              for (int f = 0; f < dataGridView.ColumnCount; f++)
+                  fileCSV += (dataGridView.Columns[f].HeaderText + ";");
+              fileCSV += "\t" + Environment.NewLine;
+              string st , tst ;
+              using (StreamWriter wr = new StreamWriter(filename, false, Encoding.UTF8) )  // Encoding.GetEncoding("windows-1251"))
+              {
                 for (int i = 0; i < dataGridView.RowCount ; i++)
                 {
                     for (int j = 0; j < dataGridView.ColumnCount; j++)
                     {
                       st = "" ;
-					  try
+            try
                       {
                         st = (dataGridView[j, i].Value).ToString() ;
                       }
@@ -1849,35 +1854,38 @@ Postgres : SELECT version();
                       {
                         st = "" ;
                       }
-                      
+
                       tst = "" ;
-					  try
+            try
                       {
                         tst = dataGridView[j, i].Value.GetType().ToString() ;
                       }
                       catch (Exception ex1)
                       {
                         tst = "" ;
-                      }                      
-                      
+                      }
+
                       if ("System.Windows.Forms.CheckState"==tst) {
                         //Checked Unchecked
                         if (OptionSaveFormat>0) {
-						  if (st=="Checked") st="1";
+              if (st=="Checked") st="1";
                           if (st=="Unchecked") st="0";
-						} else {
-						  if (st=="Checked") st="x";
+            } else {
+              if (st=="Checked") st="x";
                           if (st=="Unchecked") st="";
-						}
+            }
                       }
                       fileCSV += st + ";";
-                        //fileCSV += ( dataGridView[j, i].Value).ToString() + ";";
+                      //fileCSV += ( dataGridView[j, i].Value).ToString() + ";";
                     }
-                    fileCSV += "\t" + Environment.NewLine;
+                    //fileCSV += "\t" + Environment.NewLine;
+                    wr.WriteLine(fileCSV);
+                    fileCSV="";
                 }
-                StreamWriter wr = new StreamWriter(filename, false, Encoding.UTF8); // Encoding.GetEncoding("windows-1251")
-                wr.Write(fileCSV);
-                wr.Close();
+              } //using
+                //StreamWriter wr = new StreamWriter(filename, false, Encoding.UTF8); // Encoding.GetEncoding("windows-1251")
+                //wr.Write(fileCSV);
+                //wr.Close();
           break ;
       }
       String s1="filename="+filename + " -> Save";
@@ -2836,9 +2844,9 @@ Postgres : SELECT version();
                dataGridViewA.Rows[ii].HeaderCell.Style.BackColor = Color.LightGreen ;
                dataGridViewA.Rows[ii].DefaultCellStyle.BackColor = Color.LightGreen ;
             } else {
-        		if (dataGridViewA.Rows[ii].HeaderCell.Style.BackColor != Color.LightGreen )
-               	  dataGridViewA.Rows[ii].HeaderCell.Style.BackColor = Color.PeachPuff ;
-        		if (dataGridViewA.Rows[ii].DefaultCellStyle.BackColor != Color.LightGreen )
+            if (dataGridViewA.Rows[ii].HeaderCell.Style.BackColor != Color.LightGreen )
+                  dataGridViewA.Rows[ii].HeaderCell.Style.BackColor = Color.PeachPuff ;
+            if (dataGridViewA.Rows[ii].DefaultCellStyle.BackColor != Color.LightGreen )
                   dataGridViewA.Rows[ii].DefaultCellStyle.BackColor = Color.PeachPuff ;
             }
           }
