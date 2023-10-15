@@ -1846,7 +1846,7 @@ Postgres : SELECT version();
                     for (int j = 0; j < dataGridView.ColumnCount; j++)
                     {
                       st = "" ;
-            try
+                      try
                       {
                         st = (dataGridView[j, i].Value).ToString() ;
                       }
@@ -1856,7 +1856,7 @@ Postgres : SELECT version();
                       }
 
                       tst = "" ;
-            try
+                      try
                       {
                         tst = dataGridView[j, i].Value.GetType().ToString() ;
                       }
@@ -1868,12 +1868,12 @@ Postgres : SELECT version();
                       if ("System.Windows.Forms.CheckState"==tst) {
                         //Checked Unchecked
                         if (OptionSaveFormat>0) {
-              if (st=="Checked") st="1";
+                          if (st=="Checked") st="1";
                           if (st=="Unchecked") st="0";
-            } else {
-              if (st=="Checked") st="x";
+                        } else {
+                          if (st=="Checked") st="x";
                           if (st=="Unchecked") st="";
-            }
+                        }
                       }
                       fileCSV += st + ";";
                       //fileCSV += ( dataGridView[j, i].Value).ToString() + ";";
@@ -1883,9 +1883,11 @@ Postgres : SELECT version();
                     fileCSV="";
                 }
               } //using
+
                 //StreamWriter wr = new StreamWriter(filename, false, Encoding.UTF8); // Encoding.GetEncoding("windows-1251")
                 //wr.Write(fileCSV);
                 //wr.Close();
+
           break ;
       }
       String s1="filename="+filename + " -> Save";
@@ -3715,7 +3717,7 @@ void OracleStat ( )
        string ID = dataGridViewA.Rows[selRowNum].Cells[1].Value.ToString() ;
        string IDNAME = dataGridViewA.Rows[selRowNum].Cells[2].Value.ToString() ;
        string IDGTOPT = dataGridViewA.Rows[selRowNum].Cells[3].Value.ToString() ;
-       string NAMEHEADER = dataGridViewA.Rows[selRowNum].Cells[15].Value.ToString() ;
+       string NAMEHEADER = dataGridViewA.Rows[selRowNum].Cells[16].Value.ToString() ;
 
        //DialogResult result1;
        //

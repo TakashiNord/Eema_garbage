@@ -278,6 +278,7 @@ namespace ArcConfig
 			// 
 			// textBoxN
 			// 
+			this.textBoxN.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.textBoxN.Location = new System.Drawing.Point(128, 84);
 			this.textBoxN.Name = "textBoxN";
 			this.textBoxN.ReadOnly = true;

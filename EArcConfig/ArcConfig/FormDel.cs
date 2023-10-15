@@ -384,7 +384,7 @@ namespace ArcConfig
          //ARC_SUBSYST_PROFILE.ID, ARC_SUBSYST_PROFILE.ID_GINFO, ARC_SUBSYST_PROFILE.IS_WRITEON,
 
           DataGridViewCheckBoxColumn column9 = new DataGridViewCheckBoxColumn();
-          column9.HeaderText = _gpt_name ;
+          column9.HeaderText = "Status" ;
           column9.TrueValue = true;
           column9.FalseValue = false;
           column9.Name = arr[1];
@@ -1034,7 +1034,7 @@ namespace ArcConfig
                     for (int j = 0; j < dataGridView.ColumnCount; j++)
                     {
                       st = "" ;
-					            try
+					  try
                       {
                         st = (dataGridView[j, i].Value).ToString() ;
                       }
@@ -1044,9 +1044,9 @@ namespace ArcConfig
                       }
 
                       tst = "" ;
-					            try
+					  try
                       {
-					  	          tst = (dataGridView[j, i].Value).GetType().ToString() ;
+					  	tst = (dataGridView[j, i].Value).GetType().ToString() ;
                       }
                       catch (Exception ex2)
                       {
@@ -1055,12 +1055,12 @@ namespace ArcConfig
 
                       if ("System.Windows.Forms.CheckState"==tst) {
                         if (OptionSaveFormat>0) {
-						              if (st=="Checked") st="1";
-                          if (st=="Unchecked") st="0";
-						            } else {
-						              if (st=="Checked") st="x";
-                          if (st=="Unchecked") st="";
-						            }
+						    if (st=="Checked") st="1";
+                            if (st=="Unchecked") st="0";
+			            } else {
+				            if (st=="Checked") st="x";
+                            if (st=="Unchecked") st="";
+				        }
                       }
                       fileCSV += st + ";";
                     }
@@ -1069,8 +1069,8 @@ namespace ArcConfig
                     fileCSV="";
                 }
 
-			      } // using
-			      //    StreamWriter wr = new StreamWriter(filename, false, Encoding.UTF8); // Encoding.GetEncoding("windows-1251")
+			} // using
+			//    StreamWriter wr = new StreamWriter(filename, false, Encoding.UTF8); // Encoding.GetEncoding("windows-1251")
             //    wr.Write(fileCSV);
             //    wr.Close();
           break ;
