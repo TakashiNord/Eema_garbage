@@ -4270,6 +4270,58 @@ void OracleStat ( )
         //tabControlAP.SelectedIndex=0;
       }
     }
+    void RadioButton5CheckedChanged(object sender, EventArgs e)
+    {
+      //
+          try
+            {
+               if (radioButton5.Checked == true) _getDBv1("meas_snapshot30_stat");
+            }
+            catch (Exception ex1)
+            {
+               AddLogString("Error ="+ex1.Message);
+            }
+    }
+    void ButtonClear30Click(object sender, EventArgs e)
+    {
+        // Объект для выполнения запросов к базе данных
+        OdbcCommand cmd0 = new OdbcCommand();
+
+        cmd0.Connection=this._conn;
+
+        DateTime date1 = DateTime.Today;
+        DateTime d01 = date1.AddDays(-30);
+        int dt1970 = Convert.ToInt32( DateTimeToUnixTimestamp(d01) );
+
+
+        int cnt = 0;
+
+        string stName="meas_snapshot30_stat";
+        if (OptionSchemaName>0) {
+           stName=OptionSchemaMain + "." + stName ;
+        }
+
+        DialogResult result = MessageBox.Show ("Очистить таблицу : " + stName + " ? " + "\n до : " + d01.ToShortDateString() ,
+                                               "Удаление содержимого " + stName,
+                                               MessageBoxButtons.YesNo,
+                                               MessageBoxIcon.Question,
+                                               MessageBoxDefaultButton.Button2);
+        if (result == DialogResult.Yes)
+        {
+            //cmd0.CommandText="TRUNCATE TABLE " + stName ;
+            cmd0.CommandText="DELETE FROM " + stName + " WHERE dt1970<=" + dt1970.ToString() ;
+            try
+            {
+               cnt=cmd0.ExecuteNonQuery();
+            }
+            catch (Exception ex7)
+            {
+               AddLogString("Ошибка удаления записей ="+ex7.Message);
+            }
+            AddLogString(cmd0.CommandText + " = " + cnt.ToString() + " rows ");
+        }
+        return ;
+    }
 
 
 

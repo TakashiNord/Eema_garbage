@@ -96,6 +96,8 @@ namespace ArcConfig
 		private System.Windows.Forms.ToolStripMenuItem delByALLToolStripMenuItem;
 		private System.Windows.Forms.TabPage tabPage4;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator11;
+		private System.Windows.Forms.RadioButton radioButton5;
+		private System.Windows.Forms.Button buttonClear30;
 		
 		/// <summary>
 		/// Disposes resources used by the form.
@@ -141,6 +143,8 @@ namespace ArcConfig
 			this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
 			this.tabControl1 = new System.Windows.Forms.TabControl();
 			this.tabPage1 = new System.Windows.Forms.TabPage();
+			this.buttonClear30 = new System.Windows.Forms.Button();
+			this.radioButton5 = new System.Windows.Forms.RadioButton();
 			this.buttonClear = new System.Windows.Forms.Button();
 			this.button1 = new System.Windows.Forms.Button();
 			this.radioButton4 = new System.Windows.Forms.RadioButton();
@@ -413,6 +417,8 @@ namespace ArcConfig
 			// 
 			// tabPage1
 			// 
+			this.tabPage1.Controls.Add(this.buttonClear30);
+			this.tabPage1.Controls.Add(this.radioButton5);
 			this.tabPage1.Controls.Add(this.buttonClear);
 			this.tabPage1.Controls.Add(this.button1);
 			this.tabPage1.Controls.Add(this.radioButton4);
@@ -428,9 +434,30 @@ namespace ArcConfig
 			this.tabPage1.Text = "Статистика";
 			this.tabPage1.UseVisualStyleBackColor = true;
 			// 
+			// buttonClear30
+			// 
+			this.buttonClear30.Location = new System.Drawing.Point(597, 6);
+			this.buttonClear30.Name = "buttonClear30";
+			this.buttonClear30.Size = new System.Drawing.Size(253, 23);
+			this.buttonClear30.TabIndex = 8;
+			this.buttonClear30.Text = "Очистить  meas_snapshot30_stat (до 30 суток)";
+			this.buttonClear30.UseVisualStyleBackColor = true;
+			this.buttonClear30.Click += new System.EventHandler(this.ButtonClear30Click);
+			// 
+			// radioButton5
+			// 
+			this.radioButton5.Location = new System.Drawing.Point(476, 6);
+			this.radioButton5.Name = "radioButton5";
+			this.radioButton5.Size = new System.Drawing.Size(134, 24);
+			this.radioButton5.TabIndex = 7;
+			this.radioButton5.TabStop = true;
+			this.radioButton5.Text = "Заполнение среза";
+			this.radioButton5.UseVisualStyleBackColor = true;
+			this.radioButton5.CheckedChanged += new System.EventHandler(this.RadioButton5CheckedChanged);
+			// 
 			// buttonClear
 			// 
-			this.buttonClear.Location = new System.Drawing.Point(658, 6);
+			this.buttonClear.Location = new System.Drawing.Point(1051, 6);
 			this.buttonClear.Name = "buttonClear";
 			this.buttonClear.Size = new System.Drawing.Size(123, 23);
 			this.buttonClear.TabIndex = 6;
@@ -440,7 +467,7 @@ namespace ArcConfig
 			// 
 			// button1
 			// 
-			this.button1.Location = new System.Drawing.Point(493, 6);
+			this.button1.Location = new System.Drawing.Point(933, 6);
 			this.button1.Name = "button1";
 			this.button1.Size = new System.Drawing.Size(100, 23);
 			this.button1.TabIndex = 5;
