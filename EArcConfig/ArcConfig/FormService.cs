@@ -188,9 +188,10 @@ namespace ArcConfig
       reader.Close();
       
       //++++++ ??? ADV_SRVC_OICOPC_ACCESSPORT%
-
+      
+      // define_alias LIKE 'ADV_SRVC_RDAADCP_ACCESPORT%'
       sl1= "SELECT id, name FROM "+stSchema+"ad_service " +
-      	"WHERE define_alias LIKE 'ADV_SRVC_RDAADCP_ACCESPORT%' ORDER BY id ASC" ;
+      	"WHERE define_alias LIKE 'ADV_SRVC_RDA%_ACCESPORT%' ORDER BY id ASC" ;
       cmd0.CommandText=sl1;
       try
       {

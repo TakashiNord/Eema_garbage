@@ -348,12 +348,18 @@ namespace ArcConfig
        try
        {
           reader1 = cmd.ExecuteReader();
+          if (!reader1.IsClosed ) reader1.Close();
        }
        catch (Exception ex1)
        {
           is_exists = 0 ;
        }
-       if (!reader1.IsClosed ) reader1.Close();
+       //finally
+       //{
+       //   is_exists = 0 ;
+       //}
+       //if (!reader1.IsClosed ) reader1.Close();
+       reader1 = null ;
        cmd.Dispose();
        return (is_exists) ;
     }
@@ -3018,10 +3024,14 @@ Postgres : SELECT version();
                    //AddLogString( "Выкл|вкл добавления завершен." );
                  }
 
+                reader = null ;
+                cmd0.Dispose();
+
               }
 
             dataGridView.CurrentCell = checkCell;
             dataGridView.Invalidate();
+			
 
         }
 
@@ -3222,6 +3232,8 @@ int ArcAdd(object sender, int selRowNum , int selColNum)
       //MessageBox.Show("Не удалось вызвать процедуру arc_arh_pkg.create_arh","arc_arh_pkg.create_arh","ArcAdd",MessageBoxButtons.OK, MessageBoxIcon.Error);
       return(-5) ;
    }
+   
+   cmd0.Dispose();
 
 /*
 --   ПЕРЕЧЕНЬ ВОЗВРАЩАЕМЫХ ОШИБОК:
@@ -3288,6 +3300,9 @@ int ArcAdd(object sender, int selRowNum , int selColNum)
          AddLogString("ArcAdd регистрация архива " + retname + " = " + crec1.ToString() );
 
      }
+	 
+	 rec1 = null ;
+     cmd1.Dispose();
 
    }
 
@@ -3427,6 +3442,9 @@ int ArcDel(object sender, int selRowNum , int selColNum)
       AddLogString("ArcDel vRetVal =" + vRetVal + " sname=" + sname);
 
     }
+	
+	reader = null ;
+    cmd0.Dispose();
 
 /*
 --   функция drop_arh
@@ -3497,6 +3515,9 @@ int ArcDel(object sender, int selRowNum , int selColNum)
         }
 
       } //if (res1>0)
+		  
+	  reader = null ;
+      cmd1.Dispose();
 
     } // if (vRetVal=="0")
 
@@ -4272,15 +4293,15 @@ void OracleStat ( )
     }
     void RadioButton5CheckedChanged(object sender, EventArgs e)
     {
-      //
-          try
-            {
-               if (radioButton5.Checked == true) _getDBv1("meas_snapshot30_stat");
-            }
-            catch (Exception ex1)
-            {
-               AddLogString("Error ="+ex1.Message);
-            }
+        //
+        try
+        {
+            if (radioButton5.Checked == true) _getDBv1("meas_snapshot30_stat");
+        }
+        catch (Exception ex1)
+        {
+            AddLogString("Error ="+ex1.Message);
+        }
     }
     void ButtonClear30Click(object sender, EventArgs e)
     {

@@ -1,0 +1,429 @@
+
+dbms_refresh.refresh('"RSDUADMIN"."ELREG_LIST_V_2"');
+dbms_refresh.refresh('"RSDUADMIN"."PSWT_LIST_V_2"');
+
+
+
+CREATE OR REPLACE PROCEDURE RSDUADMIN.meas_snapshot30_get_current_p 
+ -- Процедура для заполнения среза 30 минутных значений  за текущую получасовку.
+ -- Будем использовать в джобе.
+ -- Created by Elena I. Bykova  11.05.2021 
+ -- Mofified:
+ AS
+  nDT1970       NUMBER (11) := trunc (to_dt1970 (sysdate)/1800) * 1800;
+  LSTTBL_ELREG  NUMBER (11) := 29; -- ID табл-списка параметров эл.режима
+  LSTTBL_PSWT   NUMBER (11) := 33; -- ID табл-списка параметров КА
+BEGIN
+        -- Тянем ЭР за указанную дату 
+        meas_snapshot30_get_data_p(pDT1970 => nDt1970, pTBLLST => LSTTBL_ELREG);
+        -- Тянем КА за указанную дату 
+        meas_snapshot30_get_data_p(pDT1970 => nDt1970, pTBLLST => LSTTBL_PSWT);
+
+END;
+/
+
+
+
+CREATE OR REPLACE PROCEDURE RSDUADMIN.meas_snapshot30_check_data_p (
+        pDays  NUMBER DEFAULT 3 -- глубина проверки среза
+       )
+ -- Процедура для проверки сформированного среза 30 минутных значений на полноту
+ 
+ -- Created by Elena I. Bykova  11.05.2021 
+ -- Mofified:
+ AS
+  dDate         DATE; 
+  nCnt          NUMBER (11);
+  nErr          NUMBER (11);
+  LSTTBL_ELREG  NUMBER (11) := 29; -- ID табл-списка параметров режима
+  LSTTBL_PSWT   NUMBER (11) := 33; -- ID табл-списка параметров КА
+  nCnt_PSWT     NUMBER (11) := 6000; -- | Ориентиры по количеству
+  nCnt_ELREG    NUMBER (11) := 3000; -- | точное кол-во не нужно.
+  nCnt_CURRENT_COUNT number; -- текущее кол-во параметров в срезе
+  nTblLst       NUMBER (11);
+  vMSG          VARCHAR2(1024);
+
+  ----------------------------------------------------------------
+
+BEGIN
+
+  -- текущее кол-во обрабатываемых в срезе параметров (status = 0) из насроечной таблицы среза
+  select count (id) into nCnt_CURRENT_COUNT from meas_snapshot30_tune where status = 0;
+
+
+  for rec in (
+    select * from (  -- чего НЕТ в срезе за последние 30 суток (48 значений - сутки)
+      select curhh, to_char (curhh, 'hh24:mi') hh, rdate, cnt
+      from (select trunc (sysdate, 'HH')-(level-1)/48 curhh from dual connect by level<48*pDays  order by 1) 
+      left join (select rdate, count (id) cnt from rsduadmin.MEAS_Snapshot30 where rdate >= trunc (sysdate-(pDays-1)) group by rdate) on rdate = curhh
+      where  curhh >= trunc (sysdate-(pDays-1))
+        and nvl (cnt, 0) < nCnt_CURRENT_COUNT 
+      order by curhh
+     ) where rownum <= 24
+   ) loop
+
+   if nvl (rec.cnt, 0) < nCnt_PSWT + nCnt_ELREG then 
+      nTblLst := case when rec.cnt is null  then null 
+                      when rec.cnt > nCnt_ELREG then LSTTBL_ELREG
+                      else LSTTBL_PSWT
+                      end; 
+      dDate   := rec.curhh;
+      vMsg := 'Срез30: Обнаружен пропуск в данных за '||to_char (dDate, 'dd.mm.yyyy hh24:mi') || ' (отсутствуют '||
+               case when nvl (nTblLst, 0) = 0 then 'ЭР и КА' when nTblLst = LSTTBL_ELREG then 'ЭР' else 'КА' end ||').';       
+       
+      if nvl(nTblLst, LSTTBL_ELREG) = LSTTBL_ELREG then
+        -- Перечитываем ЭР за указанную дату 
+        meas_snapshot30_get_data_p(
+               pTBLLST => LSTTBL_ELREG
+              ,pDate   => dDate
+              );
+      end if;
+      if nvl(nTblLst, LSTTBL_PSWT) = LSTTBL_PSWT then
+        -- Перечитываем КА за указанную дату 
+        meas_snapshot30_get_data_p(
+               pTBLLST => LSTTBL_PSWT
+              ,pDate   => dDate
+              );
+      end if;
+       
+      select count (id) into nCnt from rsduadmin.MEAS_Snapshot30 where rdate = dDate; 
+      if nvl (nCnt, 0) > nCnt_PSWT + nCnt_ELREG then
+         -- пропуск за дату закрыт
+        vMsg := replace (replace (vMsg ,'Обнаружен', 'Закрыт'), 'отсутствуют', 'перечитаны');
+        nErr := 77777; -- отладочное сообщение
+      else
+         -- пропуск за дату НЕ закрыт
+        nErr := -20777;-- отладочное сообщение про ошибку
+      end if; 
+    end if;
+ end loop;
+
+/*--->>--- отладочное соощение в журнал J_RSDU_ERROR
+     vMsg := nvl (vMsg, 'Срез30: ОК. ');
+     rsdu_exception_p (1, vMsg, 77777);
+*/---<<--- конец отладки 
+
+EXCEPTION WHEN OTHERS THEN
+  ROLLBACK;
+  vMSG := sqlerrm;
+  rsdu_exception_p (1, 'meas_snapshot30_check_data_p: '||SQLERRM, SQLCODE);
+END;
+/
+
+
+
+
+
+
+CREATE OR REPLACE PROCEDURE RSDUADMIN.meas_snapshot30_get_data_p (
+        pDt1970 NUMBER DEFAULT NULL -- нужная получасовка, если 0 - берем из параметра pDate
+       ,pTBLLST NUMBER DEFAULT NULL --
+       ,pGinfo  NUMBER DEFAULT NULL --
+       ,pDate   DATE   DEFAULT NULL -- если дата в формате даты
+       ,pTEMPFLAG NUMBER DEFAULT NULL -- флаг, что считать только в темп-табл.
+       )
+ -- Процедура для формирования среза 30 мин. значений для интеграции с АНАРЭС
+ -- Created by Elena I. Bykova  20.06.2011
+ -- Mofified:
+ --   22.02.2012 - использовать вью мгновенных для парам. режима
+ --   15.05.2013 - Elena: доработка для архивного сервера
+ --   17.07.2013 - Elena: доработка для восстановления среза по ЭР из 5-мин.архивов
+ --   20.04.2021 - Elena: адаптировано к чтению данных среза из Кассандры
+ AS
+  LSTTBL_ELREG NUMBER (11) := 29; -- ID табл-списка параметров режима
+  LSTTBL_PSWT  NUMBER (11) := 33; -- ID табл-списка параметров КА
+
+  GINFO_ELREG  NUMBER (11) := 71; -- тип архива параметров режима (мгновенные значения)
+  GINFO_ELREG5 NUMBER (11) := 70; -- тип архива параметров режима (значения на гр. 5 мин)
+  GINFO_PSWT   NUMBER (11) := 63; -- тип архива параметров КА (состояние на гр.получаса)
+
+  CASS_PROFILE VARCHAR2 (63) := 'arc.profile_##@CASS'; -- тип архива параметров режима (мгновенные значения)
+ 
+  nCnt          NUMBER (11);
+  nCntNODATA    NUMBER (11);
+  nErr          NUMBER (11);
+  nSecs         NUMBER (11);
+  nDt_start     NUMBER (11);
+  nDt1970       NUMBER (11);
+  nDt_end       NUMBER (11);
+  vMSG          VARCHAR2 (1024);
+  vDate         VARCHAR2 (30);
+  ----------------------------------------------------------------
+  function read_Cassandra  (pDt1970 number, pLST number, pGINFO number) return number is
+     nCnt number;
+     nID  number := 0;
+     dDateUTC timestamp := cast (from_dt1970(pDt1970) as timestamp with time zone) at time zone 'UTC';
+     type cur_type is ref cursor;
+     cur  cur_type;
+     vErr varchar2 (4000);
+     vTab varchar2 (255):= replace (CASS_PROFILE, '##', pGINFO);
+     vS30 varchar2 (255):= 'select m30.id from meas_snapshot30_tune m30 join LST_TABLE lst on lst.id = m30.id';
+     vSql varchar2 (255):= 'insert into rsduadmin.meas_snapshot30_temp (id, time1970, val,state, rdate)'||
+                           ' select t."id", null, t."val", t."state", t."time1970" from '|| vTab || 
+                           ' t where t."id_tbllst" = :pLST and t."id" = :nID and t."time1970" = :pDT';
+  begin
+    
+    -- очистить вспомогательную таблицу
+    delete from rsduadmin.meas_snapshot30_temp;
+    nCntNODATA  := 0;
+
+      -- заполнить данными за указанную дату из указанного профиля
+        if pLST = LSTTBL_ELREG  then
+           vS30 := replace (vS30, 'LST_TABLE', 'ELREG_LIST_V');
+        elsif pLST = LSTTBL_PSWT  then
+           vS30 := replace (vS30, 'LST_TABLE', 'PSWT_LIST_V');
+        else 
+           return -1;
+        end if;
+
+        open cur for vS30; --(select id from meas_snapshot30_tune);
+          loop
+            fetch cur into nID;  
+            exit when cur%notfound or vErr is not null;
+            begin
+              execute immediate vSQL using pLST, nID, dDateUTC;
+              nCnt := sql%rowcount;
+              nCntNODATA := case when nCnt = 0 then nCntNODATA-1 else nCntNODATA-0 end;   
+            exception when others then
+              vErr := vErr || case when nvl (length (vErr), 0) < 1000 then nID||'-'||sqlerrm||',' 
+                                   when substr (vErr, -3) = '...' then null 
+                                   else '...' 
+                                   end;
+              --if length (vERr) > 1000 then
+                rsdu_exception_p (1, 'Срез30: Ошибка чтения из Касссандры '||pLST ||' за ' ||vDate||
+                                  ' (UTC '||to_char (dDateUTC, 'dd.mm hh24:mi')||')'||chr (10)||vErr, -20779);
+              --end if;                      
+            end; 
+          end loop;
+        close cur;
+        commit;
+        select count (id) into nCnt from rsduadmin.meas_snapshot30_temp;
+        return nCnt;
+        
+   exception when others then
+     rollback; 
+     if cur%isopen then 
+        close cur;
+     end if;
+-- >> --  отладочное сообщение о ошибке чтения из Кассандры 
+     rsdu_exception_p (1, 'Чтение из Касссандры '||pLST ||' за ' ||vDate||
+                                  ' (UTC '||to_char (dDateUTC, 'dd.mm hh24:mi')||')'||chr (10)|| 
+                                  sqlerrm ||chr (10)||'при чтении #'||substr ( vErr, 1, 500), sqlcode);
+     return sqlcode;
+  end;
+  ----------------------------------------------------------------
+
+  function put_data_to_S30 (pLST number, pGINFO number) return number as
+   nCnt number;
+  begin
+       merge into MEAS_SNAPSHOT30  s30
+              using (select id, to_dt1970 (rdate, '+00:00')time1970, val, state, from_dt1970 (to_dt1970 (rdate, '+00:00')) rdate  
+                       from rsduadmin.meas_snapshot30_temp) tmp
+                       on (tmp.id=s30.id and tmp.time1970=s30.time1970)
+                 when matched then update set s30.val=tmp.val, s30.state=tmp.state
+                 when not matched then insert (id, time1970, val, state, rdate)
+                                       values (tmp.id, tmp.time1970, tmp.val, tmp.state, tmp.rdate);
+       nCnt := sql%ROWCOUNT;
+
+       nDt_end := to_dt1970 (sysdate); -- время , за которое выполнена процедура
+       nSecs := nDt_end - nDt_start - nSecs;      
+
+       IF nCnt = 0 and nCntNODATA < 0 then
+         nCnt := nCntNODATA;
+       END IF;  
+       
+       -- информация в таблицу статистики считывания
+       IF nvl(pTEMPFLAG,0)=0 THEN
+         insert into meas_snapshot30_stat (id_tbllst, id_ginfo, dt1970, dtdate, dt_start, dt_end, num_rec)
+          values (pLST, pGINFO, nDt_end, from_dt1970 (nDt1970), nDt1970, nSecs, nCnt);
+       END IF;
+       COMMIT;
+
+     return nCnt;
+   
+   exception when others then
+     rsdu_exception_p (1, 'Запись в срез '||pLST ||' за ' ||vDate||'  '|| sqlerrm, sqlcode);
+     return sqlcode;
+   end;
+   
+BEGIN
+
+  IF nvl (pDt1970, 0) > 0 THEN
+    nDt1970 := trunc (pDT1970/ 1800) * 1800; 
+  ELSE
+    nDt1970 := trunc (to_dt1970 (nvl(pDate, SYSDATE))/ 1800) * 1800;
+  END IF;
+
+  vDate := to_char (from_dt1970(nDt1970), 'dd.mm.yy hh24:mi');
+
+  nDt_start := to_dt1970 (SYSDATE);      
+  nSecs := 0;
+  IF nvl (pTBLLST, LSTTBL_PSWT) = LSTTBL_PSWT THEN 
+     -- Если КА/ВСЕ - значит, обновляем КА
+     -- заполнить вспомогательную таблицу срезом на гр. получаса от КА  из Кассандры
+     nCnt := read_Cassandra (nDt1970, LSTTBL_PSWT, GINFO_PSWT);
+
+     nCnt := put_data_to_s30 (LSTTBL_PSWT, GINFO_PSWT);
+     vMsg := vMsg  ||' КА='||nCnt|| ' за '||nSecs||' сек.;';
+  END IF;
+
+  nDt_start := to_dt1970 (SYSDATE);      
+  nSecs := 0; 
+  IF nvl (pTBLLST, LSTTBL_ELREG) = LSTTBL_ELREG THEN 
+    -- Если ВСЕ/ЭР - значит, обновляем ЭР
+    -- заполнить вспомогательную таблицу срезом на гр. получаса от параметров режима
+    nCnt := read_Cassandra (nDt1970, LSTTBL_ELREG, GINFO_ELREG);
+
+    IF nvl(nCnt, 0) <= 0 THEN -- счетчик неудачных/удачных
+      -- если из профиля 1секундных ничего не считалось, пробуем профиль 5минутных
+      GINFO_ELREG := GINFO_ELREG5; -- для фиксации в статистике
+      nCnt := read_Cassandra (nDt1970, LSTTBL_ELREG, GINFO_ELREG);
+    END IF; 
+
+     nCnt := put_data_to_s30 (LSTTBL_ELREG, GINFO_ELREG);
+     vMsg := vMsg  ||' ЭР='||nCnt||' (ginfo='||GINFO_ELREG||') за '||nSecs||' сек.';
+  END IF;
+
+--->>--- отладочное соощение в журнал J_RSDU_ERROR
+--      rsdu_exception_p (1, 'meas_snapshot30_get_data_p: на '||vDate|| ' считано ' || vMsg, 77777);
+---<<--- конец отладки 
+
+EXCEPTION WHEN OTHERS THEN
+  ROLLBACK;
+  rsdu_exception_p (1, 'meas_snapshot30_get_data_p: '||SQLERRM, SQLCODE);
+END;
+/
+
+
+
+BEGIN
+  SYS.DBMS_SCHEDULER.DROP_JOB
+    (job_name  => 'RSDUADMIN.CHECK_SNAPSHOT30');
+END;
+/
+
+BEGIN
+  SYS.DBMS_SCHEDULER.CREATE_JOB
+    (
+       job_name        => 'RSDUADMIN.CHECK_SNAPSHOT30'
+      ,start_date      => TO_TIMESTAMP_TZ('2021/06/02 19:10:00.000000 +03:00','yyyy/mm/dd hh24:mi:ss.ff tzr')
+      ,repeat_interval => 'freq=hourly; interval=2; byminute=10;'
+      ,end_date        => TO_TIMESTAMP_TZ('2025/06/02 19:10:00.000000 +03:00','yyyy/mm/dd hh24:mi:ss.ff tzr')
+      ,job_class       => 'DEFAULT_JOB_CLASS'
+      ,job_type        => 'PLSQL_BLOCK'
+      ,job_action      => 'BEGIN
+-- Проверка пропусков в Срезе  
+RSDUADMIN.meas_snapshot30_check_data_p (7);
+END;'
+      ,comments        => 'Проверка пропусков в данных среза 30-минутных значений'
+    );
+  SYS.DBMS_SCHEDULER.SET_ATTRIBUTE
+    ( name      => 'RSDUADMIN.CHECK_SNAPSHOT30'
+     ,attribute => 'RESTARTABLE'
+     ,value     => FALSE);
+  SYS.DBMS_SCHEDULER.SET_ATTRIBUTE
+    ( name      => 'RSDUADMIN.CHECK_SNAPSHOT30'
+     ,attribute => 'LOGGING_LEVEL'
+     ,value     => SYS.DBMS_SCHEDULER.LOGGING_FULL);
+  SYS.DBMS_SCHEDULER.SET_ATTRIBUTE
+    ( name      => 'RSDUADMIN.CHECK_SNAPSHOT30'
+     ,attribute => 'MAX_FAILURES'
+     ,value     => 5);
+  SYS.DBMS_SCHEDULER.SET_ATTRIBUTE_NULL
+    ( name      => 'RSDUADMIN.CHECK_SNAPSHOT30'
+     ,attribute => 'MAX_RUNS');
+  SYS.DBMS_SCHEDULER.SET_ATTRIBUTE
+    ( name      => 'RSDUADMIN.CHECK_SNAPSHOT30'
+     ,attribute => 'STOP_ON_WINDOW_CLOSE'
+     ,value     => FALSE);
+  SYS.DBMS_SCHEDULER.SET_ATTRIBUTE
+    ( name      => 'RSDUADMIN.CHECK_SNAPSHOT30'
+     ,attribute => 'JOB_PRIORITY'
+     ,value     => 3);
+  SYS.DBMS_SCHEDULER.SET_ATTRIBUTE_NULL
+    ( name      => 'RSDUADMIN.CHECK_SNAPSHOT30'
+     ,attribute => 'SCHEDULE_LIMIT');
+  SYS.DBMS_SCHEDULER.SET_ATTRIBUTE
+    ( name      => 'RSDUADMIN.CHECK_SNAPSHOT30'
+     ,attribute => 'AUTO_DROP'
+     ,value     => FALSE);
+
+  SYS.DBMS_SCHEDULER.ENABLE
+    (name                  => 'RSDUADMIN.CHECK_SNAPSHOT30');
+END;
+/
+
+
+BEGIN
+  SYS.DBMS_SCHEDULER.DROP_JOB
+    (job_name  => 'RSDUADMIN.READ_CURRENT_SNAPSHOT30');
+END;
+/
+
+BEGIN
+  SYS.DBMS_SCHEDULER.CREATE_JOB
+    (
+       job_name        => 'RSDUADMIN.READ_CURRENT_SNAPSHOT30'
+      ,start_date      => TO_TIMESTAMP_TZ('2021/06/01 22:05:00.000000 +03:00','yyyy/mm/dd hh24:mi:ss.ff tzr')
+      ,repeat_interval => 'freq=minutely; interval=30; bysecond=0;'
+      ,end_date        => TO_TIMESTAMP_TZ('2025/06/01 22:05:00.000000 +03:00','yyyy/mm/dd hh24:mi:ss.ff tzr')
+      ,job_class       => 'DEFAULT_JOB_CLASS'
+      ,job_type        => 'PLSQL_BLOCK'
+      ,job_action      => 'declare
+  nDT1970       NUMBER (11) := trunc (to_dt1970 (sysdate)/1800) * 1800;
+  LSTTBL_ELREG  NUMBER (11) := 29; -- ID табл-списка параметров эл.режима
+  LSTTBL_PSWT   NUMBER (11) := 33; -- ID табл-списка параметров КА
+BEGIN
+        -- Тянем ЭР за указанную дату 
+        meas_snapshot30_get_data_p(pDT1970 => nDt1970, pTBLLST => LSTTBL_ELREG);
+        -- Тянем КА за указанную дату 
+        meas_snapshot30_get_data_p(pDT1970 => nDt1970, pTBLLST => LSTTBL_PSWT);
+END;'
+      ,comments        => 'Считывание данных последней получасовки в срез 30-минутных значений'
+    );
+  SYS.DBMS_SCHEDULER.SET_ATTRIBUTE
+    ( name      => 'RSDUADMIN.READ_CURRENT_SNAPSHOT30'
+     ,attribute => 'RESTARTABLE'
+     ,value     => FALSE);
+  SYS.DBMS_SCHEDULER.SET_ATTRIBUTE
+    ( name      => 'RSDUADMIN.READ_CURRENT_SNAPSHOT30'
+     ,attribute => 'LOGGING_LEVEL'
+     ,value     => SYS.DBMS_SCHEDULER.LOGGING_FULL);
+  SYS.DBMS_SCHEDULER.SET_ATTRIBUTE
+    ( name      => 'RSDUADMIN.READ_CURRENT_SNAPSHOT30'
+     ,attribute => 'MAX_FAILURES'
+     ,value     => 5);
+  SYS.DBMS_SCHEDULER.SET_ATTRIBUTE_NULL
+    ( name      => 'RSDUADMIN.READ_CURRENT_SNAPSHOT30'
+     ,attribute => 'MAX_RUNS');
+  SYS.DBMS_SCHEDULER.SET_ATTRIBUTE
+    ( name      => 'RSDUADMIN.READ_CURRENT_SNAPSHOT30'
+     ,attribute => 'STOP_ON_WINDOW_CLOSE'
+     ,value     => FALSE);
+  SYS.DBMS_SCHEDULER.SET_ATTRIBUTE
+    ( name      => 'RSDUADMIN.READ_CURRENT_SNAPSHOT30'
+     ,attribute => 'JOB_PRIORITY'
+     ,value     => 3);
+  SYS.DBMS_SCHEDULER.SET_ATTRIBUTE_NULL
+    ( name      => 'RSDUADMIN.READ_CURRENT_SNAPSHOT30'
+     ,attribute => 'SCHEDULE_LIMIT');
+  SYS.DBMS_SCHEDULER.SET_ATTRIBUTE
+    ( name      => 'RSDUADMIN.READ_CURRENT_SNAPSHOT30'
+     ,attribute => 'AUTO_DROP'
+     ,value     => FALSE);
+
+  SYS.DBMS_SCHEDULER.ENABLE
+    (name                  => 'RSDUADMIN.READ_CURRENT_SNAPSHOT30');
+END;
+/
+
+Job Action	declare
+  nDT1970       NUMBER (11) := trunc (to_dt1970 (sysdate)/1800) * 1800;
+  LSTTBL_ELREG  NUMBER (11) := 29; -- ID табл-списка параметров эл.режима
+  LSTTBL_PSWT   NUMBER (11) := 33; -- ID табл-списка параметров КА
+BEGIN
+        -- Тянем ЭР за указанную дату 
+        meas_snapshot30_get_data_p(pDT1970 => nDt1970, pTBLLST => LSTTBL_ELREG);
+        -- Тянем КА за указанную дату 
+        meas_snapshot30_get_data_p(pDT1970 => nDt1970, pTBLLST => LSTTBL_PSWT);
+END;
