@@ -373,7 +373,7 @@ namespace ArcConfig
     {
        SHEMA_NAME="";
        DEFINE_ALIAS="ORACLE";
-     // Объект для выполнения запросов к базе данных
+       // Объект для выполнения запросов к базе данных
        OdbcCommand cmd = new OdbcCommand();
        OdbcDataReader reader5 = null ;
 
@@ -393,7 +393,8 @@ namespace ArcConfig
        }
        catch (Exception ex1)
        {
-           return (-2);
+          cmd.Dispose(); 
+       	  return (-2);
        }
 
        //string SHEMA_NAME = "" ;
@@ -409,6 +410,7 @@ namespace ArcConfig
 
        if (!reader5.IsClosed ) reader5.Close();
        reader5.Dispose();
+       cmd.Dispose();
        return (0) ;
     }
 
@@ -3031,7 +3033,7 @@ Postgres : SELECT version();
 
             dataGridView.CurrentCell = checkCell;
             dataGridView.Invalidate();
-			
+
 
         }
 
@@ -3232,7 +3234,7 @@ int ArcAdd(object sender, int selRowNum , int selColNum)
       //MessageBox.Show("Не удалось вызвать процедуру arc_arh_pkg.create_arh","arc_arh_pkg.create_arh","ArcAdd",MessageBoxButtons.OK, MessageBoxIcon.Error);
       return(-5) ;
    }
-   
+
    cmd0.Dispose();
 
 /*
@@ -3300,8 +3302,8 @@ int ArcAdd(object sender, int selRowNum , int selColNum)
          AddLogString("ArcAdd регистрация архива " + retname + " = " + crec1.ToString() );
 
      }
-	 
-	 rec1 = null ;
+
+   rec1 = null ;
      cmd1.Dispose();
 
    }
@@ -3442,8 +3444,8 @@ int ArcDel(object sender, int selRowNum , int selColNum)
       AddLogString("ArcDel vRetVal =" + vRetVal + " sname=" + sname);
 
     }
-	
-	reader = null ;
+
+  reader = null ;
     cmd0.Dispose();
 
 /*
@@ -3515,8 +3517,8 @@ int ArcDel(object sender, int selRowNum , int selColNum)
         }
 
       } //if (res1>0)
-		  
-	  reader = null ;
+
+    reader = null ;
       cmd1.Dispose();
 
     } // if (vRetVal=="0")
@@ -3706,7 +3708,7 @@ void OracleStat ( )
 
     void DeleteDataToolStripMenuItemClick(object sender, EventArgs e)
     {
-       // delete data media
+       // stat\delete data media
 
        // получаем ячейку
        int selRowNum ;
@@ -4343,6 +4345,42 @@ void OracleStat ( )
         }
         return ;
     }
+
+void PartitionMedia(object sender, EventArgs e)
+{
+  // Partition
+
+  // получаем ячейку
+  int selRowNum ;
+  selRowNum = dataGridViewA.CurrentCell.RowIndex; //mouseLocation.RowIndex ;
+
+  if (selRowNum<0) return ;
+
+  DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell) dataGridViewA.Rows[selRowNum].Cells[0] ;
+
+  // если ячейка Unchecked - покидаем алгоритм
+  if (Convert.ToBoolean(chk.Value) == false || chk.Value == null)
+  {
+     return ;
+  }
+
+  //Получить Имя выделенного элемента
+  string id_parent=treeViewA.SelectedNode.Name;
+  if (id_parent=="0") return ;
+
+  string id_tbl =Convert.ToString(treeViewA.SelectedNode.Tag) ;
+  if (id_tbl=="0" || id_tbl=="") return ;
+
+  string ID = dataGridViewA.Rows[selRowNum].Cells[1].Value.ToString() ;
+  string IDNAME = dataGridViewA.Rows[selRowNum].Cells[2].Value.ToString() ;
+  string IDGTOPT = dataGridViewA.Rows[selRowNum].Cells[3].Value.ToString() ;
+  string NAMEHEADER = dataGridViewA.Rows[selRowNum].Cells[16].Value.ToString() ;
+
+  Form ifpart = new FormPartitions(_conn, ID, IDNAME, IDGTOPT, NAMEHEADER, id_tbl, OptionSchemaName);
+  ifpart.StartPosition=FormStartPosition.CenterParent ;
+  ifpart.Show();
+
+}
 
 
 

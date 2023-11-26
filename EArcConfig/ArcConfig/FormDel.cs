@@ -479,12 +479,15 @@ namespace ArcConfig
         try
         {
           reader = cmd0.ExecuteReader();
+          reader.Close();
         }
         catch (Exception )
         {
           is_exdata = 0 ;
         }
-        reader.Close();
+
+        reader=null;
+
 
 
         if (TABLE_NAME.IndexOf("PHREG_LIST_V")>=0) {

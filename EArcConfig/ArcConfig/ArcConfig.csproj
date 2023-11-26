@@ -94,6 +94,10 @@
     <Compile Include="FormOption.Designer.cs">
       <DependentUpon>FormOption.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormPartitions.cs" />
+    <Compile Include="FormPartitions.Designer.cs">
+      <DependentUpon>FormPartitions.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormProfileCreate.cs" />
     <Compile Include="FormProfileCreate.Designer.cs">
       <DependentUpon>FormProfileCreate.cs</DependentUpon>
@@ -147,6 +151,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormOption.resx">
       <DependentUpon>FormOption.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormPartitions.resx">
+      <DependentUpon>FormPartitions.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormProfileCreate.resx">
       <DependentUpon>FormProfileCreate.cs</DependentUpon>
