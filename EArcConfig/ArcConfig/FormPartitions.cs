@@ -133,6 +133,7 @@ CREATE TABLE ARC_VIEW_PARTITIONS (
       OdbcDataAdapter adapter = new OdbcDataAdapter();
 
       cmd0.Connection=this._conn;
+      cmd1.Connection=this._conn;
 
       try {
         dataGridViewPart.DataSource = null ;
@@ -224,31 +225,19 @@ CREATE TABLE ARC_VIEW_PARTITIONS (
         }
 
         // table name  TABLE_NAME = 5
-        String TABLE_NAME = Convert.ToString(dataGridViewPart.Rows[ii].Cells[5].Value) ;
-        string sl2 = "SELECT count(*) FROM " + TABLE_NAME ;
+        //object crec1 = null ;
+        //cmd1.CommandText="SELECT count(*) FROM " + Convert.ToString(dataGridViewPart.Rows[ii].Cells[5].Value) ;
+        //try
+        //{
+        //  crec1 = cmd1.ExecuteScalar();
+        //}
+        //catch (Exception ex1)
+        //{
+        //  continue;
+        //}
+        //dataGridViewPart.Rows[ii].Cells[8].Value=Convert.ToString(crec1) ; // CNT
 
-        cmd1.CommandText=sl2;
-        try
-        {
-          reader = cmd1.ExecuteReader();
-        }
-        catch (Exception ex1)
-        {
-          continue;
-        }
-
-        if (reader.HasRows) {
-          while (reader.Read())
-          {
-            string outstr = GetTypeValue(ref reader, 0).ToUpper() ;
-            dataGridViewPart.Rows[ii].Cells[8].Value=outstr ; // CNT
-            break ;
-          } // while
-        }
-        reader.Close();
-        cmd1.Dispose();
-
-      }
+      } //for
 
 
       // Resize the master DataGridView columns to fit the newly loaded data.
@@ -260,8 +249,39 @@ CREATE TABLE ARC_VIEW_PARTITIONS (
     }
     void FormPartitionsLoad(object sender, EventArgs e)
     {
-        this.Text = this.Text + " ( " + _name + " , " + _gpt_name +" )" ;
+      this.Text = this.Text + " ( " + _name + " , " + _gpt_name +" )" ;
       ARC_VIEW_PARTITIONS(sender);
+    }
+    void ExportToolStripMenuItemClick(object sender, EventArgs e)
+    {
+      // export
+      MessageBox.Show("Nothing ...");
+    }
+    void CountToolStripMenuItemClick(object sender, EventArgs e)
+    {
+      // count partition
+      // Объект для выполнения запросов к базе данных
+      OdbcCommand cmd1 = new OdbcCommand();
+
+      cmd1.Connection=this._conn;
+
+      for (int ii = 0; ii < dataGridViewPart.RowCount ; ii++) {
+        // table name  TABLE_NAME = 5
+        object crec1 = null ;
+        cmd1.CommandText="SELECT count(*) FROM " + Convert.ToString(dataGridViewPart.Rows[ii].Cells[5].Value) ;
+        try
+        {
+          crec1 = cmd1.ExecuteScalar();
+        }
+        catch (Exception ex1)
+        {
+          continue;
+        }
+        dataGridViewPart.Rows[ii].Cells[8].Value=Convert.ToString(crec1) ; // CNT
+        
+        Application.DoEvents();
+      } //for
+
     }
 
 
