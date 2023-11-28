@@ -55,6 +55,7 @@ namespace ArcConfig
     public int PCellValueChanged = 0;
 
     public string OptionSchemaMain = "RSDUADMIN";
+    public int OptionUpdate = 10 ;
     public int OptionFullDelete = 0;
     public int OptionWriteOnDelete = 0 ;
     public int OptionFullName = 0;
@@ -659,8 +660,16 @@ namespace ArcConfig
 
        // Указываем запрос для выполнения
        adapter.SelectCommand = command;
-       // Заполняем объект источника данных
-       adapter.Fill(dataSet1,sObj);
+       // Заполняем объект источника данных 
+       
+	   //try
+       //{
+          adapter.Fill(dataSet1,sObj);
+       //}
+       //catch (Exception ex1)
+       //{
+       //   return ;
+       //}	   
 
        // Запрет удаления данных
        dataSet1.Tables[0].DefaultView.AllowDelete = false;
@@ -674,8 +683,7 @@ namespace ArcConfig
 
        dataGridView1.Update();
 
-       //this._conn.Close();
-
+       
        toolStripStatusLabel2.Text = sObj;
 
        return ;
@@ -1913,15 +1921,23 @@ Postgres : SELECT version();
        toolStripStatusLabel1.Text = end.ToString();
 
        string s1=end.ToString("ss");
-       int num = Convert.ToInt32(s1, 10);
+       int num = Convert.ToInt32(s1, 10 );
 
        // && tabPage1.Focused==true  dataGridView1.Focused==true
        if (radioButton2.Checked==true)
        {
-         if (num%10==0) {
-           _getDBv1("arc_stat_current_v");
-           AddLogString("Timer1->arc_stat_current_v");
-           toolStripStatusLabel2.Text = "..update.."+s1;
+         if (num%OptionUpdate==0) { 
+			s1 = "..update.."+s1;
+			try
+            {
+               _getDBv1("arc_stat_current_v");
+            }
+            catch (Exception ex1)
+            {
+               s1="Error ="+ex1.Message;
+            }
+            //AddLogString("Timer1->arc_stat_current_v");
+            toolStripStatusLabel2.Text = s1;
          }
        } else {
          if (num%30==0) {
@@ -3753,7 +3769,8 @@ void OracleStat ( )
        //  процедура чтения и установки настроек
 
        FormOption ofrm = new FormOption();
-
+       
+       ofrm._OptionUpdate = OptionUpdate.ToString() ;
        if (OptionFullDelete==0) ofrm._OptionFullDelete = false ;
        else  ofrm._OptionFullDelete = true ;
        if (OptionWriteOnDelete==0) ofrm._OptionWriteOnDelete = false ;
@@ -3774,6 +3791,11 @@ void OracleStat ( )
 
        ofrm.ShowDialog();
 
+       int val1 = 10 ;
+       if ( int.TryParse(ofrm._OptionUpdate, out val1 ) )
+           OptionUpdate = val1 ;
+       else OptionUpdate = 10 ;       
+       
        OptionFullDelete=0 ;
        if (ofrm._OptionFullDelete) OptionFullDelete=1 ;
        OptionWriteOnDelete=0 ;

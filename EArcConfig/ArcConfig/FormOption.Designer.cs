@@ -36,6 +36,9 @@ namespace ArcConfig
 		private System.Windows.Forms.Label label7;
 		private System.Windows.Forms.Label label8;
 		private System.Windows.Forms.GroupBox groupBox2;
+		private System.Windows.Forms.TextBox textBox3;
+		private System.Windows.Forms.Label label9;
+		private System.Windows.Forms.Label label10;
 		
 		/// <summary>
 		/// Disposes resources used by the form.
@@ -80,15 +83,18 @@ namespace ArcConfig
 			this.textBox1 = new System.Windows.Forms.TextBox();
 			this.comboBox1 = new System.Windows.Forms.ComboBox();
 			this.label6 = new System.Windows.Forms.Label();
+			this.textBox3 = new System.Windows.Forms.TextBox();
+			this.label9 = new System.Windows.Forms.Label();
+			this.label10 = new System.Windows.Forms.Label();
 			this.groupBox1.SuspendLayout();
 			this.groupBox2.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// checkBox5
 			// 
-			this.checkBox5.Location = new System.Drawing.Point(12, 298);
+			this.checkBox5.Location = new System.Drawing.Point(12, 66);
 			this.checkBox5.Name = "checkBox5";
-			this.checkBox5.Size = new System.Drawing.Size(262, 24);
+			this.checkBox5.Size = new System.Drawing.Size(218, 24);
 			this.checkBox5.TabIndex = 9;
 			this.checkBox5.Text = "Имя обьекта с названием схемы **";
 			this.checkBox5.UseVisualStyleBackColor = true;
@@ -106,7 +112,8 @@ namespace ArcConfig
 			this.groupBox1.Controls.Add(this.label1);
 			this.groupBox1.Controls.Add(this.checkBox1);
 			this.groupBox1.Controls.Add(this.checkBox2);
-			this.groupBox1.Location = new System.Drawing.Point(12, 40);
+			this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.groupBox1.Location = new System.Drawing.Point(244, 3);
 			this.groupBox1.Name = "groupBox1";
 			this.groupBox1.Size = new System.Drawing.Size(263, 252);
 			this.groupBox1.TabIndex = 10;
@@ -124,6 +131,7 @@ namespace ArcConfig
 			// textBox6
 			// 
 			this.textBox6.Location = new System.Drawing.Point(151, 218);
+			this.textBox6.MaxLength = 3;
 			this.textBox6.Name = "textBox6";
 			this.textBox6.Size = new System.Drawing.Size(52, 20);
 			this.textBox6.TabIndex = 16;
@@ -216,16 +224,16 @@ namespace ArcConfig
 			// 
 			this.checkBox7.Location = new System.Drawing.Point(12, 3);
 			this.checkBox7.Name = "checkBox7";
-			this.checkBox7.Size = new System.Drawing.Size(264, 31);
+			this.checkBox7.Size = new System.Drawing.Size(218, 31);
 			this.checkBox7.TabIndex = 16;
 			this.checkBox7.Text = "Удаление регистрации архивов при отключении Профиля";
 			this.checkBox7.UseVisualStyleBackColor = true;
 			// 
 			// checkBox8
 			// 
-			this.checkBox8.Location = new System.Drawing.Point(13, 328);
+			this.checkBox8.Location = new System.Drawing.Point(12, 96);
 			this.checkBox8.Name = "checkBox8";
-			this.checkBox8.Size = new System.Drawing.Size(255, 22);
+			this.checkBox8.Size = new System.Drawing.Size(226, 22);
 			this.checkBox8.TabIndex = 17;
 			this.checkBox8.Text = "Формат при экспорте (1\\0) (иначе (x\\\'\')";
 			this.checkBox8.UseVisualStyleBackColor = true;
@@ -238,7 +246,7 @@ namespace ArcConfig
 			this.groupBox2.Controls.Add(this.textBox1);
 			this.groupBox2.Controls.Add(this.comboBox1);
 			this.groupBox2.Controls.Add(this.label6);
-			this.groupBox2.Location = new System.Drawing.Point(13, 356);
+			this.groupBox2.Location = new System.Drawing.Point(12, 152);
 			this.groupBox2.Name = "groupBox2";
 			this.groupBox2.Size = new System.Drawing.Size(166, 103);
 			this.groupBox2.TabIndex = 25;
@@ -293,11 +301,39 @@ namespace ArcConfig
 			this.label6.TabIndex = 25;
 			this.label6.Text = "ODBC";
 			// 
+			// textBox3
+			// 
+			this.textBox3.Location = new System.Drawing.Point(142, 40);
+			this.textBox3.MaxLength = 3;
+			this.textBox3.Name = "textBox3";
+			this.textBox3.Size = new System.Drawing.Size(36, 20);
+			this.textBox3.TabIndex = 26;
+			this.textBox3.Text = "10";
+			// 
+			// label9
+			// 
+			this.label9.Location = new System.Drawing.Point(12, 40);
+			this.label9.Name = "label9";
+			this.label9.Size = new System.Drawing.Size(124, 19);
+			this.label9.TabIndex = 27;
+			this.label9.Text = " Период обновления =";
+			// 
+			// label10
+			// 
+			this.label10.Location = new System.Drawing.Point(184, 43);
+			this.label10.Name = "label10";
+			this.label10.Size = new System.Drawing.Size(34, 20);
+			this.label10.TabIndex = 28;
+			this.label10.Text = "сек";
+			// 
 			// FormOption
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(284, 469);
+			this.ClientSize = new System.Drawing.Size(516, 259);
+			this.Controls.Add(this.label10);
+			this.Controls.Add(this.label9);
+			this.Controls.Add(this.textBox3);
 			this.Controls.Add(this.groupBox2);
 			this.Controls.Add(this.checkBox8);
 			this.Controls.Add(this.checkBox7);
@@ -314,6 +350,7 @@ namespace ArcConfig
 			this.groupBox2.ResumeLayout(false);
 			this.groupBox2.PerformLayout();
 			this.ResumeLayout(false);
+			this.PerformLayout();
 
 		}
 	}

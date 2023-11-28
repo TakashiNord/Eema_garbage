@@ -18,6 +18,24 @@ namespace ArcConfig
   public partial class FormOption : Form
   {
 
+    public string _OptionUpdate
+    {
+      get {
+        int v0 = 10;
+        if (int.TryParse(textBox3.Text, out v0))
+        {
+          if (v0<0) v0 = 0 ;
+          if (v0==0) v0 = 10 ;
+          if (v0>600) v0 = 600 ;
+        } else {
+          v0 = 10 ;
+        }
+        textBox3.Text = v0.ToString();
+        return textBox3.Text;
+      }
+      set { textBox3.Text = value ; }
+    }  	
+  	
     public bool _OptionFullDelete
     {
         get { return checkBox1.Checked; }
@@ -55,7 +73,7 @@ namespace ArcConfig
     }
     public string _OptionTableConntime
     {
-        get {
+      get {
         int v0 = 30;
         if (int.TryParse(textBox6.Text, out v0))
           {
@@ -65,7 +83,7 @@ namespace ArcConfig
         } else {
           v0 = 30 ;
         }
-          textBox6.Text = v0.ToString();
+        textBox6.Text = v0.ToString();
         return textBox6.Text;
       }
       set { textBox6.Text = value ; }
