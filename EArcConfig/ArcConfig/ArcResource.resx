@@ -451,11 +451,11 @@ FROM  ARC_SUBSYST_PROFILE
 WHERE {0}=ARC_SUBSYST_PROFILE.ID_TBLLST AND ARC_SUBSYST_PROFILE.ID_GINFO={1}</value>
   </data>
   <data name="FormSERVICE1" xml:space="preserve">
-    <value>SELECT arcs.ID_SERVICE, ads.NAME 
+    <value>SELECT arcs.ID_SERVICE, ads.NAME , arcs.PRIORITY
 FROM ARC_SERVICES_TUNE arcs, AD_SERVICE ads 
 WHERE ads.ID=arcs.ID_SERVICE and arcs.ID_SPROFILE={0}
 union
-SELECT arcs.ID_SERVICE, '?????????????????' as NAME 
+SELECT arcs.ID_SERVICE, '?????????????????' as NAME , '' as PRIORITY
 FROM ARC_SERVICES_TUNE arcs, AD_SERVICE ads 
 WHERE arcs.ID_SERVICE not in (SELECT id FROM AD_SERVICE)
 and arcs.ID_SPROFILE={0}</value>
@@ -636,5 +636,11 @@ ORDER BY ID</value>
 FROM  {0}
 WHERE ID_GINFO= {1} AND ID_TBLLST= {2}
 ORDER BY ID</value>
+  </data>
+  <data name="MEAS_SNAPSHOT30_TUNE_t" xml:space="preserve">
+    <value>SELECT mst.ID, ot.NAME as Object, mst.PARAM_TYPE, mst.NAME, mst.STATUS, mst.DT1970
+-- FROM MEAS_SNAPSHOT30_TUNE mst, OBJ_TREE ot
+FROM {0} mst, {1} ot
+WHERE mst.ID_OBJ=ot.ID</value>
   </data>
 </root>

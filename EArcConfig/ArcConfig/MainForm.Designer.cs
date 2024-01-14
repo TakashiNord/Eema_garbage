@@ -100,6 +100,10 @@ namespace ArcConfig
 		private System.Windows.Forms.Button buttonClear30;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
 		private System.Windows.Forms.ToolStripMenuItem partitionsToolStripMenuItem;
+		private System.Windows.Forms.DataGridView dataGridViewM;
+		private System.Windows.Forms.ToolStripSeparator toolStripSeparator10;
+		private System.Windows.Forms.ToolStripSeparator toolStripSeparator12;
+		private System.Windows.Forms.ToolStripButton toolStripButton8;
 		
 		/// <summary>
 		/// Disposes resources used by the form.
@@ -206,12 +210,16 @@ namespace ArcConfig
 			this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
 			this.toolStripButtonCommit = new System.Windows.Forms.ToolStripButton();
 			this.tabPage4 = new System.Windows.Forms.TabPage();
+			this.dataGridViewM = new System.Windows.Forms.DataGridView();
 			this.tabPage5 = new System.Windows.Forms.TabPage();
 			this.dataSet1 = new System.Data.DataSet();
 			this.dataSetA = new System.Data.DataSet();
 			this.dataSetS = new System.Data.DataSet();
 			this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
 			this.timer1 = new System.Windows.Forms.Timer(this.components);
+			this.toolStripButton8 = new System.Windows.Forms.ToolStripButton();
+			this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
+			this.toolStripSeparator12 = new System.Windows.Forms.ToolStripSeparator();
 			this.statusStrip1.SuspendLayout();
 			this.toolStrip1.SuspendLayout();
 			this.tabControl1.SuspendLayout();
@@ -248,6 +256,8 @@ namespace ArcConfig
 			((System.ComponentModel.ISupportInitialize)(this.bindingNavigatorS)).BeginInit();
 			this.bindingNavigatorS.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.bindingSourceS)).BeginInit();
+			this.tabPage4.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.dataGridViewM)).BeginInit();
 			this.tabPage5.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dataSet1)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.dataSetA)).BeginInit();
@@ -296,7 +306,10 @@ namespace ArcConfig
 			this.toolStripButton4,
 			this.toolStripSeparator7,
 			this.toolStripButton5,
+			this.toolStripSeparator10,
 			this.toolStripButton6,
+			this.toolStripSeparator12,
+			this.toolStripButton8,
 			this.toolStripSeparator8,
 			this.toolStripButton7,
 			this.toolStripSeparator11,
@@ -683,7 +696,7 @@ namespace ArcConfig
 			this.toolStripSeparator6,
 			this.partitionsToolStripMenuItem});
 			this.contextMenuStripA.Name = "contextMenuStripA";
-			this.contextMenuStripA.Size = new System.Drawing.Size(156, 154);
+			this.contextMenuStripA.Size = new System.Drawing.Size(156, 132);
 			// 
 			// toolStripMenuItem1
 			// 
@@ -1057,6 +1070,7 @@ namespace ArcConfig
 			// 
 			// tabPage4
 			// 
+			this.tabPage4.Controls.Add(this.dataGridViewM);
 			this.tabPage4.Location = new System.Drawing.Point(4, 22);
 			this.tabPage4.Name = "tabPage4";
 			this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
@@ -1064,6 +1078,17 @@ namespace ArcConfig
 			this.tabPage4.TabIndex = 5;
 			this.tabPage4.Text = "Срез данных для внешних подсистем";
 			this.tabPage4.UseVisualStyleBackColor = true;
+			// 
+			// dataGridViewM
+			// 
+			this.dataGridViewM.AllowUserToDeleteRows = false;
+			this.dataGridViewM.AllowUserToOrderColumns = true;
+			this.dataGridViewM.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dataGridViewM.Location = new System.Drawing.Point(62, 114);
+			this.dataGridViewM.Name = "dataGridViewM";
+			this.dataGridViewM.ReadOnly = true;
+			this.dataGridViewM.Size = new System.Drawing.Size(504, 77);
+			this.dataGridViewM.TabIndex = 0;
 			// 
 			// tabPage5
 			// 
@@ -1090,6 +1115,26 @@ namespace ArcConfig
 			// timer1
 			// 
 			this.timer1.Tick += new System.EventHandler(this.Timer1Tick);
+			// 
+			// toolStripButton8
+			// 
+			this.toolStripButton8.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+			this.toolStripButton8.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton8.Image")));
+			this.toolStripButton8.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.toolStripButton8.Name = "toolStripButton8";
+			this.toolStripButton8.Size = new System.Drawing.Size(23, 22);
+			this.toolStripButton8.Text = "toolStripButton8";
+			this.toolStripButton8.Click += new System.EventHandler(this.ToolStripButton8Click);
+			// 
+			// toolStripSeparator10
+			// 
+			this.toolStripSeparator10.Name = "toolStripSeparator10";
+			this.toolStripSeparator10.Size = new System.Drawing.Size(6, 25);
+			// 
+			// toolStripSeparator12
+			// 
+			this.toolStripSeparator12.Name = "toolStripSeparator12";
+			this.toolStripSeparator12.Size = new System.Drawing.Size(6, 25);
 			// 
 			// MainForm
 			// 
@@ -1143,6 +1188,8 @@ namespace ArcConfig
 			this.bindingNavigatorS.ResumeLayout(false);
 			this.bindingNavigatorS.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.bindingSourceS)).EndInit();
+			this.tabPage4.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.dataGridViewM)).EndInit();
 			this.tabPage5.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.dataSet1)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.dataSetA)).EndInit();

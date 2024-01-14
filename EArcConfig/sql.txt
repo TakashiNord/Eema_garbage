@@ -531,5 +531,57 @@ SELECT
        AND u.ID = s.id_user
        AND r.ID = i.id_ini_param);
 
+=========================================================================
 
+1++)
+
+CREATE TABLE ARC_DB_SCHEMA (
+    ID              DECIMAL        NOT NULL,
+    NAME            NVARCHAR (255),
+    SCHEMA_NAME     NVARCHAR (63),
+    ID_STORAGE_TYPE DECIMAL
+);
+
+CREATE TABLE ARC_STORAGE_TYPE (
+    ID           DECIMAL        NOT NULL,
+    NAME         NVARCHAR (255),
+    DEFINE_ALIAS NVARCHAR (63) 
+);
+
+select ads.ID, ads.NAME, ads.SCHEMA_NAME , ast.NAME as STORAGE
+from ARC_DB_SCHEMA ads,  ARC_STORAGE_TYPE ast
+where ads.ID_STORAGE_TYPE=ast.ID
+order by ads.ID asc
+
+CREATE TABLE ARC_SERVICES_INFO (
+    ID_LSTTBL    DECIMAL NOT NULL,
+    ID_SVC_TYPE  DECIMAL,
+    ID_DB_SCHEMA DECIMAL NOT NULL
+);
+
+CREATE TABLE SYS_TBLLST (
+    ID           DECIMAL        NOT NULL,
+    ID_NODE      DECIMAL,
+    NAME         NVARCHAR (255),
+    TABLE_NAME   NVARCHAR (63),
+    ID_TYPE      DECIMAL,
+    DEFINE_ALIAS NVARCHAR (63),
+    LAST_UPDATE  DECIMAL,
+    ALIAS        NVARCHAR (255),
+    ID_FILEWAV   DECIMAL
+);
+
+select asi.ID_LSTTBL, st.NAME, ads.ID_SVC_TYPE, asi.ID_DB_SCHEMA, ads.NAME as STORAGE
+from ARC_DB_SCHEMA ads,  ARC_SERVICES_INFO asi, SYS_TBLLST st
+where ads.ID=asi.ID_DB_SCHEMA and st.ID=asi.ID_LSTTBL
+
+
+select asi.ID_LSTTBL, st.NAME
+--, ads.ID_SVC_TYPE as TYPE
+, asi.ID_DB_SCHEMA 
+, ads.NAME as STORAGE
+, ads.SCHEMA_NAME
+from ARC_DB_SCHEMA ads, ARC_SERVICES_INFO asi, SYS_TBLLST st
+where ads.ID=asi.ID_DB_SCHEMA and st.ID=asi.ID_LSTTBL
+order by asi.ID_LSTTBL asc
 

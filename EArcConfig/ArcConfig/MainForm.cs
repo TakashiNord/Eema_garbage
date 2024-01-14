@@ -775,6 +775,10 @@ namespace ArcConfig
        toolStripButton7.Enabled=false;
 
        _setDBS();
+ 
+       Action tmea = new Action( _Meas30 ) ;
+       Task tskmea = new Task(tmea);
+       tskmea.Start();	   
 
     }
     void TreeViewAAfterSelect(object sender, TreeViewEventArgs e)
@@ -939,12 +943,12 @@ namespace ArcConfig
         try
         {
            reader = cmd0.ExecuteReader();
-         }
-         catch (Exception ex1)
-         {
+        }
+        catch (Exception ex1)
+        {
             return ;
-         }
-         if (reader.HasRows) {
+        }
+        if (reader.HasRows) {
            while (reader.Read())
            {
                TABLE_NAME = GetTypeValue(ref reader, 1).ToUpper() ;
@@ -952,16 +956,36 @@ namespace ArcConfig
                SHEMA_NAME = GetTypeValue(ref reader, 3).ToUpper() ;
                break ;
             } // while
-         }
-         reader.Close();
+        }
+        reader.Close();
 
-         AddLogString("TreeView TABLE_NAME="+ TABLE_NAME+ " ARC_NAME=" + ARC_NAME + " SHEMA_NAME=" + SHEMA_NAME);
+        AddLogString("TreeView TABLE_NAME="+ TABLE_NAME+ " ARC_NAME=" + ARC_NAME + " SHEMA_NAME=" + SHEMA_NAME);
 
-         Application.DoEvents();
+        Application.DoEvents();
 
         if  (TABLE_NAME.Length<=1) {
+          tabControlAP.SelectedIndex = 0 ;
+          MessageBox.Show ("Не задана Таблица-Список !",
+		                   ">>Построение списка ...", 
+						   MessageBoxButtons.OK , MessageBoxIcon.Exclamation);
           return ;
         }
+
+        if  (SHEMA_NAME.Length<=1) {
+          DialogResult result = MessageBox.Show ("Не задана связь раздела с системой архива!\n\n Установить ? ",
+		                                         ">>Построение списка ...", 
+												 MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+          if (result == DialogResult.Yes)
+          {
+            // переход на первую вкладку
+			tabControlAP.SelectedIndex = 0 ;
+			Form arcdbfrm = new FormArc_db_schema(this._conn, _id_tbl, OptionSchemaName);
+            arcdbfrm.ShowDialog();			
+			return ;
+          }
+        }
+
+        // построение
 
         dp.Clear();
 
@@ -1723,6 +1747,43 @@ Postgres : SELECT version();
        treeViewA.EndUpdate(); //добавить
 
     }
+	
+	
+void _Meas30 ( )
+{
+    // Объект для связи между базой данных и источником данных
+    OdbcDataAdapter adapter = new OdbcDataAdapter();
+    // Объект для выполнения запросов к базе данных
+    OdbcCommand cmd0 = new OdbcCommand();
+    ResourceManager r = new ResourceManager("ArcConfig.ArcResource", Assembly.GetExecutingAssembly());
+
+    cmd0.Connection=this._conn;
+
+    string stSchema="";
+    if (OptionSchemaName>0) {
+      stSchema=OptionSchemaMain + "." ;
+    }
+
+    // get
+    string sl1 = r.GetString("MEAS_SNAPSHOT30_TUNE_t");
+    sl1 = String.Format(sl1, stSchema+"MEAS_SNAPSHOT30_TUNE",stSchema+"OBJ_TREE");
+
+    cmd0.CommandText=sl1;
+
+
+
+    //=========================================================
+    AddLogStringNoTime("------------------------");
+
+
+ 
+    AddLogStringNoTime("------------------------");
+    //=========================================================
+    toolStripStatusLabel2.Text = "Read meas30 tables - finished.";
+    return ;
+}	
+	
+	
 
     void TreeViewSAfterSelect(object sender, TreeViewEventArgs e)
     {
@@ -3534,7 +3595,7 @@ int ArcDel(object sender, int selRowNum , int selColNum)
 
       } //if (res1>0)
 
-    reader = null ;
+      reader = null ;
       cmd1.Dispose();
 
     } // if (vRetVal=="0")
@@ -4403,6 +4464,12 @@ void PartitionMedia(object sender, EventArgs e)
   ifpart.Show();
 
 }
+		void ToolStripButton8Click(object sender, EventArgs e)
+		{
+			Form arcdbfrm = new FormArc_db_schema(this._conn, "", OptionSchemaName);
+			arcdbfrm.StartPosition=FormStartPosition.CenterParent ;
+            arcdbfrm.ShowDialog();
+		}
 
 
 
