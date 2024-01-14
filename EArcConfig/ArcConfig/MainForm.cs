@@ -103,6 +103,8 @@ namespace ArcConfig
        toolStripButton6.Enabled=true;
 
        toolStripButton7.Enabled=true;
+       
+       toolStripButton8.Enabled=true;
 
        tabControl1.Enabled=true;
        _tree21();
@@ -773,6 +775,8 @@ namespace ArcConfig
        toolStripButton6.Enabled=false;
 
        toolStripButton7.Enabled=false;
+       
+       toolStripButton8.Enabled=false;
 
        _setDBS();
  

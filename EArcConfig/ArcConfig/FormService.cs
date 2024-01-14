@@ -59,9 +59,9 @@ namespace ArcConfig
     public string OptionSchemaMain = "RSDUADMIN";
     //public string[] Dpload = new string[100];
     public List<string> Dpload = new List<string>();
-	public List<string> Priority = new List<string>(); // PRIORITY
+    public List<string> Priority = new List<string>(); // PRIORITY
     public List<string> Tech = new List<string>();
-	public List<string> Depth_retro = new List<string>(); // RETRO_DEPTH
+    public List<string> Depth_retro = new List<string>(); // RETRO_DEPTH
 
     public OdbcConnection Conn
     {
@@ -101,20 +101,20 @@ namespace ArcConfig
       string sl1 = "" ;
 
       buttonSave.Enabled = false ;
-      
-      
+
+
       string stSchema="";
       if (_OptionSchemaName>0) {
         stSchema=OptionSchemaMain + "." ;
-      }       
-      
-	  
-	  Priority.Clear();
-	  Depth_retro.Clear(); // RETRO_DEPTH
+      }
+
+
+      Priority.Clear();
+      Depth_retro.Clear(); // RETRO_DEPTH
       // =============================================================================
 
       // 1. add points dpload
-      sl1= "SELECT id, name FROM  "+stSchema+"AD_SERVICE " + 
+      sl1= "SELECT id, name FROM  "+stSchema+"AD_SERVICE " +
            "WHERE define_alias LIKE 'ADV_SRVC_DPLOADADCP_ACCESPORT%' ORDER BY id ASC" ;
       cmd0.CommandText=sl1;
       try
@@ -126,14 +126,14 @@ namespace ArcConfig
         MessageBox.Show(ex1.ToString() );
         return ;
       }
-	  
+
       if (reader.HasRows) {
         while (reader.Read())
         {
-		  string id_sn=GetTypeValue(ref reader, 0);
-		  string sn=GetTypeValue(ref reader, 1);
+          string id_sn=GetTypeValue(ref reader, 0);
+          string sn=GetTypeValue(ref reader, 1);
           checkedListBoxDpload.Items.Add(id_sn + " " + sn,CheckState.Unchecked );
-		  Priority.Add("");
+          Priority.Add("");
         } // while
       }
       reader.Close();
@@ -181,17 +181,17 @@ namespace ArcConfig
             string id_sn = arr[0] + " (ClearUDP) " + arr[5] ;
             checkedListBoxTech.Items.Add(id_sn,CheckState.Unchecked );
           }
-		  Depth_retro.Add("");
+          Depth_retro.Add("");
 
         } // while
       }
       reader.Close();
-      
-      
-	  // 3. add points service tech = rdachd
+
+
+      // 3. add points service tech = rdachd
       sl1= "SELECT id, name FROM "+stSchema+"AD_SERVICE " +
-      	   "WHERE define_alias LIKE 'ADV_SRVC_RDA%_ACCESPORT%' ORDER BY id ASC" ;
-	  //++++++ ??? ADV_SRVC_OICOPC_ACCESSPORT%
+           "WHERE define_alias LIKE 'ADV_SRVC_RDA%_ACCESPORT%' ORDER BY id ASC" ;
+      //++++++ ??? ADV_SRVC_OICOPC_ACCESSPORT%
       // define_alias LIKE 'ADV_SRVC_RDAADCP_ACCESPORT%'
       cmd0.CommandText=sl1;
       try
@@ -208,9 +208,9 @@ namespace ArcConfig
         while (reader.Read())
         {
           string id_sn=GetTypeValue(ref reader, 0);
-		  string sn=GetTypeValue(ref reader, 1);
+          string sn=GetTypeValue(ref reader, 1);
           checkedListBoxTech.Items.Add(id_sn + " " + sn,CheckState.Unchecked );
-		  Depth_retro.Add("");
+          Depth_retro.Add("");
         } // while
       }
       reader.Close();
@@ -248,9 +248,9 @@ namespace ArcConfig
         {
           int flag_add = 0 ; // элемент добавлен
           string id_sn = GetTypeValue(ref reader, 0);
-		  string sn = GetTypeValue(ref reader, 1);
-		  string PRIORITY = GetTypeValue(ref reader, 2);
-		  Dpload.Add(sn);
+          string sn = GetTypeValue(ref reader, 1);
+          string PRIORITY = GetTypeValue(ref reader, 2);
+          Dpload.Add(sn);
 
           string itemN = "" ;
 
@@ -260,7 +260,7 @@ namespace ArcConfig
             itemN = checkedListBoxDpload.GetItemText(checkedListBoxDpload.Items[j]);
             if (itemN.IndexOf(id_sn)>=0) {
                 checkedListBoxDpload.SetItemChecked(j,true);
-				Priority[j]=PRIORITY;
+                Priority[j]=PRIORITY;
                 flag_add = 1;
                 break ;
             }
@@ -296,12 +296,12 @@ namespace ArcConfig
         while (reader.Read())
         {
           int flag_add = 0 ; // элемент добавлен
-		  
-		  string id_sn = GetTypeValue(ref reader, 0);
-		  string sn = GetTypeValue(ref reader, 1);
-		  RETRO_DEPTH = GetTypeValue(ref reader, 2);
-		  Tech.Add(sn);
-		  
+
+          string id_sn = GetTypeValue(ref reader, 0);
+          string sn = GetTypeValue(ref reader, 1);
+          RETRO_DEPTH = GetTypeValue(ref reader, 2);
+          Tech.Add(sn);
+
           for (int j = 0; j < checkedListBoxTech.Items.Count; j++)
           {
             //itemN = checkedListBoxTech.Items[j].ToString();
@@ -309,7 +309,7 @@ namespace ArcConfig
 
             if (itemN.IndexOf(id_sn)>=0) {
                 checkedListBoxTech.SetItemChecked(j,true);
-				Depth_retro[j]=RETRO_DEPTH;
+                Depth_retro[j]=RETRO_DEPTH;
                 flag_add = 1;
                 break ;
             }
@@ -335,7 +335,7 @@ namespace ArcConfig
    public void SaveData()
    {
       //-----------------------
-	  //
+    //
       //ARC_SERVICES_TUNE
       //  ID_SPROFILE = ID
       //
@@ -354,12 +354,12 @@ namespace ArcConfig
       int ret1 = 0 ;
       int tParam1 = 0 ;
 
-      
+
       string stSchema="";
       if (_OptionSchemaName>0) {
         stSchema=OptionSchemaMain + "." ;
-      }       
-      
+      }
+
       //for(int i=0;i<Tech.Count; i++) MessageBox.Show(Tech[i].ToString() );
 
       //for(int i=0;i<Dpload.Count; i++) MessageBox.Show(Dpload[i].ToString() );
@@ -390,14 +390,14 @@ namespace ArcConfig
           }
           tParam1 = Math.Abs(tParam1);
           rec_id = tParam1.ToString();
-          
+
           string sID_PRIORITY = nID_PRIORITY.ToString() ;
           if (Priority[i].ToString()!="")
-          	if (Priority[i].ToString()!="0")
+            if (Priority[i].ToString()!="0")
               sID_PRIORITY = Priority[i].ToString() ;
 
           sl1= "INSERT INTO "+stSchema+"ARC_SERVICES_TUNE(ID_SPROFILE, ID_SERVICE, PRIORITY) " +
-          	   " VALUES ("+_id+","+rec_id+","+sID_PRIORITY+")";
+               " VALUES ("+_id+","+rec_id+","+sID_PRIORITY+")";
           cmd0.CommandText=sl1;
           try
           {
@@ -438,7 +438,7 @@ namespace ArcConfig
           rec_id = tParam1.ToString();
 
           string Period = Depth_retro[i];
-          
+
           sl1= "INSERT INTO "+stSchema+"ARC_SERVICES_ACCESS (ID_SPROFILE, ID_SERVICE, RETRO_DEPTH) " +
                " VALUES ("+_id+","+rec_id+","+Period+")";
           cmd0.CommandText=sl1;
@@ -477,51 +477,51 @@ namespace ArcConfig
     {
       GetLoad();
     }
-		void CheckedListBoxDploadSelectedIndexChanged(object sender, EventArgs e)
-		{
-			//
-			int selected = checkedListBoxDpload.SelectedIndex;
-			//this.Text = checkedListBoxDpload.Items[selected].ToString();
-			if (Priority[selected].ToString()!="") {
-				numericUpDown1.Value = decimal.Parse( Priority[selected].ToString() );
-			}
-			//MessageBox.Show(Priority[selected].ToString());
-            
-		}
-		void CheckedListBoxTechSelectedIndexChanged(object sender, EventArgs e)
-		{
-			//
-			int selected = checkedListBoxTech.SelectedIndex;
-			BoxPeriod.Text = Depth_retro[selected].ToString() ;
-			//MessageBox.Show(Depth_retro[selected].ToString());	
-		}
-		void NumericUpDown1ValueChanged(object sender, EventArgs e)
-		{
-			//
-			int selected = checkedListBoxDpload.SelectedIndex;
-			if (selected<0) return ;
-			Priority[selected] = numericUpDown1.Value.ToString();
-		}
-		void BoxPeriodSelectedIndexChanged(object sender, EventArgs e)
-		{
-			//
-			int selected = checkedListBoxTech.SelectedIndex;
-			if (selected<0) return ;
-			
-            string Period = BoxPeriod.Text.Trim() ;
-            int tParam1 = 0 ;
-            if (!Int32.TryParse(Period.Split(' ')[0], out tParam1)) {
-              tParam1 = 3660 ;
-            }
-            tParam1 = Math.Abs(tParam1);
+    void CheckedListBoxDploadSelectedIndexChanged(object sender, EventArgs e)
+    {
+      //
+      int selected = checkedListBoxDpload.SelectedIndex;
+      //this.Text = checkedListBoxDpload.Items[selected].ToString();
+      if (Priority[selected].ToString()!="") {
+        numericUpDown1.Value = decimal.Parse( Priority[selected].ToString() );
+      }
+      //MessageBox.Show(Priority[selected].ToString());
 
-            Depth_retro[selected] = tParam1.ToString() ;
-		}
-		void BoxPeriodTextChanged(object sender, EventArgs e)
-		{
-			//
-			BoxPeriodSelectedIndexChanged(sender, e) ;
-		}
+    }
+    void CheckedListBoxTechSelectedIndexChanged(object sender, EventArgs e)
+    {
+      //
+      int selected = checkedListBoxTech.SelectedIndex;
+      BoxPeriod.Text = Depth_retro[selected].ToString() ;
+      //MessageBox.Show(Depth_retro[selected].ToString());
+    }
+    void NumericUpDown1ValueChanged(object sender, EventArgs e)
+    {
+      //
+      int selected = checkedListBoxDpload.SelectedIndex;
+      if (selected<0) return ;
+      Priority[selected] = numericUpDown1.Value.ToString();
+    }
+    void BoxPeriodSelectedIndexChanged(object sender, EventArgs e)
+    {
+      //
+      int selected = checkedListBoxTech.SelectedIndex;
+      if (selected<0) return ;
+
+      string Period = BoxPeriod.Text.Trim() ;
+      int tParam1 = 0 ;
+      if (!Int32.TryParse(Period.Split(' ')[0], out tParam1)) {
+        tParam1 = 3660 ;
+      }
+      tParam1 = Math.Abs(tParam1);
+
+      Depth_retro[selected] = tParam1.ToString() ;
+    }
+    void BoxPeriodTextChanged(object sender, EventArgs e)
+    {
+      //
+      BoxPeriodSelectedIndexChanged(sender, e) ;
+    }
 
   }
 }
