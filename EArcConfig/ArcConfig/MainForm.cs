@@ -1903,7 +1903,7 @@ void _Meas30 ( )
             IDataObject objectSave = Clipboard.GetDataObject();
             dataGridView.ClipboardCopyMode = DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText;
             dataGridView.SelectAll();
-            Clipboard.SetDataObject(dataGridView1.GetClipboardContent());
+            Clipboard.SetDataObject(dataGridView.GetClipboardContent());
             string pattern = @"^;(.*)$";
             string str = (Clipboard.GetText(TextDataFormat.Text)).Replace(" ", ";");
             str=Regex.Replace(str, pattern, "$1",RegexOptions.Multiline);
@@ -4473,6 +4473,18 @@ void PartitionMedia(object sender, EventArgs e)
 			Form arcdbfrm = new FormArc_db_schema(this._conn, "", OptionSchemaName);
 			arcdbfrm.StartPosition=FormStartPosition.CenterParent ;
             arcdbfrm.ShowDialog();
+		}
+		void ButtonProfileClick(object sender, EventArgs e)
+		{
+            string stSchema="";
+            if (OptionSchemaName>0) {
+                stSchema=OptionSchemaMain + "." ;
+            }			
+			
+			Form lstdbfrm = new FormList(this._conn, stSchema+"ARC_SUBSYST_PROFILE", "LAST_UPDATE");
+			lstdbfrm.StartPosition=FormStartPosition.CenterParent ;
+            lstdbfrm.ShowDialog();	        
+     
 		}
 
 

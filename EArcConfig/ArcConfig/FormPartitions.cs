@@ -62,6 +62,7 @@ namespace ArcConfig
     public String _id_tbl;
     public int _OptionSchemaName = 0;
     public string OptionSchemaMain = "RSDUADMIN";
+    public int OptionSaveFormat = 0 ;
 
     public OdbcConnection Conn
     {
@@ -255,7 +256,104 @@ CREATE TABLE ARC_VIEW_PARTITIONS (
     void ExportToolStripMenuItemClick(object sender, EventArgs e)
     {
       // export
-      MessageBox.Show("Nothing ...");
+      // экспорт в csv
+
+      var  dataGridView = (DataGridView)null ;
+      dataGridView = (DataGridView)dataGridViewPart;
+
+      if (dataGridView==null) return ;
+
+      //if (dataGridView.DataSource==null || dataGridView.DataSource=="" ) return ;
+
+      //SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+      saveFileDialog1.Filter = "CSV|*.csv|Text|*.txt";
+      saveFileDialog1.FilterIndex = 1;
+
+      saveFileDialog1.Title = "Export to CSV-TXT";   //define the name of openfileDialog
+      saveFileDialog1.InitialDirectory = @"Desktop"; //define the initial directory
+      saveFileDialog1.FileName="";
+
+      if (saveFileDialog1.ShowDialog() == DialogResult.Cancel) return;
+      // получаем выбранный файл
+      string filename = saveFileDialog1.FileName;
+      // сохраняем текст в файл
+      switch(saveFileDialog1.FilterIndex)
+      {
+         case 2 :
+            IDataObject objectSave = Clipboard.GetDataObject();
+            dataGridView.ClipboardCopyMode = DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText;
+            dataGridView.SelectAll();
+            Clipboard.SetDataObject(dataGridView.GetClipboardContent());
+            string pattern = @"^;(.*)$";
+            string str = (Clipboard.GetText(TextDataFormat.Text)).Replace(" ", ";");
+            str=Regex.Replace(str, pattern, "$1",RegexOptions.Multiline);
+            File.WriteAllText(filename, str, Encoding.UTF8);
+            if (objectSave != null)
+            {
+                Clipboard.SetDataObject(objectSave);
+            }
+            dataGridView.ClearSelection();
+         break;
+         default :
+              string fileCSV = "";
+              for (int f = 0; f < dataGridView.ColumnCount; f++)
+                  fileCSV += (dataGridView.Columns[f].HeaderText + ";");
+              fileCSV += "\t" + Environment.NewLine;
+              string st , tst ;
+              using (StreamWriter wr = new StreamWriter(filename, false, Encoding.UTF8) )  // Encoding.GetEncoding("windows-1251"))
+              {
+                for (int i = 0; i < dataGridView.RowCount ; i++)
+                {
+                    for (int j = 0; j < dataGridView.ColumnCount; j++)
+                    {
+                      st = "" ;
+                      try
+                      {
+                        st = (dataGridView[j, i].Value).ToString() ;
+                      }
+                      catch (Exception ex1)
+                      {
+                        st = "" ;
+                      }
+
+                      tst = "" ;
+                      try
+                      {
+                        tst = dataGridView[j, i].Value.GetType().ToString() ;
+                      }
+                      catch (Exception ex1)
+                      {
+                        tst = "" ;
+                      }
+
+                      if ("System.Windows.Forms.CheckState"==tst) {
+                        //Checked Unchecked
+                        if (OptionSaveFormat>0) {
+                          if (st=="Checked") st="1";
+                          if (st=="Unchecked") st="0";
+                        } else {
+                          if (st=="Checked") st="x";
+                          if (st=="Unchecked") st="";
+                        }
+                      }
+                      fileCSV += st + ";";
+                      //fileCSV += ( dataGridView[j, i].Value).ToString() + ";";
+                    }
+                    //fileCSV += "\t" + Environment.NewLine;
+                    wr.WriteLine(fileCSV);
+                    fileCSV="";
+                }
+              } //using
+
+                //StreamWriter wr = new StreamWriter(filename, false, Encoding.UTF8); // Encoding.GetEncoding("windows-1251")
+                //wr.Write(fileCSV);
+                //wr.Close();
+
+          break ;
+      }
+      String s1="filename="+filename + " -> Save";
+      MessageBox.Show("Export to \n " + filename + " \n done");      
+      //MessageBox.Show("Nothing ...");
     }
     void CountToolStripMenuItemClick(object sender, EventArgs e)
     {
@@ -283,6 +381,14 @@ CREATE TABLE ARC_VIEW_PARTITIONS (
       } //for
 
     }
+		void DropToolStripMenuItemClick(object sender, EventArgs e)
+		{
+			MessageBox.Show("Nothing ...");
+		}
+		void CreateToolStripMenuItemClick(object sender, EventArgs e)
+		{
+	        MessageBox.Show("Nothing ...");
+		}
 
 
   }

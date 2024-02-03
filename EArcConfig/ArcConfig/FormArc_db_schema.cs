@@ -14,6 +14,7 @@ using System.Reflection;
 using System.Resources;
 using System.IO;
 using System.Text;
+using System.Collections.Generic;
 
 namespace ArcConfig
 {
@@ -34,7 +35,7 @@ namespace ArcConfig
 			//
 		}
 		
-    public string GetTypeValue(ref OdbcDataReader reader, int i)
+   public string GetTypeValue(ref OdbcDataReader reader, int i)
    {
      object obj ;
      string ret="";
@@ -77,66 +78,80 @@ namespace ArcConfig
       _id_tbl = tbl ;
       _OptionSchemaName = SchemaName ;
     }		
-		
-    void Load1()
+
+
+
+    int _checkCol( string nameCol , string nameTbl )
     {
-        ResourceManager r = new ResourceManager("ArcConfig.ArcResource", Assembly.GetExecutingAssembly());
+       int is_exists = 1 ;
+       // Объект для выполнения запросов к базе данных
+       OdbcCommand cmd = new OdbcCommand();
+       OdbcDataReader reader1 = null ;
 
-        // Объект для выполнения запросов к базе данных
-        OdbcCommand cmd0 = new OdbcCommand();
-        OdbcDataReader reader = null ;
+       cmd.Connection = this._conn; // уже созданное и открытое соединение
 
-        cmd0.Connection=this._conn;
+       string stSchema="";
+       if (_OptionSchemaName>0) {
+         stSchema=OptionSchemaMain + "." ;
+       }
 
+       // определяем поле
+       //ERROR [42S22] [Oracle][ODBC][Ora]ORA-00904: недопустимый идентификатор
 
-        string stSchema="";
-        if (_OptionSchemaName>0) {
-          stSchema=OptionSchemaMain + "." ;
-        }
+       cmd.CommandText="SELECT " + nameCol + " FROM "+stSchema+nameTbl ;
+       try
+       {
+          reader1 = cmd.ExecuteReader();
+          if (!reader1.IsClosed ) reader1.Close();
+       }
+       catch (Exception ex1)
+       {
+          is_exists = 0 ;
+       }
+       //finally
+       //{
+       //   is_exists = 0 ;
+       //}
+       //if (!reader1.IsClosed ) reader1.Close();
+       reader1 = null ;
+       cmd.Dispose();
+       return (is_exists) ;
+    }
 
+    class ARC_DB_SCHEMA
+    {
+        public int ID { get; set; }
+		public string NAME { get; set; } //обязательно нужно использовать get конструкцию
+        public string SCHEMA_NAME { get; set; }
+		public int ID_STORAGE_TYPE { get; set; }
+        public string DEFINE_ALIAS { get; set; }
 
-        string sl1 = r.GetString("ARH_SYSTBLLST2");
-        sl1 = String.Format(sl1,_id_tbl);
+        public string Hidden = ""; //Данное свойство не будет отображаться как колонка
 
-        cmd0.CommandText=sl1;
-        try
+        public ARC_DB_SCHEMA(int id, string name, string sch, int id_type, string defalias )
         {
-          reader = cmd0.ExecuteReader();
+            this.ID = id;
+			this.NAME = name;
+            this.SCHEMA_NAME = sch;
+			this.ID_STORAGE_TYPE = id_type ;
+            this.DEFINE_ALIAS = defalias ;
         }
-        catch (Exception ex1)
-        {
-          MessageBox.Show(ex1.Message);
-          return ;
-        }
+    }   
 
-        String ARC_NAME = "" ;
-       // _SCHEME_NAME = "" ;
-        if (reader.HasRows) {
-          while (reader.Read())
-          {
-            ARC_NAME = GetTypeValue(ref reader, 2).ToUpper() ;
-            //_SCHEME_NAME = GetTypeValue(ref reader, 3).ToUpper() ;
-            break ;
-          } // while
-        }
-        reader.Close();
-
-        if (ARC_NAME=="") return ;
-        Application.DoEvents();
-
-
-//          MessageBox.Show(ex1.Message);
-        int rq = 86400;
-//        int.TryParse(ext1[2], out rq);
-
-
-    }		
-		
+    
+   //public DataSet GetCountries()
+   //{
+   //   DataSet ds = new DataSet();
+   //   OdbcDataAdapter da = new OdbcDataAdapter("select distinct country from customers", strConn);
+   //   da.Fill(ds, "countries");
+   //   return ds;
+   //}    
+    
     void Select1(object sender)
     {
-       /*
-       событие после выбора таблицы
-       */
+       List<ARC_DB_SCHEMA> data = new List<ARC_DB_SCHEMA>(); 
+       //Специальный список List с вызовом события обновления внутреннего состояния, необходимого для автообновления datagridview
+
 
        // Объект для связи между базой данных и источником данных
        OdbcDataAdapter adapter = new OdbcDataAdapter();
@@ -156,11 +171,22 @@ namespace ArcConfig
 
        cmd0.CommandText="SELECT * FROM " + stSchema + table_name;
        
+/*
+ * проверка на существование ARC_DB_SCHEMA.ID_STORAGE_TYPE
+ * получение типа бд хранилища
+ */
+ 
+ if (0==_checkCol( "ID_STORAGE_TYPE" , "ARC_DB_SCHEMA" ))        
+cmd0.CommandText="select ads.ID, ads.NAME, ads.SCHEMA_NAME " + 
+"from " + stSchema + "ARC_DB_SCHEMA ads " +
+"order by ads.ID asc " ;
+ else 
 cmd0.CommandText="select ads.ID, ads.NAME, ads.SCHEMA_NAME , ast.DEFINE_ALIAS as STORAGE " + 
 "from " + stSchema + "ARC_DB_SCHEMA ads, " + stSchema + "ARC_STORAGE_TYPE ast " +
 "where ads.ID_STORAGE_TYPE=ast.ID " +
 "order by ads.ID asc " ;
-
+ 	
+ 	
        dataSet1.Clear();
        dataGridView1.DataSource = null;
        dataSet1.Tables.Clear();
@@ -168,18 +194,15 @@ cmd0.CommandText="select ads.ID, ads.NAME, ads.SCHEMA_NAME , ast.DEFINE_ALIAS as
        // Указываем запрос для выполнения
        adapter.SelectCommand = cmd0;
 	   
-	   OdbcCommandBuilder builder = new OdbcCommandBuilder(adapter);
-	   
        // Заполняем объект источника данных
        adapter.Fill(dataSet1,table_name);
 
        // (с этого момента она будет отображать его содержимое)
        dataGridView1.DataSource = dataSet1.Tables[0];
-       //dataGridView1.DataMember=table_name;
+	   
+	   //data.Add(new SampleRow("Товар 1", 100, 1));
 
        bindingSource1.DataSource=dataSet1.Tables[0];
-       bindingNavigator1.BindingSource = bindingSource1;
-
 
        // Resize the master DataGridView columns to fit the newly loaded data.
        dataGridView1.AutoResizeColumns();
@@ -198,6 +221,44 @@ cmd0.CommandText="select ads.ID, ads.NAME, ads.SCHEMA_NAME , ast.DEFINE_ALIAS as
     }
 		void FormArc_db_schemaLoad(object sender, EventArgs e)
 		{
+		/*
+            var column1 = new DataGridViewColumn();
+            column1.HeaderText = "Название"; //текст в шапке
+            column1.Width = 100; //ширина колонки
+            column1.ReadOnly = true; //значение в этой колонке нельзя править
+            column1.Name = "name"; //текстовое имя колонки, его можно использовать вместо обращений по индексу
+            column1.Frozen = true; //флаг, что данная колонка всегда отображается на своем месте
+            column1.CellTemplate = new DataGridViewTextBoxCell(); //тип нашей колонки
+
+            var column2 = new DataGridViewColumn();
+            column2.HeaderText = "Цена"; 
+            column2.Name = "price";
+            column2.CellTemplate = new DataGridViewTextBoxCell();
+
+            var column3 = new DataGridViewColumn();
+            column3.HeaderText = "Остаток";
+            column3.Name = "count";
+            column3.CellTemplate = new DataGridViewTextBoxCell();
+            
+            var column4 = new DataGridViewColumn();
+            DataGridViewCheckBoxColumn column4 = new DataGridViewCheckBoxColumn();
+
+DataGridViewComboBoxColumn DGVCMB = new DataGridViewComboBoxColumn();
+            DGVCMB.DataPropertyName = "userVALUE";
+            DGVCMB.Name = "userVALUE";
+            DGVCMB.HeaderText = "Выбор значения";
+            DGVCMB.Width = 150;
+            DGVCMB.DataSource = ds2.Tables[0];
+            DGVCMB.DisplayMember = "userattendancetypesNAME";
+            DGVCMB.ValueMember = "userattendancetypesID";
+            dataGridView1.Columns.Add(DGVCMB);            
+            
+            
+            dataGridView1.Columns.Add(column1);
+            dataGridView1.Columns.Add(column2);
+            dataGridView1.Columns.Add(column3);
+*/
+
 			Select1(sender) ;
 		}		
 		

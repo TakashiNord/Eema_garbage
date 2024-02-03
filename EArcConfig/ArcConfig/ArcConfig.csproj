@@ -94,6 +94,10 @@
     <Compile Include="FormInfo1.Designer.cs">
       <DependentUpon>FormInfo1.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormList.cs" />
+    <Compile Include="FormList.Designer.cs">
+      <DependentUpon>FormList.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormOption.cs" />
     <Compile Include="FormOption.Designer.cs">
       <DependentUpon>FormOption.cs</DependentUpon>
@@ -155,6 +159,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormInfo1.resx">
       <DependentUpon>FormInfo1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormList.resx">
+      <DependentUpon>FormList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormOption.resx">
       <DependentUpon>FormOption.cs</DependentUpon>
