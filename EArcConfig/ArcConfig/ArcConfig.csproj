@@ -66,6 +66,10 @@
     <Compile Include="FormArcGinfo.Designer.cs">
       <DependentUpon>FormArcGinfo.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormARCSCH.cs" />
+    <Compile Include="FormARCSCH.Designer.cs">
+      <DependentUpon>FormARCSCH.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormArc_db_schema.cs" />
     <Compile Include="FormArc_db_schema.Designer.cs">
       <DependentUpon>FormArc_db_schema.cs</DependentUpon>
@@ -141,6 +145,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormArcGinfo.resx">
       <DependentUpon>FormArcGinfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormARCSCH.resx">
+      <DependentUpon>FormARCSCH.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormArc_db_schema.resx">
       <DependentUpon>FormArc_db_schema.cs</DependentUpon>

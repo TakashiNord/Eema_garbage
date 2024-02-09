@@ -4486,6 +4486,12 @@ void PartitionMedia(object sender, EventArgs e)
             lstdbfrm.ShowDialog();	        
      
 		}
+		void ButtonVarSchClick(object sender, EventArgs e)
+		{
+     		Form arcdbfrm = new FormARCSCH();
+			arcdbfrm.StartPosition=FormStartPosition.CenterParent ;
+            arcdbfrm.ShowDialog();		
+		}
 
 
 

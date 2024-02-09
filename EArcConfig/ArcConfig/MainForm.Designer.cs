@@ -100,11 +100,11 @@ namespace ArcConfig
 		private System.Windows.Forms.Button buttonClear30;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
 		private System.Windows.Forms.ToolStripMenuItem partitionsToolStripMenuItem;
-		private System.Windows.Forms.DataGridView dataGridViewM;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator10;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator12;
 		private System.Windows.Forms.ToolStripButton toolStripButton8;
 		private System.Windows.Forms.Button buttonProfile;
+		private System.Windows.Forms.Button buttonVarSch;
 		
 		/// <summary>
 		/// Disposes resources used by the form.
@@ -180,6 +180,8 @@ namespace ArcConfig
 			this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
 			this.partitionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.richTextBox2 = new System.Windows.Forms.RichTextBox();
+			this.buttonVarSch = new System.Windows.Forms.Button();
+			this.buttonProfile = new System.Windows.Forms.Button();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
 			this.buttonService = new System.Windows.Forms.Button();
 			this.buttonSave = new System.Windows.Forms.Button();
@@ -214,14 +216,12 @@ namespace ArcConfig
 			this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
 			this.toolStripButtonCommit = new System.Windows.Forms.ToolStripButton();
 			this.tabPage4 = new System.Windows.Forms.TabPage();
-			this.dataGridViewM = new System.Windows.Forms.DataGridView();
 			this.tabPage5 = new System.Windows.Forms.TabPage();
 			this.dataSet1 = new System.Data.DataSet();
 			this.dataSetA = new System.Data.DataSet();
 			this.dataSetS = new System.Data.DataSet();
 			this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
 			this.timer1 = new System.Windows.Forms.Timer(this.components);
-			this.buttonProfile = new System.Windows.Forms.Button();
 			this.statusStrip1.SuspendLayout();
 			this.toolStrip1.SuspendLayout();
 			this.tabControl1.SuspendLayout();
@@ -258,8 +258,6 @@ namespace ArcConfig
 			((System.ComponentModel.ISupportInitialize)(this.bindingNavigatorS)).BeginInit();
 			this.bindingNavigatorS.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.bindingSourceS)).BeginInit();
-			this.tabPage4.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.dataGridViewM)).BeginInit();
 			this.tabPage5.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dataSet1)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.dataSetA)).BeginInit();
@@ -662,6 +660,7 @@ namespace ArcConfig
 			// 
 			// splitContainer1.Panel2
 			// 
+			this.splitContainer1.Panel2.Controls.Add(this.buttonVarSch);
 			this.splitContainer1.Panel2.Controls.Add(this.buttonProfile);
 			this.splitContainer1.Panel2.Controls.Add(this.groupBox1);
 			this.splitContainer1.Panel2.Controls.Add(this.buttonService);
@@ -784,6 +783,26 @@ namespace ArcConfig
 			this.richTextBox2.Size = new System.Drawing.Size(647, 145);
 			this.richTextBox2.TabIndex = 0;
 			this.richTextBox2.Text = resources.GetString("richTextBox2.Text");
+			// 
+			// buttonVarSch
+			// 
+			this.buttonVarSch.Location = new System.Drawing.Point(14, 441);
+			this.buttonVarSch.Name = "buttonVarSch";
+			this.buttonVarSch.Size = new System.Drawing.Size(148, 55);
+			this.buttonVarSch.TabIndex = 5;
+			this.buttonVarSch.Text = "Выделенный сервер архивов (схемы)";
+			this.buttonVarSch.UseVisualStyleBackColor = true;
+			this.buttonVarSch.Click += new System.EventHandler(this.ButtonVarSchClick);
+			// 
+			// buttonProfile
+			// 
+			this.buttonProfile.Location = new System.Drawing.Point(14, 303);
+			this.buttonProfile.Name = "buttonProfile";
+			this.buttonProfile.Size = new System.Drawing.Size(85, 31);
+			this.buttonProfile.TabIndex = 4;
+			this.buttonProfile.Text = "Профили";
+			this.buttonProfile.UseVisualStyleBackColor = true;
+			this.buttonProfile.Click += new System.EventHandler(this.ButtonProfileClick);
 			// 
 			// groupBox1
 			// 
@@ -1093,7 +1112,6 @@ namespace ArcConfig
 			// 
 			// tabPage4
 			// 
-			this.tabPage4.Controls.Add(this.dataGridViewM);
 			this.tabPage4.Location = new System.Drawing.Point(4, 22);
 			this.tabPage4.Name = "tabPage4";
 			this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
@@ -1101,17 +1119,6 @@ namespace ArcConfig
 			this.tabPage4.TabIndex = 5;
 			this.tabPage4.Text = "Срез данных для внешних подсистем";
 			this.tabPage4.UseVisualStyleBackColor = true;
-			// 
-			// dataGridViewM
-			// 
-			this.dataGridViewM.AllowUserToDeleteRows = false;
-			this.dataGridViewM.AllowUserToOrderColumns = true;
-			this.dataGridViewM.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.dataGridViewM.Location = new System.Drawing.Point(62, 114);
-			this.dataGridViewM.Name = "dataGridViewM";
-			this.dataGridViewM.ReadOnly = true;
-			this.dataGridViewM.Size = new System.Drawing.Size(504, 77);
-			this.dataGridViewM.TabIndex = 0;
 			// 
 			// tabPage5
 			// 
@@ -1138,16 +1145,6 @@ namespace ArcConfig
 			// timer1
 			// 
 			this.timer1.Tick += new System.EventHandler(this.Timer1Tick);
-			// 
-			// buttonProfile
-			// 
-			this.buttonProfile.Location = new System.Drawing.Point(14, 303);
-			this.buttonProfile.Name = "buttonProfile";
-			this.buttonProfile.Size = new System.Drawing.Size(85, 31);
-			this.buttonProfile.TabIndex = 4;
-			this.buttonProfile.Text = "Профили";
-			this.buttonProfile.UseVisualStyleBackColor = true;
-			this.buttonProfile.Click += new System.EventHandler(this.ButtonProfileClick);
 			// 
 			// MainForm
 			// 
@@ -1201,8 +1198,6 @@ namespace ArcConfig
 			this.bindingNavigatorS.ResumeLayout(false);
 			this.bindingNavigatorS.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.bindingSourceS)).EndInit();
-			this.tabPage4.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.dataGridViewM)).EndInit();
 			this.tabPage5.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.dataSet1)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.dataSetA)).EndInit();
