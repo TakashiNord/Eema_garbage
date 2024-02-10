@@ -273,6 +273,8 @@ namespace ArcConfig
         } // while
       }
       reader.Close();
+      
+
 
       // 5. add points ARC_SERVICES_ACCESS
       Tech.Clear();

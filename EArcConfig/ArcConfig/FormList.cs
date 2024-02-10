@@ -105,15 +105,13 @@ namespace ArcConfig
 
     public void ARC_TABLE(object sender)
     {
-      //
       // Объект для выполнения запросов к базе данных
       OdbcCommand cmd0 = new OdbcCommand();
-      OdbcDataReader reader = null ;
       // Объект для связи между базой данных и источником данных
       OdbcDataAdapter adapter = new OdbcDataAdapter();
 
-      cmd0.Connection=this._conn;
- 
+      dataSet1.Clear();
+
       try {
         dataGridViewList.DataSource = null ;
         dataGridViewList.Rows.Clear();
@@ -122,39 +120,42 @@ namespace ArcConfig
       }
       catch (Exception ex1)
       {
-        ; //MessageBox.Show("Error ="+ex1.Message);
+        MessageBox.Show("Error 1 ="+ex1.Message);
       }
 
-      
       string sl1 = "SELECT * FROM " + _name ;
-	  if (_tmCol!="") sl1 = "SELECT * , '' AS FROMDT1970 FROM " + _name ;
+	  if (_tmCol!="") sl1 = "SELECT "+_name+".* , '' AS FROMDT1970 FROM " + _name ;
  
-      cmd0.CommandText=sl1;
-
-      dataSet1.Clear();
-
-      // Указываем запрос для выполнения
-      adapter.SelectCommand = cmd0;
+      cmd0.Connection=this._conn;
+	  cmd0.CommandText=sl1;
+      
+      adapter.SelectCommand = cmd0; // Указываем запрос для выполнения
 
       int a = 0;
       // Заполняем объект источника данных
       try {
-        a = adapter.Fill(dataSet1);
+        a = adapter.Fill(dataSet1,_name);
       }
       catch (Exception ex1)
       {
-        ;
+        MessageBox.Show("Error 2 =\n" + " result =" + a + "\n" +ex1.Message);
       }
 
-      // Запрет удаления данных
-      dataSet1.Tables[0].DefaultView.AllowDelete = false;
-      // Запрет модификации данных
-      dataSet1.Tables[0].DefaultView.AllowEdit = false;
-      // Запрет добавления данных
-      dataSet1.Tables[0].DefaultView.AllowNew = false;
+      try {
+        // Запрет удаления данных
+        dataSet1.Tables[0].DefaultView.AllowDelete = false;
+        // Запрет модификации данных
+        dataSet1.Tables[0].DefaultView.AllowEdit = false;
+        // Запрет добавления данных
+        dataSet1.Tables[0].DefaultView.AllowNew = false;
 
-      // (с этого момента она будет отображать его содержимое)
-      dataGridViewList.DataSource = dataSet1.Tables[0].DefaultView;;
+        // (с этого момента она будет отображать его содержимое)
+        dataGridViewList.DataSource = dataSet1.Tables[0].DefaultView;
+      }
+      catch (Exception ex1)
+      {
+        MessageBox.Show("Error 3 ="+ex1.Message);
+      }
 
       // Set up the data source.
       dataGridViewList.Update();
@@ -195,6 +196,7 @@ namespace ArcConfig
     }
 		void FormListLoad(object sender, EventArgs e)
 		{
+			this.Text = "  :  " + _name ;
 			ARC_TABLE(sender) ;
 		}    
 		

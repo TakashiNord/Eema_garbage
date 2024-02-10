@@ -10,6 +10,12 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 
+using System.Reflection;
+using System.Resources;
+
+using System.Drawing.Imaging;
+using System.IO;
+
 namespace ArcConfig
 {
 	/// <summary>
@@ -27,6 +33,22 @@ namespace ArcConfig
 			//
 			// TODO: Add constructor code after the InitializeComponent() call.
 			//
+		}
+		void FormARCSCHLoad(object sender, EventArgs e)
+		{
+			ResourceManager r = new ResourceManager("ArcConfig.ArcResource", Assembly.GetExecutingAssembly());
+      try {
+        Bitmap myImage = (Bitmap)r.GetObject("v1");
+        pictureBox1.Image= myImage;
+      }
+      catch (Exception ex1)
+      {
+        MessageBox.Show("Error ="+ex1.Message);
+      } 			
+			
+			
+			radioButton1.Checked=true ;
+	
 		}
 	}
 }

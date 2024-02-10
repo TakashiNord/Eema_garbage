@@ -53,6 +53,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArcResource.Designer.cs">
+      <DependentUpon>ArcResource.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+    </Compile>
     <Compile Include="BooleanTypeConverter.cs" />
     <Compile Include="ClassDB.cs" />
     <Compile Include="CollectionTypeConverter.cs" />
@@ -139,7 +143,10 @@
     <None Include="app.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="ArcResource.resx" />
+    <EmbeddedResource Include="ArcResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ArcResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="ConnectDB.resx">
       <DependentUpon>ConnectDB.cs</DependentUpon>
     </EmbeddedResource>
