@@ -200,11 +200,11 @@ namespace ArcConfig {
 		}
 		
 		/// <summary>
-		///   Looks up a localized string similar to SELECT  ARC_SUBSYST_PROFILE.ID, ARC_SUBSYST_PROFILE.ID_GINFO, ARC_SUBSYST_PROFILE.IS_WRITEON, ARC_GINFO.NAME, SYS_GTOPT.NAME
-		///FROM  ARC_SUBSYST_PROFILE , ARC_GINFO, SYS_GTOPT
-		///WHERE ARC_SUBSYST_PROFILE.ID_GINFO=ARC_GINFO.ID
+		///   Looks up a localized string similar to SELECT  a.ID, a.ID_GINFO,a.IS_WRITEON, ARC_GINFO.NAME, SYS_GTOPT.NAME
+		///FROM  ARC_SUBSYST_PROFILE a, ARC_GINFO, SYS_GTOPT
+		///WHERE a.ID_GINFO=ARC_GINFO.ID
 		///AND SYS_GTOPT.ID=ARC_GINFO.ID_GTOPT 
-		///AND ARC_SUBSYST_PROFILE.ID_TBLLST={0}.
+		///AND a.ID_TBLLST={0}.
 		/// </summary>
 		internal static string ARC_SUBSYST_PROFILE2 {
 			get {
@@ -213,13 +213,29 @@ namespace ArcConfig {
 		}
 		
 		/// <summary>
-		///   Looks up a localized string similar to SELECT  ARC_SUBSYST_PROFILE.ID, ARC_SUBSYST_PROFILE.ID_GINFO, ARC_SUBSYST_PROFILE.IS_WRITEON 
-		///FROM  ARC_SUBSYST_PROFILE 
-		///WHERE {0}=ARC_SUBSYST_PROFILE.ID_TBLLST AND ARC_SUBSYST_PROFILE.ID_GINFO={1}.
+		///   Looks up a localized string similar to SELECT  a.ID, a.ID_GINFO, a.IS_WRITEON 
+		///FROM  ARC_SUBSYST_PROFILE a
+		///WHERE {0}=a.ID_TBLLST AND a.ID_GINFO={1}.
 		/// </summary>
 		internal static string ARC_SUBSYST_PROFILE3 {
 			get {
 				return ResourceManager.GetString("ARC_SUBSYST_PROFILE3", resourceCulture);
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized string similar to SELECT  a.ID, a.ID_GINFO, ARC_GINFO.NAME, ARC_GINFO.ID_GTOPT, SYS_GTOPT.NAME
+		///FROM  ARC_SUBSYST_PROFILE a, ARC_GINFO, SYS_GTOPT
+		///WHERE a.ID_GINFO=ARC_GINFO.ID
+		///AND SYS_GTOPT.ID=ARC_GINFO.ID_GTOPT 
+		///AND SYS_GTOPT.DEFINE_ALIAS NOT LIKE &apos;GLT_ANALOG_OPT_INSTANT%&apos; 
+		///AND SYS_GTOPT.DEFINE_ALIAS NOT LIKE &apos;GLT_ANALOG_OPT_CUR%&apos; 
+		///AND SYS_GTOPT.DEFINE_ALIAS NOT LIKE &apos;GLT_DANALOG_OPT_INSTANT%&apos; 
+		///AND a.ID_TBLLST={0}.
+		/// </summary>
+		internal static string ARC_SUBSYST_PROFILE5 {
+			get {
+				return ResourceManager.GetString("ARC_SUBSYST_PROFILE5", resourceCulture);
 			}
 		}
 		
@@ -315,6 +331,15 @@ namespace ArcConfig {
 		internal static string AUTO_LIST_V {
 			get {
 				return ResourceManager.GetString("AUTO_LIST_V", resourceCulture);
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized string similar to AUTO_LIST_V.
+		/// </summary>
+		internal static string AUTO_LIST_V0 {
+			get {
+				return ResourceManager.GetString("AUTO_LIST_V0", resourceCulture);
 			}
 		}
 		
@@ -469,6 +494,28 @@ namespace ArcConfig {
 		}
 		
 		/// <summary>
+		///   Looks up a localized string similar to ELREG_LIST_V.
+		/// </summary>
+		internal static string ELREG_LIST_V0 {
+			get {
+				return ResourceManager.GetString("ELREG_LIST_V0", resourceCulture);
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized string similar to SELECT ID, id_obj, id_meas_type, NAME, alias
+		///FROM meas_list
+		///WHERE id_meas_type IN (
+		/// SELECT m.ID FROM sys_meas_types m, sys_ptyp t WHERE m.id_type = t.ID AND t.id_node = 1
+		///).
+		/// </summary>
+		internal static string ELREG_LIST_V00 {
+			get {
+				return ResourceManager.GetString("ELREG_LIST_V00", resourceCulture);
+			}
+		}
+		
+		/// <summary>
 		///   Looks up a localized string similar to SELECT ID, id_obj, id_meas_type, NAME, alias , 0 as  ID_GINFO
 		///FROM meas_list
 		///WHERE id_meas_type IN (
@@ -616,6 +663,35 @@ namespace ArcConfig {
 		}
 		
 		/// <summary>
+		///   Looks up a localized string similar to PHREG_LIST_V
+		/// .
+		/// </summary>
+		internal static string PHREG_LIST_V0 {
+			get {
+				return ResourceManager.GetString("PHREG_LIST_V0", resourceCulture);
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized string similar to SELECT ID, id_obj, id_meas_type, NAME, alias
+		///     FROM meas_list
+		///    WHERE id_meas_type IN (
+		///   SELECT m.ID FROM sys_meas_types m, sys_ptyp t
+		///    WHERE m.id_type = t.ID
+		///      AND t.id_node &lt;&gt; 1
+		///      AND m.define_alias NOT LIKE (&apos;MEAS_SWITCH_STATE%&apos;)
+		///      AND m.define_alias NOT LIKE (&apos;MEAS_SIGNAL_STATE%&apos;)
+		///      AND m.define_alias NOT LIKE (&apos;MEAS_STATE_EQUIP&apos;)
+		///      AND m.define_alias NOT LIKE (&apos;MEAS_START_STOP&apos;)
+		///   ) .
+		/// </summary>
+		internal static string PHREG_LIST_V00 {
+			get {
+				return ResourceManager.GetString("PHREG_LIST_V00", resourceCulture);
+			}
+		}
+		
+		/// <summary>
 		///   Looks up a localized string similar to   SELECT ID, id_obj, id_meas_type, NAME, alias, 0 as ID_GINFO
 		///     FROM meas_list
 		///    WHERE id_meas_type IN (
@@ -652,6 +728,15 @@ namespace ArcConfig {
 		internal static string PSWT_LIST_V {
 			get {
 				return ResourceManager.GetString("PSWT_LIST_V", resourceCulture);
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized string similar to PSWT_LIST_V.
+		/// </summary>
+		internal static string PSWT_LIST_V0 {
+			get {
+				return ResourceManager.GetString("PSWT_LIST_V0", resourceCulture);
 			}
 		}
 		
@@ -747,6 +832,36 @@ namespace ArcConfig {
 		internal static System.Drawing.Bitmap v1 {
 			get {
 				object obj = ResourceManager.GetObject("v1", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		internal static System.Drawing.Bitmap v2 {
+			get {
+				object obj = ResourceManager.GetObject("v2", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		internal static System.Drawing.Bitmap v3 {
+			get {
+				object obj = ResourceManager.GetObject("v3", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		internal static System.Drawing.Bitmap v4 {
+			get {
+				object obj = ResourceManager.GetObject("v4", resourceCulture);
 				return ((System.Drawing.Bitmap)(obj));
 			}
 		}

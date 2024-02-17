@@ -9,6 +9,7 @@
 using System;
 using System.Drawing;
 using System.Windows.Forms;
+
 using System.Collections.Generic;
 using System.Data.Odbc;
 using System.Reflection;
@@ -284,7 +285,7 @@ namespace ArcConfig
 
       try
       {
-         cmd0.ExecuteNonQuery();
+        cmd0.ExecuteNonQuery();
       }
       catch (Exception )
       {
@@ -1037,7 +1038,7 @@ namespace ArcConfig
                     for (int j = 0; j < dataGridView.ColumnCount; j++)
                     {
                       st = "" ;
-					  try
+					            try
                       {
                         st = (dataGridView[j, i].Value).ToString() ;
                       }
@@ -1047,9 +1048,9 @@ namespace ArcConfig
                       }
 
                       tst = "" ;
-					  try
+					            try
                       {
-					  	tst = (dataGridView[j, i].Value).GetType().ToString() ;
+					  	          tst = (dataGridView[j, i].Value).GetType().ToString() ;
                       }
                       catch (Exception ex2)
                       {
@@ -1058,12 +1059,12 @@ namespace ArcConfig
 
                       if ("System.Windows.Forms.CheckState"==tst) {
                         if (OptionSaveFormat>0) {
-						    if (st=="Checked") st="1";
+						                if (st=="Checked") st="1";
                             if (st=="Unchecked") st="0";
-			            } else {
-				            if (st=="Checked") st="x";
-                            if (st=="Unchecked") st="";
-				        }
+			                  } else {
+				                  if (st=="Checked") st="x";
+                          if (st=="Unchecked") st="";
+				                }
                       }
                       fileCSV += st + ";";
                     }
@@ -1072,8 +1073,8 @@ namespace ArcConfig
                     fileCSV="";
                 }
 
-			} // using
-			//    StreamWriter wr = new StreamWriter(filename, false, Encoding.UTF8); // Encoding.GetEncoding("windows-1251")
+			    } // using
+			      //    StreamWriter wr = new StreamWriter(filename, false, Encoding.UTF8); // Encoding.GetEncoding("windows-1251")
             //    wr.Write(fileCSV);
             //    wr.Close();
           break ;

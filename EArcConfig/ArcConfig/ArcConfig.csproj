@@ -110,6 +110,10 @@
     <Compile Include="FormOption.Designer.cs">
       <DependentUpon>FormOption.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormParamChange.cs" />
+    <Compile Include="FormParamChange.Designer.cs">
+      <DependentUpon>FormParamChange.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormPartitions.cs" />
     <Compile Include="FormPartitions.Designer.cs">
       <DependentUpon>FormPartitions.cs</DependentUpon>
@@ -179,6 +183,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormOption.resx">
       <DependentUpon>FormOption.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormParamChange.resx">
+      <DependentUpon>FormParamChange.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormPartitions.resx">
       <DependentUpon>FormPartitions.cs</DependentUpon>

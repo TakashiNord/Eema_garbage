@@ -103,7 +103,7 @@ namespace ArcConfig
        toolStripButton6.Enabled=true;
 
        toolStripButton7.Enabled=true;
-       
+
        toolStripButton8.Enabled=true;
 
        tabControl1.Enabled=true;
@@ -396,8 +396,8 @@ namespace ArcConfig
        }
        catch (Exception ex1)
        {
-          cmd.Dispose(); 
-       	  return (-2);
+          cmd.Dispose();
+          return (-2);
        }
 
        //string SHEMA_NAME = "" ;
@@ -662,16 +662,16 @@ namespace ArcConfig
 
        // Указываем запрос для выполнения
        adapter.SelectCommand = command;
-       // Заполняем объект источника данных 
-       
-	   //try
+       // Заполняем объект источника данных
+
+     //try
        //{
           adapter.Fill(dataSet1,sObj);
        //}
        //catch (Exception ex1)
        //{
        //   return ;
-       //}	   
+       //}
 
        // Запрет удаления данных
        dataSet1.Tables[0].DefaultView.AllowDelete = false;
@@ -685,7 +685,7 @@ namespace ArcConfig
 
        dataGridView1.Update();
 
-       
+
        toolStripStatusLabel2.Text = sObj;
 
        return ;
@@ -775,14 +775,14 @@ namespace ArcConfig
        toolStripButton6.Enabled=false;
 
        toolStripButton7.Enabled=false;
-       
+
        toolStripButton8.Enabled=false;
 
        _setDBS();
- 
+
        Action tmea = new Action( _Meas30 ) ;
        Task tskmea = new Task(tmea);
-       tskmea.Start();	   
+       tskmea.Start();
 
     }
     void TreeViewAAfterSelect(object sender, TreeViewEventArgs e)
@@ -970,22 +970,22 @@ namespace ArcConfig
         if  (TABLE_NAME.Length<=1) {
           tabControlAP.SelectedIndex = 0 ;
           MessageBox.Show ("Не задана Таблица-Список !",
-		                   ">>Построение списка ...", 
-						   MessageBoxButtons.OK , MessageBoxIcon.Exclamation);
+                       ">>Построение списка ...",
+               MessageBoxButtons.OK , MessageBoxIcon.Exclamation);
           return ;
         }
 
         if  (SHEMA_NAME.Length<=1) {
           DialogResult result = MessageBox.Show ("Не задана связь раздела с системой архива!\n\n Установить ? ",
-		                                         ">>Построение списка ...", 
-												 MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+                                             ">>Построение списка ...",
+                         MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
           if (result == DialogResult.Yes)
           {
             // переход на первую вкладку
-			tabControlAP.SelectedIndex = 0 ;
-			Form arcdbfrm = new FormArc_db_schema(this._conn, _id_tbl, OptionSchemaName);
-            arcdbfrm.ShowDialog();			
-			return ;
+      tabControlAP.SelectedIndex = 0 ;
+      Form arcdbfrm = new FormArc_db_schema(this._conn, _id_tbl, OptionSchemaName);
+            arcdbfrm.ShowDialog();
+      return ;
           }
         }
 
@@ -1751,8 +1751,8 @@ Postgres : SELECT version();
        treeViewA.EndUpdate(); //добавить
 
     }
-	
-	
+
+
 void _Meas30 ( )
 {
     // Объект для связи между базой данных и источником данных
@@ -1780,14 +1780,14 @@ void _Meas30 ( )
     AddLogStringNoTime("------------------------");
 
 
- 
+
     AddLogStringNoTime("------------------------");
     //=========================================================
     toolStripStatusLabel2.Text = "Read meas30 tables - finished.";
     return ;
-}	
-	
-	
+}
+
+
 
     void TreeViewSAfterSelect(object sender, TreeViewEventArgs e)
     {
@@ -1991,9 +1991,9 @@ void _Meas30 ( )
        // && tabPage1.Focused==true  dataGridView1.Focused==true
        if (radioButton2.Checked==true)
        {
-         if (num%OptionUpdate==0) { 
-			s1 = "..update.."+s1;
-			try
+         if (num%OptionUpdate==0) {
+            s1 = "..update.."+s1;
+            try
             {
                _getDBv1("arc_stat_current_v");
             }
@@ -3834,7 +3834,7 @@ void OracleStat ( )
        //  процедура чтения и установки настроек
 
        FormOption ofrm = new FormOption();
-       
+
        ofrm._OptionUpdate = OptionUpdate.ToString() ;
        if (OptionFullDelete==0) ofrm._OptionFullDelete = false ;
        else  ofrm._OptionFullDelete = true ;
@@ -3859,8 +3859,8 @@ void OracleStat ( )
        int val1 = 10 ;
        if ( int.TryParse(ofrm._OptionUpdate, out val1 ) )
            OptionUpdate = val1 ;
-       else OptionUpdate = 10 ;       
-       
+       else OptionUpdate = 10 ;
+
        OptionFullDelete=0 ;
        if (ofrm._OptionFullDelete) OptionFullDelete=1 ;
        OptionWriteOnDelete=0 ;
@@ -4382,55 +4382,55 @@ void OracleStat ( )
     }
     void RadioButton5CheckedChanged(object sender, EventArgs e)
     {
-        //
-        try
-        {
-            if (radioButton5.Checked == true) _getDBv1("meas_snapshot30_stat");
-        }
-        catch (Exception ex1)
-        {
-            AddLogString("Error ="+ex1.Message);
-        }
+      //
+      try
+      {
+          if (radioButton5.Checked == true) _getDBv1("meas_snapshot30_stat");
+      }
+      catch (Exception ex1)
+      {
+          AddLogString("Error ="+ex1.Message);
+      }
     }
     void ButtonClear30Click(object sender, EventArgs e)
     {
-        // Объект для выполнения запросов к базе данных
-        OdbcCommand cmd0 = new OdbcCommand();
+      // Объект для выполнения запросов к базе данных
+      OdbcCommand cmd0 = new OdbcCommand();
 
-        cmd0.Connection=this._conn;
+      cmd0.Connection=this._conn;
 
-        DateTime date1 = DateTime.Today;
-        DateTime d01 = date1.AddDays(-30);
-        int dt1970 = Convert.ToInt32( DateTimeToUnixTimestamp(d01) );
+      DateTime date1 = DateTime.Today;
+      DateTime d01 = date1.AddDays(-30);
+      int dt1970 = Convert.ToInt32( DateTimeToUnixTimestamp(d01) );
 
 
-        int cnt = 0;
+      int cnt = 0;
 
-        string stName="meas_snapshot30_stat";
-        if (OptionSchemaName>0) {
-           stName=OptionSchemaMain + "." + stName ;
-        }
+      string stName="meas_snapshot30_stat";
+      if (OptionSchemaName>0) {
+         stName=OptionSchemaMain + "." + stName ;
+      }
 
-        DialogResult result = MessageBox.Show ("Очистить таблицу : " + stName + " ? " + "\n до : " + d01.ToShortDateString() ,
-                                               "Удаление содержимого " + stName,
-                                               MessageBoxButtons.YesNo,
-                                               MessageBoxIcon.Question,
-                                               MessageBoxDefaultButton.Button2);
-        if (result == DialogResult.Yes)
-        {
-            //cmd0.CommandText="TRUNCATE TABLE " + stName ;
-            cmd0.CommandText="DELETE FROM " + stName + " WHERE dt1970<=" + dt1970.ToString() ;
-            try
-            {
-               cnt=cmd0.ExecuteNonQuery();
-            }
-            catch (Exception ex7)
-            {
-               AddLogString("Ошибка удаления записей ="+ex7.Message);
-            }
-            AddLogString(cmd0.CommandText + " = " + cnt.ToString() + " rows ");
-        }
-        return ;
+      DialogResult result = MessageBox.Show ("Очистить таблицу : " + stName + " ? " + "\n до : " + d01.ToShortDateString() ,
+                                             "Удаление содержимого " + stName,
+                                             MessageBoxButtons.YesNo,
+                                             MessageBoxIcon.Question,
+                                             MessageBoxDefaultButton.Button2);
+      if (result == DialogResult.Yes)
+      {
+          //cmd0.CommandText="TRUNCATE TABLE " + stName ;
+          cmd0.CommandText="DELETE FROM " + stName + " WHERE dt1970<=" + dt1970.ToString() ;
+          try
+          {
+             cnt=cmd0.ExecuteNonQuery();
+          }
+          catch (Exception ex7)
+          {
+             AddLogString("Ошибка удаления записей ="+ex7.Message);
+          }
+          AddLogString(cmd0.CommandText + " = " + cnt.ToString() + " rows ");
+      }
+      return ;
     }
 
 void PartitionMedia(object sender, EventArgs e)
@@ -4468,30 +4468,73 @@ void PartitionMedia(object sender, EventArgs e)
   ifpart.Show();
 
 }
-		void ToolStripButton8Click(object sender, EventArgs e)
-		{
-			Form arcdbfrm = new FormArc_db_schema(this._conn, "", OptionSchemaName);
-			arcdbfrm.StartPosition=FormStartPosition.CenterParent ;
-            arcdbfrm.ShowDialog();
-		}
-		void ButtonProfileClick(object sender, EventArgs e)
-		{
-            string stSchema="";
-            if (OptionSchemaName>0) {
-                stSchema=OptionSchemaMain + "." ;
-            }			
-			
-			Form lstdbfrm = new FormList(this._conn, stSchema+"ARC_SUBSYST_PROFILE", "LAST_UPDATE");
-			lstdbfrm.StartPosition=FormStartPosition.CenterParent ;
-            lstdbfrm.ShowDialog();	        
-     
-		}
-		void ButtonVarSchClick(object sender, EventArgs e)
-		{
-     		Form arcdbfrm = new FormARCSCH();
-			arcdbfrm.StartPosition=FormStartPosition.CenterParent ;
-            arcdbfrm.ShowDialog();		
-		}
+    void ToolStripButton8Click(object sender, EventArgs e)
+    {
+      Form arcdbfrm = new FormArc_db_schema(this._conn, "", OptionSchemaName);
+      arcdbfrm.StartPosition=FormStartPosition.CenterParent ;
+      arcdbfrm.ShowDialog();
+    }
+    void ButtonProfileClick(object sender, EventArgs e)
+    {
+      string stSchema="";
+      if (OptionSchemaName>0) {
+          stSchema=OptionSchemaMain + "." ;
+      }
+
+      Form lstdbfrm = new FormList(this._conn, stSchema+"ARC_SUBSYST_PROFILE", "LAST_UPDATE");
+      lstdbfrm.StartPosition=FormStartPosition.CenterParent ;
+      lstdbfrm.ShowDialog();
+
+    }
+    void ButtonVarSchClick(object sender, EventArgs e)
+    {
+      Form arcdbfrm = new FormARCSCH();
+      arcdbfrm.StartPosition=FormStartPosition.CenterParent ;
+      arcdbfrm.ShowDialog();
+    }
+    void ToolStripMenuItem4Click(object sender, EventArgs e)
+    {
+      // Params move
+
+      // получаем ячейку
+      int selRowNum ;
+      selRowNum = dataGridViewA.CurrentCell.RowIndex; //mouseLocation.RowIndex ;
+
+      if (selRowNum<0) return ;
+
+      object obj1 = dataGridViewA.Rows[selRowNum].Cells[0].Value ;
+
+      //DataGridViewCheckBoxColumn
+
+      DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell) dataGridViewA.Rows[selRowNum].Cells[0] ;
+
+      //AddLogString("chk.Value="+chk.Value.ToString() );
+
+      // если ячейка Unchecked - покидаем алгоритм
+      if (Convert.ToBoolean(chk.Value) == false || chk.Value == null)
+      {
+         return ;
+      }
+
+      //Получить Имя выделенного элемента
+      string id_parent=treeViewA.SelectedNode.Name;
+      if (id_parent=="0") return ;
+
+      string id_tbl =Convert.ToString(treeViewA.SelectedNode.Tag) ;
+      if (id_tbl=="0" || id_tbl=="") return ;
+
+      string ID = dataGridViewA.Rows[selRowNum].Cells[1].Value.ToString() ;
+      string IDNAME = dataGridViewA.Rows[selRowNum].Cells[2].Value.ToString() ;
+      string IDGTOPT = dataGridViewA.Rows[selRowNum].Cells[3].Value.ToString() ;
+      string NAMEHEADER = dataGridViewA.Rows[selRowNum].Cells[16].Value.ToString() ;
+
+      //DialogResult result1;
+      //
+      Form ifpch = new FormParamChange(_conn, ID, IDNAME, IDGTOPT, NAMEHEADER, id_tbl,OptionFullName, OptionSchemaName);
+      ifpch.StartPosition=FormStartPosition.CenterParent ;
+      ifpch.Show();
+
+    }
 
 
 

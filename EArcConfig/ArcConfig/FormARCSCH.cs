@@ -36,19 +36,68 @@ namespace ArcConfig
 		}
 		void FormARCSCHLoad(object sender, EventArgs e)
 		{
-			ResourceManager r = new ResourceManager("ArcConfig.ArcResource", Assembly.GetExecutingAssembly());
-      try {
-        Bitmap myImage = (Bitmap)r.GetObject("v1");
-        pictureBox1.Image= myImage;
-      }
-      catch (Exception ex1)
-      {
-        MessageBox.Show("Error ="+ex1.Message);
-      } 			
-			
-			
 			radioButton1.Checked=true ;
-	
+			RadioButton1CheckedChanged(sender, e) ;	
+		}
+		void RadioButton1CheckedChanged(object sender, EventArgs e)
+		{
+			ResourceManager r = new ResourceManager("ArcConfig.ArcResource", Assembly.GetExecutingAssembly());
+ 
+			if (radioButton1.Checked) {
+			  try {
+                Bitmap myImage = (Bitmap)r.GetObject("v1");
+                pictureBox1.Image= myImage;
+              }
+              catch (Exception ex1)
+              {
+                MessageBox.Show("Error ="+ex1.Message);
+              } 				
+			}
+		}
+		void RadioButton2CheckedChanged(object sender, EventArgs e)
+		{
+			ResourceManager r = new ResourceManager("ArcConfig.ArcResource", Assembly.GetExecutingAssembly());
+ 
+			if (radioButton2.Checked) {
+			  try {
+                Bitmap myImage = (Bitmap)r.GetObject("v2");
+                pictureBox1.Image= myImage;
+              }
+              catch (Exception ex1)
+              {
+                MessageBox.Show("Error ="+ex1.Message);
+              } 				
+			}	
+		}
+		void RadioButton3CheckedChanged(object sender, EventArgs e)
+		{
+			ResourceManager r = new ResourceManager("ArcConfig.ArcResource", Assembly.GetExecutingAssembly());
+ 
+			if (radioButton3.Checked) {
+			  try {
+                Bitmap myImage = (Bitmap)r.GetObject("v3");
+                pictureBox1.Image= myImage;
+              }
+              catch (Exception ex1)
+              {
+                MessageBox.Show("Error ="+ex1.Message);
+              } 				
+			}	
+		}
+		void RadioButton4CheckedChanged(object sender, EventArgs e)
+		{
+			ResourceManager r = new ResourceManager("ArcConfig.ArcResource", Assembly.GetExecutingAssembly());
+ 
+			if (radioButton4.Checked) {
+			  try {
+                Bitmap myImage = (Bitmap)r.GetObject("v4");
+                pictureBox1.Image= myImage;
+              }
+              catch (Exception ex1)
+              {
+                MessageBox.Show("Error ="+ex1.Message);
+              } 				
+			}	
 		}
 	}
 }

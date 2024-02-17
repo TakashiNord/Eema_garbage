@@ -105,6 +105,8 @@ namespace ArcConfig
 		private System.Windows.Forms.ToolStripButton toolStripButton8;
 		private System.Windows.Forms.Button buttonProfile;
 		private System.Windows.Forms.Button buttonVarSch;
+		private System.Windows.Forms.ToolStripSeparator toolStripSeparator13;
+		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
 		
 		/// <summary>
 		/// Disposes resources used by the form.
@@ -177,6 +179,8 @@ namespace ArcConfig
 			this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
 			this.deleteDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripSeparator13 = new System.Windows.Forms.ToolStripSeparator();
+			this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
 			this.partitionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.richTextBox2 = new System.Windows.Forms.RichTextBox();
@@ -715,16 +719,18 @@ namespace ArcConfig
 			this.toolStripMenuItem3,
 			this.toolStripSeparator4,
 			this.deleteDataToolStripMenuItem,
+			this.toolStripSeparator13,
+			this.toolStripMenuItem4,
 			this.toolStripSeparator6,
 			this.partitionsToolStripMenuItem});
 			this.contextMenuStripA.Name = "contextMenuStripA";
-			this.contextMenuStripA.Size = new System.Drawing.Size(156, 132);
+			this.contextMenuStripA.Size = new System.Drawing.Size(166, 182);
 			// 
 			// toolStripMenuItem1
 			// 
 			this.toolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItem1.Image")));
 			this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-			this.toolStripMenuItem1.Size = new System.Drawing.Size(155, 22);
+			this.toolStripMenuItem1.Size = new System.Drawing.Size(165, 22);
 			this.toolStripMenuItem1.Text = "Modify Archive";
 			this.toolStripMenuItem1.Click += new System.EventHandler(this.ToolStripMenuItem1Click);
 			// 
@@ -732,46 +738,59 @@ namespace ArcConfig
 			// 
 			this.toolStripMenuItem2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItem2.Image")));
 			this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-			this.toolStripMenuItem2.Size = new System.Drawing.Size(155, 22);
+			this.toolStripMenuItem2.Size = new System.Drawing.Size(165, 22);
 			this.toolStripMenuItem2.Text = "Copy string";
 			this.toolStripMenuItem2.Click += new System.EventHandler(this.ToolStripMenuItem2Click);
 			// 
 			// toolStripSeparator2
 			// 
 			this.toolStripSeparator2.Name = "toolStripSeparator2";
-			this.toolStripSeparator2.Size = new System.Drawing.Size(152, 6);
+			this.toolStripSeparator2.Size = new System.Drawing.Size(162, 6);
 			// 
 			// toolStripMenuItem3
 			// 
 			this.toolStripMenuItem3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItem3.Image")));
 			this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-			this.toolStripMenuItem3.Size = new System.Drawing.Size(155, 22);
+			this.toolStripMenuItem3.Size = new System.Drawing.Size(165, 22);
 			this.toolStripMenuItem3.Text = "Delete string";
 			this.toolStripMenuItem3.Click += new System.EventHandler(this.ToolStripMenuItem3Click);
 			// 
 			// toolStripSeparator4
 			// 
 			this.toolStripSeparator4.Name = "toolStripSeparator4";
-			this.toolStripSeparator4.Size = new System.Drawing.Size(152, 6);
+			this.toolStripSeparator4.Size = new System.Drawing.Size(162, 6);
 			// 
 			// deleteDataToolStripMenuItem
 			// 
 			this.deleteDataToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("deleteDataToolStripMenuItem.Image")));
 			this.deleteDataToolStripMenuItem.Name = "deleteDataToolStripMenuItem";
-			this.deleteDataToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+			this.deleteDataToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
 			this.deleteDataToolStripMenuItem.Text = "Stat\\Del media";
 			this.deleteDataToolStripMenuItem.Click += new System.EventHandler(this.DeleteDataToolStripMenuItemClick);
+			// 
+			// toolStripSeparator13
+			// 
+			this.toolStripSeparator13.Name = "toolStripSeparator13";
+			this.toolStripSeparator13.Size = new System.Drawing.Size(162, 6);
+			// 
+			// toolStripMenuItem4
+			// 
+			this.toolStripMenuItem4.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItem4.Image")));
+			this.toolStripMenuItem4.Name = "toolStripMenuItem4";
+			this.toolStripMenuItem4.Size = new System.Drawing.Size(165, 22);
+			this.toolStripMenuItem4.Text = "Param(-s) move..";
+			this.toolStripMenuItem4.Click += new System.EventHandler(this.ToolStripMenuItem4Click);
 			// 
 			// toolStripSeparator6
 			// 
 			this.toolStripSeparator6.Name = "toolStripSeparator6";
-			this.toolStripSeparator6.Size = new System.Drawing.Size(152, 6);
+			this.toolStripSeparator6.Size = new System.Drawing.Size(162, 6);
 			// 
 			// partitionsToolStripMenuItem
 			// 
 			this.partitionsToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("partitionsToolStripMenuItem.Image")));
 			this.partitionsToolStripMenuItem.Name = "partitionsToolStripMenuItem";
-			this.partitionsToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+			this.partitionsToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
 			this.partitionsToolStripMenuItem.Text = "Partition(-s)";
 			this.partitionsToolStripMenuItem.Click += new System.EventHandler(this.PartitionMedia);
 			// 
