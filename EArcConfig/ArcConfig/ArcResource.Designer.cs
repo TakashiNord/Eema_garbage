@@ -837,12 +837,44 @@ namespace ArcConfig {
 		}
 		
 		/// <summary>
+		///   Looks up a localized string similar to CREATE [OR REPLACE] [PUBLIC] SYNONYM [schema .] synonym_name  FOR [schema .] object_name [@ dblink];
+		///
+		///DROP [PUBLIC] SYNONYM [schema .] synonym_name [force];
+		///
+		///rdarchd  тогда ничего не знает об архивном сервере , и чсе архивы читает через основной.
+		///Тогда  синонимы на архивы  на основном должны указывать на  архивный.
+		///проверить  синонимы  на партиции на основном 
+		///
+		///select * from all_synonyms where table_owner like &apos;RSDU2DAARH&apos; and owner like &apos;PUBLIC&apos; and table_name like &apos;DA_ARC_54%&apos;;
+		///select * from all_ [rest of string was truncated]&quot;;.
+		/// </summary>
+		internal static string v1text {
+			get {
+				return ResourceManager.GetString("v1text", resourceCulture);
+			}
+		}
+		
+		/// <summary>
 		///   Looks up a localized resource of type System.Drawing.Bitmap.
 		/// </summary>
 		internal static System.Drawing.Bitmap v2 {
 			get {
 				object obj = ResourceManager.GetObject("v2", resourceCulture);
 				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized string similar to данные по границам  партиций  в ARC_VIEW_PARTITION  обновляются  в  основной , а в  архивной БД  данные этой таблицы не синхронизируются с основной, поэтому один последний час берёт из РВ.
+		///проверить запросом  - подключаемся к архивному серверу
+		///
+		///select b.id, a.id as id_arc, b.table_name, from_dt1970(b.dt_start) dt1_base, from_dt1970(a.dt_start) dt1_arc
+		/// from arc_view_partitions @rsdu.gtes.ema   b
+		/// left join  arc_view_partitions @rsduarc.gtes.ema  a on  a.id_tbllst = b.id_tbllst and a.id_ginfo= b.id_ginf [rest of string was truncated]&quot;;.
+		/// </summary>
+		internal static string v2text {
+			get {
+				return ResourceManager.GetString("v2text", resourceCulture);
 			}
 		}
 		

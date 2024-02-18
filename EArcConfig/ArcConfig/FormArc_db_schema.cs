@@ -202,7 +202,7 @@ cmd0.CommandText="select ads.ID, ads.NAME, ads.SCHEMA_NAME , ast.DEFINE_ALIAS as
 	   
 	   //data.Add(new SampleRow("Товар 1", 100, 1));
 
-       bindingSource1.DataSource=dataSet1.Tables[0];
+       //bindingSource1.DataSource=dataSet1.Tables[0];
 
        // Resize the master DataGridView columns to fit the newly loaded data.
        dataGridView1.AutoResizeColumns();
@@ -219,6 +219,69 @@ cmd0.CommandText="select ads.ID, ads.NAME, ads.SCHEMA_NAME , ast.DEFINE_ALIAS as
        dataGridView1.Update();
 
     }
+    
+    
+    void Select2(object sender)
+    {
+       // Объект для связи между базой данных и источником данных
+       OdbcDataAdapter adapter = new OdbcDataAdapter();
+       // Объект для выполнения запросов к базе данных
+       OdbcCommand cmd0 = new OdbcCommand();
+
+       cmd0.Connection=this._conn;
+
+/*       
+CREATE TABLE ARC_SERVICES_INFO (
+    ID_LSTTBL    DECIMAL NOT NULL,
+    ID_SVC_TYPE  DECIMAL,
+    ID_DB_SCHEMA DECIMAL NOT NULL
+);
+  */     
+       
+       string table_name="ARC_SERVICES_INFO";
+
+       string stSchema="";
+       if (_OptionSchemaName>0) {
+           stSchema=OptionSchemaMain + "." ;
+       }
+
+       Application.DoEvents();
+
+       cmd0.CommandText="SELECT * FROM " + stSchema + table_name;
+       
+	
+       dataSet2.Clear();
+       dataGridView2.DataSource = null;
+       dataSet2.Tables.Clear();
+
+       // Указываем запрос для выполнения
+       adapter.SelectCommand = cmd0;
+	   
+       // Заполняем объект источника данных
+       adapter.Fill(dataSet2,table_name);
+
+       // (с этого момента она будет отображать его содержимое)
+       dataGridView2.DataSource = dataSet2.Tables[0];
+	   
+	   //data.Add(new SampleRow("Товар 1", 100, 1));
+
+       // Resize the master DataGridView columns to fit the newly loaded data.
+       dataGridView2.AutoResizeColumns();
+
+       // Configure the details DataGridView so that its columns automatically
+       // adjust their widths when the data changes.
+       dataGridView2.AutoSizeColumnsMode =
+             DataGridViewAutoSizeColumnsMode.AllCells;
+       dataGridView2.AutoGenerateColumns = true;
+
+       dataGridView2.EnableHeadersVisualStyles = false;
+       //dataGridView1.AlternatingRowsDefaultCellStyle.BackColor =Color.LightGray;
+
+       dataGridView2.Update();
+
+    }
+    
+    
 		void FormArc_db_schemaLoad(object sender, EventArgs e)
 		{
 		/*
@@ -260,6 +323,7 @@ DataGridViewComboBoxColumn DGVCMB = new DataGridViewComboBoxColumn();
 */
 
 			Select1(sender) ;
+			Select2(sender);
 		}		
 		
 		

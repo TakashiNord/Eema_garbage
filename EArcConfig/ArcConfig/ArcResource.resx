@@ -647,7 +647,7 @@ WHERE mst.ID_OBJ=ot.ID</value>
   <data name="v1" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAPcAAACbCAYAAAC+ug1yAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADr0AAA69AUf7kK0AAArgSURBVHhe7Zqxbt02G4Z9XV669g58A4WHXkCGLpmyZHKQ
+        YQUAAAAJcEhZcwAADrwAAA68AZW8ckkAAArgSURBVHhe7Zqxbt02G4Z9XV669g58A4WHXkCGLpmyZHKQ
         eyjSLZOBTFkaFAj+IYunJENRJAgydMnQkb9ISjqfKB5JJvnZFPU8AIGjI4miXn6PqGP4wgBAkyA3QKMg
         N0CjIDdAoyA3QKMgN0CjPKjcH28uzeXNx37rSNya64tLc8hbV4R66jfPEJH7o7m5vDAXF0G7vOn2SOwF
         5sdd3/a7Zxy7wI9biNSTBlvq6azcq4X48cZcTsL1552djNvryIQeiMPeP/Wkwob7T5fbdn5x3T0/B5Yn
@@ -700,7 +700,7 @@ WHERE mst.ID_OBJ=ot.ID</value>
   <data name="v2" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAPcAAACbCAYAAAC+ug1yAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADr0AAA69AUf7kK0AAAzMSURBVHhe7Zu9jt02EIX3ubZJmzfwCwRb+AFSpHHlxtUG
+        YQUAAAAJcEhZcwAADrwAAA68AZW8ckkAAAzMSURBVHhe7Zu9jt02EIX3ubZJmzfwCwRb+AFSpHHlxtUG
         eQfD7lItkCqNAwNBijSunC2MIIaRIk2KlAqHP9KQon6o5dxLDc8HEL4SJYo6c46k69W9GQAAKkG4AVAK
         wg2AUhBuAJSCcAOgFIQbAKVcNNwf72+H2/uPfqknHoa7m9uhy1MXBH7yiwtkwv1xuL+9GW5uknZ7b3o4
         dID5dncPvntG3wbv14jwkwR7/LQY7k0jfrwfbiNx3X6LxXi4yxS0I7o9f/hJhB3nfzzcNPjNnbl+BtaL
@@ -761,7 +761,7 @@ WHERE mst.ID_OBJ=ot.ID</value>
   <data name="v3" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAPcAAACbCAYAAAC+ug1yAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADr0AAA69AUf7kK0AAAsySURBVHhe7Zu9ruU0FEbvE/BAt6HlDeYFRreYB6CgmYpm
+        YQUAAAAJcEhZcwAADrwAAA68AZW8ckkAAAsySURBVHhe7Zu9ruU0FEbvE/BAt6HlDeYFRreYB6CgmYpm
         qot4hxHTUV2JigaEhChophqmQIgRopiGgjLEdn62HSfx8fE+OM5akqWbP8f5vFeSc+bMXQcATYLcAI2C
         3ACNgtwAjYLcAI2C3ACNclO53z3ed/eP74alM/HUPdzdd6e8dEWop2FxhYjc77rH+7vu7i5o94/9Fok5
         wXK/h6dh84JzF/h5C5F60iClnlbl3i3Ed4/dvReuO251Mp4eIhN6Ik57/dSTCgnXny+36fzuob9/jmxP
@@ -815,7 +815,7 @@ WHERE mst.ID_OBJ=ot.ID</value>
   <data name="v4" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAPcAAACbCAYAAAC+ug1yAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADr0AAA69AUf7kK0AAAhsSURBVHhe7dq/bttIFMVhP5eabfcN8gILPUKKbfIKCvIS
+        YQUAAAAJcEhZcwAADrwAAA68AZW8ckkAAAhsSURBVHhe7dq/bttIFMVhP5eabfcN8gILPUKKbfIKCvIS
         2S6Vga1SpQm2SJPKabYIEKRNsSWX/4aaGY5I2ebR5R3/PoCAJVIUdecc0Q5y1wCoEuUGKkW5gUpRbqBS
         lBuoFOUGKkW5Cx5Oh+ZwehgfvST3zfHu0Hj56KzT+PACx+V+aE6Hu+buLtsOp3ZPrBvE/Ljj/bh7xlfA
         t7Z9YVgnhWvWyX25V4P4cGoOSQiG110Mzf2xELwXZPPPzzpJXPH56y93N4S7Y/s9HyyH5v7Y3jHynX3w
@@ -896,5 +896,63 @@ FROM meas_list
 WHERE id_meas_type IN (
  SELECT m.ID FROM sys_meas_types m, sys_ptyp t WHERE m.id_type = t.ID AND t.id_node = 1
 )</value>
+  </data>
+  <data name="v1text" xml:space="preserve">
+    <value>CREATE [OR REPLACE] [PUBLIC] SYNONYM [schema .] synonym_name  FOR [schema .] object_name [@ dblink];
+
+DROP [PUBLIC] SYNONYM [schema .] synonym_name [force];
+
+rdarchd  тогда ничего не знает об архивном сервере , и чсе архивы читает через основной.
+Тогда  синонимы на архивы  на основном должны указывать на  архивный.
+проверить  синонимы  на партиции на основном 
+
+select * from all_synonyms where table_owner like 'RSDU2DAARH' and owner like 'PUBLIC' and table_name like 'DA_ARC_54%';
+select * from all_synonyms where table_owner like 'RSDU2DAARH' and owner like 'PUBLIC' and table_name like 'DA_ARC_3000842%';
+
+select 'create or replace public synonym '||a.table_name ||' for '||sh.schema_name ||'.' ||a.table_name as "-- str "  
+ from arc_view_partitions   a
+ join arc_services_info i on i.id_lsttbl = a.id_tbllst and id_tbllst =  ????????
+ join arc_db_schema  sh on sh.id = i.id_db_schema   and schema_name like 'RSDU2DAARH'
+
+select * from all_synonyms where table_owner like 'RSDU2DAARH' and owner like 'PUBLIC' and table_name like 'DA_ARC_???????????%';
+
+select 'CREATE OR REPLACE PUBLIC SYNONYM '||SYNONYM_NAME||' FOR '||SYNONYM_NAME||'@RSDUARC.RSDU.GRES.ORG;' AS O
+from all_synonyms where table_owner like 'RSDU2DAARH' and owner like 'PUBLIC' and table_name like 'DA_ARC_???????????%';
+
+</value>
+  </data>
+  <data name="v2text" xml:space="preserve">
+    <value>данные по границам  партиций  в ARC_VIEW_PARTITION  обновляются  в  основной , а в  архивной БД  данные этой таблицы не синхронизируются с основной, поэтому один последний час берёт из РВ.
+проверить запросом  - подключаемся к архивному серверу
+
+select b.id, a.id as id_arc, b.table_name, from_dt1970(b.dt_start) dt1_base, from_dt1970(a.dt_start) dt1_arc
+ from arc_view_partitions @rsdu.gtes.ema   b
+ left join  arc_view_partitions @rsduarc.gtes.ema  a on  a.id_tbllst = b.id_tbllst and a.id_ginfo= b.id_ginfo and a.id = b.id
+ where b.id_tbllst =  ??????????? ;
+ 
+Если дата  партиции на основном (dt1_base)  новее чем  на архивном , значит,  имеем именно эту проблему.
+Если  наоборот на архивном свежее данные ,  то  -Внимание!- тогда  дальше пока не делаем. 
+проверить работу если бы они были синхронизированы так: обновить даты на архивном  (работаем на архивном сервере)
+
+truncate table arc_view_partitions;
+insert into arc_view_partitions select * from arc_view_partitions@rsdu;
+commit;
+
+После этого проверить отображение  данных в ретроспективе - показывает ли  за  больший период, чем час. 
+Если  в ретро всё будет нормально, тогда будем  решать , как синхронизировать  таблицы, ведь репликации данных оракловой там, скорее всего нет, надо программно.
+
+-------------------------------
+
+На архивном нет  таблицы  ARC_VIEW_PARTITIONS - здесь такая реализация. Нечего синхронизировать.
+Все должно читаться  с основного.  и  на Архивном , получается нет функции ARC_GET_INSTANT,  а это неправильно.
+Она  нужна rdarchd для чтения. Надо создать .
+Прилагаю 2 файла ,
+
+ARC_ROW_TYPE.type.sql
+ARC_GET_INSTANT_on_RSDUARC.new.sql
+
+надо выполнить на АРХивном сервере под RSDUADMIN именно в таком порядке  -  сначала создать тип , потом функцию.
+После  создания  проверить , что  они не инвалидные  а затем попробовать  в ретро посмотреть за период больше часа.
+</value>
   </data>
 </root>

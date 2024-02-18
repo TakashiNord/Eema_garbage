@@ -51,7 +51,9 @@ namespace ArcConfig
               catch (Exception ex1)
               {
                 MessageBox.Show("Error ="+ex1.Message);
-              } 				
+              } 
+              richTextBox1.Clear(); 
+              richTextBox1.AppendText(r.GetString("v1text"));
 			}
 		}
 		void RadioButton2CheckedChanged(object sender, EventArgs e)
@@ -66,7 +68,9 @@ namespace ArcConfig
               catch (Exception ex1)
               {
                 MessageBox.Show("Error ="+ex1.Message);
-              } 				
+              }
+              richTextBox1.Clear();
+              richTextBox1.AppendText(r.GetString("v2text"));              
 			}	
 		}
 		void RadioButton3CheckedChanged(object sender, EventArgs e)
@@ -81,7 +85,8 @@ namespace ArcConfig
               catch (Exception ex1)
               {
                 MessageBox.Show("Error ="+ex1.Message);
-              } 				
+              } 
+              richTextBox1.Clear();              
 			}	
 		}
 		void RadioButton4CheckedChanged(object sender, EventArgs e)
@@ -96,7 +101,10 @@ namespace ArcConfig
               catch (Exception ex1)
               {
                 MessageBox.Show("Error ="+ex1.Message);
-              } 				
+              } 
+
+              richTextBox1.Clear();
+              
 			}	
 		}
 	}
