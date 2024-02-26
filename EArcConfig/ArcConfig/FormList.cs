@@ -177,6 +177,7 @@ namespace ArcConfig
               vl1 = 0;
 			  continue ;
             }
+          if (vl1<=0) continue ;
           t0 = UnixTimestampToDateTime(vl1) ;
           //t0=t0.ToUniversalTime() ;
           t0=t0.ToLocalTime();

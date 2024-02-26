@@ -351,7 +351,7 @@ namespace ArcConfig
         }
 
 
-        string s="SELECT v.ID,v.ID_OBJ,v.NAME FROM "+stSchema+"MEAS_ARC mc, ( {0} ) v WHERE mc.ID_PARAM=v.ID AND mc.ID_GINFO={1}" ;
+        string s="SELECT v.ID,v.ID_NODE,v.NAME FROM "+stSchema+"MEAS_ARC mc, ( {0} ) v WHERE mc.ID_PARAM=v.ID AND mc.ID_GINFO={1}" ;
         sl1 = String.Format(s,sl1,_id );
         cmd0.CommandText=sl1;
         try

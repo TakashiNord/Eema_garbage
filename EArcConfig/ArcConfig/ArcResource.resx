@@ -878,7 +878,7 @@ AND SYS_GTOPT.DEFINE_ALIAS NOT LIKE 'GLT_DANALOG_OPT_INSTANT%'
 AND a.ID_TBLLST={0}</value>
   </data>
   <data name="PHREG_LIST_V00" xml:space="preserve">
-    <value>SELECT ID, id_obj, id_meas_type, NAME, alias
+    <value>SELECT ID, id_obj as id_node, id_meas_type, NAME, alias
      FROM meas_list
     WHERE id_meas_type IN (
    SELECT m.ID FROM sys_meas_types m, sys_ptyp t
@@ -891,7 +891,7 @@ AND a.ID_TBLLST={0}</value>
    ) </value>
   </data>
   <data name="ELREG_LIST_V00" xml:space="preserve">
-    <value>SELECT ID, id_obj, id_meas_type, NAME, alias
+    <value>SELECT ID, id_obj as id_node, id_meas_type, NAME, alias
 FROM meas_list
 WHERE id_meas_type IN (
  SELECT m.ID FROM sys_meas_types m, sys_ptyp t WHERE m.id_type = t.ID AND t.id_node = 1

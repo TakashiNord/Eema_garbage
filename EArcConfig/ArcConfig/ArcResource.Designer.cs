@@ -503,7 +503,7 @@ namespace ArcConfig {
 		}
 		
 		/// <summary>
-		///   Looks up a localized string similar to SELECT ID, id_obj, id_meas_type, NAME, alias
+		///   Looks up a localized string similar to SELECT ID, id_obj as id_node, id_meas_type, NAME, alias
 		///FROM meas_list
 		///WHERE id_meas_type IN (
 		/// SELECT m.ID FROM sys_meas_types m, sys_ptyp t WHERE m.id_type = t.ID AND t.id_node = 1
@@ -673,7 +673,7 @@ namespace ArcConfig {
 		}
 		
 		/// <summary>
-		///   Looks up a localized string similar to SELECT ID, id_obj, id_meas_type, NAME, alias
+		///   Looks up a localized string similar to SELECT ID, id_obj as id_node, id_meas_type, NAME, alias
 		///     FROM meas_list
 		///    WHERE id_meas_type IN (
 		///   SELECT m.ID FROM sys_meas_types m, sys_ptyp t

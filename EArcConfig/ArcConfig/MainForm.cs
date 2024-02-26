@@ -805,7 +805,7 @@ namespace ArcConfig
       cmd1.Connection=this._conn;
 
       //Получить Имя выделенного элемента
-      string id_parent=treeViewA.SelectedNode.Name;
+      string id_parent = treeViewA.SelectedNode.Name;
       string _id_tbl = Convert.ToString ( treeViewA.SelectedNode.Tag ) ;
       //AddLogString(" id_parent=" + id_parent + "  _id_tbl=" + _id_tbl);
       if (_id_tbl=="0" || _id_tbl=="") return ;
@@ -950,7 +950,8 @@ namespace ArcConfig
         }
         catch (Exception ex1)
         {
-            return ;
+          AddLogString("TreeView Error ..прервано.. = " + cmd0.CommandText + " " + ex1.Message);
+          return ;
         }
         if (reader.HasRows) {
            while (reader.Read())
@@ -967,28 +968,73 @@ namespace ArcConfig
 
         Application.DoEvents();
 
-        if  (TABLE_NAME.Length<=1) {
-          tabControlAP.SelectedIndex = 0 ;
-          MessageBox.Show ("Не задана Таблица-Список !",
-                       ">>Построение списка ...",
-               MessageBoxButtons.OK , MessageBoxIcon.Exclamation);
-          return ;
-        }
-
         if  (SHEMA_NAME.Length<=1) {
           DialogResult result = MessageBox.Show ("Не задана связь раздела с системой архива!\n\n Установить ? ",
-                                             ">>Построение списка ...",
+                                                 ">>Построение списка ...",
                          MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
           if (result == DialogResult.Yes)
           {
             // переход на первую вкладку
-      tabControlAP.SelectedIndex = 0 ;
-      Form arcdbfrm = new FormArc_db_schema(this._conn, _id_tbl, OptionSchemaName);
+            List<String> a = new List<String>();
+		    List<String> b = new List<String>();  
+
+		    a.Insert(0,treeViewA.SelectedNode.Text);
+		    
+/*
+ * проверка на существование ARC_DB_SCHEMA.ID_STORAGE_TYPE
+ * получение типа бд хранилища
+ */
+ 
+ if (0==_checkCol( "ID_STORAGE_TYPE" , "ARC_DB_SCHEMA" ))        
+cmd0.CommandText="select ads.ID, ads.NAME, ads.SCHEMA_NAME , '' as STORAGE" + 
+"from " + stSchema + "ARC_DB_SCHEMA ads " +
+"order by ads.ID asc " ;
+ else 
+cmd0.CommandText="select ads.ID, ads.NAME, ads.SCHEMA_NAME , ast.DEFINE_ALIAS as STORAGE " + 
+"from " + stSchema + "ARC_DB_SCHEMA ads, " + stSchema + "ARC_STORAGE_TYPE ast " +
+"where ads.ID_STORAGE_TYPE=ast.ID " +
+"order by ads.ID asc " ;		    
+		    
+        try
+        {
+           reader = cmd0.ExecuteReader();
+        }
+        catch (Exception ex1)
+        {
+          AddLogString("TreeView Error ..прервано.. = " + cmd0.CommandText + " " + ex1.Message);
+          return ;
+        }
+        if (reader.HasRows) {
+           int iSa = 0 ;
+           while (reader.Read())
+           {
+               String vS1 = GetTypeValue(ref reader, 1).ToUpper() ;
+               String vS2 = GetTypeValue(ref reader, 2).ToUpper() ;
+               String vS3 = GetTypeValue(ref reader, 3).ToUpper() ;
+               b.Insert(iSa,vS1  + " [" + vS2 + "] - " + vS3);
+               iSa++;
+            } // while
+        }
+        reader.Close();		    
+		    
+		    
+      
+            FormArc_db_schema_lite arcdbfrm = new FormArc_db_schema_lite(a,0,b,0);
             arcdbfrm.ShowDialog();
-      return ;
+            int rescombo = arcdbfrm._indBoxDB ;
+            tabControlAP.SelectedIndex = 0 ;
+            return ;
           }
         }
 
+        if  (TABLE_NAME.Length<=1) {
+          MessageBox.Show ("Не задана Таблица-Список !",
+                           ">>Построение списка ...",
+                           MessageBoxButtons.OK , MessageBoxIcon.Exclamation);
+          tabControlAP.SelectedIndex = 0 ;
+          return ;
+        }        
+        
         // построение
 
         dp.Clear();
