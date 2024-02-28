@@ -18,6 +18,7 @@ namespace ArcConfig
 		private System.Windows.Forms.ComboBox comboBoxDB;
 		private System.Windows.Forms.Button butBind;
 		private System.Windows.Forms.Button butCancel;
+		private System.Windows.Forms.RichTextBox richTextBox1;
 		
 		/// <summary>
 		/// Disposes resources used by the form.
@@ -44,6 +45,7 @@ namespace ArcConfig
 			this.comboBoxDB = new System.Windows.Forms.ComboBox();
 			this.butBind = new System.Windows.Forms.Button();
 			this.butCancel = new System.Windows.Forms.Button();
+			this.richTextBox1 = new System.Windows.Forms.RichTextBox();
 			this.SuspendLayout();
 			// 
 			// comboBoxSvc
@@ -59,14 +61,14 @@ namespace ArcConfig
 			// 
 			this.comboBoxDB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.comboBoxDB.FormattingEnabled = true;
-			this.comboBoxDB.Location = new System.Drawing.Point(9, 43);
+			this.comboBoxDB.Location = new System.Drawing.Point(8, 137);
 			this.comboBoxDB.Name = "comboBoxDB";
 			this.comboBoxDB.Size = new System.Drawing.Size(558, 21);
 			this.comboBoxDB.TabIndex = 1;
 			// 
 			// butBind
 			// 
-			this.butBind.Location = new System.Drawing.Point(247, 79);
+			this.butBind.Location = new System.Drawing.Point(243, 164);
 			this.butBind.Name = "butBind";
 			this.butBind.Size = new System.Drawing.Size(75, 23);
 			this.butBind.TabIndex = 2;
@@ -76,13 +78,24 @@ namespace ArcConfig
 			// 
 			// butCancel
 			// 
-			this.butCancel.Location = new System.Drawing.Point(492, 79);
+			this.butCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+			this.butCancel.Location = new System.Drawing.Point(491, 164);
 			this.butCancel.Name = "butCancel";
 			this.butCancel.Size = new System.Drawing.Size(75, 23);
 			this.butCancel.TabIndex = 3;
 			this.butCancel.Text = "Отмена";
 			this.butCancel.UseVisualStyleBackColor = true;
 			this.butCancel.Click += new System.EventHandler(this.ButCancelClick);
+			// 
+			// richTextBox1
+			// 
+			this.richTextBox1.Location = new System.Drawing.Point(12, 29);
+			this.richTextBox1.Name = "richTextBox1";
+			this.richTextBox1.ReadOnly = true;
+			this.richTextBox1.Size = new System.Drawing.Size(547, 102);
+			this.richTextBox1.TabIndex = 4;
+			this.richTextBox1.Text = "Выберите архивного пользователя согласно разделу.\n\nРаспределенная система сбора -" +
+	" RSDU2DAARH\n\nЭлектрический режим - RSDU2ELARH\n\nи так далее.";
 			// 
 			// FormArc_db_schema_lite
 			// 
@@ -91,7 +104,8 @@ namespace ArcConfig
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.AutoSize = true;
 			this.CancelButton = this.butCancel;
-			this.ClientSize = new System.Drawing.Size(571, 105);
+			this.ClientSize = new System.Drawing.Size(571, 192);
+			this.Controls.Add(this.richTextBox1);
 			this.Controls.Add(this.butCancel);
 			this.Controls.Add(this.butBind);
 			this.Controls.Add(this.comboBoxDB);

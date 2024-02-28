@@ -190,7 +190,7 @@ namespace ArcConfig
     }
 
 
-    public void Shown(object sender)
+    public void ShownBase(object sender)
     {
         //
         // Объект для выполнения запросов к базе данных
@@ -302,16 +302,16 @@ namespace ArcConfig
 
         if (TABLE_NAME.IndexOf("PHREG_LIST_V")>=0) {
             sl1 = r.GetString("PHREG_LIST_V0");
-            if (0==_checkCol( "ID" , "PHREG_LIST_V" )) { 
-            	sl1 = r.GetString("PHREG_LIST_V00");
-            	if (is_exdata == 1 ) sl1 = sl1 + " AND is_exdata = 0 "; 
+            if (0==_checkCol( "ID" , "PHREG_LIST_V" )) {
+              sl1 = r.GetString("PHREG_LIST_V00");
+              if (is_exdata == 1 ) sl1 = sl1 + " AND is_exdata = 0 ";
             }
         }
         if (TABLE_NAME.IndexOf("ELREG_LIST_V")>=0) {
             sl1 = r.GetString("ELREG_LIST_V0");
-            if (0==_checkCol( "ID" , "ELREG_LIST_V" )) { 
-            	sl1 = r.GetString("ELREG_LIST_V00");
-            	if (is_exdata == 1 ) sl1 = sl1 + " AND is_exdata = 0 "; 
+            if (0==_checkCol( "ID" , "ELREG_LIST_V" )) {
+              sl1 = r.GetString("ELREG_LIST_V00");
+              if (is_exdata == 1 ) sl1 = sl1 + " AND is_exdata = 0 ";
             }
         }
         if (TABLE_NAME.IndexOf("PSWT_LIST_V")>=0) {
@@ -478,7 +478,7 @@ namespace ArcConfig
     }
     void ButtonPARAMClick(object sender, EventArgs e)
     {
-      Shown(sender) ;
+      ShownBase(sender) ;
       ShownArc(sender);
     }
     void ButtonSELClick(object sender, EventArgs e)
@@ -567,7 +567,7 @@ namespace ArcConfig
 
           if (res0 == DBNull.Value)
             Total_Records = 0;
-          else 
+          else
             Total_Records = System.Convert.ToInt32(res0);
           if (Total_Records!=0) res2++;
 
@@ -600,10 +600,6 @@ namespace ArcConfig
       this.Close();
 
     }
-
-
-
-
 
   }
 }

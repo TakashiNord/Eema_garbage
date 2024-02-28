@@ -1,43 +1,38 @@
 ﻿/*
  * Created by SharpDevelop.
- * User: tanuki
- * Date: 02.02.2024
- * Time: 20:04
- *
+ * User: gal
+ * Date: 27.02.2024
+ * Time: 13:16
+ * 
  * To change this template use Tools | Options | Coding | Edit Standard Headers.
  */
 using System;
 using System.Drawing;
 using System.Windows.Forms;
-
 using System.Collections.Generic;
 using System.Data.Odbc;
 using System.Reflection;
 using System.Resources;
-using System.Text.RegularExpressions;
-using System.IO;
-using System.Text;
-using System.Threading.Tasks ;
 
 namespace ArcConfig
 {
 	/// <summary>
-	/// Description of FormList.
+	/// Description of FormVariable.
 	/// </summary>
-	public partial class FormList : Form
+	public partial class FormVariable : Form
 	{
-		public FormList()
+		public FormVariable()
 		{
 			//
 			// The InitializeComponent() call is required for Windows Forms designer support.
 			//
 			InitializeComponent();
-
+			
 			//
 			// TODO: Add constructor code after the InitializeComponent() call.
 			//
 		}
-
+		
    public string GetTypeValue(ref OdbcDataReader reader, int i)
    {
      object obj ;
@@ -54,12 +49,7 @@ namespace ArcConfig
    }
 
     public OdbcConnection _conn;
-    public String _id;
-    public String _name;
-	  public String _tmCol;
-
-    public int _OptionSchemaName = 0;
-    public string OptionSchemaMain = "RSDUADMIN";
+    public string stSchema="";
 
 
     public OdbcConnection Conn
@@ -70,7 +60,7 @@ namespace ArcConfig
       }
     }
 
-    public FormList(OdbcConnection conn, String name , String tmCol  )
+    public FormVariable(OdbcConnection conn, String name )
     {
       //
       // The InitializeComponent() call is required for Windows Forms designer support.
@@ -81,29 +71,10 @@ namespace ArcConfig
       // TODO: Add constructor code after the InitializeComponent() call.
       //
       _conn = conn ;
-      _name = name ;
-	    _tmCol = tmCol ;
-
+      stSchema = name ;
     }
-
-
-    //Unix -> DateTime
-    public  DateTime UnixTimestampToDateTime(double unixTime)
-    {
-        DateTime unixStart = new DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Utc);
-        long unixTimeStampInTicks = (long) (unixTime * TimeSpan.TicksPerSecond);
-        return new DateTime(unixStart.Ticks + unixTimeStampInTicks, System.DateTimeKind.Utc);
-    }
-
-    //DateTime -> Unix
-    public  double DateTimeToUnixTimestamp(DateTime dateTime)
-    {
-        DateTime unixStart = new DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Utc);
-        long unixTimeStampInTicks = (dateTime.ToUniversalTime() - unixStart).Ticks;
-        return (double) unixTimeStampInTicks / TimeSpan.TicksPerSecond;
-    }
-
-    public void ARC_TABLE(object sender)
+	
+    public void VAR_TABLE(object sender)
     {
       // Объект для выполнения запросов к базе данных
       OdbcCommand cmd0 = new OdbcCommand();
@@ -123,18 +94,20 @@ namespace ArcConfig
         MessageBox.Show("Error 1 ="+ex1.Message);
       }
 
-      string sl1 = "SELECT * FROM " + _name ;
-	    if (_tmCol!="") sl1 = "SELECT "+_name+".* , '' AS FROMDT1970 FROM " + _name ;
-
+      string sl1 = "SELECT asi.ID,ad.NAME as DESC,ad.ALIAS, rip.NAME,asi.VALUE,rip.DESCRIPTION " +
+" FROM "+stSchema+"AD_SINFO_INI asi, "+stSchema+"AD_DIR ad, "+stSchema+"RSDU_INI_PARAM rip " +
+" WHERE asi.ID_SERVER_NODE=ad.id and asi.ID_INI_PARAM=rip.id "+
+" ORDER BY asi.ID_SERVER_NODE  ";
+ 
       cmd0.Connection=this._conn;
-	    cmd0.CommandText=sl1;
-
+	  cmd0.CommandText=sl1;
+      
       adapter.SelectCommand = cmd0; // Указываем запрос для выполнения
 
       int a = 0;
       // Заполняем объект источника данных
       try {
-        a = adapter.Fill(dataSet1,_name);
+        a = adapter.Fill(dataSet1);
       }
       catch (Exception ex1)
       {
@@ -160,33 +133,12 @@ namespace ArcConfig
       // Set up the data source.
       dataGridViewList.Update();
 
-      DateTime t0 ;
-      double vl1 = 0 ;
       for (int ii = 0; ii < dataGridViewList.RowCount ; ii++) {
-
         // нумерация
         dataGridViewList.Rows[ii].HeaderCell.Value = (ii + 1).ToString();
-
-        if (_tmCol!="") {
-          //Unix -> DateTime DT_START = 6 - > 9
-		      try {
-            vl1 = Convert.ToDouble(dataGridViewList.Rows[ii].Cells[_tmCol].Value);
-          }
-          catch (Exception ex1)
-          {
-            vl1 = 0;
-			      continue ;
-          }
-          if (vl1<=0) continue ;
-          t0 = UnixTimestampToDateTime(vl1) ;
-          //t0=t0.ToUniversalTime() ;
-          t0=t0.ToLocalTime();
-          dataGridViewList.Rows[ii].Cells["FROMDT1970"].Value=t0.ToString("u"); // u s o
-        }
-
-      } //for
-
-
+      } //for      
+      
+      
       // Resize the master DataGridView columns to fit the newly loaded data.
       dataGridViewList.AutoResizeColumns();
 
@@ -194,11 +146,15 @@ namespace ArcConfig
       Application.DoEvents();
 
     }
-		void FormListLoad(object sender, EventArgs e)
-		{
-			this.Text = "  :  " + _name ;
-			ARC_TABLE(sender) ;
-		}
 
+        void FormVariableLoad(object sender, EventArgs e)
+		{
+			//
+			this.Text = "  :  " ;
+			VAR_TABLE(sender) ;
+		}
+				
+		
+		
 	}
 }

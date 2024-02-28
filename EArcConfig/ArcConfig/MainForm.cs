@@ -976,52 +976,68 @@ namespace ArcConfig
           {
             // переход на первую вкладку
             List<String> a = new List<String>();
-		    List<String> b = new List<String>();  
+            List<String> b = new List<String>();
+            List<String> bi = new List<String>();
 
-		    a.Insert(0,treeViewA.SelectedNode.Text);
-		    
-/*
- * проверка на существование ARC_DB_SCHEMA.ID_STORAGE_TYPE
- * получение типа бд хранилища
- */
- 
- if (0==_checkCol( "ID_STORAGE_TYPE" , "ARC_DB_SCHEMA" ))        
-cmd0.CommandText="select ads.ID, ads.NAME, ads.SCHEMA_NAME , '' as STORAGE" + 
-"from " + stSchema + "ARC_DB_SCHEMA ads " +
-"order by ads.ID asc " ;
- else 
-cmd0.CommandText="select ads.ID, ads.NAME, ads.SCHEMA_NAME , ast.DEFINE_ALIAS as STORAGE " + 
-"from " + stSchema + "ARC_DB_SCHEMA ads, " + stSchema + "ARC_STORAGE_TYPE ast " +
-"where ads.ID_STORAGE_TYPE=ast.ID " +
-"order by ads.ID asc " ;		    
-		    
-        try
-        {
-           reader = cmd0.ExecuteReader();
-        }
-        catch (Exception ex1)
-        {
-          AddLogString("TreeView Error ..прервано.. = " + cmd0.CommandText + " " + ex1.Message);
-          return ;
-        }
-        if (reader.HasRows) {
-           int iSa = 0 ;
-           while (reader.Read())
-           {
-               String vS1 = GetTypeValue(ref reader, 1).ToUpper() ;
-               String vS2 = GetTypeValue(ref reader, 2).ToUpper() ;
-               String vS3 = GetTypeValue(ref reader, 3).ToUpper() ;
-               b.Insert(iSa,vS1  + " [" + vS2 + "] - " + vS3);
-               iSa++;
-            } // while
-        }
-        reader.Close();		    
-		    
-		    
-      
+            a.Insert(0,treeViewA.SelectedNode.Text);
+
+            /*
+             * проверка на существование ARC_DB_SCHEMA.ID_STORAGE_TYPE
+             * получение типа бд хранилища
+             */
+
+             if (0==_checkCol( "ID_STORAGE_TYPE" , "ARC_DB_SCHEMA" ))
+            cmd0.CommandText="select ads.ID, ads.NAME, ads.SCHEMA_NAME , '' as STORAGE " +
+            "from " + stSchema + "ARC_DB_SCHEMA ads " +
+            "order by ads.ID asc " ;
+             else
+            cmd0.CommandText="select ads.ID, ads.NAME, ads.SCHEMA_NAME , ast.DEFINE_ALIAS as STORAGE " +
+            "from " + stSchema + "ARC_DB_SCHEMA ads, " + stSchema + "ARC_STORAGE_TYPE ast " +
+            "where ads.ID_STORAGE_TYPE=ast.ID " +
+            "order by ads.ID asc " ;
+
+            try
+            {
+               reader = cmd0.ExecuteReader();
+            }
+            catch (Exception ex1)
+            {
+              AddLogString("TreeView Error ..прервано.. = " + cmd0.CommandText + " " + ex1.Message);
+              return ;
+            }
+            if (reader.HasRows) {
+              int iSa = 0 ;
+              while (reader.Read())
+              {
+                  String vS0 = GetTypeValue(ref reader, 0).ToUpper() ;
+                  String vS1 = GetTypeValue(ref reader, 1).ToUpper() ;
+                  String vS2 = GetTypeValue(ref reader, 2).ToUpper() ;
+                  String vS3 = GetTypeValue(ref reader, 3).ToUpper() ;
+                  bi.Insert(iSa,vS0);
+                  b.Insert(iSa,vS1  + " [" + vS2 + "] - " + vS3);
+                  iSa++;
+              } // while
+            }
+            reader.Close();
+
             FormArc_db_schema_lite arcdbfrm = new FormArc_db_schema_lite(a,0,b,0);
-            arcdbfrm.ShowDialog();
-            int rescombo = arcdbfrm._indBoxDB ;
+            if (arcdbfrm.ShowDialog()== DialogResult.OK) {
+              int rescombo = arcdbfrm._indBoxDB ;
+              AddLogString("Selected scheme = " + rescombo.ToString() );
+
+              sl1="INSERT INTO  "+stSchema+"ARC_SERVICES_INFO (ID_LSTTBL,ID_DB_SCHEMA) VALUES " +
+                  " ( " + _id_tbl + " , "+ bi[rescombo] + " ) ;";
+              int crec1 = 0 ;
+              cmd0.CommandText=sl1;
+              try
+              {
+                crec1=cmd0.ExecuteNonQuery();
+              }
+              catch (Exception ex1)
+              {
+                 AddLogString(" Insert -> Ошибка. " + cmd0.CommandText + " , " + ex1.Message);
+              }
+            }
             tabControlAP.SelectedIndex = 0 ;
             return ;
           }
@@ -1033,8 +1049,8 @@ cmd0.CommandText="select ads.ID, ads.NAME, ads.SCHEMA_NAME , ast.DEFINE_ALIAS as
                            MessageBoxButtons.OK , MessageBoxIcon.Exclamation);
           tabControlAP.SelectedIndex = 0 ;
           return ;
-        }        
-        
+        }
+
         // построение
 
         dp.Clear();
@@ -4580,6 +4596,18 @@ void PartitionMedia(object sender, EventArgs e)
       ifpch.StartPosition=FormStartPosition.CenterParent ;
       ifpch.Show();
 
+    }
+    void ButVariableClick(object sender, EventArgs e)
+    {
+      // variable
+      string stSchema="";
+      if (OptionSchemaName>0) {
+        stSchema=OptionSchemaMain + "." ;
+      }
+
+      FormVariable lstv = new FormVariable(this._conn, stSchema );
+      lstv.StartPosition=FormStartPosition.CenterParent ;
+      lstv.ShowDialog();
     }
 
 

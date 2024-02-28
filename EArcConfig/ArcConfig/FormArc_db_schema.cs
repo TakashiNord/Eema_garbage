@@ -3,7 +3,7 @@
  * User: tanuki
  * Date: 21.12.2023
  * Time: 17:32
- * 
+ *
  * To change this template use Tools | Options | Coding | Edit Standard Headers.
  */
 using System;
@@ -18,23 +18,23 @@ using System.Collections.Generic;
 
 namespace ArcConfig
 {
-	/// <summary>
-	/// Description of FormArc_db_schema.
-	/// </summary>
-	public partial class FormArc_db_schema : Form
-	{
-		public FormArc_db_schema()
-		{
-			//
-			// The InitializeComponent() call is required for Windows Forms designer support.
-			//
-			InitializeComponent();
-			
-			//
-			// TODO: Add constructor code after the InitializeComponent() call.
-			//
-		}
-		
+  /// <summary>
+  /// Description of FormArc_db_schema.
+  /// </summary>
+  public partial class FormArc_db_schema : Form
+  {
+    public FormArc_db_schema()
+    {
+      //
+      // The InitializeComponent() call is required for Windows Forms designer support.
+      //
+      InitializeComponent();
+
+      //
+      // TODO: Add constructor code after the InitializeComponent() call.
+      //
+    }
+
    public string GetTypeValue(ref OdbcDataReader reader, int i)
    {
      object obj ;
@@ -77,7 +77,7 @@ namespace ArcConfig
       _conn = conn ;
       _id_tbl = tbl ;
       _OptionSchemaName = SchemaName ;
-    }		
+    }
 
 
 
@@ -121,9 +121,9 @@ namespace ArcConfig
     class ARC_DB_SCHEMA
     {
         public int ID { get; set; }
-		public string NAME { get; set; } //обязательно нужно использовать get конструкцию
+        public string NAME { get; set; } //обязательно нужно использовать get конструкцию
         public string SCHEMA_NAME { get; set; }
-		public int ID_STORAGE_TYPE { get; set; }
+        public int ID_STORAGE_TYPE { get; set; }
         public string DEFINE_ALIAS { get; set; }
 
         public string Hidden = ""; //Данное свойство не будет отображаться как колонка
@@ -131,27 +131,16 @@ namespace ArcConfig
         public ARC_DB_SCHEMA(int id, string name, string sch, int id_type, string defalias )
         {
             this.ID = id;
-			this.NAME = name;
+            this.NAME = name;
             this.SCHEMA_NAME = sch;
-			this.ID_STORAGE_TYPE = id_type ;
+            this.ID_STORAGE_TYPE = id_type ;
             this.DEFINE_ALIAS = defalias ;
         }
-    }   
+    }
 
-    
-   //public DataSet GetCountries()
-   //{
-   //   DataSet ds = new DataSet();
-   //   OdbcDataAdapter da = new OdbcDataAdapter("select distinct country from customers", strConn);
-   //   da.Fill(ds, "countries");
-   //   return ds;
-   //}    
-    
     void Select1(object sender)
     {
-       List<ARC_DB_SCHEMA> data = new List<ARC_DB_SCHEMA>(); 
-       //Специальный список List с вызовом события обновления внутреннего состояния, необходимого для автообновления datagridview
-
+       List<ARC_DB_SCHEMA> data = new List<ARC_DB_SCHEMA>();
 
        // Объект для связи между базой данных и источником данных
        OdbcDataAdapter adapter = new OdbcDataAdapter();
@@ -170,39 +159,34 @@ namespace ArcConfig
        Application.DoEvents();
 
        cmd0.CommandText="SELECT * FROM " + stSchema + table_name;
-       
+
 /*
  * проверка на существование ARC_DB_SCHEMA.ID_STORAGE_TYPE
  * получение типа бд хранилища
  */
- 
- if (0==_checkCol( "ID_STORAGE_TYPE" , "ARC_DB_SCHEMA" ))        
-cmd0.CommandText="select ads.ID, ads.NAME, ads.SCHEMA_NAME " + 
+
+ if (0==_checkCol( "ID_STORAGE_TYPE" , "ARC_DB_SCHEMA" ))
+cmd0.CommandText="select ads.ID, ads.NAME, ads.SCHEMA_NAME " +
 "from " + stSchema + "ARC_DB_SCHEMA ads " +
 "order by ads.ID asc " ;
- else 
-cmd0.CommandText="select ads.ID, ads.NAME, ads.SCHEMA_NAME , ast.DEFINE_ALIAS as STORAGE " + 
+ else
+cmd0.CommandText="select ads.ID, ads.NAME, ads.SCHEMA_NAME , ast.DEFINE_ALIAS as STORAGE " +
 "from " + stSchema + "ARC_DB_SCHEMA ads, " + stSchema + "ARC_STORAGE_TYPE ast " +
 "where ads.ID_STORAGE_TYPE=ast.ID " +
 "order by ads.ID asc " ;
- 	
- 	
+
        dataSet1.Clear();
        dataGridView1.DataSource = null;
        dataSet1.Tables.Clear();
 
        // Указываем запрос для выполнения
        adapter.SelectCommand = cmd0;
-	   
+
        // Заполняем объект источника данных
        adapter.Fill(dataSet1,table_name);
 
        // (с этого момента она будет отображать его содержимое)
        dataGridView1.DataSource = dataSet1.Tables[0];
-	   
-	   //data.Add(new SampleRow("Товар 1", 100, 1));
-
-       //bindingSource1.DataSource=dataSet1.Tables[0];
 
        // Resize the master DataGridView columns to fit the newly loaded data.
        dataGridView1.AutoResizeColumns();
@@ -219,8 +203,8 @@ cmd0.CommandText="select ads.ID, ads.NAME, ads.SCHEMA_NAME , ast.DEFINE_ALIAS as
        dataGridView1.Update();
 
     }
-    
-    
+
+
     void Select2(object sender)
     {
        // Объект для связи между базой данных и источником данных
@@ -230,14 +214,14 @@ cmd0.CommandText="select ads.ID, ads.NAME, ads.SCHEMA_NAME , ast.DEFINE_ALIAS as
 
        cmd0.Connection=this._conn;
 
-/*       
+/*
 CREATE TABLE ARC_SERVICES_INFO (
     ID_LSTTBL    DECIMAL NOT NULL,
     ID_SVC_TYPE  DECIMAL,
     ID_DB_SCHEMA DECIMAL NOT NULL
 );
-  */     
-       
+  */
+
        string table_name="ARC_SERVICES_INFO";
 
        string stSchema="";
@@ -248,22 +232,20 @@ CREATE TABLE ARC_SERVICES_INFO (
        Application.DoEvents();
 
        cmd0.CommandText="SELECT * FROM " + stSchema + table_name;
-       
-	
+
+
        dataSet2.Clear();
        dataGridView2.DataSource = null;
        dataSet2.Tables.Clear();
 
        // Указываем запрос для выполнения
        adapter.SelectCommand = cmd0;
-	   
+
        // Заполняем объект источника данных
        adapter.Fill(dataSet2,table_name);
 
        // (с этого момента она будет отображать его содержимое)
        dataGridView2.DataSource = dataSet2.Tables[0];
-	   
-	   //data.Add(new SampleRow("Товар 1", 100, 1));
 
        // Resize the master DataGridView columns to fit the newly loaded data.
        dataGridView2.AutoResizeColumns();
@@ -280,52 +262,14 @@ CREATE TABLE ARC_SERVICES_INFO (
        dataGridView2.Update();
 
     }
-    
-    
-		void FormArc_db_schemaLoad(object sender, EventArgs e)
-		{
-		/*
-            var column1 = new DataGridViewColumn();
-            column1.HeaderText = "Название"; //текст в шапке
-            column1.Width = 100; //ширина колонки
-            column1.ReadOnly = true; //значение в этой колонке нельзя править
-            column1.Name = "name"; //текстовое имя колонки, его можно использовать вместо обращений по индексу
-            column1.Frozen = true; //флаг, что данная колонка всегда отображается на своем месте
-            column1.CellTemplate = new DataGridViewTextBoxCell(); //тип нашей колонки
 
-            var column2 = new DataGridViewColumn();
-            column2.HeaderText = "Цена"; 
-            column2.Name = "price";
-            column2.CellTemplate = new DataGridViewTextBoxCell();
 
-            var column3 = new DataGridViewColumn();
-            column3.HeaderText = "Остаток";
-            column3.Name = "count";
-            column3.CellTemplate = new DataGridViewTextBoxCell();
-            
-            var column4 = new DataGridViewColumn();
-            DataGridViewCheckBoxColumn column4 = new DataGridViewCheckBoxColumn();
+    void FormArc_db_schemaLoad(object sender, EventArgs e)
+    {
+      Select1(sender) ;
+      Select2(sender);
+    }
 
-DataGridViewComboBoxColumn DGVCMB = new DataGridViewComboBoxColumn();
-            DGVCMB.DataPropertyName = "userVALUE";
-            DGVCMB.Name = "userVALUE";
-            DGVCMB.HeaderText = "Выбор значения";
-            DGVCMB.Width = 150;
-            DGVCMB.DataSource = ds2.Tables[0];
-            DGVCMB.DisplayMember = "userattendancetypesNAME";
-            DGVCMB.ValueMember = "userattendancetypesID";
-            dataGridView1.Columns.Add(DGVCMB);            
-            
-            
-            dataGridView1.Columns.Add(column1);
-            dataGridView1.Columns.Add(column2);
-            dataGridView1.Columns.Add(column3);
-*/
 
-			Select1(sender) ;
-			Select2(sender);
-		}		
-		
-		
-	}
+  }
 }
