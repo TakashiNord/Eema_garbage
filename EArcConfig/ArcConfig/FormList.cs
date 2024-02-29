@@ -131,14 +131,14 @@ namespace ArcConfig
 
       adapter.SelectCommand = cmd0; // Указываем запрос для выполнения
 
-      int a = 0;
+      int ai = 0;
       // Заполняем объект источника данных
       try {
-        a = adapter.Fill(dataSet1,_name);
+        ai = adapter.Fill(dataSet1,_name);
       }
       catch (Exception ex1)
       {
-        MessageBox.Show("Error 2 =\n" + " result =" + a + "\n" +ex1.Message);
+        MessageBox.Show("Error 2 =\n" + " result =" + ai + "\n" +ex1.Message);
       }
 
       try {

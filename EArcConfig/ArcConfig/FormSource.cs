@@ -69,9 +69,9 @@ namespace ArcConfig
     public List<String> a  = new List<String>();
     public OdbcConnection _conn;
     public int _OptionSchemaName = 0;
-    public string OptionSchemaMain = "RSDUADMIN";    
-    
-    
+    public string OptionSchemaMain = "RSDUADMIN";
+
+
     public OdbcConnection Conn
     {
       get
@@ -90,8 +90,8 @@ namespace ArcConfig
       OdbcDataAdapter adapter = new OdbcDataAdapter();
 
       dataSet1.Clear();
-      dataSet1.Tables.Clear();      
-      
+      dataSet1.Tables.Clear();
+
       try {
         dataGridView1.DataSource = null ;
         dataGridView1.Rows.Clear();
@@ -110,14 +110,14 @@ namespace ArcConfig
 
       adapter.SelectCommand = cmd0; // Указываем запрос для выполнения
 
-      int a = 0;
+      int ai = 0;
       // Заполняем объект источника данных
       try {
-        a = adapter.Fill(dataSet1,_name);
+        ai = adapter.Fill(dataSet1,_name);
       }
       catch (Exception ex1)
       {
-        MessageBox.Show("Error 2 =\n" + " result =" + a + "\n" +ex1.Message);
+        MessageBox.Show("Error 2 =\n" + " result =" + ai + "\n" +ex1.Message);
       }
 
       try {
@@ -154,46 +154,44 @@ namespace ArcConfig
     }
 
 
+    void FormSourceLoad(object sender, EventArgs e)
+    {
+      //
+      aa.Clear();
+      aa.Insert(0,"Получения значений параметров (CALC_SOURCE)");
+      aa.Insert(1,"Для рапределенной системы сбора (DA_SOURCE)");
+      aa.Insert(2,"Получения значений параметров ДГ (DG_SOURCE)");
+      aa.Insert(3,"Для параметров учета электроэнергии (EA_SOURCE)");
+      aa.Insert(4,"Получения значений параметров (MEAS_SOURCE)");
 
+      a.Clear();
+      a.Insert(0,"CALC_SOURCE");
+      a.Insert(1,"DA_SOURCE");
+      a.Insert(2,"DG_SOURCE");
+      a.Insert(3,"EA_SOURCE");
+      a.Insert(4,"MEAS_SOURCE");
 
-        void FormSourceLoad(object sender, EventArgs e)
-		{
-			//
-			aa.Clear();
-			aa.Insert(0,"Получения значений параметров (CALC_SOURCE)");
-            aa.Insert(1,"Для рапределенной системы сбора (DA_SOURCE)");
-            aa.Insert(2,"Получения значений параметров ДГ (DG_SOURCE)");
-            aa.Insert(3,"Для параметров учета электроэнергии (EA_SOURCE)");
-            aa.Insert(4,"Получения значений параметров (MEAS_SOURCE)");
-			
-            a.Clear();
-            a.Insert(0,"CALC_SOURCE");
-            a.Insert(1,"DA_SOURCE");
-            a.Insert(2,"DG_SOURCE");
-            a.Insert(3,"EA_SOURCE");
-            a.Insert(4,"MEAS_SOURCE");
-            
-            comboBox1.Items.Clear();
+      comboBox1.Items.Clear();
 
-            for (int ii = 0; ii < aa.Count ; ii++)
-            	comboBox1.Items.Insert(ii,aa[ii] );
-            
-		}
-		void ComboBox1SelectedIndexChanged(object sender, EventArgs e)
-		{
-			int ind=comboBox1.SelectedIndex;
-			if (ind<0) return ;
-			
-			String nm = a[ind] ;
-			
-            string stSchema="";
-            if (_OptionSchemaName>0) {
-              stSchema=OptionSchemaMain + "." ;
-            }			
-			
-            this.Text = "  :  " + stSchema+nm ;
-            SOURCE_TABLE(stSchema+nm);	
-		}
+      for (int ii = 0; ii < aa.Count ; ii++)
+        comboBox1.Items.Insert( ii,aa[ii] );
+
+    }
+    void ComboBox1SelectedIndexChanged(object sender, EventArgs e)
+    {
+      int ind=comboBox1.SelectedIndex;
+      if (ind<0) return ;
+
+      String nm = a[ind] ;
+
+      string stSchema="";
+      if (_OptionSchemaName>0) {
+        stSchema=OptionSchemaMain + "." ;
+      }
+
+      this.Text = "  :  " + stSchema+nm ;
+      SOURCE_TABLE(stSchema+nm);
+    }
 
 
   }

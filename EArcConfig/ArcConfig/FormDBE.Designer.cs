@@ -43,20 +43,21 @@ namespace ArcConfig
 		/// </summary>
 		private void InitializeComponent()
 		{
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormDBE));
 			this.tabPage1 = new System.Windows.Forms.TabPage();
 			this.splitContainer1 = new System.Windows.Forms.SplitContainer();
 			this.label1 = new System.Windows.Forms.Label();
 			this.comboBox1 = new System.Windows.Forms.ComboBox();
-			this.tabControl1 = new System.Windows.Forms.TabControl();
 			this.dataGridViewList = new System.Windows.Forms.DataGridView();
+			this.tabControl1 = new System.Windows.Forms.TabControl();
 			this.dataSet1 = new System.Data.DataSet();
 			this.tabPage1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
 			this.splitContainer1.Panel1.SuspendLayout();
 			this.splitContainer1.Panel2.SuspendLayout();
 			this.splitContainer1.SuspendLayout();
-			this.tabControl1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridViewList)).BeginInit();
+			this.tabControl1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dataSet1)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -100,11 +101,22 @@ namespace ArcConfig
 			// 
 			// comboBox1
 			// 
+			this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.comboBox1.FormattingEnabled = true;
 			this.comboBox1.Location = new System.Drawing.Point(63, 10);
 			this.comboBox1.Name = "comboBox1";
-			this.comboBox1.Size = new System.Drawing.Size(345, 21);
+			this.comboBox1.Size = new System.Drawing.Size(520, 21);
 			this.comboBox1.TabIndex = 0;
+			this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.ComboBox1SelectedIndexChanged);
+			// 
+			// dataGridViewList
+			// 
+			this.dataGridViewList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dataGridViewList.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.dataGridViewList.Location = new System.Drawing.Point(0, 0);
+			this.dataGridViewList.Name = "dataGridViewList";
+			this.dataGridViewList.Size = new System.Drawing.Size(767, 337);
+			this.dataGridViewList.TabIndex = 0;
 			// 
 			// tabControl1
 			// 
@@ -116,15 +128,6 @@ namespace ArcConfig
 			this.tabControl1.Size = new System.Drawing.Size(781, 446);
 			this.tabControl1.TabIndex = 0;
 			// 
-			// dataGridViewList
-			// 
-			this.dataGridViewList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.dataGridViewList.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.dataGridViewList.Location = new System.Drawing.Point(0, 0);
-			this.dataGridViewList.Name = "dataGridViewList";
-			this.dataGridViewList.Size = new System.Drawing.Size(767, 337);
-			this.dataGridViewList.TabIndex = 0;
-			// 
 			// dataSet1
 			// 
 			this.dataSet1.DataSetName = "NewDataSet";
@@ -135,6 +138,7 @@ namespace ArcConfig
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(781, 446);
 			this.Controls.Add(this.tabControl1);
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "FormDBE";
 			this.Text = "FormDBE";
 			this.Load += new System.EventHandler(this.FormDBELoad);
@@ -143,8 +147,8 @@ namespace ArcConfig
 			this.splitContainer1.Panel2.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
 			this.splitContainer1.ResumeLayout(false);
-			this.tabControl1.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.dataGridViewList)).EndInit();
+			this.tabControl1.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.dataSet1)).EndInit();
 			this.ResumeLayout(false);
 

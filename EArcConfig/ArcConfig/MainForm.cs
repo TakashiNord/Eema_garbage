@@ -1013,10 +1013,10 @@ namespace ArcConfig
               int iSa = 0 ;
               while (reader.Read())
               {
-                  String vS0 = GetTypeValue(ref reader, 0).ToUpper() ;
-                  String vS1 = GetTypeValue(ref reader, 1).ToUpper() ;
-                  String vS2 = GetTypeValue(ref reader, 2).ToUpper() ;
-                  String vS3 = GetTypeValue(ref reader, 3).ToUpper() ;
+                  String vS0 = GetTypeValue(ref reader, 0) ;
+                  String vS1 = GetTypeValue(ref reader, 1) ;
+                  String vS2 = GetTypeValue(ref reader, 2) ;
+                  String vS3 = GetTypeValue(ref reader, 3) ;
                   bi.Insert(iSa,vS0);
                   b.Insert(iSa,vS1  + " [" + vS2 + "] - " + vS3);
                   iSa++;
