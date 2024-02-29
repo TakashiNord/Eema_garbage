@@ -3,7 +3,7 @@
  * User: gal
  * Date: 27.02.2024
  * Time: 13:16
- * 
+ *
  * To change this template use Tools | Options | Coding | Edit Standard Headers.
  */
 using System;
@@ -16,23 +16,23 @@ using System.Resources;
 
 namespace ArcConfig
 {
-	/// <summary>
-	/// Description of FormVariable.
-	/// </summary>
-	public partial class FormVariable : Form
-	{
-		public FormVariable()
-		{
-			//
-			// The InitializeComponent() call is required for Windows Forms designer support.
-			//
-			InitializeComponent();
-			
-			//
-			// TODO: Add constructor code after the InitializeComponent() call.
-			//
-		}
-		
+  /// <summary>
+  /// Description of FormVariable.
+  /// </summary>
+  public partial class FormVariable : Form
+  {
+    public FormVariable()
+    {
+      //
+      // The InitializeComponent() call is required for Windows Forms designer support.
+      //
+      InitializeComponent();
+
+      //
+      // TODO: Add constructor code after the InitializeComponent() call.
+      //
+    }
+
    public string GetTypeValue(ref OdbcDataReader reader, int i)
    {
      object obj ;
@@ -73,7 +73,7 @@ namespace ArcConfig
       _conn = conn ;
       stSchema = name ;
     }
-	
+
     public void VAR_TABLE(object sender)
     {
       // Объект для выполнения запросов к базе данных
@@ -94,13 +94,16 @@ namespace ArcConfig
         MessageBox.Show("Error 1 ="+ex1.Message);
       }
 
-      string sl1 = "SELECT asi.ID,ad.NAME as DESC,ad.ALIAS, rip.NAME,asi.VALUE,rip.DESCRIPTION " +
-" FROM "+stSchema+"AD_SINFO_INI asi, "+stSchema+"AD_DIR ad, "+stSchema+"RSDU_INI_PARAM rip " +
-" WHERE asi.ID_SERVER_NODE=ad.id and asi.ID_INI_PARAM=rip.id "+
-" ORDER BY asi.ID_SERVER_NODE  ";
- 
+      string sl1 = "" +
+"SELECT ad.NAME as DESCS,as1.ID_USER,su.LOGIN,rip.NAME,asi.VALUE,rip.DESCRIPTION " +
+" FROM "+stSchema+"AD_SINFO_INI asi, "+stSchema+"AD_DIR ad, "+stSchema+"RSDU_INI_PARAM rip, "+stSchema+"AD_SINFO as1, "+stSchema+"S_USERS su " +
+" WHERE asi.ID_SERVER_NODE=ad.id and asi.ID_INI_PARAM=rip.id " +
+"   and asi.ID_SERVER_NODE=as1.ID_SERVER_NODE " +
+"   and su.ID=as1.ID_USER " +
+" ORDER BY asi.ID_SERVER_NODE " ;
+        
       cmd0.Connection=this._conn;
-	  cmd0.CommandText=sl1;
+      cmd0.CommandText=sl1;
       
       adapter.SelectCommand = cmd0; // Указываем запрос для выполнения
 
@@ -130,14 +133,13 @@ namespace ArcConfig
         MessageBox.Show("Error 3 ="+ex1.Message);
       }
 
-      // Set up the data source.
-      dataGridViewList.Update();
-
       for (int ii = 0; ii < dataGridViewList.RowCount ; ii++) {
         // нумерация
         dataGridViewList.Rows[ii].HeaderCell.Value = (ii + 1).ToString();
       } //for      
-      
+
+      // Set up the data source.
+      dataGridViewList.Update();      
       
       // Resize the master DataGridView columns to fit the newly loaded data.
       dataGridViewList.AutoResizeColumns();
@@ -147,14 +149,14 @@ namespace ArcConfig
 
     }
 
-        void FormVariableLoad(object sender, EventArgs e)
-		{
-			//
-			this.Text = "  :  " ;
-			VAR_TABLE(sender) ;
-		}
-				
-		
-		
-	}
+    void FormVariableLoad(object sender, EventArgs e)
+    {
+      //
+      this.Text = "  :  " ;
+      VAR_TABLE(sender) ;
+    }
+        
+    
+    
+  }
 }

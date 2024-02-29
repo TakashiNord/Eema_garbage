@@ -585,3 +585,89 @@ from ARC_DB_SCHEMA ads, ARC_SERVICES_INFO asi, SYS_TBLLST st
 where ads.ID=asi.ID_DB_SCHEMA and st.ID=asi.ID_LSTTBL
 order by asi.ID_LSTTBL asc
 
+
+=========================================================================
+
+2+++)
+
+SELECT ad.NAME as DESCS,as1.ID_USER,su.LOGIN,rip.NAME,asi.VALUE,rip.DESCRIPTION 
+ FROM AD_SINFO_INI asi, AD_DIR ad, RSDU_INI_PARAM rip, AD_SINFO as1, S_USERS su
+ WHERE asi.ID_SERVER_NODE=ad.id and asi.ID_INI_PARAM=rip.id 
+   and asi.ID_SERVER_NODE=as1.ID_SERVER_NODE
+   and su.ID=as1.ID_USER
+ ORDER BY asi.ID_SERVER_NODE
+ 
+
+=========================================================================
+
+CREATE TABLE DBE_JOB (
+    ID                       DECIMAL        NOT NULL,
+    ID_STORAGE               DECIMAL        NOT NULL,
+    IS_ENABLED               DECIMAL        NOT NULL,
+    NAME                     NVARCHAR (255) NOT NULL,
+    ALIAS                    NVARCHAR (255) NOT NULL,
+    SCHEDULE_CRON_EXPRESSION NVARCHAR (255) NOT NULL,
+    ID_TIMEINTERVAL          DECIMAL        NOT NULL,
+    TIMEINTERVAL_COUNT       DECIMAL        NOT NULL,
+    TIMEINTERVAL_OFFSET      DECIMAL        NOT NULL,
+    RUN_TIME_OFFSET          DECIMAL        NOT NULL,
+    ID_FILEWAV               DECIMAL
+);
+
+CREATE TABLE DBE_STORAGE (
+    ID                       DECIMAL         NOT NULL,
+    IS_ENABLED               DECIMAL         NOT NULL,
+    NAME                     NVARCHAR (255)  NOT NULL,
+    ALIAS                    NVARCHAR (255)  NOT NULL,
+    CONNECTION_STRING        NVARCHAR (1024) NOT NULL,
+    MAX_NUMBER_PARALLEL_JOBS DECIMAL         NOT NULL,
+    ID_FILEWAV               DECIMAL
+);
+
+
+SELECT dj.ID_STORAGE,ds.NAME AS STORAGE,dj.ID,dj.NAME
+FROM DBE_JOB dj , DBE_STORAGE ds
+WHERE ds.ID=dj.ID_STORAGE
+ORDER by dj.ID_STORAGE
+
+[ ds.NAME AS STORAGE  ] - dj.NAME (dj.ID)
+
+
+
+CREATE TABLE DBE_ACTION (
+    ID                   DECIMAL         NOT NULL,
+    ID_JOB               DECIMAL         NOT NULL,
+    NAME                 NVARCHAR (255)  NOT NULL,
+    ALIAS                NVARCHAR (255)  NOT NULL,
+    SQL_TEXT             NVARCHAR (4000) NOT NULL,
+    REQUEST_TIME_OFFSET  DECIMAL         NOT NULL,
+    RESPONSE_TIME_OFFSET DECIMAL         NOT NULL,
+    ID_DTFIELD_TYPE      DECIMAL         NOT NULL,
+    ENABLE_ROW_HANDLER   DECIMAL         NOT NULL,
+    ROW_HANDLER_TEXT     NVARCHAR (4000),
+    ENABLE_TABLE_HANDLER DECIMAL         NOT NULL,
+    TABLE_HANDLER_TEXT   NVARCHAR (4000),
+    ID_FILEWAV           DECIMAL
+);
+CREATE TABLE DBE_DESTINATION (
+    ID        DECIMAL NOT NULL,
+    ID_ACTION DECIMAL NOT NULL,
+    ID_TABLE  DECIMAL NOT NULL,
+    ID_PARAM  DECIMAL NOT NULL,
+    ID_GTOPT  DECIMAL NOT NULL
+);
+
+SELECT dd.ID_ACTION,da.NAME,dd.ID_TABLE,dd.ID_PARAM,dd.ID_GTOPT
+FROM DBE_ACTION da, DBE_DESTINATION dd
+WHERE dd.ID_ACTION=da.ID and da.ID_JOB = 61 ?????????
+ORDER by dd.ID_ACTION
+
+
+
+=========================================================================
+
+
+
+
+
+=========================================================================

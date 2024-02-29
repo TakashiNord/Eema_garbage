@@ -955,4 +955,12 @@ ARC_GET_INSTANT_on_RSDUARC.new.sql
 После  создания  проверить , что  они не инвалидные  а затем попробовать  в ретро посмотреть за период больше часа.
 </value>
   </data>
+  <data name="EXDATA_LIST_V0" xml:space="preserve">
+    <value>EXDATA_LIST_V</value>
+  </data>
+  <data name="EXDATA_LIST_V00" xml:space="preserve">
+    <value>SELECT ID, ID_OBJ AS ID_NODE, ID_MEAS_TYPE, NAME, ALIAS
+  FROM MEAS_LIST
+  WHERE IS_EXDATA = 1</value>
+  </data>
 </root>

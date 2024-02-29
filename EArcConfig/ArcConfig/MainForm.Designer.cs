@@ -88,7 +88,7 @@ namespace ArcConfig
 		private System.Windows.Forms.ToolStripButton toolStripButton6;
 		private System.Windows.Forms.ToolStripMenuItem exportDataToolStripMenuItem;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
-		private System.Windows.Forms.ToolStripButton toolStripButton7;
+		private System.Windows.Forms.ToolStripLabel toolStripButton7;
 		private System.Windows.Forms.Button buttonClear;
 		private System.Windows.Forms.GroupBox groupBox1;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator9;
@@ -109,6 +109,12 @@ namespace ArcConfig
 		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
 		private System.Windows.Forms.Button butVariable;
 		private System.Windows.Forms.GroupBox groupBox2;
+		private System.Windows.Forms.ToolStripSeparator toolStripSeparator14;
+		private System.Windows.Forms.ToolStripButton toolStripButtonDBE;
+		private System.Windows.Forms.ToolStripLabel toolStripLabel1;
+		private System.Windows.Forms.ToolStripLabel toolStripLabel2;
+		private System.Windows.Forms.ToolStripLabel toolStripLabel3;
+		private System.Windows.Forms.ToolStripSeparator toolStripSeparator15;
 		
 		/// <summary>
 		/// Disposes resources used by the form.
@@ -133,8 +139,8 @@ namespace ArcConfig
 		{
 			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.statusStrip1 = new System.Windows.Forms.StatusStrip();
 			this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
 			this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -151,8 +157,13 @@ namespace ArcConfig
 			this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
 			this.toolStripSeparator12 = new System.Windows.Forms.ToolStripSeparator();
 			this.toolStripButton8 = new System.Windows.Forms.ToolStripButton();
+			this.toolStripSeparator14 = new System.Windows.Forms.ToolStripSeparator();
+			this.toolStripButtonDBE = new System.Windows.Forms.ToolStripButton();
 			this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
-			this.toolStripButton7 = new System.Windows.Forms.ToolStripButton();
+			this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
+			this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
+			this.toolStripLabel3 = new System.Windows.Forms.ToolStripLabel();
+			this.toolStripButton7 = new System.Windows.Forms.ToolStripLabel();
 			this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
 			this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
 			this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -186,6 +197,7 @@ namespace ArcConfig
 			this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
 			this.partitionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.richTextBox2 = new System.Windows.Forms.RichTextBox();
+			this.groupBox2 = new System.Windows.Forms.GroupBox();
 			this.butVariable = new System.Windows.Forms.Button();
 			this.buttonVarSch = new System.Windows.Forms.Button();
 			this.buttonProfile = new System.Windows.Forms.Button();
@@ -229,7 +241,7 @@ namespace ArcConfig
 			this.dataSetS = new System.Data.DataSet();
 			this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
 			this.timer1 = new System.Windows.Forms.Timer(this.components);
-			this.groupBox2 = new System.Windows.Forms.GroupBox();
+			this.toolStripSeparator15 = new System.Windows.Forms.ToolStripSeparator();
 			this.statusStrip1.SuspendLayout();
 			this.toolStrip1.SuspendLayout();
 			this.tabControl1.SuspendLayout();
@@ -252,6 +264,7 @@ namespace ArcConfig
 			this.splitContainer3.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridViewA)).BeginInit();
 			this.contextMenuStripA.SuspendLayout();
+			this.groupBox2.SuspendLayout();
 			this.tabPageParam.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridViewP)).BeginInit();
 			this.contextMenuStripP.SuspendLayout();
@@ -270,7 +283,6 @@ namespace ArcConfig
 			((System.ComponentModel.ISupportInitialize)(this.dataSet1)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.dataSetA)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.dataSetS)).BeginInit();
-			this.groupBox2.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// statusStrip1
@@ -319,7 +331,13 @@ namespace ArcConfig
 			this.toolStripButton6,
 			this.toolStripSeparator12,
 			this.toolStripButton8,
+			this.toolStripSeparator14,
+			this.toolStripButtonDBE,
 			this.toolStripSeparator8,
+			this.toolStripLabel1,
+			this.toolStripLabel2,
+			this.toolStripLabel3,
+			this.toolStripSeparator15,
 			this.toolStripButton7,
 			this.toolStripSeparator11,
 			this.toolStripButton3});
@@ -416,10 +434,43 @@ namespace ArcConfig
 			this.toolStripButton8.Text = "ARC DB SСHEMA";
 			this.toolStripButton8.Click += new System.EventHandler(this.ToolStripButton8Click);
 			// 
+			// toolStripSeparator14
+			// 
+			this.toolStripSeparator14.Name = "toolStripSeparator14";
+			this.toolStripSeparator14.Size = new System.Drawing.Size(6, 25);
+			// 
+			// toolStripButtonDBE
+			// 
+			this.toolStripButtonDBE.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+			this.toolStripButtonDBE.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonDBE.Image")));
+			this.toolStripButtonDBE.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.toolStripButtonDBE.Name = "toolStripButtonDBE";
+			this.toolStripButtonDBE.Size = new System.Drawing.Size(23, 22);
+			this.toolStripButtonDBE.Text = "DBE:Справочная";
+			this.toolStripButtonDBE.Click += new System.EventHandler(this.ToolStripButtonDBEClick);
+			// 
 			// toolStripSeparator8
 			// 
 			this.toolStripSeparator8.Name = "toolStripSeparator8";
 			this.toolStripSeparator8.Size = new System.Drawing.Size(6, 25);
+			// 
+			// toolStripLabel1
+			// 
+			this.toolStripLabel1.Name = "toolStripLabel1";
+			this.toolStripLabel1.Size = new System.Drawing.Size(100, 22);
+			this.toolStripLabel1.Text = "                               ";
+			// 
+			// toolStripLabel2
+			// 
+			this.toolStripLabel2.Name = "toolStripLabel2";
+			this.toolStripLabel2.Size = new System.Drawing.Size(112, 22);
+			this.toolStripLabel2.Text = "                                   ";
+			// 
+			// toolStripLabel3
+			// 
+			this.toolStripLabel3.Name = "toolStripLabel3";
+			this.toolStripLabel3.Size = new System.Drawing.Size(118, 22);
+			this.toolStripLabel3.Text = "                                     ";
 			// 
 			// toolStripButton7
 			// 
@@ -427,7 +478,7 @@ namespace ArcConfig
 			this.toolStripButton7.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton7.Image")));
 			this.toolStripButton7.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.toolStripButton7.Name = "toolStripButton7";
-			this.toolStripButton7.Size = new System.Drawing.Size(75, 22);
+			this.toolStripButton7.Size = new System.Drawing.Size(71, 22);
 			this.toolStripButton7.Text = "Oracle: Тест";
 			this.toolStripButton7.Click += new System.EventHandler(this.ToolStripButton7Click);
 			// 
@@ -571,23 +622,23 @@ namespace ArcConfig
 			| System.Windows.Forms.AnchorStyles.Left) 
 			| System.Windows.Forms.AnchorStyles.Right)));
 			this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-			dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-			dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-			dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+			dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+			dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+			dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
 			this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-			dataGridViewCellStyle4.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-			dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-			this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle4;
+			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+			dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+			dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+			this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
 			this.dataGridView1.Location = new System.Drawing.Point(6, 36);
 			this.dataGridView1.Name = "dataGridView1";
 			this.dataGridView1.Size = new System.Drawing.Size(1168, 508);
@@ -808,6 +859,15 @@ namespace ArcConfig
 			this.richTextBox2.Size = new System.Drawing.Size(647, 145);
 			this.richTextBox2.TabIndex = 0;
 			this.richTextBox2.Text = resources.GetString("richTextBox2.Text");
+			// 
+			// groupBox2
+			// 
+			this.groupBox2.Controls.Add(this.butVariable);
+			this.groupBox2.Location = new System.Drawing.Point(14, 356);
+			this.groupBox2.Name = "groupBox2";
+			this.groupBox2.Size = new System.Drawing.Size(99, 79);
+			this.groupBox2.TabIndex = 7;
+			this.groupBox2.TabStop = false;
 			// 
 			// butVariable
 			// 
@@ -1181,14 +1241,10 @@ namespace ArcConfig
 			// 
 			this.timer1.Tick += new System.EventHandler(this.Timer1Tick);
 			// 
-			// groupBox2
+			// toolStripSeparator15
 			// 
-			this.groupBox2.Controls.Add(this.butVariable);
-			this.groupBox2.Location = new System.Drawing.Point(14, 356);
-			this.groupBox2.Name = "groupBox2";
-			this.groupBox2.Size = new System.Drawing.Size(99, 79);
-			this.groupBox2.TabIndex = 7;
-			this.groupBox2.TabStop = false;
+			this.toolStripSeparator15.Name = "toolStripSeparator15";
+			this.toolStripSeparator15.Size = new System.Drawing.Size(6, 25);
 			// 
 			// MainForm
 			// 
@@ -1226,6 +1282,7 @@ namespace ArcConfig
 			this.splitContainer3.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.dataGridViewA)).EndInit();
 			this.contextMenuStripA.ResumeLayout(false);
+			this.groupBox2.ResumeLayout(false);
 			this.tabPageParam.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.dataGridViewP)).EndInit();
 			this.contextMenuStripP.ResumeLayout(false);
@@ -1246,7 +1303,6 @@ namespace ArcConfig
 			((System.ComponentModel.ISupportInitialize)(this.dataSet1)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.dataSetA)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.dataSetS)).EndInit();
-			this.groupBox2.ResumeLayout(false);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 

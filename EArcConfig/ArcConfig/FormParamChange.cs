@@ -333,12 +333,18 @@ namespace ArcConfig
             ex_run = 0 ;
         }
         if (TABLE_NAME.IndexOf("EXDATA_LIST_V")>=0) {
-            ex_run = 0 ;     ;
+        	if (is_exdata == 1 ) {
+              sl1 = r.GetString("EXDATA_LIST_V0");
+              if (0==_checkCol( "ID" , "EXDATA_LIST_V" )) {
+                sl1 = r.GetString("EXDATA_LIST_V00");
+              }
+        	}
         }
         if (TABLE_NAME.IndexOf("DA_V_LST")>=0) {
             ex_run = 0 ;
         }
 
+        
         if (TABLE_NAME.Length<=1) {
           MessageBox.Show(" Не задана таблица раздела = " + TABLE_NAME + " .." );
           return ;
@@ -475,11 +481,12 @@ namespace ArcConfig
     {
       //
       this.Text = this._gpt_name + " : " + this._name ;
+      ShownArc(sender);
     }
     void ButtonPARAMClick(object sender, EventArgs e)
     {
       ShownBase(sender) ;
-      ShownArc(sender);
+      //ShownArc(sender);
     }
     void ButtonSELClick(object sender, EventArgs e)
     {

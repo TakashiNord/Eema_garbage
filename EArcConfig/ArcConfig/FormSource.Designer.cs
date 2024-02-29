@@ -15,7 +15,10 @@ namespace ArcConfig
 		/// </summary>
 		private System.ComponentModel.IContainer components = null;
 		private System.Windows.Forms.SplitContainer splitContainer1;
-		private System.Windows.Forms.ListBox listBox1;
+		private System.Windows.Forms.ComboBox comboBox1;
+		private System.Windows.Forms.DataGridView dataGridView1;
+		private System.Data.DataSet dataSet1;
+		private System.Windows.Forms.Label label1;
 		
 		/// <summary>
 		/// Disposes resources used by the form.
@@ -39,10 +42,16 @@ namespace ArcConfig
 		private void InitializeComponent()
 		{
 			this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-			this.listBox1 = new System.Windows.Forms.ListBox();
+			this.comboBox1 = new System.Windows.Forms.ComboBox();
+			this.dataGridView1 = new System.Windows.Forms.DataGridView();
+			this.dataSet1 = new System.Data.DataSet();
+			this.label1 = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
 			this.splitContainer1.Panel1.SuspendLayout();
+			this.splitContainer1.Panel2.SuspendLayout();
 			this.splitContainer1.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.dataSet1)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// splitContainer1
@@ -54,36 +63,62 @@ namespace ArcConfig
 			// 
 			// splitContainer1.Panel1
 			// 
-			this.splitContainer1.Panel1.Controls.Add(this.listBox1);
-			this.splitContainer1.Size = new System.Drawing.Size(533, 345);
-			this.splitContainer1.SplitterDistance = 121;
+			this.splitContainer1.Panel1.Controls.Add(this.label1);
+			this.splitContainer1.Panel1.Controls.Add(this.comboBox1);
+			// 
+			// splitContainer1.Panel2
+			// 
+			this.splitContainer1.Panel2.Controls.Add(this.dataGridView1);
+			this.splitContainer1.Size = new System.Drawing.Size(439, 581);
+			this.splitContainer1.SplitterDistance = 43;
 			this.splitContainer1.TabIndex = 0;
 			// 
-			// listBox1
+			// comboBox1
 			// 
-			this.listBox1.FormattingEnabled = true;
-			this.listBox1.Items.AddRange(new object[] {
-			"Получения значений параметров (CALC_SOURCE)",
-			"Для рапределенной системы сбора (DA_SOURCE)",
-			"Получения значений параметров ДГ (DG_SOURCE)",
-			"Для параметров учета электроэнергии (EA_SOURCE)",
-			"Получения значений параметров (MEAS_SOURCE)"});
-			this.listBox1.Location = new System.Drawing.Point(3, 3);
-			this.listBox1.Name = "listBox1";
-			this.listBox1.Size = new System.Drawing.Size(350, 108);
-			this.listBox1.TabIndex = 0;
+			this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.comboBox1.FormattingEnabled = true;
+			this.comboBox1.Location = new System.Drawing.Point(116, 12);
+			this.comboBox1.Name = "comboBox1";
+			this.comboBox1.Size = new System.Drawing.Size(309, 21);
+			this.comboBox1.TabIndex = 0;
+			this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.ComboBox1SelectedIndexChanged);
+			// 
+			// dataGridView1
+			// 
+			this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.dataGridView1.Location = new System.Drawing.Point(0, 0);
+			this.dataGridView1.Name = "dataGridView1";
+			this.dataGridView1.Size = new System.Drawing.Size(439, 534);
+			this.dataGridView1.TabIndex = 0;
+			// 
+			// dataSet1
+			// 
+			this.dataSet1.DataSetName = "NewDataSet";
+			// 
+			// label1
+			// 
+			this.label1.Location = new System.Drawing.Point(3, 9);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(107, 26);
+			this.label1.TabIndex = 1;
+			this.label1.Text = "Выберите таблицу источников:";
 			// 
 			// FormSource
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(533, 345);
+			this.ClientSize = new System.Drawing.Size(439, 581);
 			this.Controls.Add(this.splitContainer1);
 			this.Name = "FormSource";
 			this.Text = "Источники";
+			this.Load += new System.EventHandler(this.FormSourceLoad);
 			this.splitContainer1.Panel1.ResumeLayout(false);
+			this.splitContainer1.Panel2.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
 			this.splitContainer1.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.dataSet1)).EndInit();
 			this.ResumeLayout(false);
 
 		}

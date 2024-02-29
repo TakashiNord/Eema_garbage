@@ -554,6 +554,26 @@ namespace ArcConfig {
 		}
 		
 		/// <summary>
+		///   Looks up a localized string similar to EXDATA_LIST_V.
+		/// </summary>
+		internal static string EXDATA_LIST_V0 {
+			get {
+				return ResourceManager.GetString("EXDATA_LIST_V0", resourceCulture);
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized string similar to SELECT ID, ID_OBJ AS ID_NODE, ID_MEAS_TYPE, NAME, ALIAS
+		///  FROM MEAS_LIST
+		///  WHERE IS_EXDATA = 1.
+		/// </summary>
+		internal static string EXDATA_LIST_V00 {
+			get {
+				return ResourceManager.GetString("EXDATA_LIST_V00", resourceCulture);
+			}
+		}
+		
+		/// <summary>
 		///   Looks up a localized string similar to SELECT arcs.ID_SERVICE, ads.NAME , arcs.PRIORITY
 		///FROM ARC_SERVICES_TUNE arcs, AD_SERVICE ads 
 		///WHERE ads.ID=arcs.ID_SERVICE and arcs.ID_SPROFILE={0}

@@ -105,6 +105,8 @@ namespace ArcConfig
        toolStripButton7.Enabled=true;
 
        toolStripButton8.Enabled=true;
+       
+       toolStripButtonDBE.Enabled=true;
 
        tabControl1.Enabled=true;
        _tree21();
@@ -777,6 +779,8 @@ namespace ArcConfig
        toolStripButton7.Enabled=false;
 
        toolStripButton8.Enabled=false;
+       
+       toolStripButtonDBE.Enabled=false;
 
        _setDBS();
 
@@ -1047,7 +1051,7 @@ namespace ArcConfig
           MessageBox.Show ("Не задана Таблица-Список !",
                            ">>Построение списка ...",
                            MessageBoxButtons.OK , MessageBoxIcon.Exclamation);
-          tabControlAP.SelectedIndex = 0 ;
+          //tabControlAP.SelectedIndex = 0 ;
           return ;
         }
 
@@ -4608,6 +4612,13 @@ void PartitionMedia(object sender, EventArgs e)
       FormVariable lstv = new FormVariable(this._conn, stSchema );
       lstv.StartPosition=FormStartPosition.CenterParent ;
       lstv.ShowDialog();
+    }
+    void ToolStripButtonDBEClick(object sender, EventArgs e)
+    {
+      //DBE
+      FormDBE fdbe = new FormDBE(this._conn, OptionSchemaName );
+      fdbe.StartPosition=FormStartPosition.CenterParent ;
+      fdbe.ShowDialog();
     }
 
 

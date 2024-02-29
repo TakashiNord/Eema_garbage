@@ -82,6 +82,10 @@
     <Compile Include="FormArc_db_schema_lite.Designer.cs">
       <DependentUpon>FormArc_db_schema_lite.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormDBE.cs" />
+    <Compile Include="FormDBE.Designer.cs">
+      <DependentUpon>FormDBE.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormDel.cs" />
     <Compile Include="FormDel.Designer.cs">
       <DependentUpon>FormDel.cs</DependentUpon>
@@ -173,6 +177,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormArc_db_schema_lite.resx">
       <DependentUpon>FormArc_db_schema_lite.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormDBE.resx">
+      <DependentUpon>FormDBE.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormDel.resx">
       <DependentUpon>FormDel.cs</DependentUpon>
