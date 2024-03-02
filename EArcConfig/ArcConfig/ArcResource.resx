@@ -963,4 +963,16 @@ ARC_GET_INSTANT_on_RSDUARC.new.sql
   FROM MEAS_LIST
   WHERE IS_EXDATA = 1</value>
   </data>
+  <data name="FormArc_db_schema_ch1" xml:space="preserve">
+    <value>select id,id_parent, name, id_lsttbl 
+from sys_tree21 
+where id_parent in (
+select distinct id_parent from sys_tree21 where id_lsttbl in 
+(select id from sys_tbllst where id_type in
+(select id from sys_otyp where define_alias like 'LST') 
+and id_node in 
+(select id from sys_db_part where id_parent in 
+(select id from sys_db_part where define_alias like 'MODEL_SUBSYST' or define_alias like 'DA_SUBSYST' ))))
+ORDER BY ID_PARENT</value>
+  </data>
 </root>

@@ -78,6 +78,10 @@
     <Compile Include="FormArc_db_schema.Designer.cs">
       <DependentUpon>FormArc_db_schema.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormArc_db_schema_ch.cs" />
+    <Compile Include="FormArc_db_schema_ch.Designer.cs">
+      <DependentUpon>FormArc_db_schema_ch.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormArc_db_schema_lite.cs" />
     <Compile Include="FormArc_db_schema_lite.Designer.cs">
       <DependentUpon>FormArc_db_schema_lite.cs</DependentUpon>

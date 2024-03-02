@@ -21,6 +21,7 @@ namespace ArcConfig
 		private System.Windows.Forms.Button buttonSave1;
 		private System.Windows.Forms.DataGridView dataGridView2;
 		private System.Data.DataSet dataSet2;
+		private System.Windows.Forms.Button butEdt;
 		
 		/// <summary>
 		/// Disposes resources used by the form.
@@ -48,6 +49,7 @@ namespace ArcConfig
 			this.splitContainer2 = new System.Windows.Forms.SplitContainer();
 			this.dataGridView1 = new System.Windows.Forms.DataGridView();
 			this.buttonSave1 = new System.Windows.Forms.Button();
+			this.butEdt = new System.Windows.Forms.Button();
 			this.dataGridView2 = new System.Windows.Forms.DataGridView();
 			this.dataSet1 = new System.Data.DataSet();
 			this.dataSet2 = new System.Data.DataSet();
@@ -78,9 +80,10 @@ namespace ArcConfig
 			// 
 			// splitContainer1.Panel2
 			// 
+			this.splitContainer1.Panel2.Controls.Add(this.butEdt);
 			this.splitContainer1.Panel2.Controls.Add(this.dataGridView2);
-			this.splitContainer1.Size = new System.Drawing.Size(679, 479);
-			this.splitContainer1.SplitterDistance = 226;
+			this.splitContainer1.Size = new System.Drawing.Size(679, 668);
+			this.splitContainer1.SplitterDistance = 255;
 			this.splitContainer1.TabIndex = 0;
 			// 
 			// splitContainer2
@@ -96,8 +99,8 @@ namespace ArcConfig
 			// splitContainer2.Panel2
 			// 
 			this.splitContainer2.Panel2.Controls.Add(this.buttonSave1);
-			this.splitContainer2.Size = new System.Drawing.Size(679, 226);
-			this.splitContainer2.SplitterDistance = 558;
+			this.splitContainer2.Size = new System.Drawing.Size(679, 255);
+			this.splitContainer2.SplitterDistance = 584;
 			this.splitContainer2.TabIndex = 1;
 			// 
 			// dataGridView1
@@ -106,26 +109,37 @@ namespace ArcConfig
 			this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.dataGridView1.Location = new System.Drawing.Point(0, 0);
 			this.dataGridView1.Name = "dataGridView1";
-			this.dataGridView1.Size = new System.Drawing.Size(558, 226);
+			this.dataGridView1.Size = new System.Drawing.Size(584, 255);
 			this.dataGridView1.TabIndex = 1;
 			// 
 			// buttonSave1
 			// 
 			this.buttonSave1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
 			| System.Windows.Forms.AnchorStyles.Right)));
-			this.buttonSave1.Location = new System.Drawing.Point(39, 200);
+			this.buttonSave1.Enabled = false;
+			this.buttonSave1.Location = new System.Drawing.Point(13, 200);
 			this.buttonSave1.Name = "buttonSave1";
-			this.buttonSave1.Size = new System.Drawing.Size(75, 23);
+			this.buttonSave1.Size = new System.Drawing.Size(75, 52);
 			this.buttonSave1.TabIndex = 0;
-			this.buttonSave1.Text = "Сохранить";
+			this.buttonSave1.Text = "Добавить..";
 			this.buttonSave1.UseVisualStyleBackColor = true;
+			// 
+			// butEdt
+			// 
+			this.butEdt.Location = new System.Drawing.Point(528, 17);
+			this.butEdt.Name = "butEdt";
+			this.butEdt.Size = new System.Drawing.Size(126, 27);
+			this.butEdt.TabIndex = 1;
+			this.butEdt.Text = "Редактировать..";
+			this.butEdt.UseVisualStyleBackColor = true;
+			this.butEdt.Click += new System.EventHandler(this.ButEdtClick);
 			// 
 			// dataGridView2
 			// 
 			this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dataGridView2.Location = new System.Drawing.Point(3, 3);
 			this.dataGridView2.Name = "dataGridView2";
-			this.dataGridView2.Size = new System.Drawing.Size(469, 243);
+			this.dataGridView2.Size = new System.Drawing.Size(497, 394);
 			this.dataGridView2.TabIndex = 0;
 			// 
 			// dataSet1
@@ -140,7 +154,7 @@ namespace ArcConfig
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(679, 479);
+			this.ClientSize = new System.Drawing.Size(679, 668);
 			this.Controls.Add(this.splitContainer1);
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "FormArc_db_schema";

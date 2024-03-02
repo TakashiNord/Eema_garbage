@@ -187,6 +187,8 @@ cmd0.CommandText="select ads.ID, ads.NAME, ads.SCHEMA_NAME , ast.DEFINE_ALIAS as
 
        // (с этого момента она будет отображать его содержимое)
        dataGridView1.DataSource = dataSet1.Tables[0];
+       
+       dataGridView1.ReadOnly=true ;
 
        // Resize the master DataGridView columns to fit the newly loaded data.
        dataGridView1.AutoResizeColumns();
@@ -246,6 +248,8 @@ CREATE TABLE ARC_SERVICES_INFO (
 
        // (с этого момента она будет отображать его содержимое)
        dataGridView2.DataSource = dataSet2.Tables[0];
+       
+       dataGridView2.ReadOnly=true ;
 
        // Resize the master DataGridView columns to fit the newly loaded data.
        dataGridView2.AutoResizeColumns();
@@ -269,6 +273,13 @@ CREATE TABLE ARC_SERVICES_INFO (
       Select1(sender) ;
       Select2(sender);
     }
+		void ButEdtClick(object sender, EventArgs e)
+		{
+			//
+      FormArc_db_schema_ch fd1 = new FormArc_db_schema_ch(this._conn, _OptionSchemaName );
+      fd1.StartPosition=FormStartPosition.CenterParent ;
+      fd1.ShowDialog();
+		}
 
 
   }

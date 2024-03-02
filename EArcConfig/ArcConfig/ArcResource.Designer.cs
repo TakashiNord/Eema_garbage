@@ -574,6 +574,24 @@ namespace ArcConfig {
 		}
 		
 		/// <summary>
+		///   Looks up a localized string similar to select id,id_parent, name, id_lsttbl 
+		///from sys_tree21 
+		///where id_parent in (
+		///select distinct id_parent from sys_tree21 where id_lsttbl in 
+		///(select id from sys_tbllst where id_type in
+		///(select id from sys_otyp where define_alias like &apos;LST&apos;) 
+		///and id_node in 
+		///(select id from sys_db_part where id_parent in 
+		///(select id from sys_db_part where define_alias like &apos;MODEL_SUBSYST&apos; or define_alias like &apos;DA_SUBSYST&apos; ))))
+		///ORDER BY ID_PARENT.
+		/// </summary>
+		internal static string FormArc_db_schema_ch1 {
+			get {
+				return ResourceManager.GetString("FormArc_db_schema_ch1", resourceCulture);
+			}
+		}
+		
+		/// <summary>
 		///   Looks up a localized string similar to SELECT arcs.ID_SERVICE, ads.NAME , arcs.PRIORITY
 		///FROM ARC_SERVICES_TUNE arcs, AD_SERVICE ads 
 		///WHERE ads.ID=arcs.ID_SERVICE and arcs.ID_SPROFILE={0}

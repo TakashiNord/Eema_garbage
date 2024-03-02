@@ -500,7 +500,7 @@ namespace ArcConfig
 
        cmd.CommandText="SELECT id, COALESCE(id_parent,0,0), name, COALESCE(id_lsttbl,0,0) " +
        " FROM  "+stSchema+"sys_tree21 " +
-       "WHERE id IN ( " + sS + "  ) " ;
+       " WHERE id IN ( " + sS + "  ) " ;
 
        try
        {
