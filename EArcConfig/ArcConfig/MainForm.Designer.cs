@@ -139,8 +139,8 @@ namespace ArcConfig
 		{
 			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.statusStrip1 = new System.Windows.Forms.StatusStrip();
 			this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
 			this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -199,9 +199,9 @@ namespace ArcConfig
 			this.partitionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.richTextBox2 = new System.Windows.Forms.RichTextBox();
 			this.groupBox2 = new System.Windows.Forms.GroupBox();
+			this.buttonProfile = new System.Windows.Forms.Button();
 			this.butVariable = new System.Windows.Forms.Button();
 			this.buttonVarSch = new System.Windows.Forms.Button();
-			this.buttonProfile = new System.Windows.Forms.Button();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
 			this.buttonService = new System.Windows.Forms.Button();
 			this.buttonSave = new System.Windows.Forms.Button();
@@ -627,23 +627,23 @@ namespace ArcConfig
 			| System.Windows.Forms.AnchorStyles.Left) 
 			| System.Windows.Forms.AnchorStyles.Right)));
 			this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-			dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-			dataGridViewCellStyle5.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-			dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+			dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+			dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+			dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
 			this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-			dataGridViewCellStyle6.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-			dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-			this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle6;
+			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+			dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+			dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+			this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
 			this.dataGridView1.Location = new System.Drawing.Point(6, 36);
 			this.dataGridView1.Name = "dataGridView1";
 			this.dataGridView1.Size = new System.Drawing.Size(1168, 508);
@@ -727,7 +727,6 @@ namespace ArcConfig
 			// 
 			this.splitContainer1.Panel2.Controls.Add(this.groupBox2);
 			this.splitContainer1.Panel2.Controls.Add(this.buttonVarSch);
-			this.splitContainer1.Panel2.Controls.Add(this.buttonProfile);
 			this.splitContainer1.Panel2.Controls.Add(this.groupBox1);
 			this.splitContainer1.Panel2.Controls.Add(this.buttonService);
 			this.splitContainer1.Panel2.Controls.Add(this.buttonSave);
@@ -867,16 +866,27 @@ namespace ArcConfig
 			// 
 			// groupBox2
 			// 
+			this.groupBox2.Controls.Add(this.buttonProfile);
 			this.groupBox2.Controls.Add(this.butVariable);
-			this.groupBox2.Location = new System.Drawing.Point(14, 356);
+			this.groupBox2.Location = new System.Drawing.Point(14, 390);
 			this.groupBox2.Name = "groupBox2";
-			this.groupBox2.Size = new System.Drawing.Size(99, 79);
+			this.groupBox2.Size = new System.Drawing.Size(194, 50);
 			this.groupBox2.TabIndex = 7;
 			this.groupBox2.TabStop = false;
 			// 
+			// buttonProfile
+			// 
+			this.buttonProfile.Location = new System.Drawing.Point(6, 12);
+			this.buttonProfile.Name = "buttonProfile";
+			this.buttonProfile.Size = new System.Drawing.Size(85, 31);
+			this.buttonProfile.TabIndex = 7;
+			this.buttonProfile.Text = "Профили";
+			this.buttonProfile.UseVisualStyleBackColor = true;
+			this.buttonProfile.Click += new System.EventHandler(this.ButtonProfileClick);
+			// 
 			// butVariable
 			// 
-			this.butVariable.Location = new System.Drawing.Point(6, 11);
+			this.butVariable.Location = new System.Drawing.Point(105, 12);
 			this.butVariable.Name = "butVariable";
 			this.butVariable.Size = new System.Drawing.Size(85, 31);
 			this.butVariable.TabIndex = 6;
@@ -893,16 +903,6 @@ namespace ArcConfig
 			this.buttonVarSch.Text = "Выделенный сервер архивов (схемы)";
 			this.buttonVarSch.UseVisualStyleBackColor = true;
 			this.buttonVarSch.Click += new System.EventHandler(this.ButtonVarSchClick);
-			// 
-			// buttonProfile
-			// 
-			this.buttonProfile.Location = new System.Drawing.Point(14, 303);
-			this.buttonProfile.Name = "buttonProfile";
-			this.buttonProfile.Size = new System.Drawing.Size(85, 31);
-			this.buttonProfile.TabIndex = 4;
-			this.buttonProfile.Text = "Профили";
-			this.buttonProfile.UseVisualStyleBackColor = true;
-			this.buttonProfile.Click += new System.EventHandler(this.ButtonProfileClick);
 			// 
 			// groupBox1
 			// 

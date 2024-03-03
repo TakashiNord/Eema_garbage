@@ -246,6 +246,7 @@ namespace ArcConfig
 			this.groupBox2.Controls.Add(this.textBox1);
 			this.groupBox2.Controls.Add(this.comboBox1);
 			this.groupBox2.Controls.Add(this.label6);
+			this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Strikeout, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.groupBox2.Location = new System.Drawing.Point(12, 152);
 			this.groupBox2.Name = "groupBox2";
 			this.groupBox2.Size = new System.Drawing.Size(166, 103);

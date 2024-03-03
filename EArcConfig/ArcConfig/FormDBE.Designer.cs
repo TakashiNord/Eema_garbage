@@ -21,6 +21,7 @@ namespace ArcConfig
 		private System.Windows.Forms.ComboBox comboBox1;
 		private System.Windows.Forms.DataGridView dataGridViewList;
 		private System.Data.DataSet dataSet1;
+		private System.Windows.Forms.Label label2;
 		
 		/// <summary>
 		/// Disposes resources used by the form.
@@ -51,6 +52,7 @@ namespace ArcConfig
 			this.dataGridViewList = new System.Windows.Forms.DataGridView();
 			this.tabControl1 = new System.Windows.Forms.TabControl();
 			this.dataSet1 = new System.Data.DataSet();
+			this.label2 = new System.Windows.Forms.Label();
 			this.tabPage1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
 			this.splitContainer1.Panel1.SuspendLayout();
@@ -81,6 +83,7 @@ namespace ArcConfig
 			// 
 			// splitContainer1.Panel1
 			// 
+			this.splitContainer1.Panel1.Controls.Add(this.label2);
 			this.splitContainer1.Panel1.Controls.Add(this.label1);
 			this.splitContainer1.Panel1.Controls.Add(this.comboBox1);
 			// 
@@ -131,6 +134,14 @@ namespace ArcConfig
 			// dataSet1
 			// 
 			this.dataSet1.DataSetName = "NewDataSet";
+			// 
+			// label2
+			// 
+			this.label2.Location = new System.Drawing.Point(17, 40);
+			this.label2.Name = "label2";
+			this.label2.Size = new System.Drawing.Size(99, 23);
+			this.label2.TabIndex = 2;
+			this.label2.Text = "Выберите Jobs";
 			// 
 			// FormDBE
 			// 

@@ -296,7 +296,7 @@ namespace ArcConfig
 			// 
 			// label17
 			// 
-			this.label17.Location = new System.Drawing.Point(138, 54);
+			this.label17.Location = new System.Drawing.Point(148, 54);
 			this.label17.Name = "label17";
 			this.label17.Size = new System.Drawing.Size(40, 20);
 			this.label17.TabIndex = 41;
@@ -304,9 +304,9 @@ namespace ArcConfig
 			// 
 			// label11
 			// 
-			this.label11.Location = new System.Drawing.Point(138, 18);
+			this.label11.Location = new System.Drawing.Point(148, 18);
 			this.label11.Name = "label11";
-			this.label11.Size = new System.Drawing.Size(151, 29);
+			this.label11.Size = new System.Drawing.Size(86, 29);
 			this.label11.TabIndex = 40;
 			this.label11.Text = "часов (min=24, max=0=100000)";
 			// 
@@ -339,7 +339,8 @@ namespace ArcConfig
 			// 
 			// label19
 			// 
-			this.label19.Location = new System.Drawing.Point(185, 42);
+			this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.label19.Location = new System.Drawing.Point(196, 42);
 			this.label19.Name = "label19";
 			this.label19.Size = new System.Drawing.Size(28, 16);
 			this.label19.TabIndex = 42;
@@ -347,34 +348,37 @@ namespace ArcConfig
 			// 
 			// label18
 			// 
-			this.label18.Location = new System.Drawing.Point(185, 13);
+			this.label18.Location = new System.Drawing.Point(196, 13);
 			this.label18.Name = "label18";
-			this.label18.Size = new System.Drawing.Size(91, 26);
+			this.label18.Size = new System.Drawing.Size(80, 26);
 			this.label18.TabIndex = 41;
 			this.label18.Text = "мин (min=10, max= 525600)";
 			// 
 			// textBoxSTACK_INTERVAL
 			// 
+			this.textBoxSTACK_INTERVAL.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.textBoxSTACK_INTERVAL.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.textBoxSTACK_INTERVAL.Location = new System.Drawing.Point(121, 38);
 			this.textBoxSTACK_INTERVAL.Name = "textBoxSTACK_INTERVAL";
-			this.textBoxSTACK_INTERVAL.Size = new System.Drawing.Size(58, 20);
+			this.textBoxSTACK_INTERVAL.Size = new System.Drawing.Size(70, 20);
 			this.textBoxSTACK_INTERVAL.TabIndex = 37;
 			this.textBoxSTACK_INTERVAL.Text = "0";
 			this.textBoxSTACK_INTERVAL.MouseHover += new System.EventHandler(this.TextBoxSTACK_INTERVALMouseHover);
 			// 
 			// label10
 			// 
-			this.label10.Location = new System.Drawing.Point(6, 38);
+			this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.label10.Location = new System.Drawing.Point(2, 33);
 			this.label10.Name = "label10";
-			this.label10.Size = new System.Drawing.Size(98, 20);
+			this.label10.Size = new System.Drawing.Size(114, 27);
 			this.label10.TabIndex = 36;
-			this.label10.Text = "Период разбора:";
+			this.label10.Text = "Период разбора (или накопления):";
 			// 
 			// textBoxDEPTH_PARTITION
 			// 
 			this.textBoxDEPTH_PARTITION.Location = new System.Drawing.Point(121, 13);
 			this.textBoxDEPTH_PARTITION.Name = "textBoxDEPTH_PARTITION";
-			this.textBoxDEPTH_PARTITION.Size = new System.Drawing.Size(58, 20);
+			this.textBoxDEPTH_PARTITION.Size = new System.Drawing.Size(70, 20);
 			this.textBoxDEPTH_PARTITION.TabIndex = 33;
 			this.textBoxDEPTH_PARTITION.Text = "0";
 			this.textBoxDEPTH_PARTITION.MouseHover += new System.EventHandler(this.TextBoxDEPTH_PARTITIONMouseHover);
@@ -397,26 +401,28 @@ namespace ArcConfig
 			// 
 			// label4
 			// 
-			this.label4.Location = new System.Drawing.Point(6, 27);
+			this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.label4.Location = new System.Drawing.Point(2, 27);
 			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(62, 18);
+			this.label4.Size = new System.Drawing.Size(72, 18);
 			this.label4.TabIndex = 30;
 			this.label4.Text = "Глубина(D):";
 			// 
 			// textBoxDEPTH_LOCAL
 			// 
-			this.textBoxDEPTH_LOCAL.Location = new System.Drawing.Point(74, 51);
+			this.textBoxDEPTH_LOCAL.Location = new System.Drawing.Point(76, 51);
 			this.textBoxDEPTH_LOCAL.Name = "textBoxDEPTH_LOCAL";
-			this.textBoxDEPTH_LOCAL.Size = new System.Drawing.Size(58, 20);
+			this.textBoxDEPTH_LOCAL.Size = new System.Drawing.Size(66, 20);
 			this.textBoxDEPTH_LOCAL.TabIndex = 24;
 			this.textBoxDEPTH_LOCAL.Text = "0";
 			this.textBoxDEPTH_LOCAL.MouseHover += new System.EventHandler(this.TextBoxDEPTH_LOCALMouseHover);
 			// 
 			// textBoxDEPTH
 			// 
-			this.textBoxDEPTH.Location = new System.Drawing.Point(74, 25);
+			this.textBoxDEPTH.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.textBoxDEPTH.Location = new System.Drawing.Point(76, 25);
 			this.textBoxDEPTH.Name = "textBoxDEPTH";
-			this.textBoxDEPTH.Size = new System.Drawing.Size(58, 20);
+			this.textBoxDEPTH.Size = new System.Drawing.Size(66, 20);
 			this.textBoxDEPTH.TabIndex = 23;
 			this.textBoxDEPTH.Text = "0";
 			this.textBoxDEPTH.MouseHover += new System.EventHandler(this.TextBoxDEPTHMouseHover);
@@ -599,6 +605,8 @@ namespace ArcConfig
 			// 
 			// textBoxCACHE_SIZE
 			// 
+			this.textBoxCACHE_SIZE.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.textBoxCACHE_SIZE.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.textBoxCACHE_SIZE.Location = new System.Drawing.Point(171, 19);
 			this.textBoxCACHE_SIZE.Name = "textBoxCACHE_SIZE";
 			this.textBoxCACHE_SIZE.Size = new System.Drawing.Size(69, 20);
@@ -637,6 +645,7 @@ namespace ArcConfig
 			// 
 			// label27
 			// 
+			this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.label27.Location = new System.Drawing.Point(246, 25);
 			this.label27.Name = "label27";
 			this.label27.Size = new System.Drawing.Size(43, 17);
@@ -665,7 +674,7 @@ namespace ArcConfig
 			this.label8.Name = "label8";
 			this.label8.Size = new System.Drawing.Size(155, 28);
 			this.label8.TabIndex = 40;
-			this.label8.Text = "Период чистки устаревших данных";
+			this.label8.Text = "Период чистки устаревших данных :";
 			// 
 			// label7
 			// 
@@ -673,13 +682,14 @@ namespace ArcConfig
 			this.label7.Name = "label7";
 			this.label7.Size = new System.Drawing.Size(157, 17);
 			this.label7.TabIndex = 39;
-			this.label7.Text = "Период отправки данных";
+			this.label7.Text = "Период отправки данных :";
 			// 
 			// label6
 			// 
-			this.label6.Location = new System.Drawing.Point(8, 22);
+			this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.label6.Location = new System.Drawing.Point(6, 19);
 			this.label6.Name = "label6";
-			this.label6.Size = new System.Drawing.Size(157, 20);
+			this.label6.Size = new System.Drawing.Size(164, 20);
 			this.label6.TabIndex = 38;
 			this.label6.Text = "Кэш буфер -  параметров:";
 			// 
