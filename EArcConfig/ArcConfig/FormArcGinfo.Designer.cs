@@ -73,6 +73,7 @@ namespace ArcConfig
 		private System.Windows.Forms.Button button5;
 		private System.Windows.Forms.Label label27;
 		private System.Windows.Forms.Button buttonCass;
+		private System.Windows.Forms.PictureBox pictureBox1;
 		
 		/// <summary>
 		/// Disposes resources used by the form.
@@ -156,6 +157,7 @@ namespace ArcConfig
 			this.button4 = new System.Windows.Forms.Button();
 			this.dataGridView1 = new System.Windows.Forms.DataGridView();
 			this.dataSet1 = new System.Data.DataSet();
+			this.pictureBox1 = new System.Windows.Forms.PictureBox();
 			this.groupBox1.SuspendLayout();
 			this.groupBox4.SuspendLayout();
 			this.groupBox2.SuspendLayout();
@@ -163,6 +165,7 @@ namespace ArcConfig
 			this.groupBox5.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.dataSet1)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// textBoxID
@@ -358,9 +361,9 @@ namespace ArcConfig
 			// 
 			this.textBoxSTACK_INTERVAL.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.textBoxSTACK_INTERVAL.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.textBoxSTACK_INTERVAL.Location = new System.Drawing.Point(121, 38);
+			this.textBoxSTACK_INTERVAL.Location = new System.Drawing.Point(134, 38);
 			this.textBoxSTACK_INTERVAL.Name = "textBoxSTACK_INTERVAL";
-			this.textBoxSTACK_INTERVAL.Size = new System.Drawing.Size(70, 20);
+			this.textBoxSTACK_INTERVAL.Size = new System.Drawing.Size(58, 20);
 			this.textBoxSTACK_INTERVAL.TabIndex = 37;
 			this.textBoxSTACK_INTERVAL.Text = "0";
 			this.textBoxSTACK_INTERVAL.MouseHover += new System.EventHandler(this.TextBoxSTACK_INTERVALMouseHover);
@@ -368,11 +371,11 @@ namespace ArcConfig
 			// label10
 			// 
 			this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.label10.Location = new System.Drawing.Point(2, 33);
+			this.label10.Location = new System.Drawing.Point(2, 34);
 			this.label10.Name = "label10";
-			this.label10.Size = new System.Drawing.Size(114, 27);
+			this.label10.Size = new System.Drawing.Size(128, 26);
 			this.label10.TabIndex = 36;
-			this.label10.Text = "Период разбора (или накопления):";
+			this.label10.Text = "Период разбора (tp) ( накопления):";
 			// 
 			// textBoxDEPTH_PARTITION
 			// 
@@ -395,9 +398,9 @@ namespace ArcConfig
 			// 
 			this.label5.Location = new System.Drawing.Point(7, 50);
 			this.label5.Name = "label5";
-			this.label5.Size = new System.Drawing.Size(61, 30);
+			this.label5.Size = new System.Drawing.Size(66, 29);
 			this.label5.TabIndex = 31;
-			this.label5.Text = "Глубина (локально):";
+			this.label5.Text = "Глубина (dl) (локально):";
 			// 
 			// label4
 			// 
@@ -585,7 +588,7 @@ namespace ArcConfig
 			// 
 			// textBoxFLUSH_INTERVAL
 			// 
-			this.textBoxFLUSH_INTERVAL.Location = new System.Drawing.Point(171, 68);
+			this.textBoxFLUSH_INTERVAL.Location = new System.Drawing.Point(178, 68);
 			this.textBoxFLUSH_INTERVAL.Name = "textBoxFLUSH_INTERVAL";
 			this.textBoxFLUSH_INTERVAL.Size = new System.Drawing.Size(69, 20);
 			this.textBoxFLUSH_INTERVAL.TabIndex = 37;
@@ -595,7 +598,7 @@ namespace ArcConfig
 			// 
 			// textBoxCACHE_TIMEOUT
 			// 
-			this.textBoxCACHE_TIMEOUT.Location = new System.Drawing.Point(171, 45);
+			this.textBoxCACHE_TIMEOUT.Location = new System.Drawing.Point(178, 45);
 			this.textBoxCACHE_TIMEOUT.Name = "textBoxCACHE_TIMEOUT";
 			this.textBoxCACHE_TIMEOUT.Size = new System.Drawing.Size(69, 20);
 			this.textBoxCACHE_TIMEOUT.TabIndex = 36;
@@ -607,7 +610,7 @@ namespace ArcConfig
 			// 
 			this.textBoxCACHE_SIZE.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.textBoxCACHE_SIZE.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.textBoxCACHE_SIZE.Location = new System.Drawing.Point(171, 19);
+			this.textBoxCACHE_SIZE.Location = new System.Drawing.Point(178, 19);
 			this.textBoxCACHE_SIZE.Name = "textBoxCACHE_SIZE";
 			this.textBoxCACHE_SIZE.Size = new System.Drawing.Size(69, 20);
 			this.textBoxCACHE_SIZE.TabIndex = 35;
@@ -646,15 +649,15 @@ namespace ArcConfig
 			// label27
 			// 
 			this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.label27.Location = new System.Drawing.Point(246, 25);
+			this.label27.Location = new System.Drawing.Point(248, 25);
 			this.label27.Name = "label27";
-			this.label27.Size = new System.Drawing.Size(43, 17);
+			this.label27.Size = new System.Drawing.Size(41, 15);
 			this.label27.TabIndex = 47;
 			this.label27.Text = "строк";
 			// 
 			// label24
 			// 
-			this.label24.Location = new System.Drawing.Point(246, 71);
+			this.label24.Location = new System.Drawing.Point(248, 71);
 			this.label24.Name = "label24";
 			this.label24.Size = new System.Drawing.Size(28, 20);
 			this.label24.TabIndex = 46;
@@ -662,7 +665,7 @@ namespace ArcConfig
 			// 
 			// label23
 			// 
-			this.label23.Location = new System.Drawing.Point(246, 48);
+			this.label23.Location = new System.Drawing.Point(248, 48);
 			this.label23.Name = "label23";
 			this.label23.Size = new System.Drawing.Size(28, 20);
 			this.label23.TabIndex = 45;
@@ -682,16 +685,16 @@ namespace ArcConfig
 			this.label7.Name = "label7";
 			this.label7.Size = new System.Drawing.Size(157, 17);
 			this.label7.TabIndex = 39;
-			this.label7.Text = "Период отправки данных :";
+			this.label7.Text = "Период отправки данных (ct):";
 			// 
 			// label6
 			// 
 			this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.label6.Location = new System.Drawing.Point(6, 19);
+			this.label6.Location = new System.Drawing.Point(2, 21);
 			this.label6.Name = "label6";
-			this.label6.Size = new System.Drawing.Size(164, 20);
+			this.label6.Size = new System.Drawing.Size(175, 20);
 			this.label6.TabIndex = 38;
-			this.label6.Text = "Кэш буфер -  параметров:";
+			this.label6.Text = "Кэш буфер-параметров (cs):";
 			// 
 			// button2
 			// 
@@ -743,6 +746,15 @@ namespace ArcConfig
 			// 
 			this.dataSet1.DataSetName = "NewDataSet";
 			// 
+			// pictureBox1
+			// 
+			this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+			this.pictureBox1.Location = new System.Drawing.Point(76, 593);
+			this.pictureBox1.Name = "pictureBox1";
+			this.pictureBox1.Size = new System.Drawing.Size(440, 107);
+			this.pictureBox1.TabIndex = 45;
+			this.pictureBox1.TabStop = false;
+			// 
 			// FormArcGinfo
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -750,7 +762,8 @@ namespace ArcConfig
 			this.AutoSize = true;
 			this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
 			this.CancelButton = this.button3;
-			this.ClientSize = new System.Drawing.Size(682, 599);
+			this.ClientSize = new System.Drawing.Size(682, 706);
+			this.Controls.Add(this.pictureBox1);
 			this.Controls.Add(this.dataGridView1);
 			this.Controls.Add(this.button4);
 			this.Controls.Add(this.button3);
@@ -786,6 +799,7 @@ namespace ArcConfig
 			this.groupBox5.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.dataSet1)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
