@@ -118,6 +118,10 @@
     <Compile Include="FormList.Designer.cs">
       <DependentUpon>FormList.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormMeas30.cs" />
+    <Compile Include="FormMeas30.Designer.cs">
+      <DependentUpon>FormMeas30.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormOption.cs" />
     <Compile Include="FormOption.Designer.cs">
       <DependentUpon>FormOption.cs</DependentUpon>
@@ -202,6 +206,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormList.resx">
       <DependentUpon>FormList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormMeas30.resx">
+      <DependentUpon>FormMeas30.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormOption.resx">
       <DependentUpon>FormOption.cs</DependentUpon>

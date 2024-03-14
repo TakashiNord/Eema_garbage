@@ -94,7 +94,6 @@ namespace ArcConfig
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator9;
 		private System.Windows.Forms.ToolStripMenuItem addForALLToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem delByALLToolStripMenuItem;
-		private System.Windows.Forms.TabPage tabPage4;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator11;
 		private System.Windows.Forms.RadioButton radioButton5;
 		private System.Windows.Forms.Button buttonClear30;
@@ -115,6 +114,8 @@ namespace ArcConfig
 		private System.Windows.Forms.ToolStripLabel toolStripLabel2;
 		private System.Windows.Forms.ToolStripLabel toolStripLabel3;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator15;
+		private System.Windows.Forms.ToolStripButton toolStripButton9;
+		private System.Windows.Forms.ToolStripSeparator toolStripSeparator16;
 		
 		/// <summary>
 		/// Disposes resources used by the form.
@@ -160,6 +161,8 @@ namespace ArcConfig
 			this.toolStripSeparator14 = new System.Windows.Forms.ToolStripSeparator();
 			this.toolStripButtonDBE = new System.Windows.Forms.ToolStripButton();
 			this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
+			this.toolStripButton9 = new System.Windows.Forms.ToolStripButton();
+			this.toolStripSeparator16 = new System.Windows.Forms.ToolStripSeparator();
 			this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
 			this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
 			this.toolStripLabel3 = new System.Windows.Forms.ToolStripLabel();
@@ -235,7 +238,6 @@ namespace ArcConfig
 			this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
 			this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
 			this.toolStripButtonCommit = new System.Windows.Forms.ToolStripButton();
-			this.tabPage4 = new System.Windows.Forms.TabPage();
 			this.tabPage5 = new System.Windows.Forms.TabPage();
 			this.dataSet1 = new System.Data.DataSet();
 			this.dataSetA = new System.Data.DataSet();
@@ -334,6 +336,8 @@ namespace ArcConfig
 			this.toolStripSeparator14,
 			this.toolStripButtonDBE,
 			this.toolStripSeparator8,
+			this.toolStripButton9,
+			this.toolStripSeparator16,
 			this.toolStripLabel1,
 			this.toolStripLabel2,
 			this.toolStripLabel3,
@@ -454,6 +458,21 @@ namespace ArcConfig
 			this.toolStripSeparator8.Name = "toolStripSeparator8";
 			this.toolStripSeparator8.Size = new System.Drawing.Size(6, 25);
 			// 
+			// toolStripButton9
+			// 
+			this.toolStripButton9.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+			this.toolStripButton9.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton9.Image")));
+			this.toolStripButton9.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.toolStripButton9.Name = "toolStripButton9";
+			this.toolStripButton9.Size = new System.Drawing.Size(23, 22);
+			this.toolStripButton9.Text = "30";
+			this.toolStripButton9.Click += new System.EventHandler(this.ToolStripButton9Click);
+			// 
+			// toolStripSeparator16
+			// 
+			this.toolStripSeparator16.Name = "toolStripSeparator16";
+			this.toolStripSeparator16.Size = new System.Drawing.Size(6, 25);
+			// 
 			// toolStripLabel1
 			// 
 			this.toolStripLabel1.Name = "toolStripLabel1";
@@ -507,7 +526,6 @@ namespace ArcConfig
 			this.tabControl1.Controls.Add(this.tabPage1);
 			this.tabControl1.Controls.Add(this.tabPage2);
 			this.tabControl1.Controls.Add(this.tabPage3);
-			this.tabControl1.Controls.Add(this.tabPage4);
 			this.tabControl1.Controls.Add(this.tabPage5);
 			this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.tabControl1.Location = new System.Drawing.Point(0, 25);
@@ -1209,16 +1227,6 @@ namespace ArcConfig
 			this.toolStripButtonCommit.Size = new System.Drawing.Size(23, 22);
 			this.toolStripButtonCommit.Text = "Commit";
 			this.toolStripButtonCommit.Click += new System.EventHandler(this.ToolStripButtonCommitClick);
-			// 
-			// tabPage4
-			// 
-			this.tabPage4.Location = new System.Drawing.Point(4, 22);
-			this.tabPage4.Name = "tabPage4";
-			this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPage4.Size = new System.Drawing.Size(1182, 550);
-			this.tabPage4.TabIndex = 5;
-			this.tabPage4.Text = "Срез данных для внешних подсистем";
-			this.tabPage4.UseVisualStyleBackColor = true;
 			// 
 			// tabPage5
 			// 

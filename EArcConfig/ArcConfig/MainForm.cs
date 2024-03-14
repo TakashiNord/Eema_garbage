@@ -107,6 +107,8 @@ namespace ArcConfig
        toolStripButton8.Enabled=true;
        
        toolStripButtonDBE.Enabled=true;
+       
+       toolStripButton9.Enabled=true;
 
        tabControl1.Enabled=true;
        _tree21();
@@ -781,6 +783,8 @@ namespace ArcConfig
        toolStripButton8.Enabled=false;
        
        toolStripButtonDBE.Enabled=false;
+       
+       toolStripButton9.Enabled=false; // 30
 
        _setDBS();
 
@@ -789,7 +793,9 @@ namespace ArcConfig
        tskmea.Start();
 
     }
-    void TreeViewAAfterSelect(object sender, TreeViewEventArgs e)
+    
+    
+    void TreeViewAAfterSelecttabControl1(object sender)
     {
       /*
       построение
@@ -824,8 +830,6 @@ namespace ArcConfig
       }
 
       ResourceManager r = new ResourceManager("ArcConfig.ArcResource", Assembly.GetExecutingAssembly());
-
-      if (1==tabControlAP.SelectedIndex) {
 
         PCellValueChanged = 0;
 
@@ -1367,6 +1371,46 @@ namespace ArcConfig
 
         PCellValueChanged = 1;
 
+    }
+    
+    
+    void TreeViewAAfterSelect(object sender, TreeViewEventArgs e)
+    {
+      /*
+      построение
+       либо списка параметров (с архивами)
+       либо список профилей архивов с активными на данном Тех сервере
+      */
+
+      // Объект для связи между базой данных и источником данных
+      OdbcDataAdapter adapter = new OdbcDataAdapter();
+
+      // Объект для выполнения запросов к базе данных
+      OdbcCommand cmd0 = new OdbcCommand();
+
+      cmd0.Connection=this._conn;
+
+      //Получить Имя выделенного элемента
+      string id_parent = treeViewA.SelectedNode.Name;
+      string _id_tbl = Convert.ToString ( treeViewA.SelectedNode.Tag ) ;
+      //AddLogString(" id_parent=" + id_parent + "  _id_tbl=" + _id_tbl);
+      if (_id_tbl=="0" || _id_tbl=="") return ;
+
+      // re-read
+      //dataGridViewA.Rows.Clear();
+      Application.DoEvents();
+
+      string stSchema="";
+      if (OptionSchemaName>0) {
+          stSchema=OptionSchemaMain + "." ;
+      }
+
+      ResourceManager r = new ResourceManager("ArcConfig.ArcResource", Assembly.GetExecutingAssembly());
+
+      if (1==tabControlAP.SelectedIndex) {
+
+        TreeViewAAfterSelecttabControl1(sender) ;
+
       } else {
 
         dataSetA.Clear();
@@ -1391,8 +1435,6 @@ namespace ArcConfig
 
         // (с этого момента она будет отображать его содержимое)
         dataGridViewA.DataSource = dataSetA.Tables[0].DefaultView;;
-        //dataGridViewA.Columns["ID"].ReadOnly = true;
-        //dataGridViewA.Columns["ID_NODE"].ReadOnly = true;
 
         // Resize the master DataGridView columns to fit the newly loaded data.
         dataGridViewA.AutoResizeColumns();
@@ -4619,6 +4661,13 @@ void PartitionMedia(object sender, EventArgs e)
       FormDBE fdbe = new FormDBE(this._conn, OptionSchemaName );
       fdbe.StartPosition=FormStartPosition.CenterParent ;
       fdbe.ShowDialog();
+    }
+    void ToolStripButton9Click(object sender, EventArgs e)
+    {
+      //30
+      FormMeas30 fdbe30 = new FormMeas30(this._conn, OptionSchemaName );
+      fdbe30.StartPosition=FormStartPosition.CenterParent ;
+      fdbe30.ShowDialog();
     }
 
 
