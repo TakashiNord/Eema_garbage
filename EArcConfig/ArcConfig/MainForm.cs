@@ -15,6 +15,8 @@ using System.Threading.Tasks ;
 
 using System.Collections;
 using System.ComponentModel;
+
+using System.Data ;
 using System.Data.Odbc;
 using System.IO;
 using System.Text;
@@ -105,15 +107,19 @@ namespace ArcConfig
        toolStripButton7.Enabled=true;
 
        toolStripButton8.Enabled=true;
-       
+
        toolStripButtonDBE.Enabled=true;
-       
+
        toolStripButton9.Enabled=true;
 
        tabControl1.Enabled=true;
+
        _tree21();
        _version();
        _setDBarc();
+
+       _setDBCalc(); // calc
+       //Button3Click(sender,e) ;
 
     }
 
@@ -668,7 +674,7 @@ namespace ArcConfig
        adapter.SelectCommand = command;
        // Заполняем объект источника данных
 
-     //try
+       //try
        //{
           adapter.Fill(dataSet1,sObj);
        //}
@@ -781,9 +787,9 @@ namespace ArcConfig
        toolStripButton7.Enabled=false;
 
        toolStripButton8.Enabled=false;
-       
+
        toolStripButtonDBE.Enabled=false;
-       
+
        toolStripButton9.Enabled=false; // 30
 
        _setDBS();
@@ -793,8 +799,8 @@ namespace ArcConfig
        tskmea.Start();
 
     }
-    
-    
+
+
     void TreeViewAAfterSelecttabControl1(object sender)
     {
       /*
@@ -1372,8 +1378,8 @@ namespace ArcConfig
         PCellValueChanged = 1;
 
     }
-    
-    
+
+
     void TreeViewAAfterSelect(object sender, TreeViewEventArgs e)
     {
       /*
@@ -1861,6 +1867,154 @@ Postgres : SELECT version();
     }
 
 
+/*     -----------------------------     */
+    void _setDBCalc()
+    {
+       string stSchema="";
+       if (OptionSchemaName>0) {
+           stSchema=OptionSchemaMain + "." ;
+       }
+
+
+       for (int i = 0; i < 10; ++i)
+       {
+         //Добавляем строку, указывая значения каждой ячейки по имени (можно использовать индекс 0, 1, 2 вместо имен)
+         dataGridViewCalc.Rows.Add();
+       }
+
+       foreach (DataGridViewColumn column in dataGridViewCalc.Columns)
+       {
+
+           column.HeaderText = String.Concat("#",column.Index.ToString());
+       }
+
+       dataGridViewCalc.Rows[0].Cells[0].Value="";
+
+       dataGridViewCalc[1, 0].Value="Параметры Сбора";
+       dataGridViewCalc[2, 0].Value="Электрические параметры";
+       dataGridViewCalc[3, 0].Value="Прочие параметры";
+       dataGridViewCalc[4, 0].Value="Коммутационные аппараты";
+       dataGridViewCalc[5, 0].Value="Устройства  защиты";
+       dataGridViewCalc[6, 0].Value="Внешний Сбор";
+       dataGridViewCalc[7, 0].Value="Диспетчерские графики";
+       dataGridViewCalc[8, 0].Value="Формула";
+
+       dataGridViewCalc.Rows[0].ReadOnly=true;
+       dataGridViewCalc.Rows[0].DefaultCellStyle.Font  = new Font(DataGridView.DefaultFont, FontStyle.Bold);
+
+       dataGridViewCalc[0, 1].Value="Число параметров:";
+       dataGridViewCalc[1, 1].Value="10000";
+       dataGridViewCalc[2, 1].Value="7000";
+       dataGridViewCalc[3, 1].Value="2000";
+       dataGridViewCalc[4, 1].Value="1000";
+       dataGridViewCalc[5, 1].Value="1000";
+       dataGridViewCalc[6, 1].Value="100";
+       dataGridViewCalc[7, 1].Value="50";
+       dataGridViewCalc[8, 1].Value="п.1";
+
+       dataGridViewCalc[0,2].Value="Ширина одной записи ( в байтах ):";
+       dataGridViewCalc[1,2].Value="90";
+       dataGridViewCalc[2,2].Value="90";
+       dataGridViewCalc[3,2].Value="90";
+       dataGridViewCalc[4,2].Value="90";
+       dataGridViewCalc[5,2].Value="90";
+       dataGridViewCalc[6,2].Value="90";
+       dataGridViewCalc[7,2].Value="90";
+       dataGridViewCalc[8,2].Value="п.2 = TIME1970(11) + PARAM(11) + STATUS(11) + VAL(19) + VMIN(19) + VMAX(19) = 90";
+
+      dataGridViewCalc[0,3].Value="Количество записей в час:";
+      dataGridViewCalc[1,3].Value="3600";
+      dataGridViewCalc[2,3].Value="1";
+      dataGridViewCalc[3,3].Value="1";
+      dataGridViewCalc[4,3].Value="1";
+      dataGridViewCalc[5,3].Value="1";
+      dataGridViewCalc[6,3].Value="1";
+      dataGridViewCalc[7,3].Value="1";
+      dataGridViewCalc[8,3].Value="п.3";
+
+      dataGridViewCalc[0, 4].Value="Длительность хранения архивов, в часах:";
+      dataGridViewCalc[1, 4].Value="720";
+      dataGridViewCalc[2, 4].Value="720";
+      dataGridViewCalc[3, 4].Value="720";
+      dataGridViewCalc[4, 4].Value="720";
+      dataGridViewCalc[5, 4].Value="720";
+      dataGridViewCalc[6, 4].Value="720";
+      dataGridViewCalc[7, 4].Value="720";
+      dataGridViewCalc[8, 4].Value="п.4";
+
+      dataGridViewCalc[0, 5].Value="Объем данных, гб:";
+      dataGridViewCalc[1, 5].Value="0";
+      dataGridViewCalc[2, 5].Value="0";
+      dataGridViewCalc[3, 5].Value="0";
+      dataGridViewCalc[4, 5].Value="0";
+      dataGridViewCalc[5, 5].Value="0";
+      dataGridViewCalc[6, 5].Value="0";
+      dataGridViewCalc[7, 5].Value="0";
+      dataGridViewCalc[8, 5].Value="п.5 = ( n.1 * n.2 * n.3 * n.4 ) / (1024 * 1024 * 1024)";
+
+      dataGridViewCalc[0, 6].Value="С учетом индексов (обслуживание поиска, построения графиков, анализа и т.п.), гб:";
+      dataGridViewCalc[1, 6].Value="0";
+      dataGridViewCalc[2, 6].Value="0";
+      dataGridViewCalc[3, 6].Value="0";
+      dataGridViewCalc[4, 6].Value="0";
+      dataGridViewCalc[5, 6].Value="0";
+      dataGridViewCalc[6, 6].Value="0";
+      dataGridViewCalc[7, 6].Value="0";
+      dataGridViewCalc[8, 6].Value="п.6 =  п.5 *50% ";
+
+      dataGridViewCalc[0, 7].Value="Дополнительный объем для системных и оперативных объектов БД, гб:";
+      dataGridViewCalc[1, 7].Value="0";
+      dataGridViewCalc[2, 7].Value="0";
+      dataGridViewCalc[3, 7].Value="0";
+      dataGridViewCalc[4, 7].Value="0";
+      dataGridViewCalc[5, 7].Value="0";
+      dataGridViewCalc[6, 7].Value="0";
+      dataGridViewCalc[7, 7].Value="0";
+      dataGridViewCalc[8, 7].Value="п.7 = (п.5 + п.6)*10%";
+
+      dataGridViewCalc[0, 8].Value="Дополнительный объем для выполнения резервного копирования БД, гб:";
+      dataGridViewCalc[1, 8].Value="0";
+      dataGridViewCalc[2, 8].Value="0";
+      dataGridViewCalc[3, 8].Value="0";
+      dataGridViewCalc[4, 8].Value="0";
+      dataGridViewCalc[5, 8].Value="0";
+      dataGridViewCalc[6, 8].Value="0";
+      dataGridViewCalc[7, 8].Value="0";
+      dataGridViewCalc[8, 8].Value="п.8 = (п.5 + п.6 + п.7)*50%";
+
+      dataGridViewCalc[0, 9].Value="Сумма = , гб:";
+      dataGridViewCalc[1, 9].Value="0";
+      dataGridViewCalc[2, 9].Value="0";
+      dataGridViewCalc[3, 9].Value="0";
+      dataGridViewCalc[4, 9].Value="0";
+      dataGridViewCalc[5, 9].Value="0";
+      dataGridViewCalc[6, 9].Value="0";
+      dataGridViewCalc[7, 9].Value="0";
+      dataGridViewCalc[8, 9].Value="п.9 = (п.5 + п.6 + п.7 + п.8)";
+
+
+      //dataGridViewCalc.ColumnHeadersDefaultCellStyle.Font = new Font(DataGridView.DefaultFont, FontStyle.Bold);
+      dataGridViewCalc.Columns[0].DefaultCellStyle.Font = new Font(DataGridView.DefaultFont, FontStyle.Bold);
+
+      dataGridViewCalc.AutoResizeColumns();
+
+
+      // Configure the details DataGridView so that its columns automatically
+      // adjust their widths when the data changes.
+      dataGridViewCalc.AutoSizeColumnsMode =
+             DataGridViewAutoSizeColumnsMode.AllCells;
+      dataGridViewCalc.AutoGenerateColumns = true;
+
+      dataGridViewCalc.EnableHeadersVisualStyles = false;
+      // dataGridViewCalc.AlternatingRowsDefaultCellStyle.BackColor =Color.LightGray;
+
+      dataGridViewCalc.Update();
+
+      comboBoxCalc.SelectedIndex=6;
+
+    }
+
+
 void _Meas30 ( )
 {
     // Объект для связи между базой данных и источником данных
@@ -1988,6 +2142,13 @@ void _Meas30 ( )
       if (tabControl1.SelectedIndex==2) {
         dataGridView = (DataGridView)dataGridViewS;
       }
+      if (tabControl1.SelectedIndex==3) {
+        dataGridView = (DataGridView)dataGridViewCalc;
+      }
+      if (tabControl1.SelectedIndex==4) {
+        dataGridView = (DataGridView)dataGridViewDB;
+      }
+
 
       if (dataGridView==null) return ;
 
@@ -3722,7 +3883,7 @@ int ArcDel(object sender, int selRowNum , int selColNum)
       Action th = new Action( OracleStat ) ;
       Task tsk = new Task(th);
       tsk.Start();
-      tabControl1.SelectedIndex = 4; // tabPage5
+      tabControl1.SelectedIndex = 5; // tabPage5
       MessageBox.Show(" Задача вывода в лог Статистики по БД - запущена...",toolStripStatusLabel2.Text,MessageBoxButtons.OK , MessageBoxIcon.Information);
     }
 
@@ -3746,12 +3907,6 @@ int ArcDel(object sender, int selRowNum , int selColNum)
          AddLogString("ReadData = variable '" + st + "' not set" );
          return (strQry);
       }
-
-      // ===================================================
-      if (OptionSchemaName>0) {
-           tmpName=OptionSchemaMain + "." + tmpName ;
-      }
-      // ===================================================
 
       cmd0.CommandText=tmpName;
       try
@@ -3778,6 +3933,119 @@ int ArcDel(object sender, int selRowNum , int selColNum)
       return (strQry);
     }
 
+
+    string ReadDataVal(string st )
+    {
+      // Объект для выполнения запросов к базе данных
+      OdbcCommand cmd0 = new OdbcCommand();
+      OdbcDataReader reader = null ;
+      cmd0.Connection=this._conn;
+      string strQry = "0";
+
+      ResourceManager ro = new ResourceManager("ArcConfig.StatOracle", Assembly.GetExecutingAssembly());
+
+      strQry = ro.GetString(st);
+      if (strQry == null || strQry.Trim().Length == 0)
+      {
+         AddLogString("ReadDataVal = variable '" + st + "' not set" );
+         return ("0");
+      }
+
+      cmd0.CommandText=strQry;
+      try
+      {
+        reader = cmd0.ExecuteReader();
+      }
+      catch (Exception ex1)
+      {
+        AddLogString("ReadDataVal =" + strQry + "=" + ex1.Message);
+        return ("0");
+      }
+
+      while (reader.Read())
+      {
+         strQry = "" ;
+         for ( int i = 0; i<reader.FieldCount; i++)
+         {
+           strQry+=GetTypeValue(ref reader, i) +  "";
+         }
+         if (reader.FieldCount>1) AddLogStringNoTime(strQry);
+      } // while
+      reader.Close();
+
+      if (strQry == "") { strQry = "0" ; }
+
+      return (strQry);
+    }
+
+
+/*
+ процедура получения данных из Бд и вывод результатов в Grid
+*/
+    string ReadDataDB(string st )
+    {
+      // Объект для связи между базой данных и источником данных
+      OdbcDataAdapter adapter = new OdbcDataAdapter();
+      // Объект для выполнения запросов к базе данных
+      OdbcCommand cmd0 = new OdbcCommand();
+      OdbcDataReader reader = null ;
+
+      cmd0.Connection=this._conn;
+
+      ResourceManager ro = new ResourceManager("ArcConfig.StatOracle", Assembly.GetExecutingAssembly());
+
+      string strQry = ro.GetString(st);
+      if (strQry == null || strQry.Trim().Length == 0)
+      {
+        strQry="";
+        return (strQry);
+      }
+
+      cmd0.CommandText=strQry;
+
+      Application.DoEvents();
+
+      dataGridViewDB.DataSource = null;
+
+      // Указываем запрос для выполнения
+      adapter.SelectCommand = cmd0;
+      // Заполняем объект источника данных
+      DataTable dataTable = new DataTable();
+      try
+      {
+         adapter.Fill(dataTable);
+         dataGridViewDB.DataSource = dataTable;
+         //dataGridViewDB.DataSource = dataTable.DefaultView;
+         ////dataGridViewDB.DataSource = ds.Tables[0];
+      }
+      catch (Exception ex1)
+      {
+         return (strQry);
+      }
+
+      Application.DoEvents();
+
+      // To refresh data
+      // dataGridViewDB.Refresh();
+
+      // Resize the master DataGridView columns to fit the newly loaded data.
+      dataGridViewDB.AutoResizeColumns();
+
+      // Configure the details DataGridView so that its columns automatically
+      // adjust their widths when the data changes.
+      dataGridViewDB.AutoSizeColumnsMode =
+             DataGridViewAutoSizeColumnsMode.AllCells;
+      dataGridViewDB.AutoGenerateColumns = true;
+
+      //dataGridViewDB.EnableHeadersVisualStyles = false;
+      //dataGridViewDB.AlternatingRowsDefaultCellStyle.BackColor =Color.LightGray;
+
+      dataGridViewDB.ReadOnly = true;
+
+      dataGridViewDB.Update();
+
+      return (strQry);
+    }
 
 
 void OracleStat ( )
@@ -4668,6 +4936,332 @@ void PartitionMedia(object sender, EventArgs e)
       FormMeas30 fdbe30 = new FormMeas30(this._conn, OptionSchemaName );
       fdbe30.StartPosition=FormStartPosition.CenterParent ;
       fdbe30.ShowDialog();
+    }
+    void MainFormFormClosed(object sender, FormClosedEventArgs e)
+    {
+          try
+          {
+            this._conn.Dispose();
+            this._conn = (OdbcConnection) null;
+          }
+          catch (Exception ex)
+          {
+            ;
+          }
+    }
+    void Button3Click(object sender, EventArgs e)
+    {
+      //strQry:='select count (*) from DA_COLUMN_DATA_V;';
+      dataGridViewCalc[1, 1].Value=ReadDataVal( "DA_COLUMN_DATA_V" );
+
+      //strQry:='select count (*) from elreg_list_v;';
+      dataGridViewCalc[2, 1].Value=ReadDataVal( "elreg_list_v" );
+
+      //strQry:='select count (*) from phreg_list_v';
+      dataGridViewCalc[3, 1].Value=ReadDataVal( "phreg_list_v" );
+
+      //strQry:='select count (*) from pswt_list_v';
+      dataGridViewCalc[4, 1].Value=ReadDataVal( "pswt_list_v" );
+
+      //strQry:='select count (*) from auto_list_v';
+      dataGridViewCalc[5, 1].Value=ReadDataVal( "auto_list_v" );
+
+      //strQry:='select count (*) from EXDATA_LIST_V';
+      dataGridViewCalc[6, 1].Value=ReadDataVal( "EXDATA_LIST_V" );
+
+      //strQry:='select count (*) from DG_LIST';
+      dataGridViewCalc[7, 1].Value=ReadDataVal( "DG_LIST" );
+
+      dataGridViewCalc.Rows[1].DefaultCellStyle.Font  = new Font(DataGridView.DefaultFont, FontStyle.Bold);
+    }
+    void ButtonCalcsClick(object sender, EventArgs e)
+    {
+      //
+      int lVal = 0;
+      double fVal = 0;
+
+      for( int i=1; i<=5; i++ ) {
+        if (Int32.TryParse(dataGridViewCalc[1, i].Value.ToString(), out lVal))
+           dataGridViewCalc[1, i].Value=lVal.ToString() ;
+        else dataGridViewCalc[1, i].Value="0" ;
+        if (Int32.TryParse(dataGridViewCalc[2, i].Value.ToString(), out lVal))
+           dataGridViewCalc[2, i].Value=lVal.ToString() ;
+        else dataGridViewCalc[2, i].Value="0" ;
+        if (Int32.TryParse(dataGridViewCalc[3, i].Value.ToString(), out lVal))
+           dataGridViewCalc[3, i].Value=lVal.ToString() ;
+        else dataGridViewCalc[3, i].Value="0" ;
+        if (Int32.TryParse(dataGridViewCalc[4, i].Value.ToString(), out lVal))
+           dataGridViewCalc[4, i].Value=lVal.ToString() ;
+        else dataGridViewCalc[4, i].Value="0" ;
+        if (Int32.TryParse(dataGridViewCalc[5, i].Value.ToString(), out lVal))
+           dataGridViewCalc[5, i].Value=lVal.ToString() ;
+        else dataGridViewCalc[5, i].Value="0" ;
+        if (Int32.TryParse(dataGridViewCalc[6, i].Value.ToString(), out lVal))
+           dataGridViewCalc[6, i].Value=lVal.ToString() ;
+        else dataGridViewCalc[6, i].Value="0" ;
+        if (Int32.TryParse(dataGridViewCalc[7, i].Value.ToString(), out lVal))
+           dataGridViewCalc[7, i].Value=lVal.ToString() ;
+        else dataGridViewCalc[7, i].Value="0" ;
+      }
+
+      for( int i=1; i<=7; i++ ) {
+        double v1 = Convert.ToDouble(dataGridViewCalc[i, 1].Value.ToString());
+        double v2 = Convert.ToDouble(dataGridViewCalc[i, 2].Value.ToString());
+        double v3 = Convert.ToDouble(dataGridViewCalc[i, 3].Value.ToString());
+        double v4 = Convert.ToDouble(dataGridViewCalc[i, 4].Value.ToString());
+        fVal= (v1*v2*v3*v4)/(1024*1024*1024);
+        if (fVal<0.0) fVal=0.0;
+        int lInt=Convert.ToInt32(dataGridViewCalc[i, 2].Value.ToString());
+        if (lInt<=0) fVal=0.0;
+        double i5 = Math.Round(fVal, 4) ;
+        dataGridViewCalc[i, 5].Value=i5.ToString();
+        double i6 = Math.Round(0.5 * i5 , 3) ;
+        dataGridViewCalc[i, 6].Value=i6.ToString();
+        double i7 = Math.Round(0.1 * (i5+i6) , 3) ;
+        dataGridViewCalc[i, 7].Value=i7.ToString();
+        double i8 = Math.Round(0.5 * (i5+i6+i7) , 3) ;
+        dataGridViewCalc[i, 8].Value=i8.ToString();
+        
+        double i9 = Math.Round(1 * (i5+i6+i7+i8) , 3) ;
+        dataGridViewCalc[i, 9].Value=i9.ToString();        
+        
+      }
+
+    }
+    void ComboBoxCalcSelectedIndexChanged(object sender, EventArgs e)
+    {
+      int coef=0;
+
+      switch ( comboBoxCalc.SelectedIndex )
+      {
+       case 0 : coef=1;break;
+       case 1 : coef=12;break;
+       case 2 : coef=1*24;break;
+       case 3 : coef=2*24;break;
+       case 4 : coef=3*24;break;
+       case 5 : coef=7*24;break;
+       case 6 : coef=30*24;break;
+       case 7 : coef=40*24;break;
+       case 8 : coef=2*30*24;break;
+       case 9 : coef=3*30*24;break;
+       case 10 : coef=6*30*24;break;
+       case 11 : coef=1*365*24;break;
+       case 12 : coef=2*365*24;break;
+       case 13 : coef=3*365*24;break;
+       case 14 : coef=4*365*24;break;
+       case 15 : coef=5*365*24;break;
+       case 16 : coef=10*365*24;break;
+       default:
+              coef=24;
+              break;
+      }
+
+      dataGridViewCalc[1, 4].Value=coef.ToString();
+      dataGridViewCalc[2, 4].Value=coef.ToString();
+      dataGridViewCalc[3, 4].Value=coef.ToString();
+      dataGridViewCalc[4, 4].Value=coef.ToString();
+      dataGridViewCalc[5, 4].Value=coef.ToString();
+      dataGridViewCalc[6, 4].Value=coef.ToString();
+      dataGridViewCalc[7, 4].Value=coef.ToString();
+
+    }
+    void ButtonDBCLSClick(object sender, EventArgs e)
+    {
+      //
+      richTextBoxDB.Clear();
+    }
+    void ButtonDB2Click(object sender, EventArgs e)
+    {
+      //ad_serv_ini_v
+      richTextBoxDB.AppendText( ReadDataDB( "ad_serv_ini_v" )) ;
+    }
+    void ButtonDBRSDU_UPDATEClick(object sender, EventArgs e)
+    {
+      //RSDU_UPDATE
+      richTextBoxDB.AppendText( ReadDataDB( "RSDU_UPDATE" )) ;
+    }
+    void ButtonDBdba_tab_privsClick(object sender, EventArgs e)
+    {
+      //dba_tab_privs
+      richTextBoxDB.AppendText( ReadDataDB( "dba_tab_privs" )) ;
+    }
+    void ButtonDBUsersServClick(object sender, EventArgs e)
+    {
+      //UsersServ
+      richTextBoxDB.AppendText( ReadDataDB( "UsersServ" )) ;
+    }
+    void ButtonDBStatus0Click(object sender, EventArgs e)
+    {
+      //Status0
+      richTextBoxDB.AppendText( ReadDataDB( "Status0" )) ;
+    }
+    void ButtonDBdbtimezoneClick(object sender, EventArgs e)
+    {
+      //dbtimezone
+      richTextBoxDB.AppendText( ReadDataDB( "dbtimezone" )) ;
+    }
+    void ButtonDBvversionClick(object sender, EventArgs e)
+    {
+      //v$version
+      richTextBoxDB.AppendText( ReadDataDB( "version" )) ;
+    }
+    void ButtonDBdatafile1Click(object sender, EventArgs e)
+    {
+      //datafile1
+      richTextBoxDB.AppendText( ReadDataDB( "datafile1" )) ;
+    }
+    void ButtonDBtablespacesizeClick(object sender, EventArgs e)
+    {
+      //tablespace size
+      richTextBoxDB.AppendText( ReadDataDB( "tablespace size" )) ;
+    }
+    void ButtonDBgvdatabaseClick(object sender, EventArgs e)
+    {
+      //gv$database
+      richTextBoxDB.AppendText( ReadDataDB( "database" )) ;
+    }
+    void ButtonDBgvasm_diskgroupClick(object sender, EventArgs e)
+    {
+      //gv$asm_diskgroup
+      richTextBoxDB.AppendText( ReadDataDB( "asm_diskgroup" )) ;
+    }
+    void ButtonDBdba_directoriesClick(object sender, EventArgs e)
+    {
+      //dba_directories
+      richTextBoxDB.AppendText( ReadDataDB( "dba_directories" )) ;
+    }
+    void ButtonDBdba_db_linksClick(object sender, EventArgs e)
+    {
+      //dba_db_links
+      richTextBoxDB.AppendText( ReadDataDB( "dba_db_links" )) ;
+    }
+    void ButtonDBvresource_limitClick(object sender, EventArgs e)
+    {
+      //v$resource_limit
+      richTextBoxDB.AppendText( ReadDataDB( "resource_limit" )) ;
+    }
+    void ButtonDBvparameterClick(object sender, EventArgs e)
+    {
+      //v$parameter
+      richTextBoxDB.AppendText( ReadDataDB( "parameter" )) ;
+    }
+    void ButtonDBnls_session_parametersClick(object sender, EventArgs e)
+    {
+      //nls_session_parameters
+      richTextBoxDB.AppendText( ReadDataDB( "nls_session_parameters" )) ;
+    }
+    void ButtonDBfraClick(object sender, EventArgs e)
+    {
+      //RECOVERY_FILE_DEST
+      richTextBoxDB.AppendText( ReadDataDB( "RECOVERY_FILE_DEST" )) ;
+    }
+    void ButtonDBundoClick(object sender, EventArgs e)
+    {
+      //UNDO
+      richTextBoxDB.AppendText( ReadDataDB( "UNDO" )) ;
+    }
+    void ButtonDBvsga_dynamic_componentsClick(object sender, EventArgs e)
+    {
+      //v$sga_dynamic_components
+      richTextBoxDB.AppendText( ReadDataDB( "sga_dynamic_components" )) ;
+    }
+    void ButtonDBvpgastatClick(object sender, EventArgs e)
+    {
+      //v$pgastat
+      richTextBoxDB.AppendText( ReadDataDB( "pgastat" )) ;
+    }
+    void ButtonDBvlocked_objectClick(object sender, EventArgs e)
+    {
+      //v$locked_object
+      richTextBoxDB.AppendText( ReadDataDB( "locked_object" )) ;
+    }
+    void ButtonDBdba_recyclebinClick(object sender, EventArgs e)
+    {
+      //dba_recyclebin
+      richTextBoxDB.AppendText( ReadDataDB( "dba_recyclebin" )) ;
+    }
+    void ButtonDBvsessionClick(object sender, EventArgs e)
+    {
+      //v$session
+      richTextBoxDB.AppendText( ReadDataDB( "session1" )) ;
+    }
+    void ButtonDBgvsessionClick(object sender, EventArgs e)
+    {
+      //gv$session
+      richTextBoxDB.AppendText( ReadDataDB( "session2" )) ;
+    }
+    void ButtonDBvprocessClick(object sender, EventArgs e)
+    {
+      //v$process
+      richTextBoxDB.AppendText( ReadDataDB( "process" )) ;
+    }
+    void ButtonDBvopen_cursorClick(object sender, EventArgs e)
+    {
+      //v$open_cursor
+      richTextBoxDB.AppendText( ReadDataDB( "open_cursor1" )) ;
+    }
+    void ButtonDBopen_cursorClick(object sender, EventArgs e)
+    {
+      //open_cursor
+      richTextBoxDB.AppendText( ReadDataDB( "open_cursor" )) ;
+    }
+    void ButtonDBopenedcursorscurrentClick(object sender, EventArgs e)
+    {
+      //openedcursorscurrent
+      richTextBoxDB.AppendText( ReadDataDB( "openedcursorscurrent" )) ;
+    }
+    void ButtonDBvsysstatClick(object sender, EventArgs e)
+    {
+      //v$sysstat
+      richTextBoxDB.AppendText( ReadDataDB( "sysstat" )) ;
+    }
+    void ButtonDBGPUClick(object sender, EventArgs e)
+    {
+      //GPU
+      richTextBoxDB.AppendText( ReadDataDB( "GPU" )) ;
+    }
+    void ButtonDBunlockpassClick(object sender, EventArgs e)
+    {
+      //unlockuser
+      richTextBoxDB.AppendText( ReadDataDB( "unlockuser" )) ;
+      //
+      // Format('ALTER USER %-16s ACCOUNT UNLOCK ;',[fStr]);
+      // Format('ALTER USER %-16s IDENTIFIED BY RSDU_211 ;',[fStr]);
+    }
+    void ButtonDBtoUnixClick(object sender, EventArgs e)
+    {
+          // DateTime -> Unix
+        DateTime t1 = dateTimePickerDB1.Value ; // date
+        DateTime t2 = dateTimePickerDB2.Value ; // sec
+        string s1 = t1.ToShortDateString() + " " + t2.ToLongTimeString() ;
+
+        // "yyyy-MM-dd HH:mm:ss"  "dd.MM.yyyy HH:mm:ss"
+        DateTime myDate = DateTime.ParseExact(s1, "dd.MM.yyyy HH:mm:ss",
+                                       System.Globalization.CultureInfo.InvariantCulture);
+        // DateTime -> Unix
+        int i1 = Convert.ToInt32( DateTimeToUnixTimestamp(myDate) );
+        textBoxDBUTC.Text=i1.ToString();
+
+        Application.DoEvents();
+    }
+    void ButtonDBUNIXClick(object sender, EventArgs e)
+    {
+      // Unix -> DateTime
+      double d1 = 0;
+      try
+      {
+        d1=Convert.ToDouble(textBoxDBUTC.Text) ;
+      }
+      catch (Exception )
+      {
+        d1 = 0;
+        textBoxDBUTC.Text="0";
+      }
+      d1 = Math.Abs( d1 );
+      DateTime t1 = UnixTimestampToDateTime(d1);
+      dateTimePickerDB1.Value = t1 ; // date
+      dateTimePickerDB2.Value = t1 ; // sec
+      Application.DoEvents();
     }
 
 

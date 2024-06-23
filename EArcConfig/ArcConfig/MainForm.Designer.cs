@@ -116,6 +116,70 @@ namespace ArcConfig
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator15;
 		private System.Windows.Forms.ToolStripButton toolStripButton9;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator16;
+		private System.Windows.Forms.TabPage tabPage4;
+		private System.Windows.Forms.SplitContainer splitContainer5;
+		private System.Windows.Forms.DataGridView dataGridViewCalc;
+		private System.Windows.Forms.Button buttonCalcs;
+		private System.Windows.Forms.ComboBox comboBoxCalc;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
+		private System.Windows.Forms.Label label2;
+		private System.Windows.Forms.Label label1;
+		private System.Windows.Forms.Button buttonParamCalc;
+		private System.Windows.Forms.TabPage tabPage6;
+		private System.Windows.Forms.SplitContainer splitContainer6;
+		private System.Windows.Forms.SplitContainer splitContainer7;
+		private System.Windows.Forms.DataGridView dataGridViewDB;
+		private System.Windows.Forms.RichTextBox richTextBoxDB;
+		private System.Windows.Forms.Panel panelDB;
+		private System.Windows.Forms.GroupBox groupBox3;
+		private System.Windows.Forms.TextBox textBoxDBUTC;
+		private System.Windows.Forms.Button buttonDBUNIX;
+		private System.Windows.Forms.Button buttonDBtoUnix;
+		private System.Windows.Forms.DateTimePicker dateTimePickerDB2;
+		private System.Windows.Forms.DateTimePicker dateTimePickerDB1;
+		private System.Windows.Forms.Button buttonDBCLS;
+		private System.Windows.Forms.Button buttonDBdba_tab_privs;
+		private System.Windows.Forms.Button buttonDBRSDU_UPDATE;
+		private System.Windows.Forms.Button buttonDB2;
+		private System.Windows.Forms.Button buttonDBGPU;
+		private System.Windows.Forms.Button buttonDBvsysstat;
+		private System.Windows.Forms.Button buttonDBopenedcursorscurrent;
+		private System.Windows.Forms.Button buttonDBopen_cursor;
+		private System.Windows.Forms.Button buttonDBvopen_cursor;
+		private System.Windows.Forms.Button buttonDBvpgastat;
+		private System.Windows.Forms.Button buttonDBvsga_dynamic_components;
+		private System.Windows.Forms.Button buttonDBundo;
+		private System.Windows.Forms.Button buttonDBfra;
+		private System.Windows.Forms.Button buttonDBnls_session_parameters;
+		private System.Windows.Forms.Button buttonDBvparameter;
+		private System.Windows.Forms.Button buttonDBvresource_limit;
+		private System.Windows.Forms.Button buttonDBdba_db_links;
+		private System.Windows.Forms.Button buttonDBdba_directories;
+		private System.Windows.Forms.Button buttonDBgvasm_diskgroup;
+		private System.Windows.Forms.Button buttonDBgvdatabase;
+		private System.Windows.Forms.Button buttonDBtablespacesize;
+		private System.Windows.Forms.Button buttonDBdatafile1;
+		private System.Windows.Forms.Button buttonDBvversion;
+		private System.Windows.Forms.Button buttonDBdbtimezone;
+		private System.Windows.Forms.Button buttonDBStatus0;
+		private System.Windows.Forms.Button buttonDBUsersServ;
+		private System.Windows.Forms.Button buttonDBvprocess;
+		private System.Windows.Forms.Button buttonDBgvsession;
+		private System.Windows.Forms.Button buttonDBvsession;
+		private System.Windows.Forms.Button buttonDBdba_recyclebin;
+		private System.Windows.Forms.Button buttonDBvlocked_object;
+		private System.Windows.Forms.GroupBox groupBox4;
+		private System.Windows.Forms.GroupBox groupBox5;
+		private System.Windows.Forms.Button buttonDBunlockpass;
 		
 		/// <summary>
 		/// Disposes resources used by the form.
@@ -238,6 +302,70 @@ namespace ArcConfig
 			this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
 			this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
 			this.toolStripButtonCommit = new System.Windows.Forms.ToolStripButton();
+			this.tabPage4 = new System.Windows.Forms.TabPage();
+			this.splitContainer5 = new System.Windows.Forms.SplitContainer();
+			this.dataGridViewCalc = new System.Windows.Forms.DataGridView();
+			this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.buttonParamCalc = new System.Windows.Forms.Button();
+			this.label2 = new System.Windows.Forms.Label();
+			this.label1 = new System.Windows.Forms.Label();
+			this.buttonCalcs = new System.Windows.Forms.Button();
+			this.comboBoxCalc = new System.Windows.Forms.ComboBox();
+			this.tabPage6 = new System.Windows.Forms.TabPage();
+			this.splitContainer6 = new System.Windows.Forms.SplitContainer();
+			this.panelDB = new System.Windows.Forms.Panel();
+			this.groupBox5 = new System.Windows.Forms.GroupBox();
+			this.buttonDBunlockpass = new System.Windows.Forms.Button();
+			this.buttonDBUsersServ = new System.Windows.Forms.Button();
+			this.buttonDBRSDU_UPDATE = new System.Windows.Forms.Button();
+			this.buttonDB2 = new System.Windows.Forms.Button();
+			this.groupBox4 = new System.Windows.Forms.GroupBox();
+			this.buttonDBGPU = new System.Windows.Forms.Button();
+			this.buttonDBvsysstat = new System.Windows.Forms.Button();
+			this.buttonDBopenedcursorscurrent = new System.Windows.Forms.Button();
+			this.buttonDBopen_cursor = new System.Windows.Forms.Button();
+			this.buttonDBvopen_cursor = new System.Windows.Forms.Button();
+			this.buttonDBvprocess = new System.Windows.Forms.Button();
+			this.buttonDBgvsession = new System.Windows.Forms.Button();
+			this.buttonDBvsession = new System.Windows.Forms.Button();
+			this.buttonDBdba_recyclebin = new System.Windows.Forms.Button();
+			this.buttonDBvlocked_object = new System.Windows.Forms.Button();
+			this.buttonDBvpgastat = new System.Windows.Forms.Button();
+			this.buttonDBvsga_dynamic_components = new System.Windows.Forms.Button();
+			this.buttonDBundo = new System.Windows.Forms.Button();
+			this.buttonDBfra = new System.Windows.Forms.Button();
+			this.buttonDBnls_session_parameters = new System.Windows.Forms.Button();
+			this.buttonDBvparameter = new System.Windows.Forms.Button();
+			this.buttonDBvresource_limit = new System.Windows.Forms.Button();
+			this.buttonDBdba_db_links = new System.Windows.Forms.Button();
+			this.buttonDBdba_directories = new System.Windows.Forms.Button();
+			this.buttonDBgvasm_diskgroup = new System.Windows.Forms.Button();
+			this.buttonDBgvdatabase = new System.Windows.Forms.Button();
+			this.buttonDBtablespacesize = new System.Windows.Forms.Button();
+			this.buttonDBdatafile1 = new System.Windows.Forms.Button();
+			this.buttonDBvversion = new System.Windows.Forms.Button();
+			this.buttonDBdba_tab_privs = new System.Windows.Forms.Button();
+			this.buttonDBStatus0 = new System.Windows.Forms.Button();
+			this.buttonDBdbtimezone = new System.Windows.Forms.Button();
+			this.buttonDBCLS = new System.Windows.Forms.Button();
+			this.groupBox3 = new System.Windows.Forms.GroupBox();
+			this.textBoxDBUTC = new System.Windows.Forms.TextBox();
+			this.buttonDBUNIX = new System.Windows.Forms.Button();
+			this.buttonDBtoUnix = new System.Windows.Forms.Button();
+			this.dateTimePickerDB2 = new System.Windows.Forms.DateTimePicker();
+			this.dateTimePickerDB1 = new System.Windows.Forms.DateTimePicker();
+			this.splitContainer7 = new System.Windows.Forms.SplitContainer();
+			this.richTextBoxDB = new System.Windows.Forms.RichTextBox();
+			this.dataGridViewDB = new System.Windows.Forms.DataGridView();
 			this.tabPage5 = new System.Windows.Forms.TabPage();
 			this.dataSet1 = new System.Data.DataSet();
 			this.dataSetA = new System.Data.DataSet();
@@ -281,6 +409,26 @@ namespace ArcConfig
 			((System.ComponentModel.ISupportInitialize)(this.bindingNavigatorS)).BeginInit();
 			this.bindingNavigatorS.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.bindingSourceS)).BeginInit();
+			this.tabPage4.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.splitContainer5)).BeginInit();
+			this.splitContainer5.Panel1.SuspendLayout();
+			this.splitContainer5.Panel2.SuspendLayout();
+			this.splitContainer5.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.dataGridViewCalc)).BeginInit();
+			this.tabPage6.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.splitContainer6)).BeginInit();
+			this.splitContainer6.Panel1.SuspendLayout();
+			this.splitContainer6.Panel2.SuspendLayout();
+			this.splitContainer6.SuspendLayout();
+			this.panelDB.SuspendLayout();
+			this.groupBox5.SuspendLayout();
+			this.groupBox4.SuspendLayout();
+			this.groupBox3.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.splitContainer7)).BeginInit();
+			this.splitContainer7.Panel1.SuspendLayout();
+			this.splitContainer7.Panel2.SuspendLayout();
+			this.splitContainer7.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.dataGridViewDB)).BeginInit();
 			this.tabPage5.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dataSet1)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.dataSetA)).BeginInit();
@@ -526,6 +674,8 @@ namespace ArcConfig
 			this.tabControl1.Controls.Add(this.tabPage1);
 			this.tabControl1.Controls.Add(this.tabPage2);
 			this.tabControl1.Controls.Add(this.tabPage3);
+			this.tabControl1.Controls.Add(this.tabPage4);
+			this.tabControl1.Controls.Add(this.tabPage6);
 			this.tabControl1.Controls.Add(this.tabPage5);
 			this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.tabControl1.Location = new System.Drawing.Point(0, 25);
@@ -1228,6 +1378,671 @@ namespace ArcConfig
 			this.toolStripButtonCommit.Text = "Commit";
 			this.toolStripButtonCommit.Click += new System.EventHandler(this.ToolStripButtonCommitClick);
 			// 
+			// tabPage4
+			// 
+			this.tabPage4.Controls.Add(this.splitContainer5);
+			this.tabPage4.Location = new System.Drawing.Point(4, 22);
+			this.tabPage4.Name = "tabPage4";
+			this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+			this.tabPage4.Size = new System.Drawing.Size(1182, 550);
+			this.tabPage4.TabIndex = 5;
+			this.tabPage4.Text = "Калькулятор";
+			this.tabPage4.UseVisualStyleBackColor = true;
+			// 
+			// splitContainer5
+			// 
+			this.splitContainer5.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.splitContainer5.Location = new System.Drawing.Point(3, 3);
+			this.splitContainer5.Name = "splitContainer5";
+			this.splitContainer5.Orientation = System.Windows.Forms.Orientation.Horizontal;
+			// 
+			// splitContainer5.Panel1
+			// 
+			this.splitContainer5.Panel1.Controls.Add(this.dataGridViewCalc);
+			// 
+			// splitContainer5.Panel2
+			// 
+			this.splitContainer5.Panel2.Controls.Add(this.buttonParamCalc);
+			this.splitContainer5.Panel2.Controls.Add(this.label2);
+			this.splitContainer5.Panel2.Controls.Add(this.label1);
+			this.splitContainer5.Panel2.Controls.Add(this.buttonCalcs);
+			this.splitContainer5.Panel2.Controls.Add(this.comboBoxCalc);
+			this.splitContainer5.Size = new System.Drawing.Size(1176, 544);
+			this.splitContainer5.SplitterDistance = 457;
+			this.splitContainer5.TabIndex = 0;
+			// 
+			// dataGridViewCalc
+			// 
+			this.dataGridViewCalc.AllowUserToAddRows = false;
+			this.dataGridViewCalc.AllowUserToDeleteRows = false;
+			this.dataGridViewCalc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dataGridViewCalc.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+			this.Column1,
+			this.Column2,
+			this.Column3,
+			this.Column4,
+			this.Column5,
+			this.Column6,
+			this.Column7,
+			this.Column8,
+			this.Column9,
+			this.Column10});
+			this.dataGridViewCalc.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.dataGridViewCalc.Location = new System.Drawing.Point(0, 0);
+			this.dataGridViewCalc.Name = "dataGridViewCalc";
+			this.dataGridViewCalc.Size = new System.Drawing.Size(1176, 457);
+			this.dataGridViewCalc.TabIndex = 0;
+			// 
+			// Column1
+			// 
+			this.Column1.HeaderText = "Column1";
+			this.Column1.Name = "Column1";
+			this.Column1.ReadOnly = true;
+			// 
+			// Column2
+			// 
+			this.Column2.HeaderText = "Column2";
+			this.Column2.Name = "Column2";
+			// 
+			// Column3
+			// 
+			this.Column3.HeaderText = "Column3";
+			this.Column3.Name = "Column3";
+			// 
+			// Column4
+			// 
+			this.Column4.HeaderText = "Column4";
+			this.Column4.Name = "Column4";
+			// 
+			// Column5
+			// 
+			this.Column5.HeaderText = "Column5";
+			this.Column5.Name = "Column5";
+			// 
+			// Column6
+			// 
+			this.Column6.HeaderText = "Column6";
+			this.Column6.Name = "Column6";
+			// 
+			// Column7
+			// 
+			this.Column7.HeaderText = "Column7";
+			this.Column7.Name = "Column7";
+			// 
+			// Column8
+			// 
+			this.Column8.HeaderText = "Column8";
+			this.Column8.Name = "Column8";
+			// 
+			// Column9
+			// 
+			this.Column9.HeaderText = "Column9";
+			this.Column9.Name = "Column9";
+			this.Column9.ReadOnly = true;
+			// 
+			// Column10
+			// 
+			this.Column10.HeaderText = "Column10";
+			this.Column10.Name = "Column10";
+			// 
+			// buttonParamCalc
+			// 
+			this.buttonParamCalc.Location = new System.Drawing.Point(14, 12);
+			this.buttonParamCalc.Name = "buttonParamCalc";
+			this.buttonParamCalc.Size = new System.Drawing.Size(104, 53);
+			this.buttonParamCalc.TabIndex = 4;
+			this.buttonParamCalc.Text = "Количество параметров в разделах.";
+			this.buttonParamCalc.UseVisualStyleBackColor = true;
+			this.buttonParamCalc.Click += new System.EventHandler(this.Button3Click);
+			// 
+			// label2
+			// 
+			this.label2.Location = new System.Drawing.Point(515, 47);
+			this.label2.Name = "label2";
+			this.label2.Size = new System.Drawing.Size(266, 23);
+			this.label2.TabIndex = 3;
+			this.label2.Text = "Пример расчета  пространства для хранения БД ";
+			// 
+			// label1
+			// 
+			this.label1.Location = new System.Drawing.Point(515, 15);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(183, 21);
+			this.label1.TabIndex = 2;
+			this.label1.Text = "Длительность хранения (период)";
+			// 
+			// buttonCalcs
+			// 
+			this.buttonCalcs.Location = new System.Drawing.Point(803, 42);
+			this.buttonCalcs.Name = "buttonCalcs";
+			this.buttonCalcs.Size = new System.Drawing.Size(75, 23);
+			this.buttonCalcs.TabIndex = 1;
+			this.buttonCalcs.Text = "Расчет..";
+			this.buttonCalcs.UseVisualStyleBackColor = true;
+			this.buttonCalcs.Click += new System.EventHandler(this.ButtonCalcsClick);
+			// 
+			// comboBoxCalc
+			// 
+			this.comboBoxCalc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.comboBoxCalc.FormattingEnabled = true;
+			this.comboBoxCalc.Items.AddRange(new object[] {
+			"1 час",
+			"12 часов",
+			"1 день",
+			"2 дня",
+			"3 дня",
+			"7 дней",
+			"1 мес (30 дней)",
+			"40 дней",
+			"2 мес",
+			"3 мес",
+			"6 мес",
+			"1 год",
+			"2 года",
+			"3 года",
+			"4 года",
+			"5 лет",
+			"10 лет"});
+			this.comboBoxCalc.Location = new System.Drawing.Point(757, 15);
+			this.comboBoxCalc.Name = "comboBoxCalc";
+			this.comboBoxCalc.Size = new System.Drawing.Size(121, 21);
+			this.comboBoxCalc.TabIndex = 0;
+			this.comboBoxCalc.SelectedIndexChanged += new System.EventHandler(this.ComboBoxCalcSelectedIndexChanged);
+			// 
+			// tabPage6
+			// 
+			this.tabPage6.Controls.Add(this.splitContainer6);
+			this.tabPage6.Location = new System.Drawing.Point(4, 22);
+			this.tabPage6.Name = "tabPage6";
+			this.tabPage6.Size = new System.Drawing.Size(1182, 550);
+			this.tabPage6.TabIndex = 6;
+			this.tabPage6.Text = "DB";
+			this.tabPage6.UseVisualStyleBackColor = true;
+			// 
+			// splitContainer6
+			// 
+			this.splitContainer6.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.splitContainer6.Location = new System.Drawing.Point(0, 0);
+			this.splitContainer6.Name = "splitContainer6";
+			// 
+			// splitContainer6.Panel1
+			// 
+			this.splitContainer6.Panel1.Controls.Add(this.panelDB);
+			// 
+			// splitContainer6.Panel2
+			// 
+			this.splitContainer6.Panel2.Controls.Add(this.splitContainer7);
+			this.splitContainer6.Size = new System.Drawing.Size(1182, 550);
+			this.splitContainer6.SplitterDistance = 468;
+			this.splitContainer6.TabIndex = 0;
+			// 
+			// panelDB
+			// 
+			this.panelDB.Controls.Add(this.groupBox5);
+			this.panelDB.Controls.Add(this.groupBox4);
+			this.panelDB.Controls.Add(this.buttonDBCLS);
+			this.panelDB.Controls.Add(this.groupBox3);
+			this.panelDB.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.panelDB.Location = new System.Drawing.Point(0, 0);
+			this.panelDB.Name = "panelDB";
+			this.panelDB.Size = new System.Drawing.Size(468, 550);
+			this.panelDB.TabIndex = 0;
+			// 
+			// groupBox5
+			// 
+			this.groupBox5.Controls.Add(this.buttonDBunlockpass);
+			this.groupBox5.Controls.Add(this.buttonDBUsersServ);
+			this.groupBox5.Controls.Add(this.buttonDBRSDU_UPDATE);
+			this.groupBox5.Controls.Add(this.buttonDB2);
+			this.groupBox5.Location = new System.Drawing.Point(10, 85);
+			this.groupBox5.Name = "groupBox5";
+			this.groupBox5.Size = new System.Drawing.Size(446, 119);
+			this.groupBox5.TabIndex = 43;
+			this.groupBox5.TabStop = false;
+			this.groupBox5.Text = "RSDUADMIN";
+			// 
+			// buttonDBunlockpass
+			// 
+			this.buttonDBunlockpass.Location = new System.Drawing.Point(6, 48);
+			this.buttonDBunlockpass.Name = "buttonDBunlockpass";
+			this.buttonDBunlockpass.Size = new System.Drawing.Size(125, 23);
+			this.buttonDBunlockpass.TabIndex = 10;
+			this.buttonDBunlockpass.Text = "UnLock\\Change pass";
+			this.buttonDBunlockpass.UseVisualStyleBackColor = true;
+			this.buttonDBunlockpass.Click += new System.EventHandler(this.ButtonDBunlockpassClick);
+			// 
+			// buttonDBUsersServ
+			// 
+			this.buttonDBUsersServ.Location = new System.Drawing.Point(116, 19);
+			this.buttonDBUsersServ.Name = "buttonDBUsersServ";
+			this.buttonDBUsersServ.Size = new System.Drawing.Size(75, 23);
+			this.buttonDBUsersServ.TabIndex = 9;
+			this.buttonDBUsersServ.Text = "UsersServ";
+			this.buttonDBUsersServ.UseVisualStyleBackColor = true;
+			// 
+			// buttonDBRSDU_UPDATE
+			// 
+			this.buttonDBRSDU_UPDATE.Location = new System.Drawing.Point(6, 19);
+			this.buttonDBRSDU_UPDATE.Name = "buttonDBRSDU_UPDATE";
+			this.buttonDBRSDU_UPDATE.Size = new System.Drawing.Size(104, 23);
+			this.buttonDBRSDU_UPDATE.TabIndex = 8;
+			this.buttonDBRSDU_UPDATE.Text = "RSDU_UPDATE";
+			this.buttonDBRSDU_UPDATE.UseVisualStyleBackColor = true;
+			// 
+			// buttonDB2
+			// 
+			this.buttonDB2.Location = new System.Drawing.Point(197, 19);
+			this.buttonDB2.Name = "buttonDB2";
+			this.buttonDB2.Size = new System.Drawing.Size(96, 23);
+			this.buttonDB2.TabIndex = 7;
+			this.buttonDB2.Text = "ad_serv_ini_v";
+			this.buttonDB2.UseVisualStyleBackColor = true;
+			// 
+			// groupBox4
+			// 
+			this.groupBox4.Controls.Add(this.buttonDBGPU);
+			this.groupBox4.Controls.Add(this.buttonDBvsysstat);
+			this.groupBox4.Controls.Add(this.buttonDBopenedcursorscurrent);
+			this.groupBox4.Controls.Add(this.buttonDBopen_cursor);
+			this.groupBox4.Controls.Add(this.buttonDBvopen_cursor);
+			this.groupBox4.Controls.Add(this.buttonDBvprocess);
+			this.groupBox4.Controls.Add(this.buttonDBgvsession);
+			this.groupBox4.Controls.Add(this.buttonDBvsession);
+			this.groupBox4.Controls.Add(this.buttonDBdba_recyclebin);
+			this.groupBox4.Controls.Add(this.buttonDBvlocked_object);
+			this.groupBox4.Controls.Add(this.buttonDBvpgastat);
+			this.groupBox4.Controls.Add(this.buttonDBvsga_dynamic_components);
+			this.groupBox4.Controls.Add(this.buttonDBundo);
+			this.groupBox4.Controls.Add(this.buttonDBfra);
+			this.groupBox4.Controls.Add(this.buttonDBnls_session_parameters);
+			this.groupBox4.Controls.Add(this.buttonDBvparameter);
+			this.groupBox4.Controls.Add(this.buttonDBvresource_limit);
+			this.groupBox4.Controls.Add(this.buttonDBdba_db_links);
+			this.groupBox4.Controls.Add(this.buttonDBdba_directories);
+			this.groupBox4.Controls.Add(this.buttonDBgvasm_diskgroup);
+			this.groupBox4.Controls.Add(this.buttonDBgvdatabase);
+			this.groupBox4.Controls.Add(this.buttonDBtablespacesize);
+			this.groupBox4.Controls.Add(this.buttonDBdatafile1);
+			this.groupBox4.Controls.Add(this.buttonDBvversion);
+			this.groupBox4.Controls.Add(this.buttonDBdba_tab_privs);
+			this.groupBox4.Controls.Add(this.buttonDBStatus0);
+			this.groupBox4.Controls.Add(this.buttonDBdbtimezone);
+			this.groupBox4.Location = new System.Drawing.Point(10, 210);
+			this.groupBox4.Name = "groupBox4";
+			this.groupBox4.Size = new System.Drawing.Size(446, 337);
+			this.groupBox4.TabIndex = 42;
+			this.groupBox4.TabStop = false;
+			this.groupBox4.Text = "ORACLE";
+			// 
+			// buttonDBGPU
+			// 
+			this.buttonDBGPU.Location = new System.Drawing.Point(171, 163);
+			this.buttonDBGPU.Name = "buttonDBGPU";
+			this.buttonDBGPU.Size = new System.Drawing.Size(75, 23);
+			this.buttonDBGPU.TabIndex = 42;
+			this.buttonDBGPU.Text = "GPU";
+			this.buttonDBGPU.UseVisualStyleBackColor = true;
+			this.buttonDBGPU.Click += new System.EventHandler(this.ButtonDBGPUClick);
+			// 
+			// buttonDBvsysstat
+			// 
+			this.buttonDBvsysstat.Location = new System.Drawing.Point(90, 164);
+			this.buttonDBvsysstat.Name = "buttonDBvsysstat";
+			this.buttonDBvsysstat.Size = new System.Drawing.Size(75, 23);
+			this.buttonDBvsysstat.TabIndex = 41;
+			this.buttonDBvsysstat.Text = "v$sysstat";
+			this.buttonDBvsysstat.UseVisualStyleBackColor = true;
+			this.buttonDBvsysstat.Click += new System.EventHandler(this.ButtonDBvsysstatClick);
+			// 
+			// buttonDBopenedcursorscurrent
+			// 
+			this.buttonDBopenedcursorscurrent.Location = new System.Drawing.Point(6, 193);
+			this.buttonDBopenedcursorscurrent.Name = "buttonDBopenedcursorscurrent";
+			this.buttonDBopenedcursorscurrent.Size = new System.Drawing.Size(143, 23);
+			this.buttonDBopenedcursorscurrent.TabIndex = 40;
+			this.buttonDBopenedcursorscurrent.Text = "opened cursors current";
+			this.buttonDBopenedcursorscurrent.UseVisualStyleBackColor = true;
+			this.buttonDBopenedcursorscurrent.Click += new System.EventHandler(this.ButtonDBopenedcursorscurrentClick);
+			// 
+			// buttonDBopen_cursor
+			// 
+			this.buttonDBopen_cursor.Location = new System.Drawing.Point(157, 193);
+			this.buttonDBopen_cursor.Name = "buttonDBopen_cursor";
+			this.buttonDBopen_cursor.Size = new System.Drawing.Size(75, 23);
+			this.buttonDBopen_cursor.TabIndex = 39;
+			this.buttonDBopen_cursor.Text = "open_cursor";
+			this.buttonDBopen_cursor.UseVisualStyleBackColor = true;
+			this.buttonDBopen_cursor.Click += new System.EventHandler(this.ButtonDBopen_cursorClick);
+			// 
+			// buttonDBvopen_cursor
+			// 
+			this.buttonDBvopen_cursor.Location = new System.Drawing.Point(238, 193);
+			this.buttonDBvopen_cursor.Name = "buttonDBvopen_cursor";
+			this.buttonDBvopen_cursor.Size = new System.Drawing.Size(95, 23);
+			this.buttonDBvopen_cursor.TabIndex = 38;
+			this.buttonDBvopen_cursor.Text = "v$open_cursor";
+			this.buttonDBvopen_cursor.UseVisualStyleBackColor = true;
+			this.buttonDBvopen_cursor.Click += new System.EventHandler(this.ButtonDBvopen_cursorClick);
+			// 
+			// buttonDBvprocess
+			// 
+			this.buttonDBvprocess.Location = new System.Drawing.Point(90, 135);
+			this.buttonDBvprocess.Name = "buttonDBvprocess";
+			this.buttonDBvprocess.Size = new System.Drawing.Size(75, 23);
+			this.buttonDBvprocess.TabIndex = 37;
+			this.buttonDBvprocess.Text = "v$process";
+			this.buttonDBvprocess.UseVisualStyleBackColor = true;
+			this.buttonDBvprocess.Click += new System.EventHandler(this.ButtonDBvprocessClick);
+			// 
+			// buttonDBgvsession
+			// 
+			this.buttonDBgvsession.Location = new System.Drawing.Point(6, 135);
+			this.buttonDBgvsession.Name = "buttonDBgvsession";
+			this.buttonDBgvsession.Size = new System.Drawing.Size(75, 23);
+			this.buttonDBgvsession.TabIndex = 36;
+			this.buttonDBgvsession.Text = "gv$session";
+			this.buttonDBgvsession.UseVisualStyleBackColor = true;
+			this.buttonDBgvsession.Click += new System.EventHandler(this.ButtonDBgvsessionClick);
+			// 
+			// buttonDBvsession
+			// 
+			this.buttonDBvsession.Location = new System.Drawing.Point(6, 164);
+			this.buttonDBvsession.Name = "buttonDBvsession";
+			this.buttonDBvsession.Size = new System.Drawing.Size(75, 23);
+			this.buttonDBvsession.TabIndex = 35;
+			this.buttonDBvsession.Text = "v$session";
+			this.buttonDBvsession.UseVisualStyleBackColor = true;
+			this.buttonDBvsession.Click += new System.EventHandler(this.ButtonDBvsessionClick);
+			// 
+			// buttonDBdba_recyclebin
+			// 
+			this.buttonDBdba_recyclebin.Location = new System.Drawing.Point(6, 105);
+			this.buttonDBdba_recyclebin.Name = "buttonDBdba_recyclebin";
+			this.buttonDBdba_recyclebin.Size = new System.Drawing.Size(90, 23);
+			this.buttonDBdba_recyclebin.TabIndex = 34;
+			this.buttonDBdba_recyclebin.Text = "dba_recyclebin";
+			this.buttonDBdba_recyclebin.UseVisualStyleBackColor = true;
+			this.buttonDBdba_recyclebin.Click += new System.EventHandler(this.ButtonDBdba_recyclebinClick);
+			// 
+			// buttonDBvlocked_object
+			// 
+			this.buttonDBvlocked_object.Location = new System.Drawing.Point(6, 222);
+			this.buttonDBvlocked_object.Name = "buttonDBvlocked_object";
+			this.buttonDBvlocked_object.Size = new System.Drawing.Size(110, 23);
+			this.buttonDBvlocked_object.TabIndex = 33;
+			this.buttonDBvlocked_object.Text = "v$locked_object";
+			this.buttonDBvlocked_object.UseVisualStyleBackColor = true;
+			this.buttonDBvlocked_object.Click += new System.EventHandler(this.ButtonDBvlocked_objectClick);
+			// 
+			// buttonDBvpgastat
+			// 
+			this.buttonDBvpgastat.Location = new System.Drawing.Point(334, 134);
+			this.buttonDBvpgastat.Name = "buttonDBvpgastat";
+			this.buttonDBvpgastat.Size = new System.Drawing.Size(75, 23);
+			this.buttonDBvpgastat.TabIndex = 27;
+			this.buttonDBvpgastat.Text = "v$pgastat";
+			this.buttonDBvpgastat.UseVisualStyleBackColor = true;
+			this.buttonDBvpgastat.Click += new System.EventHandler(this.ButtonDBvpgastatClick);
+			// 
+			// buttonDBvsga_dynamic_components
+			// 
+			this.buttonDBvsga_dynamic_components.Location = new System.Drawing.Point(168, 134);
+			this.buttonDBvsga_dynamic_components.Name = "buttonDBvsga_dynamic_components";
+			this.buttonDBvsga_dynamic_components.Size = new System.Drawing.Size(160, 23);
+			this.buttonDBvsga_dynamic_components.TabIndex = 26;
+			this.buttonDBvsga_dynamic_components.Text = "v$sga_dynamic_components";
+			this.buttonDBvsga_dynamic_components.UseVisualStyleBackColor = true;
+			this.buttonDBvsga_dynamic_components.Click += new System.EventHandler(this.ButtonDBvsga_dynamic_componentsClick);
+			// 
+			// buttonDBundo
+			// 
+			this.buttonDBundo.Location = new System.Drawing.Point(353, 77);
+			this.buttonDBundo.Name = "buttonDBundo";
+			this.buttonDBundo.Size = new System.Drawing.Size(75, 23);
+			this.buttonDBundo.TabIndex = 25;
+			this.buttonDBundo.Text = "UNDO";
+			this.buttonDBundo.UseVisualStyleBackColor = true;
+			this.buttonDBundo.Click += new System.EventHandler(this.ButtonDBundoClick);
+			// 
+			// buttonDBfra
+			// 
+			this.buttonDBfra.Location = new System.Drawing.Point(265, 77);
+			this.buttonDBfra.Name = "buttonDBfra";
+			this.buttonDBfra.Size = new System.Drawing.Size(75, 23);
+			this.buttonDBfra.TabIndex = 24;
+			this.buttonDBfra.Text = "FRA";
+			this.buttonDBfra.UseVisualStyleBackColor = true;
+			this.buttonDBfra.Click += new System.EventHandler(this.ButtonDBfraClick);
+			// 
+			// buttonDBnls_session_parameters
+			// 
+			this.buttonDBnls_session_parameters.Location = new System.Drawing.Point(87, 19);
+			this.buttonDBnls_session_parameters.Name = "buttonDBnls_session_parameters";
+			this.buttonDBnls_session_parameters.Size = new System.Drawing.Size(75, 23);
+			this.buttonDBnls_session_parameters.TabIndex = 23;
+			this.buttonDBnls_session_parameters.Text = "NLS";
+			this.buttonDBnls_session_parameters.UseVisualStyleBackColor = true;
+			this.buttonDBnls_session_parameters.Click += new System.EventHandler(this.ButtonDBnls_session_parametersClick);
+			// 
+			// buttonDBvparameter
+			// 
+			this.buttonDBvparameter.Location = new System.Drawing.Point(353, 106);
+			this.buttonDBvparameter.Name = "buttonDBvparameter";
+			this.buttonDBvparameter.Size = new System.Drawing.Size(75, 23);
+			this.buttonDBvparameter.TabIndex = 22;
+			this.buttonDBvparameter.Text = "v$parameter";
+			this.buttonDBvparameter.UseVisualStyleBackColor = true;
+			this.buttonDBvparameter.Click += new System.EventHandler(this.ButtonDBvparameterClick);
+			// 
+			// buttonDBvresource_limit
+			// 
+			this.buttonDBvresource_limit.Location = new System.Drawing.Point(255, 106);
+			this.buttonDBvresource_limit.Name = "buttonDBvresource_limit";
+			this.buttonDBvresource_limit.Size = new System.Drawing.Size(92, 23);
+			this.buttonDBvresource_limit.TabIndex = 21;
+			this.buttonDBvresource_limit.Text = "v$resource_limit";
+			this.buttonDBvresource_limit.UseVisualStyleBackColor = true;
+			this.buttonDBvresource_limit.Click += new System.EventHandler(this.ButtonDBvresource_limitClick);
+			// 
+			// buttonDBdba_db_links
+			// 
+			this.buttonDBdba_db_links.Location = new System.Drawing.Point(102, 77);
+			this.buttonDBdba_db_links.Name = "buttonDBdba_db_links";
+			this.buttonDBdba_db_links.Size = new System.Drawing.Size(89, 23);
+			this.buttonDBdba_db_links.TabIndex = 20;
+			this.buttonDBdba_db_links.Text = "dba_db_links";
+			this.buttonDBdba_db_links.UseVisualStyleBackColor = true;
+			this.buttonDBdba_db_links.Click += new System.EventHandler(this.ButtonDBdba_db_linksClick);
+			// 
+			// buttonDBdba_directories
+			// 
+			this.buttonDBdba_directories.Location = new System.Drawing.Point(6, 77);
+			this.buttonDBdba_directories.Name = "buttonDBdba_directories";
+			this.buttonDBdba_directories.Size = new System.Drawing.Size(90, 23);
+			this.buttonDBdba_directories.TabIndex = 19;
+			this.buttonDBdba_directories.Text = "dba_directories";
+			this.buttonDBdba_directories.UseVisualStyleBackColor = true;
+			this.buttonDBdba_directories.Click += new System.EventHandler(this.ButtonDBdba_directoriesClick);
+			// 
+			// buttonDBgvasm_diskgroup
+			// 
+			this.buttonDBgvasm_diskgroup.Location = new System.Drawing.Point(102, 48);
+			this.buttonDBgvasm_diskgroup.Name = "buttonDBgvasm_diskgroup";
+			this.buttonDBgvasm_diskgroup.Size = new System.Drawing.Size(107, 23);
+			this.buttonDBgvasm_diskgroup.TabIndex = 18;
+			this.buttonDBgvasm_diskgroup.Text = "gv$asm_diskgroup";
+			this.buttonDBgvasm_diskgroup.UseVisualStyleBackColor = true;
+			this.buttonDBgvasm_diskgroup.Click += new System.EventHandler(this.ButtonDBgvasm_diskgroupClick);
+			// 
+			// buttonDBgvdatabase
+			// 
+			this.buttonDBgvdatabase.Location = new System.Drawing.Point(6, 48);
+			this.buttonDBgvdatabase.Name = "buttonDBgvdatabase";
+			this.buttonDBgvdatabase.Size = new System.Drawing.Size(88, 23);
+			this.buttonDBgvdatabase.TabIndex = 15;
+			this.buttonDBgvdatabase.Text = "gv$database";
+			this.buttonDBgvdatabase.UseVisualStyleBackColor = true;
+			// 
+			// buttonDBtablespacesize
+			// 
+			this.buttonDBtablespacesize.Location = new System.Drawing.Point(353, 48);
+			this.buttonDBtablespacesize.Name = "buttonDBtablespacesize";
+			this.buttonDBtablespacesize.Size = new System.Drawing.Size(75, 23);
+			this.buttonDBtablespacesize.TabIndex = 14;
+			this.buttonDBtablespacesize.Text = "tablespace size";
+			this.buttonDBtablespacesize.UseVisualStyleBackColor = true;
+			// 
+			// buttonDBdatafile1
+			// 
+			this.buttonDBdatafile1.Location = new System.Drawing.Point(263, 19);
+			this.buttonDBdatafile1.Name = "buttonDBdatafile1";
+			this.buttonDBdatafile1.Size = new System.Drawing.Size(165, 23);
+			this.buttonDBdatafile1.TabIndex = 13;
+			this.buttonDBdatafile1.Text = "Размер и свободное место";
+			this.buttonDBdatafile1.UseVisualStyleBackColor = true;
+			this.buttonDBdatafile1.Click += new System.EventHandler(this.ButtonDBdatafile1Click);
+			// 
+			// buttonDBvversion
+			// 
+			this.buttonDBvversion.Location = new System.Drawing.Point(168, 19);
+			this.buttonDBvversion.Name = "buttonDBvversion";
+			this.buttonDBvversion.Size = new System.Drawing.Size(75, 23);
+			this.buttonDBvversion.TabIndex = 12;
+			this.buttonDBvversion.Text = "v$version";
+			this.buttonDBvversion.UseVisualStyleBackColor = true;
+			this.buttonDBvversion.Click += new System.EventHandler(this.ButtonDBvversionClick);
+			// 
+			// buttonDBdba_tab_privs
+			// 
+			this.buttonDBdba_tab_privs.Location = new System.Drawing.Point(102, 106);
+			this.buttonDBdba_tab_privs.Name = "buttonDBdba_tab_privs";
+			this.buttonDBdba_tab_privs.Size = new System.Drawing.Size(89, 23);
+			this.buttonDBdba_tab_privs.TabIndex = 11;
+			this.buttonDBdba_tab_privs.Text = "dba_tab_privs";
+			this.buttonDBdba_tab_privs.UseVisualStyleBackColor = true;
+			// 
+			// buttonDBStatus0
+			// 
+			this.buttonDBStatus0.Location = new System.Drawing.Point(265, 48);
+			this.buttonDBStatus0.Name = "buttonDBStatus0";
+			this.buttonDBStatus0.Size = new System.Drawing.Size(75, 23);
+			this.buttonDBStatus0.TabIndex = 10;
+			this.buttonDBStatus0.Text = "Status";
+			this.buttonDBStatus0.UseVisualStyleBackColor = true;
+			// 
+			// buttonDBdbtimezone
+			// 
+			this.buttonDBdbtimezone.Location = new System.Drawing.Point(6, 19);
+			this.buttonDBdbtimezone.Name = "buttonDBdbtimezone";
+			this.buttonDBdbtimezone.Size = new System.Drawing.Size(75, 23);
+			this.buttonDBdbtimezone.TabIndex = 9;
+			this.buttonDBdbtimezone.Text = "dbtimezone";
+			this.buttonDBdbtimezone.UseVisualStyleBackColor = true;
+			// 
+			// buttonDBCLS
+			// 
+			this.buttonDBCLS.Location = new System.Drawing.Point(350, 62);
+			this.buttonDBCLS.Name = "buttonDBCLS";
+			this.buttonDBCLS.Size = new System.Drawing.Size(106, 23);
+			this.buttonDBCLS.TabIndex = 5;
+			this.buttonDBCLS.Text = "Очистить поле ->";
+			this.buttonDBCLS.UseVisualStyleBackColor = true;
+			this.buttonDBCLS.Click += new System.EventHandler(this.ButtonDBCLSClick);
+			// 
+			// groupBox3
+			// 
+			this.groupBox3.Controls.Add(this.textBoxDBUTC);
+			this.groupBox3.Controls.Add(this.buttonDBUNIX);
+			this.groupBox3.Controls.Add(this.buttonDBtoUnix);
+			this.groupBox3.Controls.Add(this.dateTimePickerDB2);
+			this.groupBox3.Controls.Add(this.dateTimePickerDB1);
+			this.groupBox3.Location = new System.Drawing.Point(9, 14);
+			this.groupBox3.Name = "groupBox3";
+			this.groupBox3.Size = new System.Drawing.Size(447, 42);
+			this.groupBox3.TabIndex = 0;
+			this.groupBox3.TabStop = false;
+			this.groupBox3.Text = "UTC";
+			// 
+			// textBoxDBUTC
+			// 
+			this.textBoxDBUTC.Location = new System.Drawing.Point(295, 16);
+			this.textBoxDBUTC.Name = "textBoxDBUTC";
+			this.textBoxDBUTC.Size = new System.Drawing.Size(134, 20);
+			this.textBoxDBUTC.TabIndex = 4;
+			// 
+			// buttonDBUNIX
+			// 
+			this.buttonDBUNIX.Location = new System.Drawing.Point(256, 16);
+			this.buttonDBUNIX.Name = "buttonDBUNIX";
+			this.buttonDBUNIX.Size = new System.Drawing.Size(38, 20);
+			this.buttonDBUNIX.TabIndex = 3;
+			this.buttonDBUNIX.Text = "<<";
+			this.buttonDBUNIX.UseVisualStyleBackColor = true;
+			this.buttonDBUNIX.Click += new System.EventHandler(this.ButtonDBUNIXClick);
+			// 
+			// buttonDBtoUnix
+			// 
+			this.buttonDBtoUnix.Location = new System.Drawing.Point(204, 16);
+			this.buttonDBtoUnix.Name = "buttonDBtoUnix";
+			this.buttonDBtoUnix.Size = new System.Drawing.Size(40, 20);
+			this.buttonDBtoUnix.TabIndex = 2;
+			this.buttonDBtoUnix.Text = ">>";
+			this.buttonDBtoUnix.UseVisualStyleBackColor = true;
+			this.buttonDBtoUnix.Click += new System.EventHandler(this.ButtonDBtoUnixClick);
+			// 
+			// dateTimePickerDB2
+			// 
+			this.dateTimePickerDB2.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+			this.dateTimePickerDB2.Location = new System.Drawing.Point(117, 16);
+			this.dateTimePickerDB2.Name = "dateTimePickerDB2";
+			this.dateTimePickerDB2.ShowUpDown = true;
+			this.dateTimePickerDB2.Size = new System.Drawing.Size(84, 20);
+			this.dateTimePickerDB2.TabIndex = 1;
+			// 
+			// dateTimePickerDB1
+			// 
+			this.dateTimePickerDB1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+			this.dateTimePickerDB1.Location = new System.Drawing.Point(7, 16);
+			this.dateTimePickerDB1.Name = "dateTimePickerDB1";
+			this.dateTimePickerDB1.Size = new System.Drawing.Size(104, 20);
+			this.dateTimePickerDB1.TabIndex = 0;
+			// 
+			// splitContainer7
+			// 
+			this.splitContainer7.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.splitContainer7.Location = new System.Drawing.Point(0, 0);
+			this.splitContainer7.Name = "splitContainer7";
+			this.splitContainer7.Orientation = System.Windows.Forms.Orientation.Horizontal;
+			// 
+			// splitContainer7.Panel1
+			// 
+			this.splitContainer7.Panel1.Controls.Add(this.richTextBoxDB);
+			// 
+			// splitContainer7.Panel2
+			// 
+			this.splitContainer7.Panel2.Controls.Add(this.dataGridViewDB);
+			this.splitContainer7.Size = new System.Drawing.Size(710, 550);
+			this.splitContainer7.SplitterDistance = 143;
+			this.splitContainer7.TabIndex = 0;
+			// 
+			// richTextBoxDB
+			// 
+			this.richTextBoxDB.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.richTextBoxDB.Location = new System.Drawing.Point(0, 0);
+			this.richTextBoxDB.Name = "richTextBoxDB";
+			this.richTextBoxDB.Size = new System.Drawing.Size(710, 143);
+			this.richTextBoxDB.TabIndex = 0;
+			this.richTextBoxDB.Text = "";
+			// 
+			// dataGridViewDB
+			// 
+			this.dataGridViewDB.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dataGridViewDB.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.dataGridViewDB.Location = new System.Drawing.Point(0, 0);
+			this.dataGridViewDB.Name = "dataGridViewDB";
+			this.dataGridViewDB.Size = new System.Drawing.Size(710, 403);
+			this.dataGridViewDB.TabIndex = 0;
+			// 
 			// tabPage5
 			// 
 			this.tabPage5.Controls.Add(this.richTextBox1);
@@ -1265,6 +2080,7 @@ namespace ArcConfig
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "MainForm";
 			this.Text = "Конфигуратор архивов..";
+			this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainFormFormClosed);
 			this.Load += new System.EventHandler(this.MainFormLoad);
 			this.statusStrip1.ResumeLayout(false);
 			this.statusStrip1.PerformLayout();
@@ -1307,6 +2123,27 @@ namespace ArcConfig
 			this.bindingNavigatorS.ResumeLayout(false);
 			this.bindingNavigatorS.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.bindingSourceS)).EndInit();
+			this.tabPage4.ResumeLayout(false);
+			this.splitContainer5.Panel1.ResumeLayout(false);
+			this.splitContainer5.Panel2.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.splitContainer5)).EndInit();
+			this.splitContainer5.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.dataGridViewCalc)).EndInit();
+			this.tabPage6.ResumeLayout(false);
+			this.splitContainer6.Panel1.ResumeLayout(false);
+			this.splitContainer6.Panel2.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.splitContainer6)).EndInit();
+			this.splitContainer6.ResumeLayout(false);
+			this.panelDB.ResumeLayout(false);
+			this.groupBox5.ResumeLayout(false);
+			this.groupBox4.ResumeLayout(false);
+			this.groupBox3.ResumeLayout(false);
+			this.groupBox3.PerformLayout();
+			this.splitContainer7.Panel1.ResumeLayout(false);
+			this.splitContainer7.Panel2.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.splitContainer7)).EndInit();
+			this.splitContainer7.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.dataGridViewDB)).EndInit();
 			this.tabPage5.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.dataSet1)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.dataSetA)).EndInit();

@@ -21,39 +21,39 @@ using Microsoft.Win32;
 
 namespace ArcConfig
 {
-	/// <summary>
-	/// Description of ConnectDB.
-	/// </summary>
-	public partial class ConnectDB : Form
-	{
-		public ConnectDB()
-		{
-			//
-			// The InitializeComponent() call is required for Windows Forms designer support.
-			//
-			InitializeComponent();
+  /// <summary>
+  /// Description of ConnectDB.
+  /// </summary>
+  public partial class ConnectDB : Form
+  {
+    public ConnectDB()
+    {
+      //
+      // The InitializeComponent() call is required for Windows Forms designer support.
+      //
+      InitializeComponent();
 
-			//
-			// TODO: Add constructor code after the InitializeComponent() call.
-			//
-		}
+      //
+      // TODO: Add constructor code after the InitializeComponent() call.
+      //
+    }
 
-		private OdbcConnection _conn;
+    private OdbcConnection _conn;
 
-		public OdbcConnection Conn
-		{
-			get
-			{
-				return this._conn;
-			}
-		}
+    public OdbcConnection Conn
+    {
+      get
+      {
+        return this._conn;
+      }
+    }
 
     private OdbcConnection _DB_Connect()
     {
-    	string sDsn = _cmbBoxDsn.Text.Trim();
-    	//sDsn = this._txDsn.Text.Trim();
-   	    	
-    	OdbcConnection odbcConnection = new OdbcConnection("DSN=" + sDsn + ";UID=" + this._txLogin.Text + ";PWD=" + this._txPassword.Text + "; Pooling=False;");
+      string sDsn = _cmbBoxDsn.Text.Trim();
+      //sDsn = this._txDsn.Text.Trim();
+
+      OdbcConnection odbcConnection = new OdbcConnection("DSN=" + sDsn + ";UID=" + this._txLogin.Text + ";PWD=" + this._txPassword.Text + "; Pooling=False;");
       if (odbcConnection != null)
       {
         try
@@ -80,37 +80,37 @@ namespace ArcConfig
       this.Close();
     }
 
-		void SimpleButton1Click(object sender, EventArgs e)
-		{
-			this._connectSelect_function();
-		}
+    void SimpleButton1Click(object sender, EventArgs e)
+    {
+      this._connectSelect_function();
+    }
 
-		void ConnectDBFormClosed(object sender, FormClosedEventArgs e)
-		{
-			if (e.CloseReason != CloseReason.UserClosing) return;
-			//Application.Exit();
-		}
+    void ConnectDBFormClosed(object sender, FormClosedEventArgs e)
+    {
+      if (e.CloseReason != CloseReason.UserClosing) return;
+      //Application.Exit();
+    }
 
-		void ConnectDBShown(object sender, EventArgs e)
-		{
-			this._txDsn.Text = "RSDU2";
-			this._txLogin.Text = "rsduadmin";
-			this._txPassword.Text = "passme";
-			this._txPassword.Focus();
-			
-			List<string> list1 = EnumDsn();
-			foreach (string nm in list1) {
-				this._cmbBoxDsn.Items.Add(nm);
-			}
-			this._cmbBoxDsn.Text = "RSDU2";
-			
-		}
+    void ConnectDBShown(object sender, EventArgs e)
+    {
+      this._txDsn.Text = "RSDU2";
+      this._txLogin.Text = "rsduadmin";
+      this._txPassword.Text = "passme";
+      this._txPassword.Focus();
 
-		void ConnectDBKeyDown(object sender, KeyEventArgs e)
-		{
-			if (e.KeyCode != Keys.Return) return;
-			this._connectSelect_function();
-		}
+      List<string> list1 = EnumDsn();
+      foreach (string nm in list1) {
+        this._cmbBoxDsn.Items.Add(nm);
+      }
+      this._cmbBoxDsn.Text = "RSDU2";
+
+    }
+
+    void ConnectDBKeyDown(object sender, KeyEventArgs e)
+    {
+      if (e.KeyCode != Keys.Return) return;
+      this._connectSelect_function();
+    }
 
 
     private List<string> EnumDsn()
@@ -136,5 +136,5 @@ namespace ArcConfig
 
 
 
-	}
+  }
 }

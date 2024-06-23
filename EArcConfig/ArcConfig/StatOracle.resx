@@ -343,4 +343,11 @@ select 'ACTIVE', count(*) from v$session where status = 'ACTIVE'</value>
        AND u.ID = s.id_user
        AND r.ID = i.id_ini_param</value>
   </data>
+  <data name="unlockuser" xml:space="preserve">
+    <value>select id,id_node,login from s_users, db_s_users 
+  where db_s_users.s_id = s_users.id 
+  and login is not null 
+  and db_id is not null and id_type = 1011 
+ order by s_users.id_node ;</value>
+  </data>
 </root>
