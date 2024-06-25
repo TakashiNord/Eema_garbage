@@ -52,7 +52,7 @@ namespace ArcConfig
 		private System.Windows.Forms.ToolStripButton bindingNavigatorMoveNextItem;
 		private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem;
 		private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
-		private System.Windows.Forms.Button button1;
+		private System.Windows.Forms.Button buttonExportM;
 		private System.Data.DataSet dataSetS;
 		private System.Windows.Forms.BindingSource bindingSourceS;
 		private System.Windows.Forms.SaveFileDialog saveFileDialog1;
@@ -149,7 +149,7 @@ namespace ArcConfig
 		private System.Windows.Forms.Button buttonDBCLS;
 		private System.Windows.Forms.Button buttonDBdba_tab_privs;
 		private System.Windows.Forms.Button buttonDBRSDU_UPDATE;
-		private System.Windows.Forms.Button buttonDB2;
+		private System.Windows.Forms.Button buttonDBad_serv_ini;
 		private System.Windows.Forms.Button buttonDBGPU;
 		private System.Windows.Forms.Button buttonDBvsysstat;
 		private System.Windows.Forms.Button buttonDBopenedcursorscurrent;
@@ -239,7 +239,7 @@ namespace ArcConfig
 			this.buttonClear30 = new System.Windows.Forms.Button();
 			this.radioButton5 = new System.Windows.Forms.RadioButton();
 			this.buttonClear = new System.Windows.Forms.Button();
-			this.button1 = new System.Windows.Forms.Button();
+			this.buttonExportM = new System.Windows.Forms.Button();
 			this.radioButton4 = new System.Windows.Forms.RadioButton();
 			this.radioButton3 = new System.Windows.Forms.RadioButton();
 			this.radioButton2 = new System.Windows.Forms.RadioButton();
@@ -327,7 +327,7 @@ namespace ArcConfig
 			this.buttonDBunlockpass = new System.Windows.Forms.Button();
 			this.buttonDBUsersServ = new System.Windows.Forms.Button();
 			this.buttonDBRSDU_UPDATE = new System.Windows.Forms.Button();
-			this.buttonDB2 = new System.Windows.Forms.Button();
+			this.buttonDBad_serv_ini = new System.Windows.Forms.Button();
 			this.groupBox4 = new System.Windows.Forms.GroupBox();
 			this.buttonDBGPU = new System.Windows.Forms.Button();
 			this.buttonDBvsysstat = new System.Windows.Forms.Button();
@@ -690,7 +690,7 @@ namespace ArcConfig
 			this.tabPage1.Controls.Add(this.buttonClear30);
 			this.tabPage1.Controls.Add(this.radioButton5);
 			this.tabPage1.Controls.Add(this.buttonClear);
-			this.tabPage1.Controls.Add(this.button1);
+			this.tabPage1.Controls.Add(this.buttonExportM);
 			this.tabPage1.Controls.Add(this.radioButton4);
 			this.tabPage1.Controls.Add(this.radioButton3);
 			this.tabPage1.Controls.Add(this.radioButton2);
@@ -735,15 +735,15 @@ namespace ArcConfig
 			this.buttonClear.UseVisualStyleBackColor = true;
 			this.buttonClear.Click += new System.EventHandler(this.ButtonClearClick);
 			// 
-			// button1
+			// buttonExportM
 			// 
-			this.button1.Location = new System.Drawing.Point(933, 6);
-			this.button1.Name = "button1";
-			this.button1.Size = new System.Drawing.Size(100, 23);
-			this.button1.TabIndex = 5;
-			this.button1.Text = "Export ->xls";
-			this.button1.UseVisualStyleBackColor = true;
-			this.button1.Click += new System.EventHandler(this.Button1Click);
+			this.buttonExportM.Location = new System.Drawing.Point(933, 6);
+			this.buttonExportM.Name = "buttonExportM";
+			this.buttonExportM.Size = new System.Drawing.Size(100, 23);
+			this.buttonExportM.TabIndex = 5;
+			this.buttonExportM.Text = "Export ->xls";
+			this.buttonExportM.UseVisualStyleBackColor = true;
+			this.buttonExportM.Click += new System.EventHandler(this.Button1Click);
 			// 
 			// radioButton4
 			// 
@@ -1593,7 +1593,7 @@ namespace ArcConfig
 			this.groupBox5.Controls.Add(this.buttonDBunlockpass);
 			this.groupBox5.Controls.Add(this.buttonDBUsersServ);
 			this.groupBox5.Controls.Add(this.buttonDBRSDU_UPDATE);
-			this.groupBox5.Controls.Add(this.buttonDB2);
+			this.groupBox5.Controls.Add(this.buttonDBad_serv_ini);
 			this.groupBox5.Location = new System.Drawing.Point(10, 85);
 			this.groupBox5.Name = "groupBox5";
 			this.groupBox5.Size = new System.Drawing.Size(446, 119);
@@ -1619,6 +1619,7 @@ namespace ArcConfig
 			this.buttonDBUsersServ.TabIndex = 9;
 			this.buttonDBUsersServ.Text = "UsersServ";
 			this.buttonDBUsersServ.UseVisualStyleBackColor = true;
+			this.buttonDBUsersServ.Click += new System.EventHandler(this.ButtonDBUsersServClick);
 			// 
 			// buttonDBRSDU_UPDATE
 			// 
@@ -1628,15 +1629,17 @@ namespace ArcConfig
 			this.buttonDBRSDU_UPDATE.TabIndex = 8;
 			this.buttonDBRSDU_UPDATE.Text = "RSDU_UPDATE";
 			this.buttonDBRSDU_UPDATE.UseVisualStyleBackColor = true;
+			this.buttonDBRSDU_UPDATE.Click += new System.EventHandler(this.ButtonDBRSDU_UPDATEClick);
 			// 
-			// buttonDB2
+			// buttonDBad_serv_ini
 			// 
-			this.buttonDB2.Location = new System.Drawing.Point(197, 19);
-			this.buttonDB2.Name = "buttonDB2";
-			this.buttonDB2.Size = new System.Drawing.Size(96, 23);
-			this.buttonDB2.TabIndex = 7;
-			this.buttonDB2.Text = "ad_serv_ini_v";
-			this.buttonDB2.UseVisualStyleBackColor = true;
+			this.buttonDBad_serv_ini.Location = new System.Drawing.Point(197, 19);
+			this.buttonDBad_serv_ini.Name = "buttonDBad_serv_ini";
+			this.buttonDBad_serv_ini.Size = new System.Drawing.Size(96, 23);
+			this.buttonDBad_serv_ini.TabIndex = 7;
+			this.buttonDBad_serv_ini.Text = "ad_serv_ini_v";
+			this.buttonDBad_serv_ini.UseVisualStyleBackColor = true;
+			this.buttonDBad_serv_ini.Click += new System.EventHandler(this.ButtonDBad_serv_iniClick);
 			// 
 			// groupBox4
 			// 
@@ -1882,6 +1885,7 @@ namespace ArcConfig
 			this.buttonDBgvdatabase.TabIndex = 15;
 			this.buttonDBgvdatabase.Text = "gv$database";
 			this.buttonDBgvdatabase.UseVisualStyleBackColor = true;
+			this.buttonDBgvdatabase.Click += new System.EventHandler(this.ButtonDBgvdatabaseClick);
 			// 
 			// buttonDBtablespacesize
 			// 
@@ -1938,6 +1942,7 @@ namespace ArcConfig
 			this.buttonDBdbtimezone.TabIndex = 9;
 			this.buttonDBdbtimezone.Text = "dbtimezone";
 			this.buttonDBdbtimezone.UseVisualStyleBackColor = true;
+			this.buttonDBdbtimezone.Click += new System.EventHandler(this.ButtonDBdbtimezoneClick);
 			// 
 			// buttonDBCLS
 			// 

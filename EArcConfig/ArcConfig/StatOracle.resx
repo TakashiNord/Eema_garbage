@@ -350,4 +350,60 @@ select 'ACTIVE', count(*) from v$session where status = 'ACTIVE'</value>
   and db_id is not null and id_type = 1011 
  order by s_users.id_node ;</value>
   </data>
+  <data name="unlockuser_unlock" xml:space="preserve">
+    <value>select 
+'ALTER USER ' || login ||  ' ACCOUNT UNLOCK ;' as TX
+from s_users, db_s_users 
+  where db_s_users.s_id = s_users.id 
+  and login is not null 
+  and db_id is not null and id_type = 1011 
+ order by s_users.id_node ;</value>
+  </data>
+  <data name="unlockuser_pass" xml:space="preserve">
+    <value>select 
+'ALTER USER ' || login || ' IDENTIFIED BY RSDU_211 ;' as TX
+from s_users, db_s_users 
+  where db_s_users.s_id = s_users.id 
+  and login is not null 
+  and db_id is not null and id_type = 1011 
+ order by s_users.id_node ;</value>
+  </data>
+  <data name="unlockuser_unpass" xml:space="preserve">
+    <value>select 
+'ALTER USER ' || login ||  ' ACCOUNT UNLOCK ;' as TX
+from s_users, db_s_users 
+  where db_s_users.s_id = s_users.id 
+  and login is not null 
+  and db_id is not null and id_type = 1011 
+ order by s_users.id_node 
+union
+select 
+'ALTER USER ' || login || ' IDENTIFIED BY RSDU_211 ;' as TX
+from s_users, db_s_users 
+  where db_s_users.s_id = s_users.id 
+  and login is not null 
+  and db_id is not null and id_type = 1011 
+ order by s_users.id_node ;
+ </value>
+  </data>
+  <data name="unlockuser_unpass2" xml:space="preserve">
+    <value>select id_node,
+'ALTER USER ' || rpad(login, 17, ' ') || ' ACCOUNT UNLOCK ; ' as TX1,
+'ALTER USER ' || rpad(login, 17, ' ') || ' IDENTIFIED BY RSDU_211 ; ' as TX2
+from s_users, db_s_users 
+where db_s_users.s_id = s_users.id 
+  and login is not null 
+  and db_id is not null and id_type = 1011 
+order by s_users.id_node ;</value>
+  </data>
+  <data name="unlockuser_unpass_sqlite" xml:space="preserve">
+    <value>select id_node,
+'ALTER USER ' || printf('%-17s',login) || ' ACCOUNT UNLOCK ; ' as TX1,
+'ALTER USER ' || printf('%-17s',login) || ' IDENTIFIED BY RSDU_211 ; ' as TX2
+from s_users, db_s_users 
+where db_s_users.s_id = s_users.id 
+  and login is not null 
+  and db_id is not null and id_type = 1011 
+order by s_users.id_node ;</value>
+  </data>
 </root>

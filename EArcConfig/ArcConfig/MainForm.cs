@@ -72,6 +72,14 @@ namespace ArcConfig
     public string OptionDBlink1pass = "";
 
 
+    public int DB_VER_FLAG = 1 ;
+/*
+1) oracle : select * from v$version;
+2) mysql :  SELECT VERSION();
+3) sqlite : select sqlite_version();
+4) Postgres : SELECT version();    
+*/  
+
     public MainForm()
     {
       //
@@ -1521,12 +1529,12 @@ namespace ArcConfig
     }
 
 
-/*
+/* DB_VER_FLAG
  получение Имени БД и version
-oracle : select * from v$version;
-mysql :  SELECT VERSION();
-sqlite : select sqlite_version();
-Postgres : SELECT version();
+1) oracle : select * from v$version;
+2) mysql :  SELECT VERSION();
+3) sqlite : select sqlite_version();
+4) Postgres : SELECT version();
 */
     void _version()
     {
@@ -1545,7 +1553,7 @@ Postgres : SELECT version();
       this.Text = this.Text + "  :  "  ;
 
       string DB_VER = "" ;
-      int DB_VER_FLAG = 0 ;
+      DB_VER_FLAG=-1;
 
       cmd0.CommandText="select sqlite_version()";
       try
@@ -1557,22 +1565,22 @@ Postgres : SELECT version();
          //reader.Close();
          DB_VER_FLAG=-1;
       }
-      if (DB_VER_FLAG==0) {
+      //if (DB_VER_FLAG==0) {
        if (reader.HasRows) {
          while (reader.Read())
          {
             DB_VER = GetTypeValue(ref reader, 0);
             break ;
          } // while
-         DB_VER_FLAG=1;
+         DB_VER_FLAG=3;
          this.Text = this.Text + " Sqlite ( " + DB_VER + " )" ;
        }
        reader.Close();
        //AddLogString("sqlite =" + DB_VER );
-      }
+      //}
       if (DB_VER_FLAG>0) { return ; }
 
-      DB_VER_FLAG = 0 ;
+      //DB_VER_FLAG = 0 ;
       cmd0.CommandText="SELECT VERSION()";
       try
       {
@@ -1582,21 +1590,21 @@ Postgres : SELECT version();
       {
          DB_VER_FLAG=-1;
       }
-      if (DB_VER_FLAG==0) {
+      //if (DB_VER_FLAG==0) {
        if (reader.HasRows) {
          while (reader.Read())
          {
             DB_VER = GetTypeValue(ref reader, 0);
             break ;
          } // while
-         DB_VER_FLAG=1;
+         DB_VER_FLAG=2;
          this.Text = this.Text + " mysql|Postgres ( " + DB_VER + " )" ;
        }
        reader.Close();
-      }
+      //}
       if (DB_VER_FLAG>0) { return ; }
 
-      DB_VER_FLAG = 0 ;
+      //DB_VER_FLAG = 0 ;
       cmd0.CommandText="select banner from v$version";
       try
       {
@@ -1606,7 +1614,7 @@ Postgres : SELECT version();
       {
          DB_VER_FLAG=-1;
       }
-      if (DB_VER_FLAG==0) {
+      //if (DB_VER_FLAG==0) {
        if (reader.HasRows) {
          while (reader.Read())
          {
@@ -1618,7 +1626,7 @@ Postgres : SELECT version();
          this.Text = this.Text + " " + DB_VER ;
        }
        reader.Close();
-      }
+      //}
       if (DB_VER_FLAG>0) { return ; }
 
     }
@@ -3653,8 +3661,8 @@ int ArcAdd(object sender, int selRowNum , int selColNum)
 
      }
 
-   rec1 = null ;
-     cmd1.Dispose();
+    rec1 = null ;
+    cmd1.Dispose();
 
    }
 
@@ -3991,7 +3999,12 @@ int ArcDel(object sender, int selRowNum , int selColNum)
       OdbcDataReader reader = null ;
 
       cmd0.Connection=this._conn;
-
+      
+      dataGridViewDB.DataSource = null;
+      dataGridViewDB.Rows.Clear();
+      dataGridViewDB.Columns.Clear();
+      dataGridViewDB.Refresh();
+      
       ResourceManager ro = new ResourceManager("ArcConfig.StatOracle", Assembly.GetExecutingAssembly());
 
       string strQry = ro.GetString(st);
@@ -4005,8 +4018,6 @@ int ArcDel(object sender, int selRowNum , int selColNum)
 
       Application.DoEvents();
 
-      dataGridViewDB.DataSource = null;
-
       // Указываем запрос для выполнения
       adapter.SelectCommand = cmd0;
       // Заполняем объект источника данных
@@ -4014,15 +4025,16 @@ int ArcDel(object sender, int selRowNum , int selColNum)
       try
       {
          adapter.Fill(dataTable);
-         dataGridViewDB.DataSource = dataTable;
-         //dataGridViewDB.DataSource = dataTable.DefaultView;
-         ////dataGridViewDB.DataSource = ds.Tables[0];
       }
       catch (Exception ex1)
       {
          return (strQry);
       }
 
+      dataGridViewDB.DataSource = dataTable;
+      dataGridViewDB.DataSource = dataTable.DefaultView;
+      // //dataGridViewDB.DataSource = ds.Tables[0];      
+      
       Application.DoEvents();
 
       // To refresh data
@@ -5002,6 +5014,7 @@ void PartitionMedia(object sender, EventArgs e)
         if (Int32.TryParse(dataGridViewCalc[7, i].Value.ToString(), out lVal))
            dataGridViewCalc[7, i].Value=lVal.ToString() ;
         else dataGridViewCalc[7, i].Value="0" ;
+        dataGridViewCalc.Update();
       }
 
       for( int i=1; i<=7; i++ ) {
@@ -5069,11 +5082,6 @@ void PartitionMedia(object sender, EventArgs e)
     {
       //
       richTextBoxDB.Clear();
-    }
-    void ButtonDB2Click(object sender, EventArgs e)
-    {
-      //ad_serv_ini_v
-      richTextBoxDB.AppendText( ReadDataDB( "ad_serv_ini_v" )) ;
     }
     void ButtonDBRSDU_UPDATEClick(object sender, EventArgs e)
     {
@@ -5223,10 +5231,13 @@ void PartitionMedia(object sender, EventArgs e)
     void ButtonDBunlockpassClick(object sender, EventArgs e)
     {
       //unlockuser
-      richTextBoxDB.AppendText( ReadDataDB( "unlockuser" )) ;
-      //
-      // Format('ALTER USER %-16s ACCOUNT UNLOCK ;',[fStr]);
-      // Format('ALTER USER %-16s IDENTIFIED BY RSDU_211 ;',[fStr]);
+      //richTextBoxDB.AppendText( ReadDataDB( "unlockuser_unpass" )) ;
+      if (DB_VER_FLAG==3) {
+         richTextBoxDB.AppendText( ReadDataDB( "unlockuser_unpass_sqlite" )) ;
+      } else {
+      	richTextBoxDB.AppendText( ReadDataDB( "unlockuser_unpass2" )) ;
+      }
+
     }
     void ButtonDBtoUnixClick(object sender, EventArgs e)
     {
@@ -5263,6 +5274,11 @@ void PartitionMedia(object sender, EventArgs e)
       dateTimePickerDB2.Value = t1 ; // sec
       Application.DoEvents();
     }
+		void ButtonDBad_serv_iniClick(object sender, EventArgs e)
+		{
+            //ad_serv_ini_v
+            richTextBoxDB.AppendText( ReadDataDB( "ad_serv_ini_v" )) ;
+		}
 
 
 
