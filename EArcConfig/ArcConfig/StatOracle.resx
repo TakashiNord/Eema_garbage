@@ -316,8 +316,8 @@ select 'ACTIVE', count(*) from v$session where status = 'ACTIVE'</value>
   </data>
   <data name="session2" xml:space="preserve">
     <value>SELECT inst_id, username, module, machine 
- FROM gv$session 
- WHERE username NOT IN ('SYS', 'SYSMAN', 'DBSNMP')</value>
+FROM gv$session 
+WHERE username NOT IN ('SYS', 'SYSMAN', 'DBSNMP')</value>
   </data>
   <data name="Status0" xml:space="preserve">
     <value>select host_name, instance_name, startup_time, status, version, archiver, logins from gv$instance</value>

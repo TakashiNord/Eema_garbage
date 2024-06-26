@@ -71,14 +71,13 @@ namespace ArcConfig
     public string OptionDBlink1login = "cassandra";
     public string OptionDBlink1pass = "";
 
-
     public int DB_VER_FLAG = 1 ;
 /*
 1) oracle : select * from v$version;
 2) mysql :  SELECT VERSION();
 3) sqlite : select sqlite_version();
-4) Postgres : SELECT version();    
-*/  
+4) Postgres : SELECT version();
+*/
 
     public MainForm()
     {
@@ -712,7 +711,7 @@ namespace ArcConfig
     void ToolStripButton2Click(object sender, EventArgs e)
     {
        // save to xls
-       Button1Click(sender,e);
+       ButtonExportMClick(sender,e);
     }
     void RadioButton2CheckedChanged(object sender, EventArgs e)
     {
@@ -1553,7 +1552,7 @@ namespace ArcConfig
       this.Text = this.Text + "  :  "  ;
 
       string DB_VER = "" ;
-      DB_VER_FLAG=-1;
+      DB_VER_FLAG=0 ; // 0 = none
 
       cmd0.CommandText="select sqlite_version()";
       try
@@ -1565,7 +1564,7 @@ namespace ArcConfig
          //reader.Close();
          DB_VER_FLAG=-1;
       }
-      //if (DB_VER_FLAG==0) {
+      if (DB_VER_FLAG==0) {
        if (reader.HasRows) {
          while (reader.Read())
          {
@@ -1577,10 +1576,10 @@ namespace ArcConfig
        }
        reader.Close();
        //AddLogString("sqlite =" + DB_VER );
-      //}
+      }
       if (DB_VER_FLAG>0) { return ; }
 
-      //DB_VER_FLAG = 0 ;
+      DB_VER_FLAG = 0 ;
       cmd0.CommandText="SELECT VERSION()";
       try
       {
@@ -1590,7 +1589,7 @@ namespace ArcConfig
       {
          DB_VER_FLAG=-1;
       }
-      //if (DB_VER_FLAG==0) {
+      if (DB_VER_FLAG==0) {
        if (reader.HasRows) {
          while (reader.Read())
          {
@@ -1601,10 +1600,10 @@ namespace ArcConfig
          this.Text = this.Text + " mysql|Postgres ( " + DB_VER + " )" ;
        }
        reader.Close();
-      //}
+      }
       if (DB_VER_FLAG>0) { return ; }
 
-      //DB_VER_FLAG = 0 ;
+      DB_VER_FLAG = 0 ;
       cmd0.CommandText="select banner from v$version";
       try
       {
@@ -1614,7 +1613,7 @@ namespace ArcConfig
       {
          DB_VER_FLAG=-1;
       }
-      //if (DB_VER_FLAG==0) {
+      if (DB_VER_FLAG==0) {
        if (reader.HasRows) {
          while (reader.Read())
          {
@@ -1626,7 +1625,7 @@ namespace ArcConfig
          this.Text = this.Text + " " + DB_VER ;
        }
        reader.Close();
-      //}
+      }
       if (DB_VER_FLAG>0) { return ; }
 
     }
@@ -2133,126 +2132,7 @@ void _Meas30 ( )
        dataGridViewS.Update();
 
     }
-    void Button1Click(object sender, EventArgs e)
-    {
 
-      // экспорт в csv
-
-      var  dataGridView = (DataGridView)null ;
-      //dataGridView1
-      if (tabControl1.SelectedIndex==0) {
-        dataGridView = (DataGridView)dataGridView1;
-      }
-      if (tabControl1.SelectedIndex==1) {
-        if (tabControlAP.SelectedIndex==0) dataGridView = (DataGridView)dataGridViewA;
-        else dataGridView = (DataGridView)dataGridViewP;
-      }
-      if (tabControl1.SelectedIndex==2) {
-        dataGridView = (DataGridView)dataGridViewS;
-      }
-      if (tabControl1.SelectedIndex==3) {
-        dataGridView = (DataGridView)dataGridViewCalc;
-      }
-      if (tabControl1.SelectedIndex==4) {
-        dataGridView = (DataGridView)dataGridViewDB;
-      }
-
-
-      if (dataGridView==null) return ;
-
-      //if (dataGridView.DataSource==null || dataGridView.DataSource=="" ) return ;
-
-      //SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-      saveFileDialog1.Filter = "CSV|*.csv|Text|*.txt";
-      saveFileDialog1.FilterIndex = 1;
-
-      saveFileDialog1.Title = "Export to CSV-TXT";   //define the name of openfileDialog
-      saveFileDialog1.InitialDirectory = @"Desktop"; //define the initial directory
-      saveFileDialog1.FileName="";
-
-      if (saveFileDialog1.ShowDialog() == DialogResult.Cancel) return;
-      // получаем выбранный файл
-      string filename = saveFileDialog1.FileName;
-      // сохраняем текст в файл
-      switch(saveFileDialog1.FilterIndex)
-      {
-         case 2 :
-            IDataObject objectSave = Clipboard.GetDataObject();
-            dataGridView.ClipboardCopyMode = DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText;
-            dataGridView.SelectAll();
-            Clipboard.SetDataObject(dataGridView.GetClipboardContent());
-            string pattern = @"^;(.*)$";
-            string str = (Clipboard.GetText(TextDataFormat.Text)).Replace(" ", ";");
-            str=Regex.Replace(str, pattern, "$1",RegexOptions.Multiline);
-            File.WriteAllText(filename, str, Encoding.UTF8);
-            if (objectSave != null)
-            {
-                Clipboard.SetDataObject(objectSave);
-            }
-            dataGridView.ClearSelection();
-         break;
-         default :
-              string fileCSV = "";
-              for (int f = 0; f < dataGridView.ColumnCount; f++)
-                  fileCSV += (dataGridView.Columns[f].HeaderText + ";");
-              fileCSV += "\t" + Environment.NewLine;
-              string st , tst ;
-              using (StreamWriter wr = new StreamWriter(filename, false, Encoding.UTF8) )  // Encoding.GetEncoding("windows-1251"))
-              {
-                for (int i = 0; i < dataGridView.RowCount ; i++)
-                {
-                    for (int j = 0; j < dataGridView.ColumnCount; j++)
-                    {
-                      st = "" ;
-                      try
-                      {
-                        st = (dataGridView[j, i].Value).ToString() ;
-                      }
-                      catch (Exception ex1)
-                      {
-                        st = "" ;
-                      }
-
-                      tst = "" ;
-                      try
-                      {
-                        tst = dataGridView[j, i].Value.GetType().ToString() ;
-                      }
-                      catch (Exception ex1)
-                      {
-                        tst = "" ;
-                      }
-
-                      if ("System.Windows.Forms.CheckState"==tst) {
-                        //Checked Unchecked
-                        if (OptionSaveFormat>0) {
-                          if (st=="Checked") st="1";
-                          if (st=="Unchecked") st="0";
-                        } else {
-                          if (st=="Checked") st="x";
-                          if (st=="Unchecked") st="";
-                        }
-                      }
-                      fileCSV += st + ";";
-                      //fileCSV += ( dataGridView[j, i].Value).ToString() + ";";
-                    }
-                    //fileCSV += "\t" + Environment.NewLine;
-                    wr.WriteLine(fileCSV);
-                    fileCSV="";
-                }
-              } //using
-
-                //StreamWriter wr = new StreamWriter(filename, false, Encoding.UTF8); // Encoding.GetEncoding("windows-1251")
-                //wr.Write(fileCSV);
-                //wr.Close();
-
-          break ;
-      }
-      String s1="filename="+filename + " -> Save";
-      AddLogString(s1);
-      toolStripStatusLabel2.Text = s1;
-      //MessageBox.Show("Export to \n " + filename + " \n done");
-    }
     void Timer1Tick(object sender, EventArgs e)
     {
        // событие обновления только при выборе вьюшки arc_stat_current_v  1 раз в 10 сек
@@ -3009,60 +2889,6 @@ void _Meas30 ( )
         } // if (isChecked)
 
       }
-
-    }
-    void Button2Click(object sender, EventArgs e)
-    {
-       //устанавливаем редактируемый объект
-       //_profileData.ID="";
-       //_profileData.ID_TBLLST="";
-       //_profileData.ID_GINFO="";
-       //_profileData.IS_WRITEON=false ;
-       //_profileData.STACK_NAME="NONE";
-       //_profileData.LAST_UPDATE="";
-       //_profileData.IS_VIEWABLE=false ;
-       _profileData=(ARC_SUBSYST_PROFILE)propertyGridA.SelectedObject;
-       String ID= _profileData.ID ;
-       String IS_WRITEON = "1" ;
-       if (_profileData.IS_WRITEON==false) { IS_WRITEON="0"; }
-       String IS_VIEWABLE = "1" ;
-       if (_profileData.IS_VIEWABLE==false) { IS_VIEWABLE="0"; }
-       String STACK_NAME = _profileData.STACK_NAME.Trim() ;
-       if (STACK_NAME.Equals("")) { return ; }
-
-       string stSchema="";
-       if (OptionSchemaName>0) {
-           stSchema=OptionSchemaMain + "." ;
-       }
-
-       string strS = "UPDATE "+stSchema+"ARC_SUBSYST_PROFILE SET " +
-          " IS_WRITEON=" + IS_WRITEON +
-          ", IS_VIEWABLE=" + IS_VIEWABLE +
-          ", STACK_NAME='" + STACK_NAME + "'" +
-          " WHERE ID=" + ID;
-
-       AddLogString(" SAVE -> " + strS);
-
-       // Объект для выполнения запросов к базе данных
-       OdbcCommand cmd0 = new OdbcCommand();
-       OdbcDataReader reader = null ;
-
-       cmd0.Connection=this._conn;
-
-       cmd0.CommandText=strS;
-       try
-       {
-         reader = cmd0.ExecuteReader();
-       }
-       catch (Exception ex1)
-       {
-         AddLogString("Button2 SAVE -> выполнение алгоритма  - прервано." + ex1.Message);
-         //reader.Close();
-         return ;
-       }
-       reader.Close();
-
-       AddLogString(" SAVE -> done ");
 
     }
     void DataGridViewACellClick(object sender, DataGridViewCellEventArgs e)
@@ -3999,12 +3825,12 @@ int ArcDel(object sender, int selRowNum , int selColNum)
       OdbcDataReader reader = null ;
 
       cmd0.Connection=this._conn;
-      
+
       dataGridViewDB.DataSource = null;
       dataGridViewDB.Rows.Clear();
       dataGridViewDB.Columns.Clear();
       dataGridViewDB.Refresh();
-      
+
       ResourceManager ro = new ResourceManager("ArcConfig.StatOracle", Assembly.GetExecutingAssembly());
 
       string strQry = ro.GetString(st);
@@ -4025,16 +3851,17 @@ int ArcDel(object sender, int selRowNum , int selColNum)
       try
       {
          adapter.Fill(dataTable);
+         dataGridViewDB.DataSource = dataTable;
       }
       catch (Exception ex1)
       {
          return (strQry);
       }
 
-      dataGridViewDB.DataSource = dataTable;
-      dataGridViewDB.DataSource = dataTable.DefaultView;
-      // //dataGridViewDB.DataSource = ds.Tables[0];      
-      
+      //dataGridViewDB.DataSource = dataTable;
+      //dataGridViewDB.DataSource = dataTable.DefaultView;
+      // //dataGridViewDB.DataSource = ds.Tables[0];
+
       Application.DoEvents();
 
       // To refresh data
@@ -4961,31 +4788,7 @@ void PartitionMedia(object sender, EventArgs e)
             ;
           }
     }
-    void Button3Click(object sender, EventArgs e)
-    {
-      //strQry:='select count (*) from DA_COLUMN_DATA_V;';
-      dataGridViewCalc[1, 1].Value=ReadDataVal( "DA_COLUMN_DATA_V" );
 
-      //strQry:='select count (*) from elreg_list_v;';
-      dataGridViewCalc[2, 1].Value=ReadDataVal( "elreg_list_v" );
-
-      //strQry:='select count (*) from phreg_list_v';
-      dataGridViewCalc[3, 1].Value=ReadDataVal( "phreg_list_v" );
-
-      //strQry:='select count (*) from pswt_list_v';
-      dataGridViewCalc[4, 1].Value=ReadDataVal( "pswt_list_v" );
-
-      //strQry:='select count (*) from auto_list_v';
-      dataGridViewCalc[5, 1].Value=ReadDataVal( "auto_list_v" );
-
-      //strQry:='select count (*) from EXDATA_LIST_V';
-      dataGridViewCalc[6, 1].Value=ReadDataVal( "EXDATA_LIST_V" );
-
-      //strQry:='select count (*) from DG_LIST';
-      dataGridViewCalc[7, 1].Value=ReadDataVal( "DG_LIST" );
-
-      dataGridViewCalc.Rows[1].DefaultCellStyle.Font  = new Font(DataGridView.DefaultFont, FontStyle.Bold);
-    }
     void ButtonCalcsClick(object sender, EventArgs e)
     {
       //
@@ -5034,10 +4837,10 @@ void PartitionMedia(object sender, EventArgs e)
         dataGridViewCalc[i, 7].Value=i7.ToString();
         double i8 = Math.Round(0.5 * (i5+i6+i7) , 3) ;
         dataGridViewCalc[i, 8].Value=i8.ToString();
-        
+
         double i9 = Math.Round(1 * (i5+i6+i7+i8) , 3) ;
-        dataGridViewCalc[i, 9].Value=i9.ToString();        
-        
+        dataGridViewCalc[i, 9].Value=i9.ToString();
+
       }
 
     }
@@ -5235,13 +5038,13 @@ void PartitionMedia(object sender, EventArgs e)
       if (DB_VER_FLAG==3) {
          richTextBoxDB.AppendText( ReadDataDB( "unlockuser_unpass_sqlite" )) ;
       } else {
-      	richTextBoxDB.AppendText( ReadDataDB( "unlockuser_unpass2" )) ;
+        richTextBoxDB.AppendText( ReadDataDB( "unlockuser_unpass2" )) ;
       }
 
     }
     void ButtonDBtoUnixClick(object sender, EventArgs e)
     {
-          // DateTime -> Unix
+        // DateTime -> Unix
         DateTime t1 = dateTimePickerDB1.Value ; // date
         DateTime t2 = dateTimePickerDB2.Value ; // sec
         string s1 = t1.ToShortDateString() + " " + t2.ToLongTimeString() ;
@@ -5274,11 +5077,206 @@ void PartitionMedia(object sender, EventArgs e)
       dateTimePickerDB2.Value = t1 ; // sec
       Application.DoEvents();
     }
-		void ButtonDBad_serv_iniClick(object sender, EventArgs e)
-		{
-            //ad_serv_ini_v
-            richTextBoxDB.AppendText( ReadDataDB( "ad_serv_ini_v" )) ;
-		}
+    void ButtonDBad_serv_iniClick(object sender, EventArgs e)
+    {
+       //ad_serv_ini_v
+       richTextBoxDB.AppendText( ReadDataDB( "ad_serv_ini_v" )) ;
+    }
+    void ButtonParamCalcClick(object sender, EventArgs e)
+    {
+      //strQry:='select count (*) from DA_COLUMN_DATA_V;';
+      dataGridViewCalc[1, 1].Value=ReadDataVal( "DA_COLUMN_DATA_V" );
+
+      //strQry:='select count (*) from elreg_list_v;';
+      dataGridViewCalc[2, 1].Value=ReadDataVal( "elreg_list_v" );
+
+      //strQry:='select count (*) from phreg_list_v';
+      dataGridViewCalc[3, 1].Value=ReadDataVal( "phreg_list_v" );
+
+      //strQry:='select count (*) from pswt_list_v';
+      dataGridViewCalc[4, 1].Value=ReadDataVal( "pswt_list_v" );
+
+      //strQry:='select count (*) from auto_list_v';
+      dataGridViewCalc[5, 1].Value=ReadDataVal( "auto_list_v" );
+
+      //strQry:='select count (*) from EXDATA_LIST_V';
+      dataGridViewCalc[6, 1].Value=ReadDataVal( "EXDATA_LIST_V" );
+
+      //strQry:='select count (*) from DG_LIST';
+      dataGridViewCalc[7, 1].Value=ReadDataVal( "DG_LIST" );
+
+      dataGridViewCalc.Rows[1].DefaultCellStyle.Font  = new Font(DataGridView.DefaultFont, FontStyle.Bold);
+
+    }
+    void ButtonSaveClick(object sender, EventArgs e)
+    {
+       //устанавливаем редактируемый объект
+       //_profileData.ID="";
+       //_profileData.ID_TBLLST="";
+       //_profileData.ID_GINFO="";
+       //_profileData.IS_WRITEON=false ;
+       //_profileData.STACK_NAME="NONE";
+       //_profileData.LAST_UPDATE="";
+       //_profileData.IS_VIEWABLE=false ;
+       _profileData=(ARC_SUBSYST_PROFILE)propertyGridA.SelectedObject;
+       String ID= _profileData.ID ;
+       String IS_WRITEON = "1" ;
+       if (_profileData.IS_WRITEON==false) { IS_WRITEON="0"; }
+       String IS_VIEWABLE = "1" ;
+       if (_profileData.IS_VIEWABLE==false) { IS_VIEWABLE="0"; }
+       String STACK_NAME = _profileData.STACK_NAME.Trim() ;
+       if (STACK_NAME.Equals("")) { return ; }
+
+       string stSchema="";
+       if (OptionSchemaName>0) {
+           stSchema=OptionSchemaMain + "." ;
+       }
+
+       string strS = "UPDATE "+stSchema+"ARC_SUBSYST_PROFILE SET " +
+          " IS_WRITEON=" + IS_WRITEON +
+          ", IS_VIEWABLE=" + IS_VIEWABLE +
+          ", STACK_NAME='" + STACK_NAME + "'" +
+          " WHERE ID=" + ID;
+
+       AddLogString(" SAVE -> " + strS);
+
+       // Объект для выполнения запросов к базе данных
+       OdbcCommand cmd0 = new OdbcCommand();
+
+       cmd0.Connection=this._conn;
+
+       int crec1 = 0 ;
+       cmd0.CommandText=strS;
+       try
+       {
+         crec1=cmd0.ExecuteNonQuery();
+       }
+       catch (Exception ex1)
+       {
+         AddLogString(" SAVE -> error = " + ex1.Message);
+       }
+       AddLogString(" SAVE -> done = " + crec1.ToString());
+
+    }
+    void ButtonExportMClick(object sender, EventArgs e)
+    {
+      // экспорт в csv
+
+      var  dataGridView = (DataGridView)null ;
+      //dataGridView1
+      if (tabControl1.SelectedIndex==0) {
+        dataGridView = (DataGridView)dataGridView1;
+      }
+      if (tabControl1.SelectedIndex==1) {
+        if (tabControlAP.SelectedIndex==0) dataGridView = (DataGridView)dataGridViewA;
+        else dataGridView = (DataGridView)dataGridViewP;
+      }
+      if (tabControl1.SelectedIndex==2) {
+        dataGridView = (DataGridView)dataGridViewS;
+      }
+      if (tabControl1.SelectedIndex==3) {
+        dataGridView = (DataGridView)dataGridViewCalc;
+      }
+      if (tabControl1.SelectedIndex==4) {
+        dataGridView = (DataGridView)dataGridViewDB;
+      }
+
+
+      if (dataGridView==null) return ;
+
+      //if (dataGridView.DataSource==null || dataGridView.DataSource=="" ) return ;
+
+      //SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+      saveFileDialog1.Filter = "CSV|*.csv|Text|*.txt";
+      saveFileDialog1.FilterIndex = 1;
+
+      saveFileDialog1.Title = "Export to CSV-TXT";   //define the name of openfileDialog
+      saveFileDialog1.InitialDirectory = @"Desktop"; //define the initial directory
+      saveFileDialog1.FileName="";
+
+      if (saveFileDialog1.ShowDialog() == DialogResult.Cancel) return;
+      // получаем выбранный файл
+      string filename = saveFileDialog1.FileName;
+      // сохраняем текст в файл
+      switch(saveFileDialog1.FilterIndex)
+      {
+         case 2 :
+            IDataObject objectSave = Clipboard.GetDataObject();
+            dataGridView.ClipboardCopyMode = DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText;
+            dataGridView.SelectAll();
+            Clipboard.SetDataObject(dataGridView.GetClipboardContent());
+            string pattern = @"^;(.*)$";
+            string str = (Clipboard.GetText(TextDataFormat.Text)).Replace(" ", ";");
+            str=Regex.Replace(str, pattern, "$1",RegexOptions.Multiline);
+            File.WriteAllText(filename, str, Encoding.UTF8);
+            if (objectSave != null)
+            {
+                Clipboard.SetDataObject(objectSave);
+            }
+            dataGridView.ClearSelection();
+         break;
+         default :
+              string fileCSV = "";
+              for (int f = 0; f < dataGridView.ColumnCount; f++)
+                  fileCSV += (dataGridView.Columns[f].HeaderText + ";");
+              fileCSV += "\t" + Environment.NewLine;
+              string st , tst ;
+              using (StreamWriter wr = new StreamWriter(filename, false, Encoding.UTF8) )  // Encoding.GetEncoding("windows-1251"))
+              {
+                for (int i = 0; i < dataGridView.RowCount ; i++)
+                {
+                    for (int j = 0; j < dataGridView.ColumnCount; j++)
+                    {
+                      st = "" ;
+                      try
+                      {
+                        st = (dataGridView[j, i].Value).ToString() ;
+                      }
+                      catch (Exception ex1)
+                      {
+                        st = "" ;
+                      }
+
+                      tst = "" ;
+                      try
+                      {
+                        tst = dataGridView[j, i].Value.GetType().ToString() ;
+                      }
+                      catch (Exception ex1)
+                      {
+                        tst = "" ;
+                      }
+
+                      if ("System.Windows.Forms.CheckState"==tst) {
+                        //Checked Unchecked
+                        if (OptionSaveFormat>0) {
+                          if (st=="Checked") st="1";
+                          if (st=="Unchecked") st="0";
+                        } else {
+                          if (st=="Checked") st="x";
+                          if (st=="Unchecked") st="";
+                        }
+                      }
+                      fileCSV += st + ";";
+                      //fileCSV += ( dataGridView[j, i].Value).ToString() + ";";
+                    }
+                    //fileCSV += "\t" + Environment.NewLine;
+                    wr.WriteLine(fileCSV);
+                    fileCSV="";
+                }
+              } //using
+
+                //StreamWriter wr = new StreamWriter(filename, false, Encoding.UTF8); // Encoding.GetEncoding("windows-1251")
+                //wr.Write(fileCSV);
+                //wr.Close();
+
+          break ;
+      }
+      String s1="filename="+filename + " -> Save";
+      AddLogString(s1);
+      toolStripStatusLabel2.Text = s1;
+      //MessageBox.Show("Export to \n " + filename + " \n done");
+    }
 
 
 

@@ -204,8 +204,8 @@ namespace ArcConfig
 		{
 			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.statusStrip1 = new System.Windows.Forms.StatusStrip();
 			this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
 			this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -743,7 +743,7 @@ namespace ArcConfig
 			this.buttonExportM.TabIndex = 5;
 			this.buttonExportM.Text = "Export ->xls";
 			this.buttonExportM.UseVisualStyleBackColor = true;
-			this.buttonExportM.Click += new System.EventHandler(this.Button1Click);
+			this.buttonExportM.Click += new System.EventHandler(this.ButtonExportMClick);
 			// 
 			// radioButton4
 			// 
@@ -795,23 +795,23 @@ namespace ArcConfig
 			| System.Windows.Forms.AnchorStyles.Left) 
 			| System.Windows.Forms.AnchorStyles.Right)));
 			this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-			dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-			dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-			dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+			dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+			dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+			dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
 			this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-			dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-			dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-			this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
+			dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+			dataGridViewCellStyle4.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+			dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+			this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle4;
 			this.dataGridView1.Location = new System.Drawing.Point(6, 36);
 			this.dataGridView1.Name = "dataGridView1";
 			this.dataGridView1.Size = new System.Drawing.Size(1168, 508);
@@ -1098,7 +1098,7 @@ namespace ArcConfig
 			this.buttonSave.TabIndex = 1;
 			this.buttonSave.Text = "Сохранить ..";
 			this.buttonSave.UseVisualStyleBackColor = true;
-			this.buttonSave.Click += new System.EventHandler(this.Button2Click);
+			this.buttonSave.Click += new System.EventHandler(this.ButtonSaveClick);
 			// 
 			// propertyGridA
 			// 
@@ -1493,7 +1493,7 @@ namespace ArcConfig
 			this.buttonParamCalc.TabIndex = 4;
 			this.buttonParamCalc.Text = "Количество параметров в разделах.";
 			this.buttonParamCalc.UseVisualStyleBackColor = true;
-			this.buttonParamCalc.Click += new System.EventHandler(this.Button3Click);
+			this.buttonParamCalc.Click += new System.EventHandler(this.ButtonParamCalcClick);
 			// 
 			// label2
 			// 
@@ -1895,6 +1895,7 @@ namespace ArcConfig
 			this.buttonDBtablespacesize.TabIndex = 14;
 			this.buttonDBtablespacesize.Text = "tablespace size";
 			this.buttonDBtablespacesize.UseVisualStyleBackColor = true;
+			this.buttonDBtablespacesize.Click += new System.EventHandler(this.ButtonDBtablespacesizeClick);
 			// 
 			// buttonDBdatafile1
 			// 
@@ -1924,6 +1925,7 @@ namespace ArcConfig
 			this.buttonDBdba_tab_privs.TabIndex = 11;
 			this.buttonDBdba_tab_privs.Text = "dba_tab_privs";
 			this.buttonDBdba_tab_privs.UseVisualStyleBackColor = true;
+			this.buttonDBdba_tab_privs.Click += new System.EventHandler(this.ButtonDBdba_tab_privsClick);
 			// 
 			// buttonDBStatus0
 			// 
@@ -1933,6 +1935,7 @@ namespace ArcConfig
 			this.buttonDBStatus0.TabIndex = 10;
 			this.buttonDBStatus0.Text = "Status";
 			this.buttonDBStatus0.UseVisualStyleBackColor = true;
+			this.buttonDBStatus0.Click += new System.EventHandler(this.ButtonDBStatus0Click);
 			// 
 			// buttonDBdbtimezone
 			// 
