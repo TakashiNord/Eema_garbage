@@ -3851,16 +3851,22 @@ int ArcDel(object sender, int selRowNum , int selColNum)
       try
       {
          adapter.Fill(dataTable);
-         dataGridViewDB.DataSource = dataTable;
       }
       catch (Exception ex1)
       {
          return (strQry);
       }
 
-      //dataGridViewDB.DataSource = dataTable;
-      //dataGridViewDB.DataSource = dataTable.DefaultView;
-      // //dataGridViewDB.DataSource = ds.Tables[0];
+      try
+      {
+         dataGridViewDB.DataSource = dataTable;
+         //dataGridViewDB.DataSource = dataTable.DefaultView;
+         // //dataGridViewDB.DataSource = ds.Tables[0];
+      }
+      catch (Exception ex1)
+      {
+         return (strQry);
+      }
 
       Application.DoEvents();
 
@@ -5277,6 +5283,13 @@ void PartitionMedia(object sender, EventArgs e)
       toolStripStatusLabel2.Text = s1;
       //MessageBox.Show("Export to \n " + filename + " \n done");
     }
+		void DataGridViewDBDataError(object sender, DataGridViewDataErrorEventArgs e)
+		{
+		    //
+		    // //e.Cancel=false;
+		    e.ThrowException=false;
+ 
+		}
 
 
 
