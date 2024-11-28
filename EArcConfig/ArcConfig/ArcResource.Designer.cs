@@ -476,16 +476,16 @@ namespace ArcConfig {
 		///   Looks up a localized string similar to SELECT ID, id_obj, id_meas_type, NAME, alias , 0 as  ID_GINFO
 		///FROM meas_list
 		///WHERE id_meas_type IN (
-		/// SELECT m.ID FROM sys_meas_types m, sys_ptyp t WHERE m.id_type = t.ID AND t.id_node = 1
+		/// -- SELECT m.ID FROM sys_meas_types m, sys_ptyp t WHERE m.id_type = t.ID AND t.id_node = 1
+		/// SELECT ID FROM ELREG_TLIST_V
 		///) AND is_exdata = 0
 		///UNION
 		///SELECT ID, id_obj, id_meas_type, NAME, alias , MEAS_ARC.ID_GINFO  as  ID_GINFO
 		///FROM meas_list , MEAS_ARC
 		///WHERE id_meas_type IN (
-		///  SELECT m.ID FROM sys_meas_types m, sys_ptyp t WHERE m.id_type = t.ID AND t.id_node = 1
-		///) AND is_exdata = 0
-		/// AND MEAS_LIST.ID=MEAS_ARC.ID_PARAM
-		/// ORDER BY I [rest of string was truncated]&quot;;.
+		///  -- SELECT m.ID FROM sys_meas_types m, sys_ptyp t WHERE m.id_type = t.ID AND t.id_node = 1
+		///  SELECT ID FROM ELREG_TLIST_V
+		/// [rest of string was truncated]&quot;;.
 		/// </summary>
 		internal static string ELREG_LIST_V {
 			get {
@@ -506,7 +506,8 @@ namespace ArcConfig {
 		///   Looks up a localized string similar to SELECT ID, id_obj as id_node, id_meas_type, NAME, alias
 		///FROM meas_list
 		///WHERE id_meas_type IN (
-		/// SELECT m.ID FROM sys_meas_types m, sys_ptyp t WHERE m.id_type = t.ID AND t.id_node = 1
+		/// -- SELECT m.ID FROM sys_meas_types m, sys_ptyp t WHERE m.id_type = t.ID AND t.id_node = 1
+		/// SELECT ID FROM ELREG_TLIST_V
 		///).
 		/// </summary>
 		internal static string ELREG_LIST_V00 {
@@ -519,16 +520,17 @@ namespace ArcConfig {
 		///   Looks up a localized string similar to SELECT ID, id_obj, id_meas_type, NAME, alias , 0 as  ID_GINFO
 		///FROM meas_list
 		///WHERE id_meas_type IN (
-		/// SELECT m.ID FROM sys_meas_types m, sys_ptyp t WHERE m.id_type = t.ID AND t.id_node = 1
+		///  -- SELECT m.ID FROM sys_meas_types m, sys_ptyp t WHERE m.id_type = t.ID AND t.id_node = 1
+		/// SELECT ID FROM ELREG_TLIST_V
 		///) 
 		///UNION
 		///SELECT ID, id_obj, id_meas_type, NAME, alias , MEAS_ARC.ID_GINFO  as  ID_GINFO
 		///FROM meas_list , MEAS_ARC
 		///WHERE id_meas_type IN (
-		///  SELECT m.ID FROM sys_meas_types m, sys_ptyp t WHERE m.id_type = t.ID AND t.id_node = 1
+		///  -- SELECT m.ID FROM sys_meas_types m, sys_ptyp t WHERE m.id_type = t.ID AND t.id_node = 1
+		///  SELECT ID FROM ELREG_TLIST_V
 		///) 
-		/// AND MEAS_LIST.ID=MEAS_ARC.ID_PARAM
-		/// ORDER BY ID ASC  .
+		/// AND MEAS_LI [rest of string was truncated]&quot;;.
 		/// </summary>
 		internal static string ELREG_LIST_V1 {
 			get {
@@ -683,16 +685,15 @@ namespace ArcConfig {
 		///   Looks up a localized string similar to   SELECT ID, id_obj, id_meas_type, NAME, alias, 0 as ID_GINFO
 		///     FROM meas_list
 		///    WHERE id_meas_type IN (
-		///   SELECT m.ID FROM sys_meas_types m, sys_ptyp t
-		///    WHERE m.id_type = t.ID
-		///      AND t.id_node &lt;&gt; 1
-		///      AND m.define_alias NOT LIKE (&apos;MEAS_SWITCH_STATE%&apos;)
-		///      AND m.define_alias NOT LIKE (&apos;MEAS_SIGNAL_STATE%&apos;)
-		///      AND m.define_alias NOT LIKE (&apos;MEAS_STATE_EQUIP&apos;)
-		///      AND m.define_alias NOT LIKE (&apos;MEAS_START_STOP&apos;)
-		///   ) AND is_exdata = 0
-		///  UNION
-		///  SELECT ID, id_obj, id_meas_type,  [rest of string was truncated]&quot;;.
+		///   -- SELECT m.ID FROM sys_meas_types m, sys_ptyp t
+		///   -- WHERE m.id_type = t.ID
+		///   --   AND t.id_node &lt;&gt; 1
+		///   --   AND m.define_alias NOT LIKE (&apos;MEAS_SWITCH_STATE%&apos;)
+		///   --   AND m.define_alias NOT LIKE (&apos;MEAS_SIGNAL_STATE%&apos;)
+		///   --   AND m.define_alias NOT LIKE (&apos;MEAS_STATE_EQUIP&apos;)
+		///   --   AND m.define_alias NOT LIKE (&apos;MEAS_START_STOP&apos;)
+		///   SELECT ID FROM phreg_tlist_v
+		///   ) AND is_exdata = [rest of string was truncated]&quot;;.
 		/// </summary>
 		internal static string PHREG_LIST_V {
 			get {
@@ -714,13 +715,14 @@ namespace ArcConfig {
 		///   Looks up a localized string similar to SELECT ID, id_obj as id_node, id_meas_type, NAME, alias
 		///     FROM meas_list
 		///    WHERE id_meas_type IN (
-		///   SELECT m.ID FROM sys_meas_types m, sys_ptyp t
-		///    WHERE m.id_type = t.ID
-		///      AND t.id_node &lt;&gt; 1
-		///      AND m.define_alias NOT LIKE (&apos;MEAS_SWITCH_STATE%&apos;)
-		///      AND m.define_alias NOT LIKE (&apos;MEAS_SIGNAL_STATE%&apos;)
-		///      AND m.define_alias NOT LIKE (&apos;MEAS_STATE_EQUIP&apos;)
-		///      AND m.define_alias NOT LIKE (&apos;MEAS_START_STOP&apos;)
+		///  -- SELECT m.ID FROM sys_meas_types m, sys_ptyp t
+		///  --  WHERE m.id_type = t.ID
+		///  --    AND t.id_node &lt;&gt; 1
+		///  --    AND m.define_alias NOT LIKE (&apos;MEAS_SWITCH_STATE%&apos;)
+		///  --    AND m.define_alias NOT LIKE (&apos;MEAS_SIGNAL_STATE%&apos;)
+		///  --    AND m.define_alias NOT LIKE (&apos;MEAS_STATE_EQUIP&apos;)
+		///  --    AND m.define_alias NOT LIKE (&apos;MEAS_START_STOP&apos;)
+		///   SELECT ID FROM phreg_tlist_v
 		///   ) .
 		/// </summary>
 		internal static string PHREG_LIST_V00 {
@@ -733,16 +735,17 @@ namespace ArcConfig {
 		///   Looks up a localized string similar to   SELECT ID, id_obj, id_meas_type, NAME, alias, 0 as ID_GINFO
 		///     FROM meas_list
 		///    WHERE id_meas_type IN (
-		///   SELECT m.ID FROM sys_meas_types m, sys_ptyp t
-		///    WHERE m.id_type = t.ID
-		///      AND t.id_node &lt;&gt; 1
-		///      AND m.define_alias NOT LIKE (&apos;MEAS_SWITCH_STATE%&apos;)
-		///      AND m.define_alias NOT LIKE (&apos;MEAS_SIGNAL_STATE%&apos;)
-		///      AND m.define_alias NOT LIKE (&apos;MEAS_STATE_EQUIP&apos;)
-		///      AND m.define_alias NOT LIKE (&apos;MEAS_START_STOP&apos;)
+		///   -- SELECT m.ID FROM sys_meas_types m, sys_ptyp t
+		///  --  WHERE m.id_type = t.ID
+		///  --    AND t.id_node &lt;&gt; 1
+		/// --     AND m.define_alias NOT LIKE (&apos;MEAS_SWITCH_STATE%&apos;)
+		///   --   AND m.define_alias NOT LIKE (&apos;MEAS_SIGNAL_STATE%&apos;)
+		///  --    AND m.define_alias NOT LIKE (&apos;MEAS_STATE_EQUIP&apos;)
+		///  --    AND m.define_alias NOT LIKE (&apos;MEAS_START_STOP&apos;)
+		///   SELECT ID FROM phreg_tlist_v
 		///   ) 
 		///  UNION
-		///  SELECT ID, id_obj, id_meas_type, NAME, alias, MEAS [rest of string was truncated]&quot;;.
+		///  SE [rest of string was truncated]&quot;;.
 		/// </summary>
 		internal static string PHREG_LIST_V1 {
 			get {
