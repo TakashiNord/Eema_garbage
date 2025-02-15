@@ -350,7 +350,7 @@ void PanelSquareBorder(FILE *outfile, char * textId, int x, int y, int h, int w,
   fprintf(outfile ,"}");
 }
 
-void PanelCommandButton(FILE *outfile, char * textId, int x, int y, int h, int w, char * textLabel, int zplane )
+void PanelCommandButton(FILE *outfile, char * textId, int x, int y, int h, int w, char * textLabel, int  attr_bg_color, int zplane )
 {
   char sdp[256]; int jj ;
   int n = 0;
@@ -369,7 +369,13 @@ void PanelCommandButton(FILE *outfile, char * textId, int x, int y, int h, int w
   fprintf(outfile ,"y: %d,\n",y);
   fprintf(outfile ,"height: %d,\n",h);
   fprintf(outfile ,"width: %d,\n",w);
-  fprintf(outfile ,"style:{'z-index': %d},\n",zplane); // ----------------------
+  //fprintf(outfile ,"border : true ,\n");
+  fprintf(outfile ,"style: 'z-index: %d",zplane); // ----------------------
+  if(attr_bg_color != 0)
+  {
+    fprintf(outfile ,";background-color:%s", Int2HexWeb(attr_bg_color) );
+  }
+  fprintf(outfile ,"',\n");
   fprintf(outfile ,"text: '%s',\n",textLabel);
   fprintf(outfile ,"id: '%s',\n",textId);
   ////fprintf(outfile ,"onClick: function(){ panelsHelper.openWindow(this.isContained.id,this.id);}\n"); метода нет
@@ -638,8 +644,9 @@ int GetCtrlElem ( FILE *outfile, int panelHandle, int ctrlID )
      case CTRL_PICTURE_COMMAND_BUTTON_LS:
 
        GetCtrlAttribute(panelHandle, ctrlID, ATTR_LABEL_VISIBLE,   &attr_label_visible); //!!
-
-       PanelCommandButton(outfile,attr_constant_name,x,y,h,w,(attr_label_visible)?attr_label_text:"",attr_zplane_position);
+	   GetCtrlAttribute(panelHandle, ctrlID, ATTR_CMD_BUTTON_COLOR,   &attr_bg_color);
+	   
+       PanelCommandButton(outfile,attr_constant_name,x,y,h,w,(attr_label_visible)?attr_label_text:"",attr_bg_color,attr_zplane_position);
 
      break;
 
