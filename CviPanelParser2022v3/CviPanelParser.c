@@ -169,7 +169,7 @@ void PanelTextMsg(FILE *outfile, char * textId, int x, int y,int h, int w, char 
 
   if(attr_label_bold == 1 || attr_label_color != 0 || attr_bg_color != 0 || attr_text_justify != 0 || attr_text_point_size != 16)
   {
-    attr_text_point_size=iFont(attr_text_point_size,h,w,attr_label_bold);
+    if (font_output > 0) attr_text_point_size=iFont(attr_text_point_size,h,w,attr_label_bold);
     if(attr_text_point_size != 16 )
     {
       if(flagColumn)
@@ -259,9 +259,9 @@ void PanelNumeric(FILE *outfile, char * textId, int x,int y, int h, int w, int a
   //fprintf(outfile ,"//allowBlank:false,\n");
   fprintf(outfile ,"emptyText: '0',\n"); //подсказка в текстовом поле
   //fprintf(outfile ,"//hideLabel: true,\n");
-  //fprintf(outfile ,"'font-family': 'Arial',\n"); // Courier  "Times New Roman", serif  Geneva, Arial, Helvetica, sans-serif
+  if (font_output > 0) fprintf(outfile ,"'font-family': 'Arial',\n"); // Courier  "Times New Roman", serif  Geneva, Arial, Helvetica, sans-serif
   ////fontWeight {normal, bold, bolder, lighter}
-  attr_text_point_size=iFont(attr_text_point_size,h,w,attr_label_bold);
+  if (font_output > 0) attr_text_point_size=iFont(attr_text_point_size,h,w,attr_label_bold);
   fprintf(outfile ,"fieldStyle: {");
   fprintf(outfile ,"'fontSize': '%dpx','fontWeight': '%s','color': '%s' ", attr_text_point_size, (attr_label_bold ? "bold":"normal"), s1);
   if(bg_color != 0)
@@ -357,14 +357,14 @@ void PanelSquareBorder(FILE *outfile, char * textId, int x, int y, int h, int w,
   fprintf(outfile ,"}");
 }
 
-void PanelCommandButton(FILE *outfile, char * textId, int x, int y, int h, int w, char * textLabel, int  label_color, int  bg_color, int zplane )
+void PanelCommandButton(FILE *outfile, char * textId, int x, int y, int h, int w, char * textLabel, int label_color, int bg_color, int zplane )
 {
   char sdp[256]; int jj ;
-  int n = 0;
   char s1[10],s2[10];
+  int n = 0;
+
   sprintf(s1,"%s",Int2HexWeb(label_color));
   sprintf(s2,"%s",Int2HexWeb(bg_color));
-
 
   if(flagNotFirst){fprintf(outfile ,",\n");} else {flagNotFirst = 1;};
 
@@ -386,21 +386,24 @@ void PanelCommandButton(FILE *outfile, char * textId, int x, int y, int h, int w
   fprintf(outfile ,"ui: 'normal',\n"); //'default'
   // ----------------------
   
-  //if ( 0==strcmp(textLabel,"") ) {
-  //  fprintf(outfile ,"style: 'z-index: %d",zplane);
-  //  fprintf(outfile ,";background: %s ; ", "transparent" );
-  //  fprintf(outfile ,"',\n");
-  //} else {
+  if ( 0==strcmp(textLabel,"") ) {
+    fprintf(outfile ,"style: 'z-index: %d",zplane);
+    //fprintf(outfile ,";background: %s ; ", "transparent" );
+	fprintf(outfile ,";opacity: 0.7 " );
+	fprintf(outfile ,";border: 1px dotted #000000;"); // dashed  dotted
+	fprintf(outfile ,";background : %s ", s2 );
+	fprintf(outfile ,";background-color: %s ", s2 );
+    fprintf(outfile ,";background-image: linear-gradient( to top left, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) 30%%, rgba(0, 0, 0, 0) ); ");
+    fprintf(outfile ,"',\n");
+  } else {
 	  fprintf(outfile ,"style: ' color: %s ; z-index: %d ",s1, zplane);
-	  fprintf(outfile ,";border: 1px solid #000000; border-radius: 2px;");
+	  fprintf(outfile ,";border: 1px groove #000000; border-radius: 2px;"); // solid  groove
 	  fprintf(outfile ,";background : %s ", s2 );
 	  fprintf(outfile ,";background-color: %s ", s2 );
       fprintf(outfile ,";background-image: linear-gradient( to top left, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) 30%%, rgba(0, 0, 0, 0) ); ");
 	  fprintf(outfile ,";box-shadow: inset 1px 1px 2px rgba(255, 255, 255, 0.6), inset -1px -1px 2px rgba(0, 0, 0, 0.6); ");
-	  //fprintf(outfile ,";background : linear-gradient(gray, %s ) ", s2 );
-	  //box-shadow: inset 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
       fprintf(outfile ,";',\n" );
-    //}
+  }
 
   ////fprintf(outfile ,"onClick: function(){ panelsHelper.openWindow(this.isContained.id,this.id);}\n"); метода нет
   if (level==0)
@@ -441,7 +444,7 @@ int GetCtrlElem ( FILE *outfile, int panelHandle, int ctrlID )
   int attr_label_visible;
   int attr_ctrl_style;
   int attr_label_bold;
-  int attr_label_color = 0;
+  int attr_label_color = 15794175;
   int attr_bg_color  = 0;
   int attr_text_justify;
   int attr_size_to_text;
@@ -673,11 +676,11 @@ int GetCtrlElem ( FILE *outfile, int panelHandle, int ctrlID )
 
        GetCtrlAttribute(panelHandle, ctrlID, ATTR_LABEL_VISIBLE,   &attr_label_visible); //!!
 	   
-	   //len = strlen(attr_label_text);
-	   //if(attr_label_visible && len>0)
-       //{
-       //  GetCtrlAttribute(panelHandle, ctrlID, ATTR_LABEL_COLOR,     &attr_label_color);
-	   //}
+	   len = strlen(attr_label_text);
+	   if(attr_label_visible && len>0)
+       {
+         GetCtrlAttribute(panelHandle, ctrlID, ATTR_LABEL_COLOR,     &attr_label_color);
+	   }
 
 	   GetCtrlAttribute(panelHandle, ctrlID, ATTR_CMD_BUTTON_COLOR,   &attr_bg_color);
 	   
@@ -894,6 +897,7 @@ int TabCtrlElem ( FILE *outfile, int panelHandle, int ctrlIDdef )
 int main (int argc, char *argv[])
 {
     int error = 0;
+	int i = 0 ;
 
     int showPanel = 0; // true, если нужно показать панель, ее закрытие осуществлетс нажатием на крестик
 
@@ -920,20 +924,14 @@ int main (int argc, char *argv[])
 
     if (argc < 2)
     {
-      fprintf (stderr, "usage: <exe> uirfile \n");
+      fprintf (stderr, "usage: <exe> uirfile ?font? ?win? \n");
       return -1;
     }
 
-    // если число аргументов больше 2, то показываем Панель
-    if (argc > 2)
+    for (i=0; i < argc; ++i)
     {
-      showPanel = 1;
-    }
-
-    // вывод ohbanf
-    if (argc > 3)
-    {
-      font_output = 1;
+        if (0==strcmp(argv[i],"font")) font_output = 1; // вывод шрифта
+		if (0==strcmp(argv[i],"win")) showPanel = 1; // если число аргументов больше 2, то показываем Панель
     }
 
     if (InitCVIRTE(0, 0, 0) == 0)
@@ -1047,8 +1045,8 @@ int main (int argc, char *argv[])
     CloseCVIRTE();
 
 
-
-	  cp1251_to_utf8( outputFileNameTemp , outputFileName ) ;
+    // конечная перкодировка из Tmp файла в UTF8
+    cp1251_to_utf8( outputFileNameTemp , outputFileName ) ;
 
     if (remove(outputFileNameTemp) == 0) {
         fprintf (stderr,"File %s deleted successfully.\n", outputFileNameTemp);
