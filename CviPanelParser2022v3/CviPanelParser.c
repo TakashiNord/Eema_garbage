@@ -235,10 +235,11 @@ void PanelTextMsg(FILE *outfile, char * textId, int x, int y,int h, int w, char 
 }
 
 
-void PanelNumeric(FILE *outfile, char * textId, int x,int y, int h, int w, int attr_precision, int attr_label_bold, int attr_text_point_size, int text_color , int zplane )
+void PanelNumeric(FILE *outfile, char * textId, int x,int y, int h, int w, int attr_precision, int attr_label_bold, int attr_text_point_size, int text_color , int bg_color , int zplane )
 {
-  char s1[10];
+  char s1[10],s2[10];
   sprintf(s1,"%s",Int2HexWeb(text_color));
+  sprintf(s2,"%s",Int2HexWeb(bg_color));
 
   if(flagNotFirst){fprintf(outfile ,",\n");} else {flagNotFirst = 1;};
 
@@ -261,7 +262,13 @@ void PanelNumeric(FILE *outfile, char * textId, int x,int y, int h, int w, int a
   //fprintf(outfile ,"'font-family': 'Arial',\n"); // Courier  "Times New Roman", serif  Geneva, Arial, Helvetica, sans-serif
   ////fontWeight {normal, bold, bolder, lighter}
   attr_text_point_size=iFont(attr_text_point_size,h,w,attr_label_bold);
-  fprintf(outfile ,"fieldStyle: {'fontSize': '%dpx','fontWeight': '%s','color': '%s'}\n", attr_text_point_size, (attr_label_bold ? "bold":"normal"), s1);
+  fprintf(outfile ,"fieldStyle: {");
+  fprintf(outfile ,"'fontSize': '%dpx','fontWeight': '%s','color': '%s' ", attr_text_point_size, (attr_label_bold ? "bold":"normal"), s1);
+  if(bg_color != 0)
+  {
+    fprintf(outfile ,",'background':'%s' ", s2 );
+  }  
+  fprintf(outfile ,"}\n");
   fprintf(outfile ,"}");
 }
 
@@ -350,10 +357,15 @@ void PanelSquareBorder(FILE *outfile, char * textId, int x, int y, int h, int w,
   fprintf(outfile ,"}");
 }
 
-void PanelCommandButton(FILE *outfile, char * textId, int x, int y, int h, int w, char * textLabel, int  attr_bg_color, int zplane )
+void PanelCommandButton(FILE *outfile, char * textId, int x, int y, int h, int w, char * textLabel, int  label_color, int  bg_color, int zplane )
 {
   char sdp[256]; int jj ;
   int n = 0;
+  char s1[10],s2[10];
+  sprintf(s1,"%s",Int2HexWeb(label_color));
+  sprintf(s2,"%s",Int2HexWeb(bg_color));
+
+
   if(flagNotFirst){fprintf(outfile ,",\n");} else {flagNotFirst = 1;};
 
   n=0;
@@ -369,15 +381,27 @@ void PanelCommandButton(FILE *outfile, char * textId, int x, int y, int h, int w
   fprintf(outfile ,"y: %d,\n",y);
   fprintf(outfile ,"height: %d,\n",h);
   fprintf(outfile ,"width: %d,\n",w);
-  //fprintf(outfile ,"border : true ,\n");
-  fprintf(outfile ,"style: 'z-index: %d",zplane); // ----------------------
-  if(attr_bg_color != 0)
-  {
-    fprintf(outfile ,";background-color:%s", Int2HexWeb(attr_bg_color) );
-  }
-  fprintf(outfile ,"',\n");
   fprintf(outfile ,"text: '%s',\n",textLabel);
   fprintf(outfile ,"id: '%s',\n",textId);
+  fprintf(outfile ,"ui: 'normal',\n"); //'default'
+  // ----------------------
+  
+  //if ( 0==strcmp(textLabel,"") ) {
+  //  fprintf(outfile ,"style: 'z-index: %d",zplane);
+  //  fprintf(outfile ,";background: %s ; ", "transparent" );
+  //  fprintf(outfile ,"',\n");
+  //} else {
+	  fprintf(outfile ,"style: ' color: %s ; z-index: %d ",s1, zplane);
+	  fprintf(outfile ,";border: 1px solid #000000; border-radius: 2px;");
+	  fprintf(outfile ,";background : %s ", s2 );
+	  fprintf(outfile ,";background-color: %s ", s2 );
+      fprintf(outfile ,";background-image: linear-gradient( to top left, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) 30%%, rgba(0, 0, 0, 0) ); ");
+	  fprintf(outfile ,";box-shadow: inset 1px 1px 2px rgba(255, 255, 255, 0.6), inset -1px -1px 2px rgba(0, 0, 0, 0.6); ");
+	  //fprintf(outfile ,";background : linear-gradient(gray, %s ) ", s2 );
+	  //box-shadow: inset 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+      fprintf(outfile ,";',\n" );
+    //}
+
   ////fprintf(outfile ,"onClick: function(){ panelsHelper.openWindow(this.isContained.id,this.id);}\n"); метода нет
   if (level==0)
     fprintf(outfile ,"onClick: function(){ panelsHelper.openWindow(this.up('panel').id,this.id);}\n");
@@ -417,8 +441,8 @@ int GetCtrlElem ( FILE *outfile, int panelHandle, int ctrlID )
   int attr_label_visible;
   int attr_ctrl_style;
   int attr_label_bold;
-  int attr_label_color;
-  int attr_bg_color;
+  int attr_label_color = 0;
+  int attr_bg_color  = 0;
   int attr_text_justify;
   int attr_size_to_text;
   int attr_precision;
@@ -447,6 +471,7 @@ int GetCtrlElem ( FILE *outfile, int panelHandle, int ctrlID )
 
 
   // z-index в CVI отличается от CSS
+  //attr_zplane_position = attr_zplane_position ;
   attr_zplane_position = z_index - attr_zplane_position ;
   if (attr_zplane_position<0) attr_zplane_position=0;
 
@@ -497,8 +522,9 @@ int GetCtrlElem ( FILE *outfile, int panelHandle, int ctrlID )
        GetCtrlAttribute(panelHandle, ctrlID, ATTR_TEXT_JUSTIFY,    &attr_text_justify);
        //ATTR_TEXT_JUSTIFY : VAL_LEFT_JUSTIFIED VAL_RIGHT_JUSTIFIED VAL_CENTER_JUSTIFIED
 	   GetCtrlAttribute(panelHandle, ctrlID, ATTR_TEXT_COLOR,        &attr_label_color);
+	   GetCtrlAttribute(panelHandle, ctrlID, ATTR_TEXT_BGCOLOR,      &attr_bg_color); // --------
 
-       PanelNumeric(outfile,attr_constant_name,x,y,h,w,0,attr_label_bold,attr_text_point_size,attr_label_color,attr_zplane_position);
+       PanelNumeric(outfile,attr_constant_name,x,y,h,w,0,attr_label_bold,attr_text_point_size,attr_label_color,attr_bg_color,attr_zplane_position);
 
      break;
 
@@ -512,8 +538,9 @@ int GetCtrlElem ( FILE *outfile, int panelHandle, int ctrlID )
        GetCtrlAttribute(panelHandle, ctrlID, ATTR_TEXT_JUSTIFY,    &attr_text_justify);
        //ATTR_TEXT_JUSTIFY : VAL_LEFT_JUSTIFIED VAL_RIGHT_JUSTIFIED VAL_CENTER_JUSTIFIED
        GetCtrlAttribute(panelHandle, ctrlID, ATTR_TEXT_COLOR,        &attr_label_color);
+	   GetCtrlAttribute(panelHandle, ctrlID, ATTR_TEXT_BGCOLOR,      &attr_bg_color); // --------
 
-       PanelNumeric(outfile,attr_constant_name,x,y,h,w,attr_precision,attr_label_bold,attr_text_point_size,attr_label_color,attr_zplane_position);
+       PanelNumeric(outfile,attr_constant_name,x,y,h,w,attr_precision,attr_label_bold,attr_text_point_size,attr_label_color,attr_bg_color,attr_zplane_position);
 
        len = strlen(attr_label_text);
        if(attr_label_visible && len>0)
@@ -608,6 +635,7 @@ int GetCtrlElem ( FILE *outfile, int panelHandle, int ctrlID )
        GetCtrlAttribute(panelHandle, ctrlID, ATTR_ON_COLOR,  &attr_on_color);
        GetCtrlAttribute(panelHandle, ctrlID, ATTR_OFF_COLOR, &attr_off_color);
        GetCtrlAttribute(panelHandle, ctrlID, ATTR_LABEL_VISIBLE,   &attr_label_visible); //!!
+	   GetCtrlAttribute(panelHandle, ctrlID, ATTR_DFLT_VALUE,   &attr_dflt_value_int); //!!
 
        PanelSquareLed(outfile,attr_constant_name,x,y,h,w,attr_on_color,attr_off_color,attr_zplane_position);
 
@@ -644,9 +672,16 @@ int GetCtrlElem ( FILE *outfile, int panelHandle, int ctrlID )
      case CTRL_PICTURE_COMMAND_BUTTON_LS:
 
        GetCtrlAttribute(panelHandle, ctrlID, ATTR_LABEL_VISIBLE,   &attr_label_visible); //!!
+	   
+	   //len = strlen(attr_label_text);
+	   //if(attr_label_visible && len>0)
+       //{
+       //  GetCtrlAttribute(panelHandle, ctrlID, ATTR_LABEL_COLOR,     &attr_label_color);
+	   //}
+
 	   GetCtrlAttribute(panelHandle, ctrlID, ATTR_CMD_BUTTON_COLOR,   &attr_bg_color);
 	   
-       PanelCommandButton(outfile,attr_constant_name,x,y,h,w,(attr_label_visible)?attr_label_text:"",attr_bg_color,attr_zplane_position);
+       PanelCommandButton(outfile,attr_constant_name,x,y,h,w,(attr_label_visible)?attr_label_text:"",attr_label_color,attr_bg_color,attr_zplane_position);
 
      break;
 
@@ -870,7 +905,7 @@ int main (int argc, char *argv[])
     char panelName[MAX_STRING_SIZE]="\0";
 
     char outputFileName[MAX_STRING_SIZE]="\0";
-	  char outputFileNameTemp[MAX_STRING_SIZE]="\0";
+	char outputFileNameTemp[MAX_STRING_SIZE]="\0";
     char driveName[3];
     char dirName[256];
     char fileName[256];
@@ -960,8 +995,8 @@ int main (int argc, char *argv[])
     sprintf( outputFileName, "%s%s%s.js\0",driveName,dirName,panelName) ;
     fprintf (stderr, "! File out: %s \n",outputFileName);
 
-	  sprintf( outputFileNameTemp, "%s%s%s_tmp.js\0",driveName,dirName,panelName) ;
-	  fprintf (stderr, "! File out: %s \n",outputFileNameTemp);
+	sprintf( outputFileNameTemp, "%s%s%s_tmp.js\0",driveName,dirName,panelName) ;
+	fprintf (stderr, "! File out: %s \n",outputFileNameTemp);
 
     outfile = fopen(outputFileNameTemp,"w+");
 
