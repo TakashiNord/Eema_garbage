@@ -132,10 +132,12 @@ char * Int2HexWeb(int iVal)
 
 
 void PanelTextMsg(FILE *outfile, char * textId, int x, int y,int h, int w, char * textMsg,
-    int attr_label_bold, int attr_label_color, int attr_bg_color, int attr_text_justify, int attr_text_point_size, int zplane )
+    int attr_label_bold, int attr_label_color, int attr_bg_color, int attr_text_justify, int attr_text_point_size, int attr_text_underline , int zplane )
 {
-  int flagColumn = 0;
   int n = 0;
+  char s1[10],s2[10];
+  sprintf(s1,"%s",Int2HexWeb(attr_label_color));
+  sprintf(s2,"%s",Int2HexWeb(attr_bg_color));
 
   if(flagNotFirst){fprintf(outfile ,",\n");} else {flagNotFirst = 1;};
 
@@ -158,75 +160,38 @@ void PanelTextMsg(FILE *outfile, char * textId, int x, int y,int h, int w, char 
     fprintf(outfile ,"width:%d,\n",w);
   }
 
-  // Courier  "Times New Roman", serif  Geneva, Arial, Helvetica, sans-serif  font-family: Arial
-
+  // style
   if (font_output==0)
-    fprintf(outfile ,"style: 'padding:1px 0 2px 4px;z-index: %d",zplane);
+    fprintf(outfile ,"style: 'padding:1px 0 2px 4px;z-index: %d ",zplane);
   else
-    fprintf(outfile ,"style: 'padding:1px 0 2px 4px;z-index: %d;font-family: Arial",zplane);
+    fprintf(outfile ,"style: 'padding:1px 0 2px 4px;z-index: %d;font-family: Arial ",zplane);
+    // Courier  "Times New Roman", serif  Geneva, Arial, Helvetica, sans-serif  font-family: Arial
+  fprintf(outfile ,";color:%s",s1 );
+  if (attr_bg_color != VAL_TRANSPARENT )
+     fprintf(outfile ,";background-color:%s",s2 );
+  else 
+     fprintf(outfile ,";background-color:%s", "transparent" );
 
-  flagColumn = 1;
+  // изменение щрифта
+  if (font_output > 0) attr_text_point_size=iFont(attr_text_point_size,h,w,attr_label_bold);
+  //else
+    if (attr_text_point_size != 16 && attr_text_point_size > 10 )
+                 attr_text_point_size = (int)(attr_text_point_size*3/4) ;
 
-  if(attr_label_bold == 1 || attr_label_color != 0 || attr_bg_color != 0 || attr_text_justify != 0 || attr_text_point_size != 16)
+  if (attr_text_point_size > 0 )
+    fprintf(outfile ,";font-size: %dpt ", attr_text_point_size );
+  if (attr_label_bold == 1 )
+    fprintf(outfile ,";font-weight:bold ");
+  if (attr_text_justify != 0 )
   {
-    if (font_output > 0) attr_text_point_size=iFont(attr_text_point_size,h,w,attr_label_bold);
-    if(attr_text_point_size != 16 )
-    {
-      if(flagColumn)
-        fprintf(outfile ,";");
-      else
-        flagColumn = 1;
+    fprintf(outfile ,";text-align:");
 
-      fprintf(outfile ,"font-size: %dpt", (int)(attr_text_point_size*3/4));
-    }
-
-    if(attr_label_bold == 1 )
-    {
-      if(flagColumn)
-        fprintf(outfile ,";");
-      else
-        flagColumn = 1;
-
-      fprintf(outfile ,"font-weight:bold");
-    }
-
-    if(attr_label_color != 0 )
-    {
-      if(flagColumn)
-        fprintf(outfile ,";");
-      else
-        flagColumn = 1;
-
-      fprintf(outfile ,"color:%s",Int2HexWeb(attr_label_color) );
-    }
-
-    if(attr_bg_color != VAL_TRANSPARENT )
-    {
-      if(flagColumn)
-        fprintf(outfile ,";");
-      else
-        flagColumn = 1;
-
-      fprintf(outfile ,"background-color:%s",Int2HexWeb(attr_bg_color) );
-    }
-
-    if(attr_text_justify != 0 )
-    {
-      if(flagColumn)
-        fprintf(outfile ,";");
-      else
-        flagColumn = 1;
-
-      fprintf(outfile ,"text-align:") ;
-
-      if(attr_text_justify == VAL_RIGHT_JUSTIFIED)
-        fprintf(outfile ,"right");
-      else
-        if(attr_text_justify == VAL_CENTER_JUSTIFIED)
-        fprintf(outfile ,"center");
-    }
+    if(attr_text_justify == VAL_RIGHT_JUSTIFIED)  fprintf(outfile ,"right");
+    else
+      if(attr_text_justify == VAL_CENTER_JUSTIFIED) fprintf(outfile ,"center");
   }
-
+  if (attr_text_underline != 0 )
+    fprintf(outfile ,";text-decoration: underline; text-decoration-color: %s ;",s1) ;
   fprintf(outfile ,"',\n");
 
   fprintf(outfile ,"id: '%s',\n",textId);
@@ -235,7 +200,8 @@ void PanelTextMsg(FILE *outfile, char * textId, int x, int y,int h, int w, char 
 }
 
 
-void PanelNumeric(FILE *outfile, char * textId, int x,int y, int h, int w, int attr_precision, int attr_label_bold, int attr_text_point_size, int text_color , int bg_color , int zplane )
+void PanelNumeric(FILE *outfile, char * textId, int x,int y, int h, int w, int attr_precision,
+    int attr_label_bold, int attr_text_point_size, int text_color , int bg_color , int text_justify, int text_underline, int zplane )
 {
   char s1[10],s2[10];
   sprintf(s1,"%s",Int2HexWeb(text_color));
@@ -245,30 +211,40 @@ void PanelNumeric(FILE *outfile, char * textId, int x,int y, int h, int w, int a
 
   fprintf(outfile ,"{\n");
   fprintf(outfile ,"xtype: 'textfield',\n");
+  fprintf(outfile ,"id: '%s',\n",textId);
   //fprintf(outfile ,"fieldLabel: '%s',\n",textId);
   fprintf(outfile ,"x: %d,\n",x);
   fprintf(outfile ,"y: %d,\n",y);
   fprintf(outfile ,"height: %d,\n",h);
   fprintf(outfile ,"width: %d,\n",w);
-  //fprintf(outfile ,"readOnly: true,\n");
   fprintf(outfile ,"style:'z-index: %d',\n",zplane);
   fprintf(outfile ,"decimalPrecision: %d,\n",attr_precision);
-  fprintf(outfile ,"id: '%s',\n",textId);
   fprintf(outfile ,"hideLabel: true,\n");
   fprintf(outfile ,"disabled: true,\n");
-  //fprintf(outfile ,"//allowBlank:false,\n");
   fprintf(outfile ,"emptyText: '0',\n"); //подсказка в текстовом поле
-  //fprintf(outfile ,"//hideLabel: true,\n");
+
   if (font_output > 0) fprintf(outfile ,"'font-family': 'Arial',\n"); // Courier  "Times New Roman", serif  Geneva, Arial, Helvetica, sans-serif
-  ////fontWeight {normal, bold, bolder, lighter}
   if (font_output > 0) attr_text_point_size=iFont(attr_text_point_size,h,w,attr_label_bold);
+
+  ////fontWeight {normal, bold, bolder, lighter}
   fprintf(outfile ,"fieldStyle: {");
   fprintf(outfile ,"'fontSize': '%dpx','fontWeight': '%s','color': '%s' ", attr_text_point_size, (attr_label_bold ? "bold":"normal"), s1);
-  if(bg_color != 0)
+  if (bg_color != VAL_TRANSPARENT )
+     fprintf(outfile ,",'background':'%s' ", s2 );
+  else 
+     fprintf(outfile ,",'background':'%s' ", "transparent" ); 
+  if(text_justify != 0 )
   {
-    fprintf(outfile ,",'background':'%s' ", s2 );
-  }  
+    fprintf(outfile ,",'text-align':");
+	if(text_justify == VAL_LEFT_JUSTIFIED)   fprintf(outfile ,"'left'");
+    if(text_justify == VAL_RIGHT_JUSTIFIED)  fprintf(outfile ,"'right'");
+    if(text_justify == VAL_CENTER_JUSTIFIED) fprintf(outfile ,"'center'");
+  }
+  if (text_underline != 0 ) {
+      fprintf(outfile ,",'text-decoration': 'underline', 'text-decoration-color': '%s' ",s1) ;
+  }
   fprintf(outfile ,"}\n");
+
   fprintf(outfile ,"}");
 }
 
@@ -385,24 +361,24 @@ void PanelCommandButton(FILE *outfile, char * textId, int x, int y, int h, int w
   fprintf(outfile ,"id: '%s',\n",textId);
   fprintf(outfile ,"ui: 'normal',\n"); //'default'
   // ----------------------
-  
+
   if ( 0==strcmp(textLabel,"") ) {
     fprintf(outfile ,"style: 'z-index: %d",zplane);
     //fprintf(outfile ,";background: %s ; ", "transparent" );
-	fprintf(outfile ,";opacity: 0.7 " );
-	fprintf(outfile ,";border: 1px dotted #000000;"); // dashed  dotted
-	fprintf(outfile ,";background : %s ", s2 );
-	fprintf(outfile ,";background-color: %s ", s2 );
+    fprintf(outfile ,";opacity: 0.7 " );
+    fprintf(outfile ,";border: 1px dotted #000000;"); // none | hidden | dotted | dashed | solid | double | groove | ridge | inset | outset] {1,4} | inherit
+    fprintf(outfile ,";background : %s ", s2 );
+    fprintf(outfile ,";background-color: %s ", s2 );
     fprintf(outfile ,";background-image: linear-gradient( to top left, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) 30%%, rgba(0, 0, 0, 0) ); ");
     fprintf(outfile ,"',\n");
   } else {
-	  fprintf(outfile ,"style: ' color: %s ; z-index: %d ",s1, zplane);
-	  fprintf(outfile ,";border: 1px groove #000000; border-radius: 2px;"); // solid  groove
-	  fprintf(outfile ,";background : %s ", s2 );
-	  fprintf(outfile ,";background-color: %s ", s2 );
-      fprintf(outfile ,";background-image: linear-gradient( to top left, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) 30%%, rgba(0, 0, 0, 0) ); ");
-	  fprintf(outfile ,";box-shadow: inset 1px 1px 2px rgba(255, 255, 255, 0.6), inset -1px -1px 2px rgba(0, 0, 0, 0.6); ");
-      fprintf(outfile ,";',\n" );
+    fprintf(outfile ,"style: ' color: %s ; z-index: %d ",s1, zplane);
+    fprintf(outfile ,";border: 1px outset #000000; border-radius: 2px;"); // solid  groove
+    fprintf(outfile ,";background : %s ", s2 );
+    fprintf(outfile ,";background-color: %s ", s2 );
+    fprintf(outfile ,";background-image: linear-gradient( to top left, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) 30%%, rgba(0, 0, 0, 0) ); ");
+    fprintf(outfile ,";box-shadow: inset 1px 1px 2px rgba(255, 255, 255, 0.6), inset -1px -1px 2px rgba(0, 0, 0, 0.6); ");
+    fprintf(outfile ,";',\n" );
   }
 
   ////fprintf(outfile ,"onClick: function(){ panelsHelper.openWindow(this.isContained.id,this.id);}\n"); метода нет
@@ -434,29 +410,34 @@ int GetCtrlElem ( FILE *outfile, int panelHandle, int ctrlID )
   int y = 0, x = 0;
   int h = 0, w = 0;
 
-  char attr_constant_name[MAX_STRING_SIZE];
-  char attr_dflt_value[MAX_STRING_SIZE];
-  int attr_dflt_value_int;
-  char attr_label_text[MAX_STRING_SIZE];
+  int attr_ctrl_style;
+  int attr_ctrl_tab_position;
 
+  char attr_label_text[MAX_STRING_SIZE];
   int attr_label_top;
   int attr_label_left;
   int attr_label_visible;
-  int attr_ctrl_style;
+  int attr_label_underline = 0 ;
   int attr_label_bold;
   int attr_label_color = 15794175;
-  int attr_bg_color  = 0;
+
   int attr_text_justify;
+  int attr_text_underline = 0;
+  int attr_text_point_size;
+
+  char attr_constant_name[MAX_STRING_SIZE];
+  char attr_dflt_value[MAX_STRING_SIZE];
+  int  attr_dflt_value_int;
+  int attr_bg_color  = 0;
   int attr_size_to_text;
   int attr_precision;
-  int attr_text_point_size;
   int attr_zplane_position;
-  int attr_ctrl_tab_position;
   int attr_on_color,attr_off_color;
 
-  int attr_fr_thick;
-  int attr_fr_color;
+  int attr_fr_thick , attr_fr_color;
 
+
+  // ==================================================================================
 
   GetCtrlAttribute(panelHandle, ctrlID, ATTR_CONSTANT_NAME,      attr_constant_name); //!!
   GetCtrlAttribute(panelHandle, ctrlID, ATTR_CTRL_STYLE,        &attr_ctrl_style);
@@ -497,14 +478,16 @@ int GetCtrlElem ( FILE *outfile, int panelHandle, int ctrlID )
      case CTRL_TEXT_MSG:
      case CTRL_TEXT_BOX:
      case CTRL_TEXT_BOX_LS:
-       GetCtrlAttribute(panelHandle, ctrlID, ATTR_DFLT_VALUE,        attr_dflt_value); //!!
+       GetCtrlAttribute(panelHandle, ctrlID, ATTR_DFLT_VALUE,        attr_dflt_value); //!! Наименование
        GetCtrlAttribute(panelHandle, ctrlID, ATTR_TEXT_BOLD,         &attr_label_bold);
        GetCtrlAttribute(panelHandle, ctrlID, ATTR_TEXT_COLOR,        &attr_label_color);
        GetCtrlAttribute(panelHandle, ctrlID, ATTR_TEXT_BGCOLOR,      &attr_bg_color);
        GetCtrlAttribute(panelHandle, ctrlID, ATTR_TEXT_JUSTIFY,      &attr_text_justify);
        GetCtrlAttribute(panelHandle, ctrlID, ATTR_SIZE_TO_TEXT,      &attr_size_to_text);
        GetCtrlAttribute(panelHandle, ctrlID, ATTR_TEXT_POINT_SIZE,   &attr_text_point_size); // ATTR_LABEL_POINT_SIZE
-       //You can use a LabWindows/CVI-supplied font; any host fontСsuch as Arial or Courier
+       GetCtrlAttribute(panelHandle, ctrlID, ATTR_TEXT_UNDERLINE,    &attr_text_underline);
+
+       //You can use a LabWindows/CVI-supplied font; any host font С such as Arial or Courier
 
        if(attr_size_to_text)
        {
@@ -513,7 +496,7 @@ int GetCtrlElem ( FILE *outfile, int panelHandle, int ctrlID )
        }
 
        PanelTextMsg(outfile,attr_constant_name,x,y,h,w,attr_dflt_value,attr_label_bold,attr_label_color,attr_bg_color,
-                attr_text_justify,attr_text_point_size,attr_zplane_position);
+                attr_text_justify,attr_text_point_size,attr_text_underline,attr_zplane_position);
      break;
 
      case CTRL_STRING:
@@ -524,10 +507,11 @@ int GetCtrlElem ( FILE *outfile, int panelHandle, int ctrlID )
        GetCtrlAttribute(panelHandle, ctrlID, ATTR_TEXT_BOLD,       &attr_label_bold); //ATTR_TEXT_BOLD
        GetCtrlAttribute(panelHandle, ctrlID, ATTR_TEXT_JUSTIFY,    &attr_text_justify);
        //ATTR_TEXT_JUSTIFY : VAL_LEFT_JUSTIFIED VAL_RIGHT_JUSTIFIED VAL_CENTER_JUSTIFIED
-	   GetCtrlAttribute(panelHandle, ctrlID, ATTR_TEXT_COLOR,        &attr_label_color);
-	   GetCtrlAttribute(panelHandle, ctrlID, ATTR_TEXT_BGCOLOR,      &attr_bg_color); // --------
+       GetCtrlAttribute(panelHandle, ctrlID, ATTR_TEXT_COLOR,        &attr_label_color);
+       GetCtrlAttribute(panelHandle, ctrlID, ATTR_TEXT_BGCOLOR,      &attr_bg_color); // --------
+       GetCtrlAttribute(panelHandle, ctrlID, ATTR_TEXT_UNDERLINE,    &attr_text_underline);
 
-       PanelNumeric(outfile,attr_constant_name,x,y,h,w,0,attr_label_bold,attr_text_point_size,attr_label_color,attr_bg_color,attr_zplane_position);
+       PanelNumeric(outfile,attr_constant_name,x,y,h,w,0,attr_label_bold,attr_text_point_size,attr_label_color,attr_bg_color,attr_text_justify,attr_text_underline,attr_zplane_position);
 
      break;
 
@@ -541,9 +525,10 @@ int GetCtrlElem ( FILE *outfile, int panelHandle, int ctrlID )
        GetCtrlAttribute(panelHandle, ctrlID, ATTR_TEXT_JUSTIFY,    &attr_text_justify);
        //ATTR_TEXT_JUSTIFY : VAL_LEFT_JUSTIFIED VAL_RIGHT_JUSTIFIED VAL_CENTER_JUSTIFIED
        GetCtrlAttribute(panelHandle, ctrlID, ATTR_TEXT_COLOR,        &attr_label_color);
-	   GetCtrlAttribute(panelHandle, ctrlID, ATTR_TEXT_BGCOLOR,      &attr_bg_color); // --------
+       GetCtrlAttribute(panelHandle, ctrlID, ATTR_TEXT_BGCOLOR,      &attr_bg_color); // --------
+       GetCtrlAttribute(panelHandle, ctrlID, ATTR_TEXT_UNDERLINE,    &attr_text_underline);
 
-       PanelNumeric(outfile,attr_constant_name,x,y,h,w,attr_precision,attr_label_bold,attr_text_point_size,attr_label_color,attr_bg_color,attr_zplane_position);
+       PanelNumeric(outfile,attr_constant_name,x,y,h,w,attr_precision,attr_label_bold,attr_text_point_size,attr_label_color,attr_bg_color,attr_text_justify,attr_text_underline,attr_zplane_position);
 
        len = strlen(attr_label_text);
        if(attr_label_visible && len>0)
@@ -555,6 +540,7 @@ int GetCtrlElem ( FILE *outfile, int panelHandle, int ctrlID )
          GetCtrlAttribute(panelHandle, ctrlID, ATTR_LABEL_WIDTH,     &w);
          GetCtrlAttribute(panelHandle, ctrlID, ATTR_LABEL_SIZE_TO_TEXT,  &attr_size_to_text);
          GetCtrlAttribute(panelHandle, ctrlID, ATTR_LABEL_POINT_SIZE,     &attr_text_point_size); //ATTR_LABEL_POINT_SIZE
+         GetCtrlAttribute(panelHandle, ctrlID, ATTR_LABEL_UNDERLINE,    &attr_label_underline);
 
          if(attr_size_to_text)
          {
@@ -564,7 +550,7 @@ int GetCtrlElem ( FILE *outfile, int panelHandle, int ctrlID )
          }
 
          PanelTextMsg(outfile,strcat(attr_constant_name,"_LABEL"),attr_label_left,attr_label_top,
-                         h,w,attr_label_text,attr_label_bold,attr_label_color,attr_bg_color,0,attr_text_point_size,attr_zplane_position);
+                     h,w,attr_label_text,attr_label_bold,attr_label_color,attr_bg_color,0,attr_text_point_size,attr_label_underline,attr_zplane_position);
        }
      break;
 
@@ -583,6 +569,7 @@ int GetCtrlElem ( FILE *outfile, int panelHandle, int ctrlID )
          GetCtrlAttribute(panelHandle, ctrlID, ATTR_LABEL_WIDTH,         &w);
          GetCtrlAttribute(panelHandle, ctrlID, ATTR_LABEL_SIZE_TO_TEXT,  &attr_size_to_text);
          GetCtrlAttribute(panelHandle, ctrlID, ATTR_LABEL_POINT_SIZE ,   &attr_text_point_size);// ATTR_LABEL_POINT_SIZE
+         GetCtrlAttribute(panelHandle, ctrlID, ATTR_LABEL_UNDERLINE,     &attr_label_underline);
 
          if(attr_size_to_text)
          {
@@ -592,7 +579,7 @@ int GetCtrlElem ( FILE *outfile, int panelHandle, int ctrlID )
          }
 
          PanelTextMsg(outfile,strcat(attr_constant_name,"_LABEL"),attr_label_left,attr_label_top,
-           h,w,attr_label_text,attr_label_bold,attr_label_color,attr_bg_color,0,attr_text_point_size,attr_zplane_position);
+           h,w,attr_label_text,attr_label_bold,attr_label_color,attr_bg_color,0,attr_text_point_size,attr_label_underline,attr_zplane_position);
        }
      break;
 
@@ -617,6 +604,7 @@ int GetCtrlElem ( FILE *outfile, int panelHandle, int ctrlID )
          GetCtrlAttribute(panelHandle, ctrlID, ATTR_LABEL_WIDTH,     &w);
          GetCtrlAttribute(panelHandle, ctrlID, ATTR_LABEL_SIZE_TO_TEXT,  &attr_size_to_text);
          GetCtrlAttribute(panelHandle, ctrlID, ATTR_LABEL_POINT_SIZE ,     &attr_text_point_size); // ATTR_LABEL_POINT_SIZE
+         GetCtrlAttribute(panelHandle, ctrlID, ATTR_LABEL_UNDERLINE,    &attr_label_underline);
 
          if(attr_size_to_text)
          {
@@ -626,7 +614,7 @@ int GetCtrlElem ( FILE *outfile, int panelHandle, int ctrlID )
          }
 
          PanelTextMsg(outfile,strcat(attr_constant_name,"_LABEL"),attr_label_left,attr_label_top,
-           h,w,attr_label_text,attr_label_bold,attr_label_color,attr_bg_color,0,attr_text_point_size,attr_zplane_position);
+           h,w,attr_label_text,attr_label_bold,attr_label_color,attr_bg_color,0,attr_text_point_size,attr_label_underline,attr_zplane_position);
        }
      }
      break;
@@ -638,7 +626,7 @@ int GetCtrlElem ( FILE *outfile, int panelHandle, int ctrlID )
        GetCtrlAttribute(panelHandle, ctrlID, ATTR_ON_COLOR,  &attr_on_color);
        GetCtrlAttribute(panelHandle, ctrlID, ATTR_OFF_COLOR, &attr_off_color);
        GetCtrlAttribute(panelHandle, ctrlID, ATTR_LABEL_VISIBLE,   &attr_label_visible); //!!
-	   GetCtrlAttribute(panelHandle, ctrlID, ATTR_DFLT_VALUE,   &attr_dflt_value_int); //!!
+       GetCtrlAttribute(panelHandle, ctrlID, ATTR_DFLT_VALUE,   &attr_dflt_value_int); //!!
 
        PanelSquareLed(outfile,attr_constant_name,x,y,h,w,attr_on_color,attr_off_color,attr_zplane_position);
 
@@ -652,6 +640,7 @@ int GetCtrlElem ( FILE *outfile, int panelHandle, int ctrlID )
          GetCtrlAttribute(panelHandle, ctrlID, ATTR_LABEL_WIDTH,     &w);
          GetCtrlAttribute(panelHandle, ctrlID, ATTR_LABEL_SIZE_TO_TEXT,  &attr_size_to_text);
          GetCtrlAttribute(panelHandle, ctrlID, ATTR_LABEL_POINT_SIZE ,     &attr_text_point_size); // ATTR_LABEL_POINT_SIZE
+         GetCtrlAttribute(panelHandle, ctrlID, ATTR_LABEL_UNDERLINE,    &attr_label_underline);
 
          if(attr_size_to_text)
          {
@@ -661,7 +650,7 @@ int GetCtrlElem ( FILE *outfile, int panelHandle, int ctrlID )
          }
 
          PanelTextMsg(outfile,strcat(attr_constant_name,"_LABEL"),attr_label_left,attr_label_top,
-           h,w,attr_label_text,attr_label_bold,attr_label_color,attr_bg_color,0,attr_text_point_size,attr_zplane_position);
+           h,w,attr_label_text,attr_label_bold,attr_label_color,attr_bg_color,0,attr_text_point_size,attr_label_underline,attr_zplane_position);
        }
      }
      break;
@@ -674,17 +663,17 @@ int GetCtrlElem ( FILE *outfile, int panelHandle, int ctrlID )
      case CTRL_SQUARE_COMMAND_BUTTON_LS:
      case CTRL_PICTURE_COMMAND_BUTTON_LS:
 
-       GetCtrlAttribute(panelHandle, ctrlID, ATTR_LABEL_VISIBLE,   &attr_label_visible); //!!
-	   
-	   len = strlen(attr_label_text);
-	   if(attr_label_visible && len>0)
-       {
-         GetCtrlAttribute(panelHandle, ctrlID, ATTR_LABEL_COLOR,     &attr_label_color);
-	   }
+        GetCtrlAttribute(panelHandle, ctrlID, ATTR_LABEL_VISIBLE,   &attr_label_visible); //!!
 
-	   GetCtrlAttribute(panelHandle, ctrlID, ATTR_CMD_BUTTON_COLOR,   &attr_bg_color);
-	   
-       PanelCommandButton(outfile,attr_constant_name,x,y,h,w,(attr_label_visible)?attr_label_text:"",attr_label_color,attr_bg_color,attr_zplane_position);
+        len = strlen(attr_label_text);
+        if(attr_label_visible && len>0)
+        {
+          GetCtrlAttribute(panelHandle, ctrlID, ATTR_LABEL_COLOR,     &attr_label_color);
+        }
+
+        GetCtrlAttribute(panelHandle, ctrlID, ATTR_CMD_BUTTON_COLOR,   &attr_bg_color);
+
+        PanelCommandButton(outfile,attr_constant_name,x,y,h,w,(attr_label_visible)?attr_label_text:"",attr_label_color,attr_bg_color,attr_zplane_position);
 
      break;
 
@@ -897,7 +886,7 @@ int TabCtrlElem ( FILE *outfile, int panelHandle, int ctrlIDdef )
 int main (int argc, char *argv[])
 {
     int error = 0;
-	int i = 0 ;
+  int i = 0 ;
 
     int showPanel = 0; // true, если нужно показать панель, ее закрытие осуществлетс нажатием на крестик
 
@@ -909,7 +898,7 @@ int main (int argc, char *argv[])
     char panelName[MAX_STRING_SIZE]="\0";
 
     char outputFileName[MAX_STRING_SIZE]="\0";
-	char outputFileNameTemp[MAX_STRING_SIZE]="\0";
+    char outputFileNameTemp[MAX_STRING_SIZE]="\0";
     char driveName[3];
     char dirName[256];
     char fileName[256];
@@ -924,14 +913,15 @@ int main (int argc, char *argv[])
 
     if (argc < 2)
     {
-      fprintf (stderr, "usage: <exe> uirfile ?font? ?win? \n");
-      return -1;
+      fprintf (stdout, "usage: <exe> uirfile ?font? ?win? \n");
+      printf ("usage: <exe> uir-file ?font? ?win? \n");
+      return 0;
     }
 
     for (i=0; i < argc; ++i)
     {
         if (0==strcmp(argv[i],"font")) font_output = 1; // вывод шрифта
-		if (0==strcmp(argv[i],"win")) showPanel = 1; // если число аргументов больше 2, то показываем Панель
+        if (0==strcmp(argv[i],"win")) showPanel = 1; // если число аргументов больше 2, то показываем Панель
     }
 
     if (InitCVIRTE(0, 0, 0) == 0)
@@ -990,13 +980,15 @@ int main (int argc, char *argv[])
 
     fprintf (stderr, "! Panel Id: %s , bcolor=%d, h=%d, w=%d Count=%d\n",panel_attr_label_text,panel_attr_backcolor, panel_h,panel_w, numControls);
 
+
     sprintf( outputFileName, "%s%s%s.js\0",driveName,dirName,panelName) ;
     fprintf (stderr, "! File out: %s \n",outputFileName);
 
-	sprintf( outputFileNameTemp, "%s%s%s_tmp.js\0",driveName,dirName,panelName) ;
-	fprintf (stderr, "! File out: %s \n",outputFileNameTemp);
+    sprintf( outputFileNameTemp, "%s%s%s_tmp.js\0",driveName,dirName,panelName) ;
+    fprintf (stderr, "! File out: %s \n",outputFileNameTemp);
 
     outfile = fopen(outputFileNameTemp,"w+");
+
 
     // Start block
     fprintf(outfile ,"");
