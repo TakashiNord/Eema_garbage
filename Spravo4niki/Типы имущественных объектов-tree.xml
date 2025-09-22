@@ -1,0 +1,477 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rf="http://gost.ru/2019/schema-cim01#"
+    xmlns:dm="http://iec.ch/TC57/61970-552/DifferenceModel/1#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:md="http://iec.ch/TC57/61970-552/ModelDescription/1#"
+    xmlns:ups="https://cim.so-ups.ru#"
+    xmlns:so="http://so-ups.ru/2015/schema-cim16#"
+    xmlns:cims="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#"
+    xmlns:me="http://monitel.com/2014/schema-cim16#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:cim="http://iec.ch/TC57/CIM100#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#" > 
+  <cim:PSRType rdf:about="#_53303d8e-9a09-442b-ac85-44bdddc1e827">
+    <cim:IdentifiedObject.name>КВсгОСР-RA-460-2500-D11-8-УХЛ4 </cim:IdentifiedObject.name>
+    <so:PSRType.AssetTypes rdf:resource="#_ee85aea9-34b7-42d6-990d-115a884a6334"/>
+  </cim:PSRType>
+  <cim:PSRType rdf:about="#_216b7964-12c6-4c72-9215-2885beb90e39">
+    <cim:IdentifiedObject.name>Независимая диодная система возбуждения</cim:IdentifiedObject.name>
+    <so:PSRType.AssetTypes rdf:resource="#_ee85aea9-34b7-42d6-990d-115a884a6334"/>
+  </cim:PSRType>
+  <cim:PSRType rdf:about="#_011114e1-aac6-48ea-b794-9a7c21f941af">
+    <so:PSRType.AssetTypes rdf:resource="#_66f17f35-47d2-4b6f-ae87-767172f7e7d1"/>
+  </cim:PSRType>
+  <so:AssetType rdf:about="#_6a5dcb60-af87-4ec8-a128-4ea6a6dcd6e1">
+    <cim:IdentifiedObject.name>Асинхронные машины</cim:IdentifiedObject.name>
+  </so:AssetType>
+  <cim:PSRType rdf:about="#_ee3bc88d-6af8-456b-b5da-d89fb63b556a">
+    <so:PSRType.AssetTypes rdf:resource="#_ee85aea9-34b7-42d6-990d-115a884a6334"/>
+  </cim:PSRType>
+  <cim:PSRType rdf:about="#_c75a4d7f-09c9-4c3f-a996-8c62208c5f8d">
+    <so:PSRType.AssetTypes rdf:resource="#_7f4c1553-7792-46c8-ba43-7c62b3b160ec"/>
+  </cim:PSRType>
+  <cim:PSRType rdf:about="#_10001489-0000-0000-c000-0000006d746c">
+    <cim:IdentifiedObject.name>3-позиц. разъединитель</cim:IdentifiedObject.name>
+    <so:PSRType.AssetTypes rdf:resource="#_414f227e-8268-46eb-ba47-dc92e7fbbff7"/>
+    <so:PSRType.AssetTypes rdf:resource="#_0c4b941c-a4dc-4187-a15b-cedca045212b"/>
+  </cim:PSRType>
+  <cim:PSRType rdf:about="#_7f63647d-6a3d-4130-8908-cf12abfa4b6a">
+    <cim:IdentifiedObject.name>Статический генератор реактивной мощности</cim:IdentifiedObject.name>
+    <so:PSRType.AssetTypes rdf:resource="#_fd97251d-217d-4dd2-8be8-b3e7b276788a"/>
+  </cim:PSRType>
+  <cim:PSRType rdf:about="#_0350e294-6408-41e2-8571-5dce59a05266">
+    <cim:IdentifiedObject.name>Многовальная</cim:IdentifiedObject.name>
+    <so:PSRType.AssetTypes rdf:resource="#_6030f5ce-f734-4574-a159-44162cef3179"/>
+  </cim:PSRType>
+  <cim:PSRType rdf:about="#_40815c61-613e-44c1-991b-7744621b4bd8">
+    <cim:IdentifiedObject.name>Тиристорная независмого возбуждения бесщеточная</cim:IdentifiedObject.name>
+    <so:PSRType.AssetTypes rdf:resource="#_ee85aea9-34b7-42d6-990d-115a884a6334"/>
+  </cim:PSRType>
+  <cim:PSRType rdf:about="#_8955fac1-9ec1-44aa-a725-f916431c1570">
+    <cim:IdentifiedObject.name>СТС-2П-310-1900-2,5 </cim:IdentifiedObject.name>
+    <so:PSRType.AssetTypes rdf:resource="#_ee85aea9-34b7-42d6-990d-115a884a6334"/>
+  </cim:PSRType>
+  <cim:PSRType rdf:about="#_10000cc5-0000-0000-c000-0000006d746c">
+    <cim:IdentifiedObject.name>Элегазовый выключатель</cim:IdentifiedObject.name>
+    <so:PSRType.AssetTypes rdf:resource="#_414f227e-8268-46eb-ba47-dc92e7fbbff7"/>
+    <so:PSRType.AssetTypes rdf:resource="#_937f70ca-22af-443a-a5d7-ca192a98bf78"/>
+  </cim:PSRType>
+  <cim:PSRType rdf:about="#_10000d1c-0000-0000-c000-0000006d746c">
+    <cim:IdentifiedObject.name>Управляемый шунтирующий реактор</cim:IdentifiedObject.name>
+    <so:PSRType.AssetTypes rdf:resource="#_6f239097-8ed8-4e29-a682-0c4eaafa048d"/>
+    <so:PSRType.AssetTypes rdf:resource="#_ceef3e58-2f7a-4119-9b7f-1c942407c262"/>
+  </cim:PSRType>
+  <cim:PSRType rdf:about="#_f1a27035-fcbf-4815-8d0b-01b244d49f12">
+    <cim:IdentifiedObject.name>Высокочастотная система возбуждения</cim:IdentifiedObject.name>
+    <so:PSRType.AssetTypes rdf:resource="#_ee85aea9-34b7-42d6-990d-115a884a6334"/>
+  </cim:PSRType>
+  <cim:PSRType rdf:about="#_70f23451-cb80-4819-baa5-dddcc14b6f5d">
+    <cim:IdentifiedObject.name>Сильного действия</cim:IdentifiedObject.name>
+    <so:PSRType.AssetTypes rdf:resource="#_0552209d-4e4c-4674-9171-a6b369ca71e6"/>
+  </cim:PSRType>
+  <cim:PSRType rdf:about="#_10000cf1-0000-0000-c000-0000006d746c">
+    <cim:IdentifiedObject.name>Автоматический выключатель</cim:IdentifiedObject.name>
+    <so:PSRType.AssetTypes rdf:resource="#_414f227e-8268-46eb-ba47-dc92e7fbbff7"/>
+    <so:PSRType.AssetTypes rdf:resource="#_937f70ca-22af-443a-a5d7-ca192a98bf78"/>
+  </cim:PSRType>
+  <cim:PSRType rdf:about="#_ae614656-e85a-4900-b431-29e9207ede3c">
+    <cim:IdentifiedObject.name>Воздушный выключатель</cim:IdentifiedObject.name>
+    <so:PSRType.AssetTypes rdf:resource="#_414f227e-8268-46eb-ba47-dc92e7fbbff7"/>
+    <so:PSRType.AssetTypes rdf:resource="#_937f70ca-22af-443a-a5d7-ca192a98bf78"/>
+  </cim:PSRType>
+  <cim:PSRType rdf:about="#_115808ff-b383-4dc1-b482-3c991d2bfc98">
+    <cim:IdentifiedObject.name>Двухмашинная система электромашинного возбуждения с возбудителем постоянного тока</cim:IdentifiedObject.name>
+    <so:PSRType.AssetTypes rdf:resource="#_ee85aea9-34b7-42d6-990d-115a884a6334"/>
+  </cim:PSRType>
+  <cim:PSRType rdf:about="#_10000d04-0000-0000-c000-0000006d746c">
+    <cim:IdentifiedObject.name>Установка продольной емкостной компенсации</cim:IdentifiedObject.name>
+    <so:PSRType.AssetTypes rdf:resource="#_45ba98e3-bd37-486d-bf3e-1967aaf56228"/>
+  </cim:PSRType>
+  <cim:PSRType rdf:about="#_5fc183a2-850b-42b0-9bda-36cd7f9ba33e">
+    <cim:IdentifiedObject.name>Одномашинная высокочастотная система возбуждения </cim:IdentifiedObject.name>
+    <so:PSRType.AssetTypes rdf:resource="#_ee85aea9-34b7-42d6-990d-115a884a6334"/>
+  </cim:PSRType>
+  <so:AssetType rdf:about="#_414f227e-8268-46eb-ba47-dc92e7fbbff7">
+    <so:AssetType.PSRTypes rdf:resource="#_80cf963d-b1a3-4457-a573-d55621f47450"/>
+    <so:AssetType.PSRTypes rdf:resource="#_10000cd2-0000-0000-c000-0000006d746c"/>
+    <so:AssetType.PSRTypes rdf:resource="#_10000cf1-0000-0000-c000-0000006d746c"/>
+    <so:AssetType.PSRTypes rdf:resource="#_100012f2-0000-0000-c000-0000006d746c"/>
+    <so:AssetType.PSRTypes rdf:resource="#_e03a53e4-2ea3-495d-852a-fd3cace35bae"/>
+    <so:AssetType.PSRTypes rdf:resource="#_10000002-0000-0000-c000-0000006d746c"/>
+    <cim:IdentifiedObject.name>КРУЭ</cim:IdentifiedObject.name>
+    <so:AssetType.PSRTypes rdf:resource="#_100012f1-0000-0000-c000-0000006d746c"/>
+    <so:AssetType.PSRTypes rdf:resource="#_1000114f-0000-0000-c000-0000006d746c"/>
+    <so:AssetType.PSRTypes rdf:resource="#_1000114c-0000-0000-c000-0000006d746c"/>
+    <so:AssetType.PSRTypes rdf:resource="#_7e194424-dc9e-41d7-8ab8-73a0d84d5b5e"/>
+    <so:AssetType.PSRTypes rdf:resource="#_ae614656-e85a-4900-b431-29e9207ede3c"/>
+    <so:AssetType.PSRTypes rdf:resource="#_10001489-0000-0000-c000-0000006d746c"/>
+    <so:AssetType.PSRTypes rdf:resource="#_1000114b-0000-0000-c000-0000006d746c"/>
+    <so:AssetType.PSRTypes rdf:resource="#_10000cc5-0000-0000-c000-0000006d746c"/>
+    <so:AssetType.PSRTypes rdf:resource="#_10001071-0000-0000-c000-0000006d746c"/>
+  </so:AssetType>
+  <so:AssetType rdf:about="#_fd7b5f1d-179e-4d83-a393-b8d56c7c8549">
+    <cim:IdentifiedObject.name>Возбудители</cim:IdentifiedObject.name>
+    <so:AssetType.PSRTypes rdf:resource="#_0d9c59a8-776d-4fec-8bb4-a5cffe3f46ee"/>
+  </so:AssetType>
+  <so:AssetType rdf:about="#_0552209d-4e4c-4674-9171-a6b369ca71e6">
+    <cim:IdentifiedObject.name>АРВ</cim:IdentifiedObject.name>
+    <so:AssetType.PSRTypes rdf:resource="#_165aa817-b545-4695-915a-61e201757b10"/>
+    <so:AssetType.PSRTypes rdf:resource="#_413d128c-78ba-4331-964d-c126f0bb8e6f"/>
+    <so:AssetType.PSRTypes rdf:resource="#_70f23451-cb80-4819-baa5-dddcc14b6f5d"/>
+  </so:AssetType>
+  <cim:PSRType rdf:about="#_e30aa772-8b8b-462a-9ae1-fa272037b165">
+    <cim:IdentifiedObject.name>СТС-2П-310-1900-2,5 </cim:IdentifiedObject.name>
+    <so:PSRType.AssetTypes rdf:resource="#_ee85aea9-34b7-42d6-990d-115a884a6334"/>
+  </cim:PSRType>
+  <cim:PSRType rdf:about="#_e03a53e4-2ea3-495d-852a-fd3cace35bae">
+    <cim:IdentifiedObject.name>Вакуумный выключатель</cim:IdentifiedObject.name>
+    <so:PSRType.AssetTypes rdf:resource="#_414f227e-8268-46eb-ba47-dc92e7fbbff7"/>
+    <so:PSRType.AssetTypes rdf:resource="#_937f70ca-22af-443a-a5d7-ca192a98bf78"/>
+  </cim:PSRType>
+  <cim:PSRType rdf:about="#_1000114c-0000-0000-c000-0000006d746c">
+    <cim:IdentifiedObject.name>Выкатной автоматический выключатель</cim:IdentifiedObject.name>
+    <so:PSRType.AssetTypes rdf:resource="#_414f227e-8268-46eb-ba47-dc92e7fbbff7"/>
+    <so:PSRType.AssetTypes rdf:resource="#_937f70ca-22af-443a-a5d7-ca192a98bf78"/>
+  </cim:PSRType>
+  <cim:PSRType rdf:about="#_455e9fec-0e33-414b-8f09-c06113bc9244">
+    <cim:IdentifiedObject.name>Двухмашинная высокочастотная система независимого возбуждения</cim:IdentifiedObject.name>
+    <so:PSRType.AssetTypes rdf:resource="#_ee85aea9-34b7-42d6-990d-115a884a6334"/>
+  </cim:PSRType>
+  <cim:PSRType rdf:about="#_10001071-0000-0000-c000-0000006d746c">
+    <cim:IdentifiedObject.name>3-позиц. элегазовый выключатель</cim:IdentifiedObject.name>
+    <so:PSRType.AssetTypes rdf:resource="#_414f227e-8268-46eb-ba47-dc92e7fbbff7"/>
+    <so:PSRType.AssetTypes rdf:resource="#_937f70ca-22af-443a-a5d7-ca192a98bf78"/>
+  </cim:PSRType>
+  <so:AssetType rdf:about="#_45ba98e3-bd37-486d-bf3e-1967aaf56228">
+    <cim:IdentifiedObject.name>УПК</cim:IdentifiedObject.name>
+    <so:AssetType.PSRTypes rdf:resource="#_10000d04-0000-0000-c000-0000006d746c"/>
+  </so:AssetType>
+  <so:AssetType rdf:about="#_d5e03cf4-2144-47ec-abd0-8000f19e3ea8">
+    <cim:IdentifiedObject.name>Фотоэлектрические модули</cim:IdentifiedObject.name>
+    <so:AssetType.PSRTypes rdf:resource="#_ba26d65c-4e23-44f7-ae89-0c30306fd9c6"/>
+    <so:AssetType.PSRTypes rdf:resource="#_083c388d-aed3-4683-96c1-4720a6a83c81"/>
+  </so:AssetType>
+  <cim:PSRType rdf:about="#_557eff8c-2443-4b89-8711-4a0e09928beb">
+    <cim:IdentifiedObject.name>Высокочастотная система возбуждения с силовым компаундированием </cim:IdentifiedObject.name>
+    <so:PSRType.AssetTypes rdf:resource="#_ee85aea9-34b7-42d6-990d-115a884a6334"/>
+  </cim:PSRType>
+  <cim:PSRType rdf:about="#_f8c90786-6bcd-4be1-b799-994c47e7428e">
+    <cim:IdentifiedObject.name>Синхронный генератор переменного тока с постоянными магнитами</cim:IdentifiedObject.name>
+    <so:PSRType.AssetTypes rdf:resource="#_a154da76-a0a5-4c41-967d-4674dbbc080d"/>
+  </cim:PSRType>
+  <cim:PSRType rdf:about="#_413d128c-78ba-4331-964d-c126f0bb8e6f">
+    <cim:IdentifiedObject.name>Пропорционального действия</cim:IdentifiedObject.name>
+    <so:PSRType.AssetTypes rdf:resource="#_0552209d-4e4c-4674-9171-a6b369ca71e6"/>
+  </cim:PSRType>
+  <cim:PSRType rdf:about="#_973c2342-a506-4c8b-9227-1ad52f6ed0ef">
+    <cim:IdentifiedObject.name>Двухгрупповая смешанного самовозбуждения</cim:IdentifiedObject.name>
+    <so:PSRType.AssetTypes rdf:resource="#_ee85aea9-34b7-42d6-990d-115a884a6334"/>
+  </cim:PSRType>
+  <cim:PSRType rdf:about="#_100012f2-0000-0000-c000-0000006d746c">
+    <cim:IdentifiedObject.name>Выкатной выключатель с шунтирующим ОПН</cim:IdentifiedObject.name>
+    <so:PSRType.AssetTypes rdf:resource="#_414f227e-8268-46eb-ba47-dc92e7fbbff7"/>
+    <so:PSRType.AssetTypes rdf:resource="#_937f70ca-22af-443a-a5d7-ca192a98bf78"/>
+  </cim:PSRType>
+  <cim:PSRType rdf:about="#_083c388d-aed3-4683-96c1-4720a6a83c81">
+    <so:PSRType.AssetTypes rdf:resource="#_d5e03cf4-2144-47ec-abd0-8000f19e3ea8"/>
+  </cim:PSRType>
+  <cim:PSRType rdf:about="#_d82a5557-46f0-480b-881a-3c746fe91488">
+    <cim:IdentifiedObject.name>Провод</cim:IdentifiedObject.name>
+    <so:PSRType.AssetTypes rdf:resource="#_66f17f35-47d2-4b6f-ae87-767172f7e7d1"/>
+  </cim:PSRType>
+  <cim:PSRType rdf:about="#_10000d0a-0000-0000-c000-0000006d746c">
+    <cim:IdentifiedObject.name>Батарея статических конденсаторов</cim:IdentifiedObject.name>
+    <so:PSRType.AssetTypes rdf:resource="#_fd97251d-217d-4dd2-8be8-b3e7b276788a"/>
+  </cim:PSRType>
+  <so:AssetType rdf:about="#_8a938634-9137-4ba9-94a0-82c54921db3b">
+    <cim:IdentifiedObject.name>Синхронные машины</cim:IdentifiedObject.name>
+  </so:AssetType>
+  <so:AssetType rdf:about="#_7f4c1553-7792-46c8-ba43-7c62b3b160ec">
+    <cim:IdentifiedObject.name>Трансформаторы тока</cim:IdentifiedObject.name>
+    <so:AssetType.PSRTypes rdf:resource="#_38066ac7-191c-42de-bd77-7ac75330acfe"/>
+    <so:AssetType.PSRTypes rdf:resource="#_c75a4d7f-09c9-4c3f-a996-8c62208c5f8d"/>
+  </so:AssetType>
+  <cim:PSRType rdf:about="#_1000114b-0000-0000-c000-0000006d746c">
+    <cim:IdentifiedObject.name>Выкатной выключатель</cim:IdentifiedObject.name>
+    <so:PSRType.AssetTypes rdf:resource="#_414f227e-8268-46eb-ba47-dc92e7fbbff7"/>
+    <so:PSRType.AssetTypes rdf:resource="#_937f70ca-22af-443a-a5d7-ca192a98bf78"/>
+  </cim:PSRType>
+  <cim:PSRType rdf:about="#_39d5e4c7-400e-4746-b479-f3135e55f20c">
+    <cim:IdentifiedObject.name>ТДН-100000/110-У1</cim:IdentifiedObject.name>
+    <so:PSRType.AssetTypes rdf:resource="#_9f826625-a1b2-470e-84e9-0981d16aea03"/>
+  </cim:PSRType>
+  <cim:PSRType rdf:about="#_10000002-0000-0000-c000-0000006d746c">
+    <cim:IdentifiedObject.name>Выключатель с искровым промежутком</cim:IdentifiedObject.name>
+    <so:PSRType.AssetTypes rdf:resource="#_414f227e-8268-46eb-ba47-dc92e7fbbff7"/>
+    <so:PSRType.AssetTypes rdf:resource="#_937f70ca-22af-443a-a5d7-ca192a98bf78"/>
+  </cim:PSRType>
+  <cim:PSRType rdf:about="#_0d9c59a8-776d-4fec-8bb4-a5cffe3f46ee">
+    <cim:IdentifiedObject.name>DGBP60/20</cim:IdentifiedObject.name>
+    <so:PSRType.AssetTypes rdf:resource="#_fd7b5f1d-179e-4d83-a393-b8d56c7c8549"/>
+  </cim:PSRType>
+  <cim:PSRType rdf:about="#_8f5d382a-1a44-4ecf-a6cf-fbf1f2b49d82">
+    <cim:IdentifiedObject.name>Статический генератор реактивной мощности</cim:IdentifiedObject.name>
+    <so:PSRType.AssetTypes rdf:resource="#_fd97251d-217d-4dd2-8be8-b3e7b276788a"/>
+  </cim:PSRType>
+  <cim:PSRType rdf:about="#_1000114f-0000-0000-c000-0000006d746c">
+    <cim:IdentifiedObject.name>Выкатной разъединитель</cim:IdentifiedObject.name>
+    <so:PSRType.AssetTypes rdf:resource="#_414f227e-8268-46eb-ba47-dc92e7fbbff7"/>
+    <so:PSRType.AssetTypes rdf:resource="#_0c4b941c-a4dc-4187-a15b-cedca045212b"/>
+  </cim:PSRType>
+  <cim:PSRType rdf:about="#_d390d3aa-c932-4ea2-9fed-c2eb2f4a58c7">
+    <cim:IdentifiedObject.name>Двухгрупповая тиристорная система независимого возбуждения</cim:IdentifiedObject.name>
+    <so:PSRType.AssetTypes rdf:resource="#_ee85aea9-34b7-42d6-990d-115a884a6334"/>
+  </cim:PSRType>
+  <cim:PSRType rdf:about="#_eb7b0040-521d-4b3e-9247-803d9584637b">
+    <cim:IdentifiedObject.name>Комбинированная система возбуждения</cim:IdentifiedObject.name>
+    <so:PSRType.AssetTypes rdf:resource="#_ee85aea9-34b7-42d6-990d-115a884a6334"/>
+  </cim:PSRType>
+  <cim:PSRType rdf:about="#_96aebb9e-b1da-4ffe-8e06-ccca7ad0a695">
+    <cim:IdentifiedObject.name>Одногрупповая смешанного самовозбуждения</cim:IdentifiedObject.name>
+    <so:PSRType.AssetTypes rdf:resource="#_ee85aea9-34b7-42d6-990d-115a884a6334"/>
+  </cim:PSRType>
+  <cim:PSRType rdf:about="#_10000ccc-0000-0000-c000-0000006d746c">
+    <cim:IdentifiedObject.name>Токоограничивающий реактор</cim:IdentifiedObject.name>
+    <so:PSRType.AssetTypes rdf:resource="#_8501025c-4a92-4617-acb1-ff2e0567c99a"/>
+  </cim:PSRType>
+  <so:AssetType rdf:about="#_c72f99ed-0289-4292-91e2-c27d83e6ed44">
+    <cim:IdentifiedObject.name>Двигатели</cim:IdentifiedObject.name>
+  </so:AssetType>
+  <cim:PSRType rdf:about="#_7e194424-dc9e-41d7-8ab8-73a0d84d5b5e">
+    <cim:IdentifiedObject.name>Выключатель нагрузки</cim:IdentifiedObject.name>
+    <so:PSRType.AssetTypes rdf:resource="#_414f227e-8268-46eb-ba47-dc92e7fbbff7"/>
+    <so:PSRType.AssetTypes rdf:resource="#_937f70ca-22af-443a-a5d7-ca192a98bf78"/>
+  </cim:PSRType>
+  <cim:PSRType rdf:about="#_fa91a66f-4597-4173-abe5-8f9092afb61b">
+    <cim:IdentifiedObject.name>ТАМГ-2500/110/6</cim:IdentifiedObject.name>
+    <so:PSRType.AssetTypes rdf:resource="#_9f826625-a1b2-470e-84e9-0981d16aea03"/>
+  </cim:PSRType>
+  <so:AssetType rdf:about="#_ee85aea9-34b7-42d6-990d-115a884a6334">
+    <so:AssetType.PSRTypes rdf:resource="#_40815c61-613e-44c1-991b-7744621b4bd8"/>
+    <so:AssetType.PSRTypes rdf:resource="#_e7b5d19f-75b1-462c-aa10-b6f38826430d"/>
+    <so:AssetType.PSRTypes rdf:resource="#_973c2342-a506-4c8b-9227-1ad52f6ed0ef"/>
+    <so:AssetType.PSRTypes rdf:resource="#_a2350e73-15b8-4442-be0f-b5463159185b"/>
+    <so:AssetType.PSRTypes rdf:resource="#_96aebb9e-b1da-4ffe-8e06-ccca7ad0a695"/>
+    <so:AssetType.PSRTypes rdf:resource="#_455e9fec-0e33-414b-8f09-c06113bc9244"/>
+    <so:AssetType.PSRTypes rdf:resource="#_5fc183a2-850b-42b0-9bda-36cd7f9ba33e"/>
+    <so:AssetType.PSRTypes rdf:resource="#_e30aa772-8b8b-462a-9ae1-fa272037b165"/>
+    <so:AssetType.PSRTypes rdf:resource="#_b0e1f95a-65b5-450e-8e85-de46efbd5f93"/>
+    <cim:IdentifiedObject.name>Системы возбуждения</cim:IdentifiedObject.name>
+    <so:AssetType.PSRTypes rdf:resource="#_f28fe48a-bc12-4f46-b017-ea6263cccdc5"/>
+    <so:AssetType.PSRTypes rdf:resource="#_7caf0534-3820-4381-a4c9-cad6fe89c4b6"/>
+    <so:AssetType.PSRTypes rdf:resource="#_53303d8e-9a09-442b-ac85-44bdddc1e827"/>
+    <so:AssetType.PSRTypes rdf:resource="#_d390d3aa-c932-4ea2-9fed-c2eb2f4a58c7"/>
+    <so:AssetType.PSRTypes rdf:resource="#_f1a27035-fcbf-4815-8d0b-01b244d49f12"/>
+    <so:AssetType.PSRTypes rdf:resource="#_115808ff-b383-4dc1-b482-3c991d2bfc98"/>
+    <so:AssetType.PSRTypes rdf:resource="#_3a0503a0-5e56-48f3-81cb-0c4858cd8bc0"/>
+    <so:AssetType.PSRTypes rdf:resource="#_bbcde4d0-f83c-4b24-bf93-6920c1374e22"/>
+    <so:AssetType.PSRTypes rdf:resource="#_375b820d-32cb-4d38-9016-ef3b6c67509b"/>
+    <so:AssetType.PSRTypes rdf:resource="#_f0f05163-4caa-418a-9e24-41f1011bc506"/>
+    <so:AssetType.PSRTypes rdf:resource="#_55d3da2d-7e81-4fe5-a946-55be796141f3"/>
+    <so:AssetType.PSRTypes rdf:resource="#_423fef7b-fb6f-4e95-92ee-4b06e2c47ec3"/>
+    <so:AssetType.PSRTypes rdf:resource="#_e8ba83ca-10f0-4ad2-897e-9f2c8b850e16"/>
+    <so:AssetType.PSRTypes rdf:resource="#_26a56fa4-748b-4046-b73a-bab4620f6e02"/>
+    <so:AssetType.PSRTypes rdf:resource="#_8955fac1-9ec1-44aa-a725-f916431c1570"/>
+    <so:AssetType.PSRTypes rdf:resource="#_216b7964-12c6-4c72-9215-2885beb90e39"/>
+    <so:AssetType.PSRTypes rdf:resource="#_5282a252-a5f0-4b0d-8008-4845af415da5"/>
+    <so:AssetType.PSRTypes rdf:resource="#_b1654792-7858-496b-b3ec-3a034862d190"/>
+    <so:AssetType.PSRTypes rdf:resource="#_f625926d-2327-4ff7-966b-992fd6f8a6ef"/>
+    <so:AssetType.PSRTypes rdf:resource="#_eb7b0040-521d-4b3e-9247-803d9584637b"/>
+    <so:AssetType.PSRTypes rdf:resource="#_557eff8c-2443-4b89-8711-4a0e09928beb"/>
+    <so:AssetType.PSRTypes rdf:resource="#_ee3bc88d-6af8-456b-b5da-d89fb63b556a"/>
+    <so:AssetType.PSRTypes rdf:resource="#_7a5c176b-b159-471c-9199-50992651f5ff"/>
+  </so:AssetType>
+  <cim:PSRType rdf:about="#_7a5c176b-b159-471c-9199-50992651f5ff">
+    <cim:IdentifiedObject.name>СТС-2П-210-1900-2,5 </cim:IdentifiedObject.name>
+    <so:PSRType.AssetTypes rdf:resource="#_ee85aea9-34b7-42d6-990d-115a884a6334"/>
+  </cim:PSRType>
+  <cim:PSRType rdf:about="#_e8ba83ca-10f0-4ad2-897e-9f2c8b850e16">
+    <cim:IdentifiedObject.name>Устройство возбудительное бесщеточное серии БВУГ</cim:IdentifiedObject.name>
+    <so:PSRType.AssetTypes rdf:resource="#_ee85aea9-34b7-42d6-990d-115a884a6334"/>
+  </cim:PSRType>
+  <cim:PSRType rdf:about="#_f28fe48a-bc12-4f46-b017-ea6263cccdc5">
+    <cim:IdentifiedObject.name>Электромашинная система возбуждения</cim:IdentifiedObject.name>
+    <so:PSRType.AssetTypes rdf:resource="#_ee85aea9-34b7-42d6-990d-115a884a6334"/>
+  </cim:PSRType>
+  <cim:PSRType rdf:about="#_80cf963d-b1a3-4457-a573-d55621f47450">
+    <cim:IdentifiedObject.name>Масляный выключатель</cim:IdentifiedObject.name>
+    <so:PSRType.AssetTypes rdf:resource="#_414f227e-8268-46eb-ba47-dc92e7fbbff7"/>
+    <so:PSRType.AssetTypes rdf:resource="#_937f70ca-22af-443a-a5d7-ca192a98bf78"/>
+  </cim:PSRType>
+  <cim:PSRType rdf:about="#_f625926d-2327-4ff7-966b-992fd6f8a6ef">
+    <cim:IdentifiedObject.name>Цифровая тиристорная</cim:IdentifiedObject.name>
+    <so:PSRType.AssetTypes rdf:resource="#_ee85aea9-34b7-42d6-990d-115a884a6334"/>
+  </cim:PSRType>
+  <so:AssetType rdf:about="#_8501025c-4a92-4617-acb1-ff2e0567c99a">
+    <cim:IdentifiedObject.name>Токоограничивающие реакторы</cim:IdentifiedObject.name>
+    <so:AssetType.PSRTypes rdf:resource="#_f09a2137-5a13-476e-829b-d2095f5aec92"/>
+    <so:AssetType.PSRTypes rdf:resource="#_10000ccc-0000-0000-c000-0000006d746c"/>
+  </so:AssetType>
+  <cim:PSRType rdf:about="#_ba26d65c-4e23-44f7-ae89-0c30306fd9c6">
+    <cim:IdentifiedObject.name>Фотоэлектрический модуль 265 Вт ИС 2.1</cim:IdentifiedObject.name>
+    <so:PSRType.AssetTypes rdf:resource="#_d5e03cf4-2144-47ec-abd0-8000f19e3ea8"/>
+  </cim:PSRType>
+  <so:AssetType rdf:about="#_9f826625-a1b2-470e-84e9-0981d16aea03">
+    <cim:IdentifiedObject.name>Трансформаторы (автотрансформаторы)</cim:IdentifiedObject.name>
+    <so:AssetType.PSRTypes rdf:resource="#_39d5e4c7-400e-4746-b479-f3135e55f20c"/>
+    <so:AssetType.PSRTypes rdf:resource="#_fa91a66f-4597-4173-abe5-8f9092afb61b"/>
+    <so:AssetType.PSRTypes rdf:resource="#_f863a872-6880-4e99-8ba2-6250573ef326"/>
+    <so:AssetType.PSRTypes rdf:resource="#_f68ccbb0-2f24-4b7d-be0a-df84363e68ea"/>
+  </so:AssetType>
+  <cim:PSRType rdf:about="#_50e2edd0-31a6-4f58-82d5-afed3314ab4e">
+    <cim:IdentifiedObject.name>АС 600/72</cim:IdentifiedObject.name>
+    <so:PSRType.AssetTypes rdf:resource="#_66f17f35-47d2-4b6f-ae87-767172f7e7d1"/>
+  </cim:PSRType>
+  <so:AssetType rdf:about="#_66f17f35-47d2-4b6f-ae87-767172f7e7d1">
+    <cim:IdentifiedObject.name>Провода</cim:IdentifiedObject.name>
+    <so:AssetType.PSRTypes rdf:resource="#_50e2edd0-31a6-4f58-82d5-afed3314ab4e"/>
+    <so:AssetType.PSRTypes rdf:resource="#_3a723275-fa8f-4075-8b23-4fc3682f86f6"/>
+    <so:AssetType.PSRTypes rdf:resource="#_011114e1-aac6-48ea-b794-9a7c21f941af"/>
+    <so:AssetType.PSRTypes rdf:resource="#_d82a5557-46f0-480b-881a-3c746fe91488"/>
+  </so:AssetType>
+  <cim:PSRType rdf:about="#_7ed24102-72d0-4dc7-8287-a78b627eeba3">
+    <cim:IdentifiedObject.name>Одновальная</cim:IdentifiedObject.name>
+    <so:PSRType.AssetTypes rdf:resource="#_6030f5ce-f734-4574-a159-44162cef3179"/>
+  </cim:PSRType>
+  <cim:PSRType rdf:about="#_10000cd2-0000-0000-c000-0000006d746c">
+    <cim:IdentifiedObject.name>Разъединитель</cim:IdentifiedObject.name>
+    <so:PSRType.AssetTypes rdf:resource="#_414f227e-8268-46eb-ba47-dc92e7fbbff7"/>
+    <so:PSRType.AssetTypes rdf:resource="#_0c4b941c-a4dc-4187-a15b-cedca045212b"/>
+  </cim:PSRType>
+  <cim:PSRType rdf:about="#_165aa817-b545-4695-915a-61e201757b10">
+    <cim:IdentifiedObject.name>AVR-2 </cim:IdentifiedObject.name>
+    <so:PSRType.AssetTypes rdf:resource="#_0552209d-4e4c-4674-9171-a6b369ca71e6"/>
+  </cim:PSRType>
+  <so:AssetType rdf:about="#_dde573d9-bf8b-4adb-905b-302dc528f32d">
+    <cim:IdentifiedObject.name>Высокочастотные заградители</cim:IdentifiedObject.name>
+  </so:AssetType>
+  <so:AssetType rdf:about="#_b0b02c33-4178-4842-a03e-0337e06b79ac">
+    <cim:IdentifiedObject.name>Короткозамыкатели</cim:IdentifiedObject.name>
+  </so:AssetType>
+  <so:AssetType rdf:about="#_6f239097-8ed8-4e29-a682-0c4eaafa048d">
+    <cim:IdentifiedObject.name>Управляемые шунтирующие реакторы</cim:IdentifiedObject.name>
+    <so:AssetType.PSRTypes rdf:resource="#_10000d22-0000-0000-c000-0000006d746c"/>
+    <so:AssetType.PSRTypes rdf:resource="#_10000d1c-0000-0000-c000-0000006d746c"/>
+  </so:AssetType>
+  <cim:PSRType rdf:about="#_b0e1f95a-65b5-450e-8e85-de46efbd5f93">
+    <cim:IdentifiedObject.name>Тиристорная система независимого возбуждения</cim:IdentifiedObject.name>
+    <so:PSRType.AssetTypes rdf:resource="#_ee85aea9-34b7-42d6-990d-115a884a6334"/>
+  </cim:PSRType>
+  <cim:PSRType rdf:about="#_f0f05163-4caa-418a-9e24-41f1011bc506">
+    <cim:IdentifiedObject.name>СТН-2В-410-2530-2 УХЛ4</cim:IdentifiedObject.name>
+    <so:PSRType.AssetTypes rdf:resource="#_ee85aea9-34b7-42d6-990d-115a884a6334"/>
+  </cim:PSRType>
+  <cim:PSRType rdf:about="#_3a723275-fa8f-4075-8b23-4fc3682f86f6">
+    <cim:IdentifiedObject.name>АСК-240</cim:IdentifiedObject.name>
+    <so:PSRType.AssetTypes rdf:resource="#_66f17f35-47d2-4b6f-ae87-767172f7e7d1"/>
+  </cim:PSRType>
+  <cim:PSRType rdf:about="#_8122fc6a-9650-4c27-bba1-98976d40a35b">
+    <cim:IdentifiedObject.name>В составе ПГУ</cim:IdentifiedObject.name>
+    <so:PSRType.AssetTypes rdf:resource="#_6030f5ce-f734-4574-a159-44162cef3179"/>
+  </cim:PSRType>
+  <cim:PSRType rdf:about="#_55d3da2d-7e81-4fe5-a946-55be796141f3">
+    <cim:IdentifiedObject.name>СТС-2В-470-2150-2,5 УХЛ4</cim:IdentifiedObject.name>
+    <so:PSRType.AssetTypes rdf:resource="#_ee85aea9-34b7-42d6-990d-115a884a6334"/>
+  </cim:PSRType>
+  <so:AssetType rdf:about="#_805c0e74-0118-4f84-bc4e-e8758c0c45c5">
+    <cim:IdentifiedObject.name>Генераторы</cim:IdentifiedObject.name>
+  </so:AssetType>
+  <cim:PSRType rdf:about="#_423fef7b-fb6f-4e95-92ee-4b06e2c47ec3">
+    <cim:IdentifiedObject.name>Бесщеточная диодная система возбуждения</cim:IdentifiedObject.name>
+    <so:PSRType.AssetTypes rdf:resource="#_ee85aea9-34b7-42d6-990d-115a884a6334"/>
+  </cim:PSRType>
+  <cim:PSRType rdf:about="#_b1654792-7858-496b-b3ec-3a034862d190">
+    <cim:IdentifiedObject.name>СТСР-1П-310-1900-2,5 УХЛ4 </cim:IdentifiedObject.name>
+    <so:PSRType.AssetTypes rdf:resource="#_ee85aea9-34b7-42d6-990d-115a884a6334"/>
+  </cim:PSRType>
+  <cim:PSRType rdf:about="#_a2350e73-15b8-4442-be0f-b5463159185b">
+    <cim:IdentifiedObject.name>Бесщеточная система возбуждения</cim:IdentifiedObject.name>
+    <so:PSRType.AssetTypes rdf:resource="#_ee85aea9-34b7-42d6-990d-115a884a6334"/>
+  </cim:PSRType>
+  <so:AssetType rdf:about="#_9bb07478-37bb-4fbf-aebb-38d8e56263ab">
+    <cim:IdentifiedObject.name>Преобразователи</cim:IdentifiedObject.name>
+  </so:AssetType>
+  <cim:PSRType rdf:about="#_633cf231-275e-4e79-9bc0-dc8393dbc5f9">
+    <cim:IdentifiedObject.name>Статический генератор реактивной мощности</cim:IdentifiedObject.name>
+    <so:PSRType.AssetTypes rdf:resource="#_fd97251d-217d-4dd2-8be8-b3e7b276788a"/>
+  </cim:PSRType>
+  <cim:PSRType rdf:about="#_f09a2137-5a13-476e-829b-d2095f5aec92">
+    <cim:IdentifiedObject.name>Сдвоенный токоограничивающий реактор</cim:IdentifiedObject.name>
+    <so:PSRType.AssetTypes rdf:resource="#_8501025c-4a92-4617-acb1-ff2e0567c99a"/>
+  </cim:PSRType>
+  <cim:PSRType rdf:about="#_f863a872-6880-4e99-8ba2-6250573ef326">
+    <cim:IdentifiedObject.name>ТРДН</cim:IdentifiedObject.name>
+    <so:PSRType.AssetTypes rdf:resource="#_9f826625-a1b2-470e-84e9-0981d16aea03"/>
+  </cim:PSRType>
+  <so:AssetType rdf:about="#_39badd8d-fe05-49fb-81e5-6a9265d54bc6">
+    <cim:IdentifiedObject.name>Ветротурбины</cim:IdentifiedObject.name>
+  </so:AssetType>
+  <cim:PSRType rdf:about="#_38066ac7-191c-42de-bd77-7ac75330acfe">
+    <so:PSRType.AssetTypes rdf:resource="#_7f4c1553-7792-46c8-ba43-7c62b3b160ec"/>
+  </cim:PSRType>
+  <cim:PSRType rdf:about="#_f68ccbb0-2f24-4b7d-be0a-df84363e68ea">
+    <so:PSRType.AssetTypes rdf:resource="#_9f826625-a1b2-470e-84e9-0981d16aea03"/>
+  </cim:PSRType>
+  <cim:PSRType rdf:about="#_5282a252-a5f0-4b0d-8008-4845af415da5">
+    <cim:IdentifiedObject.name>СТН-2В-410-2530-2 УХЛ4</cim:IdentifiedObject.name>
+    <so:PSRType.AssetTypes rdf:resource="#_ee85aea9-34b7-42d6-990d-115a884a6334"/>
+  </cim:PSRType>
+  <so:AssetType rdf:about="#_6030f5ce-f734-4574-a159-44162cef3179">
+    <cim:IdentifiedObject.name>Турбины</cim:IdentifiedObject.name>
+    <so:AssetType.PSRTypes rdf:resource="#_8122fc6a-9650-4c27-bba1-98976d40a35b"/>
+    <so:AssetType.PSRTypes rdf:resource="#_0350e294-6408-41e2-8571-5dce59a05266"/>
+    <so:AssetType.PSRTypes rdf:resource="#_7ed24102-72d0-4dc7-8287-a78b627eeba3"/>
+  </so:AssetType>
+  <cim:PSRType rdf:about="#_3a0503a0-5e56-48f3-81cb-0c4858cd8bc0">
+    <cim:IdentifiedObject.name>Двухгрупповая параллельного самовозбуждения</cim:IdentifiedObject.name>
+    <so:PSRType.AssetTypes rdf:resource="#_ee85aea9-34b7-42d6-990d-115a884a6334"/>
+  </cim:PSRType>
+  <cim:PSRType rdf:about="#_7caf0534-3820-4381-a4c9-cad6fe89c4b6">
+    <cim:IdentifiedObject.name>СТС-2П-210-1900-2,5 УХЛ4 </cim:IdentifiedObject.name>
+    <so:PSRType.AssetTypes rdf:resource="#_ee85aea9-34b7-42d6-990d-115a884a6334"/>
+  </cim:PSRType>
+  <cim:PSRType rdf:about="#_100012f1-0000-0000-c000-0000006d746c">
+    <cim:IdentifiedObject.name>Выкатной выключатель с ОПН</cim:IdentifiedObject.name>
+    <so:PSRType.AssetTypes rdf:resource="#_414f227e-8268-46eb-ba47-dc92e7fbbff7"/>
+    <so:PSRType.AssetTypes rdf:resource="#_937f70ca-22af-443a-a5d7-ca192a98bf78"/>
+  </cim:PSRType>
+  <cim:PSRType rdf:about="#_10000d22-0000-0000-c000-0000006d746c">
+    <cim:IdentifiedObject.name>Управляемый шунт. реактор с БСК</cim:IdentifiedObject.name>
+    <so:PSRType.AssetTypes rdf:resource="#_6f239097-8ed8-4e29-a682-0c4eaafa048d"/>
+  </cim:PSRType>
+  <cim:PSRType rdf:about="#_375b820d-32cb-4d38-9016-ef3b6c67509b">
+    <cim:IdentifiedObject.name>СТС-2П-310-1900-2,5 </cim:IdentifiedObject.name>
+    <so:PSRType.AssetTypes rdf:resource="#_ee85aea9-34b7-42d6-990d-115a884a6334"/>
+  </cim:PSRType>
+  <cim:PSRType rdf:about="#_26a56fa4-748b-4046-b73a-bab4620f6e02">
+    <cim:IdentifiedObject.name>Тиристорная система самовозбуждения</cim:IdentifiedObject.name>
+    <so:PSRType.AssetTypes rdf:resource="#_ee85aea9-34b7-42d6-990d-115a884a6334"/>
+  </cim:PSRType>
+  <so:AssetType rdf:about="#_adb76518-cdf5-4fb9-81ba-92150057fdf5">
+    <cim:IdentifiedObject.name>Трансформаторы напряжения</cim:IdentifiedObject.name>
+  </so:AssetType>
+  <cim:PSRType rdf:about="#_e7b5d19f-75b1-462c-aa10-b6f38826430d">
+    <cim:IdentifiedObject.name>Одномашинная система электромашинного возбуждения с возбудителем постоянного тока</cim:IdentifiedObject.name>
+    <so:PSRType.AssetTypes rdf:resource="#_ee85aea9-34b7-42d6-990d-115a884a6334"/>
+  </cim:PSRType>
+  <so:AssetType rdf:about="#_a154da76-a0a5-4c41-967d-4674dbbc080d">
+    <cim:IdentifiedObject.name>Ветрогенераторы</cim:IdentifiedObject.name>
+    <so:AssetType.PSRTypes rdf:resource="#_f8c90786-6bcd-4be1-b799-994c47e7428e"/>
+  </so:AssetType>
+  <so:AssetType rdf:about="#_fd97251d-217d-4dd2-8be8-b3e7b276788a">
+    <cim:IdentifiedObject.name>Конденсаторные установки</cim:IdentifiedObject.name>
+    <so:AssetType.PSRTypes rdf:resource="#_8f5d382a-1a44-4ecf-a6cf-fbf1f2b49d82"/>
+    <so:AssetType.PSRTypes rdf:resource="#_633cf231-275e-4e79-9bc0-dc8393dbc5f9"/>
+    <so:AssetType.PSRTypes rdf:resource="#_7f63647d-6a3d-4130-8908-cf12abfa4b6a"/>
+    <so:AssetType.PSRTypes rdf:resource="#_10000d0a-0000-0000-c000-0000006d746c"/>
+  </so:AssetType>
+  <cim:PSRType rdf:about="#_bbcde4d0-f83c-4b24-bf93-6920c1374e22">
+    <cim:IdentifiedObject.name>КВсгОСР-RA-460-2500-D11-8-УХЛ4 </cim:IdentifiedObject.name>
+    <so:PSRType.AssetTypes rdf:resource="#_ee85aea9-34b7-42d6-990d-115a884a6334"/>
+  </cim:PSRType>
+  <so:AssetType rdf:about="#_09db7627-f5e2-46fe-b30a-79c359249a1e">
+    <cim:IdentifiedObject.name>Конденсаторы связи</cim:IdentifiedObject.name>
+  </so:AssetType>
+</rdf:RDF>

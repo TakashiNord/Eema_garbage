@@ -1,0 +1,143 @@
+about;name;acceptableDuration;direction
+1000162c00000000c0000000006d746c;сверху (30мин);1800;OperationalLimitDirectionKind.high
+1000161700000000c0000000006d746c;сверху (1мин);60;OperationalLimitDirectionKind.high
+4785f0207e4842c49d222d4be55681dc;сверху (4с);4;OperationalLimitDirectionKind.high
+8ee5242e21ab42f29e96ad623ce94fe9;cверху (3200с);3200;OperationalLimitDirectionKind.high
+a37d7bf18cce4abfb05311ddcee728e8;сверху (3мин);180;OperationalLimitDirectionKind.high
+8f209c5a1c8448e18f3a4361c5a9adc4;сверху (9с);9;OperationalLimitDirectionKind.high
+159809e57ada4cb08f90121be18e6387;сверху (3мин 45с);225;OperationalLimitDirectionKind.high
+4e74e8f96c39476f8894b06c64b41385;cверху (18с);18;OperationalLimitDirectionKind.high
+14e18568f22a4a249489aea213507d7f;cверху (17,5ч);63000;OperationalLimitDirectionKind.high
+577114e89d33447095b06b60ce1c720d;cверху (25ч);90000;OperationalLimitDirectionKind.high
+152f1888c0754266a52f552a82a3bd54;cверху (18мин);1080;OperationalLimitDirectionKind.high
+68b63ba0ea06408f8716c050b745b360;сверху (12мин=720с);720;OperationalLimitDirectionKind.high
+f1a55aca3710499fab37d104ee093aa8;сверху (65с);65;OperationalLimitDirectionKind.high
+db88f5a9122d4c388079ed1ab05cfead;cверху (63мин);3780;OperationalLimitDirectionKind.high
+7c723b581ecf43b98cffe84306418636;Umax20сек;20;OperationalLimitDirectionKind.high
+82879507b7fd4c89b00f009c6986ef90;снизу 20 минут;1200;OperationalLimitDirectionKind.low
+2456edafb0af4585810a04b3a6032bc6;cверху (32мин);1920;OperationalLimitDirectionKind.high
+c3fcf959195f4758853a3a2ec7ee400c;cверху (14,8с);14.8;OperationalLimitDirectionKind.high
+10000ca700000000c0000000006d746c;сверху;0;OperationalLimitDirectionKind.high
+d57d6f1468c74ba3af6b55996e5e65d3;сверху (6мин);360;OperationalLimitDirectionKind.high
+3af284db6b134b02a2b0ddd978a1e74d;cверху (400мин);24000;OperationalLimitDirectionKind.high
+632588d240914c5cb12b5ff21dcb4108;сверху (5,8с);5.8;OperationalLimitDirectionKind.high
+1000162e00000000c0000000006d746c;сверху (6ч);21600;OperationalLimitDirectionKind.high
+a140659b986747c98ed654aa531307cf;сверху (3с);3;OperationalLimitDirectionKind.high
+1d50c1dee301495f860952d728547e91;сверху (10,5 мин);630;OperationalLimitDirectionKind.high
+ef45c73c9c164ca0b93b6078bc3189ff;сверху (9мин 30с);570;OperationalLimitDirectionKind.high
+a5c84a14e0b94ff9ae2173fb3976d88d;сверху (25с);25;OperationalLimitDirectionKind.high
+279bd151aba5471cabb405d1abc6c838;снизу (0с);0;OperationalLimitDirectionKind.low
+b96ffe904a76478fbfb968b925daed75;cверху (12ч);43200;OperationalLimitDirectionKind.high
+1000163000000000c0000000006d746c;сверху (100ч);360000;OperationalLimitDirectionKind.high
+dba7ef8515364ef581bf455a62e02854;сверху (7с);7;OperationalLimitDirectionKind.high
+ea010c742ca04f10b34eb53d515b8abf;cверху (2,5ч);9000;OperationalLimitDirectionKind.high
+6672820722e248c7ad208343ba50daee;сверху (5мин 15с);315;OperationalLimitDirectionKind.high
+1000161800000000c0000000006d746c;сверху (5мин);300;OperationalLimitDirectionKind.high
+88099d0fb72a4e13a1fe6db7f4321d5a;сверху (37,5с);37.5;OperationalLimitDirectionKind.high
+4d5c81d7914844138b8c6ac4ed4b447a;снизу (40с);40;OperationalLimitDirectionKind.low
+69836c69b4e14af5ae03d584af0362d6;снизу (45с);45;OperationalLimitDirectionKind.low
+45664c4d03e84f73a228ec4130b1e0c1;сверху (1,2с);1.2;
+d029e3c3387448c28b22a02fc92e2979;cверху (80мин);4800;OperationalLimitDirectionKind.high
+e570da5cb826432a94c81581500603ed;снизу (10c);10;OperationalLimitDirectionKind.low
+1000162000000000c0000000006d746c;сверху (1ч);3600;OperationalLimitDirectionKind.high
+87caf87d032c4784915206c6cc1e08f9;снизу (30 мин);1800;OperationalLimitDirectionKind.low
+10000cad00000000c0000000006d746c;снизу;;OperationalLimitDirectionKind.low
+1d96eb29ac8d4bf48c7d0fb1ea37b08e;сверху (118мин 20с);7100;OperationalLimitDirectionKind.high
+189d01a8dbff45ff8f6ec5aaf9e65fd3;снизу (1мин);60;OperationalLimitDirectionKind.low
+0d34c03f1abb4ea5938c8a87ab166761;cверху (1,5ч);5400;OperationalLimitDirectionKind.high
+bc1419a54d444e0897372b15cd30cff0;сверху (2,5с);2.5;OperationalLimitDirectionKind.high
+d79f47b4a48d48ff9d6477455741b443;Umax;1200;OperationalLimitDirectionKind.high
+79e684ca4c5549b8843b993f4191a67e;снизу (3мин);180;OperationalLimitDirectionKind.low
+443335efa21d4f099254f6344947d515;сверху (1мин 28с);88;OperationalLimitDirectionKind.high
+f90d3de309624d66b7cb47010ea4da47;снизу (750мин);45000;
+26e5911a718c4f6fbbd51c92ed190f7b;cверху (30ч);108000;OperationalLimitDirectionKind.high
+d5b04a9595a1428996a3933dc5dc0a0d;cверху (5ч);18000;OperationalLimitDirectionKind.high
+2555804a4abd464694d182394ad4cd85;сверху (2мин);120;OperationalLimitDirectionKind.high
+1000161c00000000c0000000006d746c;сверху (8ч);28800;OperationalLimitDirectionKind.high
+100017d900000000c0000000006d746c;снизу (20мин);1200;OperationalLimitDirectionKind.low
+7a83b8381ac6477a95e3d830fd88b05f;ДДТН;;OperationalLimitDirectionKind.high
+9204b33019724329ab36f24d317dd1b9;снизу (6мин);360;
+9c49e0507eb2461b9f5aaad947ba0b76;сверху (1мин 50с);110;OperationalLimitDirectionKind.high
+6a19496c94ef4fc489bd83622857dcd9;cверху (140мин);8400;OperationalLimitDirectionKind.high
+482246d9e14e4adaa6953e8d223df152;снизу (25мин);1500;
+b1f38769b61e4bcc953187908a084887;сверху (0,1 с);0.1;OperationalLimitDirectionKind.high
+c377bb6525ec46f692666009941c4800;сверху (80с);80;OperationalLimitDirectionKind.high
+3e304f54349144e5b06c092ffa5fe9da;сверху (40с);40;OperationalLimitDirectionKind.high
+71922444768d4cf380cd63c7c2076347;сверху (25 мин=1500с);1500;OperationalLimitDirectionKind.high
+0cf21cca0b71489f8ce2182e961c0c28;сверху (5с);5;OperationalLimitDirectionKind.high
+3b9d0942a02a4ddeae3242701642585c;Umax;0.1;OperationalLimitDirectionKind.high
+db650fed8f074aa9b910d90333a36ea9;снизу (2ч);7200;OperationalLimitDirectionKind.low
+dbfea20c7ac24456915541219f064a92;+1,5мин;;
+46d84762a79a430abfe22192994f7710;сверху (6с);6;OperationalLimitDirectionKind.high
+9b2bd5ab18b448e38ba6dabdd15aef8f;Umax20сек;20;OperationalLimitDirectionKind.high
+324eb5a3b7b94fcd9cd0eed98bd1a0f0;cверху (48ч);172800;OperationalLimitDirectionKind.high
+c3bbbe408bd04ffb8fd0b2a11b389013;сверху (2мин 30с);150;OperationalLimitDirectionKind.high
+27393da5cff64848ade39645bfaa43ea;сверху (17 мин=1020с);1020;OperationalLimitDirectionKind.high
+97c80b5c126a4c62bba8e78ed17a26cf;cверху (50мин);3000;OperationalLimitDirectionKind.high
+2526f914712340a483da31e1db65bffe;сверху (3мин 35с);215;OperationalLimitDirectionKind.high
+86cf2b4600544350873bbd865f90f3a7;снизу (2мин);120;OperationalLimitDirectionKind.low
+9dbf0f7177bb4bb086f742567b6f8786;Umax;1200;OperationalLimitDirectionKind.high
+2eca0dcbab4e45388a76fb4f04b11737;cверху (10ч);36000;OperationalLimitDirectionKind.high
+cadfc2b3ec8a4b3cb5809fcd385e138a;сверху (15с);15;OperationalLimitDirectionKind.high
+8b69b98f724448549768ad86a3b75bf0;cверху (200с);200;OperationalLimitDirectionKind.high
+10000ca100000000c0000000006d746c;абс;0;OperationalLimitDirectionKind.absoluteValue
+0852bc3663c0459ea7852fe2318b1675;1;1200;
+c84c1ea1c9c34d52b9a0610d2d2b6831;сверху (0,8с);0.8;OperationalLimitDirectionKind.high
+0f61b4804c8746999b097299b5de8a8e;сверху (1с);1;OperationalLimitDirectionKind.high
+f9864728fc7f4214a6a9ac23a8e2cc7b;cверху (65мин);3900;OperationalLimitDirectionKind.high
+a78fcca83f7346ca89ce8fa0fb5c5647;cверху (17ч);61200;OperationalLimitDirectionKind.high
+e8eb41ff9e0042b4870ffd7524060c50;сверху (10с);10;OperationalLimitDirectionKind.high
+12d021f73bdf421489468f824eca2ec5;сверху (45мин);2700;OperationalLimitDirectionKind.high
+d822c9e6db214414bb585a20b0f9a03c;сверху (4мин);240;OperationalLimitDirectionKind.high
+a3132619e855458b94769dddb7698083;cверху (700с);700;OperationalLimitDirectionKind.high
+b86d529d42d140899c40cb41aeb61a60;сверху (5мин 50с);350;OperationalLimitDirectionKind.high
+9a1b2a53d07646d893d52301457b761f;cверху (200мин);12000;OperationalLimitDirectionKind.high
+2faee43c47c64ae58065edbbfcbe941a;снизу (6,3с);6.3;OperationalLimitDirectionKind.low
+8de2021a575041798fa36f1e762c4963;сверху (1мин 40с);100;OperationalLimitDirectionKind.high
+bb0fcd0d532a469b8acb6fddc040ba14;снизу (5c);5;OperationalLimitDirectionKind.low
+b6dda6c5dfc141e885af4b00be025a2e;Umax0.1сек;226.8;OperationalLimitDirectionKind.high
+890742a9ef42474c9a9546d0c9492f13;снизу (500мин);30000;
+034c7f0e86a5411b973f60b2507de8c0;Umax;1;OperationalLimitDirectionKind.high
+1000161d00000000c0000000006d746c;сверху (24ч);86400;OperationalLimitDirectionKind.high
+fbb39a0dd70343a7ac9e16af562e0395;сверху (750 мин=45000с);45000;OperationalLimitDirectionKind.high
+fe8363bbeb8c4f2d91b00ae255422e57;Umax;1200;OperationalLimitDirectionKind.high
+684d7aa800774b548a324d33444c8f83;сверху (500 мин=30000с);30000;OperationalLimitDirectionKind.high
+1e3ce8a3a7e74151a9bf59c434545fb5;сверху (5,4с);5.4;OperationalLimitDirectionKind.high
+f22132710dc5410c8f750331b2f0918b;cверху (24мин);1440;OperationalLimitDirectionKind.high
+c6bd069a904e4d0ab22b6df6a58ce2fc;Umax;60;OperationalLimitDirectionKind.high
+b4e998294e384a77914e35f32fde15f6;сверху (15мин);900;OperationalLimitDirectionKind.high
+61dee3409b5c42fa89e1a3587731f344;cверху (20ч);72000;OperationalLimitDirectionKind.high
+93c43ad8a26a465a8f2051b3cd7cefb7;снизу (1с);1;OperationalLimitDirectionKind.low
+0dbaf1d5ec48466486442ff91ef403fb;сверху (21ч);75600;OperationalLimitDirectionKind.high
+aed1423f0ee946afabefc0ebe5ce4c75;снизу (45,3с);45.3;OperationalLimitDirectionKind.low
+15901baf507f4b78b8e010f3d51c4cf9;снизу (20с);20;OperationalLimitDirectionKind.low
+1000161b00000000c0000000006d746c;сверху (4ч);14400;OperationalLimitDirectionKind.high
+69d168ff1af144aba66afabfda3e10d6;сверху (2мин 40с);160;OperationalLimitDirectionKind.high
+29cf88377d124122b8acc32c1c6a12ae;сверху (1,5мин);90;OperationalLimitDirectionKind.high
+4475dd1a3e534c75b90b606f262179f7;Umax;1200;OperationalLimitDirectionKind.high
+77d6c1c29ac147c880462a0ede293051;снизу (5мин);300;OperationalLimitDirectionKind.low
+1000162800000000c0000000006d746c;сверху (20с);20;OperationalLimitDirectionKind.high
+f40b1d36c2ae45a8b7a77b2bdfc5645e;снизу (3с);3;OperationalLimitDirectionKind.low
+882f434866594ae296780d5d2cf649c5;сверху (45с);45;OperationalLimitDirectionKind.high
+100017d800000000c0000000006d746c;сверху (3ч);10800;
+1000161a00000000c0000000006d746c;сверху (2ч);7200;OperationalLimitDirectionKind.high
+344a97b18f6744438777aff21d2d15ff;сверху (2мин 50с);170;OperationalLimitDirectionKind.high
+c08153a2a82746c29eab52d850d600db;Т 4ГТ;600;OperationalLimitDirectionKind.high
+e04b00bc8d0f4629968cbce7ab63e2f1;сверху (42с);42;OperationalLimitDirectionKind.high
+3b29025bb3c944de83894afd18968508;сверху (8мин 20с);500;OperationalLimitDirectionKind.high
+090759a1c3664143b4daea6469fc7845;сверху (1мин 55с);115;OperationalLimitDirectionKind.high
+dcf35ff978ed4fbcb8a19dae4fddb0d2;сверху (2c);2;OperationalLimitDirectionKind.high
+1000162a00000000c0000000006d746c;сверху (10мин);600;OperationalLimitDirectionKind.high
+139e9a56dd2d4e71be6b134631ff81d3;сверху (33с);33;OperationalLimitDirectionKind.high
+1000161900000000c0000000006d746c;сверху (20мин);1200;OperationalLimitDirectionKind.high
+11fd00648a21465a9808676e5e25374a;cверху (40мин);2400;OperationalLimitDirectionKind.high
+1a3c117d5f4349d489075673ec8be4c2;сверху (41мин 10с);2470;OperationalLimitDirectionKind.high
+4ef0e49bd35d4eb5bc38c71d9c97d9db;сверху (0,5с);0.5;OperationalLimitDirectionKind.high
+0c14fba1ec454df7b19728abc389b8d2;сверху (30с);30;OperationalLimitDirectionKind.high
+1b112015acc34bbeb95133a7d359d72c;снизу (3ч);10800;
+2b12428810b34e3ba5beba33d5d67b81;cверху (5,5ч);19800;OperationalLimitDirectionKind.high
+03ae474c08534976b199a7c9da2a442d;снизу (12мин);720;
+5b30466697254f11a2d61291dd1618c2;Umax;0.1;OperationalLimitDirectionKind.high
+ac86a32e501f494fab7cb4481fe8849b;сверху(1.5с);1.5;OperationalLimitDirectionKind.high
+2f3eef0a60164ffb887520e95ec19abc;Umax;1200;OperationalLimitDirectionKind.high
+5fbd92172804400cbb84d6b329f69425;сверху (50с);50;OperationalLimitDirectionKind.high

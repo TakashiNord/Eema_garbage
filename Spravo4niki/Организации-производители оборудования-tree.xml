@@ -1,0 +1,2725 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rf="http://gost.ru/2019/schema-cim01#"
+    xmlns:dm="http://iec.ch/TC57/61970-552/DifferenceModel/1#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:md="http://iec.ch/TC57/61970-552/ModelDescription/1#"
+    xmlns:ups="https://cim.so-ups.ru#"
+    xmlns:so="http://so-ups.ru/2015/schema-cim16#"
+    xmlns:cims="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#"
+    xmlns:me="http://monitel.com/2014/schema-cim16#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:cim="http://iec.ch/TC57/CIM100#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#" > 
+  <cim:Manufacturer rdf:about="#_a31469eb-0dcb-4d70-ba42-a836fb563660">
+    <cim:IdentifiedObject.name>Производитель Jinko Solar</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_ee3ab38c-caf4-4f0d-b6ef-e606596a9817"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_7c86ee8b-412e-4353-85d0-e7abf24be2fb">
+    <cim:IdentifiedObject.name>Производитель Энерготех</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_ba0dae9b-bc85-4cad-b0fd-4b54310c4cbf"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_1275e305-5360-47d7-9f95-e5f5a5f8723c">
+    <cim:IdentifiedObject.name>Производитель Минусинский Электрокомплекс</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_bd9f1255-a6c8-4322-8ceb-4e81f9175206"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_9075eede-34b5-420f-b8d6-e82e47084bed">
+    <cim:IdentifiedObject.name>Производитель Red Wind B.V.</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_8b68e8e8-a42f-4f35-ae10-7ec260a7f115"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_f182d556-6c33-4776-8b7b-dbf008b675df">
+    <cim:IdentifiedObject.name>Производитель Сафоновский электромашиностроительный завод</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_a12116c4-f172-4ade-b3df-8070f517cdeb"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_a7b29a39-1ccf-48a8-b44b-2867d8ca652d">
+    <cim:IdentifiedObject.name>Производитель SACE</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_062dc7d3-3de9-4598-a8d5-d0719f276535"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_39f0fe8b-2e95-48fb-be8e-cd49549f556c">
+    <cim:IdentifiedObject.name>Производитель АО «ЧЭАЗ»</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_be65e04b-6a7c-449e-ae08-8a8afd28f37a"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_bb1a5898-648a-4e64-a326-643af0ff1307">
+    <cim:IdentifiedObject.name>Производитель Красноярский металлургический завод (КраМЗ)</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_be16978a-8e9a-4237-ae92-d050d8871d8b"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_5ef69f18-eecb-41b2-b2b6-9de76e3255b7">
+    <cim:IdentifiedObject.name>Производитель Литмаш</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_861a3d33-ab96-4ccf-9d31-2b391f4a74fc"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_e7993bf9-d184-4b63-8838-ac984278a6db">
+    <cim:IdentifiedObject.name>Производитель Курганский завод энергетических технологий</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_f9d3e1e4-bebe-41a4-9dd4-0a3055825c43"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_962d6a58-e8e2-47f1-b49e-3e499a4e14f5">
+    <cim:IdentifiedObject.name>ООО "МегаСтрой"</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_1ba6cc3b-d8c9-4bb5-acb2-460d756fee0a"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_72615fcf-17bc-4131-aec0-73ab3efb6f00">
+    <cim:IdentifiedObject.name>Производитель GE Energy Products France SNC</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_275b0810-a32b-472e-829d-f8ca49cca014"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_a54c7c9f-16c4-4def-970b-bdfa65fd5025">
+    <cim:IdentifiedObject.name>Производитель ООО Лысьвенский завод тяжелого электрического машиностроения «ПРИВОД»</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_b5813855-5a11-4f59-b507-2b88660018de"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_e1290896-36c2-4a91-b312-9731c7923534">
+    <cim:IdentifiedObject.name>Производитель Энергомир</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_7b7cd9b3-284d-4ae1-8318-2eceeda96120"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_89872d8e-b01a-4a01-ba10-a397fc57a520">
+    <cim:IdentifiedObject.name>ООО «Электрощиткомплект»</cim:IdentifiedObject.name>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_a12f16fe-cbae-413a-89bf-13a5ab3f43c8">
+    <cim:IdentifiedObject.name>Производитель Благовещенский электроаппаратный завод (БЭАЗ)</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_b6edaa64-74f2-4b60-8c58-ac6c4e9dc68d"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_f115805c-0715-4dff-9ab2-45de6e30d76b">
+    <cim:IdentifiedObject.name>Производитель Харьковский завод "Электротяжмаш"</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_fb75da9a-49e0-4c31-a132-4e4a8957ead6"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_96bbbc2c-7755-4720-80d1-cd92bf3812be">
+    <cim:IdentifiedObject.name>Производитель Томский политехнический университет</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_36268975-c005-4747-b8b3-82ad16f5e303"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_7cced725-acc3-4b91-b1f9-11b874c69a67">
+    <cim:IdentifiedObject.name>Производитель Hitachi Energy</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_92ea02ef-3edf-49ab-b4a9-5808db8563ae"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_a370a03c-5098-424c-a303-7925c947b7bb">
+    <cim:IdentifiedObject.name>Производитель NR Electric (Nari-relays, АСТ)</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_4d654921-76ef-49c7-aefb-9f85ea857808"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_a0b57af2-4969-4557-808c-f17cd3f434e8">
+    <cim:IdentifiedObject.name>ЛСНХ ВЗВА г.Великие Луки</cim:IdentifiedObject.name>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_16731cfc-787a-4481-bc55-8eb973f7c39c">
+    <cim:IdentifiedObject.name>Производитель НПП Итран</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_fca76087-ea91-4972-98d7-0d24b8609bd3"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_74e1d995-9a55-4ff7-92a3-bcf2167b14e0">
+    <cim:IdentifiedObject.name>Производитель Нептун</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_1dfb9893-d9da-4563-ac08-905cdc93ba40"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_27d31d71-bba4-430c-810c-b727ea6c00ba">
+    <cim:IdentifiedObject.name>Производитель Раменский электротехнический завод Энергия (РЭТЗ Энергия)</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_60d2574f-85fc-4946-9734-e4abd319edc3"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_8125fbe2-c740-4de6-a9d8-78965ec45ecb">
+    <cim:IdentifiedObject.name>Производитель LE MATERIEL ELECTRIQUE S-W</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_1372edeb-4cc7-4130-ba11-c55bec8cf161"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_e4f033dd-d486-4fc5-80b2-cba1008a3853">
+    <cim:IdentifiedObject.name>Производитель СКБ-ЭЦМ</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_bf437ee4-cb53-4bad-a706-f7c344c73936"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_b97ef8da-31bd-4506-aad0-65e70d5e46aa">
+    <cim:IdentifiedObject.name>Производитель ХК ОАО Привод</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_21f76085-66a5-4377-8bf6-c0eaebc673a0"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_b5c9aa6a-a1af-48eb-81a1-e3b745a8df52">
+    <cim:IdentifiedObject.name>Производитель Севкабель</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_c99a7c09-8c01-4fb2-b9fd-c9c868cde3df"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_03eb4023-dba3-4637-9e0c-4404995d21fd">
+    <cim:IdentifiedObject.name>SEC Zhangjiagang Transformers Co, ltd</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_10000ee3-0000-0000-c000-0000006d746c"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_abfffc79-6bce-4053-8dd8-232db9557741">
+    <cim:IdentifiedObject.name>Производитель S. Morgan Smith</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_a27609fa-e8e5-433b-9794-492f35dff649"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_17ee9435-3702-46f4-8cf6-c2d6d4aa9c8c">
+    <cim:IdentifiedObject.name>Производитель Dongwoo Electric Corporation</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_21838fff-ef13-446a-9dff-0800e506b5c1"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_a2289ce0-8365-4f40-8ef8-34b1c88119a7">
+    <cim:IdentifiedObject.name>Производитель ООО "МАТИК-ЭЛЕКТРО"</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_c5ba4dd7-c9f7-43cb-bc61-08c890fa55da"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_1794fd3e-bb43-47d5-9739-d1be914b81b1">
+    <cim:IdentifiedObject.name>Производитель Электрокомбинат "Мотез"</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_00e43f8f-129f-4209-be4b-4d812d55169c"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_5b5a33f5-ea1f-4777-b7fc-0aa36f102cb6">
+    <cim:IdentifiedObject.name>Производитель Завод Электросила</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_2ebc9d1b-f374-4c4d-a92e-88a823ab4144"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_1945b033-a9e3-4d58-ac98-afc6c7fdfc39">
+    <cim:IdentifiedObject.name>Производитель Fabbrica Transformatori di Misura (F.T.M.)</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_63cdbb17-800f-4fbb-8023-24cb466e1e2b"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_f8edf5b0-9844-4aeb-8008-98c0d7aeaca3">
+    <cim:IdentifiedObject.name>Производитель Чирчикский трансформаторный завод (ЧТЗ)</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_4ae0872c-b988-464f-9dcc-748701a09c55"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_9cb50a3f-337d-49a3-a10c-2eec8c47d1e7">
+    <cim:IdentifiedObject.name>Производитель ООО "ПРОМАВТОМАТ"</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_d5bb69ea-a8c8-4d5d-b3d6-e5549bf1a679"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_3543cfea-1680-4160-be3a-5032346ebbfb">
+    <cim:IdentifiedObject.name>Производитель SECOM</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_f70d8cab-1c48-48f5-bdec-c180c48454e5"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_f23a87fc-d2b4-4a90-aea1-d83641a7e817">
+    <cim:IdentifiedObject.name>Производитель Уральский завод гидромашин</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_f4fda43a-5c17-447d-87e3-87d0cb980fad"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_dd81ecb1-283f-4162-8b8e-a41ff143dd05">
+    <cim:IdentifiedObject.name>ООО "Элиз" г. Запорожье</cim:IdentifiedObject.name>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_0a6562ce-eb0c-41c9-bd61-5bad6ef8591a">
+    <cim:IdentifiedObject.name>Производитель OPRA</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_80375c9c-346f-4636-8615-f51f3c9762cb"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_cf751018-1a96-46cb-a564-780cb66172f8">
+    <cim:IdentifiedObject.name>Производитель Турбогенераторный завод Лысьва</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_ef540722-14b6-4b9c-8bbc-99741016b95c"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_751abe3a-ff85-487c-a2e6-6c04a764368a">
+    <cim:IdentifiedObject.name>Производитель Yunnan Switchgear Factory</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_b6dca5cb-358d-43c0-a9d6-03427205d2b6"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_92a5ec9d-713b-4eab-b744-5a8ebf2f7089">
+    <cim:IdentifiedObject.name>Производитель Парус электро</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_194d9eee-b3ee-441c-ab56-b7b79c13b595"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_6a8a3f6c-7f45-43d9-b63a-730d559b5f1c">
+    <cim:IdentifiedObject.name>Производитель Мотор Сич</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_96e9fd97-224c-4f5d-a291-5b465f65d6d8"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_b82587f2-690e-4099-a2e8-6f56ca1446b1">
+    <cim:IdentifiedObject.name>ООО "Электрощит-К"</cim:IdentifiedObject.name>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_e9b15f4c-42c7-4324-941e-3ec587787952">
+    <cim:IdentifiedObject.name>Производитель Voith</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_45acdf23-d1ce-48d6-8073-a44ae151aae2"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_dafbe061-8dbb-407c-8156-4c52cad4a898">
+    <cim:IdentifiedObject.name>Производитель CATO Engineering</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_ba449e67-95c4-43f1-88b9-7562be2d7da8"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_a65a590c-f5d8-46b5-acc4-bb6c461af546">
+    <cim:IdentifiedObject.name>Производитель Солар Кремниевые Технологии</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_a76755f0-2cfe-4eb4-87b7-61ec2061a7bc"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_476d134b-d766-48b3-91d4-85f2e1a3cf52">
+    <cim:IdentifiedObject.name>Производитель ИНТМАШ</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_59fedf0a-93e1-4c11-8ee6-96176423cfa9"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_3e032690-807b-42b5-861f-7d28a09438df">
+    <cim:IdentifiedObject.name>Производитель Нефтегазовые системы</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_dff138e0-b2dc-41c8-89fa-25c4ed27e4cc"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_f929a588-b4f5-4409-92cb-cd73aa19f76d">
+    <cim:IdentifiedObject.name>Производитель KMW Швеция</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_50c4ef18-14a5-48d0-b83f-f13d12edf893"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_68b28133-9113-424b-bbaa-fb84144173d9">
+    <cim:IdentifiedObject.name>Производитель EPRO Gallspech</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_4d6c6739-c50a-488d-bde6-f783a639a0c4"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_59ffb8ef-14d9-42c6-8e96-9630d98a65dc">
+    <cim:IdentifiedObject.name>Производитель Латвэнерго (г.Рига)</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_09688781-3adb-43a0-a529-b38059c1e359"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_f8d8afc8-c489-49af-a09e-5b7e5d2b4aff">
+    <cim:IdentifiedObject.name>Производитель Комплектпромматериалы (КПМ)</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_8b3cfffe-e296-45a6-b39c-3e9f769ff28e"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_4b25aa9d-7e25-4da9-9f50-c401bbbdabe5">
+    <cim:IdentifiedObject.name>Производитель Caterpillar</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_e743c1ed-3e1e-4692-9fe7-f17aac8ef22c"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_a5f5fe26-3cc5-47e2-a6b0-208739e9bc59">
+    <cim:IdentifiedObject.name>Производитель Nuova Magrini Galileo</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_8f6b3ea4-2b9a-496e-a6a6-c30746977363"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_a22778d0-465b-460d-9325-2c630cdb87e0">
+    <cim:IdentifiedObject.name>Производитель EAA Genova</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_7c3173aa-4346-4185-9f53-7bd590c2339e"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_999b5eb1-89a5-4647-b5d7-8ad12ea7e4c1">
+    <cim:IdentifiedObject.name>Guangdong Sihui Instrument Transformer Works Co., Ltd (Китай)</cim:IdentifiedObject.name>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_c7fe858f-853d-4ac4-9c0c-4c37b5ddf204">
+    <cim:IdentifiedObject.name>Производитель Гидроэлектромонтаж</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_4d1137f9-9c7d-4443-b303-c9c214d2111f"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_e4e770f2-b463-486b-971e-6eabccd401aa">
+    <cim:IdentifiedObject.name>Производитель НПО "СПБЭК"</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_3e15dbe8-8eb1-4456-b34f-f96450f38d70"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_9731d107-0f7c-42a2-aeda-0d049edbd1fb">
+    <cim:IdentifiedObject.name>Производитель Kato Engineering</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_3dd34a9d-9db6-4904-94c9-b01a0d27f158"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_84a07929-6b82-41dd-a7c1-2df34e7c9ac7">
+    <cim:IdentifiedObject.name>Производитель Укрэлектроаппарат</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_4ed35096-debd-478e-ae05-9145450d73ac"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_15f2c8b4-a54a-4398-8e84-193e9ce54d68">
+    <cim:IdentifiedObject.name>Производитель Карпинский Электромашиностроительный Завод (КЭМЗ)</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_e0691097-b4a3-431b-ba60-e05e9a605e52"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_ddbb4794-5cb4-489d-885d-3d37c9486b2e">
+    <cim:IdentifiedObject.name>Производитель Нижегородский Электротехнический Завод (НЭТЗ)</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_48340b99-f060-4ff5-a3f1-296b18c48a6a"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_07ed0922-d9bf-496e-83b1-3b143a40625a">
+    <cim:IdentifiedObject.name>Производитель Завод имени Готвальда</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_7ed41f63-9056-4e72-a0fb-e2c508994951"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_3fde6858-f03a-4e05-b6ec-4f4373e8b7a0">
+    <cim:IdentifiedObject.name>Производитель Энергомашэкспорт</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_525261dd-2923-4330-b9c8-95201d2096a4"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_febc7743-c99c-44fd-9098-c1a09b0c65c2">
+    <cim:IdentifiedObject.name>Производитель Wattsud</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_e3448a67-a44a-485a-9d17-79ee08689d49"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_8b37252f-f35a-43c0-b0fd-3fbbecdf35ef">
+    <cim:IdentifiedObject.name>ЗАО "Завод энергозащитных устройств"</cim:IdentifiedObject.name>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_8de5d2fa-7dd6-423b-85fd-3cc60bca8a0e">
+    <cim:IdentifiedObject.name>Производитель Shenzhen Hopewind Electric Co</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_776d012a-8d2a-4528-88f0-7136e3716d43"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_353c6f1c-a549-4c6e-b525-4d668c529e29">
+    <cim:IdentifiedObject.name>Производитель Шкода (Чехословакия г. Плезень)</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_8965ca0b-87b6-48ad-b8fc-9ec04edf84bb"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_353b5009-436a-4250-a56e-94be161e7677">
+    <cim:IdentifiedObject.name>Производитель ООО "СКЗ"</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_71670769-cd98-4019-8997-34031d763775"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_3b6b813e-60c8-45d5-8273-37203973e803">
+    <cim:IdentifiedObject.name>Производитель Уральский электромеханический завод</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_8ffafece-a3b5-4286-8d9a-576ffc57b7ea"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_4c3096f2-e815-4ba9-9e95-29fc41678cd0">
+    <cim:IdentifiedObject.name>Производитель НПЦ Газотурбостроения Салют</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_a76fb1ef-3da6-4890-836e-2e7806515757"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_51f8ff04-4b19-494d-bd35-53f5be82fbf2">
+    <cim:IdentifiedObject.name>Производитель Энергоавтоматика (г.Рига)</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_b56085e7-f104-4582-b679-86968d907823"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_c944233c-9236-43f9-bb8c-37b755020053">
+    <cim:IdentifiedObject.name>Производитель Разряд-М</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_42a27d91-7623-4039-922a-57c9ec484975"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_5c3bf210-a5ae-4e92-991b-9a6bd1846dc4">
+    <cim:IdentifiedObject.name>Производитель Iskra Sistemi</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_8418de71-e32c-4ae4-b10d-fcbcbbe9d784"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_6fabbdb7-258b-4df0-a1a8-faf2a7f61d7f">
+    <cim:IdentifiedObject.name>Производитель Brush Electrical Machines</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_9046d2ab-3603-41f6-88f9-519014d78fd3"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_7125e1bc-1a9e-4562-9c4b-0a39f6c133e4">
+    <cim:IdentifiedObject.name>Великолукский завод ВВА</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_05096b3b-e4f2-43de-9be2-dc490e4dc3eb"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_7ed47a67-6ef4-439c-8c92-8cd73b4f077e">
+    <cim:IdentifiedObject.name>Производитель Уральский электроаппаратный завод (Уралэлектроаппарат)</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_dbbfa960-605a-498b-8058-5c7615d0d48b"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_69e259d7-d8a8-48fc-a468-f15e21d98e04">
+    <cim:IdentifiedObject.name>Производитель Siemens Industrial Turbomachinery AB (SIT AB)</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_273e90e4-6dba-44de-b80e-59ae92b374e7"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_47584d7d-2298-4ffd-857a-80e37881e0aa">
+    <cim:IdentifiedObject.name>Производитель BBC</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_87b127d4-6772-4ec3-988e-de1900b39d50"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_4fadcc95-cd9a-4852-b21a-fa8c248c3ca7">
+    <cim:IdentifiedObject.name>Производитель Технопромэкспорт</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_35b2079f-aeee-45d0-a39c-6e8a39d95ae3"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_be2e68ae-6098-44b5-9908-9748ddb75068">
+    <cim:IdentifiedObject.name>Производитель Луганский электроаппаратный завод</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_d9aece36-6170-4b2b-9cda-e2504503ea65"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_40e180a0-e888-4ed3-8c52-9390eb64c4a6">
+    <cim:IdentifiedObject.name>Производитель ELIN Motoren</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_34c448fb-5ac2-46dd-9095-b22a40d7b4c2"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_b574b712-0715-4c44-8756-5e3dfdd4f3e2">
+    <cim:IdentifiedObject.name>Производитель Toshiba</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_b956b5fc-259e-4c98-a044-90548d0a12f5"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_a09d1015-3ccb-4d15-ba82-8fd7261a94a8">
+    <cim:IdentifiedObject.name>Производитель Уфимский трансформаторный завод</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_9cfe0388-42ea-40f3-b63d-868887b5f046"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_bc5e8682-a341-4078-9ce1-97724e465602">
+    <cim:IdentifiedObject.name>Производитель НПО Изолятор</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_c32b1cf0-dd76-4269-afcb-b6dff0d61ee2"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_34d09d5b-87fe-42f4-a8b5-f424d2c44f19">
+    <cim:IdentifiedObject.name>Производитель Трансформаторный завод им.Куйбышева</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_bcaa8c2c-bd26-4d15-8714-2210156b9ca9"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_099411bd-d6c3-4c32-a8ac-bdf5e4cb2525">
+    <cim:IdentifiedObject.name>Производитель НПО Сатурн</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_33a32786-af70-411d-9433-dfd9c23356d1"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_19927846-9ef5-4814-8b13-d6409b31a184">
+    <cim:IdentifiedObject.name>Производитель НПО Южэнергогруп</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_d4805172-eee1-4e19-a9a2-feb60c2fd2b5"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_6661a0c3-0643-437d-9659-c13aca4de80a">
+    <cim:IdentifiedObject.name>Производитель Сибэлектротяжмаш</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_d7ef46f2-78b3-4f1a-b144-d96c50933177"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_f654f82d-057b-44f3-8a8c-e5c23c46ec1f">
+    <cim:IdentifiedObject.name>Производитель Сумское НПО</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_12ee412b-4221-44ba-a8e5-d5bad77059fd"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_62f16a8b-32bc-4618-82b5-fe0d1181c1d5">
+    <cim:IdentifiedObject.name>АО "Профотек"</cim:IdentifiedObject.name>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_a3281556-8281-4b25-807b-97f9f4a50be7">
+    <cim:IdentifiedObject.name>Производитель Meidensha</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_3735d99f-89c8-4f83-ba3a-33a02598cc7b"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_37303fb7-0c55-43b8-a1c7-542596844f8a">
+    <cim:IdentifiedObject.name>Производитель Энергомаш (ЮК) Лимитед</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_65aa9496-7c2e-44ef-a1b9-070e83afd117"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_b71453f5-58e2-43be-8575-8135806bef23">
+    <cim:IdentifiedObject.name>Производитель Хевел</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_7c891f3e-a45e-49e0-87bb-5d9af3f0e2d0"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_e9f52334-9810-4532-b729-b831599f9b68">
+    <cim:IdentifiedObject.name>Производитель Кстовский электротехнический завод (КЭТЗ)</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_91a65440-2f65-4077-89b5-708479a44a0d"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_8c5f8a21-b134-478b-a486-f96706db74f1">
+    <cim:IdentifiedObject.name>Производитель ASEA</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_b3498a20-a5d1-48f3-a86a-2d912a1cba5e"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_c96a01c8-582f-4b6a-b59b-b4a9b0e0bf98">
+    <cim:IdentifiedObject.name>Производитель Группа компаний Высоковольтные технологии</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_8ad8f3dc-63f7-4c75-95bf-321dcce4418d"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_2e0b9006-e3ca-4946-896a-f6889e5b2aec">
+    <cim:IdentifiedObject.name>Производитель Fuji Electric</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_28c1c338-8a76-4f80-8a65-3fe271685d8d"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_243c48ce-0e6e-4c27-8d7b-bea0d34fbaef">
+    <cim:IdentifiedObject.name>Производитель НПО "Август" г. Москва</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_50ffd181-585c-469d-986e-9c86b65adb81"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_e8972af3-ffcf-4e89-9b5e-c33fb56a5faa">
+    <cim:IdentifiedObject.name>Производитель Нальчикский завод высоковольтной аппаратуры (НЗВА)</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_cc47ea10-f65d-4ba5-abbd-e8cf65e7f3a1"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_b2cc439d-c9db-4937-9138-f36070167ac8">
+    <cim:IdentifiedObject.name>Производитель НПО Цифровые регуляторы (Аникрон)</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_57034cb0-2b7d-4705-b883-a3ae3a06dc7c"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_916d00ed-fb19-40b5-90ed-c775956ffc1e">
+    <cim:IdentifiedObject.name>Производитель Meramec Instrument Transformer Co.</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_cd72c4b2-ad0e-457a-b6a0-653e5c8291c3"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_daee1cac-717d-4f8c-a02e-c80bf270ede6">
+    <cim:IdentifiedObject.name>АО ВО "Электроаппарат"</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_f2250782-3ae3-4463-abbb-a8612ac994b5"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_a456e444-6b82-4b94-bd0d-da64cd0d6887">
+    <cim:IdentifiedObject.name>Производитель Motorren Agregate</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_9d388e40-915b-4a6c-a6dc-7873740e4e48"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_a7c5fbc3-8569-4582-826e-68795b53ce56">
+    <cim:IdentifiedObject.name>Производитель TES engineered by GENET</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_c9da0830-4731-4e8b-84ec-e75439ddd6ab"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_e7703e51-5a2f-436c-85d3-2ef5045ab61e">
+    <cim:IdentifiedObject.name>Производитель ХАРТРОН-ИНКОР</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_8e053b09-8c30-4dd4-bc63-4680e3ff8216"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_cf07b2b9-d467-437d-b6f0-6c9c2d5ee8a5">
+    <cim:IdentifiedObject.name>Производитель ООО «Автотрансформатор»</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_3ce2f099-b253-4a80-ade2-245ba4b4612a"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_ec0153d5-a2d9-4d4d-b580-82f509756da3">
+    <cim:IdentifiedObject.name>Производитель Государственный союзный турбогенераторный завод</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_7189e48c-4167-40c3-a2a7-b68ed40f0910"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_dcdc3377-3c16-4b36-9eb7-430564c66939">
+    <cim:IdentifiedObject.name>Производитель Чимкентский завод Электроаппарат</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_995fc3ba-ca9a-4fd0-b924-c406f3b59bee"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_32764a3c-fcab-4dda-a769-043ef365da52">
+    <cim:IdentifiedObject.name>ООО "СВЭЛ-Силовые трансформаоры"</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_27681037-51a9-4389-8f2c-fa62ba02ccb9"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_26590733-5182-490a-aba9-a8a625e83026">
+    <cim:IdentifiedObject.name>Производитель Комбинат энергетического оборудования Авангард</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_e8a9f7ad-e6f9-4d5a-abe8-6e6bc61fad34"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_95034468-02a0-496a-909b-3e5977748797">
+    <cim:IdentifiedObject.name>Производитель Таллинский Электротехнический Завод</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_97ddc510-4384-4ab8-a515-3d40f149684b"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_c9487eec-691f-4610-9fb7-57758a161142">
+    <cim:IdentifiedObject.name>Производитель Привод-Электромаш</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_924cff8b-0a2c-41a8-8fbc-26d5d8741696"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_b80f62fb-19d1-441f-871c-1c831feaba95">
+    <cim:IdentifiedObject.name>Производитель KONCAR</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_84471318-48d4-492a-8495-5bc283da66b5"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_c7ec11ae-d3a3-40d2-8858-dfc5599337e5">
+    <cim:IdentifiedObject.name>Производитель ТОО «Усть-Каменогорский конденсаторный завод»</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_35f7ff06-0971-4cf3-94e1-a36c7d3021d5"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_c0020394-ffa1-438b-af63-f65785ba7413">
+    <cim:IdentifiedObject.name>Производитель АСУ-ВЭИ</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_31b28502-3018-4330-bf92-d800227e78ab"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_3b1998d7-dd4f-495f-908d-aa3c360e5fae">
+    <cim:IdentifiedObject.name>Производитель Yingli Solar</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_90b54389-533a-4646-9896-84387627c291"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_d83279eb-c1c7-4f2c-a467-ff1f7d1bb9c3">
+    <cim:IdentifiedObject.name>Производитель MARCONI</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_c5cad0af-d847-482e-a89c-774f8c02b3b3"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_b1d3a6a5-2c87-4e95-945b-010065ac0591">
+    <cim:IdentifiedObject.name>Производитель КЭМОНТ</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_abce4bf5-bf7b-4f9f-8524-613e4b655961"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_69f703c5-15a4-401c-a7f4-ded336d5f2be">
+    <cim:IdentifiedObject.name>Производитель ООО НПЦ "ЭНЕРКОМ-СЕРВИС"</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_1a27c7a6-e9cf-4658-be97-6defd271a216"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_b6086e79-9e59-4073-b352-d48f17e475d1">
+    <cim:IdentifiedObject.name>ESITAS ELEKTRIK SANAYI VE TICARET A.S., Турция</cim:IdentifiedObject.name>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_a8e113e0-a6af-4ff5-aba6-f00fd3bb1416">
+    <cim:IdentifiedObject.name>Производитель ABB</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_f8174188-a492-422c-a345-704a2d1f9513"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_76923331-6e40-460b-bc46-bddf38867b2f">
+    <cim:IdentifiedObject.name>Производитель НПП Русэлпром</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_923035f4-2a85-4ae9-92bf-785dabef68a2"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_5095274d-fd46-450c-a151-de8cfac77aef">
+    <cim:IdentifiedObject.name>Производитель Schneider Electric</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_5d8f4e3e-80a3-4e7e-8c87-3cfb7184aa70"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_e04c9564-ccb3-4026-acff-5c66ab67bcdd">
+    <cim:IdentifiedObject.name>Производитель ООО "Интеллектуальные машины"</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_354aaf3d-76ab-4ef4-8078-c8d5105c68ac"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_21958a43-bbfa-4f5d-8174-14708a8e8705">
+    <cim:IdentifiedObject.name>Производитель Идрицкий завод высоковольтной аппаратуры</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_c86cd1ca-8a7d-4634-9b28-4a7bd2fa896a"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_bd70f5ee-1de5-4d6d-8085-c33078d372b7">
+    <cim:IdentifiedObject.name>Производитель Брянский машиностроительный завод</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_80978826-4131-46be-bcbb-7b75fabb4112"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_a31b7345-88b5-48cb-bfe5-6e581d6e690a">
+    <cim:IdentifiedObject.name>Производитель Ишлейский завод высоковольтной аппаратуры</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_8dc9a16a-e81a-4636-9d2d-ca7b593e4d7c"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_d67185fb-7385-4297-a013-ed1d591ec756">
+    <cim:IdentifiedObject.name>Производитель Тульский электрощит</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_63af2298-e5f0-465b-bc56-b81642157ca0"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_48f6b9ef-3df2-462f-b680-a7d89181b3f7">
+    <cim:IdentifiedObject.name>Производитель Мирэнерго</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_5064e2cf-264a-454f-80a1-f3aef2465320"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_96e02718-5eee-416f-bb8f-5f06f4daaa53">
+    <cim:IdentifiedObject.name>Производитель Sanbian Sci-Tech</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_637341a6-c677-4a23-8386-ebc023fcdbe5"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_ba01ba8f-02d2-4f9f-80a9-3e095cd09270">
+    <cim:IdentifiedObject.name>Производитель Ленинградский Электротехнический завод (ЛЭТЗ)</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_c86fed38-1200-4638-acae-1f594666bc73"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_5ad276a7-8558-4c9c-bc63-c94423d60fa8">
+    <cim:IdentifiedObject.name>ОАО "Мосизолятор" </cim:IdentifiedObject.name>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_3a0b98f7-8e93-48bb-bfb8-ac499b90f7a5">
+    <cim:IdentifiedObject.name>Производитель ООО «ПАРМА»</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_69b78fde-d5e7-41dd-a970-c7aa5b6f3f81"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_c0460dfb-41b1-48eb-85a7-c7ea78319bd2">
+    <cim:IdentifiedObject.name>Производитель НТК Бреслер</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_2c5b98c7-91dd-4f2d-b5ac-b21714d4ab6e"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_097e1881-527c-47aa-9eed-1c84565d07be">
+    <cim:IdentifiedObject.name>Производитель RTSoft</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_ffb5a702-e261-4cda-81d7-ae3bf6d2e998"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_6f6af200-19e9-465f-a665-8f5656038494">
+    <cim:IdentifiedObject.name>Производитель Машиностроительный завод «Молния» (МЗМ)</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_8de14cbd-45c7-4c0e-a5c1-0a8b57d6d9d8"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_3b58de8b-457f-4b07-8e37-8d9795a5c4fe">
+    <cim:IdentifiedObject.name>Производитель Зоря-Машпроект</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_f3c6a608-7180-4aaa-a78b-d11ed4e98731"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_acf8728e-302f-4f5d-8867-e9bf8c49e73b">
+    <cim:IdentifiedObject.name>Производитель п/я Г-4616 г. Тольятти</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_b28a60d5-89e4-4f29-a5ee-1b9d1434b1bc"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_bc495fe6-67f7-40cf-a783-57aa2de054a4">
+    <cim:IdentifiedObject.name>Производитель Государственный союзный завод теплового оборудования г. Харьков</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_1517b620-c1e9-4ab6-a0a6-338de0f72ef5"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_a724592a-642b-4449-8288-0c935873fa41">
+    <cim:IdentifiedObject.name>Производитель НПФ Мультиобработка</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_f2c72185-fccc-47cc-b4fc-b924664d0e88"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_17b94774-7683-42cc-a27e-9d728e0eac78">
+    <cim:IdentifiedObject.name>Производитель Kawasaki Heavy Industries</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_c279932e-fb67-4d02-aa9b-77f428bc9039"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_b47095a7-fbc5-47e2-83dd-501a2d24ef2c">
+    <cim:IdentifiedObject.name>Производитель Сызранский турбостроительный завод</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_686e14a6-6883-4168-bed9-099ab537dc92"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_31b156b5-cbac-4f81-be18-93fbf665b331">
+    <cim:IdentifiedObject.name>Производитель Coelme-Egic</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_d6136ce5-c59a-41b5-a303-fb0c77e065cb"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_60f434f5-7725-4d3d-927f-06b2a3fb1a83">
+    <cim:IdentifiedObject.name>Производитель Электроавтомат</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_b3f7926a-7271-44cc-9e19-dbf91969287c"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_06e6f90f-4f76-4b44-a674-898fbd8fa6d6">
+    <cim:IdentifiedObject.name>Производитель Чебоксарский электромеханический завод (ЧЭМЗ)</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_0ffba78e-9c48-4457-a004-d2613b8ad73d"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_25ccdf1b-d703-4873-b567-64f314ddf766">
+    <cim:IdentifiedObject.name>Производитель Харьковский турбогенераторный завод (ХТГЗ)</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_b06ced01-0eb1-46ee-a563-d70dc0a303ba"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_37f4afc4-cae5-4c20-8672-0e79ab21430b">
+    <cim:IdentifiedObject.name>Производитель JENBACHER</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_0ba61214-bf9c-4db1-9f75-f5ef4e26c29a"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_b7776592-ca6e-4871-8fd8-4923f939ff31">
+    <cim:IdentifiedObject.name>ООО "РосЭнергоТранс"</cim:IdentifiedObject.name>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_2343c917-e5b6-46ea-b4fe-2337c3d5897d">
+    <cim:IdentifiedObject.name>Производитель Харьковский завод транспортного машиностроения (ХЗТМ)</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_236e4e72-f2f1-4b6c-8414-6275c190f3cd"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_15d4e6b2-8a53-4c49-bae9-c585be4e779e">
+    <cim:IdentifiedObject.name>Производитель Энергосила</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_5e0ff38c-aea1-4769-9a72-9cb45f812946"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_e5193a9f-69df-4363-96be-ae60f97e932b">
+    <cim:IdentifiedObject.name>Производитель Криворожский турбинный завод (Констар)</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_9ef9cae4-fd27-4f57-878a-d82d3119320e"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_3c5f350b-3f40-4892-b110-6bf3432d309c">
+    <cim:IdentifiedObject.name>Производитель WeiWang Boer Technology Development</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_2239750d-8678-40f2-a422-0d71be7902fb"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_696b8fe6-f38d-4188-b1f8-0e3cb0c28990">
+    <cim:IdentifiedObject.name>Производитель Mitsubishi</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_87076724-7dbb-4499-aba8-f1a2cec83f78"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_b428aaf9-50fb-428b-b261-6ef476bb50f2">
+    <cim:IdentifiedObject.name>Производитель Электромашиностроительный завод (ЭМЗ)</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_bb4e7500-76c7-4e62-bf9a-ae2b72cb9de0"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_7b1187c5-23fe-4ba9-bd9c-c9f869ea7505">
+    <cim:IdentifiedObject.name>Производитель Электропульт</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_c1d11e5a-e4ae-414d-9cf4-e9a403ed41b1"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_3427c90a-ca18-4e1c-a2c7-b3151d3c2d5d">
+    <cim:IdentifiedObject.name>Производитель ENPAY</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_ab0cea5c-7459-42a1-b710-337762af03f7"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_04a3b7ac-06da-41f0-b21e-e497028e5f5f">
+    <cim:IdentifiedObject.name>Производитель НПП Модус</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_fdb682d8-22b1-4f3c-ac41-b8acecebb55e"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_04875125-73d1-4530-9b8a-bc280ac43ce1">
+    <cim:IdentifiedObject.name>Производитель ООО «Уралэнергосервис»</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_9e01de59-5f95-4bfe-a248-b1755080737e"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_a8d0a699-8985-4294-a815-5d1bffff6ba8">
+    <cim:IdentifiedObject.name>Производитель Vestas</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_3ff9b590-9893-4d26-8569-05094b801c0f"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_56de0e64-a9d2-4900-8af2-e364aad454ae">
+    <cim:IdentifiedObject.name>ОАО "Запорожтрансформатор"</cim:IdentifiedObject.name>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_61efd6f1-e99b-4161-b56c-7ff1ee16da4a">
+    <cim:IdentifiedObject.name>Производитель Sachsenwerk Niedersedlitz</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_35c787ab-5122-4892-ad1b-9242482c279c"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_ee0319b5-7ba5-4a43-8695-102bd2bf903b">
+    <cim:IdentifiedObject.name>Производитель Алтайский трансформаторный завод</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_8c5cdfc7-a7f3-4c18-9254-4be7b3b76621"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_863e8266-87f5-4b57-ad56-704462215a51">
+    <cim:IdentifiedObject.name>Производитель Hyundai</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_7bcaeab6-1ace-4141-8afe-f19551d574af"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_6b85857f-dd3a-451e-b10e-54a614ce3307">
+    <cim:IdentifiedObject.name>Производитель Уралтрансмаш</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_6e8ccc2c-7a8e-4473-8c14-71c35fd66382"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_2f24dd8e-e57b-40d0-a5e6-fe7910b57ab5">
+    <cim:IdentifiedObject.name>Производитель Уральский турбинный завод</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_50b5a30b-bf73-43d2-bd59-6f876f00130e"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_f7a5c07c-9074-4197-9b28-6b1b6f7bcf78">
+    <cim:IdentifiedObject.name>Производитель Комбинат Электрохимприбор (ЭХП)</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_ce1b3887-341f-4633-8bb6-cb312e56ab58"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_f2bbf8d8-483f-4181-aa1e-ac8fb31ef710">
+    <cim:IdentifiedObject.name>SEC Zhangjiagang Transformers Co, ltd</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_10000ee3-0000-0000-c000-0000006d746c"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_6d76b19a-dbe9-41fd-b5aa-f33493cae25c">
+    <cim:IdentifiedObject.name>Производитель PFIFFNER Messwandler AG</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_c7c4797d-2384-4811-a0e3-876632399010"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_a61d5155-8cae-4ddd-97af-c7491d5e6b83">
+    <cim:IdentifiedObject.name>Производитель MaxWatt Turbines</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_aa42b5f5-6aff-4e7e-ad7e-643bd9bee0ae"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_dddf0315-8b72-4f41-9c73-4fdcb614cbe9">
+    <cim:IdentifiedObject.name>Производитель Харьковский турбинный завод</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_00e73b7a-decd-4732-8efd-b1433056aeff"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_4bbbec9a-d4cc-438a-a8c5-a39e85790907">
+    <cim:IdentifiedObject.name>Производитель Сибэлектрощит</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_449f66b7-204b-48dc-89a9-bbbbec90a922"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_9f47df00-04e8-4eca-a1c2-fdb96f8749c6">
+    <cim:IdentifiedObject.name>Производитель Jeumont Electric</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_a9e83d66-439c-4b32-8000-b705bb93b115"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_e5b9aadb-b2d6-4466-b1dd-2f75c10e7e11">
+    <cim:IdentifiedObject.name>Производитель Новокузнецкий металлургический комбинат (НКМК)</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_425a1368-9a59-4810-ab19-6703ddc07856"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_20b117f7-d566-4b1e-9d05-20eb4206f670">
+    <cim:IdentifiedObject.name>Производитель Уфимский завод Электроаппарат</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_19c7ba83-494a-4289-b54d-72778d04af85"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_192e3362-af3a-4020-bada-5877e7406d97">
+    <cim:IdentifiedObject.name>ООО "АЛЛЕР ИНК" Республика Беларусь</cim:IdentifiedObject.name>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_a7a2530f-be8d-4fd8-bf23-7986520355cf">
+    <cim:IdentifiedObject.name>Великолукский завод "Реостат"</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_2a744724-dc2c-42ed-864b-64bd7728dbec"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_fcd67de2-a607-4f51-9471-4aaec0ce10b2">
+    <cim:IdentifiedObject.name>Производитель АО "Авиадвигатель" </cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_7fc10990-7aba-4c5f-ab8f-362c92cc0f63"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_97435438-ae69-4de5-ac21-32762b5a78ac">
+    <cim:IdentifiedObject.name>Производитель Ровненский завод высоковольтной аппаратуры (РЗВА)</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_c3d421a1-74d7-434d-957c-522609c903fc"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_897d662d-2b71-4c79-a595-b7afb60c9e41">
+    <cim:IdentifiedObject.name>Производитель Производственное объединение Элтехника</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_6e880c4a-2210-4e58-9edd-48b08690f63a"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_26af985e-3eb3-4baa-ae28-7836e320870e">
+    <cim:IdentifiedObject.name>ООО "Таткабель"</cim:IdentifiedObject.name>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_40cf83a8-ee8c-4a63-b513-f34fb27e0964">
+    <cim:IdentifiedObject.name>ООО "Электрощит-К" </cim:IdentifiedObject.name>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_792617ed-8da1-4581-9b01-d3836876ddaf">
+    <cim:IdentifiedObject.name>Производитель Завод высоковольтного оборудования «Союз»</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_6805f834-428f-4801-9cfc-b54f39d369a0"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_a7d243ae-6a5b-478e-b05f-005003f82a54">
+    <cim:IdentifiedObject.name>Производитель Звезда</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_0bf3dabb-5d5c-41a9-804d-9b8e76f19980"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_42d551fc-bbc7-4633-8848-25f5a3cbea87">
+    <cim:IdentifiedObject.name>Производитель Энергоглавстрой</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_1125205b-2ca5-44b4-90b4-ca79dd4d5d3f"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_a57dde8c-6fd6-4a83-9ed1-bca13c0e747c">
+    <cim:IdentifiedObject.name>Производитель Калужский турбинный завод</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_bf06334f-b12b-4def-8618-96d39c0ad582"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_f10bca62-4bfa-4883-b221-0b0c9567cfec">
+    <cim:IdentifiedObject.name>Производитель Орелэнергоремонт</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_7cdeca90-0940-4736-81e7-e86d3d997199"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_f491b4e4-a055-4cd5-bf62-584babc4ff71">
+    <cim:IdentifiedObject.name>Производитель МЭС-СССР Главсевзапэнерго Ремонтно-механический завод Латвэнерго</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_8c77a73d-43ac-4231-8772-a47d19e2c03c"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_c0ff9417-44bc-40ce-a45b-c9ba260d3d01">
+    <cim:IdentifiedObject.name>Производитель Бакинский завод высоковольтного электрооборудования</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_4d66a786-e64f-448f-b77d-9ecf9fa307c0"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_b6e4e789-9d03-471e-8cfa-6aa6ad3434ca">
+    <cim:IdentifiedObject.name>Производитель Мосэлектрощит</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_c8003dfd-3430-4098-8dcb-c4e8971eb305"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_121f1d89-e74d-48b5-ae68-3dbd7a309ad6">
+    <cim:IdentifiedObject.name>Производитель Свердловский завод трансформаторов тока (СЗТТ)</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_0735847c-f424-496c-bedc-bf640c98c2ef"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_47fe9721-ec93-4d91-9028-f93def0f0b98">
+    <cim:IdentifiedObject.name>Производитель Высоковольтная аппаратура (ВВА)</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_05096b3b-e4f2-43de-9be2-dc490e4dc3eb"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_1b0cfe78-2555-46d5-867c-f320848de526">
+    <cim:IdentifiedObject.name>Производитель Союзный электромашиностроительный завод им. Кирова</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_b3812477-883a-4ed1-af78-3aa46d758e48"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_71914e67-76a7-4c5a-ae8d-14dad7590151">
+    <cim:IdentifiedObject.name>Производитель CHANGZHOU XD TRANSFORMER</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_0fa37d5b-87fa-4cc7-bf4f-d501c04640a7"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_7eaba375-e97e-4edb-9825-c1f59ba12c21">
+    <cim:IdentifiedObject.name>Производитель SHENYANG SIXING RELAY MANUFACTURE LTD</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_67b76217-928d-4462-8a20-5c0770dfdcb9"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_9d307cd6-0ead-48d0-8d4b-03a82be07161">
+    <cim:IdentifiedObject.name>Средневолжское ПО "Трансформатор" г.Тольятти</cim:IdentifiedObject.name>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_f3735292-3de3-4333-9238-608e728e9276">
+    <cim:IdentifiedObject.name>производитель Уралтяжмаш</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_df6f2fa2-dbd0-485c-8dcb-0da6ebd9393f"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_dbde0af6-d660-419e-9696-bc59e0f2c64a">
+    <cim:IdentifiedObject.name>Производитель Великолукский завод электротехнического фарфора (ВЗЭФ)</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_cc71d728-f3df-4cc3-85c6-d5e842e46b46"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_a7dae4e4-cb87-4106-a227-8b2124cee4a6">
+    <cim:IdentifiedObject.name>Производитель НПО ЭЛСИБ</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_e105294c-f6d8-4804-9adf-4e4d262d6fd3"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_81d4182f-9fb6-41b1-a0f3-daf3c28421c0">
+    <cim:IdentifiedObject.name>Производитель Электромеханический завод (ЭМЗ-Трансформатор)</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_1da15ce8-624c-4e32-9b4f-e345e40df2d9"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_7296799b-1e34-4dcd-ba64-dfe6040efe87">
+    <cim:IdentifiedObject.name>Производитель GANZ VILLAMOSSAGI MUVEK</cim:IdentifiedObject.name>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_2210b0fe-0517-40be-bdcf-e767bddef76d">
+    <cim:IdentifiedObject.name>Harbin Turbine Company Ltd.</cim:IdentifiedObject.name>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_0cf4a223-5a7e-4019-ad7a-65003e3d2e5f">
+    <cim:IdentifiedObject.name>Производитель ООО «Прософт-Системы»</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_33e7e221-7c24-411c-9231-7c8a2cf05535"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_6f30c119-64a2-469b-9798-f04268381627">
+    <cim:IdentifiedObject.name>Производитель АО Красный гидропресс</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_3bbcecc9-b9af-4277-a16a-bd58422e73ef"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_0e051f6c-58b7-4c61-a591-f14d28bc816d">
+    <cim:IdentifiedObject.name>Производитель ООО «Энергоизмеритель»</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_f5c117c8-f791-470b-a5b7-172fbd05dc39"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_4a27ed18-639b-4bbf-82fd-94b1ee9a6a92">
+    <cim:IdentifiedObject.name>Производитель GE</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_bca4155c-c7ef-4ec2-8952-1071aefc9a66"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_7a810849-1a78-4412-904e-4393e7e7769c">
+    <cim:IdentifiedObject.name>ПО "Уральский турбомоторный завод" (УТМЗ)</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_49572a7e-292b-4b62-8039-fdc75937ecf1"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_77269f8a-93dd-456b-aa09-9a85d532b665">
+    <cim:IdentifiedObject.name>Производитель MECO (Иран)</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_65af182f-8d06-4244-90b5-cfc81edc8340"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_13b2a2aa-551e-421c-9af8-4b0b0ce58e46">
+    <cim:IdentifiedObject.name>Производитель Xi'an El. Manufacturing Corp</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_4cf4c7d2-cfe9-46a5-a58e-48dc6f0c0b72"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_e1eabad4-cf3f-444f-8d91-1a05e63dc95b">
+    <cim:IdentifiedObject.name>Производитель Государственный союзный завод МЭП</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_b30aeb0a-30ce-4a01-924c-15cc8cbae850"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_d78fe0d6-7f84-440d-b076-b7015a41d513">
+    <cim:IdentifiedObject.name>Производитель НПО «Электромаш»</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_f904d3d2-67bc-41da-a7bf-50272c9b54b8"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_cbb432b2-8e6e-400b-8cb7-925f3b24a4de">
+    <cim:IdentifiedObject.name>Производитель Pratt &amp; Whitney Power Systems</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_8865df1e-b899-4b99-85d3-4ba25a844734"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_0bc5390f-5b4e-40fb-ae37-bc25df13ebf4">
+    <cim:IdentifiedObject.name>Производитель TAMINI TRANSFORMATORI S.R.L.</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_bc5a0799-b447-4521-aedc-dee702e70175"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_c1dc3ce0-3531-4bca-a632-ae1948a446f6">
+    <cim:IdentifiedObject.name>Производитель Ленинградский электромашиностроительный завод (ЛЭЗ)</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_f70abe55-a3bf-434b-9228-84555434c47f"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_c70f1d0d-6b13-448a-9926-1cbcddc50b48">
+    <cim:IdentifiedObject.name>Производитель РЗА Интернешнл</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_4c6f1736-f31a-4b0d-896c-8534045fb161"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_20bfb294-3f42-426b-9beb-282c0fa49ba4">
+    <cim:IdentifiedObject.name>Производитель Энергокомплект</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_814cb834-7cf7-4cbb-b1b4-cfe4a94ca166"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_aa679620-be82-4f74-93b2-a9fd7d7be61f">
+    <cim:IdentifiedObject.name>Производитель Серпуховский конденсаторный завод «КВАР»</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_cffd6dfc-905c-42c1-808c-fbdc47dc6214"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_384587e4-2597-48bf-99f2-5f2ffcbc80a7">
+    <cim:IdentifiedObject.name>Производитель Завод Элсиб</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_b28cec18-85df-4a87-93ca-bbe0058f551e"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_9736cf97-eeed-4ef9-baa3-ed4cce2f099d">
+    <cim:IdentifiedObject.name>Производитель Электротехнический завод (Трансформатор Калуга)</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_dd1a54b7-725b-48e2-a101-c82a350505fc"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_b911dd51-4335-4ad7-b950-21c692d5e36d">
+    <cim:IdentifiedObject.name>"МЭЗ" им. В.В. Куйбышева</cim:IdentifiedObject.name>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_649089f9-7b3e-4baa-90e7-809d8e31c5cb">
+    <cim:IdentifiedObject.name>Производитель ОАО ХК «Электрозавод»</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_39747427-7bac-4f7c-ad70-0719cda4ba6f"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_c1d576be-cfbd-4541-a1f5-66cce113f187">
+    <cim:IdentifiedObject.name>Производитель  NEWAGE </cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_4854e000-f7dd-47b5-89b8-8b60c74bcdba"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_f480293d-9f4f-4772-873f-76b08251b057">
+    <cim:IdentifiedObject.name>Производитель RTR Energia</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_c7c68a7a-219b-433f-aa5f-5ceb9f91a808"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_983d16ea-87e5-4f1d-84bf-8813990574d3">
+    <cim:IdentifiedObject.name>Производитель Гринмакс</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_52fe7e62-3c8c-4068-b48d-af83134849e1"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_277380e8-4921-414d-8d5c-60b7dacd6e8c">
+    <cim:IdentifiedObject.name>Производитель Константиновский завод высоковольтной аппаратуры (КЗВА)</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_f13bd716-398c-4b21-bdbd-0486478dd429"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_b118cdd8-f360-4d6e-a056-b7d21b2130a0">
+    <cim:IdentifiedObject.name>Производитель TGM Kanis Turbinen GmbH </cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_59047d10-222e-4c13-a157-7d728ddb6e8d"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_d23cc774-83e9-44bf-a1e5-f2ebe1cc1273">
+    <cim:IdentifiedObject.name>Производитель TBEA</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_48c08f57-37cb-4f20-8ee1-2c946183ff5f"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_d90b8edd-ab13-455a-a645-c33be8518946">
+    <cim:IdentifiedObject.name>Производитель Ansaldo Energia</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_371effe1-c45b-41ca-988e-f3c9b96175e7"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_70f9b5b9-4a03-41b8-9f89-7f27ca9e2237">
+    <cim:IdentifiedObject.name>Производитель ЭТК Прогресс</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_18db64e2-e445-4777-8adc-d0f1df94028f"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_d82a650a-454b-4a59-ae00-f65d02b10e32">
+    <cim:IdentifiedObject.name>Производитель Свердловэнергоремонт</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_d4850867-b333-4f69-86f8-dce437372fe9"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_4d264f91-0d96-44e3-9d06-59127e3f7cc7">
+    <cim:IdentifiedObject.name>Производитель Южный машиностроительный завод им. А.М. Макарова (Южмаш)</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_a9c010e2-6cfb-417b-9b1e-d8a607ea832a"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_2dd93442-62ed-4c16-9f11-2a7bab3a3578">
+    <cim:IdentifiedObject.name>Производитель Marelli Motori</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_9a06c54e-62e5-4eaa-9140-4e0940201d52"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_c32a0691-d298-486e-9c3c-a2a1698d085b">
+    <cim:IdentifiedObject.name>Производитель ТеплоЭнергоСервис</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_e927c9a8-009c-43b9-bdd2-86106ab53174"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_e7b32c8c-a66c-4e79-8f87-e3ef6e13e361">
+    <cim:IdentifiedObject.name>Производитель Росэнергосервис</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_a4f2dad1-ed60-463e-b8a8-1dc4f1ff750c"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_d4778b91-7a82-43b7-9e03-e326bcb397ac">
+    <cim:IdentifiedObject.name>Производитель Аскольдэнерго</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_293203cc-3a10-40d9-b327-172ad5d999f7"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_3737ec38-f399-4cde-bd68-c7e8b39714c3">
+    <cim:IdentifiedObject.name>Производитель Электрокомплекс</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_f086b2a7-e940-4338-87be-02bec0c52588"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_fe44bc74-ff2e-4c8a-a002-941b5e2a6f93">
+    <cim:IdentifiedObject.name>Производитель China National Building Material Group (CNBM)</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_3e3dc561-dfb0-4811-a553-343b85405a54"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_ead1016e-fb0b-4e84-a998-50e5e9780bae">
+    <cim:IdentifiedObject.name>Производитель Невский трансформаторный завод Волхов</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_aa7cd41b-bcc3-4c34-804f-abf5c1d2d948"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_80b29ebd-8e74-45dd-882b-ef8df8b583c2">
+    <cim:IdentifiedObject.name>Производитель ООО "СМТТ. Высоковольтные решения"</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_0c7759fa-3e9a-4abe-8791-99122c1ac69b"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_f6308287-babd-45d4-adbe-9c27b377af91">
+    <cim:IdentifiedObject.name>Производитель Finshyttans BRUK</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_9744ca1d-8886-4ad9-9634-276231cb2a9a"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_31859263-df21-4622-8e78-52e5d4dcd62a">
+    <cim:IdentifiedObject.name>Производитель Wolong Electric Nanyang Explosion Protection Group</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_5a1f913f-6263-47e1-8604-0bbdcc3adb3d"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_25f1a54e-10e7-4cfa-8403-f026e1f41968">
+    <cim:IdentifiedObject.name>Производитель Росэлектромаш</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_e8a4c656-c0cf-49c3-95d8-f6ba1a646662"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_2df4c010-198a-45e0-bc23-bdabf17d21c6">
+    <cim:IdentifiedObject.name>Производитель Voith Hydro GmbH &amp; Co. KG</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_f723b0b3-f450-49dd-9bab-adf0ec14e9b5"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_f014d7d8-ac67-46e2-b8a4-a7847a93ac83">
+    <cim:IdentifiedObject.name>Производитель ЗАО «Профотек», г. Москва</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_549f431f-4584-4ae0-a554-76dba4199b7f"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_18ac167d-06e4-4810-9c7f-2b773c67c776">
+    <cim:IdentifiedObject.name>"ELEC b.v.", Германия</cim:IdentifiedObject.name>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_4c68c823-a4fb-4c03-baa1-4b3bf9fb8810">
+    <cim:IdentifiedObject.name>Производитель Чебоксарский завод Энергозапчасть</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_61296982-5abf-4019-ab5e-c6345b818ba7"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_55db48cb-cd51-463b-a827-92921e81d5fd">
+    <cim:IdentifiedObject.name>Производитель Красный гидропресс</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_69323751-9864-4a73-bced-2fc7720a7666"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_4e99aa3b-1c91-4252-bec6-4cdb8bcce0a0">
+    <cim:IdentifiedObject.name>Производитедль NOHAB Швеция</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_adc1966d-d825-4455-b566-b43552bc8c16"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_86998293-df4c-47ca-97b4-caf108964df5">
+    <cim:IdentifiedObject.name>Производитель Электросила</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_504f8471-ba07-4ee5-88aa-159053c81ad3"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_3c7e3617-fbdf-4f49-97ea-533e5641f57d">
+    <cim:IdentifiedObject.name>Производитель ООО «СКБ ЭЦМ»</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_8217a46b-227a-4fcb-aed9-a029f18143d0"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_2ed392b9-1a22-4455-a77e-5fbb99d39e29">
+    <cim:IdentifiedObject.name>Производитель РЗА Системз</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_63295682-a959-4f3a-91ba-a6aa684d0874"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_c1276bb8-35cf-4977-a07b-0e33d8465a35">
+    <cim:IdentifiedObject.name>Производитель Ruhrtal Energie und Technik</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_f642e508-978a-41ab-b38d-181b312531b4"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_d60d4a68-ca66-4911-94ae-708abf11ace9">
+    <cim:IdentifiedObject.name>Производитель Пермский моторный завод</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_60a36b2e-5336-49a0-ad0a-f6a81e4f48e0"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_f79404c0-ee11-4798-abce-3cdb5a74b683">
+    <cim:IdentifiedObject.name>Производитель Торнадо</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_8a6d899a-c36d-4770-b62c-2121fee4109f"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_3aae7c8e-370f-477a-a7d5-e3aad2cb9672">
+    <cim:IdentifiedObject.name>Производитель Брянский паровозостроительный завод</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_e52a6bd4-66b7-4fd7-a8ae-12be09e90aa4"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_11355383-cd3d-4732-936f-8b2f583a3b93">
+    <cim:IdentifiedObject.name>Производитель ОРГРЭС</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_0f912af3-d777-43d2-8fd1-126a0b8a1969"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_e418b0c3-ea8c-4f89-9bc1-c0b6323efab5">
+    <cim:IdentifiedObject.name>Производитель Winergy</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_f6d17093-c307-464f-b384-db4be9199299"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_140db621-31be-4a8d-8994-e3cee32e647a">
+    <cim:IdentifiedObject.name>Производитель SHENYANG YINHAI ELECTRICAL EQUIPMENT Co.</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_9b2413d8-a119-4d77-8dbc-68ef2beac7a3"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_6e0985ea-b3bd-4488-8e1c-b6fac60f8b07">
+    <cim:IdentifiedObject.name>Производитель LS Industrial Systems</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_977930e1-4508-4335-a79b-9013024ffe94"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_6ef30f56-3f45-412d-88f9-bef588132acd">
+    <cim:IdentifiedObject.name>Производитель Уралвагонзавод (УВЗ)</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_a95179f7-023e-4651-b861-06a7861fdca8"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_58463996-e474-4edf-914b-a887c8614271">
+    <cim:IdentifiedObject.name>Производитель Новосибирский трансформаторный завод (НТЗ)</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_fa21724b-55b4-4cf6-8576-6ce5f46bdb9e"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_02fcd0b5-5b24-49dd-95b6-a99856f0e418">
+    <cim:IdentifiedObject.name>Производитель Clever Reactor Sia</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_814ce7cf-efff-4aaf-beb3-1529f38de26e"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_85de20a0-de24-43f6-8c1b-6afb0bcce089">
+    <cim:IdentifiedObject.name>Производитель Киевский завод электроизмерительной аппаратуры</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_a7b06577-c6cf-40ac-a313-357fb4f55450"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_3e1f499b-03a4-4c77-9469-42ef304e80a6">
+    <cim:IdentifiedObject.name>Производитель Панэнергомет</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_66993962-0345-4e84-b5c3-b022e8994d46"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_285652a3-22e4-4ca2-90e1-36ebfdb979b6">
+    <cim:IdentifiedObject.name>Производитель ЭнергоВолга</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_e6ac79f3-c28f-4538-b37d-a45e3809e468"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_81ec387e-849c-49ab-8e0a-22a4f551ec36">
+    <cim:IdentifiedObject.name>Производитель АО "Невский завод"</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_de135255-c102-43f5-bdec-aa5160704f58"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_a5f49a53-8fc2-4068-85eb-c318e1afcfc7">
+    <cim:IdentifiedObject.name>Производитель Севкавэнергоремонт</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_c9f1be25-4687-491c-88d7-2e890abb51bb"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_ef008b52-37fb-4bb8-9c27-8230531e7a4c">
+    <cim:IdentifiedObject.name>Производитель K-Kaami</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_a262afeb-c429-4190-a5d3-77237ed89b17"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_537f1ab8-a8e2-48d3-b95c-5341cddc362d">
+    <cim:IdentifiedObject.name>Производитель п/я М-5111</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_f17d03f3-e6c5-444a-aedc-96c913739b60"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_a0054409-762e-408f-882f-b103dc50849b">
+    <cim:IdentifiedObject.name>Производитель АО «РАДИУС Автоматика»</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_5d0d115e-fb09-4285-8b7c-a7f29e438c79"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_3aea3e81-b898-4485-9dcc-2f799e0aeba5">
+    <cim:IdentifiedObject.name>Производитель Кушвинский электромеханический завод</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_92d72e65-9e1c-4492-b224-0a045a8f47c8"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_2292940a-be55-4cdb-8610-04c75fa07fc7">
+    <cim:IdentifiedObject.name>WH6.25N-172-110</cim:IdentifiedObject.name>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_de0035af-59b2-4dc7-afcf-d86318e45009">
+    <cim:IdentifiedObject.name>Производитель Великолукский завод высоковольтной аппаратуры (ВЗВА)</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_11bbe435-d1a0-4bc6-9c27-7d6b2668d140"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_be658300-2061-4f01-997b-d6f1668e6438">
+    <cim:IdentifiedObject.name>ООО "НТЭАЗ Электрик"</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_cc247ec9-e674-4fd1-aa95-ca1fc7f801d3"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_fd8f154d-a11b-47e1-b6ba-090af0e7f4ce">
+    <cim:IdentifiedObject.name>Производитель Монотомь</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_730792fc-a393-42d3-9d10-353d8334d78c"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_0eacc638-b906-45b1-aece-a320ce518b1a">
+    <cim:IdentifiedObject.name>ООО "Эльмаш" УЭТМ г. Екатеринбург</cim:IdentifiedObject.name>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_f0ed48f5-6914-42c6-b6a7-d30b7de46517">
+    <cim:IdentifiedObject.name>Производитель Харьковский электротяговый завод</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_2cd8fb87-f1ed-4d06-8613-ea8e212000cd"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_95171b6e-9051-42a4-b75d-7122f77de949">
+    <cim:IdentifiedObject.name>Производитель Пятигорский опытный завод (ЭМЗ Пятигорский)</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_ff57a4e5-1319-48af-b236-fdeb31a330fd"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_6e9a9ccd-c8ee-4b42-bcb9-12038c505bc4">
+    <cim:IdentifiedObject.name>Производитель СНТК Двигатели НК</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_8d5918c8-9014-4df2-9f91-e107d6211bbc"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_253f0655-9c30-4058-adee-0c9acc57b658">
+    <cim:IdentifiedObject.name>Производитель TRENCH</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_a9300be0-7c7e-43de-90ba-ac2ae9ccbcd6"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_6cee2827-3f10-452b-87b8-67650e0ca958">
+    <cim:IdentifiedObject.name>Производитель Tampella Финляндия</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_26718737-d4b1-4778-95df-3c7d7ac8fe3d"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_1142c2cd-bb76-4d31-bcaf-19e421ee84ba">
+    <cim:IdentifiedObject.name>Производитель Dalian North Instrument Transformer Group Co.</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_67ccaeec-eacf-40fd-a5a2-9943a7282c1b"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_0d38b5b6-66d7-4b94-8f30-0f22cb73e8d2">
+    <cim:IdentifiedObject.name>Производитель ETD Transformatory a.s.</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_dc7519aa-f8ab-4d3d-8bed-c5b32a31bc05"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_6d05035f-a0e5-49e9-8e23-aa9b382786dd">
+    <cim:IdentifiedObject.name>Производитель CHINT Group</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_0826b1dc-8804-4f7a-b74c-5cc66d7c3879"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_95e2e81f-983b-4e91-922c-3eec28c51c75">
+    <cim:IdentifiedObject.name>Производитель ОДК-Авиадвигатель</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_6173837e-891e-44a1-8ad1-f8c743db95e7"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_540961b4-189d-489c-ad73-e9a2a2e9ddb8">
+    <cim:IdentifiedObject.name>Производитель Люберецкий электромеханический завод</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_6621a09f-38d5-46a7-9f85-1f832070633c"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_18aa860d-e261-430a-b617-0d5c327e4d1f">
+    <cim:IdentifiedObject.name>Производитель EGing Photovoltaic Technology Co</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_df5da515-3d2c-4eef-a6e4-0576dbab6692"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_5ca0dc9d-8759-428b-8939-2406ff308412">
+    <cim:IdentifiedObject.name>Производитель п/я А-7457</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_68178fee-682b-41b4-9a58-1ab3bdd9d75a"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_d433183d-6474-48ba-868b-b67d9b46cd12">
+    <cim:IdentifiedObject.name>Шанхай Электрик Уинд Пауэр Груп Ко., Лтд (Shanghai Electric Wind Power Group Co., Ltd.)</cim:IdentifiedObject.name>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_53604ca1-a5f4-4a2c-8179-fcec20107aa0">
+    <cim:IdentifiedObject.name>Производитель ООО «НПП Преобразователь-комплекс»</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_fe612d72-df41-4884-9228-6d92ec168836"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_fd298405-a21a-4d28-a371-213515580f92">
+    <cim:IdentifiedObject.name>Производитель ТЭМЗ</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_61c6684c-abce-4288-8215-d5f63278256a"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_2a75a8d0-f0a1-4dc0-90b9-7a9ef43b83dd">
+    <cim:IdentifiedObject.name>Производитель NOKIAN CAPACITORS</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_c45b5b0d-1ad6-48ef-8661-0309c71620bd"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_426bdc33-8d7e-41a5-b547-d2884a37751d">
+    <cim:IdentifiedObject.name>Производитель Средневолжское ПО «Трансформатор, Г-4616</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_e4aa3031-3630-44a4-abc5-602b0954c437"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_d8d5e52e-ea5a-4de5-bda0-93f5092a29dc">
+    <cim:IdentifiedObject.name>Производитель 1-ый Брневский завод им.Готвальда</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_6fa41d4a-6c3d-484d-84d8-d107966c7d78"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_bb257859-156c-4448-94b1-939f3cbf5863">
+    <cim:IdentifiedObject.name>Производитель GanzKK</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_c64a7212-13ce-4371-9ac0-87d07c24a104"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_4ca712d0-3c6f-499b-a91c-a0f557c59a77">
+    <cim:IdentifiedObject.name>Производитель Bergmann-Borsig</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_96a4f8f3-ea64-4eed-8f54-ef5b1622d6f6"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_98d9ceaf-2431-41f2-abf6-9cccd713cef7">
+    <cim:IdentifiedObject.name>Производитель ОАО "Айдис групп"</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_97559560-38e4-4514-a160-41c9190ece88"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_22c56754-835e-4dcf-b9b7-a5756e75a3f5">
+    <cim:IdentifiedObject.name>Производитель НПП Контур</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_e1abaa07-3d48-43a6-b058-53c9b0313349"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_3d9c0ac9-ece0-419a-b29b-c1bc26e753dc">
+    <cim:IdentifiedObject.name>Производитель SGB STARKSTROM</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_e62d397c-e785-4949-995d-64a96dbe73ce"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_0b5f9eb5-4677-45d8-80c0-be085f71fd04">
+    <cim:IdentifiedObject.name>Производитель ЮТК</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_2359f4d9-9c0f-4970-a63e-070a9c1f957d"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_4f934ffe-ac7c-4e12-b3bd-c3e655283a5d">
+    <cim:IdentifiedObject.name>Производитель NEWAGE International</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_f372810f-ac88-4e38-9b71-38f6fb75c3fc"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_351ec472-71b0-4a2c-9a8d-0d4cc9d8e9eb">
+    <cim:IdentifiedObject.name>Производитель Промэнерго</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_3d096a47-d7f2-4239-81c6-dbf185207fd3"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_daf6eb4b-6f36-4970-8192-8eadbf7ca7bd">
+    <cim:IdentifiedObject.name>Производитель CT-e TECH Co.</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_e76b03c9-6b28-4eb8-ab4d-44f89404a915"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_d689cee6-0969-491f-9a39-10b8e81f680f">
+    <cim:IdentifiedObject.name>Производитель РЕЛСiС</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_815b22ff-b37b-438d-ae10-12bc3efdf466"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_8b43e0fc-8246-4a36-8d03-6587171de151">
+    <cim:IdentifiedObject.name>Производитель ООО «Юнител Инжиниринг»</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_96cbe8f2-1456-4e21-aae3-18fa83c98f5b"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_87c229dd-3835-4ad7-b25e-ef8abb89c46d">
+    <cim:IdentifiedObject.name>Производитель Nanjing Electric Group</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_2bf78432-d85c-45c5-8ab6-19a24583113e"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_0d61793f-1d81-46b0-8e38-56a359bd59cc">
+    <cim:IdentifiedObject.name>Производитель ЗЭТО – Газовые технологии</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_25718467-bd37-456f-a263-dbf099951723"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_b7b9881c-9daf-43e7-9958-3f6345a6bafd">
+    <cim:IdentifiedObject.name>Энергоразвитие</cim:IdentifiedObject.name>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_9639d616-6c9a-4826-b4b4-720e207f0d2b">
+    <cim:IdentifiedObject.name>Производитель Toko Electric Corporation</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_4359b5bf-590f-41e1-a2b4-a9c792f3201e"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_30f4b5ec-ac11-49a7-a60a-08d10eb61f65">
+    <cim:IdentifiedObject.name>Производитель ЛГТЗ</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_40a548db-abcb-4934-854c-86064d4a943a"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_17361d6b-f543-4acc-81d8-b2bdc2e467a6">
+    <cim:IdentifiedObject.name>Производитель Dongfang Electric Corporation</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_09bd4e02-ea30-4195-8323-8db98ab54ba4"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_ac387d35-fbbb-4422-93e1-77a1c4e522e2">
+    <cim:IdentifiedObject.name>Производитель Тульский завод трансформаторов</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_c83466a9-dda7-482e-93f3-a61183566e72"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_7444bdec-c461-4bae-9a2d-bee1efd35502">
+    <cim:IdentifiedObject.name>Производитель Курганский электромеханический завод (КЭМЗ)</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_df0450f9-8469-4528-bde2-d2c6a20d9e45"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_c8d34165-f3c2-4d26-a92a-f3e640ebc01a">
+    <cim:IdentifiedObject.name>Производитель Промэлектроника</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_796661e2-c24c-48d4-b173-af5063f0e139"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_aa9524a6-438e-4a30-b2eb-33088bfe6ebe">
+    <cim:IdentifiedObject.name>ТОО "Усть-Каменогорский конденсаторный завод"</cim:IdentifiedObject.name>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_171bf95d-d8d9-4231-8231-f3f9923596f7">
+    <cim:IdentifiedObject.name>СТС-2П-350-2100 УХЛ4</cim:IdentifiedObject.name>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_1be2fe14-86c8-4f7f-bc59-0d30f14a8684">
+    <cim:IdentifiedObject.name>Производитель АО «ИАЭС»</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_ef3671f6-f7de-4e48-8905-bc56d0eb1c6d"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_b817affa-0c3d-44a4-b9a1-c23b0931605c">
+    <cim:IdentifiedObject.name>ООО "ЛМ Электро"</cim:IdentifiedObject.name>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_392eb4ae-b293-48bc-9c32-48427ea18732">
+    <cim:IdentifiedObject.name>Производитель Schweitzer Engineering Laboratories</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_3b168f40-7f39-48ea-bb3f-8bf2c4ca71d1"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_c70b2080-72bf-484d-86a2-dcb88b689fae">
+    <cim:IdentifiedObject.name>Производитель Группа компаний «Изолятор»</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_6a204c10-69f9-43ea-833e-35963ca769e2"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_88ba2a83-9361-4b21-a68c-00705094b317">
+    <cim:IdentifiedObject.name>Производитель Stamford</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_10311651-837d-4508-9e3e-89ba917a7288"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_0f28e28d-57ba-4d24-8474-e1bb8b8a60f8">
+    <cim:IdentifiedObject.name>Производитель Брянский завод</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_622f739c-1524-44f3-99b1-21c04ab3e181"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_e93074a1-8c5d-46f3-b965-32e506e7a763">
+    <cim:IdentifiedObject.name>Производитель Атомэнергомаш</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_50aeb7b6-9b32-48a5-aecd-34bf299a080d"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_f780929c-48e1-4f1c-aea1-e56f0606f01d">
+    <cim:IdentifiedObject.name>Производитель Технодинамика – АО «МПО им. И. Румянцева»</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_844f4cba-7021-4351-a387-246ed9f57c78"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_f80bf54e-3a21-40de-b789-b9ee03ff77da">
+    <cim:IdentifiedObject.name>Производитель Cummins</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_44edaf69-92bb-4de6-b7af-ea15e543c624"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_aeb5a358-a635-4618-9d0c-22358a8d01d0">
+    <cim:IdentifiedObject.name>Производитель Энергоавтоматика</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_7752a52b-36dc-4902-9d09-82c943509ae6"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_f9b4d1c7-1a57-4a9c-8d52-df27dc007942">
+    <cim:IdentifiedObject.name>Производитель Элпром-Энерго</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_e280fdb8-22e5-4fc3-89cc-965e1815cbfb"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_bb6dccc0-7f29-4aa2-8387-c540c18f044f">
+    <cim:IdentifiedObject.name>Производитель Неизвестный производитель</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_263e535f-e42a-4098-98e1-2c2a7fe546a2"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_775c643d-ba3d-4d5f-855b-cc0509bb202e">
+    <cim:IdentifiedObject.name>Производитель Воронежский завод электротехнического оборудования</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_ba8b64ad-a0cf-4efb-a2f2-26b280145504"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_8113512d-d557-4bbb-8fe9-53637474a248">
+    <cim:IdentifiedObject.name>Производитель ООО "Баллур"</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_76f34009-f001-4bfd-85b3-9e574a067203"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_0191866d-cc55-4a59-b8ca-a7a7f0c86d91">
+    <cim:IdentifiedObject.name>Производитель Risen Energy</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_daa101ff-30ba-41d2-89ad-a7cf1d84bba5"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_0bbcb4db-2afe-4722-9aa3-9b980e0476da">
+    <cim:IdentifiedObject.name>Производитель Группа СВЭЛ</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_af88cff5-a747-4a60-957d-15d2b243bd08"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_42d564af-663c-4916-b370-270714f9e503">
+    <cim:IdentifiedObject.name>Производитель ELEQ</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_c86b49c2-ac4d-4c6f-9600-d8922f15455c"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_1d5e2d08-a765-42fd-9372-fae7c396d56c">
+    <cim:IdentifiedObject.name>Производитель SKODA</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_361d598a-c89b-4484-9258-1c622f746541"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_49efc8d8-f292-4c54-a7b3-3a62d58f9591">
+    <cim:IdentifiedObject.name>Производитель АКЦИОНЕРНОЕ ОБЩЕСТВО «ХОЛДИНГ ЭРСО»</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_640e4843-56c7-4db7-a8a6-4fbaaca47600"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_6c95cb2b-bca1-42c6-9ced-600b1242b985">
+    <cim:IdentifiedObject.name>Производитель ООО «Эмерсон»</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_f907ed06-3559-4c73-8ff9-0402efe86f91"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_071814a1-2e0d-48aa-84c8-7d44f4b9708d">
+    <cim:IdentifiedObject.name>ОАО "Электроинжиниринг"</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_140f1c43-0784-45b5-840e-cfb045990916"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_7fe3302e-4e19-4539-bfe7-62a9c9e561c8">
+    <cim:IdentifiedObject.name>Производитель Leroy-Somer</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_935c6410-ec92-4615-b704-e28219b5fef1"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_e47336a3-ccf4-46ee-9318-e53e406c392e">
+    <cim:IdentifiedObject.name>Qingdao Tgood Electric Co., Ltd (Китай)</cim:IdentifiedObject.name>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_00301c77-9cd7-4d90-9d8b-79cedb323546">
+    <cim:IdentifiedObject.name>Производитель Solar Turbines</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_b1e4a69f-acd7-4426-9404-f68322a8ac7f"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_0e4a0178-233f-448c-b9bf-d9a303cdf88d">
+    <cim:IdentifiedObject.name>Производитель Подольский завод электромонтажных изделий (ПЗЭМИ)</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_cdb8d5d9-befe-4c15-ace7-c424c04f21e2"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_4a071171-d158-4292-ba70-6ef4a618c179">
+    <cim:IdentifiedObject.name>Производитель FLOHE</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_156f5b87-2432-4a7f-bd4f-55fdcd3b056b"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_d71333b1-e72b-4f1a-bd2b-1dc704db7c6a">
+    <cim:IdentifiedObject.name>Производитель ООО Конденсатор</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_e28fc559-bbf7-4803-a3a7-edd657e70cf8"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_dfccbedb-2c59-43cc-89fe-f8db97265c53">
+    <cim:IdentifiedObject.name>Производитель НПО «ЭЛСИБ»</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_e105294c-f6d8-4804-9adf-4e4d262d6fd3"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_3b3cfe96-8ec9-4ec7-88b9-9aa2e8f27591">
+    <cim:IdentifiedObject.name>Производитель Beckwith Electric</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_8093cd10-2c2a-43fb-92d8-ff90dff54c24"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_2fd0fd76-6140-4726-b21b-150a36e88361">
+    <cim:IdentifiedObject.name>Производитель Краснодарский завод измерительных приборов</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_43043268-4229-41f5-86f0-bd2a0942cedd"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_122ee01f-c7d4-41cc-8fb5-e83e56c080dd">
+    <cim:IdentifiedObject.name>Производитель Электронмаш</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_a83759ca-a342-4297-9552-6e2bbbdd1993"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_bf43486b-edab-4f76-86e8-9099d8271288">
+    <cim:IdentifiedObject.name>Производитель Areva</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_8634a590-c8d7-46c7-b578-18970445cadf"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_7f0cbf07-5738-415a-bf2c-2740d3a5e92b">
+    <cim:IdentifiedObject.name>Производитель Ideal Electric</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_fb905cd9-c62f-477d-b6c2-040eddb714fa"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_7dd76034-8fbb-41bb-9c90-c97bdb740eaa">
+    <cim:IdentifiedObject.name>Производитель Лысьвенский завод тяжелого машиностроения "Привод"</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_5fb65243-80a3-4c30-9ce4-b73b0a49564a"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_479f2684-1390-4ec1-b2fd-b86e4d4fe3a5">
+    <cim:IdentifiedObject.name>Производитель Stamford</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_4e737440-b4ed-4616-9caa-14eae6f5d159"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_62c25712-a94c-4527-843f-e03b31dd5470">
+    <cim:IdentifiedObject.name>Производитель Березовский завод Подстанция</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_85cdb0ba-83f3-4cb1-9481-04c1e6c7afe3"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_806648bf-087d-4509-8e47-e1df8e161190">
+    <cim:IdentifiedObject.name>Производитель Русские Газовые Турбины</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_38235a9e-0b8b-479a-b98f-15f670179af6"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_bb8291fd-6332-413d-b42d-39ba2f447ac8">
+    <cim:IdentifiedObject.name>Производитель AN Maschinenbau und Umweltschutzanlagen</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_92f03db1-ae07-4494-8eb2-8026859ba2f3"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_d4843bfb-858e-4bee-8baa-a7f522197902">
+    <cim:IdentifiedObject.name>Производитель Тольяттинский Трансформаторный завод (ТТЗ)</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_a2dc0151-0b67-4c8f-976d-1cbc2992a44a"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_d9023caa-1141-48ac-8608-d13f6e99f73e">
+    <cim:IdentifiedObject.name>СВПО "Трансформатор"</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_046ca4e5-d349-455c-94f8-208999704a71"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_a9da79c1-1cf7-4ebd-906b-3529867b8326">
+    <cim:IdentifiedObject.name>Производитель Новокаховский электромеханический завод</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_ab136912-639f-468e-8a6b-5b4b6b8c86e5"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_af708596-5045-415e-ada8-17303189f44b">
+    <cim:IdentifiedObject.name>Производитель Шаньдун Лунен Маунт Тай Электрик Эквипмент Лтд</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_0dd69b54-71f2-4d69-9ab8-f1745a43908f"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_5b1762f8-128a-4aba-bbb8-f664e412a917">
+    <cim:IdentifiedObject.name>Производитель АНФ-Энерго</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_d58de90c-f6d3-4a2b-b8eb-0220d4104dbe"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_be2ca85b-9128-4288-8921-4de768d1f0ce">
+    <cim:IdentifiedObject.name>Производитель Невский завод (НЗЛ)</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_ffb490df-fe22-4108-8796-c1a741b07af0"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_5dde3a88-b25b-4e28-a3d0-a1304dc7437e">
+    <cim:IdentifiedObject.name>Завод высоковольтной аппаратуры</cim:IdentifiedObject.name>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_baffdb3c-cd92-487c-84b7-4ea8f9c0317a">
+    <cim:IdentifiedObject.name>Производитель ARTECHE</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_db64c155-4d10-48e9-971d-2fe9a9c8c0c4"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_8575faf0-174a-4295-b4e7-796083b0045c">
+    <cim:IdentifiedObject.name>Производитель Электрощит-К</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_f6c4c98b-2ae9-4bd4-b43c-45524793d9f0"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_31466e7d-9861-4652-b6e3-e739300064d4">
+    <cim:IdentifiedObject.name>Производитель Уралтехэнерго, г.Екатеринбург</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_4d1c9135-379f-4300-bfd7-2b91aed25328"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_fc841f69-aa3c-4c25-834c-73c639f67144">
+    <cim:IdentifiedObject.name>Производитель Криворожский электромашиностроительный завод (КЭМЗ)</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_e6484ec1-81e1-4f35-bdcc-94eef50c141d"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_7f17d94d-f131-469c-a610-c9da1fb64890">
+    <cim:IdentifiedObject.name>Производитель Zelisko</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_552b333b-c96d-4737-86e4-731a154d9b2f"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_87d330aa-91dd-4de6-b932-c254f98a21fe">
+    <cim:IdentifiedObject.name>Производитель НТЦ ГОСАН</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_12c96f71-8c0b-4927-8e32-84222fbebd94"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_d0ece5f9-f732-44b8-8460-7e6ed5fb8457">
+    <cim:IdentifiedObject.name>Производитель General Energy</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_10c2321a-abf8-4c6b-a852-bcd047a4bd1b"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_bda12cf8-64d6-4d7a-a073-ba2fe386b537">
+    <cim:IdentifiedObject.name>Производитель НПП Бреслер</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_bb9b8604-3d60-48e6-b941-2236d22ad3cd"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_e6034db5-a63f-4377-868e-7395d42a5698">
+    <cim:IdentifiedObject.name>АСУ-ВЭИ</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_24499c93-d751-456d-bb17-893701853931"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_2f3524ac-4e99-4276-aff1-e7c82086834a">
+    <cim:IdentifiedObject.name>Производитель Завод высоковольтного оборудования (ЗНВО)</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_28b583e9-f8e9-459b-bbc7-61624f85f062"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_0f4b710b-8eb7-49ba-8867-0d3e32088596">
+    <cim:IdentifiedObject.name>Производитель SHENYANG TBEA GROUP Co.</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_d32be2a7-029f-44cc-9559-3236bd46161b"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_93abe64c-245e-411a-b259-97a9c9392fe5">
+    <cim:IdentifiedObject.name>Производитель Элтехника</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_dd90bcb2-8c22-4355-937d-1f982eb285c8"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_135cacdb-6b8f-4b06-9e5e-acdc32c35fdb">
+    <cim:IdentifiedObject.name>ООО "ЛМ Электро"</cim:IdentifiedObject.name>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_8370dec4-2899-422f-9879-80de61139579">
+    <cim:IdentifiedObject.name>Производитель Пермский завод высоковольтных электроизоляторов</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_c7b7d508-324e-4411-aa5a-ceac85b665b5"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_b7808ebc-f85c-4048-b82f-7cb25d1e0064">
+    <cim:IdentifiedObject.name>Производитель Сибтяжмаш</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_7514bccb-be58-4838-8c02-3161f49cae38"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_48c4916f-0b1c-4985-815f-38c20a9a0d3a">
+    <cim:IdentifiedObject.name>Производитель Сибэлектротяжмаш, г. Новосибирск</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_6b999c92-2249-48af-a005-3c7b31c2bc3f"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_8f6292b9-22e6-47db-b368-fade4020c0df">
+    <cim:IdentifiedObject.name>Производитель АО "ВНИИЭ"</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_6eac3687-5d2d-4971-bb93-575ce4eb1bc0"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_e409cb2e-ae87-4ef1-bea8-7c103cf516c6">
+    <cim:IdentifiedObject.name>Производитель Завод силовой электроаппаратуры (ЗСЭА)</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_69cd3c81-8108-4448-b804-6d44f9f7708d"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_6c29faf2-74f0-4cfb-ab6c-14bdf048bcd5">
+    <cim:IdentifiedObject.name>Производитель Гефест-40</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_e6cec826-1e6e-4c16-b4ed-98d77e8e79ca"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_e3041e19-3881-4738-863d-79ead81501cf">
+    <cim:IdentifiedObject.name>Производитель Solarfun Power Holdings Co</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_cf53ba5d-cdff-41a6-8e06-7d50e6b0568d"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_7e21e083-996a-4893-a2ba-5f78e9b984e5">
+    <cim:IdentifiedObject.name>Производитель Guandong Sihui Instrument Transformer Works</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_91af6edf-c800-4ec0-95f4-006ad8962430"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_458835d8-19f6-4c5e-bf89-4a7e730c8d29">
+    <cim:IdentifiedObject.name>ГАНИ</cim:IdentifiedObject.name>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_a376b17f-1345-44dc-888c-db5155846f63">
+    <cim:IdentifiedObject.name>Производитель СоюзЭнергоКомплект</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_beee3f24-d816-4d4f-ae47-fab0a419b77a"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_bf475158-9f3e-4660-9fb2-5872f9ad1d36">
+    <cim:IdentifiedObject.name>производитель Стремберг</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_a4844c67-8f30-4754-9b07-43a77c98fea3"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_cf26bbc8-11a4-42ab-a1ec-295a3cc51b6b">
+    <cim:IdentifiedObject.name>Производитель ООО «Трансформер»</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_6f64c4bd-e5a8-47f9-89ae-04a220edbed2"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_3a2ee5db-5c3b-4d59-80e5-14c60446dcd3">
+    <cim:IdentifiedObject.name>Верхнетуринский машиностроительный завод</cim:IdentifiedObject.name>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_e4d2f774-8e7b-43f8-bc0b-c9c5e32c8ead">
+    <cim:IdentifiedObject.name>ООО "РЗВА-ЭЛЕКТРИК"</cim:IdentifiedObject.name>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_c7afa430-be37-4efc-9cc5-c1bf3fa72bd2">
+    <cim:IdentifiedObject.name>Производитель Westinghouse Electric</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_e069a66e-d060-4213-a9d7-dfd6bed429e1"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_ef545d90-5dc9-4c0a-a245-649aea644ed0">
+    <cim:IdentifiedObject.name>Производитель Запорожский Высоковольтный Альянс</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_a373a341-ba02-4112-9803-7600bfebd729"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_c2c06a9f-0086-4b51-9ad5-9fafa7515e8a">
+    <cim:IdentifiedObject.name>Производитель Nanjing Turbine &amp; Electric Machinery (NTC China)</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_e1c8b629-0055-46c4-8c24-82bfc81f65d6"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_df413c26-254e-476a-bc59-e7bc94220e6f">
+    <cim:IdentifiedObject.name>Производитель Энергомаш</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_a200e9d1-d06b-4014-8206-1ae9b4070f46"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_3be337de-6ddb-4f17-8cbd-e0844d5306ac">
+    <cim:IdentifiedObject.name>Производитель Энергоимпульс+</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_ce44ef3b-e803-4b11-b9b4-890e7a87908f"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_301944b6-55e9-4a15-ae5e-0d9000033e05">
+    <cim:IdentifiedObject.name>Производитель Allis-Chalmers</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_e024bd5f-8863-4fe1-a590-b07a351c1418"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_dfdf590f-a8c4-45cf-8c2d-aa000f5d6872">
+    <cim:IdentifiedObject.name>Производитель Завод трансформаторов и магнитопроводов (ЗТМ)</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_3e808f37-727d-4d30-90ec-87657cbc5d17"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_a1e3f364-892d-44b6-bc42-f40e49ddc454">
+    <cim:IdentifiedObject.name>Производитель Электроаппарат</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_00461a13-f6d3-4962-b610-62e280efd3fb"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_25abef63-9e5f-45a5-945d-9b09cf676b92">
+    <cim:IdentifiedObject.name>Производитель Metropolitan-Vickers</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_d74ecd4b-c6e9-4ba5-a836-8078cd168c46"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_af91177e-d9b5-41f1-a8d4-9388385b7c8d">
+    <cim:IdentifiedObject.name>Производитель Челябинский завод электрооборудования</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_f1ba47a0-6168-4dd7-8c17-1e2423d8fb16"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_d5fa3cee-700c-455d-8627-4258d7559dfd">
+    <cim:IdentifiedObject.name>Производитель Лыткаринский арматурно-изоляторный завод (АИЗ)</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_544b2cc4-f9a8-40f0-a17b-d8506e85127e"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_d93a9c19-1a66-4a42-805a-e08e44386a54">
+    <cim:IdentifiedObject.name>Производитель Урализолятор (В-2741)</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_f97c148a-d2a9-4bd6-9647-60c0c9980f8b"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_925e06f8-c967-4a21-b4b6-59519115684a">
+    <cim:IdentifiedObject.name>Производитель Converteam</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_92fa97f2-cca1-4087-b72d-b5b4adfc253c"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_ebdb9f24-95a3-4153-860b-4c58ff145ea9">
+    <cim:IdentifiedObject.name>Производитель Константиновский электроремонтный завод (КЭРЗ)</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_7156b89b-9db6-41fc-bbc8-3c2efbba53d6"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_f19bd7e7-0993-488d-a25f-cf492a44cb58">
+    <cim:IdentifiedObject.name>Производитель Wartsila</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_0b2f333d-13b4-4bb9-99b3-b40f744344f7"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_e2e8a332-d0bf-4b1a-b67c-2703ccda26a4">
+    <cim:IdentifiedObject.name>Производитель Shandong Gasosu Group</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_ee33f61e-14fd-430c-b78c-e6ef7f0db9e9"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_7ecf53d1-36b0-44e9-835f-ea6fe3bc0bdb">
+    <cim:IdentifiedObject.name>Производитель Электрощит Самара</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_26536bc8-738a-4e66-89e3-3b805a4ae107"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_702a058a-185b-44dd-b731-930478da93a0">
+    <cim:IdentifiedObject.name>Производитель Тампелла</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_b9b1eb9c-572b-413d-b1fc-e89ef8a8c100"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_790dc178-eeb8-4ddb-a6d0-98966caf106f">
+    <cim:IdentifiedObject.name>Производитель Турбоатом</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_0d0d3b94-479d-4a9d-9ed4-07ebdbffa4d8"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_16db12b1-b0aa-4753-9faf-07803f105b75">
+    <cim:IdentifiedObject.name>Производитель Cedaspe</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_b5171958-63b1-4dac-9a0f-2a283305e0c6"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_59bf603e-2a6e-4112-981e-c16566b1812a">
+    <cim:IdentifiedObject.name>Производитель Технопром Инжиниринг</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_370d4ce3-f026-4323-bcbb-559b3f11cc26"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_ddee3b09-8429-4282-975c-3d1478f7c5e6">
+    <cim:IdentifiedObject.name>Производитель Спутник-Интеграция</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_e02a6f62-c821-44d5-a06d-ef75cd7e73b6"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_4da43236-1734-4304-b689-bc85149b5657">
+    <cim:IdentifiedObject.name>Производитель Уралэнергопрофи</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_826d0097-2aa0-41e7-b908-062e7eb34c54"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_e0ae60e5-c303-4563-a709-58b05c0dd228">
+    <cim:IdentifiedObject.name>ООО "КЭМЗ"</cim:IdentifiedObject.name>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_81cf26a0-2be8-44c2-8f32-018cf1af5f01">
+    <cim:IdentifiedObject.name>Производитель Камский кабель</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_a278784a-c572-4140-adf4-81bd9dd43235"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_aa1d1282-c5a7-47e1-9f33-f534afb6c96d">
+    <cim:IdentifiedObject.name>Производитель ЗАО «Электрофизика»</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_bb68175f-58ef-48fd-b7f6-dc121e94dd79"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_9f0d45e0-773c-4756-82e4-51f5e15d376f">
+    <cim:IdentifiedObject.name>Производитель НПП Микропроцессорные технологии</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_5de37aaa-92fa-4bad-8909-e367451bbcf0"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_bd9bb74c-c16f-4029-81a6-f613a45337bd">
+    <cim:IdentifiedObject.name>"Электрощит" - ТМ Самара</cim:IdentifiedObject.name>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_54f757d5-88c2-48ef-9a42-1807abfb09bf">
+    <cim:IdentifiedObject.name>Производитель ЭМЗ-Трансформатор</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_a13670eb-0220-437e-b147-da37931a6798"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_0320f89e-8e05-45a6-9ec1-d1f9affeb847">
+    <cim:IdentifiedObject.name>Производитель Гжельский завод Электроизолятор</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_c6413731-9026-4e01-9d49-d0d2ed389423"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_744a8ffd-ac64-4f84-861c-4dc5ce4f3d50">
+    <cim:IdentifiedObject.name>Производитель Псковский трансформаторный завод</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_91cec777-7e67-4474-9a8e-ec934d560971"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_957bb8e3-2f2a-4904-87d6-18c709ca6f96">
+    <cim:IdentifiedObject.name>Производитель Sadtem</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_543f6d4e-2369-4c2d-a351-4089c2c014e6"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_f567dcc3-8993-48db-a3bb-880cc885ff62">
+    <cim:IdentifiedObject.name>Производитель ТВИ Электра</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_1fc6bfdb-c043-408a-9a45-4cea71344d1e"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_10b3fa0b-838d-42af-9b07-dce2538b1fc7">
+    <cim:IdentifiedObject.name>Производитель Sieyuan Electric</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_bc235d4e-f28f-42da-b155-60face2ef123"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_96484aea-3c6d-4f9f-a12b-b6f4ac63b773">
+    <cim:IdentifiedObject.name>Производитель ПАО "Завод реле и автоматики" (г. Киев)</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_454c6dae-6263-4934-ad9c-1cccebf85382"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_146150ae-27b8-414f-b7ad-f15874fa9d55">
+    <cim:IdentifiedObject.name>Производитель Zhejiang Fuchunjiang Hydropower Equipment</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_1e924a04-18d8-4b45-8700-a2f8f239e6eb"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_d6ddc7de-af2f-4028-8e30-90abf19d4435">
+    <cim:IdentifiedObject.name>Производитель Белгородский электромеханический завод</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_f19593d6-126b-4ebc-859f-cbbecd8a2839"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_2667dd60-6411-49c9-b60a-30608ebb6dfc">
+    <cim:IdentifiedObject.name>Производитель НПП Электронные информационные системы (ЭИС)</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_60c42045-b955-4403-bcbf-e13ecea17fe8"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_df526ab4-18a5-4bd8-b4d4-0ee16f382540">
+    <cim:IdentifiedObject.name>Производитель ЦКБ КЭМ</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_c1a2f600-bad1-4601-9225-bc18863e18ce"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_89adacb7-d46e-45ef-a827-8a304902167d">
+    <cim:IdentifiedObject.name>Производитель Crompton Greaves</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_6909ceac-f5e1-480d-a420-609ad0f95993"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_a645783d-c81c-43ab-a6cd-2881f0563610">
+    <cim:IdentifiedObject.name>Производитель Enercon</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_31153b6a-269c-49c2-9b46-10eace161067"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_d1de5594-245f-4cb8-a701-cb90df723496">
+    <cim:IdentifiedObject.name>Производитель Elektrobudowa</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_9c44519b-e379-4fcb-b251-bfb403e1af6d"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_1c825062-1fe9-4e72-85ca-f04ed256615c">
+    <cim:IdentifiedObject.name>ТРДН-63000</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_e03757fe-04e5-4c8c-9de6-a1999ffc502f"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_75e30d48-b57e-4e8b-959f-fd483a15047c">
+    <cim:IdentifiedObject.name>Производитель Turbowinds</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_d47ffe04-0671-4966-9cdf-d39bec5218a9"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_a478a8e7-e639-4bc4-9f6f-cacd364981c3">
+    <cim:IdentifiedObject.name>Производитель Gamesa Electric</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_228a9d4a-cc51-4bd8-a38f-4084616139b7"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_c0d5deb5-6d0c-431b-b9de-0b3d595bdc4d">
+    <cim:IdentifiedObject.name>Производитель ANDRITZ HYDRO GmbH Neuner Engineering</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_c9ddb24d-4694-4039-bc69-4735fb7eec03"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_e4ae9ed8-2139-4952-9992-c44dff41e4bb">
+    <cim:IdentifiedObject.name>Производитель Electrica</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_b993c657-61c4-4434-872e-8c7e41a1897b"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_1055f044-85a6-4150-a46a-b2401df129af">
+    <cim:IdentifiedObject.name>ELEC b.v.</cim:IdentifiedObject.name>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_89e837c8-f880-4b1d-bb2f-522110f5ed2f">
+    <cim:IdentifiedObject.name>Производитель Passoni &amp; Villa - Fabbrica Isolatori E Condensatori</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_e2ebf53f-05b9-44f9-a786-abe9cf568cae"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_9d8a971d-1575-4f05-be0c-d18ae7e6fd0c">
+    <cim:IdentifiedObject.name>Производитель НПП Контакт</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_7e1b49e0-34c0-45f0-99c7-ef0c738d3748"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_9db7d02d-604a-4899-ab12-9de3502a823e">
+    <cim:IdentifiedObject.name>Производитель CGS Instrument Transformers</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_b2582e2a-0293-4095-9146-db0fd7e4fb4b"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_eafdfc31-0559-4fea-b6b7-e033e646d48b">
+    <cim:IdentifiedObject.name>Производитель КТП-Урал</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_1e2f88df-4df0-4905-9e85-2ee2c5ec94cf"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_9d64de47-2927-4218-8e16-ccad180d880f">
+    <cim:IdentifiedObject.name>Производитель EMIT</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_04d051fd-2c30-434e-9b84-21ea9e3e7418"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_3ed12b50-a514-405f-be5d-1cfcaf75a3c4">
+    <cim:IdentifiedObject.name>Производитель ООО "Уральский завод новых технологий"</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_e8062ea5-c8e6-4dba-bd29-c24515f1c9bc"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_13e7a8e2-7843-4c5a-8ffd-cdd6586767f3">
+    <cim:IdentifiedObject.name>Производитель HEYI</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_d229c9d5-a9aa-4c16-95d2-42df5d0e8b4e"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_84d34134-4fab-4fb8-a86c-a0aff21a1d1e">
+    <cim:IdentifiedObject.name>Производитель Энергомеханический завод (ЭМЗ)</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_40dd56ec-ca4d-436b-9196-bd7a14c1ddf6"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_2bdcd1c3-6a92-454a-9293-3ec7ba13145f">
+    <cim:IdentifiedObject.name>Производитель БСКБ «Восток»</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_4cf39178-8858-430a-8c75-77b8a5168965"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_7cda06b0-5aa0-49cf-a5eb-ba36f13143df">
+    <cim:IdentifiedObject.name>Производитель KITASHIBA ELECTRIC CO.,LTD.</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_34a023f3-d42d-4916-9822-cd498a838eb5"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_82006ab5-5b97-4291-b337-143d6255432b">
+    <cim:IdentifiedObject.name>Производитель ТЯЖМАШ</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_e647a1c1-65d9-4cee-a4bd-686facdf9cae"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_59eba363-83c2-4c9b-9ce8-fdee7a74d7b3">
+    <cim:IdentifiedObject.name>ООО НПП "РУ-Инжиниринг"</cim:IdentifiedObject.name>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_48d38b4e-b720-4756-b584-d32f5792b911">
+    <cim:IdentifiedObject.name>Производитель Мытищинский Электромеханический Завод (МЭМЗ)</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_b89b5649-0f02-47ba-87c1-50fc65ce03d8"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_d324462c-d78a-42c7-9144-f0520826db0d">
+    <cim:IdentifiedObject.name>Производитель De Laval</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_1a8fb839-71d1-4efc-bd4f-6a6ce0edeccd"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_eac6df5c-6e45-4b23-936d-aa1d9cf05d00">
+    <cim:IdentifiedObject.name>Производитель Рыбинские моторы</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_8fde5c29-937a-49b0-8c26-2fea47ed632f"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_90ee45fb-9e49-400f-bf7a-b737806f9345">
+    <cim:IdentifiedObject.name>Производитель Rolls-Royce Power Systems</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_7749db19-0df9-4983-b743-0bc9fe47c8c3"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_21ebbfc8-c83d-409a-8ee0-24125d4d5ff4">
+    <cim:IdentifiedObject.name>Производитель PARTZSCH</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_5a4e53d2-5559-4656-8839-ce9dbbc79e0d"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_a4a4828d-3f99-4260-ace5-d3e7b1fbf26b">
+    <cim:IdentifiedObject.name>Венгрия</cim:IdentifiedObject.name>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_2e8ec7f6-a0b6-4878-8dfd-4057b5b75482">
+    <cim:IdentifiedObject.name>Производитель PBS Velka Bites (PBS VB)</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_77231704-374c-47df-a323-b64ca8d2ee04"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_7fbd16a7-c164-42cd-a860-636085e0765a">
+    <cim:IdentifiedObject.name>Производитель ОДК Пермские моторы</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_ed550977-2caa-46f2-a020-61001a3bbcdc"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_9e685a22-f335-40a3-b91a-c5195e7ce0ee">
+    <cim:IdentifiedObject.name>Производитель Контакэлектро</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_91398651-ea54-454c-915e-acc04aceab6f"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_35c5611d-5256-4344-9817-b34762fa9a19">
+    <cim:IdentifiedObject.name>Производитель BEST, Турция</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_6d8f484c-84bb-4f35-af99-573972fe581e"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_1d0e91b5-df64-4b2e-ab04-dbb98588abe8">
+    <cim:IdentifiedObject.name>Производитель Suntech Power</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_eaa72477-9aa7-4eb4-95d5-3e8be93bb469"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_0d246d1c-7f7e-4d65-bedc-d494a4d25576">
+    <cim:IdentifiedObject.name>Производитель OUIMB elettro (Виченца)</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_57b2a596-47f9-4778-a459-eb00a54e9592"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_fd2c6cb6-b07d-4476-b02f-a10f616b3150">
+    <cim:IdentifiedObject.name>"Производитель НПФ ""Модем"""</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_33ea9c9c-42ba-443b-bfdf-215c0cb57dba"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_f4f78f97-6aa5-4463-ba6f-369e8aaa63d0">
+    <cim:IdentifiedObject.name>АО ВО "Электроаппарат"</cim:IdentifiedObject.name>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_1f9e9054-f65d-47c5-b997-a83c5f7c0c57">
+    <cim:IdentifiedObject.name>Производитель ЗАО "АВК-Энерго"</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_a4fb1e84-eb69-418d-8161-7702bf30e9d3"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_a3685eff-5e36-402f-860e-7b31fa169593">
+    <cim:IdentifiedObject.name>Производитель Таврида Электрик</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_6c5a9b44-a6c6-41d1-b6f0-261e5f9fcdf0"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_c5ca6dbc-c420-48c6-a4d4-747a85802cd5">
+    <cim:IdentifiedObject.name>Производитель АО Красный Гидропресс</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_a225210c-4b18-41bd-8a3c-ab46336d2381"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_c9b69867-cdc9-4768-94f3-345c623e56e2">
+    <cim:IdentifiedObject.name>Производитель Релематика (ИЦ Бреслер)</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_39fc15ee-f0c7-4741-8fda-7d88b906b40e"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_c9bb78c0-4645-4ecc-a7b9-7a0b8cdb0d87">
+    <cim:IdentifiedObject.name>Производитель СлавЭнерго</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_49a7cf18-a97f-4dc9-9e3c-fda4e69f2ba1"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_42bd9bd4-f63d-4bcb-a3e7-aba5c00b84dc">
+    <cim:IdentifiedObject.name>Производитель Лысьвенский турбогенераторный завод</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_a3a71e12-857e-4fbd-bef2-bffeee4c243d"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_649116f3-a28d-4ce4-9a03-fef68cb11133">
+    <cim:IdentifiedObject.name>Производитель Yixing Xingyi special transformer CO</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_d37ec5bc-909b-4ba7-b222-8a967494538f"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_cd6452a4-92f7-4d6f-bd61-d1782432d481">
+    <cim:IdentifiedObject.name>Производитель Новосибирское электромашиностроительное объединение</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_99955718-83d6-4178-b96c-becb24277545"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_fdc89bc3-7c51-4f20-af30-dd972ee68945">
+    <cim:IdentifiedObject.name>Производитель Jiangsu Green Power New Energy Co</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_a2233768-be2a-4aa8-b127-bfa8daf7968a"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_da25240b-e830-4317-9673-3697aa58e315">
+    <cim:IdentifiedObject.name>Производитель Г.Ц.М.О. "Севкабель", г. Ленинград</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_2f037933-1108-4057-8f70-9e7e71c37d05"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_f0017fd5-b76e-44b9-ba5c-597bd85379ec">
+    <cim:IdentifiedObject.name>Производитель Биробиджанский ТЗ</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_b2226c46-de2d-40db-a15f-87f27e76a6d8"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_16c061d5-20fa-4eb9-a66d-7c5777e43f66">
+    <cim:IdentifiedObject.name>Производитель Уралэлектрокомплект</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_b77d6a23-6443-4edb-885a-ed2df5c0fc85"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_2ace02b2-a1f9-4ac2-8a75-2c23378c01e1">
+    <cim:IdentifiedObject.name>Производитель Brown Boveri</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_1b4a90c4-feb0-419c-a8b9-e0e85c7c4dca"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_2659a8ef-3655-4497-bffd-1a7674f77b99">
+    <cim:IdentifiedObject.name>Производитель MWM GmbH/Cat Energy Solutions Gmbh</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_296df3c3-7344-4549-8cf9-92c47d5b6868"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_5d73ee5f-ac17-4507-8905-acd4071fc330">
+    <cim:IdentifiedObject.name>Производитель ООО "Кончар. Силовые трансформаторы"</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_aab9ea2e-ead7-4b16-9b6e-8a25d95ee2c3"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_ec2cf321-8efc-44e1-a84f-fe636d77c755">
+    <cim:IdentifiedObject.name>АО ВО "Электроаппарат"</cim:IdentifiedObject.name>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_17def7d4-d37c-4760-a774-7915c3ac0658">
+    <cim:IdentifiedObject.name>Производитель Харьковский электромеханический завод</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_3396d8c8-d4c7-4ada-a598-1bee3cff0c12"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_f4595c1f-a91c-4797-a56a-0e3f11bfa796">
+    <cim:IdentifiedObject.name>Производитель Усть-Каменогорский Конденсаторный завод (УККЗ)</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_f3144e86-e791-450a-987b-541b21befff2"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_012ea47d-fe6c-4231-b3ba-881f6bb3fd1d">
+    <cim:IdentifiedObject.name>Производитель Свердловский электромеханический завод (СЭМЗ)</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_de22267d-7601-44e1-b8bb-e4acbe8e4f17"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_13c4af87-ef00-4b9f-be9b-5a961841a91f">
+    <cim:IdentifiedObject.name>Производитель Элсиб</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_efc63982-0111-4f71-8ffd-0f386f4cec7b"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_dd532ba9-5612-45c8-87b5-4a0437805dde">
+    <cim:IdentifiedObject.name>Производитель MAPNA</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_c3f4d9e0-4ae2-4a76-a87f-e2332c731899"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_0d392122-f4e6-4c27-a180-fdada5dd2bbd">
+    <cim:IdentifiedObject.name>Производитель Ставропольский трансформаторный завод</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_2325bccc-0dde-42ef-a9ce-6f4b2bb13b07"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_4476eb32-2b4f-4749-8458-ac26e95b74ad">
+    <cim:IdentifiedObject.name>Производитель Unigreen Energy</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_855cbd10-1a2f-4fb2-b114-4794422f96b1"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_bbf052fb-21e5-46f5-9457-88ef7945e0a9">
+    <cim:IdentifiedObject.name>Производитель Кореневский завод низковольтной аппаратуры</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_c3a21fcf-b920-4e67-b599-8da7cc8df131"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_ddd14ee3-aa78-4449-85fd-0bb28f37579a">
+    <cim:IdentifiedObject.name>Производитель БЭСТЭР комплект</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_ac2a796b-1511-49f5-8404-f55cdb04cde5"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_5959fbde-d4b5-4d90-8ccc-7b58aea78a2e">
+    <cim:IdentifiedObject.name>Производитель Nuovo Pignone</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_f9606cd6-90ee-4959-9bb2-df97a61aa483"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_22fc1348-09c7-4031-a603-16a1b52abbf3">
+    <cim:IdentifiedObject.name>Производитель Новочебоксарский электромеханический завод</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_aaadc775-410c-4d72-8a61-6b8261ceeabc"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_6a83026f-ca63-4a36-b326-9b18ae12e2de">
+    <cim:IdentifiedObject.name>GPPV New Energy</cim:IdentifiedObject.name>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_4b5f2714-f352-4e78-bab0-95d93e7ea507">
+    <cim:IdentifiedObject.name>Производитель Windpower</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_35a5b684-3225-4a15-b75d-569c268fbebc"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_9e84c15b-cada-4cae-8f5f-d59633c42608">
+    <cim:IdentifiedObject.name>Производитель НПП ЭЛВЕСТ</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_29bd1120-c1e1-4b19-ae61-ee99bb58352a"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_b520602b-4398-4c96-afd6-cea0edc82a42">
+    <cim:IdentifiedObject.name>Производитель ЭЛЕКТРОФАРФОР</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_e83b9ef2-382a-4fb6-bbc4-06e9706e758d"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_d3ce6c5e-0e86-4603-b985-e3304917e448">
+    <cim:IdentifiedObject.name>Производитель НИИЭФА-ЭНЕРГО</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_88817e6a-a707-4231-a43f-de0ccf209a9a"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_7ad3c7fa-1679-4eb0-8574-075cb9e6b11b">
+    <cim:IdentifiedObject.name>Производитель Московский Энергомеханический завод (МЭЗ)</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_bf29e442-c91f-43e6-9c7c-35d77630b15a"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_8e95d9d6-ca14-4f86-acd9-f649d93891be">
+    <cim:IdentifiedObject.name>Производитель O'zelektroapparat-Electroshield (Узэлектроаппарат-Электрощит)</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_f8d4b388-348c-4b0b-8d96-ac12090c4d60"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_2508ab41-5bf9-40e1-a156-bd3e04eab478">
+    <cim:IdentifiedObject.name>Производитель Уральский завод энергомашиностроения (УЗЭМ)</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_00a36db4-18f5-4756-8bd8-721a930e3e8a"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_a7d4f475-c6d4-445b-a703-c2d208d323fb">
+    <cim:IdentifiedObject.name>Производитель Shenzhen Kstar Science &amp; Technology Co</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_449f6849-84fd-46c3-a4b7-f608cbb1728d"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_5f7b8ffd-8dd8-4826-be59-c89bea7d7f42">
+    <cim:IdentifiedObject.name>Производитель SIEMENS</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_df821a7f-a1f1-44ef-bb5f-cb061820f6b8"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_3df34730-7bd5-455d-b822-fb49b4ccf464">
+    <cim:IdentifiedObject.name>Производитель Чебоксарский электрозавод трансформатор</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_b6920e34-795a-471c-9432-7fb6270093bb"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_a210204d-b01d-4719-b92c-14182884bc96">
+    <cim:IdentifiedObject.name>Производитель Регион-Энергомаш</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_1d5a73db-ffc6-4b04-830e-b79a144779d5"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_7d282f10-e1c5-40fd-bb6a-5eaf85ce5617">
+    <cim:IdentifiedObject.name>Производитель НАТЕКС</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_e84da5a5-deb4-4152-903e-a332c7f7b9e3"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_b4c2aeef-6cbd-49c2-bd84-f008f91daf19">
+    <cim:IdentifiedObject.name>Производитель Силовые машины</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_0a37965a-bbaf-48ef-befd-743f55348e68"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_7e6eb30f-6296-437a-bb20-73fc815379ed">
+    <cim:IdentifiedObject.name>Производитель Borsig</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_4c93a9ab-602a-4209-b887-2b616c6c2b83"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_c518e8c5-64ca-4df2-a13a-ea47bf1bc752">
+    <cim:IdentifiedObject.name>ОАО "РАМЕНСКИЙ ЭЛЕКТРОТЕХНИЧЕСКИЙ ЗАВОД ЭНЕРГИЯ"</cim:IdentifiedObject.name>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_8b66b991-1c48-4de9-8bc8-ae123c79bcb7">
+    <cim:IdentifiedObject.name>Производитель KWK Messwandler GmbH &amp; Co.</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_575c94ef-cce1-4ff8-bf49-50966f48e741"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_4a447237-b3e7-4a57-b044-1e6d06c83c00">
+    <cim:IdentifiedObject.name>Производитель Самарский трансформатор (Куйбышевский завод измерительных трансформаторов)</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_8fe39bac-cfa0-4134-a881-8b06bb9ec1c6"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_24be69aa-044a-41dc-babf-a06d1f6c8384">
+    <cim:IdentifiedObject.name>Производитель Coil Innovation GmbH - Power Inductors</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_c6ec4b45-4803-4964-ae43-5c8140fd5ac3"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_19f9e80f-121e-4047-af74-d58697e07c02">
+    <cim:IdentifiedObject.name>Производитель Запорожский завод высоковольтной аппаратуры (ЗЗВА)</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_d449bf5d-8c73-4d2d-b250-4c32960afcb5"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_4e7bba68-3ba9-445e-87fb-20e95352d46b">
+    <cim:IdentifiedObject.name>Производитель ООО "Электромаш"</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_628fc158-2f13-4f0b-8cd4-91279137f735"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_7154fa90-76b3-4a2a-b71e-63f7f720e393">
+    <cim:IdentifiedObject.name>ЗАО "Полимер Аппарат"</cim:IdentifiedObject.name>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_8846779c-d1f1-413c-8b5e-f4341426f722">
+    <cim:IdentifiedObject.name>Ленинградский электроаппаратный завод</cim:IdentifiedObject.name>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_a28bd91f-c368-4d5c-b309-814efd3571d4">
+    <cim:IdentifiedObject.name>Производитель Хмельницкий завод трансформаторных подстанций (ХЗТП)</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_c310c2eb-28cf-44bf-b078-c1cb9234acbd"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_daa7b485-0fd4-4239-95a7-b7478454e8c7">
+    <cim:IdentifiedObject.name>Производитель Элеком</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_def2409b-bbc3-48ec-8272-c2a506ef60e5"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_83a147b2-a852-48db-9f44-5f8e5ee6755a">
+    <cim:IdentifiedObject.name>Производитель Уральский завод трансформаторных технологий (УЗТТ)</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_98f66968-ddbb-4c93-b89e-742fb2061a91"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_e93da3a0-a68e-4285-950c-910fc381fcae">
+    <cim:IdentifiedObject.name>POWERGEAR</cim:IdentifiedObject.name>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_890af442-e8ca-468b-b114-bc2da9b3cecc">
+    <cim:IdentifiedObject.name>Производитель ОАО "Запорожсталь"</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_7a482815-f278-4405-be43-54b31d36fb5b"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_fedc1e48-73cb-46f5-b594-9c9c9857321e">
+    <cim:IdentifiedObject.name>Производитель ЗАО "ЗЭО" Великие Луки</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_2347c61e-feff-4750-923a-d54d7d0808aa"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_593cc315-f0c3-4b13-8bd7-1df138e8f0ae">
+    <cim:IdentifiedObject.name>Производитель "Пролетарский завод"</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_0cdee161-14a7-4954-a62a-5d5b05f2dcb2"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_34d1f8e8-f814-4a91-811f-62e097082800">
+    <cim:IdentifiedObject.name>Производитель НТП Август</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_8cedb932-d71c-47dd-83e2-fb5ac22e4b20"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_35f344b7-40c8-4877-8db5-aba8b8e8c726">
+    <cim:IdentifiedObject.name>"Производитель НПП ""РЕКОН"""</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_fb02a44a-c874-4ca3-831b-5c849134bbc5"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_ba6112fe-5fc7-400a-9604-000eb04193d1">
+    <cim:IdentifiedObject.name>Производитель ЗАВОД ИНТЕГРАЛ</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_ebe883d5-e02f-4955-ba41-bf0b862c97b2"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_34ba48c2-3b29-4274-ac8c-6af8aadffa66">
+    <cim:IdentifiedObject.name>Производитель СвердловЭлектроЩит</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_7a10cab0-08cb-4d01-a633-f1a0b52c2280"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_c1a06187-06cd-4ca4-affd-c170aa828abf">
+    <cim:IdentifiedObject.name>Шанхай Электрик Уинд Пауэр Груп Ко., Лтд (Shanghai Electric Wind Power Group Co., Ltd.)</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_ad73a108-af8b-406b-8ddd-9eb266ff55a5"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_5dad0ec7-9cbb-48d4-8406-00a9c29c85f3">
+    <cim:IdentifiedObject.name>Производитель Вологодский электромеханический завод (ВЭМЗ)</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_7db44185-e034-4453-ad91-dd9f9f72b8bd"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_238d4734-f90d-451a-8b7a-3e2117cf89ed">
+    <cim:IdentifiedObject.name>Одесский завод "Нептун"</cim:IdentifiedObject.name>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_37e0e729-f913-4d62-a74e-a0fdbdd7542f">
+    <cim:IdentifiedObject.name>Производитель Астер Электро</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_26600451-458c-4db7-a621-13ac5a24e6b2"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_277b9f33-6c66-4f71-94ef-149ee82379bf">
+    <cim:IdentifiedObject.name>Производитель МЭТП Главтрансформатор</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_b77c4065-900d-4848-b27b-5286e1e70684"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_517f1211-9f21-436d-9d1f-c2101c1e6485">
+    <cim:IdentifiedObject.name>Производитель Allen-Bradley</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_23b907af-1bfd-4bb8-b38b-d7781e01a3fe"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_cb07426d-c730-44df-a75d-0860129f07b8">
+    <cim:IdentifiedObject.name>Производитель Минский электротехнический завод (МЭТЗ им. Козлова)</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_b328b8d3-6577-4de1-885d-cbd09bd1891b"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_7a3d212c-7be7-48b7-86e1-de983014b3c4">
+    <cim:IdentifiedObject.name>Производитель Запорожский трансформаторный завод (ЗТЗ)</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_a2e7ba8f-3614-4407-9576-730d4c033cac"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_bc6f6b41-605c-4db7-a057-456506996eb1">
+    <cim:IdentifiedObject.name>Производитель ЭЛАРА</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_b1f0cac2-f918-483c-b5cf-35901e5be179"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_b43cdeb1-46cc-4e3a-ba5b-7f0fa9534347">
+    <cim:IdentifiedObject.name>Производитель ИНСТА</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_e4868e7b-021b-4b5d-8348-b42420bfed74"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_1013b066-8ea4-4c3a-a25c-963ca42e7165">
+    <cim:IdentifiedObject.name>Производитель п/я М-5586 г Новосибирск</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_7c955330-5f08-4eb5-9d53-fa567077c6c5"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_50f72717-3854-49b4-ace0-88c1f0887bce">
+    <cim:IdentifiedObject.name>Suntech Power</cim:IdentifiedObject.name>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_f5cbcdc7-1e22-42eb-a329-3ddcf5714dbf">
+    <cim:IdentifiedObject.name>Производитель Куйбышевский завод измерительных трансформаторов</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_52cff046-4986-44cd-a111-1c48a474a2d3"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_64e09c61-0432-4a6d-aaf6-7dba8889af1f">
+    <cim:IdentifiedObject.name>Производитель Hyosung</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_6999dd1b-f3c8-4816-bc30-4f4690197bd2"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_21ccb5f5-71e0-490a-8caf-43da46135cd5">
+    <cim:IdentifiedObject.name>Производитель Завод Трансформатор-Реж</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_0b72a068-31ce-4ce4-87d5-f10527cd7c9b"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_aedb16b7-ff91-4617-8149-bc17127a6032">
+    <cim:IdentifiedObject.name>Производитель ALCE Elektrik</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_fc2bb31a-fa4a-4e1e-a8af-ba92316a19bd"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_4affc6bd-32c6-4152-80cf-aec0da136c79">
+    <cim:IdentifiedObject.name>Производитель ООО "Живая Энергия"</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_b2391cbf-94a5-46bf-ad83-ea952c967342"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_0b93808d-dbcb-453a-a27e-aff2d3fc7865">
+    <cim:IdentifiedObject.name>Производитель Красноярский завод цветных металлов имени В.Н. Гулидова (Красцветмет)</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_5149639e-b246-40b8-bedb-e24a1059ee4d"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_1b5688d9-70b1-4486-aed0-feab73d1832c">
+    <cim:IdentifiedObject.name>Производитель НПО "Энергосервис", г. Самара</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_c2f438c6-286f-4376-b375-ff5ffcd3e576"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_db1ecc24-ff5f-48e6-be6e-c69ba0288ba2">
+    <cim:IdentifiedObject.name>Производитель Мосгорсовнархоз ЦРМЗ "Мосэнерго"</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_ab5dea93-545b-485e-9dc1-5b5740143da5"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_61e02065-5541-438f-9fa5-88b7880b95c1">
+    <cim:IdentifiedObject.name>Организация-изготовитель ООО "Сименс Трансформаторы"</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_473bd072-1677-4047-89a5-fc4075af334d"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_3e1166b6-5895-4a85-b60f-8e28941b8a34">
+    <cim:IdentifiedObject.name>ЗАО "Энергомаш" Екатеринбург - Уралэлектротяжмаш</cim:IdentifiedObject.name>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_e64894de-6407-4719-86c9-6b2ad02be0eb">
+    <cim:IdentifiedObject.name>Трансформаторы тока</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_bf79dd28-baf6-4f03-af56-8baaa8dfcd16"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_aca6b7cb-9db5-42bb-a3ba-da66b1b3699e">
+    <cim:IdentifiedObject.name>ТГФМ-110</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_bc30130f-8816-446f-8b5f-caa984460cdb"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_973d61c4-6541-4793-978f-863c46b1492a">
+    <cim:IdentifiedObject.name>Производитель п/я М-5972</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_f818598e-5567-47b3-a930-372e41d8de5e"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_2dac3984-9258-4171-934c-e3eddc925bfb">
+    <cim:IdentifiedObject.name>Производитель Ritz Instrument Transformers</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_33219d44-c0f4-42d8-92d0-f8ade42db30a"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_4624ca61-45bf-48ea-b9fc-de0b8f0c18d2">
+    <cim:IdentifiedObject.name>Производитель Энергореактор</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_521f9a4a-20a1-44c1-98ed-bebb3377362e"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_f8ea8b36-869f-48f2-a884-39e9fad0fba0">
+    <cim:IdentifiedObject.name>Производитель Basler Electric</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_3733a668-5c56-4140-a3cf-150c189e2021"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_751158ca-f2c2-47e3-b691-44995484c556">
+    <cim:IdentifiedObject.name>Производитель Русский дизель</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_a33059c2-73cd-4f9f-a512-e9ed447a4344"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_1fb0dbaa-a4b5-4342-b0c3-4765b2a83309">
+    <cim:IdentifiedObject.name>Производитель РосЭнэргоТранс</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_52db0192-d212-4bf9-95fc-b9d5dff6a78a"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_2b97b316-4cff-42ee-8867-19c595bc0ee6">
+    <cim:IdentifiedObject.name>Производитель Electric Machinery Company</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_ed66b294-2453-45f8-b28d-5f8d0248da16"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_e6eeb0e1-16b4-4b50-9ae8-9d41009904ee">
+    <cim:IdentifiedObject.name>Производитель НПП Мотор</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_6249d12e-e1aa-4c1c-98ee-fc927bc80ad8"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_042a8d2d-d520-4bb7-9847-7a0363bd277d">
+    <cim:IdentifiedObject.name>Производитель УиндЭнерго</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_4978f2e4-78f8-4c39-bd9a-b54a9166eace"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_338ef8a3-3d64-4cc3-a5ee-347509017291">
+    <cim:IdentifiedObject.name>Производитель Калужский турбинный завод (КТЗ)</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_77cb0f33-ce7a-4ee5-83e1-63a0b4c47109"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_c5467bca-fa87-49f0-ab3f-efe95388d4b1">
+    <cim:IdentifiedObject.name>Производитель Кентауский трансформаторный завод (КТЗ)</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_6e6e939c-bfd5-43d3-ba40-3fce88f9be4c"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_a7a3a428-573b-400d-88f1-e49159422adf">
+    <cim:IdentifiedObject.name>Производитель Центральный ремонтно-механический завод (ЦРМЗ)</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_a501d839-0388-4df1-8d9f-2c994397f3d6"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_9487af45-989b-4eea-b952-21f005e1ac51">
+    <cim:IdentifiedObject.name>Производитель Хелиос-Ресурс</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_74af6793-eec7-4980-b422-8e43f089f299"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_0eb83e93-4cbf-450c-83fe-6691298c63f4">
+    <cim:IdentifiedObject.name>Производитель Stamford</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_12303afb-872b-496e-a4a4-8aada412cf1e"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_6628f6a6-2816-46fa-a8fe-5b5b9eaa8bed">
+    <cim:IdentifiedObject.name>Производитель НТЦ Механотроника</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_520575bb-65c9-4470-9c05-48dcb6ba3f95"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_0976d53f-dee2-4b64-b492-daa924a3a47a">
+    <cim:IdentifiedObject.name>Производитель LDW</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_d967bb51-5b60-4a86-9774-de76d72b52aa"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_fe7c6234-b26c-4efb-a410-cf61ec3f5842">
+    <cim:IdentifiedObject.name>Производитель Эйч Энерджи (H Energy)</cim:IdentifiedObject.name>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_fad1fc19-ba63-4480-bf11-270c63c66432">
+    <cim:IdentifiedObject.name>Производитель Высоковольтник</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_6aee0ba9-414a-4e9e-b88f-8d4e44d212b3"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_d37a9296-155b-411c-9cbe-315a509ca750">
+    <cim:IdentifiedObject.name>ТАШЭЛЕКТРОЩИТ</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_9cfcc1e6-3fa8-4742-8cec-b2e0cc53533d"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_ae82da30-8bdf-4359-aaf9-0214d0c7a795">
+    <cim:IdentifiedObject.name>Производитель SAMSUNG</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_9f120065-4086-48c7-b34d-0dfa1455c28e"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_4a433f0a-828b-44c3-b020-a30c1f439a48">
+    <cim:IdentifiedObject.name>ООО "Электрощит-К"</cim:IdentifiedObject.name>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_59888d85-5538-4313-a90f-3da6337f49e4">
+    <cim:IdentifiedObject.name>Производитель Shin Nippon Machinery</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_03b630c4-bd67-4215-99cc-1cfd3a05a818"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_6d40c2b5-aba1-42b4-8d92-87214ebed2f1">
+    <cim:IdentifiedObject.name>Производитель English Electric</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_7deb31a0-63e3-4b9b-8765-3fb360f4716b"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_d2a4b741-51f0-4e83-af47-bbca79144bf7">
+    <cim:IdentifiedObject.name>Производитель Русэлпром-Электромаш</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_6a494b03-0040-40f8-a391-0e5dc280555f"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_3ebf0ad8-98da-4c21-bd37-4c1820f2a5ac">
+    <cim:IdentifiedObject.name>Производитель ООО «РУСЛЭЛПРОМ»</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_36bc78f8-b1b5-45e2-a653-52989be3053c"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_e1c68123-d0d2-4a62-b6b2-cda5a7bbae91">
+    <cim:IdentifiedObject.name>Организация-изготовитель ООО "Тольятинский трансформатор"</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_b480ec34-0bb0-4904-b4ed-284d1a7e1559"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_efafe901-754c-4f97-b985-4eddad3848e9">
+    <cim:IdentifiedObject.name>Производитель Электросила</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_2d9a238d-b0a3-4aec-915b-1914457e1ce3"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_c7ecf0b9-241a-4bdc-96f8-ba3f53f90e48">
+    <cim:IdentifiedObject.name>Производитель Электротехнический завод Вектор</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_c57b138f-b82d-4cd8-ac96-e64f5308c743"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_8547ce01-609b-4f2b-8c1b-ab807511fcc5">
+    <cim:IdentifiedObject.name>Производитель ЗАО "Комета-Энергомаш"</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_4c6d72b7-71a1-45ee-8983-82b59c70b0f1"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_9c855669-60be-4414-89c2-8704b8fdd7ba">
+    <cim:IdentifiedObject.name>Производитель HAPAM</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_66de1c72-16ce-4bdb-9d56-e210d0e6ba1f"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_939a71fb-bb56-407f-a147-ad39449b778b">
+    <cim:IdentifiedObject.name>Производитель TD Power Systems Limited</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_c157e5a6-9395-4fb8-bbb2-2142e9e5ef69"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_a6ca3229-9843-48ac-b613-a5f61b8251b6">
+    <cim:IdentifiedObject.name>Производитель Великолукский завод электротехнического оборудования (ЗЭТО)</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_e6f312d1-b9b2-411b-adbd-f85de0e07ed3"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_18689d44-cf3d-4872-bae3-870838599eca">
+    <cim:IdentifiedObject.name>Производитель Electrotecnica Arteche Hermanos S.A.</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_afb2f458-baa4-4e73-b108-4db12664bb4f"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_03dfb34c-c577-4994-bffa-6d6d2171236c">
+    <cim:IdentifiedObject.name>Производитель ВОЛЬТА</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_54aedcbf-6823-4fbd-a127-96b888c34a4d"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_90cd0b67-8256-484b-bbee-72a81e61dcca">
+    <cim:IdentifiedObject.name>Производитель МНПО Энергоспецтехника</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_27ecca6b-54c4-4a73-8b3f-f5f4b9723ce3"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_cef427bf-651b-4bd7-956d-e20598a5a516">
+    <cim:IdentifiedObject.name>Производитель ООО "Эльмаш"</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_893a0d39-75bf-44bb-bc9a-b6462c7eb847"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_d175056f-4ce8-4d59-b44a-157a1e917067">
+    <cim:IdentifiedObject.name>Производитель FT Zychlin</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_366353a4-ec55-4aaa-97ff-19be1661083b"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_2ce7920e-54b2-4015-8afe-f5b761cbead2">
+    <cim:IdentifiedObject.name>Производитель Завод Латвэнерго</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_373b6172-2b5f-4aca-978c-75f956a64b09"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_c660d935-9330-4978-9666-f9fef33afca0">
+    <cim:IdentifiedObject.name>Производитель Московский завод высоковольтной аппаратуры (МЗВА)</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_d9bc8b6b-7d6a-4891-b3eb-5899db2953e6"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_f24b7cab-fa2e-4bf4-9d15-6272bb320a9a">
+    <cim:IdentifiedObject.name>Производитель Уралэлектромаш</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_1dac99c5-4f99-4a99-9fba-62c1bd473b30"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_9c8dfbe5-616e-413f-aabf-8a9f962d649b">
+    <cim:IdentifiedObject.name>Производитель СВЕЙ</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_6e108086-b573-4075-a0a0-80280fabfce4"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_f2e160b5-da27-4af0-80ba-b7929bfc01e3">
+    <cim:IdentifiedObject.name>Производитель Славянский завод высоковольтного оборудования (СЗВО)</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_4276e364-f3b1-4b37-8799-5133d5ed21d8"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_4d88949f-efeb-4ef5-8d9b-90579dbab652">
+    <cim:IdentifiedObject.name>Производитель ООО "Воронежский трансформатор"</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_a4048409-5b18-4977-b261-e30318a55f1d"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_81d82feb-4282-4dea-addb-344d96ef0a6a">
+    <cim:IdentifiedObject.name>Производитель ООО "Эльмаш"</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_97e6f632-6dfd-487c-87c5-2fe182dabdc6"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_8f6b2b88-85e0-48a2-bea5-ca5b6068ccc2">
+    <cim:IdentifiedObject.name>Производитель Alstom</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_03121cdb-30a9-4b50-9ba2-57d011e111e4"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_6d4e9ec8-5d72-447b-acce-e7e0efc81300">
+    <cim:IdentifiedObject.name>Производитель LSIS</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_4213ebec-d920-43c4-9fc7-7d6e412a1809"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_4682bfa2-b51f-484c-9c19-71ab3807612b">
+    <cim:IdentifiedObject.name>Производитель ТОВ ВКФ "Электросервис"</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_3ae02a27-6257-45d5-bf1b-bac62f205057"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_eb29dfe6-d65d-415f-a40d-ffbc1aa54896">
+    <cim:IdentifiedObject.name>Производитель VEM Sachsenwerk</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_71eca6f2-e348-4110-82f2-cf23142f1bc7"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_441c8497-1426-4c37-998d-1961e061a09b">
+    <cim:IdentifiedObject.name>Производитель Белэлектромонтажналадка</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_6e452d88-fa9e-44d7-94a4-ee4bf7c5f713"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_b4cf2429-9ccb-48b4-b431-1db99a4803af">
+    <cim:IdentifiedObject.name>Производитель SAVOISIENNE (Савуазьен, Франция)</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_15b8e287-4acb-473a-9632-13d142dd0935"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_1cca7de3-8811-473d-bbfa-87d7114fd0d5">
+    <cim:IdentifiedObject.name>Производитель ТЭРЗ «Ленэнерго»</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_e23a95e7-4a09-4fe8-a768-8cce5d31e9e7"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_15a6a8b0-b905-4a17-ad23-00576826cef9">
+    <cim:IdentifiedObject.name>"Производитель НПП ""ПРОЭЛ"""</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_af4b20a4-10f2-4dd4-9231-dba6f418e01d"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_0199ac48-4928-4e3c-a7fe-dd41ff05a6c0">
+    <cim:IdentifiedObject.name>Куйбышев МЭЗ</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_cbe93e6e-cc7a-4431-8e29-bde7c3e21309"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_70108c88-883a-4604-9c27-ee4c5b6e45d6">
+    <cim:IdentifiedObject.name>Производитель General Electric</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_6b291fde-d536-4faa-bc0c-ac6448449a54"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_1a4bf5ee-7eef-4f83-b0f0-6026cf4edc21">
+    <cim:IdentifiedObject.name>Производитель  "ПО ЛЭЗ"</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_2f8b8ec2-a181-4df0-8de9-877d18bb4861"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_f154385c-d6d6-4b8c-8478-7da56b5f81ec">
+    <cim:IdentifiedObject.name>Производитель НПФ «ЭНЕРГОСОЮЗ»</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_f9d881f7-4bb4-4f4b-8ca4-93a47a52f05d"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_cf688b97-52d6-4124-9d36-99b99a456a88">
+    <cim:IdentifiedObject.name>Производитель S.T.E.</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_ac462320-aaa2-4305-be0b-91edf4dabdd8"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_30a930ec-86bd-409e-9e0f-9d67962e5794">
+    <cim:IdentifiedObject.name>Производитель Свердловский трансформаторный завод</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_8fde70b7-f2c0-4f0b-b72f-9422aa88b97d"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_e9c4a046-2469-47f3-8930-9a0f7e7b8756">
+    <cim:IdentifiedObject.name>Производитель Новосибирский турбогенераторный завод</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_6133e64d-b121-40d7-8841-b90257a5bd4f"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_c5daecb0-38a9-45fa-afa1-0dcd9916ab3a">
+    <cim:IdentifiedObject.name>Производитель Elliott Group</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_7ac92982-6f2e-41e9-9d37-d42120f94e36"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_bc8116a9-bf44-41b0-9961-5725bcea9874">
+    <cim:IdentifiedObject.name>Производитель Харьковский электротехнический завод</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_51d55e9f-8066-46ab-a688-92c744ac6a26"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_aac4654e-47f2-4c60-a33d-0195198ec047">
+    <cim:IdentifiedObject.name>Производитель Электротяжмаш-привод</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_6817aa7f-b413-4387-8e01-c3de8a8a116a"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_96916e28-1890-4d61-91d3-bf8274e7c5b0">
+    <cim:IdentifiedObject.name>Производитель Рижский опытный завод</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_db4d1105-bc0f-497b-b61c-705bae3fd2aa"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_b4a6f3d6-8876-47c6-b247-f81b490e909f">
+    <cim:IdentifiedObject.name>Производитель Эпромстрой</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_cbc4d212-8d17-4746-a140-d51b01ea41c5"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_2332f44a-dab3-43fe-b185-2aa7f0b07621">
+    <cim:IdentifiedObject.name>Производитель Harbin Electric Corporation</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_6386fef9-8a17-4fb7-9e59-ab4ba8ae25e1"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_74994be4-1cf3-4a23-b42b-56783de8da87">
+    <cim:IdentifiedObject.name>Производитель Elprom Heavy Industries</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_707091e9-018e-4948-a1ca-29f560104dd3"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_e8c0bb59-6e16-4090-9bbc-8fb30489797c">
+    <cim:IdentifiedObject.name>Производитель Русэлпром</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_9bea3426-e7d6-473c-8645-cf96d6d61162"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_4b11fd4e-337e-441b-a801-a66bcfe9ad92">
+    <cim:IdentifiedObject.name>Производитель АО «ПИК ПРОГРЕСС»</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_1e381a7d-e2fe-4945-b603-1b8d1807b0a0"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_9e264623-5657-47e8-9d8c-485426898dc0">
+    <cim:IdentifiedObject.name>Производитель п/я 240 Ленинград МЭП</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_5f4c1952-9452-492a-9af8-786e016b251e"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_b2904e45-8e4a-4d51-85bf-cac2596e937b">
+    <cim:IdentifiedObject.name>Производитель Электротехнический завод (г. Калуга)</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_a9c60652-5a4d-483b-a3c4-cde700f9255e"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_67ec39fa-61e6-4e93-bfe9-f8e6447e45a6">
+    <cim:IdentifiedObject.name>Производитель Завод крупных электрических машин (ЗКЭМ)</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_3af95ab0-e201-4a44-83de-f1efa1b06359"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_9acfdb55-df1f-49bc-b78e-0e14921ba7db">
+    <cim:IdentifiedObject.name>Производитель Emerson</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_1415a82c-f1f2-4189-9ef8-787dd3121e90"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_b199cdb2-2ff6-49d6-8db3-64e1323159ab">
+    <cim:IdentifiedObject.name>Производитель Merlin Gerin</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_18dac34d-3eda-4773-b06b-6bd53bd8a45b"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_5e1a97d5-72c8-4c65-917d-b9c06e827b86">
+    <cim:IdentifiedObject.name>Производитель ТМ Энергозащита</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_a7093908-c78f-4910-a02e-1e82dd3cd645"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_7d39ecab-d216-4bcd-8311-6142209992c3">
+    <cim:IdentifiedObject.name>Производитель ТЕКОН</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_c6a879a0-0a38-4de8-902b-04708870bf30"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_8ed542ba-8bd2-4f00-8355-49904d22f0a8">
+    <cim:IdentifiedObject.name>ТВ-ЭК 110М3D УХЛ1,</cim:IdentifiedObject.name>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_49756ded-94e4-45cb-9fa4-5dafb1b816bd">
+    <cim:IdentifiedObject.name>Производитель Курский электроаппаратный завод (КЭАЗ)</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_be817c32-f5d8-402e-9eed-7e70ded210ac"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_5a7c7090-82b3-413a-b876-5368c4eae4ff">
+    <cim:IdentifiedObject.name>Производитель ФГУП ЭЗАН</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_2a880425-4a96-43b9-8976-2cf54f72c1be"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_ac373e2a-bad9-41f4-9eb6-072fcce7f8f2">
+    <cim:IdentifiedObject.name>Производитель Brush HMA</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_0ace64d3-5fd1-45ec-81f8-c733c7cf1908"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_1f9f8069-dfad-4cb7-8623-869c73d1ad1d">
+    <cim:IdentifiedObject.name>Производитель Narayan Powertech</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_c3ed4a19-8664-4fd1-a098-5764db8a5d98"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_0b185945-d66b-42e5-8334-5007b9bb54a0">
+    <cim:IdentifiedObject.name>Производитель Оскресенский электромеханический завод</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_7f520789-b9f3-4cff-ae5a-ef985b4e17a1"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_34882032-594c-4fe5-a146-9f59eacf0ee6">
+    <cim:IdentifiedObject.name>Производитель Самарский электромеханический завод</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_2ce6655c-f848-4b65-8d98-f5689231f199"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_65991914-5c63-4826-841d-c0c5c7128e2c">
+    <cim:IdentifiedObject.name>Производитель Бакинский трансформаторный завод</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_53c469b9-0fbc-4d9f-a837-fe61686173a3"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_06b4e90c-c87f-497b-abe0-9a02591b5bdb">
+    <cim:IdentifiedObject.name>Производитель Lagerwey Systems</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_9f5c0c66-85f4-4e7e-8837-554b9907bb8e"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_db503047-db22-4eb8-8de4-799b1c314de2">
+    <cim:IdentifiedObject.name>Производитель Высоковольтный союз</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_a090403c-2877-4a81-9cf1-2ecb7e34ce82"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_8511f90d-f174-4213-a1bf-9267b511919a">
+    <cim:IdentifiedObject.name>Производитель Stromberg</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_0a99fa3c-0d89-45d1-a83f-4e416abde9a4"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_3963034b-3cd7-4080-a48d-924356571e4a">
+    <cim:IdentifiedObject.name>Производитель Crompton Greaves Power and Industrial Solutions</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_11c96ee8-36a8-49c0-bfd5-9ee99f9cbb1e"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_e989044e-73d3-44d3-99d6-a617ca9ca672">
+    <cim:IdentifiedObject.name>Производитель АО «Невский завод» (АО «НЗЛ»)</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_0f10e0ca-76da-429c-95b6-99e8db80ad10"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_3be051e1-6a69-4d56-8246-6333223d51e7">
+    <cim:IdentifiedObject.name>Производитель ООО "Комтек-Энергосервис"</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_58eab587-9b8c-430e-a9fd-1c903c218202"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_50237d9b-ef36-4a6a-9b94-502c754bb0e9">
+    <cim:IdentifiedObject.name>Производитель QNP</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_cb9f3b57-ddd3-4cdf-be77-c0cf82350741"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_7b82248a-1f9e-43e8-8886-9369581f8c43">
+    <cim:IdentifiedObject.name>Производитель Завод СЭА</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_e2b60e7d-750c-4f7f-934c-88e87c21c309"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_7e3bf800-3491-4e7f-ae31-340a89e9bd6c">
+    <cim:IdentifiedObject.name>Производитель Уралэлектротяжмаш (УЭТМ)</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_50165ad0-149f-4881-baa0-6c1c6dafa9e0"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_20e07c3f-cda4-4e52-9833-ac20946ab4a6">
+    <cim:IdentifiedObject.name>Производитель Аэропрофит</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_23008d63-e788-4d2c-856e-5162a7f3de56"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_abd377f2-bfdd-46d4-9fe0-d39659313364">
+    <cim:IdentifiedObject.name>Производитель Энергомеханический завод</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_589411d2-726a-4209-89ba-d2a13196f997"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_0bc9411f-b4ae-4fa0-9fc8-5566d8c02ee3">
+    <cim:IdentifiedObject.name>Производитель НПО СПБЭК</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_a5d69467-5001-457b-aaeb-70ba8785e773"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_4ee3daec-1bf1-4abe-ac6f-4b320a8e4f43">
+    <cim:IdentifiedObject.name>Производитель Электрощит Екатеринбург</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_7078fbf1-d48d-411f-8e11-0268f04108be"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_84bcf1a3-5ec3-4fc4-b45c-9ffdb6e998d0">
+    <cim:IdentifiedObject.name>ОАО Березовский опытный завод «Энергоцветмет»</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_d8975787-f99a-4a2d-9fb5-542fb930deb0"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_ed4499cd-7994-4ab5-ad07-088a931bb0d5">
+    <cim:IdentifiedObject.name>Производитель АО "Уралгидромаш"</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_0364ade2-402e-4880-98c4-943f6d067d13"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_52448820-6349-4bd5-b93f-4e79c43ae0b6">
+    <cim:IdentifiedObject.name>Производитель Белозерский ЭМЗ</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_65ab57cc-6892-4917-bb71-b7b709fd67e2"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_0355f171-6d3d-4aff-ab36-d64f5839d2f7">
+    <cim:IdentifiedObject.name>Производитель "ДЖИИ" USA</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_7e3be84b-bfab-44f8-b279-cd482899975a"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_24a043c2-54c1-4735-9445-7d4523992e7c">
+    <cim:IdentifiedObject.name>Производитель НПП ЭКРА</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_0fdb5fc3-78d4-4d0e-94fc-a38f0430a4d1"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_f9925068-122b-4b95-a1ef-e18db756f6fc">
+    <cim:IdentifiedObject.name>Производитель НИИ Электромаш</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_d0b25a24-f55c-4915-a125-3a5d2430c4fa"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_6712dd8b-0477-4545-9504-50e4a670359b">
+    <cim:IdentifiedObject.name>Производитель НПП "Август"</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_20f67c61-8fcd-4b9e-9c54-fc53270d8526"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_36d6aef8-e203-4175-a7e5-36efa58599a7">
+    <cim:IdentifiedObject.name>"НПО "Изолятор" г.Великие Луки</cim:IdentifiedObject.name>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_ede952f6-76ed-4a66-aaae-59d3d372d4e1">
+    <cim:IdentifiedObject.name>Производитель ТЭС Теплоэнергосервис</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_6dc1f7e7-c365-47f7-9d3a-af2519ef2b7e"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_5ae636ee-fb56-4452-98e3-724fa6b9c3d8">
+    <cim:IdentifiedObject.name>Производитель ХГТЗ</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_ea0e1339-bf81-4a42-b3a1-3808490d5ca9"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_418dc1e0-6c06-426b-b67b-cbd68381e025">
+    <cim:IdentifiedObject.name>Производитель НИИ Сибэлектротяжмаш (СЭТМ)</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_6d7f7948-1863-4b31-8ddc-a83e6b802536"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_73a5d9d5-6bd8-4a24-b875-c367d2f740fe">
+    <cim:IdentifiedObject.name>Производитель Евроконтракт</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_339ce49a-c683-470c-9b46-33e73bb856f9"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_4975c46e-899c-4c4f-ab7d-907d93bca352">
+    <cim:IdentifiedObject.name>Производитель Московский трансформаторный завод (ОАО "Электрозавод")</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_edfb03d7-90e9-48a7-9780-10bfaa1d8a8b"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_3568f41f-fd93-4998-a644-49da28c346f2">
+    <cim:IdentifiedObject.name>Производитель НПО Санкт-Петербургская Электротехническая компания (СПБЭК)</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_888111b2-3e67-4881-863b-876453a659a2"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_9617f59d-fcaf-4c71-94a2-9ff42ac20aa5">
+    <cim:IdentifiedObject.name>Производитель KMW</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_84695f5d-0881-49fd-a823-2a8147b5c596"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_f11ffc07-3ad8-4864-84a1-0f019e8b5f3a">
+    <cim:IdentifiedObject.name>Производитель Энергосеть</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_c00eb044-d95c-48d9-97c5-50e30a5f7250"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_c804b173-ad39-4363-a90e-eca531420052">
+    <cim:IdentifiedObject.name>Производитель Завод Калининградгазавтоматика</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_a6e02247-6693-40b5-a6b6-9a6bf3d39dc9"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_981e3f87-77c3-4fd8-9bcf-0bcecf9e9dff">
+    <cim:IdentifiedObject.name>Производитель AVK</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_ad7f9361-11db-4625-b3a9-35dd54f7eb8d"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_89c6c203-ee2e-4661-912f-23f47e78d037">
+    <cim:IdentifiedObject.name>Производитель CHINA XD GROUP</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_fcaf4c05-90b3-43e4-bb02-06182eee96e1"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_2242404c-b86e-4394-8fc8-39986de27ef9">
+    <cim:IdentifiedObject.name>Произодитель ООО "Интмаш"</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_562a5974-994f-485a-a650-d1a993a94832"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_8169bf50-5e35-407d-9637-32d2a2f11fbf">
+    <cim:IdentifiedObject.name>Производитель TBEA</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_06bc4b1f-74e8-492b-9e98-c2c00dcb45c3"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_aecc3026-4229-43ba-956b-69983c4ea97d">
+    <cim:IdentifiedObject.name>Производитель Xi'an Shaangu Power Company</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_103f2b64-616e-4512-8126-5cd24a0be102"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_f814f358-3a82-41ab-9488-4c3cc0309475">
+    <cim:IdentifiedObject.name>Производитель Ленинградский металлический завод (ЛМЗ)</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_54bb8b19-0899-4f39-9dc7-216f8c28c68a"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_95ecdc18-3ab2-4057-92f9-3875404ecc7f">
+    <cim:IdentifiedObject.name>Производитель AEG</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_a9de29d5-b734-4cb9-9f68-a6dcec00cef6"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_e438a89b-37e1-46d7-aba6-3b2455567de0">
+    <cim:IdentifiedObject.name>Производитель РУП БЭМЗ</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_af90adf7-f742-406f-b4b6-c755bb93a7cb"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_44975e45-b0cb-42c2-9bec-fcebcbc042a3">
+    <cim:IdentifiedObject.name>Производитель Курган-Тюбинский трансформаторный завод</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_c4353042-de2c-4bd9-bab6-f7d173c3c7b3"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_755b52c7-76c5-44c8-b2ac-4f2a18078315">
+    <cim:IdentifiedObject.name>Производитель Электрозавод Уфа</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_3192db37-0b4d-48c6-91bb-ade5bad707fe"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_8fc053e0-9052-4577-a586-af615eabd249">
+    <cim:IdentifiedObject.name>Производитель ИК Электро</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_09842c27-840d-4d63-acda-c0f6979d4f39"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_6799a1e8-20aa-482c-9c2e-ef4cf7b62f10">
+    <cim:IdentifiedObject.name>Производитель Чебоксарский электроаппаратный завод (ЧАЭЗ)</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_b1e57eac-e1b4-4085-8eea-a085764e4cf0"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_49070500-4e86-4d06-a68d-aebe7135c3fb">
+    <cim:IdentifiedObject.name>Производитель KPB Intra Instrument Transformers</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_471e8dd5-bded-47ec-923f-fece80089c93"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_5f21fe52-56b0-489f-bf9c-ff3eea180d41">
+    <cim:IdentifiedObject.name>Производитель Электротяжмаш</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_b6ed3dcd-fd37-4399-b8ca-352c0c14eb84"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_69dbc0da-dac6-493e-a0c5-d59a428eb019">
+    <cim:IdentifiedObject.name>Производитель АООТ "КВАРТ"</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_de62a9e9-3659-4b2a-8f92-aa656c0105a6"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_779f8589-01c2-4ab8-bb80-5364afe3d1d6">
+    <cim:IdentifiedObject.name>Производитель Tuga (Иран)</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_65ce5791-d42e-4a17-93f4-64e99fee5424"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_9f92c395-2d79-4e02-a58e-ae7049017ad4">
+    <cim:IdentifiedObject.name>Производитель Нижнетуринский электроаппаратный завод (НТЭАЗ)</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_922d8d94-893c-4e33-b1bb-ad6c32a6d233"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_b0902b0b-bf5f-42ab-86c1-06c1fb2de6e5">
+    <cim:IdentifiedObject.name>Производитель GE Jenbacher</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_25e3dfa6-1f53-4a90-8a66-75fb46e666e1"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_dd967a08-605f-4f1a-a08c-df69686bd7da">
+    <cim:IdentifiedObject.name>Производитель Hainan Jinpan Electric Co. Ltd</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_f5ea8e4b-9c7d-4823-9364-e415a52418d3"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_5ee0d2f9-f3e1-4817-9ab1-bf6a94a7ba62">
+    <cim:IdentifiedObject.name>Производитель UNISON</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_55a98302-48f5-4373-b7fb-1f07fffbe0c3"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_e94b8515-1268-469f-828a-0b2724b3730c">
+    <cim:IdentifiedObject.name>АО «Свердловэлектроремонт»</cim:IdentifiedObject.name>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_95ba669a-1dd5-4d87-b521-5c5f2f5b1c50">
+    <cim:IdentifiedObject.name>SGB Starkstrom-Geratebau GmbH </cim:IdentifiedObject.name>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_9939839d-baba-4c56-9b96-4e236632bd79">
+    <cim:IdentifiedObject.name>Производитель Неваэлектромаш</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_2f1b46b0-552c-45a0-a2e3-494410592d62"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_2545707a-f34b-4395-8fdf-c576ec865f56">
+    <cim:IdentifiedObject.name>Производитель Электрохимприбор</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_96128057-185b-4bd3-aa94-0f6856cd2e11"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_3e8eda62-ac04-44d1-bca4-babffd8811c6">
+    <cim:IdentifiedObject.name>GCL SOLAR</cim:IdentifiedObject.name>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_66264c4c-888d-43a8-b2a3-bf8d20066965">
+    <cim:IdentifiedObject.name>Производитель Ленинградский электромеханический завод (ЛЭМЗ)</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_a7461fd4-dd28-4bd0-8830-4cf18969741d"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_ccb80c10-2c76-4c39-8e12-45a0328621e5">
+    <cim:IdentifiedObject.name>Производитель Сибтехэнерго</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_306d8d90-22c8-4827-a86c-b409e1f6c2b9"/>
+  </cim:Manufacturer>
+  <cim:Manufacturer rdf:about="#_4730b749-ef40-43ea-b455-58af5877bec0">
+    <cim:IdentifiedObject.name>ООО "ЗЭТО-ГАЗОВЫЕ ТЕХНОЛОГИИ"</cim:IdentifiedObject.name>
+    <cim:OrganisationRole.Organisation rdf:resource="#_25718467-bd37-456f-a263-dbf099951723"/>
+  </cim:Manufacturer>
+</rdf:RDF>

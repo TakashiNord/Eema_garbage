@@ -1,0 +1,721 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rf="http://gost.ru/2019/schema-cim01#"
+    xmlns:dm="http://iec.ch/TC57/61970-552/DifferenceModel/1#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:md="http://iec.ch/TC57/61970-552/ModelDescription/1#"
+    xmlns:ups="https://cim.so-ups.ru#"
+    xmlns:so="http://so-ups.ru/2015/schema-cim16#"
+    xmlns:cims="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#"
+    xmlns:me="http://monitel.com/2014/schema-cim16#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:cim="http://iec.ch/TC57/CIM100#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#" > 
+  <cim:OperationalLimitType rdf:about="#_1000162c-0000-0000-c000-0000006d746c">
+    <cim:IdentifiedObject.name>сверху (30мин)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>1800</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_10001617-0000-0000-c000-0000006d746c">
+    <cim:IdentifiedObject.name>сверху (1мин)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>60</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_4785f020-7e48-42c4-9d22-2d4be55681dc">
+    <cim:IdentifiedObject.name>сверху (4с)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>4</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_8ee5242e-21ab-42f2-9e96-ad623ce94fe9">
+    <cim:IdentifiedObject.name>cверху (3200с)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>3200</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_a37d7bf1-8cce-4abf-b053-11ddcee728e8">
+    <cim:IdentifiedObject.name>сверху (3мин)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>180</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_8f209c5a-1c84-48e1-8f3a-4361c5a9adc4">
+    <cim:IdentifiedObject.name>сверху (9с)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>9</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_159809e5-7ada-4cb0-8f90-121be18e6387">
+    <cim:IdentifiedObject.name>сверху (3мин 45с)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>225</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_4e74e8f9-6c39-476f-8894-b06c64b41385">
+    <cim:IdentifiedObject.name>cверху (18с)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>18</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_14e18568-f22a-4a24-9489-aea213507d7f">
+    <cim:IdentifiedObject.name>cверху (17,5ч)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>63000</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_577114e8-9d33-4470-95b0-6b60ce1c720d">
+    <cim:IdentifiedObject.name>cверху (25ч)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>90000</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_152f1888-c075-4266-a52f-552a82a3bd54">
+    <cim:IdentifiedObject.name>cверху (18мин)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>1080</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_68b63ba0-ea06-408f-8716-c050b745b360">
+    <cim:IdentifiedObject.name>сверху (12мин=720с)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>720</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_f1a55aca-3710-499f-ab37-d104ee093aa8">
+    <cim:IdentifiedObject.name>сверху (65с)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>65</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_db88f5a9-122d-4c38-8079-ed1ab05cfead">
+    <cim:IdentifiedObject.name>cверху (63мин)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>3780</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_7c723b58-1ecf-43b9-8cff-e84306418636">
+    <cim:IdentifiedObject.name>Umax20сек</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>20</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_82879507-b7fd-4c89-b00f-009c6986ef90">
+    <cim:IdentifiedObject.name>снизу 20 минут</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>1200</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.low"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_2456edaf-b0af-4585-810a-04b3a6032bc6">
+    <cim:IdentifiedObject.name>cверху (32мин)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>1920</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_c3fcf959-195f-4758-853a-3a2ec7ee400c">
+    <cim:IdentifiedObject.name>cверху (14,8с)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>14.8</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_10000ca7-0000-0000-c000-0000006d746c">
+    <cim:IdentifiedObject.name>сверху</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>0</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_d57d6f14-68c7-4ba3-af6b-55996e5e65d3">
+    <cim:IdentifiedObject.name>сверху (6мин)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>360</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_3af284db-6b13-4b02-a2b0-ddd978a1e74d">
+    <cim:IdentifiedObject.name>cверху (400мин)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>24000</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_632588d2-4091-4c5c-b12b-5ff21dcb4108">
+    <cim:IdentifiedObject.name>сверху (5,8с)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>5.8</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_1000162e-0000-0000-c000-0000006d746c">
+    <cim:IdentifiedObject.name>сверху (6ч)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>21600</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_a140659b-9867-47c9-8ed6-54aa531307cf">
+    <cim:IdentifiedObject.name>сверху (3с)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>3</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_1d50c1de-e301-495f-8609-52d728547e91">
+    <cim:IdentifiedObject.name>сверху (10,5 мин)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>630</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_ef45c73c-9c16-4ca0-b93b-6078bc3189ff">
+    <cim:IdentifiedObject.name>сверху (9мин 30с)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>570</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_a5c84a14-e0b9-4ff9-ae21-73fb3976d88d">
+    <cim:IdentifiedObject.name>сверху (25с)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>25</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_279bd151-aba5-471c-abb4-05d1abc6c838">
+    <cim:IdentifiedObject.name>снизу (0с)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>0</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.low"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_b96ffe90-4a76-478f-bfb9-68b925daed75">
+    <cim:IdentifiedObject.name>cверху (12ч)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>43200</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_10001630-0000-0000-c000-0000006d746c">
+    <cim:IdentifiedObject.name>сверху (100ч)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>360000</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_dba7ef85-1536-4ef5-81bf-455a62e02854">
+    <cim:IdentifiedObject.name>сверху (7с)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>7</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_ea010c74-2ca0-4f10-b34e-b53d515b8abf">
+    <cim:IdentifiedObject.name>cверху (2,5ч)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>9000</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_66728207-22e2-48c7-ad20-8343ba50daee">
+    <cim:IdentifiedObject.name>сверху (5мин 15с)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>315</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_10001618-0000-0000-c000-0000006d746c">
+    <cim:IdentifiedObject.name>сверху (5мин)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>300</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_88099d0f-b72a-4e13-a1fe-6db7f4321d5a">
+    <cim:IdentifiedObject.name>сверху (37,5с)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>37.5</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_4d5c81d7-9148-4413-8b8c-6ac4ed4b447a">
+    <cim:IdentifiedObject.name>снизу (40с)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>40</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.low"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_69836c69-b4e1-4af5-ae03-d584af0362d6">
+    <cim:IdentifiedObject.name>снизу (45с)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>45</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.low"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_45664c4d-03e8-4f73-a228-ec4130b1e0c1">
+    <cim:IdentifiedObject.name>сверху (1,2с)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>1.2</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction>cim:OperationalLimitDirectionKind.high</cim:OperationalLimitType.direction>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_d029e3c3-3874-48c2-8b22-a02fc92e2979">
+    <cim:IdentifiedObject.name>cверху (80мин)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>4800</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_e570da5c-b826-432a-94c8-1581500603ed">
+    <cim:IdentifiedObject.name>снизу (10c)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>10</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.low"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_10001620-0000-0000-c000-0000006d746c">
+    <cim:IdentifiedObject.name>сверху (1ч)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>3600</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_87caf87d-032c-4784-9152-06c6cc1e08f9">
+    <cim:IdentifiedObject.name>снизу (30 мин)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>1800</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.low"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_10000cad-0000-0000-c000-0000006d746c">
+    <cim:IdentifiedObject.name>снизу</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.low"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_1d96eb29-ac8d-4bf4-8c7d-0fb1ea37b08e">
+    <cim:IdentifiedObject.name>сверху (118мин 20с)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>7100</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_189d01a8-dbff-45ff-8f6e-c5aaf9e65fd3">
+    <cim:IdentifiedObject.name>снизу (1мин)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>60</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.low"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_0d34c03f-1abb-4ea5-938c-8a87ab166761">
+    <cim:IdentifiedObject.name>cверху (1,5ч)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>5400</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_bc1419a5-4d44-4e08-9737-2b15cd30cff0">
+    <cim:IdentifiedObject.name>сверху (2,5с)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>2.5</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_d79f47b4-a48d-48ff-9d64-77455741b443">
+    <cim:IdentifiedObject.name>Umax</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>1200</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_79e684ca-4c55-49b8-843b-993f4191a67e">
+    <cim:IdentifiedObject.name>снизу (3мин)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>180</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.low"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_443335ef-a21d-4f09-9254-f6344947d515">
+    <cim:IdentifiedObject.name>сверху (1мин 28с)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>88</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_f90d3de3-0962-4d66-b7cb-47010ea4da47">
+    <cim:IdentifiedObject.name>снизу (750мин)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>45000</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction>cim:OperationalLimitDirectionKind.low</cim:OperationalLimitType.direction>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_26e5911a-718c-4f6f-bbd5-1c92ed190f7b">
+    <cim:IdentifiedObject.name>cверху (30ч)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>108000</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_d5b04a95-95a1-4289-96a3-933dc5dc0a0d">
+    <cim:IdentifiedObject.name>cверху (5ч)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>18000</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_2555804a-4abd-4646-94d1-82394ad4cd85">
+    <cim:IdentifiedObject.name>сверху (2мин)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>120</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_1000161c-0000-0000-c000-0000006d746c">
+    <cim:IdentifiedObject.name>сверху (8ч)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>28800</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_100017d9-0000-0000-c000-0000006d746c">
+    <cim:IdentifiedObject.name>снизу (20мин)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>1200</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.low"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_7a83b838-1ac6-477a-95e3-d830fd88b05f">
+    <cim:IdentifiedObject.name>ДДТН</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_9204b330-1972-4329-ab36-f24d317dd1b9">
+    <cim:IdentifiedObject.name>снизу (6мин)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>360</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction>cim:OperationalLimitDirectionKind.low</cim:OperationalLimitType.direction>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_9c49e050-7eb2-461b-9f5a-aad947ba0b76">
+    <cim:IdentifiedObject.name>сверху (1мин 50с)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>110</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_6a19496c-94ef-4fc4-89bd-83622857dcd9">
+    <cim:IdentifiedObject.name>cверху (140мин)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>8400</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_482246d9-e14e-4ada-a695-3e8d223df152">
+    <cim:IdentifiedObject.name>снизу (25мин)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>1500</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction>http://iec.ch/TC57/CIM100#OperationalLimitDirectionKind.low</cim:OperationalLimitType.direction>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_b1f38769-b61e-4bcc-9531-87908a084887">
+    <cim:IdentifiedObject.name>сверху (0,1 с)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>0.1</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_c377bb65-25ec-46f6-9266-6009941c4800">
+    <cim:IdentifiedObject.name>сверху (80с)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>80</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_3e304f54-3491-44e5-b06c-092ffa5fe9da">
+    <cim:IdentifiedObject.name>сверху (40с)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>40</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_71922444-768d-4cf3-80cd-63c7c2076347">
+    <cim:IdentifiedObject.name>сверху (25 мин=1500с)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>1500</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_0cf21cca-0b71-489f-8ce2-182e961c0c28">
+    <cim:IdentifiedObject.name>сверху (5с)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>5</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_3b9d0942-a02a-4dde-ae32-42701642585c">
+    <cim:IdentifiedObject.name>Umax</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>0.1</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_db650fed-8f07-4aa9-b910-d90333a36ea9">
+    <cim:IdentifiedObject.name>снизу (2ч)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>7200</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.low"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_dbfea20c-7ac2-4456-9155-41219f064a92">
+    <cim:IdentifiedObject.name>+1,5мин</cim:IdentifiedObject.name>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_46d84762-a79a-430a-bfe2-2192994f7710">
+    <cim:IdentifiedObject.name>сверху (6с)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>6</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_9b2bd5ab-18b4-48e3-8ba6-dabdd15aef8f">
+    <cim:IdentifiedObject.name>Umax20сек</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>20</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_324eb5a3-b7b9-4fcd-9cd0-eed98bd1a0f0">
+    <cim:IdentifiedObject.name>cверху (48ч)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>172800</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_c3bbbe40-8bd0-4ffb-8fd0-b2a11b389013">
+    <cim:IdentifiedObject.name>сверху (2мин 30с)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>150</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_27393da5-cff6-4848-ade3-9645bfaa43ea">
+    <cim:IdentifiedObject.name>сверху (17 мин=1020с)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>1020</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_97c80b5c-126a-4c62-bba8-e78ed17a26cf">
+    <cim:IdentifiedObject.name>cверху (50мин)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>3000</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_2526f914-7123-40a4-83da-31e1db65bffe">
+    <cim:IdentifiedObject.name>сверху (3мин 35с)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>215</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_86cf2b46-0054-4350-873b-bd865f90f3a7">
+    <cim:IdentifiedObject.name>снизу (2мин)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>120</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.low"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_9dbf0f71-77bb-4bb0-86f7-42567b6f8786">
+    <cim:IdentifiedObject.name>Umax</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>1200</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_2eca0dcb-ab4e-4538-8a76-fb4f04b11737">
+    <cim:IdentifiedObject.name>cверху (10ч)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>36000</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_cadfc2b3-ec8a-4b3c-b580-9fcd385e138a">
+    <cim:IdentifiedObject.name>сверху (15с)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>15</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_8b69b98f-7244-4854-9768-ad86a3b75bf0">
+    <cim:IdentifiedObject.name>cверху (200с)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>200</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_10000ca1-0000-0000-c000-0000006d746c">
+    <cim:IdentifiedObject.name>абс</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>0</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.absoluteValue"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_0852bc36-63c0-459e-a785-2fe2318b1675">
+    <cim:IdentifiedObject.name>1</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>1200</cim:OperationalLimitType.acceptableDuration>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_c84c1ea1-c9c3-4d52-b9a0-610d2d2b6831">
+    <cim:IdentifiedObject.name>сверху (0,8с)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>0.8</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_0f61b480-4c87-4699-9b09-7299b5de8a8e">
+    <cim:IdentifiedObject.name>сверху (1с)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>1</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_f9864728-fc7f-4214-a6a9-ac23a8e2cc7b">
+    <cim:IdentifiedObject.name>cверху (65мин)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>3900</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_a78fcca8-3f73-46ca-89ce-8fa0fb5c5647">
+    <cim:IdentifiedObject.name>cверху (17ч)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>61200</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_e8eb41ff-9e00-42b4-870f-fd7524060c50">
+    <cim:IdentifiedObject.name>сверху (10с)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>10</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_12d021f7-3bdf-4214-8946-8f824eca2ec5">
+    <cim:IdentifiedObject.name>сверху (45мин)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>2700</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_d822c9e6-db21-4414-bb58-5a20b0f9a03c">
+    <cim:IdentifiedObject.name>сверху (4мин)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>240</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_a3132619-e855-458b-9476-9dddb7698083">
+    <cim:IdentifiedObject.name>cверху (700с)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>700</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_b86d529d-42d1-4089-9c40-cb41aeb61a60">
+    <cim:IdentifiedObject.name>сверху (5мин 50с)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>350</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_9a1b2a53-d076-46d8-93d5-2301457b761f">
+    <cim:IdentifiedObject.name>cверху (200мин)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>12000</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_2faee43c-47c6-4ae5-8065-edbbfcbe941a">
+    <cim:IdentifiedObject.name>снизу (6,3с)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>6.3</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.low"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_8de2021a-5750-4179-8fa3-6f1e762c4963">
+    <cim:IdentifiedObject.name>сверху (1мин 40с)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>100</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_bb0fcd0d-532a-469b-8acb-6fddc040ba14">
+    <cim:IdentifiedObject.name>снизу (5c)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>5</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.low"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_b6dda6c5-dfc1-41e8-85af-4b00be025a2e">
+    <cim:IdentifiedObject.name>Umax0.1сек</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>226.8</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_890742a9-ef42-474c-9a95-46d0c9492f13">
+    <cim:IdentifiedObject.name>снизу (500мин)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>30000</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction>cim:OperationalLimitDirectionKind.low</cim:OperationalLimitType.direction>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_034c7f0e-86a5-411b-973f-60b2507de8c0">
+    <cim:IdentifiedObject.name>Umax</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>1</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_1000161d-0000-0000-c000-0000006d746c">
+    <cim:IdentifiedObject.name>сверху (24ч)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>86400</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_fbb39a0d-d703-43a7-ac9e-16af562e0395">
+    <cim:IdentifiedObject.name>сверху (750 мин=45000с)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>45000</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_fe8363bb-eb8c-4f2d-91b0-0ae255422e57">
+    <cim:IdentifiedObject.name>Umax</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>1200</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_684d7aa8-0077-4b54-8a32-4d33444c8f83">
+    <cim:IdentifiedObject.name>сверху (500 мин=30000с)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>30000</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_1e3ce8a3-a7e7-4151-a9bf-59c434545fb5">
+    <cim:IdentifiedObject.name>сверху (5,4с)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>5.4</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_f2213271-0dc5-410c-8f75-0331b2f0918b">
+    <cim:IdentifiedObject.name>cверху (24мин)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>1440</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_c6bd069a-904e-4d0a-b22b-6df6a58ce2fc">
+    <cim:IdentifiedObject.name>Umax</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>60</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_b4e99829-4e38-4a77-914e-35f32fde15f6">
+    <cim:IdentifiedObject.name>сверху (15мин)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>900</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_61dee340-9b5c-42fa-89e1-a3587731f344">
+    <cim:IdentifiedObject.name>cверху (20ч)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>72000</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_93c43ad8-a26a-465a-8f20-51b3cd7cefb7">
+    <cim:IdentifiedObject.name>снизу (1с)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>1</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.low"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_0dbaf1d5-ec48-4664-8644-2ff91ef403fb">
+    <cim:IdentifiedObject.name>сверху (21ч)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>75600</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_aed1423f-0ee9-46af-abef-c0ebe5ce4c75">
+    <cim:IdentifiedObject.name>снизу (45,3с)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>45.3</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.low"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_15901baf-507f-4b78-b8e0-10f3d51c4cf9">
+    <cim:IdentifiedObject.name>снизу (20с)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>20</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.low"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_1000161b-0000-0000-c000-0000006d746c">
+    <cim:IdentifiedObject.name>сверху (4ч)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>14400</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_69d168ff-1af1-44ab-a66a-fabfda3e10d6">
+    <cim:IdentifiedObject.name>сверху (2мин 40с)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>160</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_29cf8837-7d12-4122-b8ac-c32c1c6a12ae">
+    <cim:IdentifiedObject.name>сверху (1,5мин)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>90</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_4475dd1a-3e53-4c75-b90b-606f262179f7">
+    <cim:IdentifiedObject.name>Umax</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>1200</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_77d6c1c2-9ac1-47c8-8046-2a0ede293051">
+    <cim:IdentifiedObject.name>снизу (5мин)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>300</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.low"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_10001628-0000-0000-c000-0000006d746c">
+    <cim:IdentifiedObject.name>сверху (20с)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>20</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_f40b1d36-c2ae-45a8-b7a7-7b2bdfc5645e">
+    <cim:IdentifiedObject.name>снизу (3с)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>3</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.low"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_882f4348-6659-4ae2-9678-0d5d2cf649c5">
+    <cim:IdentifiedObject.name>сверху (45с)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>45</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_100017d8-0000-0000-c000-0000006d746c">
+    <cim:IdentifiedObject.name>сверху (3ч)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>10800</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+    <cim:OperationalLimitType.direction>cim:OperationalLimitDirectionKind.high</cim:OperationalLimitType.direction>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_1000161a-0000-0000-c000-0000006d746c">
+    <cim:IdentifiedObject.name>сверху (2ч)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>7200</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_344a97b1-8f67-4443-8777-aff21d2d15ff">
+    <cim:IdentifiedObject.name>сверху (2мин 50с)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>170</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_c08153a2-a827-46c2-9eab-52d850d600db">
+    <cim:IdentifiedObject.name>Т 4ГТ</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>600</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_e04b00bc-8d0f-4629-968c-bce7ab63e2f1">
+    <cim:IdentifiedObject.name>сверху (42с)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>42</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_3b29025b-b3c9-44de-8389-4afd18968508">
+    <cim:IdentifiedObject.name>сверху (8мин 20с)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>500</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_090759a1-c366-4143-b4da-ea6469fc7845">
+    <cim:IdentifiedObject.name>сверху (1мин 55с)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>115</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_dcf35ff9-78ed-4fbc-b8a1-9dae4fddb0d2">
+    <cim:IdentifiedObject.name>сверху (2c)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>2</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_1000162a-0000-0000-c000-0000006d746c">
+    <cim:IdentifiedObject.name>сверху (10мин)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>600</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_139e9a56-dd2d-4e71-be6b-134631ff81d3">
+    <cim:IdentifiedObject.name>сверху (33с)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>33</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_10001619-0000-0000-c000-0000006d746c">
+    <cim:IdentifiedObject.name>сверху (20мин)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>1200</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_11fd0064-8a21-465a-9808-676e5e25374a">
+    <cim:IdentifiedObject.name>cверху (40мин)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>2400</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_1a3c117d-5f43-49d4-8907-5673ec8be4c2">
+    <cim:IdentifiedObject.name>сверху (41мин 10с)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>2470</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_4ef0e49b-d35d-4eb5-bc38-c71d9c97d9db">
+    <cim:IdentifiedObject.name>сверху (0,5с)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>0.5</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_0c14fba1-ec45-4df7-b197-28abc389b8d2">
+    <cim:IdentifiedObject.name>сверху (30с)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>30</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_1b112015-acc3-4bbe-b951-33a7d359d72c">
+    <cim:IdentifiedObject.name>снизу (3ч)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>10800</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction>http://iec.ch/TC57/CIM100#OperationalLimitDirectionKind.low</cim:OperationalLimitType.direction>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_2b124288-10b3-4e3b-a5be-ba33d5d67b81">
+    <cim:IdentifiedObject.name>cверху (5,5ч)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>19800</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_03ae474c-0853-4976-b199-a7c9da2a442d">
+    <cim:IdentifiedObject.name>снизу (12мин)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>720</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction>http://iec.ch/TC57/CIM100#OperationalLimitDirectionKind.low</cim:OperationalLimitType.direction>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_5b304666-9725-4f11-a2d6-1291dd1618c2">
+    <cim:IdentifiedObject.name>Umax</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>0.1</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_ac86a32e-501f-494f-ab7c-b4481fe8849b">
+    <cim:IdentifiedObject.name>сверху(1.5с)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>1.5</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_2f3eef0a-6016-4ffb-8875-20e95ec19abc">
+    <cim:IdentifiedObject.name>Umax</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>1200</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitType rdf:about="#_5fbd9217-2804-400c-bb84-d6b329f69425">
+    <cim:IdentifiedObject.name>сверху (50с)</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration>50</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="cim:OperationalLimitDirectionKind.high"/>
+  </cim:OperationalLimitType>
+</rdf:RDF>

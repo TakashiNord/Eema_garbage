@@ -1,0 +1,11 @@
+about;name;sizeDescription;material;radius;diameterOverJacket;diameterOverCore;diameterOverInsulation;diameterOverNeutral;tapeThickness;sheathThickness;constructionKind;outerJacketKind;insulationEr;insulationErShield;shieldMaterial;shieldIsTransposed;shieldCrossSection;shieldGrounding;crossSection;underShieldScreenThickness;radialMoistureBarrierThicknes
+843081137daa4520a4fb6a01cb80eb9c;ÀÏâÏó2ãæ 1õ2500/240-127/220;ÀÏâÏó2ãæ 1õ2500/240-127/220;WireMaterialKind.aluminum;0;0.12359999999999999;;0;0;;0;;;NaN;NaN;WireMaterialKind.aluminum;;0.00024;WireMaterialKind.aluminum;0.0025;0;0.0002
+797b63d1e99940f89cd1b0351e929c27;ÏâÏó2ã 1õ500ãæ /120-64/110;ÏâÏó2ã 1õ500ãæ /120-64/110;WireMaterialKind.copper;0.006;0.08109999999999999;;0.015;0;;0;;;NaN;NaN;WireMaterialKind.copper;true;0.00012;WireMaterialKind.copper;0.0005;0;0.00015
+fb6101748a81432b9c272f2130600681;ÀÏâÏó2ã 1õ1000/70-64/110;ÀÏâÏó2ã 1õ1000/70-64/110 êÂ 1;WireMaterialKind.aluminum;0.020399999999999998;0.0852;;0.0682;;;;;;;;;;0.00007;;0.001;0.0012;0.0002
+c0ecb181942045e4b2473776984eb840;ÀÏâÏóï2ã 1*630(ãæ)/150-127/220;ÀÏâÏóï2ã 1*630(ãæ)/150-127/220;WireMaterialKind.aluminum;0.0146;0.0988;;;;;;;;2.4;2.4;;true;0.00015;;0.00063;0.0011;0.0002
+f1d2951df25645d4a6bc9c86bcd1ed42;ÖÑØâ-35 1õ300;;;0;0;;0;0;;0;;;NaN;NaN;;;0;;0;0;0
+947becaf0e5941baba7ad13fec097ba2;ÀÀØâ-35 1õ185;;;0;0;;0;0;;0;;;NaN;NaN;;;0;;0;0;0
+904d439e912a42efb7cbebbfaed1c0ee;êàáåëü ìàğêè ÀÏâÏó2ã 1õ2000(ãæ)/95-64/110;ÀÏâÏó2ã 1õ2000(ãæ)/95-64/110;WireMaterialKind.aluminum;25.2;15.0;;1.0;109.0;;;WireMaterialKind.aluminum;;3.5;3.5;;true;95.0;;2000.0;1.0;0.2
+fb1cb30497c94577b8334d21ee54fbdc;ÀÏâÏó2ã 1õ2000(ãæ)/95-64/110;êàáåëü ìàğêè ÀÏâÏó2ã 1õ2000(ãæ)/95-64/110;WireMaterialKind.aluminum;0.0;0.0;;0.0;;;;;WireMaterialKind.aluminum;;;WireMaterialKind.aluminum;true;0.0;WireMaterialKind.aluminum;0.0;;0.0
+bd0d61e73d8447d7b3fe622f5845bf4b;ÀÏâÏó2ã 1õ630ãæ/70-64/110;ÀÏâÏó2ã 1õ630ãæ/70-64/110;WireMaterialKind.aluminum;0;0.047700000000000006;;0;0;;0;;;2.4;2.4;;;0.00007;;0.00063;0;0
+1a18270e79f94f8d80a7352076bcdffb;ÀÏâÏó2ã 1õ1200(ãæ)/95-64/110;êàáåëü ìàğêè ÀÏâÏó2ã 1õ1200(ãæ)/95-64/110;WireMaterialKind.aluminum;;;;;;;;;;;;;true;;;;;

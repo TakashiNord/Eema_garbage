@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rf="http://gost.ru/2019/schema-cim01#"
+    xmlns:dm="http://iec.ch/TC57/61970-552/DifferenceModel/1#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:md="http://iec.ch/TC57/61970-552/ModelDescription/1#"
+    xmlns:ups="https://cim.so-ups.ru#"
+    xmlns:so="http://so-ups.ru/2015/schema-cim16#"
+    xmlns:cims="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#"
+    xmlns:me="http://monitel.com/2014/schema-cim16#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:cim="http://iec.ch/TC57/CIM100#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#" > 
+  <cim:ConcentricNeutralCableInfo rdf:about="#_84308113-7daa-4520-a4fb-6a01cb80eb9c">
+    <cim:CableInfo.diameterOverInsulation>0</cim:CableInfo.diameterOverInsulation>
+    <cim:CableInfo.nominalTemperature>NaN</cim:CableInfo.nominalTemperature>
+    <cim:IdentifiedObject.name>АПвПу2гж 1х2500/240-127/220</cim:IdentifiedObject.name>
+    <cim:ConcentricNeutralCableInfo.diameterOverNeutral>0</cim:ConcentricNeutralCableInfo.diameterOverNeutral>
+    <rf:CableInfo.radialMoistureBarrierThicknes>0.0002</rf:CableInfo.radialMoistureBarrierThicknes>
+    <cim:CableInfo.constructionKind rdf:resource="cim:CableConstructionKind.stranded"/>
+    <rf:CableInfo.underShieldScreenThickness>0</rf:CableInfo.underShieldScreenThickness>
+    <rf:WireInfo.crossSection>0.0025</rf:WireInfo.crossSection>
+    <cim:WireInfo.radius>0</cim:WireInfo.radius>
+    <rf:CableInfo.insulationErShield>NaN</rf:CableInfo.insulationErShield>
+    <rf:CableInfo.sheathThickness>0</rf:CableInfo.sheathThickness>
+    <cim:CableInfo.diameterOverJacket>0.12359999999999999</cim:CableInfo.diameterOverJacket>
+    <cim:WireInfo.sizeDescription>АПвПу2гж 1х2500/240-127/220</cim:WireInfo.sizeDescription>
+    <rf:CableInfo.shieldCrossSection>0.00024</rf:CableInfo.shieldCrossSection>
+    <cim:WireInfo.material rdf:resource="cim:WireMaterialKind.aluminum"/>
+    <cim:CableInfo.shieldMaterial rdf:resource="cim:CableShieldMaterialKind.copper"/>
+    <rf:CableInfo.shieldGrounding rdf:resource="rf:ShieldGroundingKind.twoSide"/>
+    <rf:CableInfo.insulationEr>NaN</rf:CableInfo.insulationEr>
+  </cim:ConcentricNeutralCableInfo>
+  <cim:ConcentricNeutralCableInfo rdf:about="#_797b63d1-e999-40f8-9cd1-b0351e929c27">
+    <cim:CableInfo.nominalTemperature>90.0</cim:CableInfo.nominalTemperature>
+    <cim:IdentifiedObject.name>ПвПу2г 1х500гж /120-64/110</cim:IdentifiedObject.name>
+    <cim:CableInfo.diameterOverInsulation>0.015</cim:CableInfo.diameterOverInsulation>
+    <rf:CableInfo.shieldCrossSection>0.00012</rf:CableInfo.shieldCrossSection>
+    <rf:CableInfo.insulationEr>NaN</rf:CableInfo.insulationEr>
+    <rf:WireInfo.crossSection>0.0005</rf:WireInfo.crossSection>
+    <cim:CableInfo.diameterOverJacket>0.08109999999999999</cim:CableInfo.diameterOverJacket>
+    <cim:WireInfo.sizeDescription>ПвПу2г 1х500гж /120-64/110</cim:WireInfo.sizeDescription>
+    <cim:CableInfo.constructionKind rdf:resource="cim:CableConstructionKind.stranded"/>
+    <cim:CableInfo.outerJacketKind rdf:resource="cim:CableOuterJacketKind.polyethylene"/>
+    <cim:ConcentricNeutralCableInfo.diameterOverNeutral>0</cim:ConcentricNeutralCableInfo.diameterOverNeutral>
+    <rf:CableInfo.radialMoistureBarrierThicknes>0.00015</rf:CableInfo.radialMoistureBarrierThicknes>
+    <cim:WireInfo.material rdf:resource="cim:WireMaterialKind.copper"/>
+    <rf:CableInfo.underShieldScreenThickness>0</rf:CableInfo.underShieldScreenThickness>
+    <cim:CableInfo.shieldMaterial rdf:resource="cim:CableShieldMaterialKind.copper"/>
+    <cim:WireInfo.radius>0.006</cim:WireInfo.radius>
+    <rf:CableInfo.shieldGrounding rdf:resource="rf:ShieldGroundingKind.oneSide"/>
+    <rf:CableInfo.insulationErShield>NaN</rf:CableInfo.insulationErShield>
+    <rf:CableInfo.sheathThickness>0</rf:CableInfo.sheathThickness>
+    <rf:CableInfo.shieldIsTransposed>true</rf:CableInfo.shieldIsTransposed>
+  </cim:ConcentricNeutralCableInfo>
+  <cim:ConcentricNeutralCableInfo rdf:about="#_fb610174-8a81-432b-9c27-2f2130600681">
+    <cim:CableInfo.nominalTemperature>250.0</cim:CableInfo.nominalTemperature>
+    <rf:CableInfo.radialMoistureBarrierThicknes>0.0002</rf:CableInfo.radialMoistureBarrierThicknes>
+    <cim:IdentifiedObject.name>АПвПу2г 1х1000/70-64/110</cim:IdentifiedObject.name>
+    <cim:CableInfo.constructionKind rdf:resource="cim:CableConstructionKind.segmental"/>
+    <rf:CableInfo.shieldGrounding rdf:resource="rf:ShieldGroundingKind.oneSide"/>
+    <rf:CableInfo.underShieldScreenThickness>0.0012</rf:CableInfo.underShieldScreenThickness>
+    <cim:CableInfo.shieldMaterial rdf:resource="cim:CableShieldMaterialKind.copper"/>
+    <rf:CableInfo.shieldCrossSection>0.00007</rf:CableInfo.shieldCrossSection>
+    <cim:WireInfo.radius>0.020399999999999998</cim:WireInfo.radius>
+    <cim:CableInfo.diameterOverInsulation>0.0682</cim:CableInfo.diameterOverInsulation>
+    <rf:WireInfo.crossSection>0.001</rf:WireInfo.crossSection>
+    <cim:CableInfo.diameterOverJacket>0.0852</cim:CableInfo.diameterOverJacket>
+    <cim:WireInfo.sizeDescription>АПвПу2г 1х1000/70-64/110 кВ 1</cim:WireInfo.sizeDescription>
+    <cim:WireInfo.material rdf:resource="cim:WireMaterialKind.aluminum"/>
+  </cim:ConcentricNeutralCableInfo>
+  <cim:ConcentricNeutralCableInfo rdf:about="#_c0ecb181-9420-45e4-b247-3776984eb840">
+    <cim:IdentifiedObject.name>АПвПуп2г 1*630(гж)/150-127/220</cim:IdentifiedObject.name>
+    <rf:CableInfo.underShieldScreenThickness>0.0011</rf:CableInfo.underShieldScreenThickness>
+    <rf:CableInfo.shieldIsTransposed>true</rf:CableInfo.shieldIsTransposed>
+    <rf:CableInfo.insulationEr>2.4</rf:CableInfo.insulationEr>
+    <cim:CableInfo.shieldMaterial rdf:resource="cim:CableShieldMaterialKind.copper"/>
+    <cim:CableInfo.constructionKind rdf:resource="cim:CableConstructionKind.stranded"/>
+    <cim:WireInfo.radius>0.0146</cim:WireInfo.radius>
+    <rf:CableInfo.insulationErShield>2.4</rf:CableInfo.insulationErShield>
+    <rf:WireInfo.crossSection>0.00063</rf:WireInfo.crossSection>
+    <cim:CableInfo.nominalTemperature>90.0</cim:CableInfo.nominalTemperature>
+    <rf:CableInfo.shieldCrossSection>0.00015</rf:CableInfo.shieldCrossSection>
+    <cim:WireInfo.material rdf:resource="cim:WireMaterialKind.aluminum"/>
+    <cim:CableInfo.diameterOverJacket>0.0988</cim:CableInfo.diameterOverJacket>
+    <rf:CableInfo.radialMoistureBarrierThicknes>0.0002</rf:CableInfo.radialMoistureBarrierThicknes>
+    <cim:WireInfo.sizeDescription>АПвПуп2г 1*630(гж)/150-127/220</cim:WireInfo.sizeDescription>
+  </cim:ConcentricNeutralCableInfo>
+  <cim:ConcentricNeutralCableInfo rdf:about="#_f1d2951d-f256-45d4-a6bc-9c86bcd1ed42">
+    <rf:CableInfo.insulationErShield>NaN</rf:CableInfo.insulationErShield>
+    <cim:CableInfo.diameterOverInsulation>0</cim:CableInfo.diameterOverInsulation>
+    <rf:CableInfo.shieldCrossSection>0</rf:CableInfo.shieldCrossSection>
+    <rf:CableInfo.underShieldScreenThickness>0</rf:CableInfo.underShieldScreenThickness>
+    <cim:IdentifiedObject.name>ЦСШв-35 1х300</cim:IdentifiedObject.name>
+    <cim:CableInfo.diameterOverJacket>0</cim:CableInfo.diameterOverJacket>
+    <rf:CableInfo.insulationEr>NaN</rf:CableInfo.insulationEr>
+    <rf:WireInfo.crossSection>0</rf:WireInfo.crossSection>
+    <cim:WireInfo.radius>0</cim:WireInfo.radius>
+    <rf:CableInfo.radialMoistureBarrierThicknes>0</rf:CableInfo.radialMoistureBarrierThicknes>
+    <rf:CableInfo.sheathThickness>0</rf:CableInfo.sheathThickness>
+    <cim:ConcentricNeutralCableInfo.diameterOverNeutral>0</cim:ConcentricNeutralCableInfo.diameterOverNeutral>
+    <cim:CableInfo.nominalTemperature>NaN</cim:CableInfo.nominalTemperature>
+  </cim:ConcentricNeutralCableInfo>
+  <cim:ConcentricNeutralCableInfo rdf:about="#_947becaf-0e59-41ba-ba7a-d13fec097ba2">
+    <cim:WireInfo.radius>0</cim:WireInfo.radius>
+    <cim:ConcentricNeutralCableInfo.diameterOverNeutral>0</cim:ConcentricNeutralCableInfo.diameterOverNeutral>
+    <rf:CableInfo.sheathThickness>0</rf:CableInfo.sheathThickness>
+    <rf:CableInfo.shieldCrossSection>0</rf:CableInfo.shieldCrossSection>
+    <rf:CableInfo.underShieldScreenThickness>0</rf:CableInfo.underShieldScreenThickness>
+    <rf:CableInfo.insulationEr>NaN</rf:CableInfo.insulationEr>
+    <cim:CableInfo.nominalTemperature>NaN</cim:CableInfo.nominalTemperature>
+    <rf:CableInfo.radialMoistureBarrierThicknes>0</rf:CableInfo.radialMoistureBarrierThicknes>
+    <rf:CableInfo.insulationErShield>NaN</rf:CableInfo.insulationErShield>
+    <cim:CableInfo.diameterOverInsulation>0</cim:CableInfo.diameterOverInsulation>
+    <cim:IdentifiedObject.name>ААШв-35 1х185</cim:IdentifiedObject.name>
+    <cim:CableInfo.diameterOverJacket>0</cim:CableInfo.diameterOverJacket>
+    <rf:WireInfo.crossSection>0</rf:WireInfo.crossSection>
+  </cim:ConcentricNeutralCableInfo>
+  <cim:ConcentricNeutralCableInfo rdf:about="#_904d439e-912a-42ef-b7cb-ebbfaed1c0ee">
+    <cim:CableInfo.shieldMaterial rdf:resource="cim:CableShieldMaterialKind.copper"/>
+    <cim:CableInfo.outerJacketKind rdf:resource="cim:CableOuterJacketKind.polyethylene"/>
+    <rf:CableInfo.shieldGrounding rdf:resource="rf:ShieldGroundingKind.twoSide"/>
+    <rf:CableInfo.insulationErShield>3.5</rf:CableInfo.insulationErShield>
+    <cim:WireInfo.material rdf:resource="cim:WireMaterialKind.aluminum"/>
+    <cim:WireInfo.radius>25.2</cim:WireInfo.radius>
+    <cim:IdentifiedObject.name>кабель марки АПвПу2г 1х2000(гж)/95-64/110</cim:IdentifiedObject.name>
+    <cim:ConcentricNeutralCableInfo.diameterOverNeutral>109.0</cim:ConcentricNeutralCableInfo.diameterOverNeutral>
+    <rf:CableInfo.underShieldScreenThickness>1.0</rf:CableInfo.underShieldScreenThickness>
+    <cim:CableInfo.diameterOverInsulation>1.0</cim:CableInfo.diameterOverInsulation>
+    <cim:WireInfo.sizeDescription>АПвПу2г 1х2000(гж)/95-64/110</cim:WireInfo.sizeDescription>
+    <rf:CableInfo.radialMoistureBarrierThicknes>0.2</rf:CableInfo.radialMoistureBarrierThicknes>
+    <cim:CableInfo.diameterOverJacket>15.0</cim:CableInfo.diameterOverJacket>
+    <rf:CableInfo.insulationEr>3.5</rf:CableInfo.insulationEr>
+    <rf:CableInfo.shieldIsTransposed>true</rf:CableInfo.shieldIsTransposed>
+    <cim:CableInfo.constructionKind rdf:resource="cim:CableConstructionKind.stranded"/>
+    <rf:WireInfo.crossSection>2000.0</rf:WireInfo.crossSection>
+    <rf:CableInfo.shieldCrossSection>95.0</rf:CableInfo.shieldCrossSection>
+    <cim:CableInfo.nominalTemperature>90.0</cim:CableInfo.nominalTemperature>
+  </cim:ConcentricNeutralCableInfo>
+  <cim:ConcentricNeutralCableInfo rdf:about="#_fb1cb304-97c9-4577-b833-4d21ee54fbdc">
+    <cim:IdentifiedObject.name>АПвПу2г 1х2000(гж)/95-64/110</cim:IdentifiedObject.name>
+    <cim:WireInfo.radius>0.0</cim:WireInfo.radius>
+    <rf:CableInfo.radialMoistureBarrierThicknes>0.0</rf:CableInfo.radialMoistureBarrierThicknes>
+    <rf:WireInfo.crossSection>0.0</rf:WireInfo.crossSection>
+    <cim:CableInfo.constructionKind rdf:resource="cim:CableConstructionKind.stranded"/>
+    <cim:WireInfo.material rdf:resource="cim:WireMaterialKind.aluminum"/>
+    <cim:CableInfo.outerJacketKind rdf:resource="cim:CableOuterJacketKind.polyethylene"/>
+    <cim:WireInfo.sizeDescription>кабель марки АПвПу2г 1х2000(гж)/95-64/110</cim:WireInfo.sizeDescription>
+    <cim:CableInfo.shieldMaterial rdf:resource="cim:CableShieldMaterialKind.copper"/>
+    <rf:CableInfo.shieldCrossSection>0.0</rf:CableInfo.shieldCrossSection>
+    <cim:CableInfo.diameterOverJacket>0.0</cim:CableInfo.diameterOverJacket>
+    <cim:CableInfo.diameterOverInsulation>0.0</cim:CableInfo.diameterOverInsulation>
+    <rf:CableInfo.shieldGrounding rdf:resource="rf:ShieldGroundingKind.twoSide"/>
+    <cim:CableInfo.nominalTemperature>89.9</cim:CableInfo.nominalTemperature>
+    <rf:CableInfo.shieldIsTransposed>true</rf:CableInfo.shieldIsTransposed>
+  </cim:ConcentricNeutralCableInfo>
+  <cim:ConcentricNeutralCableInfo rdf:about="#_bd0d61e7-3d84-47d7-b3fe-622f5845bf4b">
+    <cim:ConcentricNeutralCableInfo.diameterOverNeutral>0</cim:ConcentricNeutralCableInfo.diameterOverNeutral>
+    <cim:CableInfo.constructionKind rdf:resource="cim:CableConstructionKind.stranded"/>
+    <cim:CableInfo.diameterOverJacket>0.047700000000000006</cim:CableInfo.diameterOverJacket>
+    <cim:IdentifiedObject.name>АПвПу2г 1х630гж/70-64/110</cim:IdentifiedObject.name>
+    <rf:CableInfo.insulationErShield>2.4</rf:CableInfo.insulationErShield>
+    <cim:CableInfo.diameterOverInsulation>0</cim:CableInfo.diameterOverInsulation>
+    <rf:CableInfo.shieldCrossSection>0.00007</rf:CableInfo.shieldCrossSection>
+    <rf:WireInfo.crossSection>0.00063</rf:WireInfo.crossSection>
+    <cim:CableInfo.outerJacketKind rdf:resource="cim:CableOuterJacketKind.polyethylene"/>
+    <cim:CableInfo.shieldMaterial rdf:resource="cim:CableShieldMaterialKind.copper"/>
+    <cim:CableInfo.nominalTemperature>90.0</cim:CableInfo.nominalTemperature>
+    <rf:CableInfo.underShieldScreenThickness>0</rf:CableInfo.underShieldScreenThickness>
+    <rf:CableInfo.insulationEr>2.4</rf:CableInfo.insulationEr>
+    <rf:CableInfo.sheathThickness>0</rf:CableInfo.sheathThickness>
+    <rf:CableInfo.radialMoistureBarrierThicknes>0</rf:CableInfo.radialMoistureBarrierThicknes>
+    <cim:WireInfo.sizeDescription>АПвПу2г 1х630гж/70-64/110</cim:WireInfo.sizeDescription>
+    <cim:WireInfo.material rdf:resource="cim:WireMaterialKind.aluminum"/>
+    <cim:WireInfo.radius>0</cim:WireInfo.radius>
+  </cim:ConcentricNeutralCableInfo>
+  <cim:ConcentricNeutralCableInfo rdf:about="#_1a18270e-79f9-4f8d-80a7-352076bcdffb">
+    <rf:CableInfo.shieldGrounding rdf:resource="rf:ShieldGroundingKind.twoSide"/>
+    <cim:CableInfo.outerJacketKind rdf:resource="cim:CableOuterJacketKind.polyethylene"/>
+    <cim:IdentifiedObject.name>АПвПу2г 1х1200(гж)/95-64/110</cim:IdentifiedObject.name>
+    <cim:CableInfo.constructionKind rdf:resource="cim:CableConstructionKind.stranded"/>
+    <cim:WireInfo.sizeDescription>кабель марки АПвПу2г 1х1200(гж)/95-64/110</cim:WireInfo.sizeDescription>
+    <cim:CableInfo.shieldMaterial rdf:resource="cim:CableShieldMaterialKind.copper"/>
+    <rf:CableInfo.shieldIsTransposed>true</rf:CableInfo.shieldIsTransposed>
+    <cim:WireInfo.material rdf:resource="cim:WireMaterialKind.aluminum"/>
+  </cim:ConcentricNeutralCableInfo>
+</rdf:RDF>
