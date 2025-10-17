@@ -169,7 +169,7 @@ void PanelTextMsg(FILE *outfile, char * textId, int x, int y,int h, int w, char 
   fprintf(outfile ,";color:%s",s1 );
   if (attr_bg_color != VAL_TRANSPARENT )
      fprintf(outfile ,";background-color:%s",s2 );
-  else 
+  else
      fprintf(outfile ,";background-color:%s", "transparent" );
 
   // изменение щрифта
@@ -231,8 +231,8 @@ void PanelNumeric(FILE *outfile, char * textId, int x,int y, int h, int w, int a
   fprintf(outfile ,"'fontSize': '%dpx','fontWeight': '%s','color': '%s' ", attr_text_point_size, (attr_label_bold ? "bold":"normal"), s1);
   if (bg_color != VAL_TRANSPARENT )
      fprintf(outfile ,",'background':'%s' ", s2 );
-  else 
-     fprintf(outfile ,",'background':'%s' ", "transparent" ); 
+  else
+     fprintf(outfile ,",'background':'%s' ", "transparent" );
   if(text_justify != 0 )
   {
     fprintf(outfile ,",'text-align':");
@@ -398,6 +398,35 @@ void PanelCommandButton(FILE *outfile, char * textId, int x, int y, int h, int w
   fprintf(outfile ,"}");
 }
 
+void PanelGaugeLS(FILE *outfile, char * textId, int x, int y, int h, int w,int minValue, int maxValue, int bg_color, int arrowColor, int dashColor, int circleColor, int zplane)
+{
+  char s1[10],s2[10],s3[10],s4[10];
+  int n = 0;
+
+  sprintf(s1,"%s",Int2HexWeb(bg_color));
+  sprintf(s2,"%s",Int2HexWeb(arrowColor));
+  sprintf(s3,"%s",Int2HexWeb(dashColor));
+  sprintf(s4,"%s",Int2HexWeb(circleColor));
+
+  if(flagNotFirst){fprintf(outfile ,",\n");} else {flagNotFirst = 1;};
+
+  fprintf(outfile ,"{\n");
+  fprintf(outfile ,"xtype: 'panel-dial',\n");
+  fprintf(outfile ,"x: %d,\n",x);
+  fprintf(outfile ,"y: %d,\n",y);
+  fprintf(outfile ,"height: %d,\n",h);
+  fprintf(outfile ,"width: %d,\n",w);
+  fprintf(outfile ,"style:'z-index: %d',\n",zplane);
+  fprintf(outfile ,"minValue: %d,\n",minValue);
+  fprintf(outfile ,"maxValue: %d,\n",maxValue);
+  fprintf(outfile ,"circleBgColor: '%s',\n",s1) ;
+  fprintf(outfile ,"arrowColor: '%s',\n",s2) ; // red
+  fprintf(outfile ,"dashColor: '%s',\n","black") ;  // black
+  fprintf(outfile ,"circleColor: '%s',\n","black") ;  // black
+  fprintf(outfile ,"id: '%s',\n",textId);
+  fprintf(outfile ,"}");
+}
+
 
 int GetCtrlElem ( FILE *outfile, int panelHandle, int ctrlID )
 {
@@ -436,6 +465,8 @@ int GetCtrlElem ( FILE *outfile, int panelHandle, int ctrlID )
 
   int attr_fr_thick , attr_fr_color;
 
+  int maxValue, minValue;
+  int attr_nd_color;
 
   // ==================================================================================
 
@@ -652,6 +683,43 @@ int GetCtrlElem ( FILE *outfile, int panelHandle, int ctrlID )
          PanelTextMsg(outfile,strcat(attr_constant_name,"_LABEL"),attr_label_left,attr_label_top,
            h,w,attr_label_text,attr_label_bold,attr_label_color,attr_bg_color,0,attr_text_point_size,attr_label_underline,attr_zplane_position);
        }
+     }
+     break;
+
+     case CTRL_NUMERIC_GAUGE:
+ 	   case CTRL_NUMERIC_GAUGE_LS:
+     {
+     	   GetCtrlAttribute(panelHandle, ctrlID, ATTR_FRAME_COLOR, &attr_fr_color);
+	       GetCtrlAttribute(panelHandle, ctrlID, ATTR_MAX_VALUE, &maxValue);
+	       GetCtrlAttribute(panelHandle, ctrlID, ATTR_MIN_VALUE, &minValue);
+	       GetCtrlAttribute(panelHandle, ctrlID, ATTR_NEEDLE_COLOR, &attr_nd_color); // red
+
+         PanelGaugeLS(outfile,attr_constant_name,x,y,h,w,minValue,maxValue, attr_fr_color, attr_nd_color, 0, 0 , attr_zplane_position);
+
+	       GetCtrlAttribute(panelHandle, ctrlID, ATTR_LABEL_VISIBLE,   &attr_label_visible); //!!
+
+         len = strlen(attr_label_text);
+         if(attr_label_visible && len>0)
+         {
+           GetCtrlAttribute(panelHandle, ctrlID, ATTR_LABEL_BOLD,      &attr_label_bold);
+           GetCtrlAttribute(panelHandle, ctrlID, ATTR_LABEL_COLOR,     &attr_label_color);
+           GetCtrlAttribute(panelHandle, ctrlID, ATTR_LABEL_BGCOLOR,     &attr_bg_color);
+           GetCtrlAttribute(panelHandle, ctrlID, ATTR_LABEL_HEIGHT,      &h);
+           GetCtrlAttribute(panelHandle, ctrlID, ATTR_LABEL_WIDTH,     &w);
+           GetCtrlAttribute(panelHandle, ctrlID, ATTR_LABEL_SIZE_TO_TEXT,  &attr_size_to_text);
+           GetCtrlAttribute(panelHandle, ctrlID, ATTR_LABEL_POINT_SIZE ,     &attr_text_point_size); // ATTR_LABEL_POINT_SIZE
+           GetCtrlAttribute(panelHandle, ctrlID, ATTR_LABEL_UNDERLINE,    &attr_label_underline);
+
+           if(attr_size_to_text)
+           {
+             h = 0;
+             w = 0;
+             //attr_text_point_size = 16 ;
+           }
+
+           PanelTextMsg(outfile,strcat(attr_constant_name,"_LABEL"),attr_label_left,attr_label_top,
+             h,w,attr_label_text,attr_label_bold,attr_label_color,attr_bg_color,0,attr_text_point_size,attr_label_underline,attr_zplane_position);
+         }
      }
      break;
 
@@ -886,7 +954,7 @@ int TabCtrlElem ( FILE *outfile, int panelHandle, int ctrlIDdef )
 int main (int argc, char *argv[])
 {
     int error = 0;
-  int i = 0 ;
+    int i = 0 ;
 
     int showPanel = 0; // true, если нужно показать панель, ее закрытие осуществлетс нажатием на крестик
 
