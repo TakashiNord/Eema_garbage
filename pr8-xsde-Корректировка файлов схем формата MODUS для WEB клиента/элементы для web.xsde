@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- created with GraphEditor version = 5.20.90.1836 by Modus (http://www.swman.ru) -->
+<SDEDocument Version="520" FullVersion="5.20.1.26" timeStamp="12.02.2015 10:42:09" registrySave="0" navigationUse="0" calcRegimAbility="0" nameMeasureUnits="">
+  <metadata xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <dc:title>·ÂÁ ËÏÂÌË</dc:title>
+    <dc:creator>Nuzdenkova_OS</dc:creator>
+    <dc:contributor>Nuzdenkova_OS</dc:contributor>
+    <dc:subject>—ıÂÏ‡</dc:subject>
+    <dc:date>12.02.2015 10:41:26</dc:date>
+    <company>Hewlett-Packard Company</company>
+  </metadata>
+  <Counters lastSTag="9"/>
+  <Save backwardCompability="0" writeSeal="0"/>
+  <DetailLevels author="Nuzdenkova_OS" dateTime="12.02.2015 10:42:09">
+    <Level value="0" name="0" comment="ŒÒÌÓ‚ÌÓÈ ÛÓ‚ÂÌ¸"/>
+    <Level value="20" name="–«ƒ" comment="–‡Á˙Â‰, ŒÚ‰ÂÎËÚÂÎË"/>
+    <Level value="30" name="«Õ" comment="«Õ, –‡Áˇ‰ÌËÍË, ƒ√  –Â‡ÍÚÓ˚"/>
+  </DetailLevels>
+  <Custom author="Nuzdenkova_OS" dateTime="12.02.2015 10:42:09"/>
+  <Pages author="Nuzdenkova_OS" dateTime="12.02.2015 10:42:09">
+    <Page options="+topology -electric -protection -circulation -line -electricpassive -electricconnectivitynode +visible -feeders -feederscolor -foldedtp -measureline -autocross -autocrossvoltages" schemeType="" detailsType="">
+      <Tech className="EquipmentContainer" RTID="0" fDispNum="&amp;" mark="&amp;"/>
+      <SDEObjects count="7">
+        <Type ObjectType="Â‡ÍÚÓ" detLev="30" typ="37">
+          <SDE tag="1" sTag="8" nodes="0 0" origin="32 25">
+            <Tech DispName="Â‡ÍÚÓ" className="SeriesCompensator" RTID="369" fDispNum="&amp;" mark="&amp;" voltage="110Í¬"/>
+            <ParamText fAlign="CENTER" fPosition="TOP" subscriptName="%‰ËÒÔ_ËÏˇ%" referencePosition="1"/>
+          </SDE>
+        </Type>
+        <Type ObjectType="_Û·ËÎ¸ÌËÍ" scale="1" typ="44">
+          <SDE tag="1" sTag="1" nodes="0 0 0" origin="12 10">
+            <Tech DispName="_Û·ËÎ¸ÌËÍ" className="Jumper" RTID="223" fDispNum="&amp;" mark="&amp;" voltage="110Í¬" positionSensorClosed="0"/>
+            <ParamText fAlign="CENTER" fPosition="TOP" subscriptName="%‰ËÒÔ_ËÏˇ%" referencePosition="1"/>
+          </SDE>
+        </Type>
+        <Type ObjectType="‡‚ÚÓÚ‡ÌÒÙÓÏ‡ÚÓ" typ="47">
+          <SDE tag="17" sTag="2" nodes="0 0 0 0 0" origin="29 13" windingNo="3">
+            <Tech DispName="‡‚ÚÓÚ‡ÌÒÙÓÏ‡ÚÓ" className="PowerTransformer" RTID="121" fDispNum="&amp;" mark="&amp;" windingNo="3" curObm="-1" mode="@tmAuto@tmAutoN@" kfHighLow="0" kfMidLow="0">
+              <TransformerWinding aliasName="Œ·ÏÓÚÍ‡ [1]" className="TransformerWinding" RTID="0" fDispNum="&amp;" mark="&amp;" voltage="110Í¬"/>
+              <TransformerWinding aliasName="Œ·ÏÓÚÍ‡ [2]" className="TransformerWinding" RTID="0" fDispNum="&amp;" mark="&amp;" voltage="110Í¬"/>
+              <TransformerWinding aliasName="Œ·ÏÓÚÍ‡ [3]" className="TransformerWinding" RTID="0" fDispNum="&amp;" mark="&amp;" voltage="110Í¬"/>
+            </Tech>
+            <ParamText fAlign="CENTER" fPosition="TOP" subscriptName="%‰ËÒÔ_ËÏˇ%" referencePosition="1"/>
+          </SDE>
+        </Type>
+        <Type ObjectType="ÓÚ‰ÂÎËÚÂÎ¸_‚˚‰‚ËÊÌÓÈ" detLev="20" scale="1" typ="50" xMirror="1">
+          <SDE tag="1" sTag="7" nodes="0 0" origin="13 26" shortGabarit="0" fFBit="0">
+            <Tech DispName="ÓÚ‰ÂÎËÚÂÎ¸_‚˚‰‚ËÊÌÓÈ" className="CircuitBreaker" RTID="281" fDispNum="&amp;" mark="&amp;" voltage="110Í¬">
+              <Trolley className="TectTrolleyState" RTID="0" fDispNum="&amp;" mark="&amp;"/>
+            </Tech>
+            <ParamText fAlign="CENTER" fPosition="TOP" subscriptName="%‰ËÒÔ_ËÏˇ%" referencePosition="1"/>
+          </SDE>
+        </Type>
+        <Type ObjectType="‡Á˙Â‰ËÌËÚÂÎ¸-ÔÂ‰Óı‡ÌËÚÂÎ¸" scale="2" typ="166">
+          <SDE tag="1" sTag="3" nodes="0 0" origin="53 10" shortGabarit="0" fFBit="0">
+            <Tech DispName="‡Á˙Â‰ËÌËÚÂÎ¸-ÔÂ‰Óı‡ÌËÚÂÎ¸" className="Fuse" RTID="156" fDispNum="&amp;" mark="&amp;" voltage="110Í¬"/>
+            <ParamText fAlign="CENTER" fPosition="TOP" subscriptName="%‰ËÒÔ_ËÏˇ%" scale="-1" referencePosition="1"/>
+          </SDE>
+        </Type>
+        <Type ObjectType="–¬œ" detLev="30" typ="168">
+          <SDE tag="1" sTag="5" nodes="0" origin="84 8">
+            <Tech DispName="–¬œ" className="Discharger" RTID="341" fDispNum="&amp;" mark="&amp;" voltage="110Í¬"/>
+            <ParamText fAlign="CENTER" fPosition="TOP" subscriptName="%‰ËÒÔ_ËÏˇ%" referencePosition="1"/>
+          </SDE>
+        </Type>
+        <Type ObjectType="„ÂÌÂ‡ÚÓ" typ="173">
+          <SDE tag="1" sTag="4" nodes="0 0" inText="~" origin="74 9">
+            <Tech DispName="„ÂÌÂ‡ÚÓ" className="SynchronousMachine" RTID="59" fDispNum="&amp;" mark="&amp;" voltage="110Í¬"/>
+            <ParamText fAlign="CENTER" fPosition="TOP" subscriptName="%‰ËÒÔ_ËÏˇ%" referencePosition="1"/>
+          </SDE>
+        </Type>
+      </SDEObjects>
+    </Page>
+  </Pages>
+  <Styles author="Nuzdenkova_OS" dateTime="12.02.2015 10:42:09">
+    <Colors>
+      <Color name=" À¿——_Õ¿œ–" IsUsed="1" value="# À¿——_Õ¿œ–"/>
+      <Color name="›À≈Ã≈Õ“€" IsUsed="1" value="ÒÂ˚È_50%"/>
+      <Color parentName="›À≈Ã≈Õ“€" name="ÕŒ–Ã¿À‹Õ€…_“Œ Œ–¿«ƒ≈À" IsUsed="1" value="˜ÂÌ˚È"/>
+      <Color parentName=" À¿——_Õ¿œ–" name="110Í¬" IsUsed="1" value="$FF9900"/>
+      <Color parentName="›À≈Ã≈Õ“€" name="—Œ≈ƒ»Õ≈Õ»≈_Œ¡ÃŒ“Œ " IsUsed="1" value="˜ÂÌ˚È"/>
+      <Color id="1580" parentName="›À≈Ã≈Õ“€" name="œŒƒ—“–Œ… ¿_“–¿Õ—‘Œ–Ã¿“Œ–¿" IsUsed="1" value="˜ÂÌ˚È"/>
+    </Colors>
+    <TableKA>
+      <KA name="Œ“ƒ≈À»“≈À‹" IsUsed="1" mask="‡Á˙Â‰.(Ô‡ÎÓ˜ÍË)" cross="ÌÂÚ" colorCross=" À¿——_Õ¿œ–" widthCross="1" colorFrame=" À¿——_Õ¿œ–" widthFrame="1" colorFill="ÔÓÁ‡˜Ì˚È" diametr="2" size="6"/>
+      <KA parentName="Œ“ƒ≈À»“≈À‹" name="¬ À_Œ“ƒ≈À»“≈À‹" IsUsed="1" mask="#Œ“ƒ≈À»“≈À‹" cross="ÔÓ‰ÓÎ¸Ì˚È" colorCross="#Œ“ƒ≈À»“≈À‹" widthCross="#Œ“ƒ≈À»“≈À‹" heigthCross="#Œ“ƒ≈À»“≈À‹" colorFrame="#Œ“ƒ≈À»“≈À‹" widthFrame="#Œ“ƒ≈À»“≈À‹" colorFill="#Œ“ƒ≈À»“≈À‹" diametr="#Œ“ƒ≈À»“≈À‹" size="#Œ“ƒ≈À»“≈À‹"/>
+      <KA parentName="Œ“ƒ≈À»“≈À‹" name="Œ“ À_Œ“ƒ≈À»“≈À‹" IsUsed="1" mask="‡Á˙Â‰.(ÍÛ„-Ô‡ÎÓ˜Í‡)" cross="‰Ë‡„.(30 „‡‰)" colorCross="#Œ“ƒ≈À»“≈À‹" widthCross="#Œ“ƒ≈À»“≈À‹" heigthCross="#Œ“ƒ≈À»“≈À‹" colorFrame="#Œ“ƒ≈À»“≈À‹" widthFrame="#Œ“ƒ≈À»“≈À‹" colorFill="#Œ“ƒ≈À»“≈À‹" diametr="#Œ“ƒ≈À»“≈À‹" size="#Œ“ƒ≈À»“≈À‹"/>
+      <KA parentName="Œ“ƒ≈À»“≈À‹" name="¬ À_¬–≈Ã≈ÕÕŒ_Œ“ƒ≈À»“≈À‹" IsUsed="1" mask="#¬ À_Œ“ƒ≈À»“≈À‹" cross="#¬ À_Œ“ƒ≈À»“≈À‹" colorCross="#¬ À_Œ“ƒ≈À»“≈À‹" widthCross="#¬ À_Œ“ƒ≈À»“≈À‹" heigthCross="#¬ À_Œ“ƒ≈À»“≈À‹" colorFrame="#¬ À_Œ“ƒ≈À»“≈À‹" widthFrame="#¬ À_Œ“ƒ≈À»“≈À‹" colorFill="#¬ À_Œ“ƒ≈À»“≈À‹" diametr="#¬ À_Œ“ƒ≈À»“≈À‹" size="#¬ À_Œ“ƒ≈À»“≈À‹"/>
+      <KA parentName="Œ“ƒ≈À»“≈À‹" name="Œ“ À_¬–≈Ã≈ÕÕŒ_Œ“ƒ≈À»“≈À‹" IsUsed="1" mask="#Œ“ À_Œ“ƒ≈À»“≈À‹" cross="#Œ“ À_Œ“ƒ≈À»“≈À‹" colorCross="#Œ“ À_Œ“ƒ≈À»“≈À‹" widthCross="#Œ“ À_Œ“ƒ≈À»“≈À‹" heigthCross="#Œ“ À_Œ“ƒ≈À»“≈À‹" colorFrame="#Œ“ À_Œ“ƒ≈À»“≈À‹" widthFrame="#Œ“ À_Œ“ƒ≈À»“≈À‹" colorFill="#Œ“ À_Œ“ƒ≈À»“≈À‹" diametr="#Œ“ À_Œ“ƒ≈À»“≈À‹" size="#Œ“ À_Œ“ƒ≈À»“≈À‹"/>
+      <KA parentName="Œ“ƒ≈À»“≈À‹" name="Õ≈Œœ–_Œ“ƒ≈À»“≈À‹" IsUsed="1" mask="#Œ“ƒ≈À»“≈À‹" cross="ÌÂÚ" colorCross="#Œ“ƒ≈À»“≈À‹" widthCross="#Œ“ƒ≈À»“≈À‹" heigthCross="#Œ“ƒ≈À»“≈À‹" colorFrame="#Œ“ƒ≈À»“≈À‹" widthFrame="#Œ“ƒ≈À»“≈À‹" colorFill="#Œ“ƒ≈À»“≈À‹" diametr="#Œ“ƒ≈À»“≈À‹" size="#Œ“ƒ≈À»“≈À‹"/>
+      <KA name="¿¬“ŒÃ¿“" IsUsed="1" mask="‡Á˙Â‰.(Ô‡ÎÓ˜ÍË)" cross="ÌÂÚ" colorCross=" À¿——_Õ¿œ–" widthCross="1" colorFrame=" À¿——_Õ¿œ–" widthFrame="1" colorFill="ÔÓÁ‡˜Ì˚È" diametr="2" size="6"/>
+      <KA parentName="¿¬“ŒÃ¿“" name="¬ À_¿¬“ŒÃ¿“" IsUsed="1" mask="#¿¬“ŒÃ¿“" cross="ÔÓ‰ÓÎ¸Ì˚È" colorCross="#¿¬“ŒÃ¿“" widthCross="#¿¬“ŒÃ¿“" heigthCross="#¿¬“ŒÃ¿“" colorFrame="#¿¬“ŒÃ¿“" widthFrame="#¿¬“ŒÃ¿“" colorFill="#¿¬“ŒÃ¿“" diametr="#¿¬“ŒÃ¿“" size="#¿¬“ŒÃ¿“"/>
+      <KA parentName="¿¬“ŒÃ¿“" name="Œ“ À_¿¬“ŒÃ¿“" IsUsed="1" mask="#¿¬“ŒÃ¿“" cross="ÔÓÔÂÂ˜Ì˚È" colorCross="#¿¬“ŒÃ¿“" widthCross="#¿¬“ŒÃ¿“" heigthCross="#¿¬“ŒÃ¿“" colorFrame="#¿¬“ŒÃ¿“" widthFrame="#¿¬“ŒÃ¿“" colorFill="#¿¬“ŒÃ¿“" diametr="#¿¬“ŒÃ¿“" size="#¿¬“ŒÃ¿“"/>
+      <KA parentName="¿¬“ŒÃ¿“" name="¬ À_¬–≈Ã≈ÕÕŒ_¿¬“ŒÃ¿“" IsUsed="1" mask="#¬ À_¿¬“ŒÃ¿“" cross="#¬ À_¿¬“ŒÃ¿“" colorCross="#¬ À_¿¬“ŒÃ¿“" widthCross="#¬ À_¿¬“ŒÃ¿“" heigthCross="#¬ À_¿¬“ŒÃ¿“" colorFrame="#¬ À_¿¬“ŒÃ¿“" widthFrame="#¬ À_¿¬“ŒÃ¿“" colorFill="#¬ À_¿¬“ŒÃ¿“" diametr="#¬ À_¿¬“ŒÃ¿“" size="#¬ À_¿¬“ŒÃ¿“"/>
+      <KA parentName="¿¬“ŒÃ¿“" name="Œ“ À_¬–≈Ã≈ÕÕŒ_¿¬“ŒÃ¿“" IsUsed="1" mask="#Œ“ À_¿¬“ŒÃ¿“" cross="#Œ“ À_¿¬“ŒÃ¿“" colorCross="#Œ“ À_¿¬“ŒÃ¿“" widthCross="#Œ“ À_¿¬“ŒÃ¿“" heigthCross="#Œ“ À_¿¬“ŒÃ¿“" colorFrame="#Œ“ À_¿¬“ŒÃ¿“" widthFrame="#Œ“ À_¿¬“ŒÃ¿“" colorFill="#Œ“ À_¿¬“ŒÃ¿“" diametr="#Œ“ À_¿¬“ŒÃ¿“" size="#Œ“ À_¿¬“ŒÃ¿“"/>
+      <KA parentName="¿¬“ŒÃ¿“" name="Õ≈Œœ–_¿¬“ŒÃ¿“" IsUsed="1" mask="#¿¬“ŒÃ¿“" cross="ÌÂÚ" colorCross="#¿¬“ŒÃ¿“" widthCross="#¿¬“ŒÃ¿“" heigthCross="#¿¬“ŒÃ¿“" colorFrame="#¿¬“ŒÃ¿“" widthFrame="#¿¬“ŒÃ¿“" colorFill="#¿¬“ŒÃ¿“" diametr="#¿¬“ŒÃ¿“" size="#¿¬“ŒÃ¿“"/>
+    </TableKA>
+  </Styles>
+  <TechsRegistry/>
+  <Pictures/>
+  <Fixings/>
+</SDEDocument>

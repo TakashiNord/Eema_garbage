@@ -1,0 +1,8 @@
+C:\Users\gal\Documents\SharpDevelop Projects\DAView5\DAView5\bin\Debug\DAView5.exe.config
+C:\Users\gal\Documents\SharpDevelop Projects\DAView5\DAView5\bin\Debug\DAView5.exe
+C:\Users\gal\Documents\SharpDevelop Projects\DAView5\DAView5\bin\Debug\DAView5.pdb
+C:\Users\gal\Documents\SharpDevelop Projects\DAView5\DAView5\obj\Debug\DAView5.csprojResolveAssemblyReference.cache
+C:\Users\gal\Documents\SharpDevelop Projects\DAView5\DAView5\obj\Debug\DAView5.MainForm.resources
+C:\Users\gal\Documents\SharpDevelop Projects\DAView5\DAView5\obj\Debug\DAView5.csproj.GenerateResource.Cache
+C:\Users\gal\Documents\SharpDevelop Projects\DAView5\DAView5\obj\Debug\DAView5.exe
+C:\Users\gal\Documents\SharpDevelop Projects\DAView5\DAView5\obj\Debug\DAView5.pdb

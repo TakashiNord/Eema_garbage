@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MYTCL>
+  <VERSION value="1.0"/>
+  <CREATION value="07/24/2022 10:18:34"/>
+  <NAME value="my1"/>
+  <PROPERTIES>
+    <BUILD>
+      <OUTPUTFILE value="my1.exe"/>
+    </BUILD>
+    <VFS>
+      <lib value="">
+        <tcl8.5 value="">
+          <encoding value=""/>
+        </tcl8.5>
+        <app-my1 value=""/>
+      </lib>
+    </VFS>
+    <RUN>
+      <DEBUGPORTNUMBER/>
+      <ARGS/>
+    </RUN>
+  </PROPERTIES>
+  <TYPE value="Console Application"/>
+  <SOURCES value="my1.tcl;" main="my1.tcl"/>
+  <BREAKPOINTS value=""/>
+  <BOOKMARKS value=""/>
+  <WATCHVARIABLE/>
+</MYTCL>

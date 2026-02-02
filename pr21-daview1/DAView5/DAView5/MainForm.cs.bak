@@ -1,0 +1,551 @@
+﻿/*
+ * Created by SharpDevelop.
+ * User: gal
+ * Date: 02.06.2016
+ * Time: 17:00
+ *
+ * To change this template use Tools | Options | Coding | Edit Standard Headers.
+ */
+using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Windows.Forms;
+using System.Data.Common;
+using System.IO ;
+using System.Globalization;
+using System.Data.Odbc;
+using System.Threading;
+
+namespace DAView5
+{
+  /// <summary>
+  /// Description of MainForm.
+  /// </summary>
+  public partial class MainForm : Form
+  {
+    public OdbcConnection cnn ;
+     int FlagLoad = 0;
+
+    public MainForm()
+    {
+      //
+      // The InitializeComponent() call is required for Windows Forms designer support.
+      //
+      InitializeComponent();
+
+      //
+      // TODO: Add constructor code after the InitializeComponent() call.
+      //
+    }
+
+    public void AddLogString(string s)
+    {
+      DateTime d = DateTime.Now;
+      string strout = "\n"+ "[" + d.ToLongTimeString() + "] " + s ;
+      richTextBox1.AppendText(strout);
+      Application.DoEvents();
+    }
+
+    public void RefreshDB ( )
+    {
+        OdbcCommand cmd = new OdbcCommand();
+        OdbcDataReader reader = null ;
+
+        cmd.Connection=cnn;
+
+        if (cnn.State==System.Data.ConnectionState.Closed) {
+            AddLogString("Невозможно установить соединение с БД (Oracle, MySql)");
+            AddLogString(" выполнение алгоритма  - прервано..");
+            cnn.Close();
+            return ;
+        }
+
+        treeView1.BeginUpdate(); //добавить
+        treeView1.Nodes.Clear();
+
+
+        cmd.CommandText="select * from da_dev order by id asc";
+        try
+        {
+           reader = cmd.ExecuteReader();
+        }
+        catch (Exception ex7)
+        {
+           AddLogString(" выполнение алгоритма  - прервано..");
+          return ;
+        }
+
+        if (reader.HasRows)
+        {
+            while (reader.Read())
+            {
+              TreeNode rootNode = new TreeNode();
+              rootNode.Name = reader.GetDecimal(0).ToString();
+              rootNode.Text = reader.GetString(1) ;
+              AddLogString(rootNode.Name + " " + rootNode.Text);
+              treeView1.Nodes.Add(rootNode);
+            }
+        }
+        else
+        {
+            treeView1.Nodes.Add(new TreeNode("root"));
+        }
+        reader.Close();
+
+        cmd.CommandText="select dev.id, nvl(dev.id_parent,0), nvl(dev.id_type,0), dev.name," +
+"nvl(dev.id_proto_point,0), nvl(dev.id_dev,0), dev.cvalif,nvl(dev.id_gtopt,0) " +
+"from  da_dev_desc dev " +
+"where nvl(id_parent, 0)=0 order by dev.id" ;
+        try
+        {
+           reader = cmd.ExecuteReader();
+        }
+        catch (Exception ex8)
+        {
+           return ;
+        }
+
+        if (reader.HasRows)
+        {
+            while (reader.Read())
+            {
+               foreach (TreeNode ndl in treeView1.Nodes)
+               {
+                  if (!reader.IsDBNull(5)) {
+                       string s5= reader.GetDouble(5).ToString();
+                       if (ndl.Name == s5) {
+                          TreeNode Nd = new TreeNode();
+                          Nd.Name = reader.GetDecimal(0).ToString();
+                          Nd.Text = reader.GetString(3) ;
+                          ndl.Nodes.Add(Nd);
+                          AddLogString(Nd.Name + " " + Nd.Text);
+                       }
+                   }
+                } // foreach
+              } // while
+         } // if
+         reader.Close();
+
+
+         treeView1.EndUpdate(); //добавить
+         treeView1.ExpandAll();
+
+
+         cmd.CommandText="select * from da_proto_desc where id_parent is null or id_type=456" ;
+         try
+         {
+            reader = cmd.ExecuteReader();
+         }
+         catch (Exception ex8)
+         {
+            return ;
+         }
+
+         checkedListBox2.Items.Clear();
+         if (reader.HasRows)
+         {
+            while (reader.Read())
+            {
+              //CheckBox chkBox = new CheckBox();
+              //chkBox.Name=reader.GetString(0);
+              //chkBox.Text=reader.GetString(2);
+              //checkedListBox2.Items.Add(chkBox);
+               checkedListBox2.Items.Add(reader.GetString(2));
+              //checkedListBox2.Items.Insert(0, reader.GetString(2) );
+            } // while
+         } // if
+         reader.Close();
+
+    }
+
+    public void TreeView1Node(object sender, TreeViewEventArgs e)
+    {
+        OdbcCommand cmd = new OdbcCommand();
+        OdbcCommand cmd2 = new OdbcCommand();
+        OdbcCommand cmd3 = new OdbcCommand();
+        OdbcDataReader reader = null ;
+
+        cmd.Connection=cnn ;
+        cmd2.Connection=cnn ;
+        cmd3.Connection=cnn ;
+
+        //Получить индекс выделенного элемента
+        int indexNode =  e.Node.Index;
+        //3. Получить количество дочерних элементов:
+        int countChildNodes = e.Node.Nodes.Count;
+        // полный путь
+        string s1 = e.Node.FullPath ;
+        int p = s1.Split('\\').Length ;
+        if (p<=2) {
+          checkedListBox2.Enabled=true;
+          checkedListBox2.SelectedIndex=-1;
+          checkedListBox1.Enabled=true;
+          // Если элемент -Устройство или Профиль
+          // читаем число поддерживаемых протоколов
+          string id_dev=e.Node.Name;
+
+          if (p==2) {
+            id_dev=e.Node.Parent.Name ;
+            //cmd.CommandText="select * from DA_PROTO_DESC where id in " +
+            //    "( select id_proto from DA_DEV_PROTO where id_dev in " +
+            //    "( select id_dev from da_dev_desc where id="+ e.Node.Name + " ) )" ;
+            //cmd2.CommandText="select IS_ROUTE from DA_DEV where id in " +
+            //   "( select id_dev from da_dev_desc where id="+ e.Node.Name + " )" ;
+          }
+
+          cmd.CommandText="select * from DA_PROTO_DESC where id in ( select id_proto from DA_DEV_PROTO where id_dev=" + id_dev + " )" ;
+          cmd2.CommandText="select IS_ROUTE from DA_DEV where id=" + id_dev + " " ;
+
+          try
+          {
+             reader = cmd.ExecuteReader();
+          }
+          catch (Exception ex8)
+          {
+            AddLogString("Ошибка " + cmd.CommandText);
+            return ;
+          }
+
+          // Снимаем выделение у всех Протоколов
+          int saveFlagLoad=FlagLoad;
+          FlagLoad=3;
+          for(int i=0; i< checkedListBox2.Items.Count; i++) {
+              checkedListBox2.SetItemChecked(i, false);
+              checkedListBox2.SetItemCheckState(i, CheckState.Unchecked);
+              //checkedListBox2.SetItemCheckState(i, CheckState.Indeterminate);
+          }
+
+          object o1;
+          string cntStr ;
+          int cnt ;
+          // Устанавливаем Протоколы
+          if (reader.HasRows)
+          {
+            while (reader.Read())
+            {
+               string sd = reader.GetString(2) ;
+               for(int i=0; i< checkedListBox2.Items.Count; i++)
+                if(checkedListBox2.Items[i].ToString() == sd) {
+                     checkedListBox2.SetItemChecked(i, true);
+                     //string id_proto_point = reader.GetString(0) ;
+                     //Получаем количество элементов для устройства + протокол,
+                     // если <=1 то можно удалять
+                     decimal idproto = reader.GetDecimal(0) ;
+                     string id_proto_point = idproto.ToString();
+                     cmd3.CommandText="select count(*) from da_dev_desc where id_dev=" + id_dev + " and id_proto_point=" + id_proto_point ;
+                     try
+                     {
+                       o1= cmd3.ExecuteScalar();
+                     }
+                     catch (Exception ex87)
+                     {
+                        AddLogString("Ошибка " + cmd3.CommandText);
+                        continue ;
+                     }
+                     cntStr=o1.ToString();
+                     cnt = 0 ;
+                     if (!Int32.TryParse(cntStr, out cnt)) {
+                        AddLogString("Ошибка преобразования числа..:" + cmd3.CommandText);
+                        continue ;
+                     }
+                     if  (cnt>=1) checkedListBox2.SetItemCheckState(i, CheckState.Indeterminate );
+                }
+            } // while
+          } // if
+          reader.Close();
+          FlagLoad=saveFlagLoad;
+
+          try
+          {
+             reader = cmd2.ExecuteReader();
+          }
+          catch (Exception ex9)
+          {
+             return ;
+          }
+
+          // Снимаем выделение у Маршрутизации
+          for(int i=0; i< checkedListBox1.Items.Count; i++)
+                      checkedListBox1.SetItemChecked(i, false);
+
+          if (reader.HasRows)
+          {
+             while (reader.Read())
+             {
+               string sd = reader.GetString(0) ;
+               for(int i=0; i< checkedListBox1.Items.Count; i++)
+                  if (sd=="1")
+                     checkedListBox1.SetItemChecked(i, true);
+             } // while
+          } // if
+          reader.Close();
+
+        } else {
+         // Не даем редактировать данные элементы
+         checkedListBox2.Enabled=false;
+         checkedListBox1.Enabled=false;
+        }
+
+        //AddLogString(s1 + "\n"+ p.ToString() + "\n"+ e.Node.Name  + " "+ e.Node.Text + "\n " + indexNode.ToString() + "   " +  countChildNodes.ToString() );
+
+    }
+
+
+    void MainFormLoad(object sender, EventArgs e)
+    {
+        string connetionString = "DSN=rsdu2;UID=rsduadmin; PWD=passme";
+        OdbcCommand cmd = new OdbcCommand();
+        cnn = null ;
+
+        cnn = new OdbcConnection(connetionString);
+        try
+        {
+          cnn.Open();
+          AddLogString("Connection Open = Ok ");
+        }
+        catch (Exception ex6)
+        {
+          AddLogString("Connection Open = NONE  "+ex6.Message);
+        }
+
+        if (cnn.State==System.Data.ConnectionState.Closed) {
+            AddLogString("Невозможно установить соединение с БД (Oracle, MySql)");
+            AddLogString(" выполнение алгоритма  - прервано..");
+            cnn.Close();
+            return ;
+        }
+
+        cmd.Connection = cnn; // уже созданное и открытое соединение
+        cmd.CommandType = System.Data.CommandType.Text ;
+        cmd.Parameters.Clear();
+        cmd.CommandText="SET ROLE BASE_EXT_CONNECT_OIK , SBOR_STAND_ADJ, SBOR_STAND_READ";
+
+        try
+        {
+           cmd.ExecuteNonQuery();
+           AddLogString("Установка роли = Ok ");
+        }
+        catch (Exception ex7)
+        {
+           AddLogString("Ошибка установки Ролей ="+ex7.Message);
+           AddLogString(" выполнение алгоритма вставки - прервано..");
+           cnn.Close();
+           return ;
+        }
+
+        if (checkedListBox2.CheckOnClick==false) checkedListBox2.CheckOnClick=true;
+        checkedListBox2.Enabled=false;
+        checkedListBox1.Enabled=false;
+
+        RefreshDB();
+
+        treeView1.SelectedNode = null;
+        //treeView1.Focus();
+        treeView1.LabelEdit=true ;
+
+        FlagLoad=1;
+
+        return ;
+    }
+
+    void CheckedListBox1SelectedIndexChanged(object sender, EventArgs e)
+    {
+        OdbcCommand cmd = new OdbcCommand();
+        cmd.Connection=cnn ;
+        bool var1=false;
+        // элемент = 1, но пусть будет в цикле
+        for(int i=0; i< checkedListBox1.Items.Count; i++)
+        {
+              var1=checkedListBox1.GetItemChecked(i);
+        }
+
+        string var2="0";
+        if (var1==true) var2="1" ;
+
+        //Получить Имя выделенного элемента
+        string id_dev=treeView1.SelectedNode.Name;
+        // полный путь
+        string s1 = treeView1.SelectedNode.FullPath.ToString() ;
+        int p = s1.Split('\\').Length ;
+
+        if (p>=3) return ;
+
+        // Если элемент -Устройство или Профиль
+        // читаем число поддерживаемых протоколов
+        if (p==1) {
+          ; // cmd.CommandText="update DA_DEV set IS_ROUTE= " + var2  +  " where id=" + id_dev + " " ;
+        }
+
+        if (p==2) {
+          id_dev=treeView1.SelectedNode.Parent.Name ;
+          //cmd.CommandText="update DA_DEV set IS_ROUTE= " + var2  +  " where id in " +
+          //   "( select id_dev from da_dev_desc where id="+ id_dev + " )" ;
+        }
+        cmd.CommandText="update DA_DEV set IS_ROUTE=" + var2  +  " where id=" + id_dev + " " ;
+
+        try
+        {
+           cmd.ExecuteNonQuery();
+        }
+        catch (Exception ex9)
+        {
+           AddLogString("Ошибка - " + cmd.CommandText);
+           return ;
+        }
+
+    }
+    void CheckedListBox2ItemCheck(object sender, ItemCheckEventArgs e)
+    {
+      // это условие необходимо, чтобы инициализировать GUI
+      if (FlagLoad==3)  return ;
+      // это условие необходимо, чтобы никто в GUI не снял Третье состояние
+      if(e.CurrentValue == CheckState.Indeterminate){
+        e.NewValue= CheckState.Indeterminate ;
+      } else {
+
+        if (FlagLoad!=1) return ;
+
+        OdbcDataReader reader = null ;
+        OdbcCommand cmd = new OdbcCommand();
+        cmd.Connection=cnn ;
+
+        string id_proto = "" ;
+        //Получить Имя выделенного элемента
+        string id_dev=treeView1.SelectedNode.Name;
+        // полный путь
+        string s1 = treeView1.SelectedNode.FullPath;
+        int p = s1.Split('\\').Length ;
+
+        if (p>=3) return ;
+
+        if (p==2) {
+          id_dev=treeView1.SelectedNode.Parent.Name ;
+        }
+
+        string nm=checkedListBox2.Items[e.Index].ToString();
+        //cmd.CommandText="select * from da_proto_desc where id_parent is null or id_type=456" ;
+        cmd.CommandText="select id from da_proto_desc where name like '%" + nm + "%'" ;
+
+        object o1;
+        try
+        {
+            o1= cmd.ExecuteScalar();
+        }
+        catch (Exception ex8)
+        {
+            AddLogString("Ошибка " + cmd.CommandText);
+            return ;
+        }
+        id_proto=o1.ToString();
+        int cnt = 0 ;
+        if (!Int32.TryParse(id_proto, out cnt))
+            AddLogString("Ошибка преобразования числа..: " + cmd.CommandText);
+
+        if (id_proto=="" || 0==id_proto.Length) {
+          AddLogString("Ошибка - значение id протокола - пустое");
+          return ;
+        }
+
+        //AddLogString("id_dev=" +id_dev + "  id_proto=" +id_proto);
+        //AddLogString("e.CurrentValue=" +e.CurrentValue.ToString() + "  e.NewValue=" +e.NewValue.ToString());
+
+        // +
+        if (e.CurrentValue==CheckState.Unchecked && e.NewValue==CheckState.Checked) {
+            cmd.CommandText="insert into DA_DEV_PROTO (ID_DEV,ID_PROTO) values ("+id_dev+"," + id_proto +") " ;
+            try
+            {
+               cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex9)
+            {
+               AddLogString("Ошибка " + cmd.CommandText);
+            }
+        }
+        // -
+        if (e.CurrentValue==CheckState.Checked && e.NewValue==CheckState.Unchecked) {
+            cmd.CommandText="delete from DA_DEV_PROTO where ID_DEV="+id_dev+" and ID_PROTO=" +id_proto +" " ;
+            try
+            {
+               cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex9)
+            {
+               AddLogString("Ошибка " + cmd.CommandText);
+            }
+
+        }
+
+      }
+
+      return ;
+    }
+
+
+    void TreeView1AfterSelect(object sender, TreeViewEventArgs e)
+    {
+      TreeView1Node(sender,  e);
+    }
+
+    void TreeView1AfterLabelEdit(object sender, NodeLabelEditEventArgs e)
+    {
+      if (e.Label != null)
+      {
+         if(e.Label.Length > 0)
+         {
+            if (e.Label.IndexOfAny(new char[]{'@', '.', ',', '!'}) == -1)
+            {
+               // Stop editing without canceling the label change.
+               e.Node.EndEdit(false);
+               string id=e.Node.Name;
+               string nm=e.Label;
+               string tbl = "update da_dev set name='" + nm + "' where id=" + id ;
+               // полный путь
+               string s1 = e.Node.FullPath;
+               int p = s1.Split('\\').Length ;
+
+               if (p>=2) {
+                 tbl = "update da_dev_desc set name='" + nm + "' where id=" + id ;
+               }
+
+               OdbcCommand cmd = new OdbcCommand();
+               cmd.Connection=cnn ;
+               cmd.CommandText=tbl ;
+               
+               try
+               {
+                  cmd.ExecuteNonQuery();
+               }
+               catch (Exception ex9)
+               {
+                  AddLogString("Ошибка - " + cmd.CommandText);
+                  return ;
+               }
+
+            }
+            else
+            {
+               /* Cancel the label edit action, inform the user, and
+                  place the node in edit mode again. */
+               e.CancelEdit = true;
+               MessageBox.Show("Invalid tree node label.\n" +
+                  "The invalid characters are: '@','.', ',', '!'",
+                  "Node Label Edit");
+               e.Node.BeginEdit();
+
+            }
+         }
+         else
+         {
+            /* Cancel the label edit action, inform the user, and
+               place the node in edit mode again. */
+            e.CancelEdit = true;
+            MessageBox.Show("Invalid tree node label.\nThe label cannot be blank",
+               "Node Label Edit");
+            e.Node.BeginEdit();
+         }
+      }
+    }
+
+
+  }
+}

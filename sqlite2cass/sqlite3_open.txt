@@ -1,0 +1,74 @@
+
+
+http://www.interface.ru/home.asp?artId=5900
+
+
+
+
+
+
+
+
+
+
+
+rc = sqlite3_open("file:memdb1?mode=memory&cache=shared", &db);
+
+
+
+ATTACH DATABASE 'file:memdb1?mode=memory&cache=shared' AS aux1;
+
+
+
+PRAGMA journal_mode=WAL
+
+
+sqlite3_open('foo.sqlite3', &db); // откроем соединение к БД в файле "foo.sqlite3"
+
+sqlite3_exec(&db, "ATTACH ':memory:' AS mem", ... ); // присоединим новую БД в памяти
+
+
+
+
+
+PRAGMA page_size = bytes; // размер страницы БД; страница БД - это единица обмена между диском и кэшом, разумно сделать равным размеру кластера диска (у меня 4096)
+
+PRAGMA cache_size = -kibibytes; // задать размер кэша соединения в килобайтах, по умолчанию он равен 2000 страниц БД
+
+PRAGMA encoding = "UTF-8";  // тип данных БД, всегда используйте UTF-8
+
+PRAGMA foreign_keys = 1; // включить поддержку foreign keys, по умолчанию - ОТКЛЮЧЕНА
+
+PRAGMA journal_mode = DELETE | TRUNCATE | PERSIST | MEMORY | WAL | OFF;  // задать тип журнала, см. далее
+
+PRAGMA synchronous = 0 | OFF | 1 | NORMAL | 2 | FULL; // тип синхронизации транзакции, см. далее
+
+
+
+#define DATABASE ":memory:"
+
+sqlite3_exec(db, "PRAGMA synchronous = OFF", NULL, NULL, &sErrMsg);
+sqlite3_exec(db, "PRAGMA journal_mode = MEMORY", NULL, NULL, &sErrMsg);
+
+
+pFile = fopen (INPUTDATA,"r");
+while (!feof(pFile)) {
+
+    fgets (sInputBuf, BUFFER_SIZE, pFile);
+
+    sqlite3_bind_text(stmt, 1, strtok (sInputBuf, "\t"), -1, SQLITE_TRANSIENT); /* Get Route */
+    sqlite3_bind_text(stmt, 2, strtok (NULL, "\t"), -1, SQLITE_TRANSIENT);    /* Get Branch */
+    sqlite3_bind_text(stmt, 3, strtok (NULL, "\t"), -1, SQLITE_TRANSIENT);    /* Get Version */
+    sqlite3_bind_text(stmt, 4, strtok (NULL, "\t"), -1, SQLITE_TRANSIENT);    /* Get Stop Number */
+    sqlite3_bind_text(stmt, 5, strtok (NULL, "\t"), -1, SQLITE_TRANSIENT);    /* Get Vehicle */
+    sqlite3_bind_text(stmt, 6, strtok (NULL, "\t"), -1, SQLITE_TRANSIENT);    /* Get Date */
+    sqlite3_bind_text(stmt, 7, strtok (NULL, "\t"), -1, SQLITE_TRANSIENT);    /* Get Time */
+
+    sqlite3_step(stmt);        /* Execute the SQL Statement */
+    sqlite3_clear_bindings(stmt);    /* Clear bindings */
+    sqlite3_reset(stmt);        /* Reset VDBE */
+
+    n++;
+}
+fclose (pFile);
+

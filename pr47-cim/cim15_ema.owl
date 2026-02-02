@@ -1,0 +1,2412 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:msg="http://langdale.com.au/2005/Message#"
+    xmlns:j.0="http://iec.ch/TC57/2010/CIM-schema-cim15#"
+    xmlns:cims="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#"
+    xmlns:uml="http://langdale.com.au/2005/UML#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:j.1="http://ema.ru/2018/schema-cim15#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#" > 
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#Resistance">
+    <rdfs:label>Resistance</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementLimitChannelTune.ChannelId">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>ChannelId</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementLimitChannelTune"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementChannelTune.ParamId">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>ParamId</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementChannelTune"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#Equipment.MaintenanceDispCentersIds">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>MaintenanceDispCentersIds</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#Equipment"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementLimitDependValue.MinValue">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>MinValue</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementLimitDependValue"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#EquipmentQualifier.QualifierNumber">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>QualifierNumber</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#EquipmentQualifier"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementLimitChannel.Priority">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>Priority</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementLimitChannel"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#Length">
+    <rdfs:label>Length</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementLimit.LevelId">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>LevelId</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementLimit"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementCalcFunctionArgument.ArgumentName">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>ArgumentName</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementCalcFunctionArgument"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#Measurement.Id">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>Id</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#Measurement"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#VisualSchemeComponent.Name">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>Name</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#VisualSchemeComponent"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#ConnectivityNodeContainer">
+    <rdfs:subClassOf rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#PowerSystemResource"/>
+    <cims:belongsToCategory rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#Package_Core"/>
+    <rdfs:label>ConnectivityNodeContainer</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#Bay.VoltageLevel">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#ofAggregate"/>
+    <rdfs:comment>The voltage level containing this bay.</rdfs:comment>
+    <rdfs:label>VoltageLevel</rdfs:label>
+    <cims:inverseRoleName rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#VoltageLevel.Bays"/>
+    <rdfs:range rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#VoltageLevel"/>
+    <rdfs:domain rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#Bay"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#VisualSchemeTune">
+    <cims:belongsToCategory rdf:resource="http://ema.ru/2018/schema-cim15#Package_Visualization"/>
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#concrete"/>
+    <rdfs:label>VisualSchemeTune</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementSrcChannelManual.Dispersion">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>Dispersion</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementSrcChannelManual"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#VisualScheme.FileName">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>FileName</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#VisualScheme"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#ReactivePower">
+    <rdfs:label>ReactivePower</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementCalcFunction.CodeText">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>CodeText</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementCalcFunction"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#Name">
+    <cims:belongsToCategory rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#Package_Core"/>
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#concrete"/>
+    <rdfs:label>Name</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#TopologyNode.Name">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>Name</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#TopologyNode"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#TopologyEdge">
+    <cims:belongsToCategory rdf:resource="http://ema.ru/2018/schema-cim15#Package_Topology"/>
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#concrete"/>
+    <rdfs:label>TopologyEdge</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementLimitLevel">
+    <cims:belongsToCategory rdf:resource="http://ema.ru/2018/schema-cim15#Package_Meas"/>
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#concrete"/>
+    <rdfs:label>MeasurementLimitLevel</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#PerLengthSequenceImpedance.r">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>r</rdfs:label>
+    <cims:dataType rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#ResistancePerLength"/>
+    <rdfs:domain rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#PerLengthSequenceImpedance"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#TopologyEdge.ParamTableId">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>ParamTableId</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#TopologyEdge"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementLimit.MeasurementId">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>MeasurementId</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementLimit"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#GeneratingUnit">
+    <rdfs:subClassOf rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#Equipment"/>
+    <cims:belongsToCategory rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#Package_Production"/>
+    <rdfs:label>GeneratingUnit</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#GeoLocation.Altitude">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>Altitude</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#GeoLocation"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementLimitDependValue.Criterion">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>Criterion</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementLimitDependValue"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#BaseVoltage">
+    <rdfs:subClassOf rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#IdentifiedObject"/>
+    <cims:belongsToCategory rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#Package_Core"/>
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#concrete"/>
+    <rdfs:label>BaseVoltage</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementArchive.MeasurementId">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>MeasurementId</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementArchive"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#Package_Domain">
+    <rdfs:label>Domain</rdfs:label>
+    <rdf:type rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#ClassCategory"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#WindingConnection">
+    <cims:belongsToCategory rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#Package_Wires"/>
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#enumeration"/>
+    <rdfs:label>WindingConnection</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#Bay.Substation">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#ofAggregate"/>
+    <rdfs:comment>Substation containing the bay.</rdfs:comment>
+    <rdfs:label>Substation</rdfs:label>
+    <cims:inverseRoleName rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#Substation.Bays"/>
+    <rdfs:range rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#Substation"/>
+    <rdfs:domain rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#Bay"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#VisualSchemeGroup.ShortName">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>ShortName</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#VisualSchemeGroup"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#VisualSchemeComponent.Id">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>Id</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#VisualSchemeComponent"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#NameType.name">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>name</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#NameType"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementLimitChannelManual.MaxValue">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>MaxValue</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementLimitChannelManual"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementReceiver">
+    <cims:belongsToCategory rdf:resource="http://ema.ru/2018/schema-cim15#Package_Meas"/>
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#concrete"/>
+    <rdfs:label>MeasurementReceiver</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementLimitChannelTune.Id">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>Id</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementLimitChannelTune"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#RotatingMachine">
+    <rdfs:subClassOf rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#RegulatingCondEq"/>
+    <cims:belongsToCategory rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#Package_Wires"/>
+    <rdfs:label>RotatingMachine</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#Measurement.Feature">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>Feature</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#Measurement"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementReceiver.Port">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>Port</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementReceiver"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#EquipmentProperty.ParameterTypeAlias">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>ParameterTypeAlias</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#EquipmentProperty"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#ConductingEquipment">
+    <rdfs:subClassOf rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#Equipment"/>
+    <cims:belongsToCategory rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#Package_Core"/>
+    <rdfs:label>ConductingEquipment</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementLimit.GlobalTypeOptionAlias">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>GlobalTypeOptionAlias</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementLimit"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementCalcFunction.Name">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>Name</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementCalcFunction"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#GeoLocation">
+    <cims:belongsToCategory rdf:resource="http://ema.ru/2018/schema-cim15#Package_Domain"/>
+    <rdfs:label>GeoLocation</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#Voltage">
+    <rdfs:label>Voltage</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#TopologyNode.TypeAlias">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>TypeAlias</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#TopologyNode"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#TopologyNode.FormId">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>FormId</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#TopologyNode"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#VisualSchemeGroup.AudioFileId">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>AudioFileId</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#VisualSchemeGroup"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#VoltageLevel.highVoltageLimit">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>highVoltageLimit</rdfs:label>
+    <cims:dataType rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#Voltage"/>
+    <rdfs:domain rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#VoltageLevel"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementSrcChannelCalc.Dispersion">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>Dispersion</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementSrcChannelCalc"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementLimitDependValue.MaxValue">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>MaxValue</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementLimitDependValue"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementLimitChannelManual.State">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>State</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementLimitChannelManual"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#Equipment.Name">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>Name</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#Equipment"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementLimitDependValue">
+    <cims:belongsToCategory rdf:resource="http://ema.ru/2018/schema-cim15#Package_Meas"/>
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#concrete"/>
+    <rdfs:label>MeasurementLimitDependValue</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#TransformerEnd.Terminal">
+    <rdfs:comment>Terminal of the power transformer to which this transformer end belongs.</rdfs:comment>
+    <rdfs:label>Terminal</rdfs:label>
+    <rdfs:range rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#Terminal"/>
+    <rdfs:domain rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#TransformerEnd"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#TopologyEdge.Id">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>Id</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#TopologyEdge"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementCalcFunction.Id">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>Id</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementCalcFunction"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#Measurement.AudioFileId">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>AudioFileId</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#Measurement"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#Equipment.ModelId">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>ModelId</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#Equipment"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementCalcFunctionArgument.IsStatic">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>IsStatic</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementCalcFunctionArgument"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementLimit.ControlId">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>ControlId</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementLimit"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#WindingConnection.D">
+    <rdfs:label>D</rdfs:label>
+    <rdf:type rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#WindingConnection"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#WireInfo.coreRadius">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>coreRadius</rdfs:label>
+    <cims:dataType rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#Length"/>
+    <rdfs:domain rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#WireInfo"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#Equipment.Uid">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>Uid</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#Equipment"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementChannelTune.ChannelId">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>ChannelId</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementChannelTune"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementChannel.Name">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>Name</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementChannel"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#EquipmentProperty.ValueString">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>ValueString</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#EquipmentProperty"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementLimitChannel.IsDefault">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>IsDefault</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementLimitChannel"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementRcvChannelTune">
+    <rdfs:subClassOf rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementChannelTune"/>
+    <cims:belongsToCategory rdf:resource="http://ema.ru/2018/schema-cim15#Package_Meas"/>
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#concrete"/>
+    <rdfs:label>MeasurementRcvChannelTune</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementRcvChannel.ReceiverId">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>ReceiverId</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementRcvChannel"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementLimitChannel.Name">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>Name</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementLimitChannel"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#WindingConnection.Zn">
+    <rdfs:label>Zn</rdfs:label>
+    <rdf:type rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#WindingConnection"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#VoltageLevel">
+    <rdfs:subClassOf rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#EquipmentContainer"/>
+    <cims:belongsToCategory rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#Package_Core"/>
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#concrete"/>
+    <rdfs:label>VoltageLevel</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#PowerTransformer">
+    <rdfs:subClassOf rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#ConductingEquipment"/>
+    <cims:belongsToCategory rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#Package_Wires"/>
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#concrete"/>
+    <rdfs:label>PowerTransformer</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementLimitChannel.Id">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>Id</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementLimitChannel"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#PowerTransformerEnd.PowerTransformer">
+    <rdfs:comment>The power transformer of this power transformer end.</rdfs:comment>
+    <rdfs:label>PowerTransformer</rdfs:label>
+    <cims:inverseRoleName rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#PowerTransformer.PowerTransformerEnd"/>
+    <rdfs:range rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#PowerTransformer"/>
+    <rdfs:domain rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#PowerTransformerEnd"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#VisualSchemeTune.ParamTableId">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>ParamTableId</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#VisualSchemeTune"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementSrcChannelTune.Index">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>Index</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementSrcChannelTune"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#Package_Wires">
+    <cims:belongsToCategory rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#Package_IEC61970"/>
+    <rdfs:label>Wires</rdfs:label>
+    <rdf:type rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#ClassCategory"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementLimitChannelManual.MinValue">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>MinValue</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementLimitChannelManual"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementLimitLevel.Priority">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>Priority</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementLimitLevel"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#StateNormalPosition.NORMAL_STATE_ON">
+    <rdfs:label>NORMAL_STATE_ON</rdfs:label>
+    <rdf:type rdf:resource="http://ema.ru/2018/schema-cim15#StateNormalPosition"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#Package_IEC61970">
+    <cims:belongsToCategory rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#Package_TC57CIM"/>
+    <rdfs:label>IEC61970</rdfs:label>
+    <rdf:type rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#ClassCategory"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#ReactancePerLength">
+    <rdfs:label>ReactancePerLength</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#Switch">
+    <rdfs:subClassOf rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#ConductingEquipment"/>
+    <cims:belongsToCategory rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#Package_Wires"/>
+    <rdfs:label>Switch</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementSource.Priority">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>Priority</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementSource"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#VisualSchemeGroup.Id">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>Id</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#VisualSchemeGroup"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#VoltageLevel.Substation">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#ofAggregate"/>
+    <rdfs:comment>The substation of the voltage level.</rdfs:comment>
+    <rdfs:label>Substation</rdfs:label>
+    <cims:inverseRoleName rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#Substation.VoltageLevels"/>
+    <rdfs:range rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#Substation"/>
+    <rdfs:domain rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#VoltageLevel"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#VisualSchemeGroup.TypeAlias">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>TypeAlias</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#VisualSchemeGroup"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementArchive.ArchiveProfileId">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>ArchiveProfileId</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementArchive"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementSrcChannelCalc.State">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>State</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementSrcChannelCalc"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementLimit">
+    <cims:belongsToCategory rdf:resource="http://ema.ru/2018/schema-cim15#Package_Meas"/>
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#concrete"/>
+    <rdfs:label>MeasurementLimit</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementCalcFunctionArgument">
+    <cims:belongsToCategory rdf:resource="http://ema.ru/2018/schema-cim15#Package_Meas"/>
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#concrete"/>
+    <rdfs:label>MeasurementCalcFunctionArgument</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#EquipmentContainer.Equipments">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#aggregateOf"/>
+    <rdfs:comment>Contained equipment.</rdfs:comment>
+    <rdfs:label>Equipments</rdfs:label>
+    <cims:inverseRoleName rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#Equipment.EquipmentContainer"/>
+    <rdfs:range rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#Equipment"/>
+    <rdfs:domain rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#EquipmentContainer"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..n"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#EquipmentContainer">
+    <rdfs:subClassOf rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#ConnectivityNodeContainer"/>
+    <cims:belongsToCategory rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#Package_Core"/>
+    <rdfs:label>EquipmentContainer</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementCalcFunction.TypeAlias">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>TypeAlias</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementCalcFunction"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#VisualScheme.TypeAlias">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>TypeAlias</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#VisualScheme"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementRcvChannel">
+    <rdfs:subClassOf rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementChannel"/>
+    <cims:belongsToCategory rdf:resource="http://ema.ru/2018/schema-cim15#Package_Meas"/>
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#concrete"/>
+    <rdfs:label>MeasurementRcvChannel</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#VisualScheme">
+    <cims:belongsToCategory rdf:resource="http://ema.ru/2018/schema-cim15#Package_Visualization"/>
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#concrete"/>
+    <rdfs:label>VisualScheme</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementCalcFunctionArgument.MeasurementCalcFunction">
+    <rdfs:label>MeasurementCalcFunction</rdfs:label>
+    <cims:inverseRoleName rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementCalcFunction.Arguments"/>
+    <rdfs:range rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementCalcFunction"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementCalcFunctionArgument"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..n"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#Connector">
+    <rdfs:subClassOf rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#ConductingEquipment"/>
+    <cims:belongsToCategory rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#Package_Wires"/>
+    <rdfs:label>Connector</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementReceiver.Name">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>Name</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementReceiver"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#Equipment.ParentId">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>ParentId</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#Equipment"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementChannel.IsDefault">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>IsDefault</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementChannel"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementLimitChannelTune.ParamTableId">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>ParamTableId</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementLimitChannelTune"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#Disconnector">
+    <rdfs:subClassOf rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#Switch"/>
+    <cims:belongsToCategory rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#Package_Wires"/>
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#concrete"/>
+    <rdfs:label>Disconnector</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#Substation.Bays">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#aggregateOf"/>
+    <rdfs:comment>Bays contained in the substation.</rdfs:comment>
+    <rdfs:label>Bays</rdfs:label>
+    <cims:inverseRoleName rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#Bay.Substation"/>
+    <rdfs:range rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#Bay"/>
+    <rdfs:domain rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#Substation"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..n"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#ConductingEquipment.Terminals">
+    <rdfs:comment>Conducting equipment have terminals that may be connected to other conducting equipment terminals via connectivity nodes or topological nodes.</rdfs:comment>
+    <rdfs:label>Terminals</rdfs:label>
+    <cims:inverseRoleName rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#Terminal.ConductingEquipment"/>
+    <rdfs:range rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#Terminal"/>
+    <rdfs:domain rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#ConductingEquipment"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..n"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementSrcChannelCalc.CodeFile">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>CodeFile</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementSrcChannelCalc"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#WindingConnection.Z">
+    <rdfs:label>Z</rdfs:label>
+    <rdf:type rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#WindingConnection"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#Measurement.ShortName">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>ShortName</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#Measurement"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#Name.IdentifiedObject">
+    <rdfs:comment>Identified object that this name designates.</rdfs:comment>
+    <rdfs:label>IdentifiedObject</rdfs:label>
+    <cims:inverseRoleName rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#IdentifiedObject.Names"/>
+    <rdfs:range rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#IdentifiedObject"/>
+    <rdfs:domain rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#Name"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#VisualScheme.Name">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>Name</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#VisualScheme"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#BaseVoltage.nominalVoltage">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>nominalVoltage</rdfs:label>
+    <cims:dataType rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#Voltage"/>
+    <rdfs:domain rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#BaseVoltage"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#ConductingEquipment.BaseVoltage">
+    <rdfs:comment>Base voltage of this conducting equipment.  Use only when there is no voltage level container used and only one base voltage applies.  For example, not used for transformers.</rdfs:comment>
+    <rdfs:label>BaseVoltage</rdfs:label>
+    <rdfs:range rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#BaseVoltage"/>
+    <rdfs:domain rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#ConductingEquipment"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#BusbarSection">
+    <rdfs:subClassOf rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#Connector"/>
+    <cims:belongsToCategory rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#Package_Wires"/>
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#concrete"/>
+    <rdfs:label>BusbarSection</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#PowerTransformer.PowerTransformerEnd">
+    <rdfs:comment>The ends of this power transformer.</rdfs:comment>
+    <rdfs:label>PowerTransformerEnd</rdfs:label>
+    <cims:inverseRoleName rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#PowerTransformerEnd.PowerTransformer"/>
+    <rdfs:range rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#PowerTransformerEnd"/>
+    <rdfs:domain rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#PowerTransformer"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..n"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#Measurement.TerminalId">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>TerminalId</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#Measurement"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementLimitLevel.RepeatSignalAlias">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>RepeatSignalAlias</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementLimitLevel"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#ConnectivityNodeContainer.ConnectivityNodes">
+    <rdfs:comment>Connectivity nodes which belong to this connectivity node container.</rdfs:comment>
+    <rdfs:label>ConnectivityNodes</rdfs:label>
+    <cims:inverseRoleName rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#ConnectivityNode.ConnectivityNodeContainer"/>
+    <rdfs:range rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#ConnectivityNode"/>
+    <rdfs:domain rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#ConnectivityNodeContainer"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..n"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementLimit.HystPeriod">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>HystPeriod</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementLimit"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#WindingConnection.I">
+    <rdfs:label>I</rdfs:label>
+    <rdf:type rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#WindingConnection"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#Reactance">
+    <rdfs:label>Reactance</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementChannel.IsCurrent">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>IsCurrent</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementChannel"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementLimitChannelTune.Koef">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>Koef</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementLimitChannelTune"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#Breaker">
+    <rdfs:subClassOf rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#ProtectedSwitch"/>
+    <cims:belongsToCategory rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#Package_Wires"/>
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#concrete"/>
+    <rdfs:label>Breaker</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#Substation.VoltageLevels">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#aggregateOf"/>
+    <rdfs:comment>The voltage levels within this substation.</rdfs:comment>
+    <rdfs:label>VoltageLevels</rdfs:label>
+    <cims:inverseRoleName rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#VoltageLevel.Substation"/>
+    <rdfs:range rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#VoltageLevel"/>
+    <rdfs:domain rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#Substation"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..n"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementLimitChannelTune.ParamId">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>ParamId</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementLimitChannelTune"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#VisualSchemeComponent.Feature">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>Feature</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#VisualSchemeComponent"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#VisualScheme.AudioFileId">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>AudioFileId</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#VisualScheme"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#Terminal.ConnectivityNode">
+    <rdfs:comment>The connectivity node to which this terminal connects with zero impedance.</rdfs:comment>
+    <rdfs:label>ConnectivityNode</rdfs:label>
+    <cims:inverseRoleName rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#ConnectivityNode.Terminals"/>
+    <rdfs:range rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#ConnectivityNode"/>
+    <rdfs:domain rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#Terminal"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#TopologyNode.Id">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>Id</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#TopologyNode"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementSrcChannelCalc.Formule">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>Formule</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementSrcChannelCalc"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementCalcFunction.CodeHeaderText">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>CodeHeaderText</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementCalcFunction"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#WindingConnection.Y">
+    <rdfs:label>Y</rdfs:label>
+    <rdf:type rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#WindingConnection"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementLimitChannelManual.Dispersion">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>Dispersion</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementLimitChannelManual"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#GeoLocation.Latitude">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>Latitude</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#GeoLocation"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementLimitChannelTune">
+    <cims:belongsToCategory rdf:resource="http://ema.ru/2018/schema-cim15#Package_Meas"/>
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#concrete"/>
+    <rdfs:label>MeasurementLimitChannelTune</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementSource.Port">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>Port</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementSource"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#Equipment.EquipmentContainer">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#ofAggregate"/>
+    <rdfs:comment>Container of this equipment.</rdfs:comment>
+    <rdfs:label>EquipmentContainer</rdfs:label>
+    <cims:inverseRoleName rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#EquipmentContainer.Equipments"/>
+    <rdfs:range rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#EquipmentContainer"/>
+    <rdfs:domain rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#Equipment"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#Package_AssetInfo">
+    <cims:belongsToCategory rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#Package_IEC61968"/>
+    <rdfs:label>AssetInfo</rdfs:label>
+    <rdf:type rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#ClassCategory"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#Conductor.length">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>length</rdfs:label>
+    <cims:dataType rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#Length"/>
+    <rdfs:domain rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#Conductor"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementLimitDependValue.LimitId">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>LimitId</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementLimitDependValue"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#TopologyNode.ShortName">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>ShortName</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#TopologyNode"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#Conductor">
+    <rdfs:subClassOf rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#ConductingEquipment"/>
+    <cims:belongsToCategory rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#Package_Wires"/>
+    <rdfs:label>Conductor</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#TopologyEdge.Uid">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>Uid</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#TopologyEdge"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#SynchronousMachine">
+    <rdfs:subClassOf rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#RotatingMachine"/>
+    <cims:belongsToCategory rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#Package_Wires"/>
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#concrete"/>
+    <rdfs:label>SynchronousMachine</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementSource.Id">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>Id</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementSource"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#ConnectivityNode">
+    <rdfs:subClassOf rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#IdentifiedObject"/>
+    <cims:belongsToCategory rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#Package_Core"/>
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#concrete"/>
+    <rdfs:label>ConnectivityNode</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#Terminal.ConductingEquipment">
+    <rdfs:comment>The conducting equipment of the terminal.  Conducting equipment have  terminals that may be connected to other conducting equipment terminals via connectivity nodes or topological nodes.</rdfs:comment>
+    <rdfs:label>ConductingEquipment</rdfs:label>
+    <cims:inverseRoleName rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#ConductingEquipment.Terminals"/>
+    <rdfs:range rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#ConductingEquipment"/>
+    <rdfs:domain rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#Terminal"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementSrcChannel.SourceId">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>SourceId</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementSrcChannel"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#VisualSchemeTune.ComponenetId">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>ComponenetId</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#VisualSchemeTune"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#Susceptance">
+    <rdfs:label>Susceptance</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#EquipmentLocation.EquipmentId">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>EquipmentId</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#EquipmentLocation"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementLimitControl.Name">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>Name</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementLimitControl"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#Measurement">
+    <cims:belongsToCategory rdf:resource="http://ema.ru/2018/schema-cim15#Package_Meas"/>
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#concrete"/>
+    <rdfs:label>Measurement</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#SusceptancePerLength">
+    <rdfs:label>SusceptancePerLength</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementLimit.NotifyPeriod">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>NotifyPeriod</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementLimit"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementLimit.OccurType">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>OccurType</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementLimit"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#EquipmentLocation">
+    <rdfs:subClassOf rdf:resource="http://ema.ru/2018/schema-cim15#GeoLocation"/>
+    <cims:belongsToCategory rdf:resource="http://ema.ru/2018/schema-cim15#Package_Equipment"/>
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#concrete"/>
+    <rdfs:label>EquipmentLocation</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementLimit.OccurOver">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>OccurOver</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementLimit"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#Measurement.Precision">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>Precision</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#Measurement"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#Package_Equipment">
+    <rdfs:label>Equipment</rdfs:label>
+    <rdf:type rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#ClassCategory"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#ConnectivityNode.ConnectivityNodeContainer">
+    <rdfs:comment>Container of this connectivity node.</rdfs:comment>
+    <rdfs:label>ConnectivityNodeContainer</rdfs:label>
+    <cims:inverseRoleName rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#ConnectivityNodeContainer.ConnectivityNodes"/>
+    <rdfs:range rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#ConnectivityNodeContainer"/>
+    <rdfs:domain rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#ConnectivityNode"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#VisualSchemeComponent.Tag">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>Tag</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#VisualSchemeComponent"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#PowerSystemResource">
+    <rdfs:subClassOf rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#IdentifiedObject"/>
+    <cims:belongsToCategory rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#Package_Core"/>
+    <rdfs:label>PowerSystemResource</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#TopologyEdge.ShortName">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>ShortName</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#TopologyEdge"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#VoltageLevel.Bays">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#aggregateOf"/>
+    <rdfs:comment>The bays within this voltage level.</rdfs:comment>
+    <rdfs:label>Bays</rdfs:label>
+    <cims:inverseRoleName rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#Bay.VoltageLevel"/>
+    <rdfs:range rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#Bay"/>
+    <rdfs:domain rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#VoltageLevel"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..n"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#Bay">
+    <rdfs:subClassOf rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#EquipmentContainer"/>
+    <cims:belongsToCategory rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#Package_Core"/>
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#concrete"/>
+    <rdfs:label>Bay</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#Package_Generation">
+    <cims:belongsToCategory rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#Package_IEC61970"/>
+    <rdfs:label>Generation</rdfs:label>
+    <rdf:type rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#ClassCategory"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementLimitLevel.Name">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>Name</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementLimitLevel"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#VisualSchemeGroup.ParentId">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>ParentId</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#VisualSchemeGroup"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementLimit.Id">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>Id</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementLimit"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementCalcFunction.ArgumentsCount">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>ArgumentsCount</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementCalcFunction"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementSource.GlobalTypeOptionAlias">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>GlobalTypeOptionAlias</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementSource"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#PerLengthSequenceImpedance">
+    <rdfs:subClassOf rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#PerLengthImpedance"/>
+    <cims:belongsToCategory rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#Package_Wires"/>
+    <rdfs:label>PerLengthSequenceImpedance</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#Measurement.IsExternal">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>IsExternal</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#Measurement"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#Name.NameType">
+    <rdfs:comment>Type of this name.</rdfs:comment>
+    <rdfs:label>NameType</rdfs:label>
+    <rdfs:range rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#NameType"/>
+    <rdfs:domain rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#Name"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#Equipment">
+    <rdfs:subClassOf rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#PowerSystemResource"/>
+    <cims:belongsToCategory rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#Package_Core"/>
+    <rdfs:label>Equipment</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#Equipment.Location">
+    <rdfs:label>Location</rdfs:label>
+    <rdfs:range rdf:resource="http://ema.ru/2018/schema-cim15#EquipmentLocation"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#Equipment"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..n"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementChannel.Id">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>Id</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementChannel"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementCalcFunction.ShortName">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>ShortName</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementCalcFunction"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#Terminal">
+    <rdfs:subClassOf rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#IdentifiedObject"/>
+    <cims:belongsToCategory rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#Package_Core"/>
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#concrete"/>
+    <rdfs:label>Terminal</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#EquipmentProperty.EquipmentId">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>EquipmentId</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#EquipmentProperty"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementArchive.ArchiveTableName">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>ArchiveTableName</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementArchive"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementLimit.OccurBelow">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>OccurBelow</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementLimit"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementLimit.DependValues">
+    <rdfs:label>DependValues</rdfs:label>
+    <rdfs:range rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementLimitDependValue"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementLimit"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementLimitLevel.SignalAlias">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>SignalAlias</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementLimitLevel"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementLimitChannel.SourceId">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>SourceId</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementLimitChannel"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#VisualSchemeGroup.Name">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>Name</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#VisualSchemeGroup"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementSrcChannelManual">
+    <rdfs:subClassOf rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementSrcChannel"/>
+    <cims:belongsToCategory rdf:resource="http://ema.ru/2018/schema-cim15#Package_Meas"/>
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#concrete"/>
+    <rdfs:label>MeasurementSrcChannelManual</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#ResistancePerLength">
+    <rdfs:label>ResistancePerLength</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#NameType.description">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>description</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#NameType"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementLimitControl">
+    <cims:belongsToCategory rdf:resource="http://ema.ru/2018/schema-cim15#Package_Meas"/>
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#concrete"/>
+    <rdfs:label>MeasurementLimitControl</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementCalcFunctionArgument.Index">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>Index</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementCalcFunctionArgument"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#Package_Core">
+    <cims:belongsToCategory rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#Package_IEC61970"/>
+    <rdfs:label>Core</rdfs:label>
+    <rdf:type rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#ClassCategory"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementChannelTune.Id">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>Id</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementChannelTune"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#PowerTransformerEnd.connectionKind">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>connectionKind</rdfs:label>
+    <rdfs:range rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#WindingConnection"/>
+    <rdfs:domain rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#PowerTransformerEnd"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#WindingConnection.Yn">
+    <rdfs:label>Yn</rdfs:label>
+    <rdf:type rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#WindingConnection"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementReceiver.Id">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>Id</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementReceiver"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#Conductance">
+    <rdfs:label>Conductance</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#Equipment.ModifyDate">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>ModifyDate</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#Equipment"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementChannelTune">
+    <cims:belongsToCategory rdf:resource="http://ema.ru/2018/schema-cim15#Package_Meas"/>
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#concrete"/>
+    <rdfs:label>MeasurementChannelTune</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#Package_Visualization">
+    <rdfs:label>Visualization</rdfs:label>
+    <rdf:type rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#ClassCategory"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#IdentifiedObject.name">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>name</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#IdentifiedObject"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementCalcFunction">
+    <cims:belongsToCategory rdf:resource="http://ema.ru/2018/schema-cim15#Package_Meas"/>
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#concrete"/>
+    <rdfs:label>MeasurementCalcFunction</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#Package_Production">
+    <cims:belongsToCategory rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#Package_Generation"/>
+    <rdfs:label>Production</rdfs:label>
+    <rdf:type rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#ClassCategory"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#PowerTransformerEnd.g">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>g</rdfs:label>
+    <cims:dataType rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#Conductance"/>
+    <rdfs:domain rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#PowerTransformerEnd"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#TopologyEdge.StateNormal">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>StateNormal</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#TopologyEdge"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#VisualSchemeTune.ParamId">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>ParamId</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#VisualSchemeTune"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#TopologyEdge.Name">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>Name</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#TopologyEdge"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#VisualSchemeComponent.TypeId">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>TypeId</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#VisualSchemeComponent"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#EquipmentProperty">
+    <cims:belongsToCategory rdf:resource="http://ema.ru/2018/schema-cim15#Package_Equipment"/>
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#concrete"/>
+    <rdfs:label>EquipmentProperty</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#PowerTransformerEnd.x">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>x</rdfs:label>
+    <cims:dataType rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#Reactance"/>
+    <rdfs:domain rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#PowerTransformerEnd"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#Measurement.Phase">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>Phase</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#Measurement"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementArchive.GlobalTypeOptionAlias">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>GlobalTypeOptionAlias</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementArchive"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#TransformerEnd.endNumber">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>endNumber</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    <rdfs:domain rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#TransformerEnd"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementSrcChannelManual.State">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>State</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementSrcChannelManual"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementReceiver.GlobalTypeOptionAlias">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>GlobalTypeOptionAlias</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementReceiver"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#Package_Topology">
+    <rdfs:label>Topology</rdfs:label>
+    <rdf:type rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#ClassCategory"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementCalcFunctionArgument.Name">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>Name</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementCalcFunctionArgument"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementLimitChannel">
+    <cims:belongsToCategory rdf:resource="http://ema.ru/2018/schema-cim15#Package_Meas"/>
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#concrete"/>
+    <rdfs:label>MeasurementLimitChannel</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#PerLengthSequenceImpedance.x">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>x</rdfs:label>
+    <cims:dataType rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#ReactancePerLength"/>
+    <rdfs:domain rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#PerLengthSequenceImpedance"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#Equipment.OwnerOrganizationId">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>OwnerOrganizationId</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#Equipment"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#NameType">
+    <cims:belongsToCategory rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#Package_Core"/>
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#concrete"/>
+    <rdfs:label>NameType</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#Equipment.ControlDispCenterId">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>ControlDispCenterId</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#Equipment"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#ACLineSegment">
+    <rdfs:subClassOf rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#Conductor"/>
+    <cims:belongsToCategory rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#Package_Wires"/>
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#concrete"/>
+    <rdfs:label>ACLineSegment</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementCalcFunctionArgument.Id">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>Id</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementCalcFunctionArgument"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#Equipment.Qualifiers">
+    <rdfs:label>Qualifiers</rdfs:label>
+    <rdfs:range rdf:resource="http://ema.ru/2018/schema-cim15#EquipmentQualifier"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#Equipment"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..n"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#VisualSchemeTune.GlobalTypeOptionAlias">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>GlobalTypeOptionAlias</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#VisualSchemeTune"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementLimitControl.Id">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>Id</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementLimitControl"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#Package_Meas">
+    <rdfs:label>Meas</rdfs:label>
+    <rdf:type rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#ClassCategory"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#Equipment.AudioFileId">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>AudioFileId</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#Equipment"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#RegulatingCondEq">
+    <rdfs:subClassOf rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#ConductingEquipment"/>
+    <cims:belongsToCategory rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#Package_Wires"/>
+    <rdfs:label>RegulatingCondEq</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#VisualSchemeTune.TuneTypeAlias">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>TuneTypeAlias</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#VisualSchemeTune"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#Package_TC57CIM">
+    <rdfs:label>TC57CIM</rdfs:label>
+    <rdf:type rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#ClassCategory"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#Name.name">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>name</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#Name"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#IdentifiedObject.Names">
+    <rdfs:comment>All names of this identified object.</rdfs:comment>
+    <rdfs:label>Names</rdfs:label>
+    <cims:inverseRoleName rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#Name.IdentifiedObject"/>
+    <rdfs:range rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#Name"/>
+    <rdfs:domain rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#IdentifiedObject"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..n"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#Switch.normalOpen">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>normalOpen</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <rdfs:domain rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#Switch"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#VoltageLevel.BaseVoltage">
+    <rdfs:comment>The base voltage used for all equipment within the voltage level.</rdfs:comment>
+    <rdfs:label>BaseVoltage</rdfs:label>
+    <rdfs:range rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#BaseVoltage"/>
+    <rdfs:domain rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#VoltageLevel"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#SynchronousMachine.baseQ">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>baseQ</rdfs:label>
+    <cims:dataType rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#ReactivePower"/>
+    <rdfs:domain rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#SynchronousMachine"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementChannelTune.ParamTableId">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>ParamTableId</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementChannelTune"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementSource">
+    <cims:belongsToCategory rdf:resource="http://ema.ru/2018/schema-cim15#Package_Meas"/>
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#concrete"/>
+    <rdfs:label>MeasurementSource</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementArchive">
+    <cims:belongsToCategory rdf:resource="http://ema.ru/2018/schema-cim15#Package_Meas"/>
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#concrete"/>
+    <rdfs:label>MeasurementArchive</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementSrcChannelCalc.CodeText">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>CodeText</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementSrcChannelCalc"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#Equipment.TypeAlias">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>TypeAlias</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#Equipment"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#TopologyEdge.UidNode1">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>UidNode1</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#TopologyEdge"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#VisualScheme.GroupId">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>GroupId</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#VisualScheme"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementLimitChannel.IsCurrent">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>IsCurrent</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementLimitChannel"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#PowerTransformerEnd.r">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>r</rdfs:label>
+    <cims:dataType rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#Resistance"/>
+    <rdfs:domain rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#PowerTransformerEnd"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#VisualScheme.Id">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>Id</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#VisualScheme"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#EquipmentQualifier.Qualifier">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>Qualifier</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#EquipmentQualifier"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#TopologyNode.Uid">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>Uid</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#TopologyNode"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementLimitChannel.LimitId">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>LimitId</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementLimitChannel"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#PerLengthSequenceImpedance.bch">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>bch</rdfs:label>
+    <cims:dataType rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#SusceptancePerLength"/>
+    <rdfs:domain rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#PerLengthSequenceImpedance"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#Measurement.TypeAlias">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>TypeAlias</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#Measurement"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementLimitLevel.Id">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>Id</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementLimitLevel"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#PowerTransformerEnd">
+    <rdfs:subClassOf rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#TransformerEnd"/>
+    <cims:belongsToCategory rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#Package_Wires"/>
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#concrete"/>
+    <rdfs:label>PowerTransformerEnd</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementSrcChannelManual.StatusId">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>StatusId</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementSrcChannelManual"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementSrcChannelManual.Value">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>Value</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementSrcChannelManual"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#PowerTransformerEnd.b">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>b</rdfs:label>
+    <cims:dataType rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#Susceptance"/>
+    <rdfs:domain rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#PowerTransformerEnd"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#PowerTransformerEnd.ratedU">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>ratedU</rdfs:label>
+    <cims:dataType rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#Voltage"/>
+    <rdfs:domain rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#PowerTransformerEnd"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#Equipment">
+    <cims:belongsToCategory rdf:resource="http://ema.ru/2018/schema-cim15#Package_Equipment"/>
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#concrete"/>
+    <rdfs:label>Equipment</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#PerLengthImpedance">
+    <rdfs:subClassOf rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#IdentifiedObject"/>
+    <cims:belongsToCategory rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#Package_Wires"/>
+    <rdfs:label>PerLengthImpedance</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#TopologyEdge.EquipmentId">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>EquipmentId</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#TopologyEdge"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#EquipmentQualifier">
+    <cims:belongsToCategory rdf:resource="http://ema.ru/2018/schema-cim15#Package_Equipment"/>
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#concrete"/>
+    <rdfs:label>EquipmentQualifier</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#VisualSchemeComponent.SchemeId">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>SchemeId</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#VisualSchemeComponent"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementChannel.MeasurementId">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>MeasurementId</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementChannel"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#PerLengthImpedance.WireInfos">
+    <rdfs:comment>All wire datasheets used to calculate this impedance.</rdfs:comment>
+    <rdfs:label>WireInfos</rdfs:label>
+    <rdfs:range rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#WireInfo"/>
+    <rdfs:domain rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#PerLengthImpedance"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..n"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#VisualSchemeGroup">
+    <cims:belongsToCategory rdf:resource="http://ema.ru/2018/schema-cim15#Package_Visualization"/>
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#concrete"/>
+    <rdfs:label>VisualSchemeGroup</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#EquipmentProperty.UnitId">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>UnitId</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#EquipmentProperty"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#TopologyEdge.UidNode2">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>UidNode2</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#TopologyEdge"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementSrcChannelCalc">
+    <rdfs:subClassOf rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementSrcChannel"/>
+    <cims:belongsToCategory rdf:resource="http://ema.ru/2018/schema-cim15#Package_Meas"/>
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#concrete"/>
+    <rdfs:label>MeasurementSrcChannelCalc</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#VisualScheme.ShortName">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>ShortName</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#VisualScheme"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#Measurement.EquipmentId">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>EquipmentId</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#Measurement"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#Measurement.PhysicalUnitId">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>PhysicalUnitId</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#Measurement"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#StateNormalPosition.NORMAL_STATE_OFF">
+    <rdfs:label>NORMAL_STATE_OFF</rdfs:label>
+    <rdf:type rdf:resource="http://ema.ru/2018/schema-cim15#StateNormalPosition"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#VoltageLevel.lowVoltageLimit">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>lowVoltageLimit</rdfs:label>
+    <cims:dataType rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#Voltage"/>
+    <rdfs:domain rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#VoltageLevel"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#StateNormalPosition">
+    <cims:belongsToCategory rdf:resource="http://ema.ru/2018/schema-cim15#Package_Domain"/>
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#enumeration"/>
+    <rdfs:label>StateNormalPosition</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#WireInfo">
+    <rdfs:subClassOf rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#IdentifiedObject"/>
+    <cims:belongsToCategory rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#Package_AssetInfo"/>
+    <rdfs:label>WireInfo</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#Equipment.Id">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>Id</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#Equipment"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#ApparentPower">
+    <rdfs:label>ApparentPower</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementChannel">
+    <cims:belongsToCategory rdf:resource="http://ema.ru/2018/schema-cim15#Package_Meas"/>
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#concrete"/>
+    <rdfs:label>MeasurementChannel</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#TopologyEdge.ParamId">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>ParamId</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#TopologyEdge"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#TopologyNode">
+    <cims:belongsToCategory rdf:resource="http://ema.ru/2018/schema-cim15#Package_Topology"/>
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#concrete"/>
+    <rdfs:label>TopologyNode</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#ProtectedSwitch">
+    <rdfs:subClassOf rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#Switch"/>
+    <cims:belongsToCategory rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#Package_Wires"/>
+    <rdfs:label>ProtectedSwitch</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#TopologyNode.X">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>X</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#TopologyNode"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementChannel.Priority">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>Priority</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementChannel"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementSrcChannelCalc.ArgumentsCount">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>ArgumentsCount</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementSrcChannelCalc"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#EquipmentProperty.ValueNum">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>ValueNum</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#EquipmentProperty"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#SynchronousMachine.GeneratingUnit">
+    <rdfs:comment>A synchronous machine may operate as a generator and as such becomes a member of a generating unit.</rdfs:comment>
+    <rdfs:label>GeneratingUnit</rdfs:label>
+    <rdfs:range rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#GeneratingUnit"/>
+    <rdfs:domain rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#SynchronousMachine"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#TransformerEnd.BaseVoltage">
+    <rdfs:comment>Base voltage of the transformer end.  This is essential for PU calculation.</rdfs:comment>
+    <rdfs:label>BaseVoltage</rdfs:label>
+    <rdfs:range rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#BaseVoltage"/>
+    <rdfs:domain rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#TransformerEnd"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#GroundDisconnector">
+    <rdfs:subClassOf rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#Switch"/>
+    <cims:belongsToCategory rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#Package_Wires"/>
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#concrete"/>
+    <rdfs:label>GroundDisconnector</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementSrcChannel">
+    <rdfs:subClassOf rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementChannel"/>
+    <cims:belongsToCategory rdf:resource="http://ema.ru/2018/schema-cim15#Package_Meas"/>
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#concrete"/>
+    <rdfs:label>MeasurementSrcChannel</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#Package_IEC61968">
+    <cims:belongsToCategory rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#Package_TC57CIM"/>
+    <rdfs:label>IEC61968</rdfs:label>
+    <rdf:type rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#ClassCategory"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#Equipment.ShortName">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>ShortName</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#Equipment"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#TopologyEdge.FormId">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>FormId</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#TopologyEdge"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#IdentifiedObject">
+    <cims:belongsToCategory rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#Package_Core"/>
+    <rdfs:label>IdentifiedObject</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#VisualSchemeTune.Scale">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>Scale</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#VisualSchemeTune"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#WindingConnection.A">
+    <rdfs:label>A</rdfs:label>
+    <rdf:type rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#WindingConnection"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#TopologyEdge.TypeAlias">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>TypeAlias</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#TopologyEdge"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementReceiver.Priority">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>Priority</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementReceiver"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#ConnectivityNode.Terminals">
+    <rdfs:comment>Terminals interconnected with zero impedance at a this connectivity node.</rdfs:comment>
+    <rdfs:label>Terminals</rdfs:label>
+    <cims:inverseRoleName rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#Terminal.ConnectivityNode"/>
+    <rdfs:range rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#Terminal"/>
+    <rdfs:domain rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#ConnectivityNode"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..n"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#EquipmentProperty.Id">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>Id</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#EquipmentProperty"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#VisualSchemeComponent.Precision">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>Precision</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#VisualSchemeComponent"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#TopologyNode.Y">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>Y</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#TopologyNode"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementSrcChannelTune.Koef">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>Koef</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementSrcChannelTune"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementSrcChannelTune">
+    <rdfs:subClassOf rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementChannelTune"/>
+    <cims:belongsToCategory rdf:resource="http://ema.ru/2018/schema-cim15#Package_Meas"/>
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#concrete"/>
+    <rdfs:label>MeasurementSrcChannelTune</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#VisualSchemeComponent">
+    <cims:belongsToCategory rdf:resource="http://ema.ru/2018/schema-cim15#Package_Visualization"/>
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#concrete"/>
+    <rdfs:label>VisualSchemeComponent</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#TransformerEnd">
+    <rdfs:subClassOf rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#IdentifiedObject"/>
+    <cims:belongsToCategory rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#Package_Wires"/>
+    <rdfs:label>TransformerEnd</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#EquipmentQualifier.EquipmentId">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>EquipmentId</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#EquipmentQualifier"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementCalcFunction.UseCount">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>UseCount</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementCalcFunction"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementCalcFunctionArgument.FunctionId">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>FunctionId</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementCalcFunctionArgument"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#PowerTransformerEnd.ratedS">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>ratedS</rdfs:label>
+    <cims:dataType rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#ApparentPower"/>
+    <rdfs:domain rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#PowerTransformerEnd"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementLimitChannelManual">
+    <rdfs:subClassOf rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementLimitChannel"/>
+    <cims:belongsToCategory rdf:resource="http://ema.ru/2018/schema-cim15#Package_Meas"/>
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#concrete"/>
+    <rdfs:label>MeasurementLimitChannelManual</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#GeoLocation.Longitude">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>Longitude</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#GeoLocation"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#EquipmentLocation.Id">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>Id</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#EquipmentLocation"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementCalcFunction.Arguments">
+    <rdfs:label>Arguments</rdfs:label>
+    <cims:inverseRoleName rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementCalcFunctionArgument.MeasurementCalcFunction"/>
+    <rdfs:range rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementCalcFunctionArgument"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementCalcFunction"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementLimitDependValue.Id">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>Id</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementLimitDependValue"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#Line">
+    <rdfs:subClassOf rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#EquipmentContainer"/>
+    <cims:belongsToCategory rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#Package_Wires"/>
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#concrete"/>
+    <rdfs:label>Line</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2010/CIM-schema-cim15#Substation">
+    <rdfs:subClassOf rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#EquipmentContainer"/>
+    <cims:belongsToCategory rdf:resource="http://iec.ch/TC57/2010/CIM-schema-cim15#Package_Core"/>
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#concrete"/>
+    <rdfs:label>Substation</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#Measurement.Name">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>Name</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#Measurement"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ema.ru/2018/schema-cim15#MeasurementSource.Name">
+    <cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdfs:label>Name</rdfs:label>
+    <cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://ema.ru/2018/schema-cim15#MeasurementSource"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+</rdf:RDF>

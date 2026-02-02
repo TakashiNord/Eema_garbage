@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <ProjectGuid>{DC01DFE9-12B9-4ED6-B9BD-7C7FFFB8760B}</ProjectGuid>
+    <ProjectTypeGuids>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>FormulGen2</RootNamespace>
+    <AssemblyName>FormulGen2</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'AnyCPU' ">
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <DebugSymbols>True</DebugSymbols>
+    <DebugType>Full</DebugType>
+    <Optimize>False</Optimize>
+    <CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <DebugSymbols>False</DebugSymbols>
+    <DebugType>None</DebugType>
+    <Optimize>True</Optimize>
+    <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
+    <DefineConstants>TRACE</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Analizer\AnalizeHelper.cs">
+      <Link>AnalizeHelper.cs</Link>
+    </Compile>
+    <Compile Include="Analizer\ArgItem.cs">
+      <Link>ArgItem.cs</Link>
+    </Compile>
+    <Compile Include="Analizer\CodeCResult.cs">
+      <Link>CodeCResult.cs</Link>
+    </Compile>
+    <Compile Include="Analizer\DividerItem.cs">
+      <Link>DividerItem.cs</Link>
+    </Compile>
+    <Compile Include="Analizer\ElementCCode.cs">
+      <Link>ElementCCode.cs</Link>
+    </Compile>
+    <Compile Include="Analizer\Errors.Designer.cs">
+      <Link>Errors.Designer.cs</Link>
+    </Compile>
+    <Compile Include="Analizer\Expression.cs">
+      <Link>Expression.cs</Link>
+    </Compile>
+    <Compile Include="Analizer\ExpressionIterator.cs">
+      <Link>ExpressionIterator.cs</Link>
+    </Compile>
+    <Compile Include="Analizer\FormulaException.cs">
+      <Link>FormulaException.cs</Link>
+    </Compile>
+    <Compile Include="Analizer\FuncArgException.cs">
+      <Link>FuncArgException.cs</Link>
+    </Compile>
+    <Compile Include="Analizer\FuncExpression.cs">
+      <Link>FuncExpression.cs</Link>
+    </Compile>
+    <Compile Include="Analizer\FuncItem.cs">
+      <Link>FuncItem.cs</Link>
+    </Compile>
+    <Compile Include="Analizer\FunctionException.cs">
+      <Link>FunctionException.cs</Link>
+    </Compile>
+    <Compile Include="Analizer\ICodeGenerator.cs">
+      <Link>ICodeGenerator.cs</Link>
+    </Compile>
+    <Compile Include="Analizer\ItemExpression.cs">
+      <Link>ItemExpression.cs</Link>
+    </Compile>
+    <Compile Include="Analizer\LogicItem.cs">
+      <Link>LogicItem.cs</Link>
+    </Compile>
+    <Compile Include="Analizer\MultiExpression.cs">
+      <Link>MultiExpression.cs</Link>
+    </Compile>
+    <Compile Include="Analizer\NumberItem.cs">
+      <Link>NumberItem.cs</Link>
+    </Compile>
+    <Compile Include="Analizer\ParamItem.cs">
+      <Link>ParamItem.cs</Link>
+    </Compile>
+    <Compile Include="Analizer\SumExpression.cs">
+      <Link>SumExpression.cs</Link>
+    </Compile>
+    <Compile Include="FunctionArg.cs" />
+    <Compile Include="FunctionTemplate.cs" />
+    <Compile Include="FunctionTemplateMapper.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

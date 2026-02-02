@@ -1,0 +1,91 @@
+        /// <summary>
+        /// Событие на нажатие кнопки проверки формулы
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void OnFormuleCheckClick(object sender, EventArgs e)
+        {
+            CheckFormule();
+        }
+
+        /// <summary>
+        /// Проверка формулы
+        /// </summary>
+        /// <returns>Результат проверки формулы</returns>
+        private AnalizeHelper.IResultValue CheckFormule()
+        {
+            AnalizeHelper.IResultValue value = _formuleAnalyzer.Analize(ComRegistry, _formula.Text, _idTable);
+            if (!value.HasError)
+            {
+                _checkFormulResult.Text = "В этой формуле все верно";
+                RSDU.Messaging.Log.Write(value.GetCodeC(1));
+            }
+            else
+            {
+                _checkFormulResult.Text = value.Message;
+                _formula.Select(value.StartPos, value.EndPos - value.StartPos);
+            }
+
+            SetParamList(value.MeasureList);
+
+            return value;
+        }
+
+
+
+           if (result)
+            {
+                AnalizeHelper.IResultValue value = CheckFormule();
+                if (value.HasError)
+                {
+                    RsduMessageForm.ShowDialog(this, "Найдены ошибки в формуле",
+                                               ApplName, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    result = false;
+                }
+                else
+                {
+                    // Если формула менялась запишем статистику используемых функций
+                    if (_channel.Formule != _formula.Text)
+                    {
+                        _formuleAnalyzer.SetFunctionUse(value); 
+                    }
+                    // Запишем фргументы формулы
+                    _channel.Arguments = value.MeasureList;
+                    _channel.ArgNumber = _channel.Arguments.Count;
+
+                    _channel.Formule = _formula.Text;
+                    int idChannel = ((PartObjectIdentity)_channel.Identity).Id;
+                    _channel.CodeC = value.GetCodeC(idChannel);
+
+                    // Формируем имя файла Си кода
+
+                    SysTable table = ComRegistry.Map.Find<SysTable>(new ObjectIdentity(_idTable));
+                    ComRegistry.Map.MiddleLoad(table);
+
+                    string codeCFileName = String.Empty;
+                    switch (table.TableName)
+                    {
+                        case "ELREG_LIST_V":
+                            codeCFileName = string.Format("e{0:0000000}.c", idChannel);
+                            break;
+                        case "ELREGDG_LIST_V":
+                            codeCFileName = string.Format("e{0:0000000}.c", idChannel);
+                            break;
+                        case "PHREG_LIST_V":
+                            codeCFileName = string.Format("p{0:0000000}.c", idChannel);
+                            break;
+                    }
+
+                    if (codeCFileName.Length <= 0)
+                    {
+                        RsduMessageForm.ShowDialog(this, "Не удалось сформировать имя файла формулы",
+                                                   ApplName, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        result = false;
+                    }
+                    else
+                    {
+                        _channel.CFileName = codeCFileName;
+                    }
+                }
+            }
+

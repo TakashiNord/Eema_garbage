@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MYTCL>
+  <VERSION value="1.0"/>
+  <CREATION value="03/29/2022 13:32:46"/>
+  <NAME value="pr1"/>
+  <PROPERTIES>
+    <BUILD>
+      <OUTPUTFILE value="pr1.exe"/>
+      <LOCATION/>
+      <ICON/>
+      <CLEANTMP/>
+      <ENCODING/>
+      <COPYDEPFILES/>
+    </BUILD>
+    <VFS>
+      <lib value="">
+        <tcl8.5 value="">
+          <encoding value=""/>
+        </tcl8.5>
+        <app-pr1 value=""/>
+        <tclodbc value="$(MYTCL)/tcl/lib/tclodbc2.5/pkgIndex.tcl;$(MYTCL)/tcl/lib/tclodbc2.5/tclodbc25.dll"/>
+      </lib>
+    </VFS>
+    <RUN>
+      <DEBUGPORTNUMBER/>
+      <ARGS/>
+    </RUN>
+    <PACKAGES/>
+  </PROPERTIES>
+  <TYPE value="Console Application"/>
+  <SOURCES value="pr1.tcl;" main="pr1.tcl"/>
+  <BREAKPOINTS value=""/>
+  <BOOKMARKS value=""/>
+  <WATCHVARIABLE/>
+</MYTCL>

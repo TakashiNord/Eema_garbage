@@ -1,0 +1,16 @@
+C:\Users\gal\Documents\SharpDevelop Projects\SYS_DSRT_DTYP\SYS_DSRT_DTYP\bin\Debug\SYS_DSRT_DTYP.exe.config
+C:\Users\gal\Documents\SharpDevelop Projects\SYS_DSRT_DTYP\SYS_DSRT_DTYP\bin\Debug\SYS_DSRT_DTYP.exe
+C:\Users\gal\Documents\SharpDevelop Projects\SYS_DSRT_DTYP\SYS_DSRT_DTYP\bin\Debug\SYS_DSRT_DTYP.pdb
+C:\Users\gal\Documents\SharpDevelop Projects\SYS_DSRT_DTYP\SYS_DSRT_DTYP\obj\Debug\SYS_DSRT_DTYP.csprojResolveAssemblyReference.cache
+C:\Users\gal\Documents\SharpDevelop Projects\SYS_DSRT_DTYP\SYS_DSRT_DTYP\obj\Debug\SYS_DSRT_DTYP.exe
+C:\Users\gal\Documents\SharpDevelop Projects\SYS_DSRT_DTYP\SYS_DSRT_DTYP\obj\Debug\SYS_DSRT_DTYP.pdb
+C:\Users\gal\Documents\SharpDevelop Projects\SYS_DSRT_DTYP\SYS_DSRT_DTYP\obj\Debug\SYS_DSRT_DTYP.MainForm.resources
+C:\Users\gal\Documents\SharpDevelop Projects\SYS_DSRT_DTYP\SYS_DSRT_DTYP\obj\Debug\SYS_DSRT_DTYP.csproj.GenerateResource.Cache
+C:\Users\Tanuki\Downloads\SYS_DSRT_DTYP\SYS_DSRT_DTYP\bin\Debug\SYS_DSRT_DTYP.exe.config
+C:\Users\Tanuki\Downloads\SYS_DSRT_DTYP\SYS_DSRT_DTYP\bin\Debug\SYS_DSRT_DTYP.exe
+C:\Users\Tanuki\Downloads\SYS_DSRT_DTYP\SYS_DSRT_DTYP\bin\Debug\SYS_DSRT_DTYP.pdb
+C:\Users\Tanuki\Downloads\SYS_DSRT_DTYP\SYS_DSRT_DTYP\obj\Debug\SYS_DSRT_DTYP.csprojResolveAssemblyReference.cache
+C:\Users\Tanuki\Downloads\SYS_DSRT_DTYP\SYS_DSRT_DTYP\obj\Debug\SYS_DSRT_DTYP.MainForm.resources
+C:\Users\Tanuki\Downloads\SYS_DSRT_DTYP\SYS_DSRT_DTYP\obj\Debug\SYS_DSRT_DTYP.csproj.GenerateResource.Cache
+C:\Users\Tanuki\Downloads\SYS_DSRT_DTYP\SYS_DSRT_DTYP\obj\Debug\SYS_DSRT_DTYP.exe
+C:\Users\Tanuki\Downloads\SYS_DSRT_DTYP\SYS_DSRT_DTYP\obj\Debug\SYS_DSRT_DTYP.pdb
