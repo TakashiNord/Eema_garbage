@@ -53,12 +53,15 @@ typedef unsigned long int uint64_t;
 #define WAIT_FOREVER   0xFFFF
 #define NO_WAIT        0
 
+#pragma pack(push,1)
 /* Права пользователя */
 typedef struct KEY_LAWS {
     uint32_t  laws;
     char      key[16];
 } KEY_LAWS;
+#pragma pack(pop)
 
+#pragma pack(push,1)
 /* Универсальный заголовок пакетов для передачи данных в комплексе РСДУ */
 typedef struct UNITRANS_HEADER {
     uint32_t  command;
@@ -72,7 +75,7 @@ typedef struct UNITRANS_HEADER {
     int16_t   status;
     uint32_t  time1970;
 } UNITRANS_HEADER;/* Универсальный заголовок пакетов для передачи данных в комплексе РСДУ */
-
+#pragma pack(pop)
 
 // from rsdutime.c
 time_t RSDURTGUtils_Time70(void)
