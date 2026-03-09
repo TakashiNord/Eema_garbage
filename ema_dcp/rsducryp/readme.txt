@@ -1,0 +1,2 @@
+
+задать RSDUCRYPTO_LIB;WIN32
