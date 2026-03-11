@@ -1,0 +1,126 @@
+﻿
+#ifndef _WINSOCK2API_
+    #include <winsock2.h>
+#endif
+
+#ifndef _WINSOCKAPI_
+    #include <winsock.h>
+#endif
+
+
+
+
+#ifndef WIN32_LEAN_AND_MEAN
+#define WIN32_LEAN_AND_MEAN
+#endif
+
+#include <windows.h>
+#include <winsock2.h>
+#include <ws2tcpip.h>
+#include <iphlpapi.h>
+#include <stdio.h>
+
+#pragma comment(lib, "Ws2_32.lib")
+
+int main() {
+  return 0;
+}
+
+=========================================================================================
+
+while ( true )
+    {
+        unsigned char packet_data[256];
+        unsigned int maximum_packet_size = sizeof( packet_data );
+
+        #if PLATFORM == PLATFORM_WINDOWS
+        typedef int socklen_t;
+        #endif
+
+        sockaddr_in from;
+        socklen_t fromLength = sizeof( from );
+
+        int received_bytes = recvfrom( socket, (char*)packet_data, maximum_packet_size,
+                                   0, (sockaddr*)&from, &fromLength );
+
+        if ( received_bytes <= 0 )
+            break;
+
+        unsigned int from_address = ntohl( from.sin_addr.s_addr );
+        unsigned int from_port = ntohs( from.sin_port );
+
+        // process received packet
+    }
+
+
+При переносе в Windows, все эти строки заменяются на одну:
+
+#include <windows.h>
+
+Объявление winsock.h уже включено в windows.h. 
+
+Вторым шагом будет линковка приложению Wsock32.lib (Для VC++: меню Project->Settings, на вкладке Link, дописать wsock32.lib к списку библиотек).
+
+
+Вот те шаги, которые нужно делать в первую очередь, при переносе приложений:
+
+1. Заменить объявления заголовочных файлов UNIX на windows.h и прилинковать wsock32.lib
+2. Добавить вызовы функций WSAStartup() и WSACleanup()
+3. Заменить функции вроде close() и ioctl() на их Windows-аналоги
+
+
+=========================================================================================
+
+void recv_block( SEND &out ) { // параметр - ссылка на структуру, можешь передавать указатель
+    char data[sizeof(out)]; // блок данных, фиксированного размера 
+    char *p = &data[0];    // указатель, который будет перемещаться по блоку
+    int desired_len = sizeof(out); // установим количество нужных данных 
+    while(desired_len) {             // и пока нам есть что послушать ..
+        int rcved = recv(s, p, desired_len, 0); // принимаем данные. прочитает не больше desired_len
+        if( rcved == -1) throw system_failed(); // системная ошибка, можешь обработать как-то по другому
+        if( rcved ==  0) throw connection_close(); // соединение закрыто. опять же если не нравится exception можешь просто что-то другое сделать
+        p += rcved; // передвигаем указатель
+        desired_len -= rcved; // уменьшаем размер необходимого если desired_len == 0 то прочитали все, и в цикл больше не войдем
+    } 
+    memcpy(&out, data, sizeof(out)); // просто копируем данные в структуру
+}
+
+
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <stdio.h>
+
+int main()
+{
+    int sock;
+    struct sockaddr_in addr;
+    char buf[1024];
+    int bytes_read;
+
+    sock = socket(AF_INET, SOCK_DGRAM, 0);
+    if(sock < 0)
+    {
+        perror("socket");
+        exit(1);
+    }
+    
+    addr.sin_family = AF_INET;
+    addr.sin_port = htons(3425);
+    addr.sin_addr.s_addr = htonl(INADDR_ANY);
+    if(bind(sock, (struct sockaddr *)&addr, sizeof(addr)) < 0)
+    {
+        perror("bind");
+        exit(2);
+    }
+
+    while(1)
+    {
+        bytes_read = recvfrom(sock, buf, 1024, 0, NULL, NULL);
+        buf[bytes_read] = '\0';
+        printf(buf);
+    }
+    
+    return 0;
+}
+
